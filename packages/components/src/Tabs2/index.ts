@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Tab2'
-export * from './Tabs2'
-export * from './types'
+export * from './Tab2';
+export * from './Tabs2';
+export * from './TabPanels2';
+export * from './types';

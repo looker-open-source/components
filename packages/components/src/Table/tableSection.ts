@@ -7,9 +7,9 @@ import type {
   CompatibleHTMLProps,
   BorderProps,
   TypographyProps,
-} from '@looker/design-tokens'
-import { reset, border, typography } from '@looker/design-tokens'
-import { css } from 'styled-components'
+} from '@looker/design-tokens';
+import { reset, border, typography } from '@looker/design-tokens';
+import { css } from 'styled-components';
 
 export interface TableSectionProps
   extends BorderProps,
@@ -20,6 +20,6 @@ export const tableSectionCSS = css`
   ${reset}
   ${border}
   ${typography}
-`
+`;
 
-export const tableSectionDefaults: TableSectionProps = { textAlign: 'left' }
+export const tableSectionDefaults: TableSectionProps = { textAlign: 'left' };

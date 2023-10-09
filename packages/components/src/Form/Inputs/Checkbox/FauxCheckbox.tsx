@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { checkboxRadioHeight } from '../height'
+import styled from 'styled-components';
+import { checkboxRadioHeight } from '../height';
 
 export type FauxCheckboxProps = {
-  isSelected?: boolean
-}
+  isSelected?: boolean;
+};
 
 export const FauxCheckbox = styled.div<FauxCheckboxProps>`
   background: ${({ isSelected, theme }) =>
@@ -26,4 +26,4 @@ export const FauxCheckbox = styled.div<FauxCheckboxProps>`
     right: 0;
     top: 0;
   }
-`
+`;

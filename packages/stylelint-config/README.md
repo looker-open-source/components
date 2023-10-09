@@ -15,7 +15,7 @@ Alternatively, you can use a standalone `stylelint.config.js` file:
 ```js
 module.exports = {
   extends: ['@looker/stylelint-config'],
-}
+};
 ```
 
 ## LICENCE

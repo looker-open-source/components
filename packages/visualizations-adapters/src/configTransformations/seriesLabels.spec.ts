@@ -24,15 +24,15 @@
 
  */
 
-import { seriesLabels } from './seriesLabels'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { CSeriesBasic, MeasureMetadata } from '../types'
+import { seriesLabels } from './seriesLabels';
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { CSeriesBasic, MeasureMetadata } from '../types';
 
 test('array series fills in values from series_labels', () => {
   const series: CSeriesBasic[] = [
     { color: 'blue' },
     { color: 'red', visible: false },
-  ]
+  ];
 
   const transformedConfig = seriesLabels({
     config: {
@@ -42,37 +42,37 @@ test('array series fills in values from series_labels', () => {
     },
     data: mockSdkDataResponse,
     fields: mockFields,
-  })
+  });
 
   expect((transformedConfig.config.series as CSeriesBasic[])[0].label).toEqual(
     'C-O-U-N-T'
-  )
+  );
 
   expect((transformedConfig.config.series as CSeriesBasic[])[1].label).toEqual(
     'M-O-N-E-Y'
-  )
-})
+  );
+});
 
 test('array series falls back to field label values', () => {
   const series: CSeriesBasic[] = [
     { color: 'blue' },
     { color: 'red', visible: false },
-  ]
+  ];
 
   const transformedConfig = seriesLabels({
     config: { ...mockBarConfig, series },
     data: mockSdkDataResponse,
     fields: mockFields,
-  })
+  });
 
   expect((transformedConfig.config.series as CSeriesBasic[])[0].label).toEqual(
     'Orders Count'
-  )
+  );
 
   expect((transformedConfig.config.series as CSeriesBasic[])[1].label).toEqual(
     'Orders Average Total Amount of Order USD'
-  )
-})
+  );
+});
 
 test('series names pulled from `config.series_labels`', () => {
   const series: { [k: string]: CSeriesBasic } = {
@@ -81,18 +81,18 @@ test('series names pulled from `config.series_labels`', () => {
       color: 'red',
       visible: false,
     },
-  }
+  };
 
   const series_labels = {
     'orders.count': 'Count',
     'orders.average_total_amount_of_order_usd': 'Average',
-  }
+  };
 
   const transformedConfig = seriesLabels({
     config: { ...mockBarConfig, series, series_labels },
     data: mockSdkDataResponse,
     fields: mockFields,
-  })
+  });
 
   expect(transformedConfig.config.series).toEqual({
     'orders.count': {
@@ -103,13 +103,13 @@ test('series names pulled from `config.series_labels`', () => {
       ...series['orders.average_total_amount_of_order_usd'],
       label: series_labels['orders.average_total_amount_of_order_usd'],
     },
-  })
-})
+  });
+});
 
 test('series names fall back to fields metadata', () => {
   const series: { [k: string]: CSeriesBasic } = {
     'orders.count': { color: 'blue' },
-  }
+  };
 
   const transformedConfig = seriesLabels({
     config: { ...mockBarConfig, series },
@@ -120,12 +120,12 @@ test('series names fall back to fields metadata', () => {
         { name: 'orders.count', label_short: 'O-R-D-E-R-S' } as MeasureMetadata,
       ],
     },
-  })
+  });
 
   expect(transformedConfig.config.series).toEqual({
     'orders.count': {
       ...series['orders.count'],
       label: 'O-R-D-E-R-S',
     },
-  })
-})
+  });
+});

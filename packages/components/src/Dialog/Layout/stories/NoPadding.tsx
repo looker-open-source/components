@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, DialogLayout, DialogContent } from '../../..'
+import React from 'react';
+import { Box, DialogLayout, DialogContent } from '../../..';
 
 export default function NoPadding() {
   return (
@@ -18,5 +18,5 @@ export default function NoPadding() {
         </DialogContent>
       </DialogLayout>
     </Box>
-  )
+  );
 }

@@ -24,13 +24,13 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { act, fireEvent, screen } from '@testing-library/react'
-import { NavList } from '../NavList'
-import { Link } from './stories/index.stories'
-import { NavTreeItem } from './NavTreeItem'
-import { NavTree } from './NavTree'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { act, fireEvent, screen } from '@testing-library/react';
+import { NavList } from '../NavList';
+import { Link } from './stories/index.stories';
+import { NavTreeItem } from './NavTreeItem';
+import { NavTree } from './NavTree';
 
 const Basic = () => (
   <NavList>
@@ -38,21 +38,21 @@ const Basic = () => (
       <NavTreeItem parentIcon>Cheddar</NavTreeItem>
     </NavTree>
   </NavList>
-)
+);
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('NavTree', () => {
   test('ripple effect', () => {
@@ -62,82 +62,82 @@ describe('NavTree', () => {
           <NavTreeItem parentIcon>Cheddar</NavTreeItem>
         </NavTree>
       </NavList>
-    )
+    );
 
-    const navTree = screen.getByText('Cheddar').closest('button')
-    expect(navTree).not.toHaveClass('bg-on fg-in')
+    const navTree = screen.getByText('Cheddar').closest('button');
+    expect(navTree).not.toHaveClass('bg-on fg-in');
     expect(navTree).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-scale-end': '1',
       '--ripple-scale-start': '0.1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
-    })
+    });
 
-    navTree && fireEvent.focus(navTree)
-    expect(navTree).toHaveClass('bg-on')
+    navTree && fireEvent.focus(navTree);
+    expect(navTree).toHaveClass('bg-on');
 
-    navTree && fireEvent.mouseDown(navTree)
-    expect(navTree).toHaveClass('bg-on fg-in')
+    navTree && fireEvent.mouseDown(navTree);
+    expect(navTree).toHaveClass('bg-on fg-in');
 
     // foreground is locked for a minimum time to animate the ripple
-    navTree && fireEvent.mouseUp(navTree)
-    runTimers()
-    expect(navTree).toHaveClass('bg-on fg-out')
-    runTimers()
-    expect(navTree).toHaveClass('bg-on')
+    navTree && fireEvent.mouseUp(navTree);
+    runTimers();
+    expect(navTree).toHaveClass('bg-on fg-out');
+    runTimers();
+    expect(navTree).toHaveClass('bg-on');
 
-    navTree && fireEvent.blur(navTree)
-    expect(navTree).not.toHaveClass('bg-on fg-in')
-    fireEvent.click(document)
-  })
+    navTree && fireEvent.blur(navTree);
+    expect(navTree).not.toHaveClass('bg-on fg-in');
+    fireEvent.click(document);
+  });
 
   test('Renders string disclosure label and detail', () => {
-    renderWithTheme(<Basic />)
+    renderWithTheme(<Basic />);
 
-    screen.getByText('Cheeses')
-    screen.getByText('Cheddar')
-  })
+    screen.getByText('Cheeses');
+    screen.getByText('Cheddar');
+  });
 
   test('Triggers onClick on label click', () => {
-    const labelClick = jest.fn()
+    const labelClick = jest.fn();
 
     renderWithTheme(
       <NavTree onClick={labelClick} label="Parent">
         <NavTreeItem>Child</NavTreeItem>
       </NavTree>
-    )
+    );
 
-    fireEvent.click(screen.getByText('Parent'))
-    expect(labelClick).toHaveBeenCalled()
-  })
+    fireEvent.click(screen.getByText('Parent'));
+    expect(labelClick).toHaveBeenCalled();
+  });
 
   describe('href provided', () => {
     test('Changes accordion open state on indicator click', () => {
-      renderWithTheme(<Link />)
+      renderWithTheme(<Link />);
 
-      const indicator = screen.getByLabelText('Google Link Indicator Open')
-      screen.getByText('Some Item')
-      fireEvent.click(indicator)
-      screen.getByLabelText('Google Link Indicator Close')
-      expect(screen.queryByText('Some Item')).not.toBeInTheDocument()
-    })
+      const indicator = screen.getByLabelText('Google Link Indicator Open');
+      screen.getByText('Some Item');
+      fireEvent.click(indicator);
+      screen.getByLabelText('Google Link Indicator Close');
+      expect(screen.queryByText('Some Item')).not.toBeInTheDocument();
+    });
 
     test('Does not change accordion open state on label click', () => {
-      renderWithTheme(<Link />)
+      renderWithTheme(<Link />);
 
-      const treeLabel = screen.getByText('Click me to go to Google')
-      screen.getByText('Some Item')
-      fireEvent.click(treeLabel)
-      screen.getByText('Some Item')
-    })
+      const treeLabel = screen.getByText('Click me to go to Google');
+      screen.getByText('Some Item');
+      fireEvent.click(treeLabel);
+      screen.getByText('Some Item');
+    });
 
     test("Uses role 'treeitem' for main content container", () => {
-      renderWithTheme(<Link />)
+      renderWithTheme(<Link />);
 
       // We expect both the NavTree and NavTreeItem child to both have role="treeitem"
-      expect(screen.getAllByRole('treeitem').length).toBe(2)
-    })
+      expect(screen.getAllByRole('treeitem').length).toBe(2);
+    });
 
     test('Expects an indicatorLabel when href is provided', () => {
       renderWithTheme(
@@ -145,8 +145,8 @@ describe('NavTree', () => {
         <NavTree label="My NavTree" href="https://google.com">
           Hello
         </NavTree>
-      )
-    })
+      );
+    });
 
     test('Expects an href when indicatorLabel is provided', () => {
       renderWithTheme(
@@ -154,25 +154,25 @@ describe('NavTree', () => {
         <NavTree label="My NavTree" indicatorLabel="My NavTree Indicator">
           Hello
         </NavTree>
-      )
-    })
-  })
+      );
+    });
+  });
 
   describe('href not provided', () => {
     test('Changes accordion open state on label click', () => {
-      renderWithTheme(<Basic />)
+      renderWithTheme(<Basic />);
 
-      const treeLabel = screen.getByText('Cheeses')
-      screen.getByText('Cheddar')
-      fireEvent.click(treeLabel)
-      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument()
-    })
+      const treeLabel = screen.getByText('Cheeses');
+      screen.getByText('Cheddar');
+      fireEvent.click(treeLabel);
+      expect(screen.queryByText('Cheddar')).not.toBeInTheDocument();
+    });
 
     test("Uses role 'treeitem' for main content container", () => {
-      renderWithTheme(<Basic />)
+      renderWithTheme(<Basic />);
 
       // We expect both the NavTree and NavTreeItem child to both have role="treeitem"
-      expect(screen.getAllByRole('treeitem').length).toBe(2)
-    })
-  })
-})
+      expect(screen.getAllByRole('treeitem').length).toBe(2);
+    });
+  });
+});

@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ComboboxOptionObject } from '../types'
+import type { ComboboxOptionObject } from '../types';
 
 export function getComboboxText(
   value?: string | ComboboxOptionObject,
   options?: ComboboxOptionObject[]
 ): string {
-  if (value === undefined) return ''
+  if (value === undefined) return '';
   if (typeof value === 'string') {
     if (options && options.length > 0) {
-      const currentOption = options.find(option => option.value === value)
+      const currentOption = options.find(option => option.value === value);
       if (currentOption) {
-        return getComboboxText(currentOption)
+        return getComboboxText(currentOption);
       }
     }
-    return value
+    return value;
   }
-  return value.label || value.value
+  return value.label ?? value.value;
 }

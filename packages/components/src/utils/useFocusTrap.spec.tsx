@@ -24,31 +24,37 @@
 
  */
 
-import { FocusTrapProvider } from '@looker/components-providers'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import type { ReactNode } from 'react'
-import React from 'react'
-import { FieldSelect, FieldText } from '../Form/Fields'
-import { useFocusTrap, useToggle } from './'
+import { FocusTrapProvider } from '@looker/components-providers';
+import { renderWithTheme } from '@looker/components-test-utils';
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import type { ReactNode } from 'react';
+import React from 'react';
+import { FieldSelect, FieldText } from '../Form/Fields';
+import { useFocusTrap, useToggle } from './';
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 
 interface TestProps {
-  clickOutsideDeactivates?: boolean
-  children?: ReactNode
+  clickOutsideDeactivates?: boolean;
+  children?: ReactNode;
 }
 
 const Inner = ({ children, clickOutsideDeactivates }: TestProps) => {
-  const [, ref] = useFocusTrap({ clickOutsideDeactivates })
-  const { value, setOff, toggle } = useToggle()
+  const [, ref] = useFocusTrap({ clickOutsideDeactivates });
+  const { value, setOff, toggle } = useToggle();
   return (
     <>
       {value && (
@@ -62,22 +68,22 @@ const Inner = ({ children, clickOutsideDeactivates }: TestProps) => {
       <button onClick={toggle}>toggle</button>
       <button onClick={setOff}>Another button</button>
     </>
-  )
-}
+  );
+};
 
 const FocusTrapComponent = (props: TestProps) => {
   return (
     <FocusTrapProvider>
       <Inner {...props} />
     </FocusTrapProvider>
-  )
-}
+  );
+};
 
 const Surface = ({ children }: React.PropsWithChildren<unknown>) => (
   <div tabIndex={-1} data-testid="surface" data-overlay-surface="true">
     {children}
   </div>
-)
+);
 
 describe('useFocusTrap', () => {
   describe('initial focus', () => {
@@ -86,12 +92,12 @@ describe('useFocusTrap', () => {
         <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      );
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
 
-      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
-    })
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus());
+    });
 
     test('focus starts on autoFocus element', async () => {
       renderWithTheme(
@@ -101,14 +107,14 @@ describe('useFocusTrap', () => {
             <FieldText label="Text field B" autoFocus />
           </Surface>
         </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      );
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
 
       await waitFor(() =>
         expect(screen.getByLabelText('Text field B')).toHaveFocus()
-      )
-    })
+      );
+    });
 
     describe('focus starts on tabbable element by priority', () => {
       const inputElements = (
@@ -117,13 +123,13 @@ describe('useFocusTrap', () => {
           <FieldText label="Hidden text field" style={{ display: 'none' }} />
           <FieldText label="Text field" />
         </>
-      )
+      );
       const footerElement = (
         <footer>
           <button>Footer button</button>
         </footer>
-      )
-      const firstTabbableElement = <button>First button</button>
+      );
+      const firstTabbableElement = <button>First button</button>;
 
       test('input element is 1st priority', async () => {
         renderWithTheme(
@@ -134,14 +140,14 @@ describe('useFocusTrap', () => {
               {inputElements}
             </Surface>
           </FocusTrapComponent>
-        )
-        const toggle = screen.getByText('toggle')
-        fireEvent.click(toggle)
+        );
+        const toggle = screen.getByText('toggle');
+        fireEvent.click(toggle);
 
         await waitFor(() =>
           expect(screen.getByLabelText('Text field')).toHaveFocus()
-        )
-      })
+        );
+      });
 
       test('footer element is 2nd priority', async () => {
         renderWithTheme(
@@ -151,14 +157,14 @@ describe('useFocusTrap', () => {
               {footerElement}
             </Surface>
           </FocusTrapComponent>
-        )
-        const toggle = screen.getByText('toggle')
-        fireEvent.click(toggle)
+        );
+        const toggle = screen.getByText('toggle');
+        fireEvent.click(toggle);
 
         await waitFor(() =>
           expect(screen.getByText('Footer button')).toHaveFocus()
-        )
-      })
+        );
+      });
 
       test('first tabbable element is 3rd priority', async () => {
         renderWithTheme(
@@ -169,31 +175,31 @@ describe('useFocusTrap', () => {
               <footer />
             </Surface>
           </FocusTrapComponent>
-        )
-        const toggle = screen.getByText('toggle')
-        fireEvent.click(toggle)
+        );
+        const toggle = screen.getByText('toggle');
+        fireEvent.click(toggle);
 
         await waitFor(() =>
           expect(screen.getByText('First button')).toHaveFocus()
-        )
-      })
-    })
+        );
+      });
+    });
 
     test('error without autoFocus or surface', async () => {
-      renderWithTheme(<FocusTrapComponent />)
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      renderWithTheme(<FocusTrapComponent />);
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
       act(() => {
         try {
-          jest.runOnlyPendingTimers()
+          jest.runOnlyPendingTimers();
         } catch (e) {
           expect(e).toMatchInlineSnapshot(
             `[Error: Your focus trap needs to have at least one focusable element]`
-          )
+          );
         }
-      })
-    })
-  })
+      });
+    });
+  });
 
   describe('return focus', () => {
     test('focus returns to trigger', async () => {
@@ -201,34 +207,34 @@ describe('useFocusTrap', () => {
         <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      toggle.focus()
-      fireEvent.click(toggle)
+      );
+      const toggle = screen.getByText('toggle');
+      toggle.focus();
+      fireEvent.click(toggle);
 
-      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus());
 
-      fireEvent.click(toggle)
-      await waitFor(() => expect(toggle).toHaveFocus())
-    })
+      fireEvent.click(toggle);
+      await waitFor(() => expect(toggle).toHaveFocus());
+    });
 
     test('focus does not return to trigger', async () => {
       render(
         <FocusTrapComponent>
           <Surface />
         </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      toggle.focus()
-      fireEvent.click(toggle)
+      );
+      const toggle = screen.getByText('toggle');
+      toggle.focus();
+      fireEvent.click(toggle);
 
-      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus())
+      await waitFor(() => expect(screen.getByTestId('surface')).toHaveFocus());
 
-      const otherButton = screen.getByText('Another button')
-      fireEvent.click(otherButton)
-      otherButton.focus()
-      expect(otherButton).toHaveFocus()
-    })
+      const otherButton = screen.getByText('Another button');
+      fireEvent.click(otherButton);
+      otherButton.focus();
+      expect(otherButton).toHaveFocus();
+    });
 
     test('With nested traps', async () => {
       render(
@@ -239,21 +245,21 @@ describe('useFocusTrap', () => {
             </Inner>
           </Surface>
         </FocusTrapComponent>
-      )
-      const toggle = screen.getByText('toggle')
-      toggle.focus()
-      fireEvent.click(toggle)
+      );
+      const toggle = screen.getByText('toggle');
+      toggle.focus();
+      fireEvent.click(toggle);
 
-      const toggleInner = screen.getAllByText('toggle')[0]
-      toggleInner.focus()
-      fireEvent.click(toggleInner)
+      const toggleInner = screen.getAllByText('toggle')[0];
+      toggleInner.focus();
+      fireEvent.click(toggleInner);
 
-      const closeButtons = screen.getAllByText('Close')
-      fireEvent.click(closeButtons[0])
-      fireEvent.click(closeButtons[1])
-      await waitFor(() => expect(toggle).toHaveFocus())
-    })
-  })
+      const closeButtons = screen.getAllByText('Close');
+      fireEvent.click(closeButtons[0]);
+      fireEvent.click(closeButtons[1]);
+      await waitFor(() => expect(toggle).toHaveFocus());
+    });
+  });
 
   describe('cycle focus when tabbing', () => {
     const CycleFocus = () => (
@@ -265,47 +271,85 @@ describe('useFocusTrap', () => {
           <span>Not tabbable</span>
         </Surface>
       </FocusTrapComponent>
-    )
+    );
 
     test('focus the first tabbable element after tabbing from the last', async () => {
-      render(<CycleFocus />)
+      render(<CycleFocus />);
 
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
 
-      const last = screen.getByText('Last')
-      last.focus()
-      fireEvent.keyDown(last, { key: 'Tab' })
-      expect(screen.getByText('First')).toHaveFocus()
-    })
+      const last = screen.getByText('Last');
+      last.focus();
+      fireEvent.keyDown(last, { key: 'Tab' });
+      expect(screen.getByText('First')).toHaveFocus();
+    });
 
     test('focus the last tabbable element after shift-tabbing from the first', async () => {
-      render(<CycleFocus />)
+      render(<CycleFocus />);
 
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
 
-      const first = screen.getByText('First')
-      first.focus()
-      fireEvent.keyDown(first, { key: 'Tab', shiftKey: true })
-      expect(screen.getByText('Last')).toHaveFocus()
-    })
+      const first = screen.getByText('First');
+      first.focus();
+      fireEvent.keyDown(first, { key: 'Tab', shiftKey: true });
+      expect(screen.getByText('Last')).toHaveFocus();
+    });
 
     test('do nothing when not focused on first or last tabbable element', async () => {
-      render(<CycleFocus />)
+      render(<CycleFocus />);
 
-      const toggle = screen.getByText('toggle')
-      fireEvent.click(toggle)
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
 
-      const input = screen.getByRole('textbox')
-      input.focus()
+      const input = screen.getByRole('textbox');
+      input.focus();
       // In jsdom a keydown event doesn't actually move focus
       // but useFocusTrap uses the keydown event to cycle focus on first & last
       // because using focus/blur events would be "too late"
-      fireEvent.keyDown(input, { key: 'Tab' })
-      expect(input).toHaveFocus()
-    })
-  })
+      fireEvent.keyDown(input, { key: 'Tab' });
+      expect(input).toHaveFocus();
+    });
+  });
+
+  describe('when focus is lost', () => {
+    test('focus returns if lost', async () => {
+      render(
+        <FocusTrapComponent>
+          <Surface />
+        </FocusTrapComponent>
+      );
+
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
+      // Focus somehow moved outside the trap
+      fireEvent.focus(toggle);
+      // Focus returns
+      expect(screen.getByTestId('surface')).toHaveFocus();
+    });
+
+    test('focus not returned if lost to another modal', async () => {
+      render(
+        <>
+          <div data-overlay-surface tabIndex={-1}>
+            Another modal
+          </div>
+          <FocusTrapComponent>
+            <Surface />
+          </FocusTrapComponent>
+        </>
+      );
+
+      const toggle = screen.getByText('toggle');
+      fireEvent.click(toggle);
+      // Focus somehow moved outside the trap
+      const otherModal = screen.getByText('Another modal');
+      fireEvent.focus(otherModal);
+      // Focus not returned
+      expect(screen.getByTestId('surface')).not.toHaveFocus();
+    });
+  });
 
   describe('click outside', () => {
     test('does not deactivate by default', async () => {
@@ -316,15 +360,15 @@ describe('useFocusTrap', () => {
           </FocusTrapComponent>
           <button>outside</button>
         </>
-      )
-      userEvent.click(screen.getByText('toggle'))
+      );
+      userEvent.click(screen.getByText('toggle'));
 
-      const surface = screen.getByTestId('surface')
-      await waitFor(() => expect(surface).toHaveFocus())
+      const surface = screen.getByTestId('surface');
+      await waitFor(() => expect(surface).toHaveFocus());
 
-      userEvent.click(screen.getByText('outside'))
-      expect(surface).toHaveFocus()
-    })
+      userEvent.click(screen.getByText('outside'));
+      expect(surface).toHaveFocus();
+    });
     test('with clickOutsideDeactivates', async () => {
       render(
         <>
@@ -333,18 +377,18 @@ describe('useFocusTrap', () => {
           </FocusTrapComponent>
           <button>outside</button>
         </>
-      )
-      userEvent.click(screen.getByText('toggle'))
+      );
+      userEvent.click(screen.getByText('toggle'));
 
-      const surface = screen.getByTestId('surface')
-      await waitFor(() => expect(surface).toHaveFocus())
+      const surface = screen.getByTestId('surface');
+      await waitFor(() => expect(surface).toHaveFocus());
 
-      const outside = screen.getByText('outside')
-      userEvent.click(outside)
-      expect(outside).toHaveFocus()
-    })
-  })
-})
+      const outside = screen.getByText('outside');
+      userEvent.click(outside);
+      expect(outside).toHaveFocus();
+    });
+  });
+});
 
 // https://github.com/looker-open-source/components/issues/2953
 //
@@ -366,25 +410,25 @@ test('Focus maintained with Select', async () => {
         placeholder="Components Select"
       />
     </Inner>
-  )
+  );
 
   // Toggle the children on <Inner />.
-  fireEvent.click(screen.getByText('toggle'))
+  fireEvent.click(screen.getByText('toggle'));
 
   // We this represents the host div, not the internal input.
-  const select = screen.getByPlaceholderText('Components Select')
+  const select = screen.getByPlaceholderText('Components Select');
 
   // Focus the select so it is set as the document.activeElement
   // fireEvent.click() does not do this.
-  select.focus()
+  select.focus();
 
   // Click so the dropdown is opened. Focusing will not do this.
-  fireEvent.click(select)
+  fireEvent.click(select);
 
   // Selects the LI representing the first value. Firing this on the select
   // option will not change the value.
-  fireEvent.click(screen.getByText('1'))
+  fireEvent.click(screen.getByText('1'));
 
   // The select should still have focus.
-  expect(select).toHaveFocus()
-})
+  expect(select).toHaveFocus();
+});

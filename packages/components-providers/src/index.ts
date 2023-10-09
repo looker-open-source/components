@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-export * from './ComponentsProvider'
-export * from './ExtendComponentsProvider'
-export * from './FocusTrap'
-export * from './FontFaceLoader'
-export * from './I18n'
-export * from './ScrollLock'
-export * from './StyleDefender'
-export * from './TrapStack'
+export * from './ComponentsProvider';
+export * from './ExtendComponentsProvider';
+export * from './FocusTrap';
+export * from './FontFaceLoader';
+export * from './I18n';
+export * from './ScrollLock';
+export * from './StyleDefender';
+export * from './TrapStack';

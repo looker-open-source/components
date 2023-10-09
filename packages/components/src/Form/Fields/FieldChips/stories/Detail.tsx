@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function Detail() {
-  const [values, setValues] = useState<string[]>(['apples'])
+  const [values, setValues] = useState<string[]>(['apples']);
 
-  return <FieldChips detail="Detail..." values={values} onChange={setValues} />
+  return <FieldChips detail="Detail..." values={values} onChange={setValues} />;
 }

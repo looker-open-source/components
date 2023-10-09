@@ -24,46 +24,47 @@
 
  */
 
-import dateLocale from 'date-fns/locale/ja'
+import dateLocale from 'date-fns/locale/ja';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
     'Clear Field': 'フィールドをクリア',
   },
   AvatarButton: {
-    'Profile Picture': 'プロフィール画像',
+    'Profile Picture': 'プロフィール写真',
   },
   AvatarUser: {
     Avatar: 'アバター',
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'すべての{{pageCount}}個の表示項目が選択されています',
-    AllTotalCountSelected: 'すべての{{totalCount}}個の項目が選択されています',
+      '表示されている {{pageCount}} 個のアイテムがすべて選択されています',
+    AllTotalCountSelected:
+      '{{totalCount}} 個のアイテムがすべて選択されています',
     'Bulk Actions': '一括操作',
     'Clear Selection': '選択をクリア',
-    SelectAllCountResults: 'すべての{{totalCount}}件の結果を選択',
+    SelectAllCountResults: '{{totalCount}} 件の結果をすべて選択',
     SelectedCountOfTotalDisplayed:
-      '{{selectedItemCount}}/{{pageCount}}個の表示項目が選択されています',
+      '表示されている {{pageCount}} 個のうち {{selectedItemCount}} 個のアイテムが選択されています',
   },
   CalendarNav: {
-    'next month': '次月',
+    'next month': '翌月',
     'previous month': '前月',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'チェックマークをミックス',
+    'Check Mark Mixed': 'チェックマークの混合',
   },
   Chip: {
     Delete: '削除',
   },
   ColumnSelector: {
-    Apply: '適用する',
+    Apply: '適用',
     Cancel: 'キャンセル',
     'Select All': 'すべて選択',
-    'Select None': '選択しない',
-    'Select columns to display': '表示する列を選択',
+    'Select None': 'すべて選択解除',
+    'Select columns to display': '表示する列を選択してください',
   },
   ConfirmationDialog: {
     Cancel: 'キャンセル',
@@ -74,18 +75,18 @@ const resources = {
     'Copy to Clipboard': 'クリップボードにコピー',
   },
   DataTable: {
-    'No Results': '結果がありません',
+    'No Results': '一致する結果はありません',
   },
   DataTableItem: {
     Options: 'オプション',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': 'HH:MM の形式を使用してください',
+    'Please use format HHMM': '形式「HH:MM」を使用してください',
   },
   GetIntentLabel: {
     Error: 'エラー',
-    Inform: '通知',
-    Success: '成功',
+    Inform: '情報提供',
+    Success: '完了',
     Warning: '警告',
   },
   InputDate: {
@@ -98,20 +99,19 @@ const resources = {
   InputFilters: {
     'Clear Filters': 'フィルタをクリア',
     'Filter List': 'フィルタリスト',
-    'bottom-start': 'ボトムスタート',
   },
   InputTimeSelect: {
-    'Select time': '時間を選択',
+    'Select time': '時刻を選択',
   },
   MessageBar: {
-    DismissIntent: '{{intent}}を却下',
+    DismissIntent: '{{intent}} を閉じる',
   },
   ModalHeaderCloseButton: {
-    Close: 'クローズ',
+    Close: '閉じる',
   },
   MonthPickerNav: {
-    close: 'クローズ',
-    'next year': '次の年',
+    close: '閉じる',
+    'next year': '翌年',
     'previous year': '前年',
   },
   PageSize: {
@@ -119,14 +119,14 @@ const resources = {
     of: '/',
   },
   Pagination: {
-    'First page of results': '結果の最初のページ',
-    'Last page of results': '結果の最後のページ',
-    'Next page of results': '結果の次のページ',
-    'Previous page of results': '結果の前のページ',
+    'First page of results': '検索結果の最初のページ',
+    'Last page of results': '検索結果の最後のページ',
+    'Next page of results': '検索結果の次のページ',
+    'Previous page of results': '検索結果の前のページ',
     of: '/',
   },
   PanelHeader: {
-    CloseTitle: '{{title}}を閉じる',
+    CloseTitle: '{{title}} を閉じる',
   },
   PopoverFooter: {
     Done: '完了',
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'タブ',
   },
-}
+};
 
-export const jaJP = mergeLocaleObjects([], 'ja-JP', resources, dateLocale)
+export const jaJP = mergeLocaleObjects([], 'ja-JP', resources, dateLocale);

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function Customized() {
   return (
@@ -12,5 +12,5 @@ export default function Customized() {
       <Box display="inline">I'm inline.</Box>
       <Box display="inline">I'm also inline.</Box>
     </Space>
-  )
+  );
 }

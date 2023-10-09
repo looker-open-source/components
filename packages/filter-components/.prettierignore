@@ -8,11 +8,6 @@
 /.babelrc.js
 /i18n_templates.js
 /src/DashboardFilter/DashboardFilter.spec.tsx
-/src/FieldSelectTree/Tree/utils/generate_sections.tsx
-/src/FieldSelectTree/Tree/utils/get_leaves_from_trees.ts
-/src/FieldSelectTree/Tree/utils/open_or_close_nodes.ts
-/src/FieldSelectTree/Tree/utils/search_tree.tsx
-/src/FieldSelectTree/utils/create_explores_tree.ts
 /src/Filter/components/AdvancedFilter/components/DateFilter/components/BeforeAfter/BeforeAfter.tsx
 /src/Filter/components/AdvancedFilter/components/DateFilter/components/Past/Past.tsx
 /src/Filter/components/AdvancedFilter/components/DateFilter/components/RelativeTimeframes/components/RelativeTimeframeCustom/RelativeTimeframeCustom.spec.tsx

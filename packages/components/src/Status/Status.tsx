@@ -24,76 +24,76 @@
 
  */
 
-import type { TFunction } from 'i18next'
-import type { StyledIcon } from '@styled-icons/styled-icon'
-import { CheckCircle } from '@styled-icons/material/CheckCircle'
-import { Error } from '@styled-icons/material/Error'
-import { Info } from '@styled-icons/material/Info'
-import { Warning } from '@styled-icons/material/Warning'
-import { color, size } from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useTranslation } from '../utils'
-import type { IconProps } from '../Icon'
+import type { TFunction } from 'i18next';
+import type { StyledIcon } from '@styled-icons/styled-icon';
+import { CheckCircle } from '@styled-icons/material/CheckCircle';
+import { Error } from '@styled-icons/material/Error';
+import { Info } from '@styled-icons/material/Info';
+import { Warning } from '@styled-icons/material/Warning';
+import { color, size } from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useTranslation } from '../utils';
+import type { IconProps } from '../Icon';
 
 export type StatusIntent =
   | 'critical'
   | 'inform'
   | 'neutral'
   | 'positive'
-  | 'warn'
+  | 'warn';
 
 export interface StatusProps
   extends Pick<IconProps, 'className' | 'size' | 'title'> {
   /**
    * @default neutral
    */
-  intent?: StatusIntent
+  intent?: StatusIntent;
 }
 
 const getIntentIcon = (intent?: StatusIntent): StyledIcon => {
   switch (intent) {
     case 'critical':
-      return Error
+      return Error;
     case 'positive':
-      return CheckCircle
+      return CheckCircle;
     case 'warn':
-      return Warning
+      return Warning;
     case 'neutral':
     case 'inform':
     default:
-      return Info
+      return Info;
   }
-}
+};
 
 export const getIntentLabel = (t: TFunction, intent?: StatusIntent) => {
   switch (intent) {
     case 'critical':
-      return t('Error', { ns: 'GetIntentLabel' })
+      return t('Error', { ns: 'GetIntentLabel' });
     case 'inform':
-      return t('Inform', { ns: 'GetIntentLabel' })
+      return t('Inform', { ns: 'GetIntentLabel' });
     case 'positive':
-      return t('Success', { ns: 'GetIntentLabel' })
+      return t('Success', { ns: 'GetIntentLabel' });
     case 'warn':
-      return t('Warning', { ns: 'GetIntentLabel' })
+      return t('Warning', { ns: 'GetIntentLabel' });
     case 'neutral':
     default:
-      return undefined
+      return undefined;
   }
-}
+};
 
-const defaultIntent = 'neutral'
+const defaultIntent = 'neutral';
 
 const StatusLayout = forwardRef(
   (
     { className, title, intent = defaultIntent, ...props }: StatusProps,
     ref: Ref<SVGSVGElement>
   ) => {
-    const { t } = useTranslation('Status')
-    const Component = getIntentIcon(intent)
+    const { t } = useTranslation('Status');
+    const Component = getIntentIcon(intent);
 
-    const { size: _size, ...rest } = props
+    const { size: _size, ...rest } = props;
 
     return (
       <Component
@@ -107,11 +107,11 @@ const StatusLayout = forwardRef(
             : undefined
         }
       />
-    )
+    );
   }
-)
+);
 
-StatusLayout.displayName = 'StatusLayout'
+StatusLayout.displayName = 'StatusLayout';
 
 export const Status = styled(StatusLayout).attrs<StatusProps>(
   ({ intent = defaultIntent, size = 'medium' }) => ({
@@ -122,4 +122,4 @@ export const Status = styled(StatusLayout).attrs<StatusProps>(
   ${color}
   ${size}
   flex-shrink: 0;
-`
+`;

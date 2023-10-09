@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTimeSelectProps } from '..'
-import { FieldTimeSelect } from '..'
+import React from 'react';
+import type { FieldTimeSelectProps } from '..';
+import { FieldTimeSelect } from '..';
 
 export default function Disabled(props: FieldTimeSelectProps) {
   const {
@@ -14,7 +14,7 @@ export default function Disabled(props: FieldTimeSelectProps) {
     interval = 10,
     label = 'Select Time',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTimeSelect
@@ -24,5 +24,5 @@ export default function Disabled(props: FieldTimeSelectProps) {
       interval={interval}
       {...restProps}
     />
-  )
+  );
 }

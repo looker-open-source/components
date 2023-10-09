@@ -24,11 +24,11 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
-import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
+import React from 'react';
 
-import type { ComboboxOptionIndicatorFunction } from '..'
+import type { ComboboxOptionIndicatorFunction } from '..';
 import {
   Combobox,
   ComboboxInput,
@@ -38,14 +38,15 @@ import {
   ComboboxMultiInput,
   ComboboxMultiList,
   ComboboxMultiOption,
-} from '..'
+} from '..';
+import ShouldRenderListInline from './stories/ShouldRenderListInline';
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe('<Combobox/> with children', () => {
   test('Renders children, merges callbacks', () => {
-    const handleChange = jest.fn()
-    const handleClick = jest.fn()
+    const handleChange = jest.fn();
+    const handleClick = jest.fn();
     renderWithTheme(
       <Combobox onChange={handleChange}>
         <ComboboxInput placeholder="Type here" />
@@ -54,23 +55,23 @@ describe('<Combobox/> with children', () => {
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
       </Combobox>
-    )
+    );
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.mouseDown(input)
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.mouseDown(input);
 
-    const foo = screen.getByText('Foo')
-    expect(screen.getByText('Foo')).toBeInTheDocument()
-    expect(screen.getByText('Bar')).toBeInTheDocument()
-    expect(handleClick).toHaveBeenCalledTimes(0)
-    expect(handleChange).toHaveBeenCalledTimes(0)
+    const foo = screen.getByText('Foo');
+    expect(screen.getByText('Foo')).toBeInTheDocument();
+    expect(screen.getByText('Bar')).toBeInTheDocument();
+    expect(handleClick).toHaveBeenCalledTimes(0);
+    expect(handleChange).toHaveBeenCalledTimes(0);
 
-    fireEvent.click(foo)
+    fireEvent.click(foo);
 
-    expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' })
-  })
+    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledWith({ label: 'Foo', value: '101' });
+  });
 
   // Testing same behavior on both Combobox and ComboboxMulti
   test.each([
@@ -95,19 +96,19 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Opens and closes on click (%s)', (_, jsx) => {
-    renderWithTheme(jsx)
-    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
+    renderWithTheme(jsx);
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument();
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.click(input)
-    expect(screen.getByText('Foo')).toBeInTheDocument()
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.click(input);
+    expect(screen.getByText('Foo')).toBeInTheDocument();
 
-    fireEvent.click(input)
-    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
+    fireEvent.click(input);
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument();
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   // Testing same behavior on both Combobox and ComboboxMulti
   test.each([
@@ -132,28 +133,28 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Highlights typed text', (_, jsx) => {
-    renderWithTheme(jsx)
+    renderWithTheme(jsx);
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.focus(input)
-    fireEvent.change(input, { target: { value: 'oo' } })
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: 'oo' } });
     expect(screen.getByText('oo')).toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
-    )
+    );
     expect(screen.getByText('Bar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
-    )
+    );
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   const dimensions = {
     maxHeight: 400,
     maxWidth: 800,
     minWidth: 300,
     width: '50vw',
-  }
+  };
 
   test.each([
     [
@@ -177,20 +178,20 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('Sets the list layout styles (%s)', (_, jsx) => {
-    renderWithTheme(jsx)
+    renderWithTheme(jsx);
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.click(input)
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.click(input);
 
-    const list = screen.getByRole('listbox')
-    expect(list).toHaveStyleRule('max-height', '400px')
-    expect(list).toHaveStyleRule('max-width', '800px')
-    expect(list).toHaveStyleRule('min-width', '300px')
-    expect(list).toHaveStyleRule('width', '50vw')
+    const list = screen.getByRole('listbox');
+    expect(list).toHaveStyleRule('max-height', '400px');
+    expect(list).toHaveStyleRule('max-width', '800px');
+    expect(list).toHaveStyleRule('min-width', '300px');
+    expect(list).toHaveStyleRule('width', '50vw');
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   /* eslint-disable react/display-name */
   const GetIndicatorJSX =
@@ -211,7 +212,7 @@ describe('<Combobox/> with children', () => {
             />
           </ComboboxList>
         </Combobox>
-      )
+      );
 
   const GetIndicatorJSXMulti =
     (listLevel: boolean) => (indicator: ComboboxOptionIndicatorFunction) =>
@@ -234,7 +235,7 @@ describe('<Combobox/> with children', () => {
             />
           </ComboboxMultiList>
         </ComboboxMulti>
-      )
+      );
   /* eslint-enable react/display-name */
 
   test.each([
@@ -245,48 +246,48 @@ describe('<Combobox/> with children', () => {
   ])('Customize the indicator at the %s', (_, getJSX) => {
     const rafSpy = jest
       .spyOn(window, 'requestAnimationFrame')
-      .mockImplementation((cb: any) => cb())
+      .mockImplementation((cb: any) => cb());
 
-    const indicator = jest.fn()
-    renderWithTheme(getJSX(indicator))
+    const indicator = jest.fn();
+    renderWithTheme(getJSX(indicator));
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.click(input)
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.click(input);
 
-    expect(indicator).toHaveBeenCalledTimes(2)
+    expect(indicator).toHaveBeenCalledTimes(2);
     expect(indicator).toHaveBeenNthCalledWith(1, {
       isActive: false,
       isSelected: true,
       label: 'Foo',
       value: '101',
-    })
+    });
     expect(indicator).toHaveBeenNthCalledWith(2, {
       isActive: false,
       isSelected: false,
       label: 'Bar',
       value: '102',
-    })
+    });
 
-    const check = screen.queryByTitle('Check')
-    expect(check).not.toBeInTheDocument()
+    const check = screen.queryByTitle('Check');
+    expect(check).not.toBeInTheDocument();
 
-    indicator.mockClear()
+    indicator.mockClear();
 
-    const bar = screen.getByText('Bar')
-    fireEvent.mouseOver(bar)
+    const bar = screen.getByText('Bar');
+    fireEvent.mouseOver(bar);
 
-    expect(indicator).toHaveBeenCalledTimes(1)
+    expect(indicator).toHaveBeenCalledTimes(1);
     expect(indicator).toHaveBeenCalledWith({
       isActive: true,
       isSelected: false,
       label: 'Bar',
       value: '102',
-    })
+    });
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-    rafSpy.mockRestore()
-  })
+    fireEvent.click(document);
+    rafSpy.mockRestore();
+  });
 
   test('Does not highlight current selected value', () => {
     renderWithTheme(
@@ -297,20 +298,20 @@ describe('<Combobox/> with children', () => {
           <ComboboxOption label="FooBar" value="102" />
         </ComboboxList>
       </Combobox>
-    )
+    );
 
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.click(input)
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.click(input);
     expect(screen.getByText('Foo')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
-    )
+    );
     expect(screen.getByText('FooBar')).not.toHaveStyleRule(
       'font-weight: 600; text-decoration: underline'
-    )
+    );
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test.each([
     [
@@ -334,16 +335,16 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('with openOnFocus (%s)', (_, jsx) => {
-    renderWithTheme(jsx)
+    renderWithTheme(jsx);
 
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
-    screen.getByPlaceholderText('Type here').focus()
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    screen.getByPlaceholderText('Type here').focus();
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test.each([
     [
@@ -367,37 +368,37 @@ describe('<Combobox/> with children', () => {
       </ComboboxMulti>,
     ],
   ])('click caret to open', (_, jsx) => {
-    renderWithTheme(jsx)
+    renderWithTheme(jsx);
 
-    screen.getByPlaceholderText('Type here').focus()
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    screen.getByPlaceholderText('Type here').focus();
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
-    fireEvent.click(screen.getByTestId('caret'))
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    fireEvent.click(screen.getByTestId('caret'));
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+});
 
 describe('Keyboard navigation', () => {
-  const onChangeMock = jest.fn()
+  const onChangeMock = jest.fn();
   beforeEach(() => {
-    onChangeMock.mockClear()
-  })
+    onChangeMock.mockClear();
+  });
 
   const arrowDown = {
     key: 'ArrowDown',
-  }
+  };
   const arrowUp = {
     key: 'ArrowUp',
-  }
+  };
   const enter = {
     key: 'Enter',
-  }
+  };
   const space = {
     key: 'Spacebar',
-  }
+  };
 
   test.each([
     [
@@ -431,72 +432,72 @@ describe('Keyboard navigation', () => {
       </ComboboxMulti>,
     ],
   ])('arrows, enter and space (%s)', (name, jsx) => {
-    renderWithTheme(jsx)
+    renderWithTheme(jsx);
 
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
-    const input = screen.getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    fireEvent.keyDown(input, arrowDown);
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
-    const items = screen.getAllByRole('option')
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    const items = screen.getAllByRole('option');
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('Foo')
-    expect(items[0]).toHaveAttribute('aria-selected', 'true')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('Foo');
+    expect(items[0]).toHaveAttribute('aria-selected', 'true');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('Bar')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('Bar');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'true');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowUp)
-    expect(input).toHaveValue('Bar')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    fireEvent.keyDown(input, arrowUp);
+    expect(input).toHaveValue('Bar');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'true');
 
-    fireEvent.keyDown(input, arrowUp)
-    expect(input).toHaveValue('Foo')
-    expect(items[0]).toHaveAttribute('aria-selected', 'true')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    fireEvent.keyDown(input, arrowUp);
+    expect(input).toHaveValue('Foo');
+    expect(items[0]).toHaveAttribute('aria-selected', 'true');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, enter)
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    fireEvent.keyDown(input, enter);
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    const value = { label: 'Foo', value: '101' }
-    const onChangeValue = name === 'Combobox' ? value : [value]
-    expect(onChangeMock).toHaveBeenCalledWith(onChangeValue)
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    const value = { label: 'Foo', value: '101' };
+    const onChangeValue = name === 'Combobox' ? value : [value];
+    expect(onChangeMock).toHaveBeenCalledWith(onChangeValue);
 
-    fireEvent.keyDown(input, arrowUp)
-    fireEvent.keyDown(input, arrowUp)
-    fireEvent.keyDown(input, space)
-    expect(onChangeMock).toHaveBeenCalledTimes(2)
-    const value2 = { label: 'Bar', value: '102' }
-    const onChangeValue2 = name === 'Combobox' ? value2 : [value, value2]
-    expect(onChangeMock).toHaveBeenNthCalledWith(2, onChangeValue2)
+    fireEvent.keyDown(input, arrowUp);
+    fireEvent.keyDown(input, arrowUp);
+    fireEvent.keyDown(input, space);
+    expect(onChangeMock).toHaveBeenCalledTimes(2);
+    const value2 = { label: 'Bar', value: '102' };
+    const onChangeValue2 = name === 'Combobox' ? value2 : [value, value2];
+    expect(onChangeMock).toHaveBeenNthCalledWith(2, onChangeValue2);
 
     if (name === 'Combobox') {
       // Selected value is the input's value
-      expect(input).toHaveValue('Bar')
+      expect(input).toHaveValue('Bar');
     } else {
       // Selected value is a chip
-      expect(screen.getByText('Bar')).toBeInTheDocument()
+      expect(screen.getByText('Bar')).toBeInTheDocument();
     }
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('arrows, enter and space with autoComplete = false and no inputReadOnly', () => {
     renderWithTheme(
@@ -507,52 +508,64 @@ describe('Keyboard navigation', () => {
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
       </Combobox>
-    )
+    );
 
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
-    const input = screen.getByPlaceholderText('Type here')
+    const input = screen.getByPlaceholderText('Type here');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    fireEvent.keyDown(input, arrowDown);
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
-    const items = screen.getAllByRole('option')
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    const items = screen.getAllByRole('option');
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'true')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'true');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'true');
 
-    fireEvent.keyDown(input, arrowDown)
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'true')
-    expect(items[1]).toHaveAttribute('aria-selected', 'false')
+    fireEvent.keyDown(input, arrowDown);
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'true');
+    expect(items[1]).toHaveAttribute('aria-selected', 'false');
 
-    fireEvent.keyDown(input, arrowUp)
-    expect(input).toHaveValue('')
-    expect(items[0]).toHaveAttribute('aria-selected', 'false')
-    expect(items[1]).toHaveAttribute('aria-selected', 'true')
+    fireEvent.keyDown(input, arrowUp);
+    expect(input).toHaveValue('');
+    expect(items[0]).toHaveAttribute('aria-selected', 'false');
+    expect(items[1]).toHaveAttribute('aria-selected', 'true');
 
-    fireEvent.keyDown(input, enter)
-    expect(input).toHaveValue('Bar')
-    expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
+    fireEvent.keyDown(input, enter);
+    expect(input).toHaveValue('Bar');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
     // Spacebar doesn't select the option without inputReadOnly
-    fireEvent.keyDown(input, arrowDown)
-    fireEvent.keyDown(input, arrowDown)
-    fireEvent.keyDown(input, space)
-    expect(input).toHaveValue('Bar')
-    expect(screen.getByRole('listbox')).toBeInTheDocument()
+    fireEvent.keyDown(input, arrowDown);
+    fireEvent.keyDown(input, arrowDown);
+    fireEvent.keyDown(input, space);
+    expect(input).toHaveValue('Bar');
+    expect(screen.getByRole('listbox')).toBeInTheDocument();
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+
+  test('shouldRenderListInline true, 1st arrow down selects 1st option', () => {
+    renderWithTheme(<ShouldRenderListInline onChange={onChangeMock} />);
+    const input = screen.getByRole('textbox');
+    fireEvent.keyDown(input, arrowDown);
+    expect(screen.getAllByRole('option')[0]).toHaveAttribute(
+      'aria-selected',
+      'true'
+    );
+    fireEvent.keyDown(input, enter);
+    expect(onChangeMock).toHaveBeenCalledWith({ value: 'Apples' });
+  });
+});

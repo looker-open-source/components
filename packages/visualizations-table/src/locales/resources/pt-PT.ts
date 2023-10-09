@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ptPT as componentsLocale } from '@looker/components'
-import { ptPT as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ptPT as componentsLocale } from '@looker/components';
+import { ptPT as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Ordem decrescente',
     Totals: 'Totais',
   },
-}
+};
 
 export const ptPT = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'pt-PT',
   resources
-)
+);

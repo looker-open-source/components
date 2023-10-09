@@ -24,7 +24,7 @@
 
  */
 
-import type { Pivots } from '../types'
+import type { Pivots } from '../types';
 
 export const mockPivots: Pivots = [
   {
@@ -58,7 +58,7 @@ export const mockPivots: Pivots = [
     },
     label: 'Pending',
   },
-]
+];
 
 export const mockPivotGender: Pivots = [
   {
@@ -115,4 +115,4 @@ export const mockPivotGender: Pivots = [
       },
     },
   },
-]
+];

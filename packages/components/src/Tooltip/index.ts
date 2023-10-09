@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Tooltip'
-export * from './useTooltip'
-export * from './types'
-export * from './TooltipContent'
+export * from './Tooltip';
+export * from './useTooltip';
+export * from './types';
+export * from './TooltipContent';

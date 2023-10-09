@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { buildPivotMeasureName } from '.'
+import { buildPivotMeasureName } from '.';
 
 /**
  * Utility converts looker sdk formatted pivot keys (e.g. 'Yes - orders.count') to
@@ -13,15 +13,15 @@ import { buildPivotMeasureName } from '.'
  * @returns series color overrides
  */
 
-const SEPARATOR = ' - '
+const SEPARATOR = ' - ';
 
 export const normalizePivotSeriesKeys = (rawConfig: {
-  [key: string]: string
+  [key: string]: string;
 }) => {
   const entries = Object.entries(rawConfig).map(([key, val]) => {
-    const pivotPos = key.lastIndexOf(SEPARATOR)
-    const measureName = key.substring(pivotPos + SEPARATOR.length)
-    const pivotValue = key.substring(0, pivotPos)
+    const pivotPos = key.lastIndexOf(SEPARATOR);
+    const measureName = key.substring(pivotPos + SEPARATOR.length);
+    const pivotValue = key.substring(0, pivotPos);
 
     const formattedKey =
       pivotPos > -1
@@ -32,8 +32,8 @@ export const normalizePivotSeriesKeys = (rawConfig: {
               '$$$$$$_row_total_$$$$$$'
             ),
           })
-        : key
-    return [formattedKey, val]
-  })
-  return Object.fromEntries(entries)
-}
+        : key;
+    return [formattedKey, val];
+  });
+  return Object.fromEntries(entries);
+};

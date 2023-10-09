@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Menu, MenuItem, Button } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Menu, MenuItem, Button } from '../..';
 
 export default function Placement() {
   return (
@@ -19,5 +19,5 @@ export default function Placement() {
     >
       <Button>Cheese</Button>
     </Menu>
-  )
+  );
 }

@@ -1,9 +1,9 @@
 {
   "exclusive": {
-    "value": "(escluso)"
+    "value": "(esclusivo)"
   },
   "inclusive": {
-    "value": "[incluso]"
+    "value": "[inclusivo]"
   },
   "is": {
     "value": "è"
@@ -30,15 +30,15 @@
     "value": "non è compreso tra"
   },
   "is not null": {
-    "value": "non è zero"
+    "value": "non è null"
   },
   "is null": {
-    "value": "è zero"
+    "value": "è null"
   },
   "left exclusive": {
-    "value": "(escluso a sinistra)"
+    "value": "(esclusivo a sinistra]"
   },
   "right exclusive": {
-    "value": "[escluso a destra]"
+    "value": "[esclusivo a destra)"
   }
 }

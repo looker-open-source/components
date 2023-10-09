@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SpaceVertical } from '@looker/components'
-import { Filter } from '../Filter'
+import React from 'react';
+import { SpaceVertical } from '@looker/components';
+import { Filter } from '../Filter';
 
 export default function ExpressionTypeOrField() {
   return (
@@ -18,5 +18,5 @@ export default function ExpressionTypeOrField() {
         expression="[0,100]"
       />
     </SpaceVertical>
-  )
+  );
 }

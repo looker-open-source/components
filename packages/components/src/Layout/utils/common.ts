@@ -7,11 +7,11 @@ import type {
   ColorProps,
   TypographyProps,
   SemanticBorderProps,
-} from '@looker/design-tokens'
-import { color, typography, borderHelper } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import type { SimpleLayoutProps } from './simple'
-import { simpleLayoutCSS } from './simple'
+} from '@looker/design-tokens';
+import { color, typography, borderHelper } from '@looker/design-tokens';
+import { css } from 'styled-components';
+import type { SimpleLayoutProps } from './simple';
+import { simpleLayoutCSS } from './simple';
 
 export type CommonLayoutProps = ColorProps &
   SimpleLayoutProps &
@@ -20,8 +20,8 @@ export type CommonLayoutProps = ColorProps &
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue
      */
-    color?: string
-  }
+    color?: string;
+  };
 
 /**
  * Used as a common styled-system helper components. Builds on top of `simpleLayoutCSS`
@@ -39,4 +39,4 @@ export const commonLayoutCSS = css`
   ${borderHelper}
   ${color}
   ${typography}
-`
+`;

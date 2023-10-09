@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export const DISABLED_OPACITY = '0.4'
+export const DISABLED_OPACITY = '0.4';

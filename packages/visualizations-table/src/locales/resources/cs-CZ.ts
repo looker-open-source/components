@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { csCZ as componentsLocale } from '@looker/components'
-import { csCZ as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { csCZ as componentsLocale } from '@looker/components';
+import { csCZ as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Seřadit sestupně',
     Totals: 'Součty',
   },
-}
+};
 
 export const csCZ = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'cs-CZ',
   resources
-)
+);

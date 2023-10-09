@@ -24,9 +24,9 @@
 
  */
 
-import { xAxis } from './xAxis'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { XAxisConfig } from '../types'
+import { xAxis } from './xAxis';
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { XAxisConfig } from '../types';
 
 describe('xAxis', () => {
   test('config.x_axis is provided', () => {
@@ -37,16 +37,16 @@ describe('xAxis', () => {
         reversed: true,
         values: false,
       },
-    ]
+    ];
 
     const transformedConfig = xAxis({
       config: { ...mockBarConfig, x_axis },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
-    expect(transformedConfig.config.x_axis).toEqual(x_axis)
-  })
+    expect(transformedConfig.config.x_axis).toEqual(x_axis);
+  });
 
   test('x axis customizations are provided, but config.x_axis is undefined', () => {
     const customizations = {
@@ -55,13 +55,13 @@ describe('xAxis', () => {
       x_axis_gridlines: false,
       x_axis_reversed: true,
       x_axis_label: 'default label',
-    }
+    };
 
     const transformedConfig = xAxis({
       config: { ...mockBarConfig, x_axis: undefined, ...customizations },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.x_axis).toEqual([
       {
@@ -70,8 +70,8 @@ describe('xAxis', () => {
         reversed: customizations.x_axis_reversed,
         values: customizations.show_x_axis_ticks,
       },
-    ])
-  })
+    ]);
+  });
 
   test('config.x_axis and x axis customizations are all undefined', () => {
     const transformedConfig = xAxis({
@@ -85,7 +85,7 @@ describe('xAxis', () => {
       },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     // x axis customizations will be set to default values
     expect(transformedConfig.config.x_axis).toEqual([
@@ -95,6 +95,6 @@ describe('xAxis', () => {
         reversed: false,
         values: true,
       },
-    ])
-  })
-})
+    ]);
+  });
+});

@@ -12,19 +12,19 @@
     "value": "피트"
   },
   "is anywhere": {
-    "value": "이(가) 전체 지역에 있음"
+    "value": "위치 무관"
   },
   "is not null": {
-    "value": "이(가) null이 아님"
+    "value": "null 아님"
   },
   "is null": {
-    "value": "이(가) null임"
+    "value": "null"
   },
   "kilometers": {
-    "value": "km"
+    "value": "킬로미터"
   },
   "meters": {
-    "value": "m"
+    "value": "미터"
   },
   "miles": {
     "value": "마일"

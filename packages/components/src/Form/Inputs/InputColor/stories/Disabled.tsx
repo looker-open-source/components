@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputColor } from '../InputColor'
+import React from 'react';
+import { InputColor } from '../InputColor';
 
 export default function Disabled() {
-  return <InputColor disabled value="purple" />
+  return <InputColor disabled value="purple" />;
 }

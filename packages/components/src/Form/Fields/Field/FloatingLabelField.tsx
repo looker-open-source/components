@@ -24,30 +24,30 @@
 
  */
 
-import type { StatefulColor } from '@looker/design-tokens'
-import { width } from '@looker/design-tokens'
-import React, { useContext } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { Space } from '../../../Layout'
-import type { ValidationMessageProps } from '../../ValidationMessage'
-import { DISABLED_OPACITY } from '../../constants'
-import { FieldsetContext } from '../../../Fieldset'
-import { Field } from './Field'
-import { FieldDetail } from './FieldDetail'
-import { FieldLabel } from './FieldLabel'
-import { HelperText } from './HelperText'
-import { InputArea } from './InputArea'
-import type { FloatingLabelFieldPropsInternal } from './types'
-import { useFloatingLabel } from './useFloatingLabel'
+import type { StatefulColor } from '@looker/design-tokens';
+import { width } from '@looker/design-tokens';
+import React, { useContext } from 'react';
+import styled, { useTheme } from 'styled-components';
+import { Space } from '../../../Layout';
+import type { ValidationMessageProps } from '../../ValidationMessage';
+import { DISABLED_OPACITY } from '../../constants';
+import { FieldsetContext } from '../../../Fieldset';
+import { Field } from './Field';
+import { FieldDetail } from './FieldDetail';
+import { FieldLabel } from './FieldLabel';
+import { HelperText } from './HelperText';
+import { InputArea } from './InputArea';
+import type { FloatingLabelFieldPropsInternal } from './types';
+import { useFloatingLabel } from './useFloatingLabel';
 
 const getLabelColor = (
   isFocused: boolean,
   validationMessage?: ValidationMessageProps
 ): StatefulColor | undefined => {
-  if (validationMessage?.type === 'error') return 'critical'
-  if (isFocused) return 'key'
-  return undefined
-}
+  if (validationMessage?.type === 'error') return 'critical';
+  if (isFocused) return 'key';
+  return undefined;
+};
 
 export const FloatingLabelField = styled(
   ({
@@ -70,7 +70,7 @@ export const FloatingLabelField = styled(
       hasValue,
       checkValueOnBlur,
       ...rest
-    } = props
+    } = props;
     const {
       className: labelPositionClass,
       isFocused,
@@ -80,13 +80,13 @@ export const FloatingLabelField = styled(
       checkValueOnBlur,
       hasValue,
       labelOffset,
-    })
+    });
 
     const {
       defaults: { externalLabel },
-    } = useTheme()
+    } = useTheme();
 
-    const { fieldsHideLabel } = useContext(FieldsetContext)
+    const { fieldsHideLabel } = useContext(FieldsetContext);
 
     if (
       externalLabel ||
@@ -96,7 +96,7 @@ export const FloatingLabelField = styled(
       fieldsHideLabel ||
       inline
     ) {
-      return <Field {...props} className={className} />
+      return <Field {...props} className={className} />;
     }
 
     return (
@@ -124,7 +124,7 @@ export const FloatingLabelField = styled(
           )}
         </Space>
       </div>
-    )
+    );
   }
 )`
   &.floating {
@@ -165,4 +165,4 @@ export const FloatingLabelField = styled(
       margin: 0 calc(${({ theme }) => theme.space.u3} + 1px);
     }
   }
-`
+`;

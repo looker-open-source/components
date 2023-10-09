@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './with_theme'
-export * from './helpers/react-testing-library'
+export * from './with_theme';
+export * from './helpers/react-testing-library';

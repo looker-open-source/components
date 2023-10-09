@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 /**
  * @TODO: Delete SelectOptionDetail after Select is refactored with createListItemPartitions
@@ -14,4 +14,4 @@ export const SelectOptionDetail = styled.div`
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   margin-left: auto;
-`
+`;

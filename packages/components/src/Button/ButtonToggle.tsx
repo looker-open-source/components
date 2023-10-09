@@ -24,20 +24,20 @@
 
  */
 
-import type { MouseEvent, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { inputHeight } from '../Form/Inputs/height'
-import { ButtonItem } from './ButtonItem'
-import type { ButtonGroupOrToggleBaseProps, ButtonSetType } from './ButtonSet'
-import { ButtonSet } from './ButtonSet'
+import type { MouseEvent, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { inputHeight } from '../Form/Inputs/height';
+import { ButtonItem } from './ButtonItem';
+import type { ButtonGroupOrToggleBaseProps, ButtonSetType } from './ButtonSet';
+import { ButtonSet } from './ButtonSet';
 
 export interface ButtonToggleProps
   extends ButtonGroupOrToggleBaseProps<string> {
-  nullable?: boolean
+  nullable?: boolean;
 }
 
-const ButtSetAsToggle = ButtonSet as ButtonSetType<string>
+const ButtSetAsToggle = ButtonSet as ButtonSetType<string>;
 
 const ButtonToggleLayout = forwardRef(
   (
@@ -45,11 +45,11 @@ const ButtonToggleLayout = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     function handleItemClick(e: MouseEvent<HTMLButtonElement>) {
-      const newValue = e.currentTarget.value
-      const deselecting = newValue === value
+      const newValue = e.currentTarget.value;
+      const deselecting = newValue === value;
       if (!deselecting || nullable) {
         if (onChange) {
-          onChange(deselecting ? '' : newValue)
+          onChange(deselecting ? '' : newValue);
         }
       }
     }
@@ -61,9 +61,9 @@ const ButtonToggleLayout = forwardRef(
         onItemClick={handleItemClick}
         ref={ref}
       />
-    )
+    );
   }
-)
+);
 
 export const ButtonToggle = styled(ButtonToggleLayout)`
   background-color: ${({ theme }) => theme.colors.background};
@@ -130,4 +130,4 @@ export const ButtonToggle = styled(ButtonToggleLayout)`
       }
     }
   }
-`
+`;

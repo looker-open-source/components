@@ -7,7 +7,7 @@ This TypeScript package provides the necessary functions for transforming [Looke
 Returns a valid filter expression type when given the type and field properties of an `IDashboardFilter` object as defined in [`@looker/sdk`](https://github.com/looker-open-source/sdk-codegen/tree/main/packages/sdk).
 
 ```js
-getExpressionType({ field: { is_numeric: true }, type: 'field_filter' })
+getExpressionType({ field: { is_numeric: true }, type: 'field_filter' });
 // 'number'
 ```
 
@@ -16,7 +16,7 @@ getExpressionType({ field: { is_numeric: true }, type: 'field_filter' })
 Returns an Abstract Syntax Tree (AST) that logically represents the filter expression string passed in, as well as the filter expression type (and optional user attributes).
 
 ```js
-parseFilterExpression('number', '[0,20],>30')
+parseFilterExpression('number', '[0,20],>30');
 // {
 //   type: ',',
 //   left: {
@@ -39,7 +39,7 @@ parseFilterExpression('number', '[0,20],>30')
 The `summary` function returns a localized, human-readable summary of a filter expression, given the expression's type, the expression itself, and the user attributes and field, if applicable.
 
 ```js
-summary('number', '[0,20],>30')
+summary('number', '[0,20],>30');
 // 'is in range [0, 20] or is > 30'
 ```
 

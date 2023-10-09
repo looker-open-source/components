@@ -24,9 +24,9 @@
 
  */
 
-import React from 'react'
-import { SpaceVertical, Heading, Space, Divider } from '@looker/components'
-import { Filter } from '../Filter'
+import React from 'react';
+import { SpaceVertical, Heading, Space, Divider } from '@looker/components';
+import { Filter } from '../Filter';
 
 export default function Config() {
   return (
@@ -152,5 +152,5 @@ export default function Config() {
         </SpaceVertical>
       </Space>
     </SpaceVertical>
-  )
+  );
 }

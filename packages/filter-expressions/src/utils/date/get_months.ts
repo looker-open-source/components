@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { TFunction } from 'i18next'
-import i18next from 'i18next'
+import type { TFunction } from 'i18next';
+import i18next from 'i18next';
 
 // a function instead of an array b/c we need to wait for i18next to be initialized
 export const getMonths = (translate?: TFunction): string[] => {
-  const t = translate || i18next.t.bind(i18next)
+  const t = translate || i18next.t.bind(i18next);
   return [
     t('January', { ns: 'get_months' }),
     t('February', { ns: 'get_months' }),
@@ -21,5 +21,5 @@ export const getMonths = (translate?: TFunction): string[] => {
     t('October', { ns: 'get_months' }),
     t('November', { ns: 'get_months' }),
     t('December', { ns: 'get_months' }),
-  ]
-}
+  ];
+};

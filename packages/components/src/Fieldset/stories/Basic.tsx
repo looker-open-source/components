@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Fieldset } from '../'
-import { FieldText } from '../../Form'
+import React from 'react';
+import { Fieldset } from '../';
+import { FieldText } from '../../Form';
 
 export default function Basic() {
   return (
@@ -13,5 +13,5 @@ export default function Basic() {
       <FieldText label="Second Label" />
       <FieldText label="Third Label" />
     </Fieldset>
-  )
+  );
 }

@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { TreeModel } from '../types'
-import { ReplaceText } from '@looker/components'
+import React from 'react';
+import type { TreeModel } from '../types';
+import { ReplaceText } from '@looker/components';
 
 // TODO: find matches if words in middle of string; fuzzify it.
 /**
@@ -22,12 +22,12 @@ export const searchTree = (
   trees.map(tree => {
     const isOpen =
       (!tree.isNotHighlightable && containsString(tree, search)) ||
-      !!parentIsOpen
-    const match = tree.isNotHighlightable ? undefined : search
+      !!parentIsOpen;
+    const match = tree.isNotHighlightable ? undefined : search;
 
     if (tree.children) {
-      const children = searchTree(tree.children, search, isOpen)
-      const childContains = children.some(child => child.isOpen)
+      const children = searchTree(tree.children, search, isOpen);
+      const childContains = children.some(child => child.isOpen);
 
       return {
         ...tree,
@@ -35,19 +35,19 @@ export const searchTree = (
         hide: !isOpen && !childContains && search !== '',
         label: <ReplaceText match={match}>{tree.value}</ReplaceText>,
         children,
-      }
+      };
     } else {
       return {
         ...tree,
         label: <ReplaceText match={match}>{tree.value}</ReplaceText>,
         isOpen,
         hide: !isOpen && search !== '',
-      }
+      };
     }
-  })
+  });
 
 export const containsString = ({ value }: TreeModel, str2?: string) =>
-  !!(str2 && value.toLowerCase().includes(str2.toLowerCase()))
+  !!(str2 && value.toLowerCase().includes(str2.toLowerCase()));
 
 /**
  * Returns TRUE if there is any first-level entry in the
@@ -61,4 +61,4 @@ export const containsString = ({ value }: TreeModel, str2?: string) =>
  * @param tree the tree to check for visibility
  */
 export const hasAnyVisibleEntry = (tree?: TreeModel[]) =>
-  (tree || []).some(entry => !entry.hide)
+  (tree || []).some(entry => !entry.hide);

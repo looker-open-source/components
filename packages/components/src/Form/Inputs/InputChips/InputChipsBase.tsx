@@ -24,59 +24,60 @@
 
  */
 
-import difference from 'lodash/difference'
+import difference from 'lodash/difference';
 import type {
   FocusEvent,
-  FormEvent,
+  ChangeEvent,
   KeyboardEvent,
   MouseEvent,
   Ref,
   RefObject,
   SyntheticEvent,
-} from 'react'
-import React, { forwardRef, useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
-import type { MaxHeightProps } from '@looker/design-tokens'
-import { Chip } from '../../../Chip'
-import { inputHeight } from '../height'
-import type { InputTextBaseProps } from '../InputText'
-import { InputTextContent, InputText } from '../InputText'
-import { AdvancedInputControls } from '../AdvancedInputControls'
-import { useForkedRef, useWrapEvent } from '../../../utils'
-import { visuallyHiddenStyle } from '../../../VisuallyHidden'
+} from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
+import styled, { css } from 'styled-components';
+import type { MaxHeightProps } from '@looker/design-tokens';
+import { Chip } from '../../../Chip';
+import { inputHeight } from '../height';
+import type { InputTextBaseProps } from '../InputText';
+import { InputTextContent, InputText } from '../InputText';
+import { AdvancedInputControls } from '../AdvancedInputControls';
+import { useForkedRef, useWrapEvent } from '../../../utils';
+import { visuallyHiddenStyle } from '../../../VisuallyHidden';
 
 export interface InputChipsInputControlProps {
   /**
    * for controlling the input text
    */
-  inputValue: string
+  inputValue: string;
   /**
    * Called when the input text changes (use with inputValue to control the input text).
    * Passes the event if triggered by typing but not when triggered by value tokenization or clearing the field.
    */
-  onInputChange: (value: string, event?: FormEvent<HTMLInputElement>) => void
-  isVisibleOptions?: boolean
-  showCaret?: boolean
+  onInputChange: (value: string, event?: ChangeEvent<HTMLInputElement>) => void;
+  isVisibleOptions?: boolean;
+  showCaret?: boolean;
 }
 
-export const joinValues = (selectedValues: string[]) => selectedValues.join(',')
+export const joinValues = (selectedValues: string[]) =>
+  selectedValues.join(',');
 
 export interface InputChipsControlProps {
   /**
    * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
    */
-  values: string[]
+  values: string[];
   /**
    * InputChips is a controlled component since unlike native inputs,
    * you can't easily access the current value via dom API
    */
-  onChange: (values: string[]) => void
+  onChange: (values: string[]) => void;
   /**
    * When the user selects and copies chips, what should the text be
    */
-  formatTextToCopy?: (values: string[]) => string
-  onClear?: () => void
+  formatTextToCopy?: (values: string[]) => string;
+  onClear?: () => void;
 }
 
 export interface InputChipsCommonProps
@@ -85,26 +86,26 @@ export interface InputChipsCommonProps
   /**
    * Format the value for display in the chip
    */
-  formatChip?: (value: string) => string
+  formatChip?: (value: string) => string;
   /**
    * customize the tooltip on the closing icon
    * @default Delete
    */
-  chipIconLabel?: string
+  chipIconLabel?: string;
 
   /**
    * customize the tooltip on the closing icon
    */
-  clearIconLabel?: string
+  clearIconLabel?: string;
 
-  isClearable?: boolean
-  inputReadOnly?: boolean
+  isClearable?: boolean;
+  inputReadOnly?: boolean;
   /**
    * Set to false to disable the removal of the last value on backspace key
    * @default true
    */
-  removeOnBackspace?: boolean
-  summary?: string
+  removeOnBackspace?: boolean;
+  summary?: string;
 }
 
 export interface InputChipsBaseProps
@@ -113,11 +114,11 @@ export interface InputChipsBaseProps
     InputChipsInputControlProps {}
 
 function isCtrlCmdPressed(event: KeyboardEvent | MouseEvent) {
-  return event.ctrlKey || event.metaKey
+  return event.ctrlKey || event.metaKey;
 }
 
 function focusInput(inputRef: RefObject<HTMLInputElement>) {
-  inputRef.current && inputRef.current.focus()
+  inputRef.current && inputRef.current.focus();
 }
 
 export const InputChipsBaseInternal = forwardRef(
@@ -149,29 +150,29 @@ export const InputChipsBaseInternal = forwardRef(
     }: InputChipsBaseProps & InputChipsInputControlProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const internalRef = useRef<HTMLInputElement>(null)
-    const hiddenInputRef = useRef<HTMLInputElement>(null)
-    const ref = useForkedRef(forwardedRef, internalRef)
+    const internalRef = useRef<HTMLInputElement>(null);
+    const hiddenInputRef = useRef<HTMLInputElement>(null);
+    const ref = useForkedRef(forwardedRef, internalRef);
 
-    const [selectedValues, setSelectedValues] = useState<string[]>([])
+    const [selectedValues, setSelectedValues] = useState<string[]>([]);
     function selectAll() {
-      setSelectedValues([...values])
+      setSelectedValues([...values]);
     }
     function deselectAll() {
-      setSelectedValues([])
+      setSelectedValues([]);
     }
 
     function selectPrevious(e: KeyboardEvent<HTMLInputElement>) {
       if (selectedValues.length === 0) {
-        setSelectedValues([values[values.length - 1]])
+        setSelectedValues([values[values.length - 1]]);
       } else {
-        const curIndex = values.indexOf(selectedValues[0])
+        const curIndex = values.indexOf(selectedValues[0]);
         if (curIndex > 0) {
-          const newSelectedValue = values[curIndex - 1]
+          const newSelectedValue = values[curIndex - 1];
           if (e.shiftKey) {
-            setSelectedValues([newSelectedValue, ...selectedValues])
+            setSelectedValues([newSelectedValue, ...selectedValues]);
           } else {
-            setSelectedValues([newSelectedValue])
+            setSelectedValues([newSelectedValue]);
           }
         }
       }
@@ -181,24 +182,24 @@ export const InputChipsBaseInternal = forwardRef(
       if (selectedValues.length > 0) {
         const curIndex = values.indexOf(
           selectedValues[selectedValues.length - 1]
-        )
+        );
         if (curIndex === values.length - 1) {
-          focusInput(internalRef)
+          focusInput(internalRef);
         } else {
-          const newSelectedValue = values[curIndex + 1]
+          const newSelectedValue = values[curIndex + 1];
           if (e.shiftKey) {
-            setSelectedValues([...selectedValues, newSelectedValue])
+            setSelectedValues([...selectedValues, newSelectedValue]);
           } else {
-            setSelectedValues([newSelectedValue])
+            setSelectedValues([newSelectedValue]);
           }
         }
       }
     }
     function deleteSelected() {
       if (!readOnly) {
-        const newValues = difference(values, selectedValues)
-        onChange(newValues)
-        focusInput(internalRef)
+        const newValues = difference(values, selectedValues);
+        onChange(newValues);
+        focusInput(internalRef);
       }
     }
 
@@ -207,79 +208,79 @@ export const InputChipsBaseInternal = forwardRef(
     // The user is either trying to select the Chip itself
     // or deleting the chip, which would be interrupted by moving focus
     function stopPropagation(e: SyntheticEvent) {
-      e.stopPropagation()
+      e.stopPropagation();
     }
 
     function handleDeleteChip(value: string, e?: SyntheticEvent) {
-      const newValues = values.filter(v => value !== v)
-      onChange(newValues)
-      focusInput(internalRef)
+      const newValues = values.filter(v => value !== v);
+      onChange(newValues);
+      focusInput(internalRef);
       // Prevent the focus moving to the hidden input (from handleChipClick)
-      e && e.stopPropagation()
+      e && e.stopPropagation();
     }
 
     function handleChipClick(value: string) {
       return (e: MouseEvent | KeyboardEvent) => {
         // Focus hidden input for copy/paste & keyboard behaviors
-        focusInput(hiddenInputRef)
+        focusInput(hiddenInputRef);
         // Stop any onClick handlers (e.g. opening a SelectMulti list)
-        e.stopPropagation()
+        e.stopPropagation();
         if (selectedValues.length > 0) {
           if (isCtrlCmdPressed(e)) {
             // Toggle the clicked chip, keeping values in order
             const newSelectedValues = values.reduce(
               (acc: string[], currentValue) => {
-                const isSelected = selectedValues.includes(currentValue)
+                const isSelected = selectedValues.includes(currentValue);
                 if (
                   (isSelected && currentValue !== value) ||
                   (!isSelected && currentValue === value)
                 ) {
-                  return [...acc, currentValue]
+                  return [...acc, currentValue];
                 }
-                return acc
+                return acc;
               },
               []
-            )
-            setSelectedValues(newSelectedValues)
-            return
+            );
+            setSelectedValues(newSelectedValues);
+            return;
           } else if (e.shiftKey) {
             // Select the values between the clicked chip and selected ones, inclusive
-            const newIndex = values.indexOf(value)
-            const previousLow = values.indexOf(selectedValues[0])
+            const newIndex = values.indexOf(value);
+            const previousLow = values.indexOf(selectedValues[0]);
             const previousHigh = values.indexOf(
               selectedValues[selectedValues.length - 1]
-            )
+            );
             if (newIndex > previousHigh) {
-              setSelectedValues(values.slice(previousLow, newIndex + 1))
+              setSelectedValues(values.slice(previousLow, newIndex + 1));
             } else if (newIndex < previousLow) {
-              setSelectedValues(values.slice(newIndex, previousHigh + 1))
+              setSelectedValues(values.slice(newIndex, previousHigh + 1));
             }
-            return
+            return;
           }
         }
         // A simple click, select only this chip
-        setSelectedValues([value])
-      }
+        setSelectedValues([value]);
+      };
     }
 
     function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
       if (inputValue === '') {
         if (e.key === 'Backspace' && removeOnBackspace && !readOnly) {
           // If we hit backspace and there is no text left to delete, remove the last entry instead
-          inputValue === '' && handleDeleteChip(values[values.length - 1])
+          inputValue === '' && handleDeleteChip(values[values.length - 1]);
         } else if (isCtrlCmdPressed(e) && e.key === 'a') {
-          focusInput(hiddenInputRef)
-          selectAll()
+          focusInput(hiddenInputRef);
+          selectAll();
         } else if (e.key === 'ArrowLeft') {
-          focusInput(hiddenInputRef)
-          selectPrevious(e)
+          focusInput(hiddenInputRef);
+          selectPrevious(e);
         }
       }
     }
 
     function copyToClipboard() {
-      hiddenInputRef.current && hiddenInputRef.current.select()
-      document.execCommand('copy')
+      hiddenInputRef.current && hiddenInputRef.current.select();
+      document.execCommand('copy');
     }
 
     function handleHiddenInputKeyDown(e: KeyboardEvent<HTMLInputElement>) {
@@ -287,57 +288,57 @@ export const InputChipsBaseInternal = forwardRef(
         // Select all, copy, cut
         switch (e.key) {
           case 'a':
-            selectAll()
-            break
+            selectAll();
+            break;
           case 'x':
-            copyToClipboard()
-            deleteSelected()
-            break
+            copyToClipboard();
+            deleteSelected();
+            break;
           case 'c':
-            copyToClipboard()
-            break
+            copyToClipboard();
+            break;
         }
       } else {
         switch (e.key) {
           case 'Delete':
           case 'Backspace':
-            deleteSelected()
-            break
+            deleteSelected();
+            break;
           case 'ArrowLeft':
-            selectPrevious(e)
-            break
+            selectPrevious(e);
+            break;
           case 'ArrowRight':
-            selectNext(e)
-            break
+            selectNext(e);
+            break;
         }
       }
     }
 
     function handleHiddenInputBlur(e: FocusEvent<HTMLInputElement>) {
       // Unless blur event is caused by clicking on a chip, deselect all chips
-      const nextFocusTarget = e.relatedTarget
+      const nextFocusTarget = e.relatedTarget;
       if (
         nextFocusTarget &&
         (nextFocusTarget as HTMLElement).parentNode !==
           e.currentTarget.parentNode
       ) {
-        deselectAll()
+        deselectAll();
       }
     }
 
     function handleClear() {
-      onChange([])
-      onInputChange('')
-      onClear && onClear()
-      focusInput(internalRef)
+      onChange([]);
+      onInputChange('');
+      onClear && onClear();
+      focusInput(internalRef);
     }
 
     const chips = values.map(value => {
       function onChipDelete(e?: SyntheticEvent) {
-        handleDeleteChip(value, e)
+        handleDeleteChip(value, e);
       }
-      const isSelected = selectedValues.includes(value)
-      const chipLabel = formatChip ? formatChip(value) : value
+      const isSelected = selectedValues.includes(value);
+      const chipLabel = formatChip ? formatChip(value) : value;
 
       return (
         <Chip
@@ -355,15 +356,15 @@ export const InputChipsBaseInternal = forwardRef(
         >
           {chipLabel}
         </Chip>
-      )
-    })
+      );
+    });
 
-    function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      onInputChange(e.currentTarget.value, e)
+    function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+      onInputChange(e.target.value, e);
     }
 
-    const wrappedOnFocus = useWrapEvent(deselectAll, onFocus)
-    const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
+    const wrappedOnFocus = useWrapEvent(deselectAll, onFocus);
+    const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown);
 
     return (
       <InputText
@@ -405,19 +406,19 @@ export const InputChipsBaseInternal = forwardRef(
           value={formatTextToCopy(selectedValues)}
         />
       </InputText>
-    )
+    );
   }
-)
+);
 
 const HiddenInput = styled.input`
   ${visuallyHiddenStyle}
-`
+`;
 
-InputChipsBaseInternal.displayName = 'InputChipsBaseInternal'
+InputChipsBaseInternal.displayName = 'InputChipsBaseInternal';
 
 const inputHeightStyle = css`
   height: calc(${inputHeight} - 6px);
-`
+`;
 
 export const InputChipsBase = styled(InputChipsBaseInternal)`
   align-items: stretch;
@@ -447,4 +448,4 @@ export const InputChipsBase = styled(InputChipsBaseInternal)`
   ${InputTextContent} {
     ${inputHeightStyle}
   }
-`
+`;

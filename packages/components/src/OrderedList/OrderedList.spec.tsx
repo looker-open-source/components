@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { OrderedList } from './OrderedList'
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { OrderedList } from './OrderedList';
 
-import 'jest-styled-components'
+import 'jest-styled-components';
 
 describe('OrderedList', () => {
   test('Should display child li elements', () => {
@@ -18,12 +18,12 @@ describe('OrderedList', () => {
         <li>Swiss</li>
         <li>Pepper Jack</li>
       </OrderedList>
-    )
+    );
 
-    screen.getByText('Gouda')
-    screen.getByText('Swiss')
-    screen.getByText('Pepper Jack')
-  })
+    screen.getByText('Gouda');
+    screen.getByText('Swiss');
+    screen.getByText('Pepper Jack');
+  });
 
   test("Accepts 'number' type", () => {
     renderWithTheme(
@@ -32,14 +32,14 @@ describe('OrderedList', () => {
         <li>Swiss</li>
         <li>Pepper Jack</li>
       </OrderedList>
-    )
+    );
 
-    screen.getByText('Gouda')
-    screen.getByText('Swiss')
-    screen.getByText('Pepper Jack')
+    screen.getByText('Gouda');
+    screen.getByText('Swiss');
+    screen.getByText('Pepper Jack');
 
-    expect(screen.getByRole('list')).toHaveAttribute('type', 'number')
-  })
+    expect(screen.getByRole('list')).toHaveAttribute('type', 'number');
+  });
 
   test("Accepts 'letter' type", () => {
     renderWithTheme(
@@ -48,12 +48,12 @@ describe('OrderedList', () => {
         <li>Swiss</li>
         <li>Pepper Jack</li>
       </OrderedList>
-    )
+    );
 
-    screen.getByText('Gouda')
-    screen.getByText('Swiss')
-    screen.getByText('Pepper Jack')
+    screen.getByText('Gouda');
+    screen.getByText('Swiss');
+    screen.getByText('Pepper Jack');
 
-    expect(screen.getByRole('list')).toHaveAttribute('type', 'letter')
-  })
-})
+    expect(screen.getByRole('list')).toHaveAttribute('type', 'letter');
+  });
+});

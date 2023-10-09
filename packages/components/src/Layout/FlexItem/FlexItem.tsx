@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FlexboxProps } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { ComplexLayoutProps } from '../utils/complex'
-import { complexLayoutCSS } from '../utils/complex'
+import type { FlexboxProps } from '@looker/design-tokens';
+import { flexbox, shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { ComplexLayoutProps } from '../utils/complex';
+import { complexLayoutCSS } from '../utils/complex';
 
 export interface FlexItemProps extends ComplexLayoutProps, FlexboxProps {}
 
@@ -25,4 +25,4 @@ export const FlexItem = styled.div.withConfig({
    * with style of text-overflow: ellipsis; will otherwise not truncate the
    * text appropriately. */
   min-width: 0; /* IMPORTANT!! Do not delete! */
-`
+`;

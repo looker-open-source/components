@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { RuleTester } = require('eslint')
-const rule = require('.').rules['publish-config']
+const { RuleTester } = require('eslint');
+const rule = require('.').rules['publish-config'];
 
 jest.mock('read-pkg-up', () => ({
   sync: jest.fn(() => ({
@@ -12,9 +12,9 @@ jest.mock('read-pkg-up', () => ({
       private: true,
     },
   })),
-}))
+}));
 
-const filename = '@looker/components/src/index.js'
+const filename = '@looker/components/src/index.js';
 
 new RuleTester({
   parser: require.resolve('jsonc-eslint-parser'),
@@ -26,4 +26,4 @@ new RuleTester({
     },
   ],
   invalid: [],
-})
+});

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { ComplexLayoutProps } from '../utils/complex'
-import { complexLayoutCSS } from '../utils/complex'
+import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens';
+import { flexbox, shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { ComplexLayoutProps } from '../utils/complex';
+import { complexLayoutCSS } from '../utils/complex';
 
 /**
  * styled-system has its own FlexBoxProps, so we call this one FlexProps to disambiguate.
@@ -25,4 +25,4 @@ export const Flex = styled.div.withConfig({ shouldForwardProp })<FlexProps>`
   ${complexLayoutCSS}
   ${flexbox}
   display: flex;
-`
+`;

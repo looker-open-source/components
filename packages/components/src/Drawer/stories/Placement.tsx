@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Drawer, ButtonOutline, Space, FieldRadioGroup } from '../..'
-import type { DrawerPlacements } from '../DrawerSurface'
+import React, { useState } from 'react';
+import { Drawer, ButtonOutline, Space, FieldRadioGroup } from '../..';
+import type { DrawerPlacements } from '../DrawerSurface';
 export default function Placement() {
   const options = [
     {
@@ -16,8 +16,8 @@ export default function Placement() {
       label: 'Right',
       value: 'right',
     },
-  ]
-  const [placement, setPlacement] = useState<DrawerPlacements>('right')
+  ];
+  const [placement, setPlacement] = useState<DrawerPlacements>('right');
 
   return (
     <Space>
@@ -34,5 +34,5 @@ export default function Placement() {
         }
       />
     </Space>
-  )
+  );
 }

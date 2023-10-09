@@ -24,31 +24,31 @@
 
  */
 
-import React from 'react'
-import { RangeSlider } from '..'
-import { useToggle } from '../../../../utils'
+import React from 'react';
+import { RangeSlider } from '..';
+import { useToggle } from '../../../../utils';
 import {
   Space,
   Button,
   Paragraph,
   SpaceVertical,
   OrderedList,
-} from '../../../..'
+} from '../../../..';
 
 const getRange = (value?: number[]) => [
   value && value[0] ? value[0] : 0,
   value && value[1] ? value[1] : 0,
-]
+];
 
 const NumberFilter = ({
   AST,
   onChange,
 }: {
-  AST: { value?: number[] }
-  onChange: (value: number[]) => void
+  AST: { value?: number[] };
+  onChange: (value: number[]) => void;
 }) => {
-  const { value, toggle } = useToggle()
-  const rangeValue = getRange(AST.value)
+  const { value, toggle } = useToggle();
+  const rangeValue = getRange(AST.value);
   return (
     <>
       <RangeSlider
@@ -64,41 +64,41 @@ const NumberFilter = ({
         <Paragraph>Current Value: {rangeValue.join(',')}</Paragraph>
       </Space>
     </>
-  )
-}
+  );
+};
 
 const getValue = (expression: string) =>
-  expression.split(',').map(text => parseInt(text, 10))
+  expression.split(',').map(text => parseInt(text, 10));
 
 const Filter = ({
   expression,
   onChange,
 }: {
-  expression: string
-  onChange: (expression: string) => void
+  expression: string;
+  onChange: (expression: string) => void;
 }) => {
   const [AST, setAST] = React.useState({
     value: getValue(expression),
-  })
-  const expressionRef = React.useRef(expression)
+  });
+  const expressionRef = React.useRef(expression);
   React.useEffect(() => {
     if (expressionRef.current !== expression) {
-      setAST({ value: getValue(expression) })
-      expressionRef.current = expression
+      setAST({ value: getValue(expression) });
+      expressionRef.current = expression;
     }
-  }, [expression])
+  }, [expression]);
   const handleChange = (newValue: number[]) => {
-    onChange(newValue.join(', '))
-  }
-  return <NumberFilter AST={AST} onChange={handleChange} />
-}
+    onChange(newValue.join(', '));
+  };
+  return <NumberFilter AST={AST} onChange={handleChange} />;
+};
 
 // Reproduce and verify rerendering behavior
 export default function FilterRangeSlider() {
-  const [expression, setExpression] = React.useState('0,10')
+  const [expression, setExpression] = React.useState('0,10');
   const handleChange = (newValue: string) => {
-    setExpression(newValue)
-  }
+    setExpression(newValue);
+  };
   return (
     <SpaceVertical p="u4" align="stretch">
       <OrderedList type="number">
@@ -110,5 +110,5 @@ export default function FilterRangeSlider() {
       </OrderedList>
       <Filter expression={expression} onChange={handleChange} />
     </SpaceVertical>
-  )
+  );
 }

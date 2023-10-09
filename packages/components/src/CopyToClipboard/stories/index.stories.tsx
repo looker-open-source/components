@@ -3,10 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { default as Basic } from './Basic'
-export { default as Success } from './Success'
-export { default as ChildComponent } from './ChildComponent'
-
+export { default as Basic } from './Basic';
+export { default as Success } from './Success';
+export { default as ChildComponent } from './ChildComponent';
 export default {
   parameters: {
     previewTabs: {
@@ -14,7 +13,6 @@ export default {
         hidden: true,
       },
     },
-    storyshots: { disable: true },
   },
   title: 'Stories/CopyToClipboard',
-}
+};

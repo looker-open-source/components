@@ -3,30 +3,30 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useMemo } from 'react'
+import { useMemo } from 'react';
 import type {
   FlatOption,
   SelectOptionGroupProps,
   SelectOptionObject,
   SelectOptionProps,
-} from '../types'
+} from '../types';
 
 export const getFlatOptions = (options: SelectOptionProps[]) =>
   options.reduce(
     (
       acc: {
-        flatOptions: FlatOption[]
-        navigationOptions: SelectOptionObject[]
+        flatOptions: FlatOption[];
+        navigationOptions: SelectOptionObject[];
       },
       option: SelectOptionProps
     ) => {
-      const optionAsGroup = option as SelectOptionGroupProps
+      const optionAsGroup = option as SelectOptionGroupProps;
       if (optionAsGroup.options) {
         // Include the divider
-        const groupPseudoOptions = [{}]
+        const groupPseudoOptions = [{}];
         if (optionAsGroup.label) {
           // ...and header as pseudo options for windowing purposes
-          groupPseudoOptions.push({ label: optionAsGroup.label })
+          groupPseudoOptions.push({ label: optionAsGroup.label });
         }
         return {
           flatOptions: [
@@ -38,7 +38,7 @@ export const getFlatOptions = (options: SelectOptionProps[]) =>
             ...acc.navigationOptions,
             ...optionAsGroup.options,
           ],
-        }
+        };
       }
       return {
         flatOptions: [...acc.flatOptions, option],
@@ -46,10 +46,10 @@ export const getFlatOptions = (options: SelectOptionProps[]) =>
           ...acc.navigationOptions,
           option as SelectOptionObject,
         ],
-      }
+      };
     },
     { flatOptions: [], navigationOptions: [] }
-  )
+  );
 
 /**
  * Takes potentially grouped options and returns 2 arrays of flattened options:
@@ -60,8 +60,8 @@ export const getFlatOptions = (options: SelectOptionProps[]) =>
 export const useFlatOptions = (options?: SelectOptionProps[]) => {
   return useMemo(() => {
     if (!options)
-      return { flatOptions: undefined, navigationOptions: undefined }
+      return { flatOptions: undefined, navigationOptions: undefined };
 
-    return getFlatOptions(options)
-  }, [options])
-}
+    return getFlatOptions(options);
+  }, [options]);
+};

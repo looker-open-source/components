@@ -1,2 +1,0 @@
-
-//# sourceMappingURL=sparkline.js.map

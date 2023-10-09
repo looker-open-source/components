@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './DataTable'
-export * from './Column'
-export * from './Item'
-export * from './types'
-export * from './utils'
+export * from './DataTable';
+export * from './Column';
+export * from './Item';
+export * from './types';
+export * from './utils';

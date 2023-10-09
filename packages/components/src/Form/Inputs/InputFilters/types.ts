@@ -3,44 +3,44 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode } from 'react'
+import type { ReactNode } from 'react';
 
 export interface InputFilterEditorProps {
-  closeEditor: () => void
-  filterOptions: FieldFilterOptions
-  onChange: (value?: string) => void
-  value?: string
+  closeEditor: () => void;
+  filterOptions: FieldFilterOptions;
+  onChange: (value?: string) => void;
+  value?: string;
 }
 
 export type InputFilterEditorRenderProp = (
   props: InputFilterEditorProps
-) => ReactNode
+) => ReactNode;
 
 export interface FieldFilterOptions {
   /* specify the field value */
-  field: string
+  field: string;
   /* text to be displayed in drop-down, optional, `field` is used if not specified */
-  label?: string
+  label?: string;
   /**
    * ability to select multiple filter options
    * @default false
    */
-  multiple?: boolean
+  multiple?: boolean;
   /* list of options to filter by */
-  options?: string[]
+  options?: string[];
 }
 
 export interface FieldFilter extends FieldFilterOptions {
-  editor?: InputFilterEditorRenderProp
-  formatValue?: (value: string) => string
+  editor?: InputFilterEditorRenderProp;
+  formatValue?: (value: string) => string;
   /* filter value/expression */
-  value?: string
+  value?: string;
 }
 
 export interface InputFiltersProps {
-  className?: string
-  filters: FieldFilter[]
-  hideFilterIcon?: boolean
+  className?: string;
+  filters: FieldFilter[];
+  hideFilterIcon?: boolean;
   /**
    * Placeholder text for input when empty
    *
@@ -48,6 +48,6 @@ export interface InputFiltersProps {
    *
    * Defaults to internationalized "Filter List"
    */
-  placeholder?: string
-  onChange: (filters: FieldFilter[]) => void
+  placeholder?: string;
+  onChange: (filters: FieldFilter[]) => void;
 }

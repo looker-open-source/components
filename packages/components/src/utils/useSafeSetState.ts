@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useState, useCallback } from 'react'
-import { useMounted } from './'
+import { useState, useCallback } from 'react';
+import { useMounted } from './';
 
 /**
  * An alternative utility hook to React.useState, this function
@@ -15,15 +15,15 @@ import { useMounted } from './'
  * @returns [currentState, stateUpdater]
  */
 export const useSafeSetState = <T>(initialState: T): [T, (arg: T) => void] => {
-  const [state, setState] = useState(initialState)
-  const mounted = useMounted()
+  const [state, setState] = useState(initialState);
+  const mounted = useMounted();
 
   const safeSetState = useCallback(
     (value: T) => {
-      if (mounted.current) setState(value)
+      if (mounted.current) setState(value);
     },
     [mounted]
-  )
+  );
 
-  return [state, safeSetState]
-}
+  return [state, safeSetState];
+};

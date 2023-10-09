@@ -8,12 +8,12 @@
  * CSSWG specifications. Reference: https://developer.mozilla.org/en-US/docs/Web/CSS/font-family
  */
 export const sanitizeFontFamily = (faces: string) =>
-  sanitizeFontFamilyArray(faces).join(', ')
+  sanitizeFontFamilyArray(faces).join(', ');
 
 export const sanitizeFontFamilyArray = (faces: string) =>
-  faces.split(',').map(face => sanitizeFontFace(face))
+  faces.split(',').map(face => sanitizeFontFace(face));
 
 export const sanitizeFontFace = (face: string) => {
-  const sanitized = face.replace(/["']/g, '').trim()
-  return /\s/.test(sanitized) ? `'${sanitized}'` : sanitized
-}
+  const sanitized = face.replace(/["']/g, '').trim();
+  return /\s/.test(sanitized) ? `'${sanitized}'` : sanitized;
+};

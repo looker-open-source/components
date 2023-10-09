@@ -10,7 +10,7 @@ import type {
   LayoutProps,
   TypographyProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   reset,
   border,
@@ -18,8 +18,8 @@ import {
   layout,
   typography,
   space,
-} from '@looker/design-tokens'
-import { css } from 'styled-components'
+} from '@looker/design-tokens';
+import { css } from 'styled-components';
 
 export interface TableCellProps
   extends BorderProps,
@@ -37,4 +37,4 @@ export const tableCellCSS = css`
   ${layout}
   ${space}
   ${typography}
-`
+`;

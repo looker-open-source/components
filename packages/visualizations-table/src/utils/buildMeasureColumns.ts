@@ -7,8 +7,8 @@ import type {
   SDKRecord,
   CTable,
   MeasureMetadata,
-} from '@looker/visualizations-adapters'
-import type { ColumnDef } from '@tanstack/table-core'
+} from '@looker/visualizations-adapters';
+import type { ColumnDef } from '@tanstack/table-core';
 
 /**
  * Renders dimension columns from fields.dimensions response.
@@ -22,14 +22,14 @@ export const buildMeasureColumns = (
 ): Record<string, ColumnDef<SDKRecord>[]> => {
   return measures.reduce<Record<string, ColumnDef<SDKRecord>[]>>(
     (cols, measure, i) => {
-      const pivotKey = measure.pivot_key || ''
-      const group = cols[pivotKey] || []
+      const pivotKey = measure.pivot_key || '';
+      const group = cols[pivotKey] || [];
       const seriesConfig = {
         ...measure,
         ...(Array.isArray(config.series)
           ? config.series[i]
           : config.series?.[measure.name]),
-      }
+      };
 
       return {
         ...cols,
@@ -41,8 +41,8 @@ export const buildMeasureColumns = (
             id: measure.name,
           },
         ],
-      }
+      };
     },
     {}
-  )
-}
+  );
+};

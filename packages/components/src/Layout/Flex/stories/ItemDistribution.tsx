@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { Flex, Box, Text } from '../../..'
+import React from 'react';
+import { Flex, Box, Text } from '../../..';
 
 export default function ItemDistribution() {
   return (
@@ -96,5 +96,5 @@ export default function ItemDistribution() {
         </Box>
       </Flex>
     </>
-  )
+  );
 }

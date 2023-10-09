@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nlNL as componentsLocale } from '@looker/components'
-import { nlNL as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { nlNL as componentsLocale } from '@looker/components';
+import { nlNL as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Aflopend sorteren',
     Totals: 'Totalen',
   },
-}
+};
 
 export const nlNL = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'nl-NL',
   resources
-)
+);

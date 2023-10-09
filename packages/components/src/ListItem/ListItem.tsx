@@ -24,9 +24,9 @@
 
  */
 
-import styled from 'styled-components'
-import type { Ref } from 'react'
-import React, { forwardRef, useContext, useRef, useState } from 'react'
+import styled from 'styled-components';
+import type { Ref } from 'react';
+import React, { forwardRef, useContext, useRef, useState } from 'react';
 import {
   createSafeRel,
   HoverDisclosureContext,
@@ -34,13 +34,13 @@ import {
   undefinedCoalesce,
   useWrapEvent,
   useForkedRef,
-} from '../utils'
-import { IconPlaceholder } from '../Icon'
-import { ListItemContext } from './ListItemContext'
-import { ListItemContent } from './ListItemContent'
-import { ListItemWrapper } from './ListItemWrapper'
-import { createListItemPartitions, listItemLabelColor } from './utils'
-import type { ListItemProps } from './types'
+} from '../utils';
+import { IconPlaceholder } from '../Icon';
+import { ListItemContext } from './ListItemContext';
+import { ListItemContent } from './ListItemContent';
+import { ListItemWrapper } from './ListItemWrapper';
+import { createListItemPartitions, listItemLabelColor } from './utils';
+import type { ListItemProps } from './types';
 
 const ListItemInternal = forwardRef(
   (props: ListItemProps, ref: Ref<HTMLLIElement | HTMLDivElement>) => {
@@ -48,6 +48,7 @@ const ListItemInternal = forwardRef(
       children: _children,
       className,
       color: propsColor,
+      colorOnHover,
       density: propsDensity,
       description: _description,
       detail,
@@ -70,80 +71,81 @@ const ListItemInternal = forwardRef(
       target,
       truncate: _truncate,
       ...restProps
-    } = props
+    } = props;
 
     const {
       density: contextDensity,
       iconGutter,
       color: contextColor,
-    } = useContext(ListItemContext)
+    } = useContext(ListItemContext);
 
-    const density = propsDensity || contextDensity
+    const density = propsDensity || contextDensity;
 
-    const color = undefinedCoalesce([propsColor, contextColor])
+    const color = undefinedCoalesce([propsColor, contextColor]);
 
-    const [hovered, setHovered] = useState(propsHovered)
+    const [hovered, setHovered] = useState(propsHovered);
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
       if (itemRole !== 'none' && onClick) {
-        onClick(event)
+        onClick(event);
       }
-    }
+    };
     if (disabled && itemRole === 'link') {
       // eslint-disable-next-line no-console
       console.warn(
         'itemRole="link" and disabled cannot be combined - use itemRole="button" if you need to offer a disabled ListItem'
-      )
+      );
     }
 
     if (itemRole === 'none' && onClick) {
       // eslint-disable-next-line no-console
       console.warn(
         'itemRole="none" and onClick cannot be combined - if itemRole="none" is a necessity, assign click behavior directly to ListItem\'s children'
-      )
+      );
     }
 
-    const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null)
-    const actualRef = useForkedRef(wrapperRef, ref)
+    const wrapperRef = useRef<HTMLLIElement | HTMLDivElement>(null);
+    const actualRef = useForkedRef(wrapperRef, ref);
 
-    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
+    const [ariaProps, wrapperProps] = partitionAriaProps(restProps);
     const [insideElements, outsideElements] = createListItemPartitions({
       ...props,
       color,
       density,
       detail,
       icon: icon || (iconGutter ? <IconPlaceholder /> : undefined),
-    })
+    });
 
     const statefulProps = {
       color,
+      colorOnHover,
       disabled,
       hovered,
       ripple,
       selected,
-    }
+    };
 
     const handleWrapperFocus = () => {
-      setHovered(true)
-    }
+      setHovered(true);
+    };
 
     const handleWrapperBlur = (event: React.FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = event.relatedTarget
+      const nextFocusTarget = event.relatedTarget;
 
       if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
-        setHovered(false)
+        setHovered(false);
       }
-    }
+    };
 
     const handleWrapperMouseEnter = useWrapEvent(
       () => setHovered(true),
       onMouseEnter
-    )
+    );
 
     const handleWrapperMouseLeave = useWrapEvent(
       () => setHovered(false),
       onMouseLeave
-    )
+    );
 
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
@@ -179,8 +181,8 @@ const ListItemInternal = forwardRef(
           {outsideElements}
         </ListItemWrapper>
       </HoverDisclosureContext.Provider>
-    )
+    );
   }
-)
+);
 
-export const ListItem = styled(ListItemInternal)<ListItemProps>``
+export const ListItem = styled(ListItemInternal)<ListItemProps>``;

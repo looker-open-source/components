@@ -5,9 +5,9 @@
 import {
   CheckboxGroup as CheckboxGroupComponent,
   ProgressCircular,
-} from '@looker/components'
-import React from 'react'
-import type { StringMultiSelectProps } from '../../../../types/string_select_props'
+} from '@looker/components';
+import React from 'react';
+import type { StringMultiSelectProps } from '../../../../types/string_select_props';
 
 export const CheckboxGroup = ({
   validationMessage,
@@ -27,4 +27,4 @@ export const CheckboxGroup = ({
       value={value}
       validationType={validationMessage?.type}
     />
-  )
+  );

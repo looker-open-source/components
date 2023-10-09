@@ -24,36 +24,36 @@
 
  */
 
-import pick from 'lodash/pick'
-import React, { useContext } from 'react'
-import { ThemeContext as VisxThemeContext } from '@visx/xychart'
+import pick from 'lodash/pick';
+import React, { useContext } from 'react';
+import { ThemeContext as VisxThemeContext } from '@visx/xychart';
 import {
   useMeasuredText,
   pickLongestLabel,
   getVisibleMeasureNames,
   DEFAULT_MARGIN,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import type {
   ChartData,
   Fields,
   CCartesian,
-} from '@looker/visualizations-adapters'
-import { MAX_TICK_LABEL_LENGTH, XAxis, XAxisDate, YAxis } from '../Axis'
-import { formatDateLabel, getYAxisRange, isDateQuery } from '.'
-import { getYAxisFormat, getXAxisFormat } from '../utils'
+} from '@looker/visualizations-adapters';
+import { MAX_TICK_LABEL_LENGTH, XAxis, XAxisDate, YAxis } from '../Axis';
+import { formatDateLabel, getYAxisRange, isDateQuery } from '.';
+import { getYAxisFormat, getXAxisFormat } from '../utils';
 
 export type UseAxisProps = {
-  config: CCartesian
-  data: ChartData
-  fields: Fields
-}
+  config: CCartesian;
+  data: ChartData;
+  fields: Fields;
+};
 
 /**
  * In the event that visx decides to render a tick label of the longest length
  * (as per pickLongestLabel), we should have a small buffer between the longest
  * tick label and the optional axis label.
  */
-const TICK_LABEL_TO_AXIS_LABEL_SPACER = 10
+const TICK_LABEL_TO_AXIS_LABEL_SPACER = 10;
 
 /**
  * useAxis accepts chart information and outputs axes compatible with
@@ -61,7 +61,7 @@ const TICK_LABEL_TO_AXIS_LABEL_SPACER = 10
  * chart component (necessary when x-axis tick labels are angled).
  */
 export const useAxis = ({ config, data, fields }: UseAxisProps) => {
-  const visxTheme = useContext(VisxThemeContext)
+  const visxTheme = useContext(VisxThemeContext);
 
   /**
    * Need an array of formatted date strings (i.e. values as they'd appear on the
@@ -72,21 +72,21 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
       dateString: datum.dimension,
       fields,
     }).slice(0, MAX_TICK_LABEL_LENGTH)
-  )
-  const xAxisLongestLabel = pickLongestLabel(xAxisLabels)
+  );
+  const xAxisLongestLabel = pickLongestLabel(xAxisLabels);
   const { height: xAxisLongestLabelHeight, width: xAxisLongestLabelWidth } =
     useMeasuredText(xAxisLongestLabel, {
       fontFamily:
         visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
       fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
-    })
-  const averageLabelLength = xAxisLabels.join('').length / xAxisLabels.length
+    });
+  const averageLabelLength = xAxisLabels.join('').length / xAxisLabels.length;
 
-  const renderXAxisTicks = config?.x_axis?.[0]?.values
-  const hasRotatedXAxisLabels = renderXAxisTicks && averageLabelLength > 10
+  const renderXAxisTicks = config?.x_axis?.[0]?.values;
+  const hasRotatedXAxisLabels = renderXAxisTicks && averageLabelLength > 10;
   const angledLabelHypotenuse =
     Math.sqrt((xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2) +
-    TICK_LABEL_TO_AXIS_LABEL_SPACER
+    TICK_LABEL_TO_AXIS_LABEL_SPACER;
 
   const X_AXIS_STYLE = hasRotatedXAxisLabels
     ? {
@@ -100,9 +100,9 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
         tickAngle: 0,
         tickSpace: xAxisLongestLabelWidth + DEFAULT_MARGIN,
         tickTextAnchor: 'inherit' as const,
-      }
+      };
 
-  const xAxisValueFormat = getXAxisFormat(fields)
+  const xAxisValueFormat = getXAxisFormat(fields);
 
   const XAxisWrapped = () =>
     isDateQuery(fields) && config.type !== 'column' ? (
@@ -118,16 +118,16 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
         valueFormat={xAxisValueFormat}
         {...X_AXIS_STYLE}
       />
-    )
+    );
 
-  const renderYAxisTicks = config?.y_axis?.[0]?.values
+  const renderYAxisTicks = config?.y_axis?.[0]?.values;
 
   /**
    * If all measures are numeric, we can just use the getDataRange helper.
    *
    * Otherwise, treat all measure values as strings.
    */
-  let yAxisLongestLabel
+  let yAxisLongestLabel;
   if (fields.measures.every(measure => measure.is_numeric)) {
     /**
      * Currently ignoring custom value formats from Looker vis config and instead
@@ -139,27 +139,27 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
       config,
       data,
       fields,
-    }).map(d => String(Math.round(d as number)))
+    }).map(d => String(Math.round(d as number)));
 
-    yAxisLongestLabel = pickLongestLabel(dataRangeStrings)
+    yAxisLongestLabel = pickLongestLabel(dataRangeStrings);
   } else {
-    const measureNames = getVisibleMeasureNames(fields, config)
+    const measureNames = getVisibleMeasureNames(fields, config);
     const measureValues = data.flatMap(d => {
-      const datumMeasureValues = Object.values(pick(d, measureNames))
-      return datumMeasureValues.map(value => String(value))
-    })
-    yAxisLongestLabel = pickLongestLabel(measureValues)
+      const datumMeasureValues = Object.values(pick(d, measureNames));
+      return datumMeasureValues.map(value => String(value));
+    });
+    yAxisLongestLabel = pickLongestLabel(measureValues);
   }
 
   const { width: yAxisLongestLabelWidth } = useMeasuredText(yAxisLongestLabel, {
     fontFamily: visxTheme.axisStyles.y.left.tickLabel.fontFamily || 'Roboto',
     fontSize: visxTheme.axisStyles.y.left.tickLabel.fontSize || '1rem',
-  })
+  });
 
   // -10 provides spacing between label and tick values / axis line
-  const yAxisLabelDx = renderYAxisTicks ? -yAxisLongestLabelWidth - 10 : -10
+  const yAxisLabelDx = renderYAxisTicks ? -yAxisLongestLabelWidth - 10 : -10;
 
-  const yAxisValueFormat = getYAxisFormat(config)
+  const yAxisValueFormat = getYAxisFormat(config);
 
   const YAxisWrapped = () => (
     <YAxis
@@ -169,25 +169,25 @@ export const useAxis = ({ config, data, fields }: UseAxisProps) => {
       labelDx={yAxisLabelDx}
       valueFormat={yAxisValueFormat}
     />
-  )
+  );
 
   const yAxisLabelWidth = renderYAxisTicks
     ? yAxisLongestLabelWidth + DEFAULT_MARGIN
-    : DEFAULT_MARGIN
+    : DEFAULT_MARGIN;
 
   const chartMarginBottom = hasRotatedXAxisLabels
     ? angledLabelHypotenuse + DEFAULT_MARGIN
-    : DEFAULT_MARGIN
+    : DEFAULT_MARGIN;
   const chartMarginLeft = hasRotatedXAxisLabels
     ? Math.max(angledLabelHypotenuse, yAxisLabelWidth)
-    : yAxisLabelWidth
+    : yAxisLabelWidth;
 
   const chartMargin = {
     top: 0,
     right: 0,
     bottom: chartMarginBottom,
     left: chartMarginLeft,
-  }
+  };
 
-  return { XAxis: XAxisWrapped, YAxis: YAxisWrapped, chartMargin }
-}
+  return { XAxis: XAxisWrapped, YAxis: YAxisWrapped, chartMargin };
+};

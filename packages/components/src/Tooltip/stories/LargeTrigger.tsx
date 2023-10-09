@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Tooltip } from '../Tooltip'
-import { Card } from '../../Card'
+import React from 'react';
+import { Tooltip } from '../Tooltip';
+import { Card } from '../../Card';
 
 export default function LargeTrigger() {
   return (
@@ -13,5 +13,5 @@ export default function LargeTrigger() {
         Very large trigger
       </Card>
     </Tooltip>
-  )
+  );
 }

@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputTime } from '..'
-import type { InputTimeProps } from '..'
-import { Code, Space, Paragraph } from '../../../..'
+import React, { useState } from 'react';
+import { InputTime } from '..';
+import type { InputTimeProps } from '..';
+import { Code, Space, Paragraph } from '../../../..';
 
 export default function Validation(props: InputTimeProps) {
-  const { value: valueProp = 'Stardate 2004.14', ...restProps } = props
+  const { value: valueProp = 'Stardate 2004.14', ...restProps } = props;
 
-  const [value, setValue] = useState<string | undefined>(valueProp)
-  const [validationType, setValidationType] = useState<'error' | undefined>()
+  const [value, setValue] = useState<string | undefined>(valueProp);
+  const [validationType, setValidationType] = useState<'error' | undefined>();
   const handleValidationFail = () => {
-    setValidationType('error')
-  }
+    setValidationType('error');
+  };
 
   return (
     <Space>
@@ -33,5 +33,5 @@ export default function Validation(props: InputTimeProps) {
         </Paragraph>
       )}
     </Space>
-  )
+  );
 }

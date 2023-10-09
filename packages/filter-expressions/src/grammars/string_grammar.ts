@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import { whitespace } from './common/whitespace'
-import { userAttribute } from './user_attribute_grammar'
+import { whitespace } from './common/whitespace';
+import { userAttribute } from './user_attribute_grammar';
 
 // String Grammar
 // ==========================
@@ -186,6 +186,6 @@ unescaped      	        = !SYMBOLS char:char_range { return char;}
 valid_char              = char:char_range { return char;}
 char_range              = [^\\0-\\x1F\\x22\\x5C]
 HEXDIG                  = [0-9a-f]i
-`
+`;
 
-export const stringGrammar = grammar.concat(userAttribute, whitespace)
+export const stringGrammar = grammar.concat(userAttribute, whitespace);

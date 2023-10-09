@@ -24,7 +24,7 @@
 
  */
 
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import {
   DataProvider,
   BarSeries,
@@ -32,14 +32,14 @@ import {
   BarStack,
   BarGroup,
   ThemeContext as VisxThemeContext,
-} from '@visx/xychart'
-import type { AxisScaleOutput, AxisScale } from '@visx/axis'
-import type { LinearScaleConfig } from '@visx/scale'
+} from '@visx/xychart';
+import type { AxisScaleOutput, AxisScale } from '@visx/axis';
+import type { LinearScaleConfig } from '@visx/scale';
 import type {
   BarProps,
   SDKRecord,
   CLineSeries,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import {
   DEFAULT_HEIGHT,
   VisWrapper,
@@ -47,13 +47,13 @@ import {
   useMeasuredText,
   getVisibleMeasureNames,
   DEFAULT_MARGIN,
-} from '@looker/visualizations-adapters'
-import { XYLegend } from '../XYLegend'
-import isArray from 'lodash/isArray'
-import get from 'lodash/get'
-import compact from 'lodash/compact'
-import pick from 'lodash/pick'
-import { XAxis, YAxis } from '../Axis'
+} from '@looker/visualizations-adapters';
+import { XYLegend } from '../XYLegend';
+import isArray from 'lodash/isArray';
+import get from 'lodash/get';
+import compact from 'lodash/compact';
+import pick from 'lodash/pick';
+import { XAxis, YAxis } from '../Axis';
 import {
   concatDimensions,
   getX,
@@ -64,10 +64,10 @@ import {
   formatDateLabel,
   getXAxisFormat,
   getYAxisFormat,
-} from '../utils'
-import { XYTooltip } from '../XYTooltip'
-import { Grid } from '../Grid'
-import numeral from 'numeral'
+} from '../utils';
+import { XYTooltip } from '../XYTooltip';
+import { Grid } from '../Grid';
+import numeral from 'numeral';
 
 export const Bar = ({
   data,
@@ -76,42 +76,42 @@ export const Bar = ({
   width,
   fields,
 }: BarProps) => {
-  const { positioning, series: seriesList, legend } = config
+  const { positioning, series: seriesList, legend } = config;
 
   /**
    * The concatDimensions call will further format the data array returned from
    * the tabularReponse call. This new array combines existing dimension properties
    * with a single `dimension` property.
    */
-  const formattedData = concatDimensions(data, fields)
-  const chartTheme = useChartTheme(seriesList)
-  const visxTheme = useContext(VisxThemeContext)
+  const formattedData = concatDimensions(data, fields);
+  const chartTheme = useChartTheme(seriesList);
+  const visxTheme = useContext(VisxThemeContext);
 
   const yAxisLabels = formattedData.map(datum =>
     formatDateLabel({
       dateString: datum.dimension,
       fields,
     })
-  )
-  const yAxisLongestLabel = pickLongestLabel(yAxisLabels)
+  );
+  const yAxisLongestLabel = pickLongestLabel(yAxisLabels);
   const { width: yAxisLongestLabelWidth } = useMeasuredText(yAxisLongestLabel, {
     fontFamily: visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
     fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
-  })
+  });
 
   // CAUTION: yAxisConfig intentionally refers to x_axis properties in the config response.
-  const yAxisConfig = config?.x_axis?.[0]
-  const yAxisValueFormat = getXAxisFormat(fields)
+  const yAxisConfig = config?.x_axis?.[0];
+  const yAxisValueFormat = getXAxisFormat(fields);
 
   // -10 provides spacing between label and tick values / axis line
-  const yAxisLabelDx = yAxisConfig?.values ? -yAxisLongestLabelWidth - 10 : -10
+  const yAxisLabelDx = yAxisConfig?.values ? -yAxisLongestLabelWidth - 10 : -10;
 
   /**
    * CAUTION: x and y axes from the vis config are flipped when used in Bar;
    * xAxisConfig intentionally refers to y_axis properties in the config response.
    */
-  const xAxisConfig = config?.y_axis?.[0]
-  const xAxisValueFormat = getYAxisFormat(config)
+  const xAxisConfig = config?.y_axis?.[0];
+  const xAxisValueFormat = getYAxisFormat(config);
 
   /**
    * Borrowed from useAxis
@@ -120,33 +120,33 @@ export const Bar = ({
    * compute average length taking into account value format
    * create boolean for when average length is certain size to peform rotation
    */
-  const measureNames = getVisibleMeasureNames(fields, config)
+  const measureNames = getVisibleMeasureNames(fields, config);
 
   const measureValues = data.flatMap(d => {
-    const datumMeasureValues = Object.values(pick(d, measureNames))
+    const datumMeasureValues = Object.values(pick(d, measureNames));
     return datumMeasureValues.map(value =>
       numeral(value).format(xAxisValueFormat)
-    )
-  })
+    );
+  });
 
-  const xAxisLongestLabel = pickLongestLabel(measureValues)
+  const xAxisLongestLabel = pickLongestLabel(measureValues);
 
   const { height: xAxisLongestLabelHeight, width: xAxisLongestLabelWidth } =
     useMeasuredText(xAxisLongestLabel, {
       fontFamily:
         visxTheme.axisStyles.x.bottom.tickLabel.fontFamily || 'Roboto',
       fontSize: visxTheme.axisStyles.x.bottom.tickLabel.fontSize || '1rem',
-    })
+    });
 
   const averageMeasureValueLength =
-    measureValues.join('').length / measureValues.length
+    measureValues.join('').length / measureValues.length;
 
   const hasRotatedXAxisLabels =
-    xAxisConfig?.values && averageMeasureValueLength > 10
+    xAxisConfig?.values && averageMeasureValueLength > 10;
 
   const angledLabelHypotenuse = Math.sqrt(
     (xAxisLongestLabelWidth * xAxisLongestLabelWidth) / 2
-  )
+  );
 
   const X_AXIS_STYLE = hasRotatedXAxisLabels
     ? {
@@ -160,26 +160,26 @@ export const Bar = ({
         tickAngle: 0,
         tickSpace: xAxisLongestLabelWidth + DEFAULT_MARGIN,
         tickTextAnchor: 'inherit' as const,
-      }
+      };
 
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
-    return null
+    return null;
   }
 
   const domain =
     positioning === 'percent'
       ? [0, 1]
-      : getYAxisRange({ config, data: formattedData, fields })
+      : getYAxisRange({ config, data: formattedData, fields });
 
   const X_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
-  }
+  };
 
   const chartMarginBottom = hasRotatedXAxisLabels
     ? angledLabelHypotenuse + DEFAULT_MARGIN
-    : DEFAULT_MARGIN
+    : DEFAULT_MARGIN;
 
   const chartMargin = {
     right: 0,
@@ -188,15 +188,15 @@ export const Bar = ({
     left: yAxisConfig?.values
       ? yAxisLongestLabelWidth + DEFAULT_MARGIN
       : DEFAULT_MARGIN,
-  }
+  };
 
   const renderedBars: JSX.Element[] | undefined = compact(
     fields.measures.map((measure, i) => {
       const series: CLineSeries = isArray(seriesList)
         ? get(config, ['series', i])
-        : get(config, ['series', measure.name])
+        : get(config, ['series', measure.name]);
 
-      if (!series.visible) return undefined
+      if (!series.visible) return undefined;
 
       return (
         <BarSeries<
@@ -210,9 +210,9 @@ export const Bar = ({
           xAccessor={(d: SDKRecord) => getY(d, i)}
           yAccessor={(d: SDKRecord) => getX(d)}
         />
-      )
+      );
     })
-  )
+  );
 
   return (
     <DataProvider
@@ -261,5 +261,5 @@ export const Bar = ({
         <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
-  )
-}
+  );
+};

@@ -32,10 +32,10 @@
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const path = require('path')
-const { glob } = require('glob')
-const fs = require('fs-extra')
-const h2x = require('./h2x')
+const path = require('path');
+const { glob } = require('glob');
+const fs = require('fs-extra');
+const h2x = require('./h2x');
 
 const license = `/*
 
@@ -62,51 +62,51 @@ const license = `/*
  SOFTWARE.
 
  */
-`
+`;
 const getTemplate = () =>
   new Promise((resolve, reject) =>
     fs.readFile(path.join('templates', 'icon.tsx.template'), (err, data) => {
-      if (err) reject(err)
-      else resolve(data.toString())
+      if (err) reject(err);
+      else resolve(data.toString());
     })
-  )
+  );
 
-const buildDir = path.join('src')
+const buildDir = path.join('src');
 
 const iconIndex = (name, license) => `${license}
 export * from './${name}'
-`
+`;
 
 const generate = async () => {
-  const files = await glob(['svg/*.svg'], { nodir: true })
-  const icons = files.map(icon => icon.replace('.svg', '').replace('svg/', ''))
+  const files = await glob(['svg/*.svg'], { nodir: true });
+  const icons = files.map(icon => icon.replace('.svg', '').replace('svg/', ''));
 
   if (icons.length === 0) {
     // eslint-disable-next-line no-console
-    console.error('Error reading icons from source')
-    process.exit(1)
+    console.error('Error reading icons from source');
+    process.exit(1);
   } else {
     // eslint-disable-next-line no-console
-    console.log('SVG files found:', icons.length)
+    console.log('SVG files found:', icons.length);
   }
 
-  const template = await getTemplate()
+  const template = await getTemplate();
 
-  const totalIcons = icons.length
+  const totalIcons = icons.length;
 
   for (const icon of icons) {
-    const state = {}
+    const state = {};
 
     let result = fs
       .readFileSync(path.join('svg', `${icon}.svg`))
-      .toString('utf8')
-    result = await h2x(result, state).join('\n      ')
+      .toString('utf8');
+    result = await h2x(result, state).join('\n      ');
 
-    const height = state.height || '24'
-    const width = state.width || '24'
-    const viewBox = state.viewBox || `0 0 ${width} ${height}`
+    const height = state.height || '24';
+    const width = state.width || '24';
+    const viewBox = state.viewBox || `0 0 ${width} ${height}`;
 
-    const attrs = { fill: 'currentColor', xmlns: 'http://www.w3.org/2000/svg' }
+    const attrs = { fill: 'currentColor', xmlns: 'http://www.w3.org/2000/svg' };
 
     const component = () =>
       template
@@ -117,18 +117,18 @@ const generate = async () => {
         .replace(/{{verticalAlign}}/g, 'middle')
         .replace(/{{height}}/g, height)
         .replace(/{{width}}/g, width)
-        .replace(/{{viewBox}}/g, viewBox)
+        .replace(/{{viewBox}}/g, viewBox);
 
-    const destinationPath = path.join(buildDir)
-    await fs.mkdirp(destinationPath, icon)
+    const destinationPath = path.join(buildDir);
+    await fs.mkdirp(destinationPath, icon);
     await fs.outputFile(
       path.join(destinationPath, icon, `${icon}.tsx`),
       component()
-    )
+    );
     await fs.outputFile(
       path.join(destinationPath, icon, 'index.ts'),
       iconIndex(icon, license)
-    )
+    );
   }
 
   const writeIndexFiles = async () =>
@@ -144,15 +144,15 @@ ${icons
   .filter(lines => lines)
   .join('\n')}
 `
-    )
+    );
 
-  await writeIndexFiles()
+  await writeIndexFiles();
   // eslint-disable-next-line no-console
-  console.log(`${totalIcons} icons generated!`)
-}
+  console.log(`${totalIcons} icons generated!`);
+};
 
 generate().catch(err => {
   // eslint-disable-next-line no-console
-  console.error(err.stack)
-  process.exit(1)
-})
+  console.error(err.stack);
+  process.exit(1);
+});

@@ -3,21 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Dialog, ButtonOutline } from '../..'
+import React from 'react';
+import { Dialog, ButtonOutline } from '../..';
+import type { DialogProps } from '../Dialog';
 
-export default function AnimationCallbacks() {
+export default function AnimationCallbacks(props: DialogProps) {
   return (
     <Dialog
+      {...props}
       content="Simple Content"
       onAfterClose={() => {
-        alert('Close')
+        alert('Close');
       }}
       onAfterOpen={() => {
-        alert('Open')
+        alert('Open');
       }}
     >
       <ButtonOutline>Open Dialog</ButtonOutline>
     </Dialog>
-  )
+  );
 }

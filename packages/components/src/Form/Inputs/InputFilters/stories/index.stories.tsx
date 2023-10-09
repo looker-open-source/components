@@ -3,21 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import {
-  defaultArgTypes as argTypes,
-  disableStoryshot,
-} from '@looker/storybook'
-import { InputFilters } from '../'
+import { defaultArgTypes as argTypes } from '@looker/storybook';
+import { InputFilters } from '../';
+import Basic from './Basic';
+import CustomFilter from './CustomFilter';
+import HideFilterIcon from './HideFilterIcon';
 
-import Basic from './Basic'
-import CustomFilter from './CustomFilter'
-import HideFilterIcon from './HideFilterIcon'
-
-disableStoryshot(Basic, CustomFilter, HideFilterIcon)
-
-export { Basic, CustomFilter, HideFilterIcon }
-export { default as FilterSelected } from './FilterSelected'
-
+export { Basic, CustomFilter, HideFilterIcon };
+export { default as FilterSelected } from './FilterSelected';
 export default {
   argTypes,
   component: InputFilters,
@@ -25,4 +18,4 @@ export default {
     docs: { source: { type: 'dynamic' } },
   },
   title: 'Stories/InputFilters',
-}
+};

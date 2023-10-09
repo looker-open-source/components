@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Select } from '..'
-import { Space } from '../../../../Layout'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Select } from '..';
+import { Space } from '../../../../Layout';
 
 export default function Icons() {
   return (
@@ -69,5 +69,5 @@ export default function Icons() {
         ]}
       />
     </Space>
-  )
+  );
 }

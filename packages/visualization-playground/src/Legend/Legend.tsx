@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import type { Dispatch, FormEvent, SetStateAction } from 'react'
-import React, { useState } from 'react'
+import type { Dispatch, ChangeEvent, SetStateAction } from 'react';
+import React, { useState } from 'react';
 import type {
   LegendPositions,
   CArea,
@@ -36,22 +36,22 @@ import type {
   CAll,
   CPieLegend,
   CartesianLegend,
-} from '@looker/visualizations-adapters'
-import { isNumeric } from '@looker/visualizations-adapters'
-import { FieldSelect, FieldText } from '@looker/components'
-import { LegendPie } from './LegendPie'
+} from '@looker/visualizations-adapters';
+import { isNumeric } from '@looker/visualizations-adapters';
+import { FieldSelect, FieldText } from '@looker/components';
+import { LegendPie } from './LegendPie';
 
 /**
  * A list of relevant charts that access the legend configuration
  */
-type SupportedChartConfig = CPie | CLine | CArea | CBar | CColumn | CScatter
+type SupportedChartConfig = CPie | CLine | CArea | CBar | CColumn | CScatter;
 
 export type LegendProps = {
-  config: SupportedChartConfig
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-}
+  config: SupportedChartConfig;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+};
 
-const legendPositions: LegendPositions[] = ['left', 'right', 'top', 'bottom']
+const legendPositions: LegendPositions[] = ['left', 'right', 'top', 'bottom'];
 const renderLegendFor: Array<SupportedChartConfig['type']> = [
   'area',
   'bar',
@@ -59,26 +59,26 @@ const renderLegendFor: Array<SupportedChartConfig['type']> = [
   'line',
   'pie',
   'scatter',
-]
+];
 
 export const Legend = (props: LegendProps) => {
-  const { config, onConfigChange } = props
-  const [width, setWidth] = useState<string | undefined>()
+  const { config, onConfigChange } = props;
+  const [width, setWidth] = useState<string | undefined>();
 
   if (!renderLegendFor.includes(config.type)) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const { legend } = config
-  const position = config.legend ? config.legend.position : 'none'
+  const { legend } = config;
+  const position = config.legend ? config.legend.position : 'none';
 
   const handlePositionChange = (draftPosition: string) => {
     if (draftPosition === 'none') {
       onConfigChange({
         ...config,
         legend: false,
-      })
+      });
     } else {
       onConfigChange({
         ...config,
@@ -86,21 +86,21 @@ export const Legend = (props: LegendProps) => {
           ...(legend as CPieLegend),
           position: draftPosition as LegendPositions,
         },
-      })
+      });
     }
-  }
+  };
 
-  const handleWidthChange = (e: FormEvent) => {
-    const value = (e.target as HTMLInputElement).value
+  const handleWidthChange = (e: ChangeEvent) => {
+    const value = (e.target as HTMLInputElement).value;
     onConfigChange({
       ...config,
       legend: {
         ...(legend as CartesianLegend),
         width: Number(isNumeric(value)) ? Number(value) : undefined,
       },
-    })
-    setWidth(value)
-  }
+    });
+    setWidth(value);
+  };
 
   return (
     <>
@@ -124,5 +124,5 @@ export const Legend = (props: LegendProps) => {
         />
       )}
     </>
-  )
-}
+  );
+};

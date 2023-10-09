@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldCheckbox } from '../../FieldCheckbox'
+import React from 'react';
+import { FieldCheckbox } from '../../FieldCheckbox';
 export default function Checked() {
   return (
     <FieldCheckbox
@@ -14,5 +14,5 @@ export default function Checked() {
       label="Example Field"
       name="thumbsUp"
     />
-  )
+  );
 }

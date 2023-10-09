@@ -4,5 +4,5 @@
  */
 
 export const convertRemToPx = (rem: number) => {
-  return rem * 16
-}
+  return rem * 16;
+};

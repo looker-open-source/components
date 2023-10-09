@@ -24,34 +24,34 @@
 
  */
 
-import type { Keyframes } from 'styled-components'
-import styled, { keyframes } from 'styled-components'
-import type { ResponsiveValue } from '@looker/design-tokens'
-import { variant, system } from '@looker/design-tokens'
-import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import type { DialogSizeRamp } from '../Dialog/dialogWidth'
-import { dialogSizes } from '../Dialog/dialogWidth'
-import type { AsideSizeRamp } from '../Layout/Semantics/Aside/asideWidth'
-import { asideSizes } from '../Layout/Semantics/Aside/asideWidth'
+import type { Keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import type { ResponsiveValue } from '@looker/design-tokens';
+import { variant, system } from '@looker/design-tokens';
+import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase';
+import type { DialogSizeRamp } from '../Dialog/dialogWidth';
+import { dialogSizes } from '../Dialog/dialogWidth';
+import type { AsideSizeRamp } from '../Layout/Semantics/Aside/asideWidth';
+import { asideSizes } from '../Layout/Semantics/Aside/asideWidth';
 
-export type DrawerPlacements = 'left' | 'right'
+export type DrawerPlacements = 'left' | 'right';
 export type DialogDrawerWidth = ResponsiveValue<
   DialogSizeRamp | AsideSizeRamp | string
->
+>;
 
 export interface DrawerSurfaceProps {
   /**
    * Specify the edge to attach the Drawer surface to - `left` or `right`
    * @default right
    */
-  placement?: DrawerPlacements
+  placement?: DrawerPlacements;
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width.
    * @default medium
    */
-  width?: DialogDrawerWidth
+  width?: DialogDrawerWidth;
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -67,22 +67,22 @@ const placement = variant({
       right: 0,
     },
   },
-})
+});
 /* eslint-enable sort-keys-fix/sort-keys-fix */
 
 const drawerWidth = () => {
   const drawerSizes = {
     ...asideSizes,
     ...dialogSizes,
-  }
+  };
   return system({
     width: {
       defaultScale: drawerSizes,
       property: 'width',
       scale: 'drawerSizes',
     },
-  })
-}
+  });
+};
 
 const slideIn: Keyframes = keyframes`
 from {
@@ -93,7 +93,7 @@ to {
   opacity: 1;
   transform: translate(0);
 }
-`
+`;
 const slideOut: Keyframes = keyframes`
   from {
     opacity: 1;
@@ -103,7 +103,7 @@ const slideOut: Keyframes = keyframes`
     opacity: 0.01;
     transform: translate(var(--direction-translate, 0), 0);
   }
-`
+`;
 
 export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
   ({ placement = 'right', width = 'small' }) => ({
@@ -127,4 +127,4 @@ export const DrawerSurface = styled(SurfaceBase).attrs<DrawerSurfaceProps>(
   &.exiting {
     animation: ${slideOut} ${surfaceTransition};
   }
-`
+`;

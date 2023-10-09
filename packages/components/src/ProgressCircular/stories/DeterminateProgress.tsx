@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { ProgressCircular } from '../ProgressCircular'
-import { Space, SpaceVertical } from '../../Layout'
-import { ButtonToggle } from '../../Button/ButtonToggle'
+import React, { useState } from 'react';
+import { ProgressCircular } from '../ProgressCircular';
+import { Space, SpaceVertical } from '../../Layout';
+import { ButtonToggle } from '../../Button/ButtonToggle';
 
 export default function Default() {
   const options = [
@@ -14,9 +14,9 @@ export default function Default() {
     { label: '50%', value: '0.5' },
     { label: '75%', value: '0.75' },
     { label: '100%', value: '1' },
-  ]
+  ];
 
-  const [progress, setProgress] = useState(options[2].value)
+  const [progress, setProgress] = useState(options[2].value);
 
   return (
     <SpaceVertical>
@@ -29,5 +29,5 @@ export default function Default() {
         />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

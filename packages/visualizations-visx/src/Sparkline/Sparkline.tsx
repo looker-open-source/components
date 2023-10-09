@@ -23,26 +23,26 @@
  SOFTWARE.
 
  */
-import React, { useState, useEffect } from 'react'
-import { useTheme } from 'styled-components'
-import { LinePath } from '@visx/shape'
-import { Point } from '@visx/point'
-import { useMeasuredElement } from '@looker/components'
-import type { SparklineProps } from '@looker/visualizations-adapters'
+import React, { useState, useEffect } from 'react';
+import { useTheme } from 'styled-components';
+import { LinePath } from '@visx/shape';
+import { Point } from '@visx/point';
+import { useMeasuredElement } from '@looker/components';
+import type { SparklineProps } from '@looker/visualizations-adapters';
 import {
   VisWrapper,
   isNumeric,
   DEFAULT_HEIGHT,
-} from '@looker/visualizations-adapters'
-import { getSeriesColor } from '../utils'
+} from '@looker/visualizations-adapters';
+import { getSeriesColor } from '../utils';
 
-type DataPoint = number | null
+type DataPoint = number | null;
 
 type SparklineRenderParams = {
-  dataSet: DataPoint[]
-  dataMin: number
-  dataMax: number
-}
+  dataSet: DataPoint[];
+  dataMin: number;
+  dataMax: number;
+};
 
 // When encountering a null value, the Sparkline will render a blank space.
 // This means that it is actually rendering two separate lines in the SVG,
@@ -52,21 +52,21 @@ const chunkByNull = (data: DataPoint[]) =>
     (chunks, d) => {
       if (d === null) {
         // We encountered a null value. Add a new empty data set.
-        chunks.push([])
+        chunks.push([]);
       } else {
         // Add value to the last data set
-        chunks[chunks.length - 1].push(d)
+        chunks[chunks.length - 1].push(d);
       }
-      return chunks
+      return chunks;
     },
     [[]]
-  )
+  );
 
 interface PointConfig {
-  data: DataPoint[]
-  chartDimensions: { width: number; height: number }
-  yRange: [number, number]
-  lineWidth: number
+  data: DataPoint[];
+  chartDimensions: { width: number; height: number };
+  yRange: [number, number];
+  lineWidth: number;
 }
 
 // Calculate line path points based on data and chart dimensions.
@@ -79,18 +79,18 @@ const generatePoints = ({
   // by default, sparkline should show a gap where the value equals null
   // this is accomplished by rendering multiple LinePaths, with one set ending
   // at the null value and beginning a new shape after
-  const dataChunks = chunkByNull(data)
-  const [yMin, yMax] = yRange
+  const dataChunks = chunkByNull(data);
+  const [yMin, yMax] = yRange;
 
-  const chartPadding = lineWidth / 2 // pad the svg area so that thick strokes don't get cropped
-  const chartWidth = chartDimensions.width - chartPadding * 2
-  const chartHeight = chartDimensions.height - chartPadding * 2
-  const pointSpacing = chartWidth / Math.max(data.length - 1, 1)
-  const valueRange = yMax - yMin
+  const chartPadding = lineWidth / 2; // pad the svg area so that thick strokes don't get cropped
+  const chartWidth = chartDimensions.width - chartPadding * 2;
+  const chartHeight = chartDimensions.height - chartPadding * 2;
+  const pointSpacing = chartWidth / Math.max(data.length - 1, 1);
+  const valueRange = yMax - yMin;
 
   return dataChunks.map((chunk, chunkId) => {
-    const prevChunks = dataChunks.slice(0, chunkId)
-    const countFrom = prevChunks.flatMap(c => c).length
+    const prevChunks = dataChunks.slice(0, chunkId);
+    const countFrom = prevChunks.flatMap(c => c).length;
     return chunk.map((d, i) => {
       return new Point({
         x: (i + countFrom + chunkId) * pointSpacing + chartPadding,
@@ -98,10 +98,10 @@ const generatePoints = ({
           chartHeight -
           ((Number(d) - yMin) / valueRange) * chartHeight +
           chartPadding,
-      })
-    })
-  })
-}
+      });
+    });
+  });
+};
 
 export const Sparkline = ({
   data = [],
@@ -110,40 +110,40 @@ export const Sparkline = ({
   height = DEFAULT_HEIGHT,
   width,
 }: SparklineProps) => {
-  const { series = {} } = config || {}
+  const { series = {} } = config || {};
 
   // only allow one measure for sparklines
-  const firstMeasure = fields.measures[0]
+  const firstMeasure = fields.measures[0];
   const firstSeries = Array.isArray(series)
     ? series[0]
-    : series[firstMeasure.name || '']
+    : series[firstMeasure.name || ''];
 
-  const themeContext = useTheme()
+  const themeContext = useTheme();
 
   // get VisWrapper dimensions to support 100% width sparklines
-  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null)
-  const [wrapperRect, refreshRect] = useMeasuredElement(wrapperRef)
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null);
+  const [wrapperRect, refreshRect] = useMeasuredElement(wrapperRef);
 
   useEffect(() => {
-    refreshRect()
-  }, [wrapperRef, refreshRect])
+    refreshRect();
+  }, [wrapperRef, refreshRect]);
 
-  const { line_width: lineWidth = 3 } = firstSeries || {}
+  const { line_width: lineWidth = 3 } = firstSeries || {};
 
   const { dataSet, dataMin, dataMax } =
     data?.reduce<SparklineRenderParams>(
       ({ dataSet, dataMin, dataMax }, d) => {
-        const val = d[firstMeasure.name]
+        const val = d[firstMeasure.name];
         return {
           dataSet: [...dataSet, val],
           dataMin: isNumeric(val) ? Math.min(dataMin, Number(val)) : dataMin,
           dataMax: isNumeric(val) ? Math.max(dataMax, Number(val)) : dataMax,
-        }
+        };
       },
       { dataSet: [], dataMin: Infinity, dataMax: -Infinity }
-    ) ?? {}
+    ) ?? {};
 
-  const [configMin, configMax] = config?.y_axis?.[0]?.range || []
+  const [configMin, configMax] = config?.y_axis?.[0]?.range || [];
 
   const chartPoints = generatePoints({
     chartDimensions: { width: width || wrapperRect.width, height },
@@ -153,10 +153,10 @@ export const Sparkline = ({
       isNumeric(configMin as string) ? (configMin as number) : dataMin,
       isNumeric(configMax as string) ? (configMax as number) : dataMax,
     ],
-  })
+  });
 
   if (!data || data.length === 0) {
-    return null
+    return null;
   }
 
   return (
@@ -173,9 +173,9 @@ export const Sparkline = ({
                 x={(d: Point) => d.x || 0}
                 y={(d: Point) => d.y || 0}
               />
-            )
+            );
           })}
       </svg>
     </VisWrapper>
-  )
-}
+  );
+};

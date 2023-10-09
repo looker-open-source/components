@@ -31,10 +31,10 @@ import {
   getComboboxOptionText,
   openCombobox,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
-import { Combobox, ComboboxInput, ComboboxList, ComboboxOption } from './'
+} from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
+import { Combobox, ComboboxInput, ComboboxList, ComboboxOption } from './';
 
 describe('Combobox helpers', () => {
   const renderCombobox = () =>
@@ -46,60 +46,60 @@ describe('Combobox helpers', () => {
           <ComboboxOption label="Bar" value="102" />
         </ComboboxList>
       </Combobox>
-    )
+    );
 
   test('openCombobox opens the combobox using the provided placeholder text', () => {
-    renderCombobox()
-    openCombobox('Type here')
+    renderCombobox();
+    openCombobox('Type here');
 
-    expect(screen.getByText('Foo')).toBeVisible()
+    expect(screen.getByText('Foo')).toBeVisible();
 
-    closeCombobox()
-  })
+    closeCombobox();
+  });
 
   test('closeCombobox closes any open comboboxes', () => {
-    renderCombobox()
-    openCombobox('Type here')
+    renderCombobox();
+    openCombobox('Type here');
 
-    expect(screen.getByText('Foo')).toBeVisible()
+    expect(screen.getByText('Foo')).toBeVisible();
 
-    closeCombobox()
+    closeCombobox();
 
-    expect(screen.queryByText('Foo')).not.toBeInTheDocument()
-  })
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument();
+  });
 
   test('getComboboxOptions returns the expected number of options for an open Combobox', () => {
-    renderCombobox()
-    openCombobox('Type here')
+    renderCombobox();
+    openCombobox('Type here');
 
-    expect(getComboboxOptions()).toHaveLength(2)
+    expect(getComboboxOptions()).toHaveLength(2);
 
-    closeCombobox()
-  })
+    closeCombobox();
+  });
 
   test('getComboboxOptionText returns the expected text content of the provided option element', () => {
-    renderCombobox()
-    openCombobox('Type here')
+    renderCombobox();
+    openCombobox('Type here');
 
-    const options = getComboboxOptions()
-    expect(getComboboxOptionText(options[0])).toEqual('Foo')
-    expect(getComboboxOptionText(options[1])).toEqual('Bar')
+    const options = getComboboxOptions();
+    expect(getComboboxOptionText(options[0])).toEqual('Foo');
+    expect(getComboboxOptionText(options[1])).toEqual('Bar');
 
-    closeCombobox()
-  })
+    closeCombobox();
+  });
 
   test('getAllComboboxOptionText returns the expected text content of the provided option element', () => {
-    renderCombobox()
-    openCombobox('Type here')
+    renderCombobox();
+    openCombobox('Type here');
 
-    const optionTexts = getAllComboboxOptionText()
+    const optionTexts = getAllComboboxOptionText();
     expect(optionTexts).toMatchInlineSnapshot(`
       Array [
         "Foo",
         "Bar",
       ]
-    `)
+    `);
 
-    closeCombobox()
-  })
-})
+    closeCombobox();
+  });
+});

@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Menu, MenuItem, Button, Tooltip } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Menu, MenuItem, Button, Tooltip } from '../..';
 
 export default function WithTooltip() {
   return (
@@ -20,5 +20,5 @@ export default function WithTooltip() {
         <Button>Cheese</Button>
       </Tooltip>
     </Menu>
-  )
+  );
 }

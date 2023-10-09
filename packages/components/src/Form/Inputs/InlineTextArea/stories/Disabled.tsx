@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InlineTextArea } from '../'
+import React from 'react';
+import { InlineTextArea } from '../';
 
 export default function Disabled() {
   return (
@@ -12,5 +12,5 @@ export default function Disabled() {
       disabled
       value="This text can't be edited because the component is disabled..."
     />
-  )
+  );
 }

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { RuleTester } = require('eslint')
-const rule = require('.').rules['no-private-dependencies']
+const { RuleTester } = require('eslint');
+const rule = require('.').rules['no-private-dependencies'];
 
 jest.mock('@manypkg/get-packages', () => ({
   getPackagesSync: jest.fn(() => ({
@@ -13,9 +13,9 @@ jest.mock('@manypkg/get-packages', () => ({
       { packageJson: { name: 'b', private: true } },
     ],
   })),
-}))
+}));
 
-const filename = '@looker/components/package.json'
+const filename = '@looker/components/package.json';
 
 new RuleTester({
   parser: require.resolve('jsonc-eslint-parser'),
@@ -40,4 +40,4 @@ new RuleTester({
       options: [{ exclude: ['b'] }],
     },
   ],
-})
+});

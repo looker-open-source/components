@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Confirm } from '../../../Dialog'
-import { Button } from '../../../Button'
-import { Space, SpaceVertical } from '../../../Layout'
-import { Paragraph } from '../../../Text/Paragraph'
-import { Icon } from '../../../Icon'
-import { Link } from '../../../Link'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Confirm } from '../../../Dialog';
+import { Button } from '../../../Button';
+import { Space, SpaceVertical } from '../../../Layout';
+import { Paragraph } from '../../../Text/Paragraph';
+import { Icon } from '../../../Icon';
+import { Link } from '../../../Link';
 
 export default function Critical() {
   const message = (
@@ -33,19 +33,19 @@ export default function Critical() {
         </cite>
       </SpaceVertical>
     </Space>
-  )
+  );
 
   return (
     <Confirm
       title="Did you know?"
       message={message}
       onConfirm={close => {
-        alert('Now you know.')
-        close()
+        alert('Now you know.');
+        close();
       }}
       width={['10rem', '20rem', '30rem', '40rem']}
     >
       {open => <Button onClick={open}>Do something fancy</Button>}
     </Confirm>
-  )
+  );
 }

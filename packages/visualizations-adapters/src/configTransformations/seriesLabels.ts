@@ -24,14 +24,14 @@
 
  */
 
-import pick from 'lodash/pick'
-import merge from 'lodash/merge'
-import set from 'lodash/set'
+import pick from 'lodash/pick';
+import merge from 'lodash/merge';
+import set from 'lodash/set';
 import type {
   ConfigHelper,
   CommonCartesianProperties,
   CSeriesBasic,
-} from '../types'
+} from '../types';
 
 /**
  * Populate series[name].label from series_labels response.
@@ -49,13 +49,13 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
     show_single_value_title = true,
     single_value_title = '',
     ...restConfig
-  } = config
+  } = config;
 
-  const singleValueTitle = show_single_value_title ? single_value_title : ''
+  const singleValueTitle = show_single_value_title ? single_value_title : '';
   const buildNamedSeries = (s: { [k: string]: CSeriesBasic }) => {
     const namedSeries = fields.measures.reduce((seriesConfig, measure) => {
-      const { name } = measure
-      const currentFieldSettings = pick(s, name)
+      const { name } = measure;
+      const currentFieldSettings = pick(s, name);
       const defaultSeriesLabel = {
         // Down the chain, we'll use label_short from the field's metadata if [series].label is falsy
         [name]: {
@@ -65,27 +65,27 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
             measure.label_short ||
             singleValueTitle,
         },
-      }
+      };
 
-      return merge(seriesConfig, defaultSeriesLabel, currentFieldSettings)
-    }, {} as { [key: string]: CSeriesBasic })
+      return merge(seriesConfig, defaultSeriesLabel, currentFieldSettings);
+    }, {} as { [key: string]: CSeriesBasic });
 
-    return namedSeries
-  }
+    return namedSeries;
+  };
 
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
-    const arraySeries = [...s]
+    const arraySeries = [...s];
     for (let i = 0; i < fields.measures.length; i++) {
-      const measure = fields.measures[i]
-      const seriesLabelValues = Object.values(series_labels)
+      const measure = fields.measures[i];
+      const seriesLabelValues = Object.values(series_labels);
       const {
         label = seriesLabelValues[i] || measure.label || measure.label_short,
-      } = arraySeries[i] || {}
-      set(arraySeries, [i, 'label'], label)
+      } = arraySeries[i] || {};
+      set(arraySeries, [i, 'label'], label);
     }
 
-    return arraySeries
-  }
+    return arraySeries;
+  };
 
   return {
     config: {
@@ -96,5 +96,5 @@ export const seriesLabels: ConfigHelper<CommonCartesianProperties> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

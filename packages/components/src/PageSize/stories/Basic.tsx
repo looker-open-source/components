@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { PageSize } from '..'
+import React from 'react';
+import { PageSize } from '..';
 
 export default function Basic() {
   return (
@@ -13,5 +13,5 @@ export default function Basic() {
       value={100}
       onChange={(value: number) => alert(`You chose ${value} per page`)}
     />
-  )
+  );
 }

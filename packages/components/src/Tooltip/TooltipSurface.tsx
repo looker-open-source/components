@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
-import type { OverlaySurfaceProps } from '../Overlay/OverlaySurface'
+import styled, { css } from 'styled-components';
+import type { OverlaySurfaceProps } from '../Overlay/OverlaySurface';
 import {
   OverlaySurface,
   OverlaySurfaceContentArea,
-} from '../Overlay/OverlaySurface'
-import { Link } from '../Link'
+} from '../Overlay/OverlaySurface';
+import { Link } from '../Link';
 
 interface TooltipSurfaceProps extends OverlaySurfaceProps {
   /**
    * Invert the Tooltip surface colors
    * @default true
    */
-  invert?: boolean
+  invert?: boolean;
 }
 
 export const invertSurface = (props: TooltipSurfaceProps) =>
@@ -39,7 +39,7 @@ export const invertSurface = (props: TooltipSurfaceProps) =>
         color: ${({ theme }) => theme.colors.keySubtle};
       }
     }
-  `
+  `;
 
 export const TooltipSurface = styled(OverlaySurface)<TooltipSurfaceProps>`
   ${invertSurface}
@@ -53,4 +53,4 @@ export const TooltipSurface = styled(OverlaySurface)<TooltipSurfaceProps>`
     when still opacity: 0 (during the delay) */
     pointer-events: none;
   }
-`
+`;

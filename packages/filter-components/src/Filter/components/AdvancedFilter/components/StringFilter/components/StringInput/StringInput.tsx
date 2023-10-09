@@ -23,34 +23,34 @@
  SOFTWARE.
 
  */
-import type { ValidationMessageProps } from '@looker/components'
-import { InputText, InputSearch } from '@looker/components'
-import type { FilterModel } from '@looker/filter-expressions'
-import isArray from 'lodash/isArray'
-import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import type { Option } from '../../../../../../types/option'
-import type { PlacementProps } from '../../../../../../utils/filter_styles'
+import type { ValidationMessageProps } from '@looker/components';
+import { InputText, InputSearch } from '@looker/components';
+import type { FilterModel } from '@looker/filter-expressions';
+import isArray from 'lodash/isArray';
+import React, { useMemo } from 'react';
+import styled from 'styled-components';
+import type { Option } from '../../../../../../types/option';
+import type { PlacementProps } from '../../../../../../utils/filter_styles';
 import {
   inputPlacementStyle,
   multiInputWidth,
-} from '../../../../../../utils/filter_styles'
-import { createOptions } from '../../../../../../utils/option_utils'
-import { useOptionFiltering } from '../../../../../../utils/use_option_filtering'
-import { usePlaceholder } from '../../../../../../utils/use_placeholder'
+} from '../../../../../../utils/filter_styles';
+import { createOptions } from '../../../../../../utils/option_utils';
+import { useOptionFiltering } from '../../../../../../utils/use_option_filtering';
+import { usePlaceholder } from '../../../../../../utils/use_placeholder';
 
 interface StringInputProps extends PlacementProps {
-  className?: string
-  onChange?: (id?: string, props?: any) => void
-  onInputChange?: (value: string) => void
-  isLoading?: boolean
-  item: FilterModel
-  suggestions?: string[]
-  enumerations?: Option[]
-  validationMessage?: ValidationMessageProps
-  id?: string
-  width?: string | number
-  height?: string | number
+  className?: string;
+  onChange?: (id?: string, props?: any) => void;
+  onInputChange?: (value: string) => void;
+  isLoading?: boolean;
+  item: FilterModel;
+  suggestions?: string[];
+  enumerations?: Option[];
+  validationMessage?: ValidationMessageProps;
+  id?: string;
+  width?: string | number;
+  height?: string | number;
 }
 
 export const StringInputLayout = ({
@@ -68,30 +68,30 @@ export const StringInputLayout = ({
 }: StringInputProps) => {
   // if suggestions exist, create Option[]
   const options = useMemo(() => {
-    return suggestions ? createOptions(suggestions) : enumerations || []
-  }, [suggestions, enumerations])
+    return suggestions ? createOptions(suggestions) : enumerations || [];
+  }, [suggestions, enumerations]);
 
   const { filteredOptions, noOptionsLabel, onFilter } = useOptionFiltering({
-    excludeValues: true,
+    excludeValues: false,
     onInputChange,
     options,
     value: item.value,
-  })
+  });
 
   const handleChange = (newValue?: string) => {
-    onFilter(newValue || '')
-    onChange?.(item.id, { value: [newValue] })
-  }
+    onFilter(newValue || '');
+    onChange?.(item.id, { value: [newValue] });
+  };
 
-  const comboboxInputRef = React.useRef<HTMLInputElement>(null)
+  const comboboxInputRef = React.useRef<HTMLInputElement>(null);
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      event.preventDefault()
-      comboboxInputRef?.current?.click()
+      event.preventDefault();
+      comboboxInputRef?.current?.click();
     }
-  }
+  };
 
-  const placeholderProps = usePlaceholder(item.value, validationMessage)
+  const placeholderProps = usePlaceholder(item.value, validationMessage);
 
   const commonProps = {
     ...placeholderProps,
@@ -103,9 +103,9 @@ export const StringInputLayout = ({
     noErrorIcon: true,
     validationType: validationMessage?.type,
     width,
-  }
+  };
   const value =
-    isArray(item.value) && item.value.length ? item.value[0] : item.value
+    isArray(item.value) && item.value.length ? item.value[0] : item.value;
 
   return (
     <InputSearch
@@ -121,12 +121,12 @@ export const StringInputLayout = ({
       hideSearchIcon={true}
       openOnClick={true}
     />
-  )
-}
+  );
+};
 
 export const StringInput = styled(StringInputLayout)`
   ${inputPlacementStyle}
   ${InputText} {
     ${inputPlacementStyle}
   }
-`
+`;

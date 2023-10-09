@@ -2,15 +2,15 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import any from 'lodash/fp/any'
-import flow from 'lodash/fp/flow'
-import type { FilterModel } from '../types'
-import { treeToList } from './tree'
+import any from 'lodash/fp/any';
+import flow from 'lodash/fp/flow';
+import type { FilterModel } from '../types';
+import { treeToList } from './tree';
 
 const isMatchesAdvancedItem =
   (subTypes: readonly string[]) =>
   ({ type }: FilterModel) =>
-    type === 'matchesAdvanced' || subTypes.indexOf(type) === -1
+    type === 'matchesAdvanced' || subTypes.indexOf(type) === -1;
 
 /**
  * checks if the ast has:
@@ -18,4 +18,4 @@ const isMatchesAdvancedItem =
  * - any node of type 'matchesAdvanced'
  */
 export const hasMatchesAdvancedNode = (subTypes: readonly string[]) =>
-  flow([treeToList, any(isMatchesAdvancedItem(subTypes))])
+  flow([treeToList, any(isMatchesAdvancedItem(subTypes))]);

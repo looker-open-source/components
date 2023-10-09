@@ -3,18 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Colors, Theme } from '@looker/design-tokens'
-import { itemSelectedColor } from '@looker/design-tokens'
-import { css } from 'styled-components'
-import type { ListItemColorProp, ListItemStatefulProps } from '../types'
+import type { Colors, Theme } from '@looker/design-tokens';
+import { itemSelectedColor } from '@looker/design-tokens';
+import { css } from 'styled-components';
+import type { ListItemColorProp, ListItemStatefulProps } from '../types';
+import { isListColor } from './isListColor';
 
 export type ListItemBackgroundColorProps = ListItemStatefulProps &
   ListItemColorProp & {
     /**
      * Indicates ripple is enabled and hover should not be used
      */
-    ripple?: boolean
-  }
+    ripple?: boolean;
+  };
 
 /**
  * @TODO Remove hovered prop and hovered logic when ripple effect
@@ -24,13 +25,14 @@ export type ListItemBackgroundColorProps = ListItemStatefulProps &
  */
 export const listItemBackgroundColor = ({
   color,
+  colorOnHover,
   disabled,
   hovered: propsHovered,
   ripple,
   selected,
   theme: { colors },
 }: ListItemBackgroundColorProps & { theme: Theme }) => {
-  const stateColors = color
+  const stateColors = isListColor(color)
     ? {
         all: colors[`${color}Subtle` as keyof Colors],
         hovered: colors.ui1,
@@ -40,18 +42,18 @@ export const listItemBackgroundColor = ({
         all: itemSelectedColor(colors.ui2),
         hovered: colors.ui1,
         selected: itemSelectedColor(colors.ui2),
-      }
+      };
 
-  let renderedColor
-  const hovered = !ripple && propsHovered
+  let renderedColor;
+  const hovered = !ripple && propsHovered;
 
-  if (disabled) renderedColor = 'transparent'
-  else if (selected && hovered) renderedColor = stateColors.all
-  else if (selected) renderedColor = stateColors.selected
-  else if (hovered) renderedColor = stateColors.hovered
-  else renderedColor = 'transparent'
+  if (disabled) renderedColor = 'transparent';
+  else if (selected && hovered) renderedColor = stateColors.all;
+  else if (selected) renderedColor = stateColors.selected;
+  else if (hovered) renderedColor = stateColors.hovered;
+  else renderedColor = 'transparent';
 
   return css`
-    background: ${renderedColor};
-  `
-}
+    background-color: ${renderedColor};
+  `;
+};

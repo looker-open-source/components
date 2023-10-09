@@ -2,15 +2,15 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import styled from 'styled-components'
-import React from 'react'
-import { colorBreakdown, theme } from '@looker/design-tokens'
-import { Code, Grid } from '../../../src'
+import styled from 'styled-components';
+import React from 'react';
+import { colorBreakdown, theme } from '@looker/design-tokens';
+import { Code, Grid } from '../../../src';
 
 type ColorSwatchProps = {
-  name: string
-  color: string
-}
+  name: string;
+  color: string;
+};
 
 const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
   <Code fontSize="xsmall" {...props}>
@@ -27,11 +27,11 @@ const ColorSwatch = styled(({ name, color, ...props }: ColorSwatchProps) => (
     margin-bottom: ${({ theme }) => theme.space.u2};
     width: 100%;
   }
-`
+`;
 
 const ColorListGrid = styled(Grid)`
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-`
+`;
 
 type ColorListProps = {
   colorKey:
@@ -41,17 +41,17 @@ type ColorListProps = {
     | 'specializedText'
     | 'stateful'
     | 'text'
-    | 'ui'
-}
+    | 'ui';
+};
 
 export const ColorList = ({ colorKey }: ColorListProps) => {
-  const breakdown = colorBreakdown(theme.colors)
-  const colors = breakdown.divided[colorKey] || {}
+  const breakdown = colorBreakdown(theme.colors);
+  const colors = breakdown.divided[colorKey] || {};
   return (
     <ColorListGrid gap="u5" maxWidth={600} pt="medium" pb="xxlarge">
       {Object.entries(colors).map(([title, color], key) => (
         <ColorSwatch name={title} color={color} key={key} />
       ))}
     </ColorListGrid>
-  )
-}
+  );
+};

@@ -7,27 +7,27 @@ interface ProgressConstants {
   /**
    * Amount of the circle the arc takes up
    */
-  arcSize: number
+  arcSize: number;
   /**
    * How much the start location of the arc should rotate each time
    */
-  arcStartRotationInterval: number
+  arcStartRotationInterval: number;
   /**
    * Amount of time it takes to expand and contract arc
    */
-  arcTime: number
+  arcTime: number;
   /**
    * Rotation position of the arcs that correspond to their fully contracted state
    */
-  baseAngle: number
+  baseAngle: number;
   /**
    * Amount of time for indicator to disappear
    */
-  shrinkTime: number
+  shrinkTime: number;
   /**
    * Animation timing for CircularProgress
    */
-  timingFunction: string
+  timingFunction: string;
 }
 
 export const progressCircularConstants: ProgressConstants = {
@@ -37,4 +37,4 @@ export const progressCircularConstants: ProgressConstants = {
   baseAngle: 135,
   shrinkTime: 4,
   timingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-}
+};

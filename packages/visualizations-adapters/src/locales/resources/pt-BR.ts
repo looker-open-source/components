@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ptBR as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ptBR as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
     Config: 'Configuração',
     Dimensions: 'Dimensões',
     Error: 'Erro',
-    Measures: 'Medidas',
+    Measures: 'Medições',
     Result: 'Resultado',
     error: 'erro',
     ok: 'ok',
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Algo deu errado',
   },
-  translation: {
-    'Row Total': 'Total da linha',
+  KeyValueList: {
     false: 'falso',
     null: 'nulo',
     true: 'verdadeiro',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Total da linha',
   },
-}
+};
 
-export const ptBR = mergeLocaleObjects([componentsLocale], 'pt-BR', resources)
+export const ptBR = mergeLocaleObjects([componentsLocale], 'pt-BR', resources);

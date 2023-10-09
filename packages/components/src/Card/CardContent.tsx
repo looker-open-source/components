@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
+import styled from 'styled-components';
+import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens';
 import {
   flexbox,
   paddingDefaultsHelper,
   shouldForwardProp,
-} from '@looker/design-tokens'
-import type { CommonLayoutProps } from '../Layout/utils/common'
-import { commonLayoutCSS } from '../Layout/utils/common'
+} from '@looker/design-tokens';
+import type { CommonLayoutProps } from '../Layout/utils/common';
+import { commonLayoutCSS } from '../Layout/utils/common';
 
 export interface CardContentProps
   extends CommonLayoutProps,
@@ -25,4 +25,4 @@ export const CardContent = styled.div
   }))<CardContentProps>`
   ${commonLayoutCSS}
   ${flexbox}
-`
+`;

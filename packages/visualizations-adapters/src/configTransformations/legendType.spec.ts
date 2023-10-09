@@ -24,8 +24,8 @@
 
  */
 
-import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import { legendType } from './legendType'
+import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import { legendType } from './legendType';
 
 describe('legendType', () => {
   describe('config.value_labels ===', () => {
@@ -34,69 +34,69 @@ describe('legendType', () => {
         ...mockPieConfig,
         value_labels: 'labels' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendType({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.type).toEqual('labels')
+        expect(transformedConfig.legend.type).toEqual('labels');
       }
-    })
+    });
 
     test('legend', () => {
       const config = {
         ...mockPieConfig,
         value_labels: 'legend' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendType({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.type).toEqual('legend')
+        expect(transformedConfig.legend.type).toEqual('legend');
       }
-    })
-  })
+    });
+  });
 
   describe('config.legend.type ===', () => {
     test('labels', () => {
-      const config = { ...mockPieConfig, legend: { type: 'labels' as const } }
+      const config = { ...mockPieConfig, legend: { type: 'labels' as const } };
       const { config: transformedConfig } = legendType({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.type).toEqual('labels')
+        expect(transformedConfig.legend.type).toEqual('labels');
       }
-    })
+    });
 
     test('legend', () => {
-      const config = { ...mockPieConfig, legend: { type: 'legend' as const } }
+      const config = { ...mockPieConfig, legend: { type: 'legend' as const } };
       const { config: transformedConfig } = legendType({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.type).toEqual('legend')
+        expect(transformedConfig.legend.type).toEqual('legend');
       }
-    })
-  })
+    });
+  });
 
   test('config.legend === false', () => {
-    const config = { ...mockPieConfig, legend: false }
+    const config = { ...mockPieConfig, legend: false };
     const { config: transformedConfig } = legendType({
       config,
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
-    expect(transformedConfig.legend).toEqual(false)
-  })
+    });
+    expect(transformedConfig.legend).toEqual(false);
+  });
 
   test('default value', () => {
     expect(
@@ -105,6 +105,6 @@ describe('legendType', () => {
         data: mockSdkDataResponse,
         fields: mockFields,
       }).config.legend
-    ).toEqual({ type: 'legend' })
-  })
-})
+    ).toEqual({ type: 'legend' });
+  });
+});

@@ -7,16 +7,16 @@ import type {
   SDKRecord,
   Fields,
   PivotMetadata,
-} from '@looker/visualizations-adapters'
-import type { ColumnDef } from '@tanstack/table-core'
-import { createColumnHelper } from '@tanstack/react-table'
+} from '@looker/visualizations-adapters';
+import type { ColumnDef } from '@tanstack/table-core';
+import { createColumnHelper } from '@tanstack/react-table';
 
 type NestPivotedFieldsProps = {
-  pivotList: Fields['pivots']
-  pivotIndex: number
-  nestedPivots: ColumnDef<SDKRecord> | ColumnDef<SDKRecord>[]
-  pivotValues?: PivotMetadata
-}
+  pivotList: Fields['pivots'];
+  pivotIndex: number;
+  nestedPivots: ColumnDef<SDKRecord> | ColumnDef<SDKRecord>[];
+  pivotValues?: PivotMetadata;
+};
 
 /**
  * Recursively nests a list of columns inside columnHelper.group,
@@ -34,9 +34,9 @@ export const nestPivotedFields = ({
   nestedPivots,
   pivotValues,
 }: NestPivotedFieldsProps): ColumnDef<SDKRecord> => {
-  const columnHelper = createColumnHelper<SDKRecord>()
+  const columnHelper = createColumnHelper<SDKRecord>();
 
-  const pivot = pivotList[pivotIndex]
+  const pivot = pivotList[pivotIndex];
   if (pivot) {
     const { id, header } = pivotValues
       ? {
@@ -44,7 +44,7 @@ export const nestPivotedFields = ({
           // `replace` call use to strip HTML markup that came from the sdk response
           header: pivotValues?.labels[pivot.name]?.replace(/(<([^>]+)>)/gi, ''),
         }
-      : { id: pivot.name, header: pivot.label }
+      : { id: pivot.name, header: pivot.label };
 
     return nestPivotedFields({
       pivotList,
@@ -57,7 +57,7 @@ export const nestPivotedFields = ({
         ],
       }),
       pivotValues,
-    })
+    });
   }
 
   // Handles the edge case where an array of measure columns is passed
@@ -67,8 +67,8 @@ export const nestPivotedFields = ({
     return columnHelper.group({
       id: `pivot-field-${pivotIndex}`,
       columns: nestedPivots,
-    })
+    });
   }
 
-  return nestedPivots
-}
+  return nestedPivots;
+};

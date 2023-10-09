@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ThemeCustomizations } from './ThemeCustomizations'
+import type { ThemeCustomizations } from './ThemeCustomizations';
 
 describe('ThemeCustomizations', () => {
   test('Allows partial defaults', () => {
@@ -11,8 +11,8 @@ describe('ThemeCustomizations', () => {
       defaults: {
         brandAnimation: true,
       },
-    }
+    };
 
-    expect(customizations.defaults?.brandAnimation).toBeTruthy()
-  })
-})
+    expect(customizations.defaults?.brandAnimation).toBeTruthy();
+  });
+});

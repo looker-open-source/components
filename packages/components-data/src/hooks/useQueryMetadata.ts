@@ -24,15 +24,15 @@
 
  */
 
-import { useEffect, useMemo } from 'react'
-import type { IQuery, IError } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import useSWR from 'swr'
-import { getErrorResponse, isSuccessResponse } from '../utils'
-import { useSDK } from './useSDK'
-import { DataState } from './useDataState'
+import { useEffect, useMemo } from 'react';
+import type { IQuery, IError } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
+import useSWR from 'swr';
+import { getErrorResponse, isSuccessResponse } from '../utils';
+import { useSDK } from './useSDK';
+import { DataState } from './useDataState';
 
 /**
  * A shared hook for fetching query metadata, including config (untransformed and
@@ -45,8 +45,8 @@ import { DataState } from './useDataState'
  */
 
 export const useQueryMetadata = (id: number) => {
-  const sdk = useSDK()
-  const { getById, setById } = DataState.useContainer()
+  const sdk = useSDK();
+  const { getById, setById } = DataState.useContainer();
 
   /*
    * Check for stored values
@@ -56,7 +56,7 @@ export const useQueryMetadata = (id: number) => {
   const metadata = useMemo(
     () => getById(id, 'metadata') || ({} as IQuery),
     [id, getById]
-  )
+  );
 
   /*
    * Dispatch network request
@@ -68,11 +68,11 @@ export const useQueryMetadata = (id: number) => {
       id > 0 &&
       (isEmpty(metadata.vis_config) || !metadata.model || !metadata.view)
     ) {
-      return await sdk.query(String(id))
+      return await sdk.query(String(id));
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IQuery,
@@ -81,7 +81,7 @@ export const useQueryMetadata = (id: number) => {
     `useQueryMetadata-${id}`, // caution: argument string must be unique to this instance
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   /*
    * Publish SWR response to central data store
@@ -89,13 +89,15 @@ export const useQueryMetadata = (id: number) => {
    */
 
   useEffect(() => {
-    const SWRValue = isSuccessResponse(SWRData) ? SWRData.value : ({} as IQuery)
+    const SWRValue = isSuccessResponse(SWRData)
+      ? SWRData.value
+      : ({} as IQuery);
 
     const {
       vis_config: draftConfig,
       model: draftModel,
       view: draftView,
-    } = SWRValue
+    } = SWRValue;
 
     if (
       id &&
@@ -103,16 +105,16 @@ export const useQueryMetadata = (id: number) => {
         (draftModel && draftModel !== metadata.model) ||
         (draftView && draftView !== metadata.view))
     ) {
-      const draftQuery = { ...metadata, ...SWRValue }
+      const draftQuery = { ...metadata, ...SWRValue };
 
-      setById(id, { metadata: draftQuery })
+      setById(id, { metadata: draftQuery });
     }
-  }, [id, SWRData, metadata, setById])
+  }, [id, SWRData, metadata, setById]);
 
   return {
     isOK: !!metadata,
     isPending: isValidating,
     metadata,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

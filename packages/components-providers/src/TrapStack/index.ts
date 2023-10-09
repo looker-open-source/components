@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './TrapStackProvider'
-export * from './types'
-export * from './utils'
+export * from './TrapStackProvider';
+export * from './types';
+export * from './utils';

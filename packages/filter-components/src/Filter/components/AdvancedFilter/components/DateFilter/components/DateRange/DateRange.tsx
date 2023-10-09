@@ -23,24 +23,24 @@
  SOFTWARE.
 
  */
-import { Flex } from '@looker/components'
-import type { FilterModel } from '@looker/filter-expressions'
+import { Flex } from '@looker/components';
+import type { FilterModel } from '@looker/filter-expressions';
 import {
   addDays,
   dateToFilterDateTimeModel,
   filterDateTimeModelToDate,
-} from '@looker/filter-expressions'
-import React from 'react'
-import type { PlacementProps } from '../../../../../../utils/filter_styles'
-import { MidInputLabel } from '../../../MidInputLabel'
-import { DateInput } from '../DateInput'
-import { TimeInput } from '../TimeInput'
-import { useTranslation } from '../../../../../../../utils'
+} from '@looker/filter-expressions';
+import React from 'react';
+import type { PlacementProps } from '../../../../../../utils/filter_styles';
+import { MidInputLabel } from '../../../MidInputLabel';
+import { DateInput } from '../DateInput';
+import { TimeInput } from '../TimeInput';
+import { useTranslation } from '../../../../../../../utils';
 
 interface DateRangeParamProps extends PlacementProps {
-  item: FilterModel
-  onChange: (id: string, item: Partial<FilterModel>) => void
-  showTime?: boolean
+  item: FilterModel;
+  onChange: (id: string, item: Partial<FilterModel>) => void;
+  showTime?: boolean;
 }
 
 export const DateRange = ({
@@ -49,36 +49,36 @@ export const DateRange = ({
   placement,
   showTime,
 }: DateRangeParamProps) => {
-  const { id, start, end } = item
+  const { id, start, end } = item;
   const startDate = start
     ? filterDateTimeModelToDate(start)
-    : new Date(Date.now())
-  const endDate = end ? filterDateTimeModelToDate(end) : new Date(Date.now())
+    : new Date(Date.now());
+  const endDate = end ? filterDateTimeModelToDate(end) : new Date(Date.now());
 
   const startChange = (newStart: Date) => {
     if (newStart > endDate) {
-      const newEnd = addDays(newStart, 1)
+      const newEnd = addDays(newStart, 1);
       onChange(id, {
         start: dateToFilterDateTimeModel(newStart),
         end: dateToFilterDateTimeModel(newEnd),
-      })
+      });
     } else {
-      onChange(id, { start: dateToFilterDateTimeModel(newStart) })
+      onChange(id, { start: dateToFilterDateTimeModel(newStart) });
     }
-  }
+  };
 
   const endChange = (newEnd: Date) => {
     if (newEnd < startDate) {
-      const newStart = addDays(newEnd, -1)
+      const newStart = addDays(newEnd, -1);
       onChange(id, {
         start: dateToFilterDateTimeModel(newStart),
         end: dateToFilterDateTimeModel(newEnd),
-      })
+      });
     } else {
-      onChange(id, { end: dateToFilterDateTimeModel(newEnd) })
+      onChange(id, { end: dateToFilterDateTimeModel(newEnd) });
     }
-  }
-  const { t } = useTranslation('DateRange')
+  };
+  const { t } = useTranslation('DateRange');
 
   return (
     <Flex>
@@ -100,5 +100,5 @@ export const DateRange = ({
         <TimeInput date={endDate} onChange={endChange} placement="right" />
       )}
     </Flex>
-  )
-}
+  );
+};

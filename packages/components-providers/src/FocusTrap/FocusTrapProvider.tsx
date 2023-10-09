@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { createContext } from 'react'
-import { TrapStackProvider } from '../TrapStack'
+import React, { createContext } from 'react';
+import { TrapStackProvider } from '../TrapStack';
 import type {
   TrapStackContextProps,
   TrapStackProviderProps,
-} from '../TrapStack'
-import { activateFocusTrap } from './utils'
-import type { FocusTrapOptions } from './types'
+} from '../TrapStack';
+import { activateFocusTrap } from './utils';
+import type { FocusTrapOptions } from './types';
 
 export const FocusTrapContext = createContext<
   TrapStackContextProps<FocusTrapOptions>
->({})
-FocusTrapContext.displayName = 'FocusTrapContext'
+>({});
+FocusTrapContext.displayName = 'FocusTrapContext';
 
 export const FocusTrapProvider = <O = unknown,>(
   props: Omit<TrapStackProviderProps<O>, 'activate' | 'context'>
@@ -25,4 +25,4 @@ export const FocusTrapProvider = <O = unknown,>(
     context={FocusTrapContext}
     {...props}
   />
-)
+);

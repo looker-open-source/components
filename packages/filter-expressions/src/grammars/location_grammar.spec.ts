@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { i18nInit, parseFilterExpression, summary } from '../utils'
+import { i18nInit, parseFilterExpression, summary } from '../utils';
 
 const location = [
   ['36.97, -122.03', '36.97, -122.03'],
@@ -19,12 +19,12 @@ const location = [
   ['NOT NULL', 'is not null'],
   ['-NULL', 'is not null'],
   ['NULL', 'is null'],
-]
+];
 
 describe('Location grammar can parse expressions', () => {
-  beforeEach(() => i18nInit())
+  beforeEach(() => i18nInit());
   it.each(location)('%s', (expression, result) => {
-    expect(parseFilterExpression('location', expression)).toMatchSnapshot()
-    expect(summary({ type: 'location', expression })).toBe(result)
-  })
-})
+    expect(parseFilterExpression('location', expression)).toMatchSnapshot();
+    expect(summary({ type: 'location', expression })).toBe(result);
+  });
+});

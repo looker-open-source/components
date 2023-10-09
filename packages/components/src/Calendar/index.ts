@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Calendar'
-export * from './types'
-export * from './utils'
+export * from './Calendar';
+export * from './types';
+export * from './utils';

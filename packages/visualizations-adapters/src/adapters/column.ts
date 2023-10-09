@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
-import type { BarBaseOptions } from './bar'
+import type { VisWrapperProps } from '../VisWrapper';
+import type { BarBaseOptions } from './bar';
 import type {
   ChartLayoutProps,
   CommonCartesianProperties,
   SupportedChartTypes,
   SDKRecord,
   Fields,
-} from '../types'
+} from '../types';
 
 export type ColumnProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    config: CColumn
-    fields: Fields
-  }
+    data: SDKRecord[];
+    config: CColumn;
+    fields: Fields;
+  };
 
 export type CColumn = {
-  type?: SupportedChartTypes['column']
+  type?: SupportedChartTypes['column'];
 } & BarBaseOptions &
-  CommonCartesianProperties
+  CommonCartesianProperties;

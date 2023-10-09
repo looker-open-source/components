@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterModel } from '../../types'
+import type { FilterModel } from '../../types';
 
 /*
  * converts filter types to matches (advanced)
@@ -16,4 +16,4 @@ export const convertTypeToMatchesAdvancedOption = ({ type }: FilterModel) =>
   type?.startsWith('before_') ||
   type?.startsWith('after_')
     ? 'matchesAdvanced'
-    : type
+    : type;

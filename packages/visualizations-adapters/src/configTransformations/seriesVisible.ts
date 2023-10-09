@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import set from 'lodash/set'
+import set from 'lodash/set';
 import type {
   ConfigHelper,
   CSeriesBasic,
   CommonCartesianProperties,
-} from '../types'
-import { getMeasureNames } from '../utils'
+} from '../types';
+import { getMeasureNames } from '../utils';
 
 /**
  * Populate series visibility from hidden_series response.
@@ -28,20 +28,20 @@ export const seriesVisible: ConfigHelper<CommonCartesianProperties> = ({
     plot_size_by_field,
     size_by_field,
     ...restConfig
-  } = config
-  const measures = getMeasureNames(fields)
+  } = config;
+  const measures = getMeasureNames(fields);
 
   const buildArraySeries = (s: CSeriesBasic[] = []) => {
-    const arraySeries = [...s]
+    const arraySeries = [...s];
     for (let i = 0; i < measures.length; i++) {
-      const { visible: currentVisibility = true } = arraySeries[i] || {}
-      set(arraySeries, [i, 'visible'], currentVisibility)
+      const { visible: currentVisibility = true } = arraySeries[i] || {};
+      set(arraySeries, [i, 'visible'], currentVisibility);
     }
-    return arraySeries
-  }
+    return arraySeries;
+  };
 
   const buildNamedSeries = (s: { [k: string]: CSeriesBasic }) => {
-    const namedSeries = { ...s }
+    const namedSeries = { ...s };
     for (const field of measures) {
       // For scatter charts, series used by the size_by behavior are hidden by default
       const defaultVisibility = !(
@@ -50,17 +50,17 @@ export const seriesVisible: ConfigHelper<CommonCartesianProperties> = ({
           !plot_size_by_field &&
           fields.measures.length > 1) ||
         hidden_fields.includes(field)
-      )
+      );
 
-      const { visible } = namedSeries[field]
+      const { visible } = namedSeries[field];
       set(
         namedSeries,
         [field, 'visible'],
         typeof visible === 'boolean' ? visible : defaultVisibility
-      )
+      );
     }
-    return namedSeries
-  }
+    return namedSeries;
+  };
 
   return {
     config: {
@@ -74,5 +74,5 @@ export const seriesVisible: ConfigHelper<CommonCartesianProperties> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

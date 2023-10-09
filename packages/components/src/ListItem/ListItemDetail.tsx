@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DensityProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { ReactNode } from 'react'
-import React from 'react'
-import { HoverDisclosure } from '../utils/HoverDisclosure'
-import type { ListItemDetailOptions } from './types'
-import { listItemDimensions } from './utils'
+import type { DensityProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { ReactNode } from 'react';
+import React from 'react';
+import { HoverDisclosure } from '../utils/HoverDisclosure';
+import type { ListItemDetailOptions } from './types';
+import { listItemDimensions } from './utils';
 
 export type ListItemDetailProps = ListItemDetailOptions &
   DensityProp & {
-    children?: ReactNode
-    className?: string
-  }
+    children?: ReactNode;
+    className?: string;
+  };
 
 export const ListItemDetail = styled(
   ({
@@ -29,7 +29,7 @@ export const ListItemDetail = styled(
       <HoverDisclosure width={width} visible={!hoverDisclosure}>
         <div {...props} />
       </HoverDisclosure>
-    )
+    );
   }
 )`
   align-items: center;
@@ -40,4 +40,4 @@ export const ListItemDetail = styled(
   margin-left: auto;
   padding-left: ${({ accessory, density = 0, theme }) =>
     accessory ? 0 : theme.space[listItemDimensions(density).gap]};
-`
+`;

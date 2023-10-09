@@ -8,9 +8,9 @@ import React, {
   useContext,
   useEffect,
   useLayoutEffect as reactUseLayoutEffect,
-} from 'react'
+} from 'react';
 
-export const SafeSSRContext = createContext(false)
+export const SafeSSRContext = createContext(false);
 
 /**
  * Avoid the React useLayoutEffect when using renderToString
@@ -19,8 +19,8 @@ export const SafeSSRContext = createContext(false)
 export const SafeSSRProvider = ({
   children,
 }: React.PropsWithChildren<unknown>) => {
-  return <SafeSSRContext.Provider value>{children}</SafeSSRContext.Provider>
-}
+  return <SafeSSRContext.Provider value>{children}</SafeSSRContext.Provider>;
+};
 
 /**
  * Avoids the React useLayoutEffect error by falling back to useEffect.
@@ -29,11 +29,11 @@ export const SafeSSRProvider = ({
  * until client-side JS loads, via useEffect.
  */
 export const useSafeLayoutEffect: typeof reactUseLayoutEffect = (...args) => {
-  const value = useContext(SafeSSRContext)
+  const value = useContext(SafeSSRContext);
   // SSR is detected via undefined window, or set with SafeSSRProvider
-  const isSSR = value || typeof window === 'undefined'
+  const isSSR = value || typeof window === 'undefined';
 
-  const useLayoutEffect = isSSR ? useEffect : reactUseLayoutEffect
+  const useLayoutEffect = isSSR ? useEffect : reactUseLayoutEffect;
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return useLayoutEffect(...args)
-}
+  return useLayoutEffect(...args);
+};

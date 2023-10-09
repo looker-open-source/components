@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ValidationType } from '@looker/components'
-import { inputHeight, Box2 } from '@looker/components'
-import styled from 'styled-components'
+import React from 'react';
+import type { ValidationType } from '@looker/components';
+import { inputHeight, Box2 } from '@looker/components';
+import styled from 'styled-components';
 
 export type MidInputLabelProps = {
-  children: string
-  className?: string
-  validationType?: ValidationType
-}
+  children: string;
+  className?: string;
+  validationType?: ValidationType;
+};
 
 export const MidInputLabel = styled(
   ({ validationType, ...props }: MidInputLabelProps) => {
@@ -30,10 +30,10 @@ export const MidInputLabel = styled(
         textAlign="right"
         {...props}
       />
-    )
+    );
   }
 )`
   border-right: none;
   text-overflow: ellipsis;
   white-space: nowrap;
-`
+`;

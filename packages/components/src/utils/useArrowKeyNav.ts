@@ -24,27 +24,27 @@
 
  */
 
-import type { FocusEvent, KeyboardEvent, Ref } from 'react'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { checkElementRemoved } from './checkElementRemoved'
-import { getNextFocus as getNextFocusDefault } from './getNextFocus'
-import { useForkedRef } from './useForkedRef'
-import { useWrapEvent } from './useWrapEvent'
+import type { FocusEvent, KeyboardEvent, Ref } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { checkElementRemoved } from './checkElementRemoved';
+import { getNextFocus as getNextFocusDefault } from './getNextFocus';
+import { useForkedRef } from './useForkedRef';
+import { useWrapEvent } from './useWrapEvent';
 
-export type ArrowKeyAxis = 'vertical' | 'horizontal' | 'both'
+export type ArrowKeyAxis = 'vertical' | 'horizontal' | 'both';
 
 export interface UseArrowKeyNavProps<E extends HTMLElement> {
   /**
    * vertical for up/down arrow keys, horizontal for left/right, both for all (grid)
    * @default vertical
    */
-  axis?: ArrowKeyAxis
+  axis?: ArrowKeyAxis;
   /**
    * If true, nothing is returned from the useArrowKeyNav call
    * Note: Used internally by Tree's nested List
    * @private
    */
-  disabled?: boolean
+  disabled?: boolean;
   /**
    * A custom getter for the next item to focus
    */
@@ -52,31 +52,31 @@ export interface UseArrowKeyNavProps<E extends HTMLElement> {
     direction: 1 | -1,
     element: E,
     vertical?: boolean
-  ) => HTMLElement | null
+  ) => HTMLElement | null;
   /**
    * will be merged with the ref in the return
    */
-  ref?: Ref<E>
+  ref?: Ref<E>;
   /**
    * will be merged with the onBlur in the return
    */
-  onBlur?: (e: FocusEvent<E>) => void
+  onBlur?: (e: FocusEvent<E>) => void;
   /**
    * will be merged with the onFocus in the return
    */
-  onFocus?: (e: FocusEvent<E>) => void
+  onFocus?: (e: FocusEvent<E>) => void;
   /**
    * will be merged with the onKeyDown in the return
    */
-  onKeyDown?: (e: KeyboardEvent<E>) => void
+  onKeyDown?: (e: KeyboardEvent<E>) => void;
 }
 
 export type UseArrowKeyNavResult<E extends HTMLElement> = Pick<
   UseArrowKeyNavProps<E>,
   'ref' | 'onBlur' | 'onFocus' | 'onKeyDown'
 > & {
-  tabIndex?: number
-}
+  tabIndex?: number;
+};
 
 /**
  * Returns props to spread onto container element for arrow key navigation.
@@ -91,9 +91,9 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
   onFocus,
   onKeyDown,
 }: UseArrowKeyNavProps<E>): UseArrowKeyNavResult<E> => {
-  const internalRef = useRef<E>(null)
-  const focusedItemRef = useRef<HTMLElement>()
-  const [focusInside, setFocusInside] = useState(false)
+  const internalRef = useRef<E>(null);
+  const focusedItemRef = useRef<HTMLElement>();
+  const [focusInside, setFocusInside] = useState(false);
 
   const handleArrowKey = (
     e: KeyboardEvent<E>,
@@ -105,43 +105,43 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
         direction,
         internalRef.current,
         vertical
-      )
+      );
       if (newFocusedItem) {
-        e.preventDefault()
-        newFocusedItem.focus()
+        e.preventDefault();
+        newFocusedItem.focus();
       }
     }
-  }
+  };
 
   const handleKeyDown = (e: KeyboardEvent<E>) => {
     switch (e.key) {
       case 'ArrowUp':
-        axis !== 'horizontal' && handleArrowKey(e, -1, true)
-        break
+        axis !== 'horizontal' && handleArrowKey(e, -1, true);
+        break;
       case 'ArrowDown':
-        axis !== 'horizontal' && handleArrowKey(e, 1, true)
-        break
+        axis !== 'horizontal' && handleArrowKey(e, 1, true);
+        break;
       case 'ArrowLeft':
-        axis !== 'vertical' && handleArrowKey(e, -1, false)
-        break
+        axis !== 'vertical' && handleArrowKey(e, -1, false);
+        break;
       case 'ArrowRight':
-        axis !== 'vertical' && handleArrowKey(e, 1, false)
-        break
+        axis !== 'vertical' && handleArrowKey(e, 1, false);
+        break;
     }
-  }
+  };
 
   const placeInitialFocus = useCallback(() => {
     if (internalRef.current) {
-      const toFocus = getNextFocus(1, internalRef.current)
+      const toFocus = getNextFocus(1, internalRef.current);
       if (toFocus) {
         // Since this is called when the user is scrolling a windowed list and
         // the focused element is removed because it leaves the window,
         // we preventScroll to avoid jumpiness
         // (getNextFocus should return an element that is inside the visible window)
-        toFocus.focus({ preventScroll: true })
+        toFocus.focus({ preventScroll: true });
       }
     }
-  }, [getNextFocus])
+  }, [getNextFocus]);
 
   const handleFocus = (e: FocusEvent<E>) => {
     // When focus lands on the container
@@ -152,51 +152,51 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
         focusedItemRef.current &&
         internalRef.current.contains(focusedItemRef.current)
       ) {
-        focusedItemRef.current.focus()
+        focusedItemRef.current.focus();
       } else {
         try {
           // Otherwise check if the focus is via keyboard (if supported)
           if (internalRef.current.matches(':focus-visible')) {
             // If so, focus the first item
-            placeInitialFocus()
+            placeInitialFocus();
           }
         } catch (e) {
           // If :focus-visible is not supported, always focus the first item
-          placeInitialFocus()
+          placeInitialFocus();
         }
       }
     } else {
       // Focus has moved to an item
-      focusedItemRef.current = e.target
+      focusedItemRef.current = e.target;
       // Remove tabIndex={0} from the container
-      setFocusInside(true)
+      setFocusInside(true);
     }
-  }
+  };
 
   const handleBlur = () => {
     // Replace tabIndex={0} on the container
-    setFocusInside(false)
-  }
+    setFocusInside(false);
+  };
 
   useEffect(() => {
-    const element = internalRef.current
+    const element = internalRef.current;
 
     // Create an observer to check if the focused element is removed
     const observer = new MutationObserver(mutationsList => {
       if (checkElementRemoved(mutationsList, focusedItemRef.current)) {
         // If it was, start focus back at the beginning
-        placeInitialFocus()
+        placeInitialFocus();
       }
-    })
+    });
 
     if (focusInside && element) {
       // Observe the descendants as well as direct children
-      observer.observe(element, { childList: true, subtree: true })
+      observer.observe(element, { childList: true, subtree: true });
     }
     return () => {
-      observer.disconnect()
-    }
-  }, [focusInside, placeInitialFocus])
+      observer.disconnect();
+    };
+  }, [focusInside, placeInitialFocus]);
 
   const navProps = {
     onBlur: useWrapEvent(handleBlur, onBlur),
@@ -208,7 +208,7 @@ export const useArrowKeyNav = <E extends HTMLElement = HTMLElement>({
     // and from there arrow keys move focus around within
     // 2) when focus is inside, only items can be focused, not the container
     tabIndex: focusInside ? undefined : 0,
-  }
+  };
 
-  return disabled ? {} : navProps
-}
+  return disabled ? {} : navProps;
+};

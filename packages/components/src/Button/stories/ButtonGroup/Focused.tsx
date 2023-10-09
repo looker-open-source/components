@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Box2, ButtonGroup, ButtonItem } from '../../..'
+import React, { useState } from 'react';
+import { Box2, ButtonGroup, ButtonItem } from '../../..';
 
 export default function Focused() {
-  const [value, setValue] = useState([] as string[])
+  const [value, setValue] = useState([] as string[]);
   return (
     <Box2>
       <ButtonGroup value={value} onChange={setValue} margin="small">
@@ -15,5 +15,5 @@ export default function Focused() {
         <ButtonItem value="UT">Utah</ButtonItem>
       </ButtonGroup>
     </Box2>
-  )
+  );
 }

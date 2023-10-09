@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { RangeSlider } from '..'
-import type { RangeSliderProps } from '../'
+import React from 'react';
+import { RangeSlider } from '..';
+import type { RangeSliderProps } from '../';
 
 export default function InvalidValue(props: RangeSliderProps) {
   const {
@@ -13,7 +13,7 @@ export default function InvalidValue(props: RangeSliderProps) {
     max = 200,
     defaultValue = [105, 1950],
     ...restProps
-  } = props
+  } = props;
 
   return (
     <RangeSlider
@@ -22,5 +22,5 @@ export default function InvalidValue(props: RangeSliderProps) {
       defaultValue={defaultValue}
       {...restProps}
     />
-  )
+  );
 }

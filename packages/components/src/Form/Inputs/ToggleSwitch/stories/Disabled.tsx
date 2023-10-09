@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { useToggle } from '../../../../utils/useToggle'
-import { ToggleSwitch } from '../..'
+import React from 'react';
+import { useToggle } from '../../../../utils/useToggle';
+import { ToggleSwitch } from '../..';
 
 export default function Checked() {
-  const { value, toggle } = useToggle(false)
-  return <ToggleSwitch onChange={toggle} on={value} disabled />
+  const { value, toggle } = useToggle(false);
+  return <ToggleSwitch onChange={toggle} on={value} disabled />;
 }

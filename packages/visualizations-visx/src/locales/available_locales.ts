@@ -30,4 +30,4 @@ export const availableLocales = [
   'uk-UA',
   'zh-CN',
   'zh-TW',
-]
+];

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Box2, AvatarCombo } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Box2, AvatarCombo } from '../..';
 
 export default function Combo() {
   const data = {
@@ -13,8 +13,8 @@ export default function Combo() {
       'https://github.com/looker-open-source/components/blob/1b708b472d974987e80c30bbbb286911a438542a/packages/components/test-assets/cheese.png?raw=true',
     first_name: 'Cheddar',
     last_name: 'Cheese',
-  }
-  const noImageData = { ...data, avatar_url: null }
+  };
+  const noImageData = { ...data, avatar_url: null };
   return (
     <Box2 display="flex" justifyContent="space-around" alignItems="center">
       <AvatarCombo
@@ -26,5 +26,5 @@ export default function Combo() {
         secondaryIcon={<MaterialIcons.Person />}
       ></AvatarCombo>
     </Box2>
-  )
+  );
 }

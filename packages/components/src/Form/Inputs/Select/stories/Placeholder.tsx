@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
+import React from 'react';
+import { Select } from '..';
 
 export default function Placeholder() {
   return (
@@ -16,5 +16,5 @@ export default function Placeholder() {
         { label: 'Swiss', value: 'swiss' },
       ]}
     />
-  )
+  );
 }

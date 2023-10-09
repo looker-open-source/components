@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { csCZ as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { csCZ as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Došlo k chybě',
   },
-  translation: {
-    'Row Total': 'Řádkový součet',
+  KeyValueList: {
     false: 'nepravda',
     null: 'prázdné',
     true: 'pravda',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Řádkový součet',
   },
-}
+};
 
-export const csCZ = mergeLocaleObjects([componentsLocale], 'cs-CZ', resources)
+export const csCZ = mergeLocaleObjects([componentsLocale], 'cs-CZ', resources);

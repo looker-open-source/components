@@ -9,13 +9,13 @@ import type {
   CSeriesLine,
   CSeriesSize,
   Fields,
-} from '../types'
-import findIndex from 'lodash/findIndex'
-import isArray from 'lodash/isArray'
+} from '../types';
+import findIndex from 'lodash/findIndex';
+import isArray from 'lodash/isArray';
 
 type AllSeriesAttributes = Partial<
   CSeriesBasic & CSeriesPoints & CSeriesLine & CSeriesSize
->
+>;
 
 /**
  * A utility function made necessary by the reality that series can be
@@ -34,16 +34,16 @@ export const pickSeriesByName = (
   config: CCartesian,
   key: string
 ): AllSeriesAttributes => {
-  const { series: seriesList } = config
+  const { series: seriesList } = config;
   if (isArray(seriesList)) {
     // Array series! Pick the series that correlates with where it appears in the Fields list.
     const seriesIndex = findIndex(fields.measures, {
       name: key,
-    })
+    });
 
-    return seriesList[seriesIndex]
+    return seriesList[seriesIndex];
   } else {
     // Key/Value object: return the series at name `key`
-    return seriesList?.[key] || {}
+    return seriesList?.[key] || {};
   }
-}
+};

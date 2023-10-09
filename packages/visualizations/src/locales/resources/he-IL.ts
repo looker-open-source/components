@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { heIL as componentsLocale } from '@looker/components'
-import { heIL as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { heIL as visualizationstableLocale } from '@looker/visualizations-table'
-import { heIL as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { heIL as componentsLocale } from '@looker/components';
+import { heIL as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { heIL as visualizationstableLocale } from '@looker/visualizations-table';
+import { heIL as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -24,7 +24,7 @@ const resources = {
       "מדדים מסוג 'תאריך' אינם נתמכים כרגע",
     'No chart found for type "{{type}}"': 'לא נמצאה טבלה עבור הסוג "{{type}}"',
   },
-}
+};
 
 export const heIL = mergeLocaleObjects(
   [
@@ -35,4 +35,4 @@ export const heIL = mergeLocaleObjects(
   ],
   'he-IL',
   resources
-)
+);

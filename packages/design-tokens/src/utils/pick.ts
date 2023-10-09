@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { pick } from '@styled-system/props'
+import { pick } from '@styled-system/props';
 
-export const pickStyledProps = pick
+export const pickStyledProps = pick;

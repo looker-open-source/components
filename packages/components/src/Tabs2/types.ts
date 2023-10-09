@@ -24,14 +24,14 @@
 
  */
 
-import type { ReactElement } from 'react'
+import type { ReactElement } from 'react';
 import type {
   CompatibleHTMLProps,
   FontSizeProps,
   LayoutProps,
   PaddingProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 
 export type Tab2Props<IDType extends string = string> = Omit<
   CompatibleHTMLProps<HTMLButtonElement>,
@@ -43,56 +43,56 @@ export type Tab2Props<IDType extends string = string> = Omit<
     /**
      * displays as the `Tab`'s value
      */
-    label: IDType
+    label: IDType;
     /**
      * callback to manage when `Tab` is clicked
      */
-    onSelect?: () => void
+    onSelect?: () => void;
     /**
      * specific `Tab` that is selected.
      */
-    selected?: boolean
-  }
+    selected?: boolean;
+  };
 
 export type TabList2Props = PaddingProps &
   FontSizeProps & {
     /**
      * element that will be displayed as the `Tab` value
      */
-    children: JSX.Element[]
-    className?: string
+    children: JSX.Element[];
+    className?: string;
     /**
      * spread the collection of `Tab` on its full width.
      */
-    distribute?: boolean
-  }
+    distribute?: boolean;
+  };
 
 type TabStackMember<IDType extends string = string> = Tab2Props<IDType> & {
-  id: IDType
-}
+  id: IDType;
+};
 
-export type TabStack<IDType extends string = string> = TabStackMember<IDType>[]
+export type TabStack<IDType extends string = string> = TabStackMember<IDType>[];
 
 type Controlled<IDType extends string = string> = {
   /**
    * Controlled: which tab to show now
    */
-  tabId: IDType
+  tabId: IDType;
   /**
    * Callback called when tabId changes
    */
-  onTabChange: (tabId: IDType) => void
-  defaultTabId?: never
-}
+  onTabChange: (tabId: IDType) => void;
+  defaultTabId?: never;
+};
 
 type Uncontrolled = {
   /**
    * Which tab to show on load
    */
-  defaultTabId?: string
-  tabId?: never
-  onTabChange?: never
-}
+  defaultTabId?: string;
+  tabId?: never;
+  onTabChange?: never;
+};
 
 export type Tabs2Props<IDType extends string = string> = (
   | Controlled<IDType>
@@ -101,10 +101,10 @@ export type Tabs2Props<IDType extends string = string> = (
   /**
    * The list of `Tab`
    */
-  children: ReactElement<Tab2Props<IDType>> | ReactElement<Tab2Props<IDType>>[]
+  children: ReactElement<Tab2Props<IDType>> | ReactElement<Tab2Props<IDType>>[];
 
   /**
    * Spread the Tab between all the space available
    */
-  distributed?: boolean
-}
+  distributed?: boolean;
+};

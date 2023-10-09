@@ -24,36 +24,36 @@
 
  */
 
-import dateLocale from 'date-fns/locale/pl'
+import dateLocale from 'date-fns/locale/pl';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
     'Clear Field': 'Wyczyść pole',
   },
   AvatarButton: {
-    'Profile Picture': 'Obraz profilu',
+    'Profile Picture': 'Zdjęcie profilowe',
   },
   AvatarUser: {
     Avatar: 'Awatar',
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'Wybrano wszystkie wyświetlone elementy ({{pageCount}})',
-    AllTotalCountSelected: 'Wybrano wszystkie elementy ({{totalCount}})',
-    'Bulk Actions': 'Akcje zbiorcze',
-    'Clear Selection': 'Wyczyść zaznaczenie',
-    SelectAllCountResults: 'Wybierz wszystkie wyniki ({{totalCount}})',
+      'Wybrano wszystkie wyświetlone elementy ({{pageCount}})',
+    AllTotalCountSelected: 'Wybrano wszystkie elementy ({{totalCount}})',
+    'Bulk Actions': 'Działania zbiorcze',
+    'Clear Selection': 'Odznacz',
+    SelectAllCountResults: 'Wybierz wszystkie wyniki ({{totalCount}})',
     SelectedCountOfTotalDisplayed:
-      'Wybrane wyświetlone elementy: {{selectedItemCount}} z {{pageCount}}',
+      'Wybrano {{selectedItemCount}} z {{pageCount}} wyświetlonych elementów',
   },
   CalendarNav: {
     'next month': 'następny miesiąc',
     'previous month': 'poprzedni miesiąc',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'Znacznik — tryb mieszany',
+    'Check Mark Mixed': 'Znacznik wyboru Mieszane',
   },
   Chip: {
     Delete: 'Usuń',
@@ -61,10 +61,9 @@ const resources = {
   ColumnSelector: {
     Apply: 'Zastosuj',
     Cancel: 'Anuluj',
-    'Select All': 'Zaznacz wszystko',
-    'Select None': 'Nie zaznaczaj niczego',
-    'Select columns to display':
-      'Wybierz kolumny, które mają zostać wyświetlone',
+    'Select All': 'Wybierz wszystko',
+    'Select None': 'Bez zaznaczenia',
+    'Select columns to display': 'Wybierz kolumny do wyświetlenia',
   },
   ConfirmationDialog: {
     Cancel: 'Anuluj',
@@ -72,7 +71,7 @@ const resources = {
   },
   CopyToClipboard: {
     Copied: 'Skopiowano',
-    'Copy to Clipboard': 'Skopiuj do schowka',
+    'Copy to Clipboard': 'Kopiuj do schowka',
   },
   DataTable: {
     'No Results': 'Brak wyników',
@@ -81,77 +80,76 @@ const resources = {
     Options: 'Opcje',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': 'Użyj formatu HH:MM',
+    'Please use format HHMM': 'Użyj formatu GG:MM',
   },
   GetIntentLabel: {
     Error: 'Błąd',
-    Inform: 'Informuj',
-    Success: 'Powodzenie',
+    Inform: 'Poinformuj',
+    Success: 'Gotowe',
     Warning: 'Ostrzeżenie',
   },
   InputDate: {
     'Open calendar': 'Otwórz kalendarz',
   },
   InputDateRange: {
-    'End date': 'Data końcowa',
-    'Start date': 'Data początkowa',
+    'End date': 'Data zakończenia',
+    'Start date': 'Data rozpoczęcia',
   },
   InputFilters: {
     'Clear Filters': 'Wyczyść filtry',
     'Filter List': 'Lista filtrów',
-    'bottom-start': 'bottom-start',
   },
   InputTimeSelect: {
-    'Select time': 'Zaznacz czas',
+    'Select time': 'Wybierz godzinę',
   },
   MessageBar: {
-    DismissIntent: 'Odrzuć: {{intent}}',
+    DismissIntent: 'Odrzuć intencję {{intent}}',
   },
   ModalHeaderCloseButton: {
     Close: 'Zamknij',
   },
   MonthPickerNav: {
     close: 'zamknij',
-    'next year': 'następny rok',
+    'next year': 'przyszły rok',
     'previous year': 'poprzedni rok',
   },
   PageSize: {
-    Display: 'Wyświetl',
-    of: 'w miesiącu',
+    Display: 'Wyświetlanie',
+    of: 'z',
   },
   Pagination: {
-    'First page of results': 'Pierwsza strona z wynikami',
-    'Last page of results': 'Ostatnia strona z wynikami',
-    'Next page of results': 'Następna strona z wynikami',
-    'Previous page of results': 'Poprzednia strona z wynikami',
-    of: 'w miesiącu',
+    'First page of results': 'Pierwsza strona wyników',
+    'Last page of results': 'Ostatnia strona wyników',
+    'Next page of results': 'Następna strona wyników',
+    'Previous page of results': 'Poprzednia strona wyników',
+    of: 'z',
   },
   PanelHeader: {
     CloseTitle: 'Zamknij: {{title}}',
   },
   PopoverFooter: {
-    Done: 'Gotowe',
+    Done: 'OK',
   },
   PromptDialog: {
     Cancel: 'Anuluj',
     Save: 'Zapisz',
   },
   RangeSlider: {
-    'Maximum Name': 'Maks. {{name}}',
-    'Maximum Value': 'Maksymalna wartość',
-    'Minimum Name': 'Min. {{name}}',
-    'Minimum Value': 'Minimalna wartość',
+    'Maximum Name': 'Maksymalnie: {{name}}',
+    'Maximum Value': 'Wartość maksymalna',
+    'Minimum Name': 'Minimalnie: {{name}}',
+    'Minimum Value': 'Wartość minimalna',
   },
   RequiredStar: {
-    required: 'pole wymagane',
+    required: 'wymagane',
   },
   SelectOptions: {
-    Loading: 'Ładowanie',
+    Loading: 'Wczytuję',
     'No options': 'Brak opcji',
   },
   TabList: {
     Tabs: 'Karty',
   },
-}
+};
 
-export const plPL = mergeLocaleObjects([], 'pl-PL', resources, dateLocale)
+export const plPL = mergeLocaleObjects([], 'pl-PL', resources, dateLocale);

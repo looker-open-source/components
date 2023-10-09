@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { trTR as componentsLocale } from '@looker/components'
-import { trTR as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { trTR as visualizationstableLocale } from '@looker/visualizations-table'
-import { trTR as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { trTR as componentsLocale } from '@looker/components';
+import { trTR as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { trTR as visualizationstableLocale } from '@looker/visualizations-table';
+import { trTR as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -24,7 +24,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       '"{{type}}" türü için grafik bulunamadı',
   },
-}
+};
 
 export const trTR = mergeLocaleObjects(
   [
@@ -35,4 +35,4 @@ export const trTR = mergeLocaleObjects(
   ],
   'tr-TR',
   resources
-)
+);

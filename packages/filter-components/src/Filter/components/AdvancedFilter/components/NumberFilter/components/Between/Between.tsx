@@ -24,31 +24,31 @@
 
  */
 
-import type { ValidationMessageProps } from '@looker/components'
-import { Space } from '@looker/components'
-import type { FilterModel } from '@looker/filter-expressions'
-import type { ChangeEvent } from 'react'
-import React from 'react'
-import { useTranslation } from '../../../../../../../utils'
-import { GroupInput } from '../../../GroupInput'
-import { GroupSelect } from '../../../GroupSelect'
-import { MidInputLabel } from '../../../MidInputLabel'
-import { useBetweenOptions } from '../../../../utils'
+import type { ValidationMessageProps } from '@looker/components';
+import { Space } from '@looker/components';
+import type { FilterModel } from '@looker/filter-expressions';
+import type { ChangeEvent } from 'react';
+import React from 'react';
+import { useTranslation } from '../../../../../../../utils';
+import { GroupInput } from '../../../GroupInput';
+import { GroupSelect } from '../../../GroupSelect';
+import { MidInputLabel } from '../../../MidInputLabel';
+import { useBetweenOptions } from '../../../../utils';
 
 interface BetweenItemProps extends FilterModel {
-  bounds: string
-  high?: string
-  low?: string
+  bounds: string;
+  high?: string;
+  low?: string;
 }
 
 interface BetweenFilterProps {
-  item: BetweenItemProps
-  onChange?: (id: string, value: any) => void
+  item: BetweenItemProps;
+  onChange?: (id: string, value: any) => void;
 
-  width?: string | number
-  borderRadiusLeft?: string | number
-  borderLeftColor?: string
-  validationMessage?: ValidationMessageProps
+  width?: string | number;
+  borderRadiusLeft?: string | number;
+  borderLeftColor?: string;
+  validationMessage?: ValidationMessageProps;
 }
 
 export const Between = ({
@@ -56,27 +56,27 @@ export const Between = ({
   onChange,
   validationMessage,
 }: BetweenFilterProps) => {
-  const { t } = useTranslation('Between')
+  const { t } = useTranslation('Between');
 
-  const betweenOptions = useBetweenOptions()
+  const betweenOptions = useBetweenOptions();
 
-  const { high = '', low = '', id } = item
+  const { high = '', low = '', id } = item;
 
   const lowChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(id, { low: event.target.value })
-  }
+    onChange?.(id, { low: event.target.value });
+  };
 
   const highChange = (event: ChangeEvent<HTMLInputElement>) => {
-    onChange?.(id, { high: event.target.value })
-  }
+    onChange?.(id, { high: event.target.value });
+  };
   const selectChange = (value: string) => {
-    onChange?.(id, { bounds: value })
-  }
+    onChange?.(id, { bounds: value });
+  };
 
   const validationProps = {
     noErrorIcon: true,
     validationType: validationMessage?.type,
-  }
+  };
 
   return (
     <Space gap="none" width="auto">
@@ -108,5 +108,5 @@ export const Between = ({
         {...validationProps}
       />
     </Space>
-  )
-}
+  );
+};

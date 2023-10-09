@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './DateTimeFormat'
+export * from './DateTimeFormat';

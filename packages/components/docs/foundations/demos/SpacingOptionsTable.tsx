@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import { convertRemToPx } from '@looker/design-tokens'
-import React from 'react'
+import { convertRemToPx } from '@looker/design-tokens';
+import React from 'react';
 import {
   Code,
   Text,
@@ -34,8 +34,8 @@ import {
   TableHeaderCell,
   TableRow,
   theme,
-} from '../../../src'
-import { DocTable } from './DocTable'
+} from '../../../src';
+import { DocTable } from './DocTable';
 
 const spacingExamples = [
   { label: 'xxxsmall', px: '2', rem: '0.125rem' },
@@ -48,32 +48,32 @@ const spacingExamples = [
   { label: 'xxlarge', px: '40', rem: '2.5rem' },
   { label: 'xxxlarge', px: '60', rem: '3.75rem' },
   { label: 'xxxxlarge', px: '80', rem: '5rem' },
-]
+];
 
-const spacingLabels = ['Size', 'Theme Value', 'PX Value', 'Rem Value']
+const spacingLabels = ['Size', 'Theme Value', 'PX Value', 'Rem Value'];
 
 const unitValues: string[][] = Object.entries(theme.space).filter(([key]) =>
   key.startsWith('u')
-)
+);
 
 const lookupLegacyValue = (remValue: string) => {
-  const validSpace = spacingExamples.find(item => item.rem === remValue)
+  const validSpace = spacingExamples.find(item => item.rem === remValue);
 
   if (validSpace) {
-    return <Code fontSize="small">{validSpace.label}</Code>
+    return <Code fontSize="small">{validSpace.label}</Code>;
   } else {
     return (
       <Text fontSize="small" color="text2">
         ---
       </Text>
-    )
+    );
   }
-}
+};
 
 export interface SpaceExample {
-  label: string
-  px: string
-  rem: string
+  label: string;
+  px: string;
+  rem: string;
 }
 
 const TableLabel = (label: string, key: number) => {
@@ -81,8 +81,8 @@ const TableLabel = (label: string, key: number) => {
     <TableHeaderCell key={key}>
       <Text>{label}</Text>
     </TableHeaderCell>
-  )
-}
+  );
+};
 
 const SpacingRow = (px: number, rem: string, key: number, label: string) => {
   const divStyle = {
@@ -90,7 +90,7 @@ const SpacingRow = (px: number, rem: string, key: number, label: string) => {
     height: `${px}px`,
     opacity: 0.5,
     width: `${px}px`,
-  }
+  };
 
   return (
     <TableRow key={key} style={{ verticalAlign: 'middle' }}>
@@ -103,8 +103,8 @@ const SpacingRow = (px: number, rem: string, key: number, label: string) => {
       <TableDataCell>{px}px</TableDataCell>
       <TableDataCell>{rem}</TableDataCell>
     </TableRow>
-  )
-}
+  );
+};
 
 export const SpacingOptionsTable = () => {
   return (
@@ -112,7 +112,7 @@ export const SpacingOptionsTable = () => {
       <TableHead>
         <TableRow>
           {spacingLabels.map((label, i) => {
-            return TableLabel(label, i)
+            return TableLabel(label, i);
           })}
         </TableRow>
       </TableHead>
@@ -123,12 +123,12 @@ export const SpacingOptionsTable = () => {
             size[1],
             index,
             size[0]
-          )
+          );
         })}
       </TableBody>
     </DocTable>
-  )
-}
+  );
+};
 
 export const LegacySpaceTable = () => {
   return (
@@ -148,9 +148,9 @@ export const LegacySpaceTable = () => {
               </TableDataCell>
               <TableDataCell>{lookupLegacyValue(size[1])}</TableDataCell>
             </TableRow>
-          )
+          );
         })}
       </TableBody>
     </DocTable>
-  )
-}
+  );
+};

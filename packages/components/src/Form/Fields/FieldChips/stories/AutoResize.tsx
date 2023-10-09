@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function AutoResize() {
-  const [values, setValues] = useState<string[]>(['apples'])
+  const [values, setValues] = useState<string[]>(['apples']);
 
   return (
     <FieldChips
@@ -18,5 +18,5 @@ export default function AutoResize() {
       maxWidth="50vw"
       autoResize={true}
     />
-  )
+  );
 }

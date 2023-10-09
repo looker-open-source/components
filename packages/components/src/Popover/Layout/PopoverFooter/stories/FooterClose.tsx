@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { PopoverFooter } from '../..'
+import React from 'react';
+import { PopoverFooter } from '../..';
 
 export default function FooterClose() {
-  return <PopoverFooter closeButton="Close" />
+  return <PopoverFooter closeButton="Close" />;
 }

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Truncate } from '../..'
+import React from 'react';
+import { Box, Truncate } from '../..';
 
 export default function Basic() {
   return (
@@ -22,5 +22,5 @@ export default function Basic() {
         method of storing milk.
       </Truncate>
     </Box>
-  )
+  );
 }

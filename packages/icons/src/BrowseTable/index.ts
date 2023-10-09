@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './BrowseTable'
+export * from './BrowseTable';

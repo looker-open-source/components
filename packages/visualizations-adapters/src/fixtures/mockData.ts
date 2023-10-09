@@ -43,7 +43,7 @@ export const mockData = [
     'orders.created_date': '2019-12-23',
     'users.state': 'California',
   },
-]
+];
 
 export const mockDataWithNull = [
   {
@@ -76,17 +76,17 @@ export const mockDataWithNull = [
     'orders.created_date': '2019-12-22',
     'users.state': 'California',
   },
-]
+];
 
 export const mockTotals = {
   'orders.average_total_amount_of_order_usd': 2245,
   'orders.count': 5689,
-}
+};
 
 export const mockRawTotals = {
   'orders.average_total_amount_of_order_usd': { value: 2245 },
   'orders.count': { value: 5689 },
-}
+};
 
 export const mockNestedRawTotals = {
   'history.count': {
@@ -103,14 +103,14 @@ export const mockNestedRawTotals = {
       value: 146,
     },
   },
-}
+};
 
 export const mockNestedTotals = {
   '2022-08 - history.count': null,
   '2022-09 - history.count': 101,
   '2022-10 - history.count': 45,
   '$$$_row_total_$$$ - history.count': 146,
-}
+};
 
 export const mockDataWithRowTotals = [
   {
@@ -127,7 +127,7 @@ export const mockDataWithRowTotals = [
     '2022-10 - history.count': null,
     '$$$_row_total_$$$ - history.count': 12,
   },
-]
+];
 
 export const mockPivotedData = [
   {
@@ -148,4 +148,4 @@ export const mockPivotedData = [
     'm - orders.count': 235,
     'male - orders.count': null,
   },
-]
+];

@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Box2, ButtonGroup, ButtonItem, Span } from '../../..'
+import React, { useState } from 'react';
+import { Box2, ButtonGroup, ButtonItem, Span } from '../../..';
 const stateOptions = [
   { label: 'Alabama', value: 'Alabama' },
   { label: 'Alaska', value: 'Alaska' },
@@ -55,9 +55,9 @@ const stateOptions = [
   { label: 'West Virginia', value: 'West Virginia' },
   { label: 'Wisconsin', value: 'Wisconsin' },
   { label: 'Wyoming', value: 'Wyoming' },
-]
+];
 export default function Wrapping() {
-  const [value, setValue] = useState([stateOptions[0].value])
+  const [value, setValue] = useState([stateOptions[0].value]);
   return (
     <Box2>
       <ButtonGroup value={value} onChange={setValue}>
@@ -66,11 +66,11 @@ export default function Wrapping() {
             <ButtonItem key={item.value} value={item.value}>
               {item.label}
             </ButtonItem>
-          )
+          );
         })}
 
         <Span>Inline text</Span>
       </ButtonGroup>
     </Box2>
-  )
+  );
 }

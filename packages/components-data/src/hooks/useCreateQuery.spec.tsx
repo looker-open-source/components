@@ -24,36 +24,36 @@
 
  */
 
-import React from 'react'
-import { waitFor, render } from '@testing-library/react'
-import type { IWriteQuery } from '@looker/sdk'
-import { ContextWrapper, sdkMethodCreateQueryListener } from '../testUtils'
-import { DataState } from './useDataState'
-import { useCreateQuery } from './useCreateQuery'
+import React from 'react';
+import { waitFor, render } from '@testing-library/react';
+import type { IWriteQuery } from '@looker/sdk';
+import { ContextWrapper, sdkMethodCreateQueryListener } from '../testUtils';
+import { DataState } from './useDataState';
+import { useCreateQuery } from './useCreateQuery';
 
 // mock to track results from front-end data store
-const dataContainerListener = jest.fn()
-const dataStateListener = jest.fn()
+const dataContainerListener = jest.fn();
+const dataStateListener = jest.fn();
 
 type TestComponentProps = {
-  newQuery?: Partial<IWriteQuery>
-}
+  newQuery?: Partial<IWriteQuery>;
+};
 
 const TestComponent = ({ newQuery }: TestComponentProps) => {
-  const response = useCreateQuery(newQuery)
-  const { getById } = DataState.useContainer()
+  const response = useCreateQuery(newQuery);
+  const { getById } = DataState.useContainer();
 
-  const mockMetadata = getById(response?.queryId || 0, 'metadata')
+  const mockMetadata = getById(response?.queryId || 0, 'metadata');
 
-  dataContainerListener(response)
-  dataStateListener(mockMetadata)
+  dataContainerListener(response);
+  dataStateListener(mockMetadata);
 
-  return null
-}
+  return null;
+};
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('useCreateQuery', () => {
   it('does not dispatch request if no arguments are passed', async () => {
@@ -68,7 +68,7 @@ describe('useCreateQuery', () => {
       >
         <TestComponent />
       </ContextWrapper>
-    )
+    );
 
     await waitFor(() =>
       expect(dataContainerListener).toHaveBeenLastCalledWith({
@@ -76,11 +76,11 @@ describe('useCreateQuery', () => {
         isPending: false,
         queryId: undefined,
       })
-    )
+    );
 
     // important: assert that it was able to retrieve results without dispatching sdk request
-    expect(sdkMethodCreateQueryListener).not.toHaveBeenCalled()
-  })
+    expect(sdkMethodCreateQueryListener).not.toHaveBeenCalled();
+  });
 
   it('creates new query object when `newQuery` argument is passed in', async () => {
     render(
@@ -94,7 +94,7 @@ describe('useCreateQuery', () => {
       >
         <TestComponent newQuery={{ model: 'thelook' }} />
       </ContextWrapper>
-    )
+    );
 
     await waitFor(() =>
       expect(dataContainerListener).toHaveBeenLastCalledWith({
@@ -102,9 +102,9 @@ describe('useCreateQuery', () => {
         isPending: false,
         queryId: 126,
       })
-    )
+    );
 
-    expect(sdkMethodCreateQueryListener).toHaveBeenCalledTimes(1)
+    expect(sdkMethodCreateQueryListener).toHaveBeenCalledTimes(1);
 
     // verify that datastate is updated with new query metadata
     expect(dataStateListener).toHaveBeenLastCalledWith(
@@ -113,6 +113,6 @@ describe('useCreateQuery', () => {
         view: 'orders',
         vis_config: expect.anything(),
       })
-    )
-  })
-})
+    );
+  });
+});

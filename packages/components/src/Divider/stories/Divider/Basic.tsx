@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Divider, Space, Box } from '../../..'
+import React from 'react';
+import { Divider, Space, Box } from '../../..';
 
 export default function Basic() {
   return (
@@ -21,5 +21,5 @@ export default function Basic() {
         <Divider mt="u4" />
       </Box>
     </Space>
-  )
+  );
 }

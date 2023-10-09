@@ -24,56 +24,56 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React from 'react'
-import type { ModalHeaderProps } from '../../Modal/ModalHeader'
-import type { ModalLayoutProps } from '../../Modal/ModalLayout'
-import { ModalLayout, ModalLoading } from '../../Modal/ModalLayout'
-import { DialogContent } from './DialogContent'
-import { DialogFooter } from './DialogFooter'
-import type { DialogHeaderProps } from './DialogHeader'
-import { DialogHeader } from './DialogHeader'
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { ModalHeaderProps } from '../../Modal/ModalHeader';
+import type { ModalLayoutProps } from '../../Modal/ModalLayout';
+import { ModalLayout, ModalLoading } from '../../Modal/ModalLayout';
+import { DialogContent } from './DialogContent';
+import { DialogFooter } from './DialogFooter';
+import type { DialogHeaderProps } from './DialogHeader';
+import { DialogHeader } from './DialogHeader';
 
 type WithFooter = {
   /**
    * displays content on the right-side of the DialogFooter, uses
    * Space to add whitespace between each element.
    */
-  footer: ModalLayoutProps['footer']
+  footer: ModalLayoutProps['footer'];
   /**
    * Secondary content to place in the footer
    * NOTE: `footer` property must be supplied for footer to be displayed. Supplying
    * only `footerSecondary` will prevent `DialogFooter` from being displayed.
    */
-  footerSecondary?: ReactNode
-}
+  footerSecondary?: ReactNode;
+};
 
 type WithoutFooter = {
-  footer?: undefined
-  footerSecondary?: never
-}
+  footer?: undefined;
+  footerSecondary?: never;
+};
 
-type FooterOptions = WithFooter | WithoutFooter
+type FooterOptions = WithFooter | WithoutFooter;
 
 export type DialogLayoutProps = FooterOptions &
   ModalLayoutProps & {
-    children?: ReactNode
+    children?: ReactNode;
     /**
      * Content in header. If a `string` is supplied the content will be placed in a `<Header />`
      */
-    header?: ReactNode
+    header?: ReactNode;
 
     /**
      * Replaces the built-in `IconButton` (generally used for close) with an arbitrary ReactNode
      */
-    headerDetail?: ModalHeaderProps['detail']
+    headerDetail?: ModalHeaderProps['detail'];
 
     /**
      * Display "Close" IconButton in the DialogHeader.
      * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
      */
-    headerCloseButton?: boolean
-  }
+    headerCloseButton?: boolean;
+  };
 
 const constructDialogHeader = (
   children?: ReactNode,
@@ -81,18 +81,18 @@ const constructDialogHeader = (
   detail?: ReactNode,
   footerExists?: boolean
 ) => {
-  if (!children) return null
+  if (!children) return null;
 
-  const props: DialogHeaderProps = { children }
+  const props: DialogHeaderProps = { children };
 
   if (detail) {
-    props.detail = detail
+    props.detail = detail;
   } else if (closeButton || footerExists) {
-    props.hideClose = !closeButton
+    props.hideClose = !closeButton;
   }
 
-  return <DialogHeader {...props} />
-}
+  return <DialogHeader {...props} />;
+};
 
 export const DialogLayout = ({
   children,
@@ -105,13 +105,13 @@ export const DialogLayout = ({
 }: DialogLayoutProps) => {
   const dialogFooter = footer ? (
     <DialogFooter secondary={footerSecondary}>{footer}</DialogFooter>
-  ) : null
+  ) : null;
   const dialogHeader = constructDialogHeader(
     header,
     headerCloseButton,
     headerDetail,
     !!footer
-  )
+  );
 
   return (
     <ModalLayout footer={dialogFooter} header={dialogHeader}>
@@ -119,5 +119,5 @@ export const DialogLayout = ({
         {isLoading ? <ModalLoading /> : children}
       </DialogContent>
     </ModalLayout>
-  )
-}
+  );
+};

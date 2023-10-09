@@ -24,14 +24,14 @@
 
  */
 
-import pick from 'lodash/pick'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { ValidationType } from '../ValidationMessage'
+import pick from 'lodash/pick';
+import type { CompatibleInputHTMLProps } from '@looker/design-tokens';
+import type { ValidationType } from '../ValidationMessage';
 
-export interface InputProps extends CompatibleHTMLProps<HTMLInputElement> {
-  validationType?: ValidationType
-  'data-autofocus'?: string
-  'data-testid'?: string
+export interface InputProps extends CompatibleInputHTMLProps<HTMLInputElement> {
+  validationType?: ValidationType;
+  'data-autofocus'?: string;
+  'data-testid'?: string;
 }
 
 export interface InputTextTypeProps {
@@ -48,7 +48,7 @@ export interface InputTextTypeProps {
     | 'tel'
     | 'text'
     | 'url'
-    | 'week'
+    | 'week';
 }
 
 export const inputPropKeys = [
@@ -95,20 +95,20 @@ export const inputPropKeys = [
   'aria-label',
   'aria-describedby',
   'aria-labelledby',
-]
+];
 /**
  * Adds data-autofocus attribute for use with focus-trap (Popover & Dialog)
  * Can't use the autofocus dom attribute b/c React does not pass it down
  * https://github.com/facebook/react/issues/11851
  */
 export const getAutoFocusProps = (autoFocus?: boolean) => {
-  return autoFocus ? { autoFocus, 'data-autofocus': 'true' } : {}
-}
+  return autoFocus ? { autoFocus, 'data-autofocus': 'true' } : {};
+};
 
 export const pickInputProps = <T extends { autoFocus?: boolean }>({
   autoFocus,
   ...props
 }: T) => {
-  const inputProps = pick(props, inputPropKeys)
-  return { ...getAutoFocusProps(autoFocus), ...inputProps }
-}
+  const inputProps = pick(props, inputPropKeys);
+  return { ...getAutoFocusProps(autoFocus), ...inputProps };
+};

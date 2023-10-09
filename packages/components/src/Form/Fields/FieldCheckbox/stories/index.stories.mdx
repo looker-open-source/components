@@ -1,11 +1,10 @@
-import { FieldCheckbox } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyValidation from '!!raw-loader!./Validation'
+import { FieldCheckbox } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyValidation from './Validation?raw';
 
 <Meta component={FieldCheckbox} title="Docs/FieldCheckbox" />
-
 
 # FieldCheckbox
 
@@ -26,7 +25,6 @@ The `alignValidationMessage` can also be used to adjust where the validation mes
 **_Note: In the current implementation, any `ValidationMessage` set in a `<FieldCheckbox />` component will be overridden by `ValidationMessages` set in the parent `<Form />` component. Because of this, it is highly recommended that you only ever directly set `ValidationMessage` if a `<FieldCheckbox />` is outside a `<Form />`._**
 
 <Editor code={storyValidation} />
-
 
 ## Props
 

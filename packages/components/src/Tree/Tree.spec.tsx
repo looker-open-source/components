@@ -24,13 +24,14 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Science } from '@styled-icons/material-outlined'
-import { screen, fireEvent } from '@testing-library/react'
-import { Button } from '../Button'
-import Controlled from './stories/Controlled'
-import { Tree } from '.'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Science } from '@styled-icons/material-outlined';
+import { screen, fireEvent } from '@testing-library/react';
+import { Button } from '../Button';
+import Controlled from './stories/Controlled';
+import { Tree } from './Tree';
+import { TreeItem } from './TreeItem';
 
 describe('Tree', () => {
   test('Renders string disclosure label and detail', () => {
@@ -38,78 +39,78 @@ describe('Tree', () => {
       <Tree label="Tree Label" detail="Tree Detail">
         Hello World
       </Tree>
-    )
+    );
 
-    screen.getByText('Tree Label')
-    screen.getByText('Tree Detail')
-  })
+    screen.getByText('Tree Label');
+    screen.getByText('Tree Detail');
+  });
 
   test('Renders JSX Element disclosure label', () => {
     renderWithTheme(
       <Tree label={<div>Tree JSX Label</div>} detail="Tree Detail">
         Hello World
       </Tree>
-    )
+    );
 
-    screen.getByText('Tree JSX Label')
-  })
+    screen.getByText('Tree JSX Label');
+  });
 
   test('Renders and hides children on disclosure click', () => {
-    renderWithTheme(<Tree label="Tree Label">Hello World</Tree>)
+    renderWithTheme(<Tree label="Tree Label">Hello World</Tree>);
 
-    const treeLabel = screen.getByText('Tree Label')
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    fireEvent.click(treeLabel)
-    screen.getByText('Hello World')
-    fireEvent.click(treeLabel)
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-  })
+    const treeLabel = screen.getByText('Tree Label');
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    fireEvent.click(treeLabel);
+    screen.getByText('Hello World');
+    fireEvent.click(treeLabel);
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+  });
 
   test('Shows children by default when defaultOpen is true (and uses uncontrolled open state)', () => {
     renderWithTheme(
       <Tree label="Tree Label" defaultOpen>
         Hello World
       </Tree>
-    )
-    screen.getByText('Hello World')
-  })
+    );
+    screen.getByText('Hello World');
+  });
 
   test('Handles controlled open state via isOpen and toggleOpen props', () => {
-    renderWithTheme(<Controlled />)
+    renderWithTheme(<Controlled />);
 
-    const treeLabel = screen.getByText('Controlled Tree')
-    screen.getByText('Cost')
-    fireEvent.click(treeLabel)
-    expect(screen.queryByText('Cost')).not.toBeInTheDocument()
+    const treeLabel = screen.getByText('Controlled Tree');
+    screen.getByText('Cost');
+    fireEvent.click(treeLabel);
+    expect(screen.queryByText('Cost')).not.toBeInTheDocument();
 
-    fireEvent.click(treeLabel)
-    screen.getByText('Cost')
+    fireEvent.click(treeLabel);
+    screen.getByText('Cost');
 
-    const toggleSwitch = screen.getByRole('switch')
-    fireEvent.click(toggleSwitch)
-    expect(screen.queryByText('Cost')).not.toBeInTheDocument()
-  })
+    const toggleSwitch = screen.getByRole('switch');
+    fireEvent.click(toggleSwitch);
+    expect(screen.queryByText('Cost')).not.toBeInTheDocument();
+  });
 
   test('Triggers onClose and onOpen callbacks when provided via props', () => {
-    const onClose = jest.fn()
-    const onOpen = jest.fn()
+    const onClose = jest.fn();
+    const onOpen = jest.fn();
 
     renderWithTheme(
       <Tree label="Tree Label" onClose={onClose} onOpen={onOpen}>
         Hello World
       </Tree>
-    )
+    );
 
-    const treeLabel = screen.getByText('Tree Label')
-    fireEvent.click(treeLabel)
-    expect(onOpen).toHaveBeenCalledTimes(1)
-    fireEvent.click(treeLabel)
-    expect(onClose).toHaveBeenCalledTimes(1)
-  })
+    const treeLabel = screen.getByText('Tree Label');
+    fireEvent.click(treeLabel);
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    fireEvent.click(treeLabel);
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 
   test('Clicks on detail do not open the Tree or trigger callbacks when accessory === true', () => {
-    const onOpen = jest.fn()
-    const onClose = jest.fn()
+    const onOpen = jest.fn();
+    const onClose = jest.fn();
     renderWithTheme(
       <Tree
         label="Tree Label"
@@ -122,19 +123,19 @@ describe('Tree', () => {
       >
         Hello World
       </Tree>
-    )
+    );
 
-    const detail = screen.getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail');
 
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    fireEvent.click(detail)
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onOpen).toHaveBeenCalledTimes(0)
-  })
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    fireEvent.click(detail);
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    expect(onOpen).toHaveBeenCalledTimes(0);
+  });
 
   test('Key presses on detail do not open the Tree or trigger callbacks when accessory === true', () => {
-    const onOpen = jest.fn()
-    const onClose = jest.fn()
+    const onOpen = jest.fn();
+    const onClose = jest.fn();
     renderWithTheme(
       <Tree
         label="Tree Label"
@@ -147,21 +148,21 @@ describe('Tree', () => {
       >
         Hello World
       </Tree>
-    )
+    );
 
-    const detail = screen.getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail');
 
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
     fireEvent.keyDown(detail, {
       key: 'Enter',
-    })
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onOpen).toHaveBeenCalledTimes(0)
-  })
+    });
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    expect(onOpen).toHaveBeenCalledTimes(0);
+  });
 
   test('Clicks on detail open the Tree and trigger callbacks when accessory === false', () => {
-    const onOpen = jest.fn()
-    const onClose = jest.fn()
+    const onOpen = jest.fn();
+    const onClose = jest.fn();
     renderWithTheme(
       <Tree
         label="Tree Label"
@@ -171,18 +172,18 @@ describe('Tree', () => {
       >
         Hello World
       </Tree>
-    )
+    );
 
-    const detail = screen.getByText('Tree Detail')
+    const detail = screen.getByText('Tree Detail');
 
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    fireEvent.click(detail)
-    screen.getByText('Hello World')
-    expect(onOpen).toHaveBeenCalledTimes(1)
-    fireEvent.click(detail)
-    expect(screen.queryByText('Hello World')).not.toBeInTheDocument()
-    expect(onClose).toHaveBeenCalledTimes(1)
-  })
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    fireEvent.click(detail);
+    screen.getByText('Hello World');
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    fireEvent.click(detail);
+    expect(screen.queryByText('Hello World')).not.toBeInTheDocument();
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 
   test('Shows and hides detail on Tree hover when hoverDisclosure === true', () => {
     renderWithTheme(
@@ -192,12 +193,12 @@ describe('Tree', () => {
       >
         Hello World
       </Tree>
-    )
+    );
 
-    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument()
-    fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true })
-    expect(screen.getByText('Tree Detail')).toBeInTheDocument()
-  })
+    expect(screen.queryByText('Tree Detail')).not.toBeInTheDocument();
+    fireEvent.mouseEnter(screen.getByText('Tree Label'), { bubbles: true });
+    expect(screen.getByText('Tree Detail')).toBeInTheDocument();
+  });
 
   describe('color', () => {
     test('theme.colors.key', () => {
@@ -208,12 +209,12 @@ describe('Tree', () => {
           label="Whatever"
           icon={<Science data-testid="icon" />}
         />
-      )
-      expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
+      );
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33');
       expect(screen.getByTestId('icon').parentNode).toHaveStyle(
         'color: #707781'
-      )
-    })
+      );
+    });
 
     test('calculation', () => {
       renderWithTheme(
@@ -223,23 +224,23 @@ describe('Tree', () => {
           label="Whatever"
           icon={<Science data-testid="icon" />}
         />
-      )
-      expect(screen.getByText('Whatever')).toHaveStyle('color: #319220')
+      );
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #319220');
       expect(screen.getByTestId('icon').parentNode).toHaveStyle(
         'color: #319220'
-      )
-    })
+      );
+    });
 
     test('disabled', () => {
       renderWithTheme(
         <Tree disabled label="Whatever" icon={<Science data-testid="icon" />} />
-      )
-      expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5')
+      );
+      expect(screen.getByText('Whatever')).toHaveStyle('color: #939ba5');
       expect(screen.getByTestId('icon').parentNode).toHaveStyle(
         'color: #939ba5'
-      )
-    })
-  })
+      );
+    });
+  });
 
   describe('aria roles', () => {
     test('selected Trees have aria-selected=true', () => {
@@ -250,12 +251,12 @@ describe('Tree', () => {
           label="Whatever"
           icon={<Science data-testid="icon" />}
         />
-      )
+      );
       expect(screen.getAllByRole('treeitem')[0]).toHaveAttribute(
         'aria-selected',
         'true'
-      )
-    })
+      );
+    });
 
     test('Trees can take aria-current=true', () => {
       renderWithTheme(
@@ -265,21 +266,21 @@ describe('Tree', () => {
           label="Whatever"
           icon={<Science data-testid="icon" />}
         />
-      )
+      );
       expect(screen.getAllByRole('treeitem')[0]).toHaveAttribute(
         'aria-current',
         'true'
-      )
-    })
-  })
+      );
+    });
+  });
 
   describe('itemRole', () => {
     test('renders inner <TreeItem> as <div> by default', () => {
-      renderWithTheme(<Tree label="Default Tree" />)
+      renderWithTheme(<Tree label="Default Tree" />);
 
-      expect(screen.getByText('Default Tree').closest('button')).toBe(null)
-      expect(screen.getByText('Default Tree').closest('a')).toBe(null)
-    })
+      expect(screen.getByText('Default Tree').closest('button')).toBe(null);
+      expect(screen.getByText('Default Tree').closest('a')).toBe(null);
+    });
 
     test('renders inner <TreeItem> as <a> and receives link-related props when itemRole="link"', () => {
       renderWithTheme(
@@ -289,13 +290,26 @@ describe('Tree', () => {
           label="Link Tree"
           target="_blank"
         />
-      )
+      );
 
-      const treeItemLink = screen.getByText('Link Tree').closest('a')
-      expect(treeItemLink).toHaveAttribute('href', 'https://google.com')
-      expect(treeItemLink).toHaveAttribute('target', '_blank')
+      const treeItemLink = screen.getByText('Link Tree').closest('a');
+      expect(treeItemLink).toHaveAttribute('href', 'https://google.com');
+      expect(treeItemLink).toHaveAttribute('target', '_blank');
       // Note: rel="noopener noreferrer" is auto added to the underlying <a> element when target="_blank"
-      expect(treeItemLink).toHaveAttribute('rel', 'noopener noreferrer')
-    })
-  })
-})
+      expect(treeItemLink).toHaveAttribute('rel', 'noopener noreferrer');
+    });
+  });
+});
+
+test('border', () => {
+  renderWithTheme(
+    <Tree label="Orders" border defaultOpen>
+      <TreeItem color="measure">Count</TreeItem>
+    </Tree>
+  );
+  const region = screen.getByRole('region');
+  expect(region).toHaveStyleRule(
+    'background-image',
+    'linear-gradient( 90deg,transparent calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0 - 1px),#DEE1E5 calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0 - 1px) calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0),transparent calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0) )'
+  );
+});

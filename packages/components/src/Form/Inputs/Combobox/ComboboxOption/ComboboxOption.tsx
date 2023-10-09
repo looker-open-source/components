@@ -27,8 +27,8 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import pick from 'lodash/pick'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
+import pick from 'lodash/pick';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
 import {
   color,
   flexbox,
@@ -37,61 +37,62 @@ import {
   space,
   typography,
   omitStyledProps,
-} from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef, useContext } from 'react'
-import styled, { css } from 'styled-components'
-import { ReplaceText } from '../../../../ReplaceText'
-import { useForkedRef } from '../../../../utils'
+} from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef, useContext } from 'react';
+import styled, { css } from 'styled-components';
+import { ReplaceText } from '../../../../ReplaceText';
+import { useForkedRef } from '../../../../utils';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../../../../Ripple'
-import { makeHash } from '../utils/makeHash'
-import type { ComboboxContextProps } from '../ComboboxContext'
+} from '../../../../Ripple';
+import { makeHash } from '../utils/makeHash';
+import type { ComboboxContextProps } from '../ComboboxContext';
 import {
   OptionContext,
   ComboboxContext,
   ComboboxMultiContext,
-} from '../ComboboxContext'
-import { ComboboxOptionIndicator } from '../ComboboxOptionIndicator'
-import type { ComboboxOptionProps, HighlightTextProps } from '../types'
-import type { ComboboxData } from '../utils/state'
-import { getComboboxText } from '../utils/getComboboxText'
-import { useOptionEvents } from '../utils/useOptionEvents'
-import { useOptionStatus } from '../utils/useOptionStatus'
-import { useAddOptionToContext } from '../utils/useAddOptionToContext'
-import { useOptionScroll } from '../utils/useOptionScroll'
+} from '../ComboboxContext';
+import { ComboboxOptionIndicator } from '../ComboboxOptionIndicator';
+import type { ComboboxOptionProps, HighlightTextProps } from '../types';
+import type { ComboboxData } from '../utils/state';
+import { getComboboxText } from '../utils/getComboboxText';
+import { useOptionEvents } from '../utils/useOptionEvents';
+import { useOptionStatus } from '../utils/useOptionStatus';
+import { useAddOptionToContext } from '../utils/useAddOptionToContext';
+import { useOptionScroll } from '../utils/useOptionScroll';
 
 interface ComboboxOptionWrapperProps extends ComboboxOptionProps {
-  isSelected?: boolean
+  isSelected?: boolean;
 }
 
 export const ComboboxOptionWrapper = styled(
   forwardRef(
     (props: ComboboxOptionWrapperProps, forwardedRef: Ref<HTMLLIElement>) => {
       const { children, className, isSelected, label, style, value, ...rest } =
-        props
+        props;
 
       const { callbacks, ...rippleProps } = useBoundedRipple({
         className,
         color: isSelected ? 'key' : 'neutral',
         ref: forwardedRef,
         style,
-      })
+      });
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
         pick(rest, rippleHandlerKeys),
         rest.disabled
-      )
+      );
       return (
         <OptionContext.Provider value={{ label, value }}>
           <li
             {...omitStyledProps(rest)}
             id={String(makeHash(value))}
+            // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
             role="option"
             {...rippleProps}
             {...rippleHandlers}
@@ -103,7 +104,7 @@ export const ComboboxOptionWrapper = styled(
             {children}
           </li>
         </OptionContext.Provider>
-      )
+      );
     }
   )
 )`
@@ -114,7 +115,7 @@ export const ComboboxOptionWrapper = styled(
     background-color: ${({ isSelected, theme }) =>
       isSelected ? theme.colors.keyAccent : theme.colors.ui1};
   }
-`
+`;
 
 const ComboboxOptionInternal = forwardRef(
   (
@@ -127,22 +128,22 @@ const ComboboxOptionInternal = forwardRef(
     }: ComboboxOptionProps,
     forwardedRef: Ref<HTMLLIElement>
   ) => {
-    const { label, value } = props
+    const { label, value } = props;
 
     useAddOptionToContext<ComboboxContextProps>(
       ComboboxContext,
       value,
       label,
       scrollIntoView
-    )
+    );
     const optionEvents = useOptionEvents<ComboboxContextProps>(
       props,
       ComboboxContext
-    )
+    );
     const { isActive, isSelected } = useOptionStatus<ComboboxContextProps>(
       ComboboxContext,
       value
-    )
+    );
 
     const scrollRef = useOptionScroll(
       ComboboxContext,
@@ -150,9 +151,9 @@ const ComboboxOptionInternal = forwardRef(
       label,
       scrollIntoView,
       isActive
-    )
+    );
 
-    const ref = useForkedRef(scrollRef, forwardedRef)
+    const ref = useForkedRef(scrollRef, forwardedRef);
 
     return (
       <ComboboxOptionWrapper
@@ -169,9 +170,9 @@ const ComboboxOptionInternal = forwardRef(
         />
         {children || <ComboboxOptionText highlightText={highlightText} />}
       </ComboboxOptionWrapper>
-    )
+    );
   }
-)
+);
 
 export const comboboxOptionStyle = css`
   ${reset}
@@ -183,7 +184,7 @@ export const comboboxOptionStyle = css`
   align-items: stretch;
   cursor: default;
   outline: none;
-`
+`;
 
 export const ComboboxOption = styled(ComboboxOptionInternal).attrs(
   ({
@@ -203,22 +204,22 @@ export const ComboboxOption = styled(ComboboxOptionInternal).attrs(
   })
 )`
   ${comboboxOptionStyle}
-`
+`;
 
 export function ComboboxOptionTextInternal({
   highlightText = true,
   ...props
 }: CompatibleHTMLProps<HTMLSpanElement> & HighlightTextProps) {
-  const context = useContext(ComboboxContext)
-  const contextMulti = useContext(ComboboxMultiContext)
-  const contextToUse = context.transition ? context : contextMulti
+  const context = useContext(ComboboxContext);
+  const contextMulti = useContext(ComboboxMultiContext);
+  const contextToUse = context.transition ? context : contextMulti;
 
-  const { data } = contextToUse
-  const { inputValue } = data
-  const contextOption = (data as ComboboxData).option
+  const { data } = contextToUse;
+  const { inputValue } = data;
+  const contextOption = (data as ComboboxData).option;
 
-  const option = useContext(OptionContext)
-  const text = getComboboxText(option)
+  const option = useContext(OptionContext);
+  const text = getComboboxText(option);
 
   if (
     !highlightText ||
@@ -228,16 +229,16 @@ export function ComboboxOptionTextInternal({
     // highlighting it would be weird
     inputValue === getComboboxText(contextOption)
   ) {
-    return <span {...props}>{text}</span>
+    return <span {...props}>{text}</span>;
   }
   return (
     <span {...props}>
       <ReplaceText match={inputValue}>{text}</ReplaceText>
     </span>
-  )
+  );
 }
 
 export const ComboboxOptionText = styled(ComboboxOptionTextInternal)`
   max-width: 100%;
   word-wrap: break-word;
-`
+`;

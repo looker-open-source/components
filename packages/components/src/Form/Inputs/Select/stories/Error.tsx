@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
+import React from 'react';
+import { Select } from '..';
 
 export default function Error() {
   return (
@@ -16,5 +16,5 @@ export default function Error() {
       ]}
       validationType="error"
     />
-  )
+  );
 }

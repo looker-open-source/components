@@ -23,38 +23,38 @@
  SOFTWARE.
 
  */
-import type { ValidationMessageProps } from '@looker/components'
-import { InputChips, InputText, SelectMulti } from '@looker/components'
-import type { FilterModel } from '@looker/filter-expressions'
-import isArray from 'lodash/isArray'
-import React, { useMemo } from 'react'
-import styled from 'styled-components'
-import type { Option } from '../../../../../../types/option'
-import type { PlacementProps } from '../../../../../../utils/filter_styles'
+import type { ValidationMessageProps } from '@looker/components';
+import { InputChips, InputText, SelectMulti } from '@looker/components';
+import type { FilterModel } from '@looker/filter-expressions';
+import isArray from 'lodash/isArray';
+import React, { useMemo } from 'react';
+import styled from 'styled-components';
+import type { Option } from '../../../../../../types/option';
+import type { PlacementProps } from '../../../../../../utils/filter_styles';
 import {
   inputPlacementStyle,
   multiInputWidth,
-} from '../../../../../../utils/filter_styles'
-import { createOptions } from '../../../../../../utils/option_utils'
-import { useOptionFiltering } from '../../../../../../utils/use_option_filtering'
-import { usePlaceholder } from '../../../../../../utils/use_placeholder'
+} from '../../../../../../utils/filter_styles';
+import { createOptions } from '../../../../../../utils/option_utils';
+import { useOptionFiltering } from '../../../../../../utils/use_option_filtering';
+import { usePlaceholder } from '../../../../../../utils/use_placeholder';
 
 interface MultiStringInputProps extends PlacementProps {
-  className?: string
-  onChange?: (id?: string, props?: any) => void
-  onInputChange?: (value: string) => void
-  isLoading?: boolean
-  item: FilterModel
-  disableCreate?: boolean
-  suggestions?: string[]
-  enumerations?: Option[]
-  validationMessage?: ValidationMessageProps
+  className?: string;
+  onChange?: (id?: string, props?: any) => void;
+  onInputChange?: (value: string) => void;
+  isLoading?: boolean;
+  item: FilterModel;
+  disableCreate?: boolean;
+  suggestions?: string[];
+  enumerations?: Option[];
+  validationMessage?: ValidationMessageProps;
 
-  id?: string
-  width?: string | number
-  height?: string | number
+  id?: string;
+  width?: string | number;
+  height?: string | number;
 
-  showDropDownMenu?: boolean
+  showDropDownMenu?: boolean;
 }
 
 export const MultiStringInputLayout = ({
@@ -75,12 +75,12 @@ export const MultiStringInputLayout = ({
 
   showDropDownMenu = true,
 }: MultiStringInputProps) => {
-  const values = isArray(item.value) ? item.value : []
+  const values = isArray(item.value) ? item.value : [];
 
   // if suggestions exist, create Option[]
   const options = useMemo(() => {
-    return suggestions ? createOptions(suggestions) : enumerations || []
-  }, [suggestions, enumerations])
+    return suggestions ? createOptions(suggestions) : enumerations || [];
+  }, [suggestions, enumerations]);
 
   const { debouncedFilterTerm, filteredOptions, noOptionsLabel, onFilter } =
     useOptionFiltering({
@@ -88,13 +88,13 @@ export const MultiStringInputLayout = ({
       onInputChange,
       options,
       value: item.value,
-    })
+    });
 
   const handleChange = (newValues?: string[]) => {
-    onChange?.(item.id, { value: newValues })
-  }
+    onChange?.(item.id, { value: newValues });
+  };
 
-  const placeholderProps = usePlaceholder(item.value, validationMessage)
+  const placeholderProps = usePlaceholder(item.value, validationMessage);
 
   const commonProps = {
     ...placeholderProps,
@@ -107,12 +107,12 @@ export const MultiStringInputLayout = ({
     validationType: validationMessage?.type,
     values,
     width,
-  }
+  };
 
   const noSuggestions =
-    debouncedFilterTerm === '' && !suggestions && !enumerations
+    debouncedFilterTerm === '' && !suggestions && !enumerations;
   if (noSuggestions || showDropDownMenu === false) {
-    return <InputChips {...commonProps} />
+    return <InputChips {...commonProps} />;
   }
 
   return (
@@ -127,12 +127,12 @@ export const MultiStringInputLayout = ({
       closeOnSelect
       isLoading={isLoading}
     />
-  )
-}
+  );
+};
 
 export const MultiStringInput = styled(MultiStringInputLayout)`
   ${inputPlacementStyle}
   ${InputText} {
     ${inputPlacementStyle}
   }
-`
+`;

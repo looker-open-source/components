@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { LayoutProps } from '../..'
-import { Page, Header, Layout, Aside, Section, Footer } from '../..'
-import { Constitution, ItemsFiller } from '../../../..'
-import { Heading } from '../../../../Text'
+import React from 'react';
+import type { LayoutProps } from '../..';
+import { Page, Header, Layout, Aside, Section, Footer } from '../..';
+import { Constitution, ItemsFiller } from '../../../..';
+import { Heading } from '../../../../Text';
 
 export default function FixedWithFooterAndHeaderShadow(props: LayoutProps) {
-  const { hasAside, ...rest } = props
+  const { hasAside, ...rest } = props;
   return (
     <Page fixed>
       <Header
@@ -41,5 +41,5 @@ export default function FixedWithFooterAndHeaderShadow(props: LayoutProps) {
         I'm a footer
       </Footer>
     </Page>
-  )
+  );
 }

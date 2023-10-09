@@ -30,14 +30,14 @@ import {
   mockSdkDataResponse,
   mockSDKModelExploreResponse,
   mockSdkColorCollectionResponse,
-} from './'
+} from './';
 
 // eslint-disable-next-line no-restricted-imports
-import type { Looker40SDK } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
+import type { Looker40SDK } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export type Response = SDKResponse<any, any>
+export type Response = SDKResponse<any, any>;
 
 export const mockSDK = {
   color_collection: () =>
@@ -101,4 +101,4 @@ export const mockSDK = {
         view: 'orders',
       },
     } as Response),
-} as unknown as Looker40SDK
+} as unknown as Looker40SDK;

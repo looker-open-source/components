@@ -24,7 +24,7 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
@@ -156,6 +156,6 @@ const resources = {
   summary: {
     'Value required': 'Arvo tarvitaan',
   },
-}
+};
 
-export const fiFI = mergeLocaleObjects([], 'fi-FI', resources)
+export const fiFI = mergeLocaleObjects([], 'fi-FI', resources);

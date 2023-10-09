@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Table } from '../Table'
-import { TableHead } from '../TableHead'
-import { TableRow } from '../TableRow'
-import { TableHeaderCell } from '../TableHeaderCell'
-import { TableBody } from '../TableBody'
-import { TableDataCell } from '../TableDataCell'
+import React from 'react';
+import { Table } from '../Table';
+import { TableHead } from '../TableHead';
+import { TableRow } from '../TableRow';
+import { TableHeaderCell } from '../TableHeaderCell';
+import { TableBody } from '../TableBody';
+import { TableDataCell } from '../TableDataCell';
 
 export default function Basic() {
   return (
@@ -39,5 +39,5 @@ export default function Basic() {
         </TableRow>
       </TableBody>
     </Table>
-  )
+  );
 }

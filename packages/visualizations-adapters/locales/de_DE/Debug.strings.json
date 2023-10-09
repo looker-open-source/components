@@ -1,9 +1,9 @@
 {
-  "Config": "Konfig",
+  "Config": "Konfiguration",
   "Dimensions": "Dimensionen",
   "Error": "Fehler",
-  "Measures": "Messwerte",
+  "Measures": "Messungen",
   "Result": "Ergebnis",
   "error": "Fehler",
-  "ok": "OK"
+  "ok": "Ok"
 }

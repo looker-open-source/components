@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
+import React from 'react';
 import {
   Dialog,
   Button,
@@ -11,7 +11,7 @@ import {
   InputText,
   Select,
   SpaceVertical,
-} from '../..'
+} from '../..';
 
 export default function ActiveElement() {
   return (
@@ -33,5 +33,5 @@ export default function ActiveElement() {
     >
       <Button>Open Dialog</Button>
     </Dialog>
-  )
+  );
 }

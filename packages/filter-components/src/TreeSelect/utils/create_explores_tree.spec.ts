@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { createExploresTree } from './create_explores_tree'
+import { createExploresTree } from './create_explores_tree';
 import {
   expected,
   explores,
@@ -33,85 +33,87 @@ import {
   explore_with_groups,
   explore_unsorted,
   explore_unsorted_expected,
-} from './create_explores_tree.mock'
+} from './create_explores_tree.mock';
 
 describe('createExploresTree tests', () => {
   it('should return empty array given empty explores', () => {
-    expect(createExploresTree([])).toEqual([])
-  })
+    expect(createExploresTree([])).toEqual([]);
+  });
 
   it('should mark explore-level entries as not highlightable', () => {
-    const trees = createExploresTree(explores)
-    expect(trees[0].isNotHighlightable).toBe(true)
+    const trees = createExploresTree(explores);
+    expect(trees[0].isNotHighlightable).toBe(true);
     expect(
       trees[0].children?.[0].children?.[0].isNotHighlightable
-    ).toBeUndefined()
-  })
+    ).toBeUndefined();
+  });
 
   it('returns a basic tree without groups or hidden/non-filterable fields', () => {
-    const result = createExploresTree(explores)
-    expect(result).toStrictEqual(expected)
-  })
+    const result = createExploresTree(explores);
+    expect(result).toStrictEqual(expected);
+  });
   it('returns a tree with groups', () => {
-    const result = createExploresTree(explore_with_groups)
-    expect(result).toStrictEqual(explore_with_groups_expected)
-  })
+    const result = createExploresTree(explore_with_groups);
+    expect(result).toStrictEqual(explore_with_groups_expected);
+  });
   it('returns a tree handling groups and hidden/non-filterable fields', () => {
-    const result = createExploresTree(more_robust_explores)
-    expect(result).toStrictEqual(more_robust_expected)
-  })
+    const result = createExploresTree(more_robust_explores);
+    expect(result).toStrictEqual(more_robust_expected);
+  });
   it('returns a tree that doesnt munge the sorting', () => {
-    const result = createExploresTree(explore_unsorted)
-    expect(result).toStrictEqual(explore_unsorted_expected)
-  })
+    const result = createExploresTree(explore_unsorted);
+    expect(result).toStrictEqual(explore_unsorted_expected);
+  });
   it('does not return a tree with duplicate ids', () => {
-    const result = createExploresTree(more_robust_explores)
+    const result = createExploresTree(more_robust_explores);
     const { list_ids, unique_ids } = result.reduce(
       (
         acc: { list_ids: string[]; unique_ids: { [key: string]: string } },
         curr
       ) => {
         if (curr.id) {
-          acc.list_ids.push(curr.id)
-          acc.unique_ids[curr.id] = curr.id
+          acc.list_ids.push(curr.id);
+          acc.unique_ids[curr.id] = curr.id;
         }
         if (curr.children) {
           curr.children.forEach(child => {
             if (child.id) {
-              acc.list_ids.push(child.id)
-              acc.unique_ids[child.id] = child.id
+              acc.list_ids.push(child.id);
+              acc.unique_ids[child.id] = child.id;
             }
             if (child.children) {
               child.children.forEach(youngin => {
                 if (youngin.id) {
-                  acc.list_ids.push(youngin.id)
-                  acc.unique_ids[youngin.id] = youngin.id
+                  acc.list_ids.push(youngin.id);
+                  acc.unique_ids[youngin.id] = youngin.id;
                 }
-              })
+              });
             }
-          })
+          });
         }
-        return acc
+        return acc;
       },
       { list_ids: [], unique_ids: {} }
-    )
-    expect(list_ids).toHaveLength(Object.keys(unique_ids).length)
+    );
+    expect(list_ids).toHaveLength(Object.keys(unique_ids).length);
 
     // there is only 1 explore inside the list so grab it directly
-    const fieldSet = more_robust_explores[0].fields
+    const fieldSet = more_robust_explores[0].fields;
 
     const concated_fields = [
       ...(fieldSet?.dimensions ?? []),
       ...(fieldSet?.measures ?? []),
       ...(fieldSet?.filters ?? []).concat(fieldSet?.parameters ?? []),
-    ].filter(f => f.can_filter && !f.hidden)
+    ].filter(f => f.can_filter && !f.hidden);
 
     // explictly add explore container
     const concated_fields_with_explore_container = [
       'explore_id',
       ...concated_fields,
-    ]
+    ];
 
-    expect(list_ids).toHaveLength(concated_fields_with_explore_container.length)
-  })
-})
+    expect(list_ids).toHaveLength(
+      concated_fields_with_explore_container.length
+    );
+  });
+});

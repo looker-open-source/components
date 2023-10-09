@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { hsv } from 'd3-hsv'
-import { DEFAULT_SERIES_COLORS } from '.'
+import { hsv } from 'd3-hsv';
+import { DEFAULT_SERIES_COLORS } from '.';
 
 /**
  * Utility for selecting base value, fallback value, or default value.
@@ -16,11 +16,11 @@ import { DEFAULT_SERIES_COLORS } from '.'
  */
 const fallbackVal = (v1: number, v2: number): number => {
   if (isNaN(v1)) {
-    return fallbackVal(v2, 0)
+    return fallbackVal(v2, 0);
   }
 
-  return v1
-}
+  return v1;
+};
 
 /**
  * Utility mixes to colors together in a provided amount of steps
@@ -34,29 +34,29 @@ export const deriveColorBlend = (
   targetColor: string = DEFAULT_SERIES_COLORS[1],
   steps = 5
 ) => {
-  const colorStops = Math.max(steps - 1, 1) // use Math.max to prevent division by 0 errors
+  const colorStops = Math.max(steps - 1, 1); // use Math.max to prevent division by 0 errors
 
-  const baseHSV = hsv(baseColor)
-  const targetHSV = hsv(targetColor)
+  const baseHSV = hsv(baseColor);
+  const targetHSV = hsv(targetColor);
 
-  const baseHue = fallbackVal(baseHSV.h, targetHSV.h)
-  const targetHue = fallbackVal(targetHSV.h, baseHSV.h)
+  const baseHue = fallbackVal(baseHSV.h, targetHSV.h);
+  const targetHue = fallbackVal(targetHSV.h, baseHSV.h);
 
-  const baseSat = fallbackVal(baseHSV.s, targetHSV.s)
-  const targetSat = fallbackVal(targetHSV.s, baseHSV.s)
+  const baseSat = fallbackVal(baseHSV.s, targetHSV.s);
+  const targetSat = fallbackVal(targetHSV.s, baseHSV.s);
 
-  const { v: baseVal } = baseHSV
-  const { v: targetVal } = targetHSV
+  const { v: baseVal } = baseHSV;
+  const { v: targetVal } = targetHSV;
 
-  const hPerStep = (targetHue - baseHue) / colorStops
-  const sPerStep = (targetSat - baseSat) / colorStops
-  const vPerStep = (targetVal - baseVal) / colorStops
+  const hPerStep = (targetHue - baseHue) / colorStops;
+  const sPerStep = (targetSat - baseSat) / colorStops;
+  const vPerStep = (targetVal - baseVal) / colorStops;
 
   return new Array(steps).fill('').map((_, i) => {
     return hsv(
       baseHue + hPerStep * i,
       baseSat + sPerStep * i,
       baseVal + vPerStep * i
-    ).hex()
-  })
-}
+    ).hex();
+  });
+};

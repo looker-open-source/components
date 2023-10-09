@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   DataTableAction,
   DataTableItem,
@@ -31,8 +31,8 @@ import {
   DataTable,
   DateFormat,
   doDataTableSort,
-} from '../..'
-import type { DataTableColumns } from '../../'
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function Sorting() {
   const [data, setData] = useState([
@@ -51,7 +51,7 @@ export default function Sorting() {
       id: 3,
       name: `Blue`,
     },
-  ])
+  ]);
 
   const [columns, setColumns] = useState<DataTableColumns>([
     {
@@ -73,7 +73,7 @@ export default function Sorting() {
       title: 'Created Date',
       type: 'date',
     },
-  ])
+  ]);
 
   const onSort = (id: string, sortDirection: 'asc' | 'desc') => {
     const { columns: sortedColumns, data: sortedData } = doDataTableSort(
@@ -81,10 +81,10 @@ export default function Sorting() {
       columns,
       id,
       sortDirection
-    )
-    setData(sortedData)
-    setColumns(sortedColumns)
-  }
+    );
+    setData(sortedData);
+    setColumns(sortedColumns);
+  };
 
   const items = data.map(({ id, name, createdDate }) => {
     const actions = (
@@ -93,7 +93,7 @@ export default function Sorting() {
           Select Cheese
         </DataTableAction>
       </>
-    )
+    );
 
     return (
       <DataTableItem
@@ -108,12 +108,12 @@ export default function Sorting() {
           <DateFormat>{createdDate}</DateFormat>
         </DataTableCell>
       </DataTableItem>
-    )
-  })
+    );
+  });
 
   return (
     <DataTable caption="Cheeses example" onSort={onSort} columns={columns}>
       {items}
     </DataTable>
-  )
+  );
 }

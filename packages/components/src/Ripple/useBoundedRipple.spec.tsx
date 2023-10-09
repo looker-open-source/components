@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
-import type { UseBoundedRippleProps } from './types'
-import { useBoundedRipple } from './useBoundedRipple'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
+import type { UseBoundedRippleProps } from './types';
+import { useBoundedRipple } from './useBoundedRipple';
 
 const RippleComponent = (props: UseBoundedRippleProps) => {
   const {
@@ -15,7 +15,7 @@ const RippleComponent = (props: UseBoundedRippleProps) => {
     className,
     ref,
     style,
-  } = useBoundedRipple(props)
+  } = useBoundedRipple(props);
   return (
     <div ref={ref}>
       <div data-testid="startBG" onClick={startBG} />
@@ -25,11 +25,11 @@ const RippleComponent = (props: UseBoundedRippleProps) => {
       <div data-testid="className">{className}</div>
       <div style={style}>style</div>
     </div>
-  )
-}
+  );
+};
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
 
 beforeEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
@@ -44,18 +44,18 @@ beforeEach(() => {
       width: 360,
       x: 0,
       y: 0,
-    }
-  })
-})
+    };
+  });
+});
 
 afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-})
+  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect;
+});
 
 describe('useRipple', () => {
   test('bounded animation values', () => {
-    renderWithTheme(<RippleComponent />)
+    renderWithTheme(<RippleComponent />);
     expect(screen.getByText('style')).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-overflow': 'hidden',
@@ -63,6 +63,6 @@ describe('useRipple', () => {
       '--ripple-scale-start': '1',
       '--ripple-size': '30px',
       '--ripple-translate': '165px, 0',
-    })
-  })
-})
+    });
+  });
+});

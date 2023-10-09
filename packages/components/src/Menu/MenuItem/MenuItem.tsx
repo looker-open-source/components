@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import styled, { useTheme } from 'styled-components'
-import type { MouseEvent, Ref } from 'react'
-import React, { forwardRef, useContext } from 'react'
-import { shouldForwardProp, size } from '@looker/design-tokens'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import { DialogContext } from '../../Dialog'
-import type { ListItemProps } from '../../ListItem'
-import { ListItem, ListItemContext, listItemDimensions } from '../../ListItem'
-import { useForkedRef, useID } from '../../utils'
-import { NestedMenuContext } from '../NestedMenuProvider'
-import type { UseNestedMenuProps } from '../useNestedMenu'
-import { useNestedMenu } from '../useNestedMenu'
+import styled, { useTheme } from 'styled-components';
+import type { MouseEvent, Ref } from 'react';
+import React, { forwardRef, useContext } from 'react';
+import { shouldForwardProp, size } from '@looker/design-tokens';
+import { ArrowRight } from '@styled-icons/material/ArrowRight';
+import { DialogContext } from '../../Dialog';
+import type { ListItemProps } from '../../ListItem';
+import { ListItem, ListItemContext, listItemDimensions } from '../../ListItem';
+import { useForkedRef, useID } from '../../utils';
+import { NestedMenuContext } from '../NestedMenuProvider';
+import type { UseNestedMenuProps } from '../useNestedMenu';
+import { useNestedMenu } from '../useNestedMenu';
 
 export interface MenuItemProps
   extends Omit<ListItemProps, 'color'>,
@@ -56,7 +56,7 @@ export const MenuItem = styled(
       }: MenuItemProps,
       forwardedRef: Ref<HTMLLIElement>
     ) => {
-      const id = useID(props.id)
+      const id = useID(props.id);
 
       const {
         popover,
@@ -72,33 +72,35 @@ export const MenuItem = styled(
         onKeyDown,
         onMouseEnter,
         onMouseLeave,
-      })
-      const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef)
+      });
+      const ref = useForkedRef<HTMLLIElement>(nestedMenuRef, forwardedRef);
 
-      const theme = useTheme()
-      const { density } = useContext(ListItemContext)
-      const { iconSize } = listItemDimensions(density || theme.defaults.density)
+      const theme = useTheme();
+      const { density } = useContext(ListItemContext);
+      const { iconSize } = listItemDimensions(
+        density || theme.defaults.density
+      );
 
       if (detail && nestedMenu) {
         // eslint-disable-next-line no-console
         console.warn(
           'The detail prop is not supported when nestedMenu is used.'
-        )
+        );
       }
-      detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail
+      detail = nestedMenu ? <NestedMenuIndicator size={iconSize} /> : detail;
 
-      const { closeModal } = useContext(DialogContext)
-      const { closeParentMenu } = useContext(NestedMenuContext)
+      const { closeModal } = useContext(DialogContext);
+      const { closeParentMenu } = useContext(NestedMenuContext);
 
       const handleOnClick = (event: MouseEvent<HTMLLIElement>) => {
         // nestedMenuOnClick wraps onClick from props
-        nestedMenuOnClick(event)
+        nestedMenuOnClick(event);
         // Close the Menu unless event has preventDefault
         if (!event.defaultPrevented) {
-          closeModal?.()
-          closeParentMenu?.()
+          closeModal?.();
+          closeParentMenu?.();
         }
-      }
+      };
 
       return (
         <>
@@ -117,7 +119,7 @@ export const MenuItem = styled(
        from bubbling up (especially onClick) due to React Portal event bubbling */}
           {popover}
         </>
-      )
+      );
     }
   )
 )`
@@ -125,11 +127,11 @@ export const MenuItem = styled(
   [aria-expanded='true'] {
     background: ${({ theme: { colors } }) => colors.ui1};
   }
-`
+`;
 
 const NestedMenuIndicator = styled(ArrowRight).withConfig({
   shouldForwardProp,
 })`
   color: ${({ theme }) => theme.colors.text1};
   ${size}
-`
+`;

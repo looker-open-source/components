@@ -24,21 +24,26 @@
 
  */
 
-import React from 'react'
-import styled, { css, keyframes } from 'styled-components'
-import type { ProgressCircularSizes } from './size'
-import { progressCircularSVG } from './size'
-import { progressCircularConstants } from './constants'
-import { CircleContainer } from './ProgressSvg'
+import React from 'react';
+import styled, { css, keyframes } from 'styled-components';
+import type { Colors } from '@looker/design-tokens';
+import type { ProgressCircularSizes } from './size';
+import { progressCircularSVG } from './size';
+import { progressCircularConstants } from './constants';
+import { CircleContainer } from './ProgressSvg';
 
 interface IndeterminateSpinnerProps {
-  size: ProgressCircularSizes
+  size: ProgressCircularSizes;
+  color: keyof Colors;
 }
 
-export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
+export const IndeterminateProgress = ({
+  size,
+  color,
+}: IndeterminateSpinnerProps) => {
   const { stroke, half, radius, dashArray, dashOffset } = progressCircularSVG({
     size,
-  })
+  });
 
   return (
     <IndeterminateContainer>
@@ -47,6 +52,7 @@ export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
           <LeftCircleContainer
             viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
+            color={color}
           >
             <circle
               cx={half}
@@ -62,6 +68,7 @@ export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
           <CircleContainer
             viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
+            color={color}
           >
             <circle
               cx={half}
@@ -77,6 +84,7 @@ export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
           <RightCircleContainer
             viewBox={`0 0 ${half * 2} ${half * 2}`}
             xmlns="http://www.w3.org/2000/svg"
+            color={color}
           >
             <circle
               cx={half}
@@ -90,14 +98,14 @@ export const IndeterminateProgress = ({ size }: IndeterminateSpinnerProps) => {
         </CircleClipper>
       </IndeterminateSpinner>
     </IndeterminateContainer>
-  )
-}
+  );
+};
 
 const containerRotate = keyframes`
   to {
     transform: rotate(360deg);
   }
-`
+`;
 
 const spinnerRotateAnimations = () =>
   [...Array(9)].map(
@@ -105,21 +113,21 @@ const spinnerRotateAnimations = () =>
       `${i * 12.5}% {transform: rotate(${
         i * 0.5 * progressCircularConstants.arcSize
       }deg)}`
-  )
+  );
 
 const spinnerKeyFrames = keyframes`
   ${spinnerRotateAnimations().join('\n')}
-`
+`;
 
 const containerAnimation = () => {
   const duration =
     (360 * progressCircularConstants.arcTime) /
     (progressCircularConstants.arcStartRotationInterval +
-      (360 - progressCircularConstants.arcSize))
+      (360 - progressCircularConstants.arcSize));
   return css`
     animation: ${containerRotate} ${duration}ms linear infinite;
-  `
-}
+  `;
+};
 
 const leftSpin = keyframes`
   from {
@@ -131,7 +139,7 @@ const leftSpin = keyframes`
     to {
       transform: rotate(265deg);
     }
-`
+`;
 
 const rightSpin = keyframes`
 from {
@@ -143,13 +151,13 @@ from {
     to {
       transform: rotate(-265deg);
     }
-`
+`;
 
 const IndeterminateSpinner = styled.div`
   height: 100%;
   position: absolute;
   width: 100%;
-`
+`;
 
 const IndeterminateContainer = styled.div`
   font-size: 0;
@@ -167,16 +175,16 @@ const IndeterminateContainer = styled.div`
       ${progressCircularConstants.timingFunction} infinite both;
     /* stylelint-enable */
   }
-`
+`;
 
 const LeftCircleContainer = styled(CircleContainer)`
   animation-name: ${leftSpin};
-`
+`;
 
 const RightCircleContainer = styled(CircleContainer)`
   animation-name: ${rightSpin};
   left: -100%;
-`
+`;
 
 const CircleClipper = styled.div`
   display: inline-flex;
@@ -192,7 +200,7 @@ const CircleClipper = styled.div`
     animation-timing-function: ${progressCircularConstants.timingFunction};
     width: 200%;
   }
-`
+`;
 
 const GapPatch = styled.div`
   box-sizing: border-box;
@@ -208,4 +216,4 @@ const GapPatch = styled.div`
     transform: rotate(180deg);
     width: 2000%;
   }
-`
+`;

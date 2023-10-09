@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { ListItemBackgroundColorProps } from '../ListItem/utils'
-import { listItemBackgroundColor } from '../ListItem/utils'
+import styled from 'styled-components';
+import type { ListItemBackgroundColorProps } from '../ListItem/utils';
+import { listItemBackgroundColor } from '../ListItem/utils';
 
 export const LkFieldItemLabel = styled.div<ListItemBackgroundColorProps>`
   ${listItemBackgroundColor}
@@ -13,4 +13,4 @@ export const LkFieldItemLabel = styled.div<ListItemBackgroundColorProps>`
   display: flex;
   height: 100%;
   width: 100%;
-`
+`;

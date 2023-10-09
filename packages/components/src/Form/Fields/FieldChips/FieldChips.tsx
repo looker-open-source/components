@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import type { InputChipsProps } from '../../Inputs/InputChips/InputChips'
-import { InputChips } from '../../Inputs/InputChips/InputChips'
-import type { FloatingLabelFieldProps } from '../Field'
-import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import { useFormContext } from '../../Form';
+import type { InputChipsProps } from '../../Inputs/InputChips/InputChips';
+import { InputChips } from '../../Inputs/InputChips/InputChips';
+import type { FloatingLabelFieldProps } from '../Field';
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field';
 
 export interface FieldChipsProps
   extends FloatingLabelFieldProps,
@@ -19,8 +19,8 @@ export interface FieldChipsProps
 
 const FieldChipsComponent = forwardRef(
   (props: FieldChipsProps, ref: Ref<HTMLInputElement>) => {
-    const id = useID(props.id)
-    const validationMessage = useFormContext(props)
+    const id = useID(props.id);
+    const validationMessage = useFormContext(props);
 
     return (
       <FloatingLabelField
@@ -40,10 +40,10 @@ const FieldChipsComponent = forwardRef(
           values={props.values}
         />
       </FloatingLabelField>
-    )
+    );
   }
-)
+);
 
-FieldChipsComponent.displayName = 'FieldChipsComponent'
+FieldChipsComponent.displayName = 'FieldChipsComponent';
 
-export const FieldChips = styled(FieldChipsComponent)``
+export const FieldChips = styled(FieldChipsComponent)``;

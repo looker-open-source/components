@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { Aside, Layout, Page, Section, SpaceVertical } from '../../Layout'
-import { Panel, Panels } from '..'
-import { Paragraph } from '../../Text'
-import { Button } from '../../Button'
+import React from 'react';
+import { Aside, Layout, Page, Section, SpaceVertical } from '../../Layout';
+import { Panel, Panels } from '..';
+import { Paragraph } from '../../Text';
+import { Button } from '../../Button';
 
 export default function CenterPlacement() {
   return (
@@ -113,5 +113,5 @@ export default function CenterPlacement() {
         <Aside width="sidebar">Right sidebar</Aside>
       </Layout>
     </Page>
-  )
+  );
 }

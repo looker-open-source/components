@@ -3,23 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FormEvent } from 'react'
-import React, { useState } from 'react'
-import { Slider, Label } from '../../../..'
-import { Card } from '../../../../../Card'
-import { SpaceVertical } from '../../../../../Layout'
+import type { ChangeEvent } from 'react';
+import React, { useState } from 'react';
+import { Slider, Label } from '../../../..';
+import { Card } from '../../../../../Card';
+import { SpaceVertical } from '../../../../../Layout';
 import {
   ComboboxMulti,
   ComboboxMultiOption,
   ComboboxMultiList,
   ComboboxMultiInput,
-} from '../..'
+} from '../..';
 
 export default function ListLayout() {
-  const [containerWidth, setContainerWidth] = useState(400)
-  const handleWidthChange = (e: FormEvent<HTMLInputElement>) => {
-    setContainerWidth(parseInt(e.currentTarget.value, 10))
-  }
+  const [containerWidth, setContainerWidth] = useState(400);
+  const handleWidthChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setContainerWidth(parseInt(e.target.value, 10));
+  };
 
   return (
     <SpaceVertical p="u5">
@@ -57,5 +57,5 @@ export default function ListLayout() {
         </SpaceVertical>
       </Card>
     </SpaceVertical>
-  )
+  );
 }

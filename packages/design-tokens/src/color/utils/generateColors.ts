@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import pickBy from 'lodash/pickBy'
-import identity from 'lodash/identity'
-import type { Colors, SpecifiableColors } from '../types'
-import { generateBlendColors } from './generateBlendColors'
-import { generateDerivativeColors } from './generateDerivativeColors'
-import { generateStatefulColors } from './generateStatefulColors'
+import pickBy from 'lodash/pickBy';
+import identity from 'lodash/identity';
+import type { Colors, SpecifiableColors } from '../types';
+import { generateBlendColors } from './generateBlendColors';
+import { generateDerivativeColors } from './generateDerivativeColors';
+import { generateStatefulColors } from './generateStatefulColors';
 
 export const generateColors = (
   themeColors: SpecifiableColors,
   customColors?: Partial<SpecifiableColors>
 ): Colors => {
-  const specifiable = { ...themeColors, ...pickBy(customColors, identity) }
+  const specifiable = { ...themeColors, ...pickBy(customColors, identity) };
 
   /**
    * If a theme customization only specifies a `text` color the `body` and
@@ -25,21 +25,21 @@ export const generateColors = (
    */
   if (customColors && customColors.text) {
     if (!customColors.body) {
-      specifiable.body = undefined
+      specifiable.body = undefined;
     }
     if (!customColors.title) {
-      specifiable.title = undefined
+      specifiable.title = undefined;
     }
   }
 
-  const blends = generateBlendColors(specifiable)
-  const derivatives = generateDerivativeColors(specifiable, blends)
-  const statefulColors = generateStatefulColors(specifiable, derivatives)
+  const blends = generateBlendColors(specifiable);
+  const derivatives = generateDerivativeColors(specifiable, blends);
+  const statefulColors = generateStatefulColors(specifiable, derivatives);
 
   return {
     ...specifiable,
     ...derivatives,
     ...blends,
     ...statefulColors,
-  }
-}
+  };
+};

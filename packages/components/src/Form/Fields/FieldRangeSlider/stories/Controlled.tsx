@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldRangeSlider } from '../'
-import { Button } from '../../../../'
-import { Space } from '../../../../Layout'
+import React, { useState } from 'react';
+import { FieldRangeSlider } from '../';
+import { Button } from '../../../../';
+import { Space } from '../../../../Layout';
 
 export default function Controlled() {
-  const [controlledValue, setControlledValue] = useState([30, 40])
+  const [controlledValue, setControlledValue] = useState([30, 40]);
   const handleChange: (value: number[]) => void = (value: number[]) =>
-    setControlledValue(value)
+    setControlledValue(value);
   return (
     <>
       <FieldRangeSlider
@@ -28,5 +28,5 @@ export default function Controlled() {
         <Button onClick={() => handleChange([39, 40])}>39 — 40</Button>
       </Space>
     </>
-  )
+  );
 }

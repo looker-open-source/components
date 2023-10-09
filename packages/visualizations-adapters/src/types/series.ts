@@ -3,49 +3,49 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { PointShapes, PointStyles } from './'
+import type { PointShapes, PointStyles } from './';
 
 export type CSeriesBasic = {
   /**
    * Hex Code
    */
-  color?: string
+  color?: string;
   /**
    * String label to render
    */
-  label?: string
+  label?: string;
   /**
    * Hide this series from the chart
    */
-  visible?: boolean
+  visible?: boolean;
   /**
    * Default value format
    */
-  value_format?: string
-}
+  value_format?: string;
+};
 
 export type CSeriesPoints = {
   /**
    * Point shapes
    */
-  shape?: PointShapes
+  shape?: PointShapes;
   /**
    * Point styles
    */
-  style?: PointStyles
-}
+  style?: PointStyles;
+};
 
 export type CSeriesLine = {
   /**
    * Thickness of line(s) in pixels:
    */
-  line_width?: number
-}
+  line_width?: number;
+};
 
 export type CSeriesSize = {
   /**
    * Adjust datapoint appearance relative to the value of provided series name.
    * size_by accepts a string representing the series name.
    */
-  size_by?: string | false
-}
+  size_by?: string | false;
+};

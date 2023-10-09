@@ -2,20 +2,20 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { ReactNode } from 'react'
-import { SWRConfig } from 'swr'
-import { ComponentsProvider } from '@looker/components'
-import type { Looker40SDK } from '@looker/sdk'
-import { SDKContext } from '../SDKContext'
-import type { DataStore } from '../hooks'
-import { DataState } from '../hooks'
-import { mockSDKWithListeners } from '.'
+import React from 'react';
+import type { ReactNode } from 'react';
+import { SWRConfig } from 'swr';
+import { ComponentsProvider } from '@looker/components';
+import type { Looker40SDK } from '@looker/sdk';
+import { SDKContext } from '../SDKContext';
+import type { DataStore } from '../hooks';
+import { DataState } from '../hooks';
+import { mockSDKWithListeners } from '.';
 
 type ContextWrapperProps = {
-  initialState?: DataStore
-  children?: ReactNode
-}
+  initialState?: DataStore;
+  children?: ReactNode;
+};
 
 export const ContextWrapper = ({
   children,
@@ -31,5 +31,5 @@ export const ContextWrapper = ({
         </SDKContext.Provider>
       </SWRConfig>
     </ComponentsProvider>
-  )
-}
+  );
+};

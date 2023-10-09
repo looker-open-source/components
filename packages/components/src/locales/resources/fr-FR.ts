@@ -24,38 +24,36 @@
 
  */
 
-import dateLocale from 'date-fns/locale/fr'
+import dateLocale from 'date-fns/locale/fr';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
-    'Clear Field': 'Effacer le champ',
+    'Clear Field': 'Effacer le contenu du champ',
   },
   AvatarButton: {
-    'Profile Picture': 'Image du profil',
+    'Profile Picture': 'Photo de profil',
   },
   AvatarUser: {
     Avatar: 'Avatar',
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'La totalité des éléments affichés sur {{pageCount}} sélectionnés',
-    AllTotalCountSelected:
-      'La totalité des {{totalCount}} éléments sélectionnés',
-    'Bulk Actions': 'Actions en bloc',
-    'Clear Selection': 'Effacer la sélection',
-    SelectAllCountResults:
-      'Sélectionner la totalité des {{totalCount}} résultats',
+      'Tous les éléments affichés sélectionnés ({{pageCount}})',
+    AllTotalCountSelected: 'Tous les éléments sélectionnés ({{totalCount}})',
+    'Bulk Actions': 'Actions groupées',
+    'Clear Selection': 'Annuler la sélection',
+    SelectAllCountResults: 'Sélectionner tous les résultats ({{totalCount}})',
     SelectedCountOfTotalDisplayed:
-      '{{selectedItemCount}} éléments affichés sur {{pageCount}} sélectionnés',
+      '{{selectedItemCount}} éléments sélectionnés sur {{pageCount}} éléments affichés',
   },
   CalendarNav: {
-    'next month': 'mois suivant',
+    'next month': 'mois prochain',
     'previous month': 'mois précédent',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'Consulter le mélange de marque',
+    'Check Mark Mixed': 'Coche mixte',
   },
   Chip: {
     Delete: 'Supprimer',
@@ -63,7 +61,7 @@ const resources = {
   ColumnSelector: {
     Apply: 'Appliquer',
     Cancel: 'Annuler',
-    'Select All': 'Sélectionner tout',
+    'Select All': 'Tout sélectionner',
     'Select None': 'Ne rien sélectionner',
     'Select columns to display': 'Sélectionner les colonnes à afficher',
   },
@@ -91,7 +89,7 @@ const resources = {
     Warning: 'Avertissement',
   },
   InputDate: {
-    'Open calendar': 'Ouvrir le calendrier',
+    'Open calendar': "Ouvrir l'agenda",
   },
   InputDateRange: {
     'End date': 'Date de fin',
@@ -99,39 +97,38 @@ const resources = {
   },
   InputFilters: {
     'Clear Filters': 'Effacer les filtres',
-    'Filter List': 'Filtrer la liste',
-    'bottom-start': 'bottom-start',
+    'Filter List': 'Liste des filtres',
   },
   InputTimeSelect: {
-    'Select time': "Sélectionner l'heure",
+    'Select time': 'Sélectionner une heure',
   },
   MessageBar: {
-    DismissIntent: 'Ignorer {{intent}}',
+    DismissIntent: 'Fermer {{intent}}',
   },
   ModalHeaderCloseButton: {
     Close: 'Fermer',
   },
   MonthPickerNav: {
     close: 'fermer',
-    'next year': 'année suivante',
+    'next year': 'année prochaine',
     'previous year': 'année précédente',
   },
   PageSize: {
-    Display: 'Affichage',
-    of: 'de',
+    Display: 'Afficher',
+    of: 'sur',
   },
   Pagination: {
     'First page of results': 'Première page de résultats',
     'Last page of results': 'Dernière page de résultats',
     'Next page of results': 'Page de résultats suivante',
     'Previous page of results': 'Page de résultats précédente',
-    of: 'de',
+    of: 'sur',
   },
   PanelHeader: {
     CloseTitle: 'Fermer {{title}}',
   },
   PopoverFooter: {
-    Done: 'Terminé',
+    Done: 'OK',
   },
   PromptDialog: {
     Cancel: 'Annuler',
@@ -144,7 +141,7 @@ const resources = {
     'Minimum Value': 'Valeur minimale',
   },
   RequiredStar: {
-    required: 'requis',
+    required: 'obligatoire',
   },
   SelectOptions: {
     Loading: 'Chargement',
@@ -153,6 +150,6 @@ const resources = {
   TabList: {
     Tabs: 'Onglets',
   },
-}
+};
 
-export const frFR = mergeLocaleObjects([], 'fr-FR', resources, dateLocale)
+export const frFR = mergeLocaleObjects([], 'fr-FR', resources, dateLocale);

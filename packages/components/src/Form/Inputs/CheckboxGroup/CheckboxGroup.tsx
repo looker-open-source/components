@@ -24,36 +24,36 @@
 
  */
 
-import xor from 'lodash/xor'
-import type { Ref, ReactNode } from 'react'
-import React, { forwardRef, useCallback, useRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { Fieldset } from '../../../Fieldset'
-import { FieldCheckbox } from '../../Fields/FieldCheckbox'
-import type { FieldsetProps } from '../../../Fieldset'
-import { inputHeight } from '../height'
+import xor from 'lodash/xor';
+import type { Ref, ReactNode } from 'react';
+import React, { forwardRef, useCallback, useRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import { Fieldset } from '../../../Fieldset';
+import { FieldCheckbox } from '../../Fields/FieldCheckbox';
+import type { FieldsetProps } from '../../../Fieldset';
+import { inputHeight } from '../height';
 
 export interface CheckboxGroupOptionProps {
-  label: string
-  value: string
-  disabled?: boolean
-  detail?: ReactNode
+  label: string;
+  value: string;
+  disabled?: boolean;
+  detail?: ReactNode;
 }
 
 export type CheckboxGroupProps = Omit<FieldsetProps, 'onChange'> & {
-  name?: string
-  id?: string
-  inline?: boolean
-  autoFocus?: boolean
-  disabled?: boolean
-  required?: boolean
-  options: CheckboxGroupOptionProps[]
-  validationType?: 'error'
-  defaultValue?: string[]
-  value?: string[]
-  onChange?: (value: string[]) => void
-}
+  name?: string;
+  id?: string;
+  inline?: boolean;
+  autoFocus?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  options: CheckboxGroupOptionProps[];
+  validationType?: 'error';
+  defaultValue?: string[];
+  value?: string[];
+  onChange?: (value: string[]) => void;
+};
 
 // For controlled scenario we want to use checked & value,
 // for uncontrolled, defaultChecked & defaultValue
@@ -62,9 +62,9 @@ function getCheckedProps(
   value?: string[],
   defaultValue?: string[]
 ) {
-  const key = value ? 'checked' : 'defaultChecked'
-  const valueToUse = value || defaultValue || []
-  return { [key]: valueToUse.includes(optionValue) }
+  const key = value ? 'checked' : 'defaultChecked';
+  const valueToUse = value || defaultValue || [];
+  return { [key]: valueToUse.includes(optionValue) };
 }
 
 const CheckboxGroupLayout = forwardRef(
@@ -83,29 +83,29 @@ const CheckboxGroupLayout = forwardRef(
     }: CheckboxGroupProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const name = useID(propsName)
+    const name = useID(propsName);
     // Keep track of the group's value for onChange argument if value prop is not used
     // (i.e.uncontrolled but with onChange prop)
-    const uncontrolledValueRef = useRef(defaultValue)
+    const uncontrolledValueRef = useRef(defaultValue);
 
     const getChangeHandler = useCallback(
       (optionValue: string) => {
         return onChange
           ? () => {
-              const oldValue = value || uncontrolledValueRef.current
-              const newValue = xor(oldValue, [optionValue])
-              onChange(newValue)
-              uncontrolledValueRef.current = newValue
+              const oldValue = value || uncontrolledValueRef.current;
+              const newValue = xor(oldValue, [optionValue]);
+              onChange(newValue);
+              uncontrolledValueRef.current = newValue;
             }
-          : undefined
+          : undefined;
       },
       [onChange, value]
-    )
+    );
 
     const checkboxes = options.map((option, index) => {
-      const checkedProps = getCheckedProps(option.value, value, defaultValue)
-      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {}
-      const handleChange = getChangeHandler(option.value)
+      const checkedProps = getCheckedProps(option.value, value, defaultValue);
+      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {};
+      const handleChange = getChangeHandler(option.value);
 
       return (
         <FieldCheckbox
@@ -120,8 +120,8 @@ const CheckboxGroupLayout = forwardRef(
           {...checkedProps}
           {...autoFocusProps}
         />
-      )
-    })
+      );
+    });
 
     return (
       <Fieldset
@@ -135,14 +135,14 @@ const CheckboxGroupLayout = forwardRef(
       >
         {checkboxes}
       </Fieldset>
-    )
+    );
   }
-)
+);
 
-CheckboxGroupLayout.displayName = 'CheckboxGroupLayout'
+CheckboxGroupLayout.displayName = 'CheckboxGroupLayout';
 
 export const CheckboxGroup = styled(CheckboxGroupLayout)`
   ${FieldCheckbox} {
     ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
   }
-`
+`;

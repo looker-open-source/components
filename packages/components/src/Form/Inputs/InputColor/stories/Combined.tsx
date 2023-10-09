@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SpaceVertical } from '../../../../Layout'
-import { InputColor } from '../InputColor'
+import React from 'react';
+import { SpaceVertical } from '../../../../Layout';
+import { InputColor } from '../InputColor';
 
 export default function Combined() {
   return (
@@ -17,5 +17,5 @@ export default function Combined() {
       <InputColor defaultValue="green" disabled />
       <InputColor defaultValue="green" readOnly />
     </SpaceVertical>
-  )
+  );
 }

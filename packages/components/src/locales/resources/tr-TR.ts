@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/tr'
+import dateLocale from 'date-fns/locale/tr';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Sekmeler',
   },
-}
+};
 
-export const trTR = mergeLocaleObjects([], 'tr-TR', resources, dateLocale)
+export const trTR = mergeLocaleObjects([], 'tr-TR', resources, dateLocale);

@@ -15,7 +15,7 @@ See below for information on extending the stock theme for your own use case.
 NOTE: For the sake of brevity examples within the documentation generally don't show the `ComponentsProvider`. It's injected as part of the site's code sandbox setup.
 
 ```jsx
-;() => {
+() => {
   /**
    *  import { Button, ComponentsProvider } from '@looker/components'
    **/
@@ -24,14 +24,14 @@ NOTE: For the sake of brevity examples within the documentation generally don't 
     <ComponentsProvider>
       <Button>Just a regular button</Button>
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```
 
 You can use the theme's properties within your custom components:
 
 ```jsx
-;() => {
+() => {
   /**
    *  import { Button, ComponentsProvider, theme } from '@looker/components'
    *  import styled from 'styled-components'
@@ -40,14 +40,14 @@ You can use the theme's properties within your custom components:
   const PositiveButton = styled(Button)`
     border-color: ${({ theme }) => theme.colors.positive};
     background-color: ${({ theme }) => theme.colors.positive};
-  `
+  `;
 
   return (
     <ComponentsProvider>
       <PositiveButton>Engage!</PositiveButton>
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```
 
 ## Customizing the Theme
@@ -55,7 +55,7 @@ You can use the theme's properties within your custom components:
 You can customize the theme provided by Looker Components by passing colors, fonts, and more into the `themeCustomizations` prop.
 
 ```jsx
-;() => {
+() => {
   /**
    *  import { Button, ComponentsProvider } from '@looker/components'
    **/
@@ -64,8 +64,8 @@ You can customize the theme provided by Looker Components by passing colors, fon
     <ComponentsProvider themeCustomizations={{ colors: { key: 'hotpink' } }}>
       <Button>Pink is so Pretty!</Button>
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```
 
 The following colors are available for customization. The first three are most likely to require customization since they are heavily used throughout the Looker Components library:
@@ -104,7 +104,7 @@ Additional properties to customize:
 `ExtendComponentsThemeProvider` is a Styled Components' ThemeProvider that acts as a React Context and in so doing is able to support the standard behavior of nested contexts - the theme defined nearest to the component will be the version used.
 
 ```jsx
-;() => {
+() => {
   /**
    *  import { Button, ComponentsProvider } from '@looker/components'
    **/
@@ -121,6 +121,6 @@ Additional properties to customize:
         </ExtendComponentsThemeProvider>
       </Space>
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```

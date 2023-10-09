@@ -24,82 +24,82 @@
 
  */
 
-import type { Reducer } from 'react'
-import { useCallback, useEffect, useReducer, useRef } from 'react'
-import { useTheme } from 'styled-components'
+import type { Reducer } from 'react';
+import { useCallback, useEffect, useReducer, useRef } from 'react';
+import { useTheme } from 'styled-components';
 
 export interface RippleAction {
-  type: 'START' | 'END' | 'DONE'
+  type: 'START' | 'END' | 'DONE';
 }
 
-export type RippleState = 'IN' | 'OUT' | 'OFF'
+export type RippleState = 'IN' | 'OUT' | 'OFF';
 
 const reducer: Reducer<RippleState, RippleAction> = (state, action) => {
   switch (action.type) {
     case 'START':
-      return 'IN'
+      return 'IN';
     case 'END':
       // Tabbing onto the element would give us keyup without keydown
       // this ensures we don't see the ripple fade-out without rippling-in
-      return state === 'IN' ? 'OUT' : state
+      return state === 'IN' ? 'OUT' : state;
     case 'DONE':
-      return 'OFF'
+      return 'OFF';
   }
-}
+};
 
 const getRippleClassName = (rippling: RippleState) => {
   if (rippling === 'IN') {
-    return 'fg-in'
+    return 'fg-in';
   } else if (rippling === 'OUT') {
-    return 'fg-out'
+    return 'fg-out';
   }
-  return ''
-}
+  return '';
+};
 
 export const useRippleState = () => {
-  const [rippling, dispatch] = useReducer(reducer, 'OFF')
+  const [rippling, dispatch] = useReducer(reducer, 'OFF');
   // Tracks the "in" (i.e. pressed) status to determine if ripple-out should fire
-  const isInRef = useRef(false)
+  const isInRef = useRef(false);
   // Tracks "lock" status for the ripple
   // which ensures the ripple-in gets enough time to fully animate
-  const isLockedRef = useRef(false)
+  const isLockedRef = useRef(false);
   // Get the transitions to match the ripple-in & -out animation durations
   const {
     transitions: { quick, simple },
-  } = useTheme()
+  } = useTheme();
 
   const start = useCallback(() => {
-    dispatch({ type: 'START' })
-    isInRef.current = true
-  }, [])
+    dispatch({ type: 'START' });
+    isInRef.current = true;
+  }, []);
 
   const end = useCallback(() => {
-    isInRef.current = false
+    isInRef.current = false;
     if (!isLockedRef.current) {
-      dispatch({ type: 'END' })
+      dispatch({ type: 'END' });
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    let t: ReturnType<typeof setTimeout>
+    let t: ReturnType<typeof setTimeout>;
     if (rippling === 'IN') {
-      isLockedRef.current = true
+      isLockedRef.current = true;
       t = setTimeout(() => {
-        isLockedRef.current = false
+        isLockedRef.current = false;
         if (!isInRef.current) {
-          dispatch({ type: 'END' })
+          dispatch({ type: 'END' });
         }
-      }, simple)
+      }, simple);
     }
     if (rippling === 'OUT') {
       t = setTimeout(() => {
-        dispatch({ type: 'DONE' })
-      }, quick)
+        dispatch({ type: 'DONE' });
+      }, quick);
     }
     return () => {
-      clearTimeout(t)
-    }
-  }, [rippling, quick, simple])
+      clearTimeout(t);
+    };
+  }, [rippling, quick, simple]);
 
-  return { className: getRippleClassName(rippling), end, start }
-}
+  return { className: getRippleClassName(rippling), end, start };
+};

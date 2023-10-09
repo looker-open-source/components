@@ -1,18 +1,18 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}}から{{coords2}}へ"
+    "value": "{{coords1}}～{{coords2}}"
   },
   "distance unit from lat, lon": {
-    "value": "{{lat}}、{{lon}}から{{distance}}{{unit}}"
+    "value": "{{distance}} {{unit}}（起点: {{lat}}、{{lon}}）"
   },
   "is anywhere": {
-    "value": "がいずれかの場所にある"
+    "value": "任意の場所"
   },
   "is not null": {
-    "value": "が Null でない"
+    "value": "null ではない"
   },
   "is null": {
-    "value": "が Null である"
+    "value": "null である"
   },
   "lat degrees north": {
     "value": "北緯 {{lat}}°"

@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import type { FontFamilies } from '@looker/design-tokens'
-import * as MaterialIcons from '@styled-icons/material'
-import { ButtonItem, ButtonToggle, ListItem } from '../../'
-import { List } from '../'
+import React, { useState } from 'react';
+import type { FontFamilies } from '@looker/design-tokens';
+import * as MaterialIcons from '@styled-icons/material';
+import { ButtonItem, ButtonToggle, ListItem } from '../../';
+import { List } from '../';
 
 export default function FontFamily() {
-  const [family, setFamily] = useState<FontFamilies>('code')
+  const [family, setFamily] = useState<FontFamilies>('code');
 
   return (
     <>
@@ -40,5 +40,5 @@ export default function FontFamily() {
         </ListItem>
       </List>
     </>
-  )
+  );
 }

@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { AdvancedFilter } from './AdvancedFilter'
-import type { AdvancedFilterProps } from './AdvancedFilter'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
+import { AdvancedFilter } from './AdvancedFilter';
+import type { AdvancedFilterProps } from './AdvancedFilter';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
 
 const renderAdvancedFilter = (props?: Partial<AdvancedFilterProps>) => {
   return renderWithTheme(
@@ -25,33 +25,33 @@ const renderAdvancedFilter = (props?: Partial<AdvancedFilterProps>) => {
       allowMultipleValues={true}
       {...props}
     />
-  )
-}
+  );
+};
 
 describe('Advanced filters', () => {
   describe('add button', () => {
     it('should render the add button', () => {
-      renderAdvancedFilter()
-      const addButtonIcon = screen.queryByText('Add')
-      expect(addButtonIcon).toBeInTheDocument()
-    })
+      renderAdvancedFilter();
+      const addButtonIcon = screen.queryByText('Add');
+      expect(addButtonIcon).toBeInTheDocument();
+    });
 
     it('should not render the add button when allowMultipleValues is false', () => {
       renderAdvancedFilter({
         allowMultipleValues: false,
-      })
-      const addButtonIcon = screen.queryByText('Add')
-      expect(addButtonIcon).not.toBeInTheDocument()
-    })
+      });
+      const addButtonIcon = screen.queryByText('Add');
+      expect(addButtonIcon).not.toBeInTheDocument();
+    });
 
     it('should not render the add button when allowMultipleValues and hideAdd are both true', () => {
       renderAdvancedFilter({
         allowMultipleValues: true,
         hideAdd: true,
-      })
-      const addButtonIcon = screen.queryByText('Add')
-      expect(addButtonIcon).not.toBeInTheDocument()
-    })
+      });
+      const addButtonIcon = screen.queryByText('Add');
+      expect(addButtonIcon).not.toBeInTheDocument();
+    });
 
     it('should not render the add button when the field is a parameter', () => {
       renderAdvancedFilter({
@@ -59,9 +59,9 @@ describe('Advanced filters', () => {
         field: {
           parameter: true,
         },
-      })
-      const addButtonIcon = screen.queryByText('Add')
-      expect(addButtonIcon).not.toBeInTheDocument()
-    })
-  })
-})
+      });
+      const addButtonIcon = screen.queryByText('Add');
+      expect(addButtonIcon).not.toBeInTheDocument();
+    });
+  });
+});

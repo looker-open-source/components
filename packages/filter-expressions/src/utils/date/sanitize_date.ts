@@ -23,16 +23,16 @@
  SOFTWARE.
 
  */
-import type { FilterDateTimeModel, FilterModel } from '../../types'
+import type { FilterDateTimeModel, FilterModel } from '../../types';
 import {
   clearTimeFilterDateTimeModel,
   dateToFilterDateTimeModel,
-} from './date_conversions'
+} from './date_conversions';
 
 export const sanitizeDate = (item: FilterModel) => {
   const dateItem: FilterDateTimeModel = dateToFilterDateTimeModel(
     new Date(Date.now())
-  )
+  );
   const {
     id = '0',
     is = true,
@@ -48,22 +48,22 @@ export const sanitizeDate = (item: FilterModel) => {
     startInterval,
     endInterval,
     intervalType,
-  } = item
-  const interval = { unit: 'month', value: 3 }
+  } = item;
+  const interval = { unit: 'month', value: 3 };
 
   switch (type) {
     case 'past':
-      return { id, is, type, unit: unit || 'month', value: value || 1 }
+      return { id, is, type, unit: unit || 'month', value: value || 1 };
     case 'this':
     case 'next':
     case 'last':
-      return { id, is, type, unit: unit || 'month' }
+      return { id, is, type, unit: unit || 'month' };
     case 'anytime':
-      return { id, is, type }
+      return { id, is, type };
     case 'year':
-      return { id, is, type, year }
+      return { id, is, type, year };
     case 'month':
-      return { id, is, type, year, month }
+      return { id, is, type, year, month };
     case 'before':
     case 'after':
       return {
@@ -74,7 +74,7 @@ export const sanitizeDate = (item: FilterModel) => {
         unit: unit || 'month',
         value: value || 1,
         date,
-      }
+      };
     case 'range':
       return {
         id,
@@ -82,7 +82,7 @@ export const sanitizeDate = (item: FilterModel) => {
         type,
         start,
         end,
-      }
+      };
     case 'thisRange':
       return {
         id,
@@ -90,9 +90,9 @@ export const sanitizeDate = (item: FilterModel) => {
         type,
         startInterval,
         endInterval,
-      }
+      };
     case 'on':
-      return { id, is, type, date: clearTimeFilterDateTimeModel(date) }
+      return { id, is, type, date: clearTimeFilterDateTimeModel(date) };
     case 'relative':
       return {
         id,
@@ -101,11 +101,11 @@ export const sanitizeDate = (item: FilterModel) => {
         startInterval: startInterval || interval,
         endInterval: endInterval || interval,
         intervalType: intervalType || 'ago',
-      }
+      };
     case 'null':
     case 'notnull':
-      return { id, is, type }
+      return { id, is, type };
     default:
-      return { ...item, type }
+      return { ...item, type };
   }
-}
+};

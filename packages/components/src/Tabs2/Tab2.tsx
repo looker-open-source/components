@@ -24,21 +24,21 @@
 
  */
 
-import pick from 'lodash/pick'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled, { css } from 'styled-components'
-import { layout, reset, padding, typography } from '@looker/design-tokens'
+import pick from 'lodash/pick';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled, { css } from 'styled-components';
+import { layout, reset, padding, typography } from '@looker/design-tokens';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../Ripple'
-import { useWrapEvent } from '../utils'
-import { TabIndicator } from './TabIndicator'
-import { TabLabel } from './TabLabel'
-import type { Tab2Props } from './types'
+} from '../Ripple';
+import { useWrapEvent } from '../utils';
+import { TabIndicator } from './TabIndicator';
+import { TabLabel } from './TabLabel';
+import type { Tab2Props } from './types';
 
 export const Tab2 = styled(
   forwardRef((props: Tab2Props, forwardedRef: Ref<HTMLButtonElement>) => {
@@ -52,27 +52,28 @@ export const Tab2 = styled(
       selected,
       style,
       ...restProps
-    } = props
+    } = props;
 
     const { callbacks, ...rippleProps } = useBoundedRipple({
       className,
       color: selected ? 'key' : 'neutral',
       ref: forwardedRef,
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(restProps, rippleHandlerKeys),
       disabled
-    )
+    );
 
     const handleClick = useWrapEvent(() => {
       if (!disabled && onSelect) {
-        onSelect()
+        onSelect();
       }
-    }, onClick)
+    }, onClick);
     return (
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         aria-controls={`panel-${id}`}
         aria-orientation="horizontal"
@@ -89,7 +90,7 @@ export const Tab2 = styled(
         <TabLabel>{children}</TabLabel>
         <TabIndicator selected={selected} />
       </button>
-    )
+    );
   })
 ).attrs<Tab2Props>(
   ({ fontFamily = 'brand', fontSize = 'small', fontWeight = 'medium' }) => ({
@@ -123,4 +124,4 @@ export const Tab2 = styled(
       color: ${({ theme }) => theme.colors.text1};
       cursor: default;
     `}
-`
+`;

@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { screen, fireEvent, waitFor } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { CAll } from '@looker/visualizations-adapters'
-import { mockSDK } from '@looker/visualizations-adapters'
-import { DataProvider } from '@looker/components-data'
-import { EmbedEditor } from './'
+import React from 'react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { CAll } from '@looker/visualizations-adapters';
+import { mockSDK } from '@looker/visualizations-adapters';
+import { DataProvider } from '@looker/components-data';
+import { EmbedEditor } from './';
 
 describe('EmbedEditor', () => {
   it('modifies chart type', async () => {
-    const handleChange = jest.fn()
-    const config: Partial<CAll> = { type: 'bar' }
+    const handleChange = jest.fn();
+    const config: Partial<CAll> = { type: 'bar' };
     renderWithTheme(
       <DataProvider sdk={mockSDK}>
         <EmbedEditor
@@ -44,26 +44,26 @@ describe('EmbedEditor', () => {
           setWidth={jest.fn()}
         />
       </DataProvider>
-    )
+    );
 
     // open select menu
-    fireEvent.click(screen.getByLabelText('Chart Type'))
+    fireEvent.click(screen.getByLabelText('Chart Type'));
     // choose new type from available options
-    fireEvent.click(screen.getByText('table').closest('li') as Element)
+    fireEvent.click(screen.getByText('table').closest('li') as Element);
 
     await waitFor(() => {
       expect(handleChange).toHaveBeenLastCalledWith(
         expect.objectContaining({ type: 'table' })
-      )
-    })
-  })
+      );
+    });
+  });
 
   it('modifies stacking property when chart type is area', async () => {
-    const handleChange = jest.fn()
+    const handleChange = jest.fn();
     const config: Partial<CAll> = {
       type: 'area',
       positioning: 'overlay',
-    }
+    };
 
     renderWithTheme(
       <DataProvider sdk={mockSDK}>
@@ -74,26 +74,26 @@ describe('EmbedEditor', () => {
           setWidth={jest.fn()}
         />
       </DataProvider>
-    )
+    );
 
     // open select menu
-    fireEvent.click(screen.getByLabelText('Positioning'))
+    fireEvent.click(screen.getByLabelText('Positioning'));
     // choose new stacking option
-    fireEvent.click(screen.getByText('stacked').closest('li') as Element)
+    fireEvent.click(screen.getByText('stacked').closest('li') as Element);
     await waitFor(() => {
       expect(handleChange).toHaveBeenLastCalledWith(
         expect.objectContaining({ positioning: 'stacked' })
-      )
-    })
+      );
+    });
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   it('toggles render_null_values when type is sparkline', async () => {
-    const handleChange = jest.fn()
+    const handleChange = jest.fn();
     const config: Partial<CAll> = {
       type: 'sparkline',
-    }
+    };
 
     renderWithTheme(
       <DataProvider sdk={mockSDK}>
@@ -104,23 +104,23 @@ describe('EmbedEditor', () => {
           setWidth={jest.fn()}
         />
       </DataProvider>
-    )
+    );
 
     // click relevant checkbox
-    fireEvent.click(screen.getByLabelText('Render Null Values'))
+    fireEvent.click(screen.getByLabelText('Render Null Values'));
 
     await waitFor(() => {
       expect(handleChange).toHaveBeenLastCalledWith(
         expect.objectContaining({ render_null_values: true })
-      )
-    })
-  })
+      );
+    });
+  });
 
   it('sets value of width field in embed editor', async () => {
-    const handleChange = jest.fn()
-    const config: Partial<CAll> = { type: 'bar' }
-    const mockSetHeight = jest.fn()
-    const mockSetWidth = jest.fn()
+    const handleChange = jest.fn();
+    const config: Partial<CAll> = { type: 'bar' };
+    const mockSetHeight = jest.fn();
+    const mockSetWidth = jest.fn();
 
     renderWithTheme(
       <DataProvider sdk={mockSDK}>
@@ -131,22 +131,22 @@ describe('EmbedEditor', () => {
           setWidth={mockSetWidth}
         />
       </DataProvider>
-    )
+    );
 
     // set value of width input
     fireEvent.change(screen.getByLabelText('Width'), {
       target: { value: '100' },
-    })
+    });
     await waitFor(() => {
-      expect(mockSetWidth).toHaveBeenCalledWith('100')
-    })
-  })
+      expect(mockSetWidth).toHaveBeenCalledWith('100');
+    });
+  });
 
   it('sets value of height field in embed editor', async () => {
-    const handleChange = jest.fn()
-    const config: Partial<CAll> = { type: 'bar' }
-    const mockSetHeight = jest.fn()
-    const mockSetWidth = jest.fn()
+    const handleChange = jest.fn();
+    const config: Partial<CAll> = { type: 'bar' };
+    const mockSetHeight = jest.fn();
+    const mockSetWidth = jest.fn();
 
     renderWithTheme(
       <DataProvider sdk={mockSDK}>
@@ -157,14 +157,14 @@ describe('EmbedEditor', () => {
           setWidth={mockSetWidth}
         />
       </DataProvider>
-    )
+    );
 
     // set value of height input
     fireEvent.change(screen.getByLabelText('Height'), {
       target: { value: '90' },
-    })
+    });
     await waitFor(() => {
-      expect(mockSetHeight).toHaveBeenCalledWith('90')
-    })
-  })
-})
+      expect(mockSetHeight).toHaveBeenCalledWith('90');
+    });
+  });
+});

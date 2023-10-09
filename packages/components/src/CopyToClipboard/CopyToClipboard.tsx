@@ -29,13 +29,13 @@ import React, {
   useState,
   cloneElement,
   isValidElement,
-} from 'react'
-import type { RefObject, ReactElement } from 'react'
-import { Assignment } from '@styled-icons/material/Assignment'
-import { Done } from '@styled-icons/material/Done'
-import { ButtonOutline } from '../Button/ButtonOutline'
-import { MultiFunctionButton } from '../Button/MultiFunctionButton'
-import { useTranslation } from '../utils'
+} from 'react';
+import type { RefObject, ReactElement } from 'react';
+import { Assignment } from '@styled-icons/material/Assignment';
+import { Done } from '@styled-icons/material/Done';
+import { ButtonOutline } from '../Button/ButtonOutline';
+import { MultiFunctionButton } from '../Button/MultiFunctionButton';
+import { useTranslation } from '../utils';
 
 /**
  */
@@ -44,60 +44,60 @@ export interface CopyToClipboardProps {
    * Content to be copied into the clipboard
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  content: string
+  content: string;
   /**
    * button's label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  children?: string | ReactElement
+  children?: string | ReactElement;
   /**
    * button's successfully copied label | a JSX element to replace the button
    * I18n recommended: content that is user visible should be treated for i18n
    * @default Copied
    */
-  success?: string | JSX.Element
+  success?: string | JSX.Element;
 
   /**
    * button's disabled property
    */
-  disabled?: boolean
+  disabled?: boolean;
 }
 
-type ChildProps = { onClick: () => void; ref: RefObject<HTMLButtonElement> }
+type ChildProps = { onClick: () => void; ref: RefObject<HTMLButtonElement> };
 
 export const CopyToClipboard = (props: CopyToClipboardProps) => {
-  const { t } = useTranslation('CopyToClipboard')
-  const childrenText = t('Copy to Clipboard')
-  const successText = t('Copied')
+  const { t } = useTranslation('CopyToClipboard');
+  const childrenText = t('Copy to Clipboard');
+  const successText = t('Copied');
   const {
     children = childrenText,
     content,
     success = successText,
     disabled,
-  } = props
+  } = props;
 
-  const [copied, setCopied] = useState(false)
-  const buttonRef = useRef<HTMLButtonElement>(null)
+  const [copied, setCopied] = useState(false);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const clickCopyButton = () => {
-    const textField = document.createElement('textarea')
-    textField.value = content
+    const textField = document.createElement('textarea');
+    textField.value = content;
 
     if (buttonRef.current) {
-      buttonRef.current.appendChild(textField)
-      textField.select()
-      document.execCommand('copy')
-      textField.remove()
-      setCopied(true)
+      buttonRef.current.appendChild(textField);
+      textField.select();
+      document.execCommand('copy');
+      textField.remove();
+      setCopied(true);
     }
-  }
+  };
 
   useEffect(() => {
-    const t = setTimeout(() => copied && setCopied(false), 2500)
+    const t = setTimeout(() => copied && setCopied(false), 2500);
     return () => {
-      clearTimeout(t)
-    }
-  }, [copied])
+      clearTimeout(t);
+    };
+  }, [copied]);
 
   const copyButton = isValidElement(children) ? (
     cloneElement<ChildProps>(children as ReactElement<ChildProps>, {
@@ -112,7 +112,7 @@ export const CopyToClipboard = (props: CopyToClipboardProps) => {
     >
       {children}
     </ButtonOutline>
-  )
+  );
 
   const successButton =
     typeof success === 'string' ? (
@@ -121,7 +121,7 @@ export const CopyToClipboard = (props: CopyToClipboardProps) => {
       </ButtonOutline>
     ) : (
       cloneElement(success, { 'aria-live': 'polite' })
-    )
+    );
 
   return (
     <MultiFunctionButton
@@ -132,5 +132,5 @@ export const CopyToClipboard = (props: CopyToClipboardProps) => {
     >
       {copyButton}
     </MultiFunctionButton>
-  )
-}
+  );
+};

@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import { calculateSuggestOptions } from './calculate_suggest_options'
+import { calculateSuggestOptions } from './calculate_suggest_options';
 
 describe('Calculate Suggest Options', () => {
   const test_options = [
@@ -53,7 +53,7 @@ describe('Calculate Suggest Options', () => {
     { value: 'x', label: 'x' },
     { value: 'y', label: 'y' },
     { value: 'z', label: 'z' },
-  ]
+  ];
 
   it('Return existing values along with current options', () => {
     expect(
@@ -62,8 +62,8 @@ describe('Calculate Suggest Options', () => {
         options: test_options,
         max: 5,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('Return existing values along with current options 2', () => {
     expect(
@@ -72,8 +72,8 @@ describe('Calculate Suggest Options', () => {
         options: test_options,
         max: 5,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('Return limited existing values if over limit', () => {
     expect(
@@ -82,8 +82,8 @@ describe('Calculate Suggest Options', () => {
         options: ['x', 'y', 'z'],
         max: 5,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
   it('Return only existing values if at limit', () => {
     expect(
       calculateSuggestOptions({
@@ -91,8 +91,8 @@ describe('Calculate Suggest Options', () => {
         options: ['x', 'y', 'z'],
         max: 7,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
   it('Return only options if no value', () => {
     expect(
       calculateSuggestOptions({
@@ -100,8 +100,8 @@ describe('Calculate Suggest Options', () => {
         options: test_options,
         max: 7,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('Return everything if no max', () => {
     expect(
@@ -110,8 +110,8 @@ describe('Calculate Suggest Options', () => {
         options: test_options,
         max: null,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('Return normally if no string', () => {
     expect(
@@ -120,6 +120,6 @@ describe('Calculate Suggest Options', () => {
         options: [1, 2, 3, 4, 5],
         max: 3,
       })
-    ).toMatchSnapshot()
-  })
-})
+    ).toMatchSnapshot();
+  });
+});

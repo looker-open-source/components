@@ -24,14 +24,14 @@
 
  */
 
-import type { Story } from '@storybook/react'
-import React from 'react'
-import { Visualization } from '../Visualization'
 import type {
   Fields,
   ColumnProps,
   CColumn,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
+import type { Story } from '@storybook/react';
+import React from 'react';
+import { Visualization } from '../Visualization';
 import {
   buildPivotFields,
   buildChartConfig,
@@ -43,22 +43,22 @@ import {
   mockSdkPivotDataResponse,
   mockSdkDataResponse,
   mockBarConfig,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/Column',
-}
+};
 
 type StoryTemplateProps = Omit<ColumnProps, 'config' | 'fields' | 'data'> & {
-  config: Omit<CColumn, 'type'>
-}
+  config: Omit<CColumn, 'type'>;
+};
 
 const Template: Story<StoryTemplateProps> = ({
   config: configProp,
   ...restProps
 }) => {
-  const data = tabularResponse([...mockSdkDataResponse])
+  const data = tabularResponse([...mockSdkDataResponse]);
 
   const config = buildChartConfig({
     config: {
@@ -68,7 +68,7 @@ const Template: Story<StoryTemplateProps> = ({
     },
     data,
     fields: mockSdkFieldsResponse as Fields,
-  })
+  });
 
   return (
     <Visualization
@@ -77,17 +77,17 @@ const Template: Story<StoryTemplateProps> = ({
       fields={mockSdkFieldsResponse as Fields}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export const Column = Template.bind({})
+export const Column = Template.bind({});
 Column.args = {
   height: 600,
   width: 800,
   config: { series: [{ visible: true }, { visible: true }] },
-}
+};
 
-export const Stacked = Template.bind({})
+export const Stacked = Template.bind({});
 Stacked.args = {
   height: 600,
   width: 800,
@@ -95,9 +95,9 @@ Stacked.args = {
     positioning: 'stacked',
     series: [{ visible: true }, { visible: true }],
   },
-}
+};
 
-export const StackedPercentage = Template.bind({})
+export const StackedPercentage = Template.bind({});
 StackedPercentage.args = {
   height: 600,
   width: 800,
@@ -105,7 +105,7 @@ StackedPercentage.args = {
     positioning: 'percent',
     series: [{ visible: true }, { visible: true }],
   },
-}
+};
 
 export const Pivot = () => {
   const mockPivotFields = buildPivotFields({
@@ -113,7 +113,7 @@ export const Pivot = () => {
       ...mockSdkFieldsResponse,
     } as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const mockPivotData = tabularPivotResponse({
     data: [...mockSdkPivotDataResponse],
@@ -121,13 +121,13 @@ export const Pivot = () => {
       ...mockSdkFieldsResponse,
     } as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const config = buildChartConfig({
     config: { ...mockBarConfig, type: 'column' },
     data: mockPivotData,
     fields: mockPivotFields,
-  })
+  });
 
   return (
     <Visualization
@@ -137,8 +137,5 @@ export const Pivot = () => {
       height={600}
       width={800}
     />
-  )
-}
-Pivot.parameters = {
-  storyshots: { disable: true },
-}
+  );
+};

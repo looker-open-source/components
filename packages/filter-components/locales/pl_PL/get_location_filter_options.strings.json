@@ -3,7 +3,7 @@
     "value": "Pole"
   },
   "Circle": {
-    "value": "Koło"
+    "value": "Okrąg"
   },
   "Location": {
     "value": "Lokalizacja"
@@ -12,7 +12,7 @@
     "value": "ft"
   },
   "is anywhere": {
-    "value": "ma dowolną wartość"
+    "value": "jest w dowolnym miejscu"
   },
   "is not null": {
     "value": "nie ma wartości null"

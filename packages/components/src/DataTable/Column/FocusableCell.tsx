@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
-import { shouldForwardProp } from '@looker/design-tokens'
-import type { FocusVisibleProps } from '../../utils'
-import { focusVisibleCSSWrapper } from '../../utils'
+import styled, { css } from 'styled-components';
+import { shouldForwardProp } from '@looker/design-tokens';
+import type { FocusVisibleProps } from '../../utils';
+import { focusVisibleCSSWrapper } from '../../utils';
 
 const focusVisibleStyle = () => css`
   outline: 1px solid ${({ theme }) => theme.colors.key};
-`
+`;
 
 export interface FocusableCellProps extends FocusVisibleProps {
-  as?: 'th'
+  as?: 'th';
 }
 
 export const FocusableCell = styled.td
@@ -25,4 +25,4 @@ export const FocusableCell = styled.td
   }))<FocusableCellProps>`
   outline: none;
   ${focusVisibleCSSWrapper(focusVisibleStyle)}
-`
+`;

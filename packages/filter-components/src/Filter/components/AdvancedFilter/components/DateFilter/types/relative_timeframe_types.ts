@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { DayRange } from './day_range'
+import type { DayRange } from './day_range';
 
 export enum PresetTimeframes {
   Today = 'Today',
@@ -71,4 +71,4 @@ export enum AllPresetTimeframes {
   PreviousYear = 'Previous Year',
 }
 
-export type RelativeTimeframeModel = AllPresetTimeframes | DayRange
+export type RelativeTimeframeModel = AllPresetTimeframes | DayRange;

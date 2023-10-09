@@ -2,8 +2,8 @@
   "name": "@looker/components-test-utils",
   "license": "MIT",
   "version": "1.5.27",
-  "main": "lib/main/index.js",
-  "module": "lib/module/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
@@ -25,10 +25,10 @@
     "@looker/components-scripts": "*",
     "@looker/eslint-config-oss": "*",
     "@looker/prettier-config": "*",
-    "@testing-library/react": "*",
+    "@testing-library/react": "12.1.5",
     "jest-styled-components": "7.1.1",
     "prettier": "2.8.2",
-    "react": "16.14.0",
+    "react": "17.0.2",
     "styled-components": "5.3.1"
   },
   "peerDependencies": {

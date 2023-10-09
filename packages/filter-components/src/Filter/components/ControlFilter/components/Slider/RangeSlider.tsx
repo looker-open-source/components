@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import styled from 'styled-components'
-import isNumber from 'lodash/isNumber'
-import { RangeSlider as RangeSliderComponent } from '@looker/components'
-import type { RangeSliderProps } from './types'
+import React from 'react';
+import styled from 'styled-components';
+import isNumber from 'lodash/isNumber';
+import { RangeSlider as RangeSliderComponent } from '@looker/components';
+import type { RangeSliderProps } from './types';
 
 export const RangeSlider = ({
   value,
@@ -14,10 +14,10 @@ export const RangeSlider = ({
   onChange,
   name,
 }: RangeSliderProps) => {
-  const bounds = { min: 0, max: 100, ...(options || {}) }
+  const bounds = { min: 0, max: 100, ...(options || {}) };
   const handleOnChange = (v: number[]) => {
-    onChange({ min: v[0], max: v[1] })
-  }
+    onChange({ min: v[0], max: v[1] });
+  };
 
   return (
     <RangeSliderWrapper>
@@ -32,12 +32,12 @@ export const RangeSlider = ({
         name={name}
       />
     </RangeSliderWrapper>
-  )
-}
+  );
+};
 
 const RangeSliderWrapper = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.small};
   min-width: 150px;
   padding: 0 ${({ theme }) => theme.space.small};
   width: 100%;
-`
+`;

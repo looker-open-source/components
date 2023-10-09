@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { theme } from '@looker/design-tokens'
-import styled from 'styled-components'
+import React from 'react';
+import { theme } from '@looker/design-tokens';
+import styled from 'styled-components';
 import {
   Box2,
   Code,
@@ -14,7 +14,7 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from '../../../src'
+} from '../../../src';
 
 export const DocTable = styled(Table)`
   font-size: ${({ theme }) => theme.fontSizes.small};
@@ -23,15 +23,15 @@ export const DocTable = styled(Table)`
   ${Code} {
     color: ${({ theme }) => theme.colors.key};
   }
-`
+`;
 
 const ExampleBox = styled(Box2)`
   height: 40px;
   width: 60px;
-`
+`;
 
 export const RadiusList = () => {
-  const radii = Object.entries(theme.radii)
+  const radii = Object.entries(theme.radii);
   return (
     <DocTable>
       <TableHead>
@@ -53,9 +53,9 @@ export const RadiusList = () => {
                 <Code fontSize="xsmall">theme.radii.{r[0]}</Code>
               </TableDataCell>
             </TableRow>
-          )
+          );
         })}
       </TableBody>
     </DocTable>
-  )
-}
+  );
+};

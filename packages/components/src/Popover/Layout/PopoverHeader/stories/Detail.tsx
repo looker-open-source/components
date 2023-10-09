@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { PopoverHeader } from '../..'
+import React from 'react';
+import { PopoverHeader } from '../..';
 
 export default function Detail() {
   return (
     <PopoverHeader detail={<button>close</button>}>Header Text</PopoverHeader>
-  )
+  );
 }

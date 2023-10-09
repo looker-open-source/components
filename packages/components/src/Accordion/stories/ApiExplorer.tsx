@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { ChevronLeft, ExpandMore } from '@styled-icons/material-rounded'
-import styled from 'styled-components'
+import React from 'react';
+import { ChevronLeft, ExpandMore } from '@styled-icons/material-rounded';
+import styled from 'styled-components';
 import {
   Accordion,
   AccordionDisclosure,
@@ -12,7 +12,7 @@ import {
   Box2,
   UnorderedList,
   Text,
-} from '../..'
+} from '../..';
 
 export default function ApiExplorer() {
   const content = (
@@ -35,7 +35,7 @@ export default function ApiExplorer() {
         </li>
       </UnorderedList>
     </Box2>
-  )
+  );
 
   return (
     <Customized>
@@ -53,11 +53,11 @@ export default function ApiExplorer() {
         <Text color="red">Second Group</Text>
       </Accordion>
     </Customized>
-  )
+  );
 }
 
 const Customized = styled.div`
   ${AccordionDisclosure}[aria-expanded='true'] {
     color: ${({ theme }) => theme.colors.key};
   }
-`
+`;

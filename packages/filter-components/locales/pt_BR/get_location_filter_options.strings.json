@@ -6,13 +6,13 @@
     "value": "Círculo"
   },
   "Location": {
-    "value": "Localização"
+    "value": "Local"
   },
   "feet": {
     "value": "pés"
   },
   "is anywhere": {
-    "value": "tem qualquer valor"
+    "value": "está em qualquer lugar"
   },
   "is not null": {
     "value": "não é nulo"
@@ -24,7 +24,7 @@
     "value": "quilômetros"
   },
   "meters": {
-    "value": "metros"
+    "value": "quadrados"
   },
   "miles": {
     "value": "milhas"

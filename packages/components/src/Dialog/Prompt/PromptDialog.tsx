@@ -24,80 +24,80 @@
 
  */
 
-import type { FormEvent, KeyboardEvent, ReactNode } from 'react'
-import React, { useState, useCallback, useEffect } from 'react'
-import type { StatefulColor } from '@looker/design-tokens'
-import { Button, ButtonTransparent } from '../../Button'
-import { Label, InputText } from '../../Form'
-import { useTranslation } from '../../utils'
-import { VisuallyHidden } from '../../VisuallyHidden'
-import { Dialog, DialogLayout } from '..'
+import type { ChangeEventHandler, KeyboardEvent, ReactNode } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import type { StatefulColor } from '@looker/design-tokens';
+import { Button, ButtonTransparent } from '../../Button';
+import { Label, InputText } from '../../Form';
+import { useTranslation } from '../../utils';
+import { VisuallyHidden } from '../../VisuallyHidden';
+import { Dialog, DialogLayout } from '..';
 
-export type PromptCallback = (close: () => void) => void
+export type PromptCallback = (close: () => void) => void;
 
 export interface PromptBaseProps {
   /**
    * Cancel button text
    * @default Cancel
    */
-  cancelLabel?: string
+  cancelLabel?: string;
   /**
    * Defines the color of the cancel button. Can be the string name of a color listed in the color theme, or a color object.
    * @default neutral
    */
-  cancelColor?: StatefulColor
+  cancelColor?: StatefulColor;
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: (close: () => void) => void
+  onCancel?: (close: () => void) => void;
   /**
    * Callback that is triggered when submit button is pressed
    */
-  onSave: (value: string, close: () => void) => void
+  onSave: (value: string, close: () => void) => void;
   /**
    * Label for the rendered input.
    * Rendered as placeholder and visually hidden label for screenreaders.
    */
-  inputLabel: string
+  inputLabel: string;
   /**
    * Title of the dialog
    */
-  title: string
+  title: string;
   /**
    * Default value of the rendered input
    */
-  defaultValue?: string
+  defaultValue?: string;
   /**
    * Text of the submit button
    */
-  saveLabel?: string
+  saveLabel?: string;
   /**
    * A React Element that is placed at the bottom left of the dialog
    */
-  secondary?: ReactNode
+  secondary?: ReactNode;
   /**
    * clearOnCancel
    * @default false
    */
-  clearOnCancel?: boolean
+  clearOnCancel?: boolean;
 }
 
 export interface PromptDialogProps extends PromptBaseProps {
   /**
    * For triggering close from within the dialog
    */
-  close: () => void
+  close: () => void;
   /**
    * Toggling this after mounting will trigger the animation
    * @default false
    */
-  isOpen?: boolean
+  isOpen?: boolean;
 }
 
 export const PromptDialog = (props: PromptDialogProps) => {
-  const { t } = useTranslation('PromptDialog')
-  const cancelLabelText = t('Cancel')
-  const saveLabelText = t('Save')
+  const { t } = useTranslation('PromptDialog');
+  const cancelLabelText = t('Cancel');
+  const saveLabelText = t('Save');
   const {
     cancelColor = 'neutral',
     cancelLabel = cancelLabelText,
@@ -111,43 +111,43 @@ export const PromptDialog = (props: PromptDialogProps) => {
     saveLabel = saveLabelText,
     secondary,
     title,
-  } = props
-  const [value, setValue] = useState(defaultValue)
-  const hasValue = !!value.trim()
+  } = props;
+  const [value, setValue] = useState(defaultValue);
+  const hasValue = !!value.trim();
 
   useEffect(() => {
-    setValue(defaultValue)
-  }, [defaultValue])
+    setValue(defaultValue);
+  }, [defaultValue]);
 
   const handleClose = useCallback(() => {
-    close()
-  }, [close])
+    close();
+  }, [close]);
 
-  const onChange = (event: FormEvent<HTMLInputElement>) => {
-    setValue(event.currentTarget.value)
-  }
+  const onChange: ChangeEventHandler<HTMLInputElement> = event => {
+    setValue(event.target.value);
+  };
 
   const onSubmit = useCallback(() => {
-    onSave(value, handleClose)
-  }, [handleClose, onSave, value])
+    onSave(value, handleClose);
+  }, [handleClose, onSave, value]);
 
   const cancel = useCallback(() => {
     if (onCancel) {
-      onCancel(handleClose)
+      onCancel(handleClose);
     } else {
-      handleClose()
+      handleClose();
     }
 
-    clearOnCancel && setValue('')
-  }, [clearOnCancel, handleClose, onCancel])
+    clearOnCancel && setValue('');
+  }, [clearOnCancel, handleClose, onCancel]);
 
   const onKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && hasValue) {
-      onSubmit()
+      onSubmit();
     } else if (event.key === 'Escape') {
-      cancel()
+      cancel();
     }
-  }
+  };
 
   const footer = (
     <>
@@ -158,7 +158,7 @@ export const PromptDialog = (props: PromptDialogProps) => {
         {cancelLabel}
       </ButtonTransparent>
     </>
-  )
+  );
 
   return (
     <Dialog width="30rem" isOpen={isOpen} onClose={cancel}>
@@ -179,5 +179,5 @@ export const PromptDialog = (props: PromptDialogProps) => {
         />
       </DialogLayout>
     </Dialog>
-  )
-}
+  );
+};

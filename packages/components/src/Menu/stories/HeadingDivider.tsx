@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Menu, MenuItem, Button, MenuHeading, MenuDivider } from '../..'
+import React from 'react';
+import { Menu, MenuItem, Button, MenuHeading, MenuDivider } from '../..';
 
 export default function HeadingDivider() {
   return (
@@ -23,5 +23,5 @@ export default function HeadingDivider() {
     >
       <Button>Menu with headings and dividers</Button>
     </Menu>
-  )
+  );
 }

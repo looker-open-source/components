@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
+import React from 'react';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
 
 export default function Values() {
   return (
@@ -19,5 +19,5 @@ export default function Values() {
       isFilterable={true}
       defaultValues={['Apples', 'Oranges']}
     />
-  )
+  );
 }

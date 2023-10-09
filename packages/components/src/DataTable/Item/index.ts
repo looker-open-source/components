@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './DataTableAction'
-export * from './DataTableItem'
+export * from './DataTableAction';
+export * from './DataTableItem';

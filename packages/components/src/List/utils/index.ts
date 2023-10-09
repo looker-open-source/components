@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './listPadding'
-export * from './getNextItemFocus'
+export * from './listPadding';
+export * from './getNextItemFocus';

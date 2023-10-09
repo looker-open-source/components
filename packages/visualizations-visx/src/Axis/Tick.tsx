@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { isNumeric } from '@looker/visualizations-adapters'
-import type { TickRendererProps } from '@visx/axis'
-import { Text } from '@visx/text'
-import numeral from 'numeral'
-import React from 'react'
-import { formatDateLabel } from '../utils'
-import type { XAxisProps } from './types'
+import { isNumeric } from '@looker/visualizations-adapters';
+import type { TickRendererProps } from '@visx/axis';
+import { Text } from '@visx/text';
+import numeral from 'numeral';
+import React from 'react';
+import { formatDateLabel } from '../utils';
+import type { XAxisProps } from './types';
 
 /**
  * All tick labels longer than this will be truncated
  */
-export const MAX_TICK_LABEL_LENGTH = 20
+export const MAX_TICK_LABEL_LENGTH = 20;
 
 export type TickProps = Pick<XAxisProps, 'fields' | 'valueFormat'> &
-  TickRendererProps
+  TickRendererProps;
 
 /**
  * Tick component typically used in the tickComponent prop of
@@ -36,16 +36,16 @@ export const Tick = ({
    * an additional NaN check to verify if the tick label is actually
    * numeric.
    */
-  const isNumericTick = isNumeric(formattedValue)
+  const isNumericTick = isNumeric(formattedValue);
 
   const label = formatDateLabel({
     dateString: formattedValue || '',
     fields,
-  })
+  });
   const renderedLabel =
     label.length > MAX_TICK_LABEL_LENGTH
       ? `${label.slice(0, MAX_TICK_LABEL_LENGTH).trim()}\u2026`
-      : label
+      : label;
 
   return (
     <Text {...tickProps}>
@@ -53,5 +53,5 @@ export const Tick = ({
         ? numeral(formattedValue).format(valueFormat)
         : renderedLabel}
     </Text>
-  )
-}
+  );
+};

@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { pickSeriesByName } from '@looker/visualizations-adapters'
+import { pickSeriesByName } from '@looker/visualizations-adapters';
 import type {
   CCartesian,
   Fields,
   MeasureMetadata,
-} from '@looker/visualizations-adapters'
-import find from 'lodash/find'
+} from '@looker/visualizations-adapters';
+import find from 'lodash/find';
 
 /**
  * Return the properly formatted field name when provided a series key.
@@ -25,18 +25,20 @@ export const seriesLabelFormatter = (
   config: CCartesian,
   item: string
 ) => {
-  const closestSeries = pickSeriesByName(fields, config, item)
+  const closestSeries = pickSeriesByName(fields, config, item);
 
-  const field = find([...fields.measures, ...fields.dimensions], { name: item })
+  const field = find([...fields.measures, ...fields.dimensions], {
+    name: item,
+  });
 
-  const pivoted_label = field && (field as MeasureMetadata)?.pivoted_label
+  const pivoted_label = field && (field as MeasureMetadata)?.pivoted_label;
 
-  const fallback = item.split('.').pop() || ''
+  const fallback = item.split('.').pop() || '';
 
   return (
     closestSeries.label ||
     pivoted_label ||
     field?.label ||
     fallback.replace(/_/g, ' ')
-  )
-}
+  );
+};

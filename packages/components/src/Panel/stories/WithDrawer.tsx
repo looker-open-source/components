@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { SpaceVertical } from '../../Layout'
-import { Panel, Panels } from '..'
-import { Drawer } from '../../Drawer'
-import { Paragraph } from '../../Text'
-import { Button } from '../../Button'
+import React from 'react';
+import { SpaceVertical } from '../../Layout';
+import { Panel, Panels } from '..';
+import { Drawer } from '../../Drawer';
+import { Paragraph } from '../../Text';
+import { Button } from '../../Button';
 
 export default function WithDrawer() {
   return (
@@ -45,5 +45,5 @@ export default function WithDrawer() {
     >
       <Button>Open Drawer</Button>
     </Drawer>
-  )
+  );
 }

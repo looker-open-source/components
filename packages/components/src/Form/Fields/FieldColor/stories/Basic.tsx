@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { FormEvent } from 'react'
-import { FieldColor } from '../../FieldColor'
-import type { FieldColorProps } from '../../FieldColor'
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { FieldColor } from '../../FieldColor';
+import type { FieldColorProps } from '../../FieldColor';
 
 export default function Basic(props: FieldColorProps) {
-  const [value, setValue] = useState('purple')
-  const handleChange = (e: FormEvent<HTMLInputElement>) =>
-    setValue(e.currentTarget.value)
+  const [value, setValue] = useState('purple');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
 
   return (
     <FieldColor
@@ -20,5 +20,5 @@ export default function Basic(props: FieldColorProps) {
       value={value}
       onChange={handleChange}
     />
-  )
+  );
 }

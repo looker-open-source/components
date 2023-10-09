@@ -30,7 +30,7 @@ import type {
   SizeMedium,
   SizeSmall,
   SpaceProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   color,
   generateIntentShade,
@@ -39,19 +39,19 @@ import {
   space,
   typography,
   variant,
-} from '@looker/design-tokens'
-import type { ReactNode, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled, { css } from 'styled-components'
+} from '@looker/design-tokens';
+import type { ReactNode, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled, { css } from 'styled-components';
 
-export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge
+export type BadgeSizes = SizeSmall | SizeMedium | SizeLarge;
 type BadgeIntent =
   | 'warn'
   | 'positive'
   | 'critical'
   | 'inform'
   | 'neutral'
-  | 'key'
+  | 'key';
 
 export interface BadgeProps
   extends SpaceProps,
@@ -59,17 +59,17 @@ export interface BadgeProps
   /**
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  children: ReactNode
+  children: ReactNode;
   /**
    * @default key
    **/
-  intent?: BadgeIntent
+  intent?: BadgeIntent;
 
   /**
    * Defines the size of Badge diameter.
    * @default medium
    */
-  size?: BadgeSizes
+  size?: BadgeSizes;
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -92,7 +92,7 @@ const size = variant({
       px: 'u3',
     },
   },
-})
+});
 
 const BadgeLayout = forwardRef(
   ({ children, ...props }: BadgeProps, ref: Ref<HTMLElement>) => {
@@ -100,15 +100,15 @@ const BadgeLayout = forwardRef(
       <span ref={ref} {...props}>
         {children}
       </span>
-    )
+    );
   }
-)
+);
 
 const badgeIntent = (intent: BadgeIntent) =>
   css`
     background: ${intentUIBlend(intent, 1)};
     color: ${({ theme: { colors } }) => generateIntentShade(colors[intent])};
-  `
+  `;
 
 export const Badge = styled(BadgeLayout).attrs(
   ({ intent = 'key', size = 'medium' }) => ({
@@ -127,4 +127,4 @@ export const Badge = styled(BadgeLayout).attrs(
   ${typography}
   ${size}
   ${({ intent }) => badgeIntent(intent)}
-`
+`;

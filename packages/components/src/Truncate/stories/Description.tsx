@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Truncate } from '../..'
+import React from 'react';
+import { Box, Truncate } from '../..';
 
 export default function Description() {
   return (
@@ -14,5 +14,5 @@ export default function Description() {
         delicious.
       </Truncate>
     </Box>
-  )
+  );
 }

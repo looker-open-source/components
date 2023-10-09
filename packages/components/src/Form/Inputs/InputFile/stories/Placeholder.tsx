@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputFile } from '../'
-import type { InputFileProps } from '../'
+import React from 'react';
+import { InputFile } from '../';
+import type { InputFileProps } from '../';
 
 export default function Placeholder(props: InputFileProps) {
   const {
@@ -14,7 +14,7 @@ export default function Placeholder(props: InputFileProps) {
     },
     placeholder = 'Select a file to upload',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputFile
@@ -22,5 +22,5 @@ export default function Placeholder(props: InputFileProps) {
       placeholder={placeholder}
       {...restProps}
     />
-  )
+  );
 }

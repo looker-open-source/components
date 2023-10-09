@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Theme } from '@looker/components'
-import type { CSeriesBasic } from '@looker/visualizations-adapters'
+import type { Theme } from '@looker/components';
+import type { CSeriesBasic } from '@looker/visualizations-adapters';
 
 /**
  * Sets chart color based on series configuration, with theme fallback
@@ -16,7 +16,7 @@ import type { CSeriesBasic } from '@looker/visualizations-adapters'
 
 export const getSeriesColor = (series: CSeriesBasic, lookerTheme: Theme) => {
   if (series?.color) {
-    return series.color
+    return series.color;
   }
-  return lookerTheme.colors.key
-}
+  return lookerTheme.colors.key;
+};

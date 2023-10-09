@@ -29,14 +29,14 @@ export const coreColors: Array<keyof CoreColors> = [
   'background',
   'pageBackground',
   'text',
-]
+];
 
 export interface TextColor {
   /**
    * Used for: Text
    * @default charcoal800
    */
-  text: string
+  text: string;
 }
 
 export interface CoreColors extends TextColor {
@@ -45,7 +45,7 @@ export interface CoreColors extends TextColor {
    * Used for: application background
    * @default white
    */
-  background: string
+  background: string;
 
   /**
    * Used as page background
@@ -53,14 +53,14 @@ export interface CoreColors extends TextColor {
    * wherein the pageBackground is closer to `ui1` but blends are calculated
    * from a more "absolute" background color (white or black)
    */
-  pageBackground: string
+  pageBackground: string;
 
   /**
    * Key color is applied strategically across the UI
    * Used for: default action buttons, toggle switches, interactive component accents
    * @default purple400
    */
-  key: string
+  key: string;
 }
 
 export const intentColors: Array<keyof IntentColors> = [
@@ -72,7 +72,7 @@ export const intentColors: Array<keyof IntentColors> = [
   'calculation',
   'dimension',
   'measure',
-]
+];
 
 export interface IntentColors {
   /**
@@ -80,49 +80,49 @@ export interface IntentColors {
    * Used for: Breadcrumb, external link
    * @default blue600
    */
-  link: string
+  link: string;
   /**
    * Critical intent color
    * Used for: Delete button, error and validation messages
    * @default red500
    */
-  critical: string
+  critical: string;
   /**
    * Warn intent color
    * Used for: Warning banner
    * @default yellow500
    */
-  warn: string
+  warn: string;
   /**
    * Positive intent color
    * Used for: Positive banner
    * @default green500
    */
-  positive: string
+  positive: string;
   /**
    * Inform intent color
    * Used for: Info banner
    * @default blue500
    */
-  inform: string
+  inform: string;
 
   /**
    * Indicates a calculated value
    * @default #319220
    */
-  calculation: string
+  calculation: string;
 
   /**
    * Indicates dimensionality
    * @default #31689E
    */
-  dimension: string
+  dimension: string;
 
   /**
    * Indicates measure
    * @default #C2772E
    */
-  measure: string
+  measure: string;
 }
 
 export interface SpecifiableTextColors {
@@ -131,14 +131,14 @@ export interface SpecifiableTextColors {
    * @note This is generally identical to colors.text5
    * @default charcoal800
    */
-  title: string
+  title: string;
 
   /**
    * Used by Paragraph, Ul/Ol
    * @note This is generally identical to colors.text5
    * @default charcoal800
    */
-  body: string
+  body: string;
 }
 
 export type IllustrationColors = {
@@ -146,36 +146,36 @@ export type IllustrationColors = {
    * Used in Illustration background circles
    * If not specified, the background will have a neutral color and simplified style
    */
-  illustration1?: string
+  illustration1?: string;
   /**
    * Used in Illustration background circles
    * If not specified, the background will have a neutral color and simplified style
    */
-  illustration2?: string
+  illustration2?: string;
   /**
    * Used in Illustration background circles
    * If not specified, the background will have a neutral color and simplified style
    */
-  illustration3?: string
+  illustration3?: string;
   /**
    * Used in Illustration background circles
    * If not specified, the background will have a neutral color and simplified style
    */
-  illustration4?: string
+  illustration4?: string;
   /**
    * Used in Illustration background circles
    * If not specified, the background will have a neutral color and simplified style
    */
-  illustration5?: string
-}
+  illustration5?: string;
+};
 
-export const specifiableTextColors = ['title', 'body']
+export const specifiableTextColors = ['title', 'body'];
 
 export type SpecifiableColors = CoreColors &
   IntentColors &
   IllustrationColors &
-  Partial<SpecifiableTextColors>
+  Partial<SpecifiableTextColors>;
 export const specifiableColors: Array<keyof SpecifiableColors> = [
   ...coreColors,
   ...intentColors,
-]
+];

@@ -24,32 +24,32 @@
 
  */
 
-import React, { useState, useEffect } from 'react'
-import { useSDK } from '@looker/components-data'
-import { ButtonOutline, Popover, Space } from '@looker/components'
-import type { FilterChangeProps, TreeModel } from '@looker/filter-components'
+import React, { useState, useEffect } from 'react';
+import { useSDK } from '@looker/components-data';
+import { ButtonOutline, Popover, Space } from '@looker/components';
+import type { FilterChangeProps, TreeModel } from '@looker/filter-components';
 import {
   Filter,
   getExpressionTypeFromField,
   useSuggestable,
-} from '@looker/filter-components'
-import type { ILookmlModelExploreField } from '@looker/sdk'
-import { FieldSelector } from '../FieldSelector'
+} from '@looker/filter-components';
+import type { ILookmlModelExploreField } from '@looker/sdk';
+import { FieldSelector } from '../FieldSelector';
 
 type FilterEntryProps = {
-  onUpdateFilter: (name: string, expression: string) => void
-  filterField?: ILookmlModelExploreField
-  filterExpression?: string
-  tree: TreeModel[]
-}
+  onUpdateFilter: (name: string, expression: string) => void;
+  filterField?: ILookmlModelExploreField;
+  filterExpression?: string;
+  tree: TreeModel[];
+};
 
 // The label for the button to select a field for filtering
 const getSelectFilterLabel = (field: ILookmlModelExploreField | undefined) => {
   if (field?.name) {
-    return field.name.replace('.', ' > ').replace(/_/g, ' ')
+    return field.name.replace('.', ' > ').replace(/_/g, ' ');
   }
-  return 'Select a field'
-}
+  return 'Select a field';
+};
 
 export const FilterEntry = ({
   onUpdateFilter,
@@ -57,28 +57,29 @@ export const FilterEntry = ({
   filterField: filterFieldProp,
   filterExpression: filterExpressionProp = '',
 }: FilterEntryProps) => {
-  const sdk = useSDK()
+  const sdk = useSDK();
   const [filterField, setFilterField] = useState<
     ILookmlModelExploreField | undefined
-  >(filterFieldProp)
-  const [filterExpression, setFilterExpression] = useState(filterExpressionProp)
+  >(filterFieldProp);
+  const [filterExpression, setFilterExpression] =
+    useState(filterExpressionProp);
 
   const handleFilterChange = ({ expression }: FilterChangeProps) => {
     if (setFilterExpression) {
-      setFilterExpression(expression)
+      setFilterExpression(expression);
     }
-  }
+  };
 
   useEffect(() => {
     if (filterField?.name) {
-      onUpdateFilter(filterField?.name, filterExpression)
+      onUpdateFilter(filterField?.name, filterExpression);
     }
-  }, [filterField, filterExpression, onUpdateFilter])
+  }, [filterField, filterExpression, onUpdateFilter]);
 
   const { suggestableProps } = useSuggestable({
     filter: { field: filterField, model: filterField?.project_name },
     sdk,
-  })
+  });
 
   return (
     <Space align="start">
@@ -106,5 +107,5 @@ export const FilterEntry = ({
         />
       )}
     </Space>
-  )
-}
+  );
+};

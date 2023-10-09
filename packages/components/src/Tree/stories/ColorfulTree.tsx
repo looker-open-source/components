@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DateRange } from '@styled-icons/material-outlined'
-import { Tree, TreeCollection, TreeItem } from '..'
+import React from 'react';
+import { DateRange } from '@styled-icons/material-outlined';
+import { Tree, TreeCollection, TreeItem } from '..';
 
 export default function ColorfulTree() {
   return (
@@ -26,5 +26,5 @@ export default function ColorfulTree() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InlineInputText } from '../InlineInputText'
+import React from 'react';
+import { InlineInputText } from '../InlineInputText';
 
 export default function Simple() {
-  return <InlineInputText placeholder="Placeholder" />
+  return <InlineInputText placeholder="Placeholder" />;
 }

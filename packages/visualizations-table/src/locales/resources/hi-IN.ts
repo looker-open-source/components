@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { hiIN as componentsLocale } from '@looker/components'
-import { hiIN as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { hiIN as componentsLocale } from '@looker/components';
+import { hiIN as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'अवरोही में क्रमित करें',
     Totals: 'योग',
   },
-}
+};
 
 export const hiIN = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'hi-IN',
   resources
-)
+);

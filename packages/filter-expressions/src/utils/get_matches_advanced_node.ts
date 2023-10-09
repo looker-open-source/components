@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterASTNode } from '../types'
+import type { FilterASTNode } from '../types';
 
 export const getMatchesAdvancedNode = (
   expression: string,
@@ -14,11 +14,11 @@ export const getMatchesAdvancedNode = (
       is: true,
       type: 'matchesAdvanced',
       expression: ast.expression === undefined ? expression : ast.expression,
-    }
+    };
   }
   return {
     id: 1,
     type: 'matchesAdvanced',
     expression,
-  }
-}
+  };
+};

@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ComboboxProps } from '../..'
-import { Combobox, ComboboxOption, ComboboxList } from '../..'
-import { ComboboxInput } from '../../ComboboxInput'
+import React from 'react';
+import type { ComboboxProps } from '../..';
+import { Combobox, ComboboxOption, ComboboxList } from '../..';
+import { ComboboxInput } from '../../ComboboxInput';
 
 export default function Basic(props: ComboboxProps) {
-  const { width = 300, ...restProps } = props
+  const { width = 300, ...restProps } = props;
   return (
     <Combobox width={width} {...restProps}>
       <ComboboxInput />
@@ -26,5 +26,5 @@ export default function Basic(props: ComboboxProps) {
         />
       </ComboboxList>
     </Combobox>
-  )
+  );
 }

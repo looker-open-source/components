@@ -23,19 +23,19 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { useTheme } from 'styled-components'
-import { render, screen } from '@testing-library/react'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { useTheme } from 'styled-components';
+import { render, screen } from '@testing-library/react';
 import {
   mockBarConfig,
   mockFields,
   mockData,
-} from '@looker/visualizations-adapters'
-import { Visualization, defaultChartTypeMap } from './Visualization'
+} from '@looker/visualizations-adapters';
+import { Visualization, defaultChartTypeMap } from './Visualization';
 
 const CustomVis = () => {
-  const theme = useTheme()
+  const theme = useTheme();
   return (
     <>
       <p>Rendered Without Error!</p>
@@ -44,18 +44,18 @@ const CustomVis = () => {
         <dd>{theme.colors.background}</dd>
       </dl>
     </>
-  )
-}
+  );
+};
 
 jest.mock('@looker/visualizations-adapters', () => ({
   ...jest.requireActual('@looker/visualizations-adapters'),
   Unsupported: jest.fn().mockReturnValue(<CustomVis />),
-}))
+}));
 
 jest.mock('@looker/visualizations-table', () => ({
   ...jest.requireActual('@looker/visualizations-table'),
   Table: jest.fn().mockReturnValue(<CustomVis />),
-}))
+}));
 
 jest.mock('@looker/visualizations-visx', () => ({
   ...jest.requireActual('@looker/visualizations-visx'),
@@ -66,16 +66,16 @@ jest.mock('@looker/visualizations-visx', () => ({
   Pie: jest.fn().mockReturnValue(<CustomVis />),
   Sparkline: jest.fn().mockReturnValue(<CustomVis />),
   Scatter: jest.fn().mockReturnValue(<CustomVis />),
-}))
+}));
 
 jest.mock('@looker/visualizations-single-value', () => ({
   ...jest.requireActual('@looker/visualizations-single-value'),
   SingleValue: jest.fn().mockReturnValue(null),
-}))
+}));
 
 beforeEach(() => {
-  jest.clearAllMocks()
-})
+  jest.clearAllMocks();
+});
 
 describe('Visualization', () => {
   it('wraps itself in ComponentsProvider if rendered outside of theme context', () => {
@@ -86,18 +86,18 @@ describe('Visualization', () => {
         fields={mockFields}
         config={mockBarConfig}
       />
-    )
+    );
 
-    expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument()
-  })
-})
+    expect(screen.getByText('Rendered Without Error!')).toBeInTheDocument();
+  });
+});
 
 describe('Visualization renders chart component based on type', () => {
-  type ChartRecord = typeof defaultChartTypeMap
+  type ChartRecord = typeof defaultChartTypeMap;
   const visEntries = Object.entries(defaultChartTypeMap) as [
     keyof ChartRecord, // key union
     ChartRecord[keyof ChartRecord] // val union
-  ][]
+  ][];
 
   test.each(visEntries)('render %i', (type, Component) => {
     renderWithTheme(
@@ -106,7 +106,7 @@ describe('Visualization renders chart component based on type', () => {
         fields={mockFields}
         config={{ ...mockBarConfig, type }}
       />
-    )
-    expect(Component).toHaveBeenCalledTimes(1)
-  })
-})
+    );
+    expect(Component).toHaveBeenCalledTimes(1);
+  });
+});

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputSearch } from '..'
+import React, { useState } from 'react';
+import { InputSearch } from '..';
 
 export default function Controlled() {
-  const [keyword, setKeyword] = useState('Default Value')
+  const [keyword, setKeyword] = useState('Default Value');
 
   return (
     <InputSearch
@@ -18,5 +18,5 @@ export default function Controlled() {
       value={keyword}
       onChange={setKeyword}
     />
-  )
+  );
 }

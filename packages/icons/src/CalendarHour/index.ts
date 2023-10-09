@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './CalendarHour'
+export * from './CalendarHour';

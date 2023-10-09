@@ -23,47 +23,47 @@
  SOFTWARE.
 
  */
-import React, { useContext } from 'react'
-import type { CCartesian, Fields } from '@looker/visualizations-adapters'
-import { useTheme } from 'styled-components'
-import { DataContext } from '@visx/xychart'
-import { LegendOrdinal } from '@visx/legend'
-import type { ScaleOrdinal } from 'd3-scale'
-import partial from 'lodash/partial'
-import { seriesLabelFormatter } from '../utils'
+import React, { useContext } from 'react';
+import type { CCartesian, Fields } from '@looker/visualizations-adapters';
+import { useTheme } from 'styled-components';
+import { DataContext } from '@visx/xychart';
+import { LegendOrdinal } from '@visx/legend';
+import type { ScaleOrdinal } from 'd3-scale';
+import partial from 'lodash/partial';
+import { seriesLabelFormatter } from '../utils';
 
 type LegendProps = {
-  chartWidth?: number
-  config: CCartesian
-  fields: Fields
-}
+  chartWidth?: number;
+  config: CCartesian;
+  fields: Fields;
+};
 
-const DEFAULT_LEGEND_WIDTH = 200
+const DEFAULT_LEGEND_WIDTH = 200;
 
 export const XYLegend = ({ chartWidth, config, fields }: LegendProps) => {
   const {
     colorScale = {} as ScaleOrdinal<string, string, never>,
     theme: visxTheme,
     margin,
-  } = useContext(DataContext)
+  } = useContext(DataContext);
 
   const {
     space: { xsmall, small },
-  } = useTheme()
-  const { legend } = config
+  } = useTheme();
+  const { legend } = config;
 
   // Early return if legend is either false or undefined
   if (!legend) {
-    return <></>
+    return <></>;
   }
 
-  const legendWidth = legend.width || DEFAULT_LEGEND_WIDTH
+  const legendWidth = legend.width || DEFAULT_LEGEND_WIDTH;
 
   // The distance between the VisWrapper left edge and svg's y-axis
   const yAxisSpacer =
     legend.position === 'left' || legend.position === 'right'
       ? undefined
-      : margin?.left
+      : margin?.left;
 
   const { direction, ...legendStyle } = {
     bottom: {
@@ -90,7 +90,7 @@ export const XYLegend = ({ chartWidth, config, fields }: LegendProps) => {
       direction: 'column' as const,
       width: legendWidth,
     },
-  }[legend.position]
+  }[legend.position];
 
   return (
     <LegendOrdinal
@@ -108,5 +108,5 @@ export const XYLegend = ({ chartWidth, config, fields }: LegendProps) => {
       scale={colorScale}
       shape="line"
     />
-  )
-}
+  );
+};

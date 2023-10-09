@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 export type ChartLayoutProps = {
-  width?: number
-  height?: number
-}
+  width?: number;
+  height?: number;
+};

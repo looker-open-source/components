@@ -2,22 +2,22 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
 import type {
   FilterModel,
   LocationFilterType,
-} from '@looker/filter-expressions'
-import React from 'react'
+} from '@looker/filter-expressions';
+import React from 'react';
 
-import { LocationFilter } from './LocationFilter'
+import { LocationFilter } from './LocationFilter';
 
 describe('Location filter test', () => {
   it('should render a LocationFilter', () => {
     const item = {
       id: '1',
       type: 'anyvalue',
-    } as any as FilterModel<LocationFilterType>
+    } as any as FilterModel<LocationFilterType>;
     renderWithTheme(
       <LocationFilter
         item={item}
@@ -31,7 +31,7 @@ describe('Location filter test', () => {
         onAdd={jest.fn()}
         onRemove={jest.fn()}
       />
-    )
-    expect(screen.getByRole('textbox')).toHaveValue('is anywhere')
-  })
-})
+    );
+    expect(screen.getByRole('textbox')).toHaveValue('is anywhere');
+  });
+});

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '../'
+import React, { useState } from 'react';
+import { InputChips } from '../';
 
 export default function FormatInput() {
-  const [values, setValues] = useState<string[]>([])
+  const [values, setValues] = useState<string[]>([]);
   return (
     <InputChips
       placeholder="Transform values to UPPERCASE"
@@ -15,5 +15,5 @@ export default function FormatInput() {
       onChange={setValues}
       formatInputValue={val => val.toUpperCase()}
     />
-  )
+  );
 }

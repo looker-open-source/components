@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { TreeModel } from '../types'
+import type { TreeModel } from '../types';
 
 // TODO: This can be optimized -- only walk nodes that need to be updated.
 /**
@@ -23,4 +23,4 @@ export const openOrCloseNodes = (
           children: openOrCloseNodes(tree.children, updateNode),
         }
       : tree
-  )
+  );

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Field } from './Field'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { Field } from './Field';
 
 describe('Field', () => {
   test('Hidden labels', () => {
@@ -14,7 +14,7 @@ describe('Field', () => {
       <Field id="test" hideLabel label="hello!">
         <input id="test" type="text" />
       </Field>
-    )
-    screen.getByText('hello!')
-  })
-})
+    );
+    screen.getByText('hello!');
+  });
+});

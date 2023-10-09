@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { ReactNode } from 'react'
-import { Accordion, UnorderedList } from '../..'
+import React from 'react';
+import type { ReactNode } from 'react';
+import { Accordion, UnorderedList } from '../..';
 
 export default function Nested() {
   return (
@@ -15,7 +15,7 @@ export default function Nested() {
         </Branch>
       </Branch>
     </Branch>
-  )
+  );
 }
 
 const Branch = ({ children }: { children?: ReactNode }) => (
@@ -34,4 +34,4 @@ const Branch = ({ children }: { children?: ReactNode }) => (
   >
     Hello World
   </Accordion>
-)
+);

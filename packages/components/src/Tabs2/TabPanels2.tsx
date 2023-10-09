@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 import type {
   FlexboxProps,
   LayoutProps,
   SpaceProps,
-} from '@looker/design-tokens'
-import { flexbox, layout, space, reset } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { flexbox, layout, space, reset } from '@looker/design-tokens';
 
 export type TabPanels2Props = FlexboxProps &
   LayoutProps &
   SpaceProps & {
-    children: JSX.Element
-    className?: string
-    id: string
-  }
+    children: JSX.Element;
+    className?: string;
+    id: string;
+  };
 
 const TabPanels2Layout = ({ children, className, id }: TabPanels2Props) => (
   <div
@@ -29,16 +29,13 @@ const TabPanels2Layout = ({ children, className, id }: TabPanels2Props) => (
   >
     {children}
   </div>
-)
+);
 
 export const TabPanels2 = styled(TabPanels2Layout).attrs(
-  ({ height = '100%', pt = 'large' }) => ({
-    height,
-    pt,
-  })
+  ({ height = '100%', pt = 'large' }) => ({ height, pt })
 )`
   ${reset}
   ${flexbox}
   ${layout}
   ${space}
-`
+`;

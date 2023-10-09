@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldToggleSwitchProps } from '..'
-import { FieldToggleSwitch } from '..'
+import React from 'react';
+import type { FieldToggleSwitchProps } from '..';
+import { FieldToggleSwitch } from '..';
 
 export default function ValidationMessage(props: FieldToggleSwitchProps) {
   const {
@@ -14,7 +14,7 @@ export default function ValidationMessage(props: FieldToggleSwitchProps) {
     id = 'id',
     validationMessage = { message: 'This is an error', type: 'error' },
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldToggleSwitch
@@ -24,5 +24,5 @@ export default function ValidationMessage(props: FieldToggleSwitchProps) {
       validationMessage={validationMessage}
       {...restProps}
     />
-  )
+  );
 }

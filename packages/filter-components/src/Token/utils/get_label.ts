@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { getExpressionType, summary } from '@looker/filter-expressions'
-import type { FilterProps } from '../../Filter/types/filter_props'
+import { getExpressionType, summary } from '@looker/filter-expressions';
+import type { FilterProps } from '../../Filter/types/filter_props';
 
 export const getLabel = ({
   expressionType,
@@ -17,4 +17,4 @@ export const getLabel = ({
     type:
       expressionType ||
       getExpressionType({ type: props.type, field: props.field || undefined }),
-  })
+  });

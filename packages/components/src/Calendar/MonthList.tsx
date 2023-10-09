@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { getMonth, setMonth } from 'date-fns'
-import React from 'react'
-import { ScrollableDateList } from './ScrollableDateList'
-import type { MonthListProps } from './types'
-import { Month } from './Month'
+import { getMonth, setMonth } from 'date-fns';
+import React from 'react';
+import { ScrollableDateList } from './ScrollableDateList';
+import type { MonthListProps } from './types';
+import { Month } from './Month';
 
 const getItemMonth = (baseDate: Date, offset: number) => {
-  const currentMonthIndex = getMonth(baseDate)
-  return setMonth(baseDate, currentMonthIndex + offset)
-}
+  const currentMonthIndex = getMonth(baseDate);
+  return setMonth(baseDate, currentMonthIndex + offset);
+};
 
 export const MonthList = ({
   currentDate,
@@ -33,5 +33,5 @@ export const MonthList = ({
       itemProps={props}
       thresholdRatio={5 / 7}
     />
-  )
-}
+  );
+};

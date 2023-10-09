@@ -24,20 +24,20 @@
 
  */
 
-import omit from 'lodash/omit'
-import { omitStyledProps, space, reset, layout } from '@looker/design-tokens'
-import type { MouseEvent, Ref } from 'react'
-import React, { forwardRef, useRef } from 'react'
-import styled, { css } from 'styled-components'
-import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils'
-import { DISABLED_OPACITY } from '../../constants'
-import { InlineInputTextBase } from '../InlineInputText'
-import { inputPropKeys, pickInputProps } from '../InputProps'
-import { innerInputStyle } from '../innerInputStyle'
-import { inputHeight } from '../height'
-import { After } from './After'
-import { Before } from './Before'
-import type { InputTextProps } from './types'
+import omit from 'lodash/omit';
+import { omitStyledProps, space, reset, layout } from '@looker/design-tokens';
+import type { MouseEvent, Ref } from 'react';
+import React, { forwardRef, useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { targetIsButton, useForkedRef, useWrapEvent } from '../../../utils';
+import { DISABLED_OPACITY } from '../../constants';
+import { InlineInputTextBase } from '../InlineInputText';
+import { inputPropKeys, pickInputProps } from '../InputProps';
+import { innerInputStyle } from '../innerInputStyle';
+import { inputHeight } from '../height';
+import { After } from './After';
+import { Before } from './Before';
+import type { InputTextProps } from './types';
 
 const InputComponent = forwardRef(
   (
@@ -69,8 +69,8 @@ const InputComponent = forwardRef(
     }: InputTextProps,
     forwardedRef: Ref<HTMLInputElement>
   ) => {
-    const internalRef = useRef<null | HTMLInputElement>(null)
-    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef)
+    const internalRef = useRef<null | HTMLInputElement>(null);
+    const ref = useForkedRef<HTMLInputElement>(internalRef, forwardedRef);
 
     const handleMouseDown = (e: MouseEvent<HTMLDivElement>) => {
       // Avoid moving focus if the mousedown was inside a button
@@ -82,27 +82,27 @@ const InputComponent = forwardRef(
         // need requestAnimationFrame here due to browser updating focus _after_ mousedown is called
         if (document.activeElement === internalRef.current) {
           // Avoid triggering the blur event
-          e.preventDefault()
+          e.preventDefault();
         } else {
           setTimeout(() => {
-            internalRef.current && internalRef.current.focus()
-          }, 0)
+            internalRef.current && internalRef.current.focus();
+          }, 0);
         }
       }
-    }
+    };
 
-    const onMouseDownWrapped = useWrapEvent(handleMouseDown, onMouseDown)
+    const onMouseDownWrapped = useWrapEvent(handleMouseDown, onMouseDown);
 
     if (before && iconBefore) {
       // eslint-disable-next-line no-console
-      console.warn('Use before or iconBefore, but not both at the same time.')
-      return null
+      console.warn('Use before or iconBefore, but not both at the same time.');
+      return null;
     }
 
     if (after && iconAfter) {
       // eslint-disable-next-line no-console
-      console.warn('Use after or iconAfter, but not both at the same time.')
-      return null
+      console.warn('Use after or iconAfter, but not both at the same time.');
+      return null;
     }
 
     const mouseHandlers = {
@@ -113,15 +113,15 @@ const InputComponent = forwardRef(
       onMouseOut,
       onMouseOver,
       onMouseUp,
-    }
+    };
 
     const inputProps = {
       ...pickInputProps(omitStyledProps(props)),
       'aria-invalid': validationType === 'error' ? true : undefined,
       type,
-    }
+    };
 
-    let inner = <StyledInput {...inputProps} ref={ref} />
+    let inner = <StyledInput {...inputProps} ref={ref} />;
 
     if (children) {
       // Support for rendering chips in InputChips and SelectMulti
@@ -130,9 +130,9 @@ const InputComponent = forwardRef(
           {children}
           {<StyledInput {...inputProps} ref={ref} />}
         </div>
-      )
+      );
     } else if (autoResize) {
-      inner = <InlineInputTextBase {...inputProps} ref={ref} />
+      inner = <InlineInputTextBase {...inputProps} ref={ref} />;
     }
 
     return (
@@ -150,9 +150,9 @@ const InputComponent = forwardRef(
           validationType={validationType}
         />
       </div>
-    )
+    );
   }
-)
+);
 
 const StyledInput = styled.input`
   ${innerInputStyle}
@@ -161,16 +161,16 @@ const StyledInput = styled.input`
   max-width: 100%;
   min-width: 2rem;
   padding: 0 ${({ theme: { space } }) => space.u2};
-`
+`;
 
 export const inputTextHover = css`
   border-color: ${({ theme }) => theme.colors.ui4};
-`
+`;
 export const inputTextFocus = css`
   border-color: ${({ theme }) => theme.colors.key};
   box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.key};
   outline: none;
-`
+`;
 
 export const inputTextDisabled = css`
   cursor: default;
@@ -182,7 +182,7 @@ export const inputTextDisabled = css`
   [data-disabled='true'] & {
     opacity: 1;
   }
-`
+`;
 
 export const inputTextValidation = css<{ validationType?: 'error' }>`
   ${props =>
@@ -202,7 +202,7 @@ export const inputTextValidation = css<{ validationType?: 'error' }>`
       }
       `
       : ''}
-`
+`;
 
 export const inputCSS = css`
   background: ${({ theme: { colors } }) => colors.field};
@@ -210,7 +210,7 @@ export const inputCSS = css`
   border-radius: ${({ theme: { radii } }) => radii.medium};
   color: ${({ theme: { colors } }) => colors.text5};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-`
+`;
 
 export const InputText = styled(InputComponent).attrs<InputTextProps>(
   ({ height = inputHeight, type = 'text' }) => ({
@@ -251,4 +251,4 @@ export const InputText = styled(InputComponent).attrs<InputTextProps>(
   }
   ${({ disabled }) => (disabled ? inputTextDisabled : '')}
   ${inputTextValidation}
-`
+`;

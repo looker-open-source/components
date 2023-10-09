@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Drawer, ButtonOutline } from '../..'
+import React from 'react';
+import { Drawer, ButtonOutline } from '../..';
 
 export default function AnimationCallbacks() {
   return (
@@ -14,5 +14,5 @@ export default function AnimationCallbacks() {
     >
       <ButtonOutline>Open Drawer</ButtonOutline>
     </Drawer>
-  )
+  );
 }

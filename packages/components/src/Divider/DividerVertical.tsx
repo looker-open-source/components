@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { space } from '@looker/design-tokens'
-import type { DividerProps } from './Divider'
-import { DividerBase } from './Divider'
+import styled from 'styled-components';
+import { space } from '@looker/design-tokens';
+import type { DividerProps } from './Divider';
+import { DividerBase } from './Divider';
 
 export interface DividerVerticalProps extends DividerProps {
-  height?: number | string
-  stretch?: boolean
+  height?: number | string;
+  stretch?: boolean;
 }
 
 export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
@@ -19,10 +19,10 @@ export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
       // eslint-disable-next-line no-console
       console.warn(
         'When using DividerVertical, the props height and stretch are incompatible. The stretch value will be discarded'
-      )
+      );
     }
 
-    const { height = '1rem', mx = 'xsmall', my = 'xsmall' } = props
+    const { height = '1rem', mx = 'xsmall', my = 'xsmall' } = props;
 
     return {
       ...props,
@@ -30,7 +30,7 @@ export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
       height,
       mx,
       my,
-    }
+    };
   }
 )<DividerVerticalProps>`
   ${space}
@@ -38,4 +38,4 @@ export const DividerVertical = styled(DividerBase).attrs<DividerVerticalProps>(
   width: ${({ size }) => size};
   ${({ height, stretch }) =>
     stretch ? `align-self: stretch; height: inherit;` : `height: ${height};`}
-`
+`;

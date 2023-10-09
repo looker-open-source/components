@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-module.exports = require('@looker/jest-config').config
+module.exports = require('@looker/jest-config').config;

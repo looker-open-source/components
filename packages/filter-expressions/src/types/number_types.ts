@@ -14,4 +14,4 @@ enum NumberTypes {
   BETWEEN = 'between',
 }
 
-export { NumberTypes }
+export { NumberTypes };

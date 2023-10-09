@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { config } = require('@looker/jest-config')
+const { config } = require('@looker/jest-config');
 
-Object.assign(process.env, { TZ: 'PST8PDT' })
+Object.assign(process.env, { TZ: 'PST8PDT' });
 
 module.exports = {
   ...config,
@@ -14,4 +14,4 @@ module.exports = {
     ...config.coveragePathIgnorePatterns,
     '<rootDir>/.*/index.ts',
   ],
-}
+};

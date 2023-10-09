@@ -3,12 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
+import type { Colors } from '@looker/design-tokens';
 
-export const CircleContainer = styled.svg`
+export const CircleContainer = styled.svg<{ color?: keyof Colors }>`
   fill: transparent;
   height: 100%;
   position: absolute;
-  stroke: ${({ theme }) => theme.colors.key};
+  stroke: ${({ theme, color = 'key' }) => theme.colors[color]};
   width: 100%;
-`
+`;

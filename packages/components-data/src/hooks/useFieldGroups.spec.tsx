@@ -24,30 +24,30 @@
 
  */
 
-import React from 'react'
-import { waitFor, render } from '@testing-library/react'
+import React from 'react';
+import { waitFor, render } from '@testing-library/react';
 import {
   ContextWrapper,
   sdkMethodLookmlModelExploreListener,
-} from '../testUtils'
-import { useFieldGroups } from './useFieldGroups'
+} from '../testUtils';
+import { useFieldGroups } from './useFieldGroups';
 
 // mock to track results from front-end data store
-const dataContainerListener = jest.fn()
+const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  id?: number
-}
+  id?: number;
+};
 
 const TestComponent = ({ id = 1 }: TestComponentProps) => {
-  const response = useFieldGroups(id)
-  dataContainerListener(response)
-  return null
-}
+  const response = useFieldGroups(id);
+  dataContainerListener(response);
+  return null;
+};
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('useFieldGroups', () => {
   it('fetches query id on mount', async () => {
@@ -55,21 +55,21 @@ describe('useFieldGroups', () => {
       <ContextWrapper>
         <TestComponent />
       </ContextWrapper>
-    )
+    );
 
     await waitFor(() =>
       expect(sdkMethodLookmlModelExploreListener).toHaveBeenCalledTimes(1)
-    )
+    );
 
     expect(dataContainerListener).toHaveBeenCalledWith(
       expect.objectContaining({
         fieldGroups: {},
       })
-    )
-  })
+    );
+  });
 
   it('does not dispatch request if data already exists for given id', async () => {
-    const dimensionMetadata = { label: 'Orders Created Date', view: 'orders' }
+    const dimensionMetadata = { label: 'Orders Created Date', view: 'orders' };
     render(
       <ContextWrapper
         initialState={{
@@ -85,7 +85,7 @@ describe('useFieldGroups', () => {
       >
         <TestComponent id={456} />
       </ContextWrapper>
-    )
+    );
 
     await waitFor(() =>
       expect(dataContainerListener).toHaveBeenCalledWith({
@@ -95,9 +95,9 @@ describe('useFieldGroups', () => {
         isOK: true,
         isPending: false,
       })
-    )
+    );
 
     // important: assert that it was able to retrieve results without dispatching sdk request
-    expect(sdkMethodLookmlModelExploreListener).not.toHaveBeenCalled()
-  })
-})
+    expect(sdkMethodLookmlModelExploreListener).not.toHaveBeenCalled();
+  });
+});

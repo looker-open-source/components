@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import pick from 'lodash/pick'
-import React from 'react'
-import styled from 'styled-components'
-import type { ListItemContentProps } from '../ListItem'
+import pick from 'lodash/pick';
+import React from 'react';
+import styled from 'styled-components';
+import type { ListItemContentProps } from '../ListItem';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../Ripple'
-import { generateIndent } from '../Tree/utils'
-import { listItemBackgroundColor } from '../ListItem/utils'
+} from '../Ripple';
+import { generateIndent } from '../Tree/utils';
+import { listItemBackgroundColor } from '../ListItem/utils';
 
 export const NavTreeDisclosure = styled(
   ({
@@ -35,21 +35,21 @@ export const NavTreeDisclosure = styled(
       className,
       color: selected ? 'key' : 'neutral',
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(props, rippleHandlerKeys),
       disabled
-    )
+    );
 
-    const rippleProps = { ...ripplePropsRest, ...rippleHandlers }
+    const rippleProps = { ...ripplePropsRest, ...rippleHandlers };
 
     return (
       <li {...props} {...rippleProps}>
         {children}
       </li>
-    )
+    );
   }
 )`
   ${generateIndent}
@@ -58,4 +58,4 @@ export const NavTreeDisclosure = styled(
 
   color: ${({ theme }) => theme.colors.text5};
   display: flex;
-`
+`;

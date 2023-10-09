@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRangeSlider } from '../'
+import React from 'react';
+import { FieldRangeSlider } from '../';
 
 export default function Basic() {
-  return <FieldRangeSlider />
+  return <FieldRangeSlider />;
 }

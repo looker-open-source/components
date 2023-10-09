@@ -3,23 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { KeyboardEvent, MouseEvent as ReactMouseEvent } from 'react'
-import { useMemo } from 'react'
-import type { FocusVisibleProps } from './useFocusVisible'
-import { useFocusVisible } from './useFocusVisible'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { KeyboardEvent, MouseEvent as ReactMouseEvent } from 'react';
+import { useMemo } from 'react';
+import type { FocusVisibleProps } from './useFocusVisible';
+import { useFocusVisible } from './useFocusVisible';
 
 // Helper interfaces for components using this hook
 export type GenericOnClick<E extends HTMLElement> = (
   e: ReactMouseEvent<E, MouseEvent> | KeyboardEvent<E>
-) => void
+) => void;
 
 export interface GenericClickProps<E extends HTMLElement>
   extends Omit<CompatibleHTMLProps<E>, 'onClick'> {
-  onClick?: GenericOnClick<E>
+  onClick?: GenericOnClick<E>;
 }
 
-type Attributes = 'disabled' | 'onBlur' | 'onKeyUp' | 'role'
+type Attributes = 'disabled' | 'onBlur' | 'onKeyUp' | 'role';
 
 export interface UseClickableProps<E extends HTMLElement>
   extends Pick<CompatibleHTMLProps<E>, Attributes>,
@@ -38,7 +38,7 @@ export function useClickable<E extends HTMLElement>({
   role,
   ...rest
 }: UseClickableProps<E>): UseClickableResult<E> {
-  const { onKeyUp, ...focusVisibleProps } = useFocusVisible(rest)
+  const { onKeyUp, ...focusVisibleProps } = useFocusVisible(rest);
 
   return useMemo(
     () => ({
@@ -47,20 +47,20 @@ export function useClickable<E extends HTMLElement>({
       onClick: (e: ReactMouseEvent<E, MouseEvent>) => {
         if (!disabled) {
           // use onClick from useFocusVisible – it's the true click handler
-          onClick?.(e)
+          onClick?.(e);
         }
       },
       onKeyUp: (e: KeyboardEvent<E>) => {
-        const shouldHandle = !disabled && e.currentTarget === e.target
+        const shouldHandle = !disabled && e.currentTarget === e.target;
         if (shouldHandle) {
           switch (e.key) {
             case 'Enter':
             case ' ':
-              onClick?.(e)
-              break
+              onClick?.(e);
+              break;
           }
         }
-        onKeyUp(e)
+        onKeyUp(e);
       },
       // if onClick is used, role should be 'button' unless otherwise specified
       // otherwise undefined b/c depending on usage, 'button' could be misleading
@@ -68,5 +68,5 @@ export function useClickable<E extends HTMLElement>({
       tabIndex: disabled ? undefined : 0,
     }),
     [disabled, role, onClick, onKeyUp, focusVisibleProps]
-  )
+  );
 }

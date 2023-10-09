@@ -1,8 +1,8 @@
 {
   "is in range range": {
-    "value": "이(가) {{range}} 범위임"
+    "value": "{{range}} 범위 내에 있음"
   },
   "is not in range range": {
-    "value": "이(가) {{range}} 범위 아님"
+    "value": "{{range}} 범위 내에 없음"
   }
 }

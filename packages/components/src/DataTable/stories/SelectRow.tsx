@@ -23,9 +23,14 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
-import { DataTableAction, DataTableItem, DataTableCell, DataTable } from '../..'
-import type { DataTableColumns } from '../../'
+import React, { useState } from 'react';
+import {
+  DataTableAction,
+  DataTableItem,
+  DataTableCell,
+  DataTable,
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function SelectRow() {
   const data = [
@@ -41,7 +46,7 @@ export default function SelectRow() {
       id: 3,
       name: `Blue`,
     },
-  ]
+  ];
 
   const columns: DataTableColumns = [
     {
@@ -56,22 +61,22 @@ export default function SelectRow() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
-  const [selections, setSelections] = useState<string[]>([])
+  const [selections, setSelections] = useState<string[]>([]);
   const onSelect = (selection: string) => {
     setSelections(
       selections.includes(selection)
         ? selections.filter(item => item !== selection)
         : [...selections, selection]
-    )
-  }
+    );
+  };
 
-  const allSelectableItems = data.map(({ id }) => String(id))
+  const allSelectableItems = data.map(({ id }) => String(id));
 
   const onSelectAll = () => {
-    setSelections(selections.length ? [] : allSelectableItems)
-  }
+    setSelections(selections.length ? [] : allSelectableItems);
+  };
 
   const items = data.map(({ id, name }) => (
     <DataTableItem
@@ -89,7 +94,7 @@ export default function SelectRow() {
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
     </DataTableItem>
-  ))
+  ));
 
   return (
     <>
@@ -106,5 +111,5 @@ export default function SelectRow() {
         {items}
       </DataTable>
     </>
-  )
+  );
 }

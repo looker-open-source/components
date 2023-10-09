@@ -3,26 +3,26 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { OptionIndicatorProps, ComboboxProps } from '../..'
-import { Combobox, ComboboxOption, ComboboxList } from '../..'
-import { ComboboxInput } from '../../ComboboxInput'
+import React from 'react';
+import type { OptionIndicatorProps, ComboboxProps } from '../..';
+import { Combobox, ComboboxOption, ComboboxList } from '../..';
+import { ComboboxInput } from '../../ComboboxInput';
 
 const Indicator = ({ isActive, isSelected }: OptionIndicatorProps) => {
-  let indicator
+  let indicator;
 
   if (isSelected) {
-    indicator = '>>'
+    indicator = '>>';
   } else if (isActive) {
-    indicator = '>'
+    indicator = '>';
   } else {
-    indicator = ''
+    indicator = '';
   }
-  return <>{indicator}</>
-}
+  return <>{indicator}</>;
+};
 
 export default function CustomIndicator(props: ComboboxProps) {
-  const { width = 300, ...restProps } = props
+  const { width = 300, ...restProps } = props;
 
   return (
     <Combobox width={width} value={{ value: 'Grapes' }} {...restProps}>
@@ -35,5 +35,5 @@ export default function CustomIndicator(props: ComboboxProps) {
         <ComboboxOption value="Pineapples" />
       </ComboboxList>
     </Combobox>
-  )
+  );
 }

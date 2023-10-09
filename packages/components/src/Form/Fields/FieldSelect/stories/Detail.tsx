@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelect } from '../../FieldSelect'
+import React from 'react';
+import { FieldSelect } from '../../FieldSelect';
 
 export default function Detail() {
   return (
@@ -19,5 +19,5 @@ export default function Detail() {
       ]}
       detail="0/50"
     />
-  )
+  );
 }

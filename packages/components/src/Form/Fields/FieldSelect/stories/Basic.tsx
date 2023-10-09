@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelect } from '../../FieldSelect'
-import type { FieldSelectProps } from '../../FieldSelect'
+import React from 'react';
+import { FieldSelect } from '../../FieldSelect';
+import type { FieldSelectProps } from '../../FieldSelect';
 
 export default function Basic(props: FieldSelectProps) {
   return (
@@ -20,5 +20,5 @@ export default function Basic(props: FieldSelectProps) {
       ]}
       {...props}
     />
-  )
+  );
 }

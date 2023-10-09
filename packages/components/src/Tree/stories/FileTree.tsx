@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TextSnippet } from '@styled-icons/material'
+import React from 'react';
+import { TextSnippet } from '@styled-icons/material';
 import {
   Explore,
   TableChart,
   Visibility,
-} from '@styled-icons/material-outlined'
+} from '@styled-icons/material-outlined';
 
-import { Tree } from '../Tree'
-import { TreeCollection } from '../TreeCollection'
-import { TreeItem } from '../TreeItem'
+import { Tree } from '../Tree';
+import { TreeCollection } from '../TreeCollection';
+import { TreeItem } from '../TreeItem';
 
 export default function FileTree() {
   return (
@@ -33,5 +33,5 @@ export default function FileTree() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

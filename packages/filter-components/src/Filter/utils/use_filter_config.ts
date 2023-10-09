@@ -2,20 +2,20 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useState, useRef } from 'react'
-import type { FilterUIConfig } from '../types/filter_ui_config'
-import type { RenderFilterProps } from '.'
-import { getFallbackFilterConfig, canRenderFilter } from '.'
+import { useState, useRef } from 'react';
+import type { FilterUIConfig } from '../types/filter_ui_config';
+import type { RenderFilterProps } from '.';
+import { getFallbackFilterConfig, canRenderFilter } from '.';
 
 interface useFallbackReturnValue {
-  skipFilterConfigCheck: boolean
-  uiConfig: FilterUIConfig
+  skipFilterConfigCheck: boolean;
+  uiConfig: FilterUIConfig;
 }
 
 const getSkipFallback = ({
   skipFilterConfigCheck,
   ...props
-}: RenderFilterProps) => skipFilterConfigCheck ?? canRenderFilter(props)
+}: RenderFilterProps) => skipFilterConfigCheck ?? canRenderFilter(props);
 
 /**
  * This hook checks the filter control can render
@@ -29,14 +29,14 @@ export const useFilterConfig = (
 ): useFallbackReturnValue => {
   // store the skipFallback value for the rest of
   // the component lifecycle
-  const [skipFallback, setSkipFallback] = useState(getSkipFallback(props))
+  const [skipFallback, setSkipFallback] = useState(getSkipFallback(props));
 
-  const skipFallbackConfigCheckRef = useRef(props.skipFilterConfigCheck)
+  const skipFallbackConfigCheckRef = useRef(props.skipFilterConfigCheck);
 
   // check if skipFilterConfigCheck has been reset from EditMode
   if (props.skipFilterConfigCheck !== skipFallbackConfigCheckRef.current) {
-    skipFallbackConfigCheckRef.current = props.skipFilterConfigCheck
-    setSkipFallback(getSkipFallback(props))
+    skipFallbackConfigCheckRef.current = props.skipFilterConfigCheck;
+    setSkipFallback(getSkipFallback(props));
   }
 
   // if filter can be rendered for uiConfig
@@ -46,9 +46,9 @@ export const useFilterConfig = (
         props.config || {}
       : // fallback to using an advanced filter
         getFallbackFilterConfig(props.config)
-  ) as FilterUIConfig
+  ) as FilterUIConfig;
   return {
     skipFilterConfigCheck: skipFallback,
     uiConfig,
-  }
-}
+  };
+};

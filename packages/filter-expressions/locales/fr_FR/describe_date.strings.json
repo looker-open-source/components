@@ -1,6 +1,6 @@
 {
   " complete": {
-    "value": " terminé"
+    "value": " complètes"
   },
   "absolute prefix dateTime": {
     "value": "{{prefix}} {{dateTime}}"
@@ -12,46 +12,46 @@
     "value": "à partir de maintenant"
   },
   "is any time": {
-    "value": "est à tout moment"
+    "value": "a lieu à une date indifférente"
   },
   "is before": {
-    "value": "est situé avant"
+    "value": "est antérieur à"
   },
   "is day": {
     "value": "est {{day}}"
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "est de {{dateTimeStart}} à {{dateTimeEnd}}"
+    "value": "a lieu du {{dateTimeStart}} jusqu'au {{dateTimeEnd}}"
   },
   "is in month year": {
-    "value": "est en {{month}} {{year}}"
+    "value": "a lieu en {{month}} {{year}}"
   },
   "is in the last": {
-    "value": "est dans le dernier {{describeInterval}}"
+    "value": "a lieu dans le dernier intervalle de {{describeInterval}}"
   },
   "is in the year year": {
-    "value": "est dans l'année {{year}}"
+    "value": "a lieu en {{year}}"
   },
   "is interval ago": {
-    "value": "est il y a {{interval}}"
+    "value": "il y a {{interval}}"
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}"
+    "value": "a lieu entre {{intervalStart}} {{intervalType}} et {{intervalEnd}}"
   },
   "is not null": {
     "value": "n'est pas nul"
   },
   "is on dateTime": {
-    "value": "est le {{dateTime}}"
+    "value": "a lieu le {{dateTime}}"
   },
   "is on or after": {
-    "value": "est situé le jour même ou après"
+    "value": "date du ou est ultérieur à"
   },
   "is previous unitLabel": {
-    "value": "est avant {{unitLabel}}"
+    "value": "date du/de la {{unitLabel}} précédent(e)"
   },
   "is type unitLabel": {
-    "value": "est {{type}} {{unitLabel}}"
+    "value": "est de type {{type}} {{unitLabel}}"
   },
   "next": {
     "value": "suivant"

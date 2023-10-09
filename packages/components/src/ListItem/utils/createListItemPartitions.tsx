@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactElement } from 'react'
-import React from 'react'
-import type { ListItemProps } from '../types'
-import type { IconPlaceholderProps, IconType } from '../../Icon'
-import { ListItemDetail } from '../ListItemDetail'
-import { ListItemIcon } from '../ListItemIcon'
-import { ListItemLabel } from '../ListItemLabel'
-import { getDetailOptions } from './getDetailOptions'
+import type { ReactElement } from 'react';
+import React from 'react';
+import type { ListItemProps } from '../types';
+import type { IconPlaceholderProps, IconType } from '../../Icon';
+import { ListItemDetail } from '../ListItemDetail';
+import { ListItemIcon } from '../ListItemIcon';
+import { ListItemLabel } from '../ListItemLabel';
+import { getDetailOptions } from './getDetailOptions';
 
 export type CreateListItemPartitionsProps = {
-  icon?: IconType | ReactElement<IconPlaceholderProps>
+  icon?: IconType | ReactElement<IconPlaceholderProps>;
 } & Pick<
   ListItemProps,
   | 'color'
@@ -23,7 +23,7 @@ export type CreateListItemPartitionsProps = {
   | 'disabled'
   | 'children'
   | 'truncate'
->
+>;
 
 export const createListItemPartitions = ({
   color,
@@ -41,7 +41,7 @@ export const createListItemPartitions = ({
     color,
     density,
     disabled,
-  }
+  };
 
   const labelProps = {
     children,
@@ -50,15 +50,15 @@ export const createListItemPartitions = ({
     description,
     disabled,
     truncate,
-  }
+  };
 
-  const { accessory, content, ...options } = getDetailOptions(detail)
+  const { accessory, content, ...options } = getDetailOptions(detail);
 
   const renderedDetail = detail && (
     <ListItemDetail accessory={accessory} density={density} {...options}>
       {content}
     </ListItemDetail>
-  )
+  );
 
   const inside = (
     <>
@@ -66,7 +66,7 @@ export const createListItemPartitions = ({
       {<ListItemLabel {...labelProps} />}
       {!accessory && renderedDetail}
     </>
-  )
+  );
 
-  return [inside, accessory && renderedDetail]
-}
+  return [inside, accessory && renderedDetail];
+};

@@ -1,9 +1,9 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} vers {{coords2}}"
+    "value": "De {{coords1}} à {{coords2}}"
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} de {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} du point {{lat}}, {{lon}}"
   },
   "is anywhere": {
     "value": "est n'importe où"
@@ -15,15 +15,15 @@
     "value": "est nul"
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}° N"
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}° S"
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "{{lon}}° E"
   },
   "lon degrees west": {
-    "value": "{{lon}}°O"
+    "value": "{{lon}}° O"
   }
 }

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { fiFI as componentsLocale } from '@looker/components'
-import { fiFI as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { fiFI as componentsLocale } from '@looker/components';
+import { fiFI as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Lajittele laskevassa järjestyksessä',
     Totals: 'Summat',
   },
-}
+};
 
 export const fiFI = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'fi-FI',
   resources
-)
+);

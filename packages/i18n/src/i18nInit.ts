@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import i18next from 'i18next'
-import type { InitOptions } from 'i18next'
-import type { I18nState } from './types'
+import i18next from 'i18next';
+import type { InitOptions } from 'i18next';
+import type { I18nState } from './types';
 
 export const i18nInitOptions: InitOptions = {
   fallbackLng: 'en',
@@ -19,36 +19,36 @@ export const i18nInitOptions: InitOptions = {
     if (process.env.NODE_ENV !== 'production') {
       throw new Error(
         `Missing i18n key (${languages.join(', ')}): "${key}" in ${ns}`
-      )
+      );
     }
   },
   nsSeparator: false,
   saveMissing: true,
-}
+};
 
 export const i18nUpdate = ({ resources, locale }: Partial<I18nState>) => {
   if (resources) {
     Object.keys(resources).forEach((lng: string) => {
-      const allNamespaces = resources[lng]
+      const allNamespaces = resources[lng];
       Object.keys(allNamespaces).forEach((ns: string) => {
-        i18next.addResourceBundle(lng, ns, allNamespaces[ns])
-      })
-    })
+        i18next.addResourceBundle(lng, ns, allNamespaces[ns]);
+      });
+    });
   }
   if (locale && locale !== i18next.language) {
-    i18next.changeLanguage(locale)
+    i18next.changeLanguage(locale);
   }
-}
+};
 
 export async function i18nInit(options: I18nState) {
   if (i18next.isInitialized) {
-    i18nUpdate(options)
+    i18nUpdate(options);
   }
   i18next.init({
     ...i18nInitOptions,
     lng: options.locale,
     // add optional resources from args
     resources: options.resources,
-  })
-  return i18next
+  });
+  return i18next;
 }

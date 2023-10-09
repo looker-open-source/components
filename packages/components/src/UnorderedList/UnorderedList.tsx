@@ -10,7 +10,7 @@ import type {
   SpaceProps,
   TextColorProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   layout,
   position,
@@ -20,8 +20,8 @@ import {
   textColor,
   typography,
   variant,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface UnorderedListProps
   extends CompatibleHTMLProps<HTMLUListElement>,
@@ -35,7 +35,7 @@ export interface UnorderedListProps
    *
    * @default none
    */
-  type?: 'none' | 'bullet'
+  type?: 'none' | 'bullet';
 }
 
 const typeVariant = variant({
@@ -49,7 +49,7 @@ const typeVariant = variant({
       listStyleType: 'none',
     },
   },
-})
+});
 
 export const UnorderedList = styled.ul
   .withConfig({
@@ -71,4 +71,4 @@ export const UnorderedList = styled.ul
   li {
     margin-bottom: ${({ theme }) => theme.space.u1};
   }
-`
+`;

@@ -24,30 +24,24 @@
 
  */
 
-import type { ReactElement, RefAttributes, Ref } from 'react'
-import React, {
-  useRef,
-  cloneElement,
-  useEffect,
-  useState,
-  forwardRef,
-} from 'react'
-import styled from 'styled-components'
-import { useForkedRef } from '../utils'
-import type { IconButtonProps } from './iconButtonTypes'
-import type { ButtonProps } from './types'
+import type { ReactElement, RefAttributes, Ref } from 'react';
+import React, { cloneElement, useEffect, useState, forwardRef } from 'react';
+import styled from 'styled-components';
+import { useForkedRef, useMeasuredElement } from '../utils';
+import type { IconButtonProps } from './iconButtonTypes';
+import type { ButtonProps } from './types';
 
 export type MultiFunctionButtonProps = {
   alternate: ReactElement<
     (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
-  >
-  alternateRef?: Ref<HTMLButtonElement>
+  >;
+  alternateRef?: Ref<HTMLButtonElement>;
   children: ReactElement<
     (ButtonProps | IconButtonProps) & RefAttributes<HTMLButtonElement>
-  >
-  swap?: boolean
-  disabled?: boolean
-}
+  >;
+  swap?: boolean;
+  disabled?: boolean;
+};
 
 /**
  * MultiFunctionButton "swaps" the button shown generally with the "alternate"
@@ -68,33 +62,35 @@ export const MultiFunctionButton = forwardRef(
     }: MultiFunctionButtonProps,
     forwardedRef: Ref<HTMLButtonElement>
   ) => {
-    const [containerHeight, setContainerHeight] = useState(0)
-    const [containerWidth, setContainerWidth] = useState(0)
+    const [containerHeight, setContainerHeight] = useState(0);
+    const [containerWidth, setContainerWidth] = useState(0);
 
-    const aRef = useRef<HTMLButtonElement>(null)
-    const bRef = useRef<HTMLButtonElement>(null)
+    const [aElement, setAElement] = useState<HTMLElement | null>(null);
+    const [bElement, setBElement] = useState<HTMLElement | null>(null);
+    const [aRect] = useMeasuredElement(aElement);
+    const [bRect] = useMeasuredElement(bElement);
+    const maxHeight = Math.max(aRect.height, bRect.height);
+    const maxWidth = Math.max(aRect.width, bRect.width);
 
     // calculating height and width button highest values to populate the component's dimensions.
     useEffect(() => {
-      const a = aRef.current
-      const b = bRef.current
-      if (a && b) {
-        setContainerHeight(Math.max(a.offsetHeight, b.offsetHeight, 0))
-        setContainerWidth(Math.max(a.offsetWidth, b.offsetWidth, 0))
+      if (maxHeight > 0 && maxWidth > 0) {
+        setContainerHeight(maxHeight);
+        setContainerWidth(maxWidth);
       }
-    }, [containerHeight, containerWidth])
+    }, [maxHeight, maxWidth]);
 
     // setting focus on the right button as the component moves between them
     useEffect(() => {
-      if (swap === true && aRef.current === document.activeElement) {
-        bRef.current?.focus()
+      if (swap === true && aElement === document.activeElement) {
+        bElement?.focus();
       }
-      if (swap === false && bRef.current === document.activeElement) {
-        aRef.current?.focus()
+      if (swap === false && bElement === document.activeElement) {
+        aElement?.focus();
       }
-    }, [swap])
+    }, [swap, aElement, bElement]);
 
-    const style = containerWidth > 0 ? { width: containerWidth } : undefined
+    const style = containerWidth > 0 ? { width: containerWidth } : undefined;
 
     return (
       <MultiFunctionButtonStyle
@@ -105,26 +101,26 @@ export const MultiFunctionButton = forwardRef(
         {cloneElement(children, {
           'aria-hidden': !!swap,
           disabled: swap === true ? true : disabled,
-          ref: useForkedRef(aRef, forwardedRef),
+          ref: useForkedRef(setAElement, forwardedRef),
           style,
         })}
         {cloneElement(alternate, {
           'aria-hidden': !swap,
           disabled: swap === false ? true : disabled,
-          ref: useForkedRef(bRef, alternateRef),
+          ref: useForkedRef(setBElement, alternateRef),
           style,
         })}
       </MultiFunctionButtonStyle>
-    )
+    );
   }
-)
-MultiFunctionButton.displayName = 'MultiFunctionButton'
+);
+MultiFunctionButton.displayName = 'MultiFunctionButton';
 
 type MultiFunctionButtonStyleProps = {
-  swap?: boolean
-  height: number
-  width: number
-}
+  swap?: boolean;
+  height: number;
+  width: number;
+};
 
 const MultiFunctionButtonStyle = styled.div<MultiFunctionButtonStyleProps>`
   align-items: center;
@@ -138,11 +134,11 @@ const MultiFunctionButtonStyle = styled.div<MultiFunctionButtonStyleProps>`
   ${({ swap }) =>
     swap
       ? `> *:first-child {
-        position: absolute;
-        top: -100000px;
-      }`
+         position: absolute;
+         top: -100000px;
+       }`
       : `> *:last-child {
-        position: absolute;
-        top: -100000px;
-      }`}
-`
+         position: absolute;
+         top: -100000px;
+       }`}
+`;

@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/cs'
+import dateLocale from 'date-fns/locale/cs';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -152,6 +152,6 @@ const resources = {
   TabList: {
     Tabs: 'Karty',
   },
-}
+};
 
-export const csCZ = mergeLocaleObjects([], 'cs-CZ', resources, dateLocale)
+export const csCZ = mergeLocaleObjects([], 'cs-CZ', resources, dateLocale);

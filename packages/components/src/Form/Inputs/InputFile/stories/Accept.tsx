@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputFile } from '..'
-import type { InputFileProps } from '..'
+import React from 'react';
+import { InputFile } from '..';
+import type { InputFileProps } from '..';
 
 export default function Accept(props: InputFileProps) {
   const {
@@ -15,7 +15,7 @@ export default function Accept(props: InputFileProps) {
     accept = '.pdf',
     value = 'Accepts only PDF files',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputFile
@@ -24,5 +24,5 @@ export default function Accept(props: InputFileProps) {
       value={value}
       {...restProps}
     />
-  )
+  );
 }

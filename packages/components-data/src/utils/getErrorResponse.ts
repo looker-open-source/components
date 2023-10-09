@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { IError } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import { isErrorResponse } from '.'
+import type { IError } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
+import { isErrorResponse } from '.';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -14,7 +14,7 @@ export const getErrorResponse = (
 ) => {
   const errorResponse = isErrorResponse(sdkResponse)
     ? sdkResponse.error
-    : undefined
+    : undefined;
 
-  return errorResponse ? { error: errorResponse } : {}
-}
+  return errorResponse ? { error: errorResponse } : {};
+};

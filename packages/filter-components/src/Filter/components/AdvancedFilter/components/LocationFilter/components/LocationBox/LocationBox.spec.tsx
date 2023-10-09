@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
-import { LocationBox } from './LocationBox'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
+import { LocationBox } from './LocationBox';
 
 describe('LocationBox filter test', () => {
   it('should render a LocationBox', () => {
@@ -17,12 +17,12 @@ describe('LocationBox filter test', () => {
       lon: 1,
       lat1: 5,
       lon1: 5,
-    }
-    renderWithTheme(<LocationBox item={item} onChange={jest.fn()} />)
-    expect(screen.getByText('FROM LATITUDE')).toBeVisible()
-    expect(screen.getByText('TO LATITUDE')).toBeVisible()
-    expect(screen.getAllByText('LONGITUDE')).toHaveLength(2)
-    expect(screen.getAllByDisplayValue('1')).toHaveLength(2)
-    expect(screen.getAllByDisplayValue('5')).toHaveLength(2)
-  })
-})
+    };
+    renderWithTheme(<LocationBox item={item} onChange={jest.fn()} />);
+    expect(screen.getByText('FROM LATITUDE')).toBeVisible();
+    expect(screen.getByText('TO LATITUDE')).toBeVisible();
+    expect(screen.getAllByText('LONGITUDE')).toHaveLength(2);
+    expect(screen.getAllByDisplayValue('1')).toHaveLength(2);
+    expect(screen.getAllByDisplayValue('5')).toHaveLength(2);
+  });
+});

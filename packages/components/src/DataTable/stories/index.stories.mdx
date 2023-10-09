@@ -1,14 +1,14 @@
-import { DataTable } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyIndicator from '!!raw-loader!./Indicator'
-import storyNoResults from '!!raw-loader!./NoResults'
-import storySorting from '!!raw-loader!./Sorting'
-import storySelectRow from '!!raw-loader!./SelectRow'
-import storySelectManager from '!!raw-loader!./SelectManager'
-import storyControlBar from '!!raw-loader!./ControlBar'
-import storyTruncate from '!!raw-loader!./Truncate'
+import { DataTable } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyIndicator from './Indicator?raw';
+import storyNoResults from './NoResults?raw';
+import storySorting from './Sorting?raw';
+import storySelectRow from './SelectRow?raw';
+import storySelectManager from './SelectManager?raw';
+import storyControlBar from './ControlBar?raw';
+import storyTruncate from './Truncate?raw';
 
 <Meta component={DataTable} title="Docs/DataTable" />
 
@@ -142,6 +142,7 @@ The following properties are **required** in the object passed into the `select`
 The following properties are **optional** in the object passed into the `select` prop:
 
 **Note:** For accessibility purposes, the header checkbox is described by the ID of the header row. To set the ID of the header row, use the `headerRowId` prop on `DataTable`.
+
 <Editor code={storySelectRow} />
 
 ### useSelectManager
@@ -182,8 +183,8 @@ The `bulk` prop is used to configure a `DataTable`'s control bar. The object pas
 ## Truncation
 
 DataTable plays nicely with [Truncate](?path=/docs/docs-truncate--docs), when you wish to condense the table and keep all values to a single line.
-<Editor code={storyTruncate} />
 
+<Editor code={storyTruncate} />
 
 ## Props
 

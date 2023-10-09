@@ -15,7 +15,7 @@
     "value": "Últimos 365 dias"
   },
   "Last 7 Days": {
-    "value": "Últimos 7 dias"
+    "value": "Últimos sete dias"
   },
   "Last 90 Days": {
     "value": "Últimos 90 dias"
@@ -48,7 +48,7 @@
     "value": "Hoje"
   },
   "Year To Date": {
-    "value": "Ano atual"
+    "value": "Acumulado no ano"
   },
   "Yesterday": {
     "value": "Ontem"

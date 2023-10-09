@@ -7,4 +7,4 @@
  * Creates a string used internal usage tracking purposes
  */
 export const buildTrackingTag = (type: string) =>
-  `visualization-component--${type}`
+  `visualization-component--${type}`;

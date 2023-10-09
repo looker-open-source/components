@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { xAxisReversed } from './xAxisReversed'
-import { mockFields } from '../fixtures'
+import { xAxisReversed } from './xAxisReversed';
+import { mockFields } from '../fixtures';
 
 describe('xAxisReversed', () => {
   const mockData = [
@@ -20,14 +20,14 @@ describe('xAxisReversed', () => {
       'orders.created_month': 'Third',
       'orders.count': 4000,
     },
-  ]
+  ];
 
   it('reversed data', () => {
     const { data: draftData } = xAxisReversed({
       data: mockData,
       fields: mockFields,
       config: { type: 'line', x_axis: [{ reversed: true }] },
-    })
+    });
 
     expect(draftData).toMatchInlineSnapshot(`
       Array [
@@ -44,6 +44,6 @@ describe('xAxisReversed', () => {
           "orders.created_month": "First",
         },
       ]
-    `)
-  })
-})
+    `);
+  });
+});

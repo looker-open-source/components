@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRangeSlider } from '../'
+import React from 'react';
+import { FieldRangeSlider } from '../';
 
 export default function ReadOnly() {
-  return <FieldRangeSlider readOnly={true} />
+  return <FieldRangeSlider readOnly={true} />;
 }

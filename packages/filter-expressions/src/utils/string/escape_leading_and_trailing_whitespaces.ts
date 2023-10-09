@@ -19,12 +19,12 @@ export const escapeLeadingAndTrailingWhitespaces = (
   let str = value.replace(
     /^([ ]*)(.*?)([ ]*)$/g,
     (_: string, g1?: string, g2?: string, g3?: string) => {
-      const leading = g1 ? g1.replace(/[ ]/g, '^ ') : ''
-      const content = g2 || ''
-      const trailing = g3 ? g3.replace(/[ ]/g, '^ ') : ''
-      return leading + content + trailing
+      const leading = g1 ? g1.replace(/[ ]/g, '^ ') : '';
+      const content = g2 || '';
+      const trailing = g3 ? g3.replace(/[ ]/g, '^ ') : '';
+      return leading + content + trailing;
     }
-  )
+  );
 
   // we add a "^ "" at the end of the string to ensure the right-most escaped space is
   // not trimmed, most notably when the clause is "ends with" or "!ends with".
@@ -37,7 +37,7 @@ export const escapeLeadingAndTrailingWhitespaces = (
     !str.includes('"') &&
     doubleEscapeLastEscapedTrailingSpace
   ) {
-    str += '^ '
+    str += '^ ';
   }
-  return str
-}
+  return str;
+};

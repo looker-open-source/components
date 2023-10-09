@@ -24,10 +24,11 @@
 
  */
 
-import type { HTMLProps } from 'react'
-import type { SemanticBorderProps } from '../utils'
+import type { HTMLProps, InputHTMLAttributes } from 'react';
+import type { SemanticBorderProps } from '../utils';
 
 export {
+  background,
   borderRadius,
   boxShadow,
   backgroundPosition,
@@ -55,18 +56,19 @@ export {
   variant,
   verticalAlign,
   width,
-} from 'styled-system'
+} from 'styled-system';
 
-export { borderHelper as border } from '../utils'
+export { borderHelper as border } from '../utils';
 
 export type BorderProps = SemanticBorderProps & {
   /**
    * @deprecated - not used by borderHelper which is exported as `border` and can be deleted. Once all usage has been deleted then this prop can be removed from here.
    */
-  borderColor?: string
-}
+  borderColor?: string;
+};
 
 export type {
+  BackgroundProps,
   BackgroundColorProps,
   BackgroundPositionProps,
   BorderRadiusProps,
@@ -86,26 +88,40 @@ export type {
   SizeProps,
   VerticalAlignProps,
   WidthProps,
-} from 'styled-system'
+} from 'styled-system';
+
+export type HTMLAttributeStyledSystemConflictKeys =
+  | 'as'
+  | 'color'
+  | 'height'
+  | 'label'
+  | 'ref'
+  | 'size'
+  | 'width';
 
 export type CompatibleHTMLProps<T> = Omit<
   HTMLProps<T>,
-  'as' | 'color' | 'height' | 'label' | 'ref' | 'size' | 'width'
->
+  HTMLAttributeStyledSystemConflictKeys
+>;
 
-export { userSelect } from './userSelect'
-export type { UserSelectProps } from './userSelect'
+export type CompatibleInputHTMLProps<T> = Omit<
+  InputHTMLAttributes<T>,
+  HTMLAttributeStyledSystemConflictKeys
+>;
 
-export type { DensityProp, DensityRamp } from './density'
+export { userSelect } from './userSelect';
+export type { UserSelectProps } from './userSelect';
 
-export { cursor } from './cursor'
-export type { CursorProps } from './cursor'
-export { Easings } from './easings'
-export { RadiusSizes, Radii } from './radii'
-export { Shadows } from './shadows'
-export * from './transitions'
-export * from './size'
-export * from './typography'
+export type { DensityProp, DensityRamp } from './density';
+
+export { cursor } from './cursor';
+export type { CursorProps } from './cursor';
+export { Easings } from './easings';
+export { RadiusSizes, Radii } from './radii';
+export { Shadows } from './shadows';
+export * from './transitions';
+export * from './size';
+export * from './typography';
 
 // Custom Extensions
-export * from './reset'
+export * from './reset';

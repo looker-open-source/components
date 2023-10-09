@@ -23,9 +23,9 @@
  SOFTWARE.
 
  */
-import type { SetStateAction, Dispatch } from 'react'
-import React from 'react'
-import type { ReferenceLine, CAll } from '@looker/visualizations-adapters'
+import type { SetStateAction, Dispatch } from 'react';
+import React from 'react';
+import type { ReferenceLine, CAll } from '@looker/visualizations-adapters';
 import {
   Dialog,
   Button,
@@ -41,16 +41,16 @@ import {
   FieldColor,
   FieldSelect,
   SpaceVertical,
-} from '@looker/components'
-import partial from 'lodash/partial'
-import isArray from 'lodash/isArray'
-import { Add } from '@styled-icons/material/Add'
-import { Remove } from '@styled-icons/material/Remove'
+} from '@looker/components';
+import partial from 'lodash/partial';
+import isArray from 'lodash/isArray';
+import { Add } from '@styled-icons/material/Add';
+import { Remove } from '@styled-icons/material/Remove';
 
 interface ReferenceLinesEditorProps {
-  name: string
-  value?: ReferenceLine[]
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
+  name: string;
+  value?: ReferenceLine[];
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
 }
 
 // const referenceLineDefaults: ReferenceLine = {
@@ -73,13 +73,13 @@ ReferenceLinesEditorProps) => {
     // TODO: re-enable config change when we support trendlines
     // const newValue = [...(value || []), referenceLineDefaults]
     // handleConfigChange(name, newValue)
-  }
+  };
   const removeLine = (index: number) => {
-    const newValue = [...(value || [])]
-    newValue.splice(index, 1)
+    const newValue = [...(value || [])];
+    newValue.splice(index, 1);
     // TODO: re-enable config change when we support trendlines
     // handleConfigChange(name, newValue)
-  }
+  };
 
   return (
     <Dialog
@@ -110,13 +110,13 @@ ReferenceLinesEditorProps) => {
         Edit Reference Lines ({value?.length || 0})
       </ButtonTransparent>
     </Dialog>
-  )
-}
+  );
+};
 
 interface ReferenceLineFormProps extends ReferenceLine {
-  arrayPos: number
+  arrayPos: number;
   // onChange: (value: OnChangeValues) => void
-  onDelete: () => void
+  onDelete: () => void;
 }
 
 const ReferenceLineForm = ({
@@ -134,7 +134,7 @@ const ReferenceLineForm = ({
     range_end,
     range_start,
     reference_type,
-  } = lineProps
+  } = lineProps;
 
   return (
     <>
@@ -250,5 +250,5 @@ const ReferenceLineForm = ({
       </div>
       <Divider />
     </>
-  )
-}
+  );
+};

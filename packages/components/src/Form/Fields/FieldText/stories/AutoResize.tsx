@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Space } from '../../../../'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import React from 'react';
+import { Space } from '../../../../';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function AutoResize(props: FieldTextProps) {
   const {
@@ -16,7 +16,7 @@ export default function AutoResize(props: FieldTextProps) {
     placeholder = 'Start typing and watch me scale to fit content',
     inline: _inline,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <Space>
@@ -36,5 +36,5 @@ export default function AutoResize(props: FieldTextProps) {
         {...restProps}
       />
     </Space>
-  )
+  );
 }

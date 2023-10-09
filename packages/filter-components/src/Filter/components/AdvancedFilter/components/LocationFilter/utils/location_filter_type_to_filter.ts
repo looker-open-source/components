@@ -5,15 +5,15 @@
 import type {
   FilterTypeMap,
   LocationFilterType,
-} from '@looker/filter-expressions'
-import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttributes } from '../../UserAttributes'
+} from '@looker/filter-expressions';
+import { MatchesAdvanced } from '../../MatchesAdvanced';
+import { UserAttributes } from '../../UserAttributes';
 
-import { LocationBox } from '../components/LocationBox'
-import { LocationCircle } from '../components/LocationCircle'
-import { LocationExact } from '../components/LocationExact'
+import { LocationBox } from '../components/LocationBox';
+import { LocationCircle } from '../components/LocationCircle';
+import { LocationExact } from '../components/LocationExact';
 
-const Blank = () => ''
+const Blank = () => '';
 
 const filterTypeToLocationMap: FilterTypeMap<LocationFilterType> = {
   location: LocationExact,
@@ -23,7 +23,7 @@ const filterTypeToLocationMap: FilterTypeMap<LocationFilterType> = {
   null: Blank,
   notnull: Blank,
   user_attribute: UserAttributes,
-}
+};
 
 export const locationFilterTypeToFilter = (type: LocationFilterType) =>
-  filterTypeToLocationMap[type] || MatchesAdvanced
+  filterTypeToLocationMap[type] || MatchesAdvanced;

@@ -11,4 +11,4 @@
  * blended color is visually distinguishable.
  */
 export const scaleMixAmount = (amount: number, number: number) =>
-  amount * number
+  amount * number;

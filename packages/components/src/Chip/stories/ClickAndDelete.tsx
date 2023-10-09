@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Chip, Space } from '../..'
+import React from 'react';
+import { Chip, Space } from '../..';
 
 export default function ClickAndDelete() {
-  const handleClick = () => alert('Clicked!')
-  const handleDelete = () => alert('Deleted!')
+  const handleClick = () => alert('Clicked!');
+  const handleDelete = () => alert('Deleted!');
 
   return (
     <Space>
@@ -22,5 +22,5 @@ export default function ClickAndDelete() {
         Delete Me (nothing happens)
       </Chip>
     </Space>
-  )
+  );
 }

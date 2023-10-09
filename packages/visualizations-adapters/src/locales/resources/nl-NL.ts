@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nlNL as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { nlNL as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Er is iets fout gegaan',
   },
-  translation: {
-    'Row Total': 'Rijtotaal',
+  KeyValueList: {
     false: 'onwaar',
     null: 'ongeldig',
     true: 'waar',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Rijtotaal',
   },
-}
+};
 
-export const nlNL = mergeLocaleObjects([componentsLocale], 'nl-NL', resources)
+export const nlNL = mergeLocaleObjects([componentsLocale], 'nl-NL', resources);

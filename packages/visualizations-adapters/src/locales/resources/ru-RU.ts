@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ruRU as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ruRU as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Произошла ошибка',
   },
-  translation: {
-    'Row Total': 'Сумма строки',
+  KeyValueList: {
     false: 'false',
     null: 'null',
     true: 'true',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Сумма строки',
   },
-}
+};
 
-export const ruRU = mergeLocaleObjects([componentsLocale], 'ru-RU', resources)
+export const ruRU = mergeLocaleObjects([componentsLocale], 'ru-RU', resources);

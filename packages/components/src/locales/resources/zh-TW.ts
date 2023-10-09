@@ -24,35 +24,35 @@
 
  */
 
-import dateLocale from 'date-fns/locale/zh-TW'
+import dateLocale from 'date-fns/locale/zh-TW';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
     'Clear Field': '清除欄位',
   },
   AvatarButton: {
-    'Profile Picture': '個人資料圖片',
+    'Profile Picture': '個人資料相片',
   },
   AvatarUser: {
-    Avatar: '人物/群組頭像或圖示',
+    Avatar: '顯示圖片',
   },
   BulkActions: {
-    AllPageCountDisplayedSelected: '已全選 {{pageCount}} 個顯示的項目',
-    AllTotalCountSelected: '已全選 {{totalCount}} 個項目',
-    'Bulk Actions': '批次執行動作',
-    'Clear Selection': '清除選取內容',
-    SelectAllCountResults: '全選 {{totalCount}} 個結果',
+    AllPageCountDisplayedSelected: '已選取顯示的全部 {{pageCount}} 個項目',
+    AllTotalCountSelected: '已選取全部 {{totalCount}} 個項目',
+    'Bulk Actions': '批次動作',
+    'Clear Selection': '清除選取的項目',
+    SelectAllCountResults: '選取全部 {{totalCount}} 筆結果',
     SelectedCountOfTotalDisplayed:
-      '已選取 {{selectedItemCount}} 個 (共 {{pageCount}} 個) 顯示的項目',
+      '已選取顯示的 {{selectedItemCount}} 個項目 (共 {{pageCount}} 個)',
   },
   CalendarNav: {
     'next month': '下個月',
     'previous month': '上個月',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': '勾選符號混合',
+    'Check Mark Mixed': '勾選「混合」',
   },
   Chip: {
     Delete: '刪除',
@@ -61,8 +61,8 @@ const resources = {
     Apply: '套用',
     Cancel: '取消',
     'Select All': '全選',
-    'Select None': '不要選取',
-    'Select columns to display': '請選取要顯示的資料欄',
+    'Select None': '不選取任何項目',
+    'Select columns to display': '選取要顯示的資料欄',
   },
   ConfirmationDialog: {
     Cancel: '取消',
@@ -73,13 +73,13 @@ const resources = {
     'Copy to Clipboard': '複製到剪貼簿',
   },
   DataTable: {
-    'No Results': '沒有結果',
+    'No Results': '沒有任何結果',
   },
   DataTableItem: {
     Options: '選項',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': '請使用 HH:MM 的格式',
+    'Please use format HHMM': '請使用下列格式：HH:MM',
   },
   GetIntentLabel: {
     Error: '錯誤',
@@ -88,44 +88,43 @@ const resources = {
     Warning: '警告',
   },
   InputDate: {
-    'Open calendar': '開啟行事曆',
+    'Open calendar': '開啟日曆',
   },
   InputDateRange: {
     'End date': '結束日期',
     'Start date': '開始日期',
   },
   InputFilters: {
-    'Clear Filters': '清除 filter',
-    'Filter List': 'Filter 清單',
-    'bottom-start': '從下開始',
+    'Clear Filters': '清除篩選器',
+    'Filter List': '篩選器清單',
   },
   InputTimeSelect: {
     'Select time': '選取時間',
   },
   MessageBar: {
-    DismissIntent: '關閉 {{intent}}',
+    DismissIntent: '關閉「{{intent}}」',
   },
   ModalHeaderCloseButton: {
     Close: '關閉',
   },
   MonthPickerNav: {
     close: '關閉',
-    'next year': '下一年度',
-    'previous year': '上一年度',
+    'next year': '後一年',
+    'previous year': '前一年',
   },
   PageSize: {
     Display: '顯示',
-    of: '的',
+    of: '/',
   },
   Pagination: {
     'First page of results': '第一頁的結果',
     'Last page of results': '最後一頁的結果',
     'Next page of results': '下一頁的結果',
     'Previous page of results': '上一頁的結果',
-    of: '的',
+    of: '/',
   },
   PanelHeader: {
-    CloseTitle: '關閉 {{title}}',
+    CloseTitle: '關閉「{{title}}」',
   },
   PopoverFooter: {
     Done: '完成',
@@ -135,21 +134,21 @@ const resources = {
     Save: '儲存',
   },
   RangeSlider: {
-    'Maximum Name': '最大 {{name}}',
+    'Maximum Name': '{{name}}上限',
     'Maximum Value': '最大值',
-    'Minimum Name': '最小 {{name}}',
+    'Minimum Name': '{{name}}下限',
     'Minimum Value': '最小值',
   },
   RequiredStar: {
     required: '必填',
   },
   SelectOptions: {
-    Loading: '正在載入',
-    'No options': '沒有選項',
+    Loading: '載入中',
+    'No options': '沒有任何選項',
   },
   TabList: {
-    Tabs: '索引標籤',
+    Tabs: '分頁',
   },
-}
+};
 
-export const zhTW = mergeLocaleObjects([], 'zh-TW', resources, dateLocale)
+export const zhTW = mergeLocaleObjects([], 'zh-TW', resources, dateLocale);

@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { ReactElement, ReactNode } from 'react'
-import React, { Children, isValidElement } from 'react'
-import { mergeClassNames } from '../utils'
-import { AccordionContent } from './AccordionContent'
-import { AccordionDisclosure } from './AccordionDisclosure'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { ReactElement, ReactNode } from 'react';
+import React, { Children, isValidElement } from 'react';
+import { mergeClassNames } from '../utils';
+import { AccordionContent } from './AccordionContent';
+import { AccordionDisclosure } from './AccordionDisclosure';
 
 export const isLegacyComposition = (children: ReactNode) =>
-  Children.count(children) === 2
+  Children.count(children) === 2;
 
-type DomProps = CompatibleHTMLProps<HTMLElement>
+type DomProps = CompatibleHTMLProps<HTMLElement>;
 
 type AccordionLegacyProps = DomProps & {
-  children: ReactNode
-  contentDomProps: DomProps
-  disclosureProps: DomProps
-  isOpen: boolean
-}
+  children: ReactNode;
+  contentDomProps: DomProps;
+  disclosureProps: DomProps;
+  isOpen: boolean;
+};
 
 export const AccordionLegacy = ({
   children,
@@ -29,14 +29,14 @@ export const AccordionLegacy = ({
   isOpen,
   ...props
 }: AccordionLegacyProps) => {
-  const accordionChildren = [] as ReactNode[]
+  const accordionChildren = [] as ReactNode[];
 
   Children.forEach(children, child => {
     if (isValidElement(child)) {
       const isAccordionDisclosure =
-        (child as ReactElement<unknown>).type === AccordionDisclosure
+        (child as ReactElement<unknown>).type === AccordionDisclosure;
       const isAccordionContent =
-        (child as ReactElement<unknown>).type === AccordionContent
+        (child as ReactElement<unknown>).type === AccordionContent;
 
       if (isAccordionDisclosure) {
         accordionChildren.push(
@@ -48,7 +48,7 @@ export const AccordionLegacy = ({
             ]),
             key: 'accordion-disclosure',
           })
-        )
+        );
       } else if (isAccordionContent && isOpen) {
         accordionChildren.push(
           React.cloneElement(child, {
@@ -59,10 +59,10 @@ export const AccordionLegacy = ({
             ]),
             key: 'accordion-content',
           })
-        )
+        );
       }
     }
-  })
+  });
 
-  return <div {...props}>{accordionChildren}</div>
-}
+  return <div {...props}>{accordionChildren}</div>;
+};

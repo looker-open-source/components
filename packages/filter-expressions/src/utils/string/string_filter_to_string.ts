@@ -23,19 +23,19 @@
  SOFTWARE.
 
  */
-import isEmpty from 'lodash/isEmpty'
+import isEmpty from 'lodash/isEmpty';
 import type {
   FilterASTNode,
   FilterItemToStringFunction,
   FilterItemToStringMapType,
   FilterModel,
-} from '../../types'
-import isItemToString from '../to_string/is_item_to_string'
-import { treeToString } from '../tree/tree_to_string'
-import { userAttributeToString } from '../user_attribute/user_attribute_to_string'
-import { escapeLeadingAndTrailingWhitespaces } from './escape_leading_and_trailing_whitespaces'
-import { escapeWithCaret } from './escape_with_caret'
-import { quoteFilter } from './quote_filter'
+} from '../../types';
+import isItemToString from '../to_string/is_item_to_string';
+import { treeToString } from '../tree/tree_to_string';
+import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
+import { escapeLeadingAndTrailingWhitespaces } from './escape_leading_and_trailing_whitespaces';
+import { escapeWithCaret } from './escape_with_caret';
+import { quoteFilter } from './quote_filter';
 
 /**
  * stringFilterToString.ts
@@ -56,57 +56,57 @@ import { quoteFilter } from './quote_filter'
  * stringGrammar reverses this by returning a single space " " from "^ ^ "
  */
 const escapeWithDoubleLastEscape = (v: string) =>
-  escapeLeadingAndTrailingWhitespaces(v)
+  escapeLeadingAndTrailingWhitespaces(v);
 /**
  * Will not double escape trailing spaces (used for startsWith and contains filter types
  * because a % sign will be the real end of the string)
  */
 const escapeWithoutDoubleLastEscape = (v: string) =>
-  escapeLeadingAndTrailingWhitespaces(v, false)
+  escapeLeadingAndTrailingWhitespaces(v, false);
 
 const matchToString = ({ value, is }: FilterModel) =>
   isItemToString(is, '', '-') +
   value
     .map(quoteFilter)
     .map(escapeWithDoubleLastEscape)
-    .join(`,${isItemToString(is, '', '-')}`)
+    .join(`,${isItemToString(is, '', '-')}`);
 
 const multiValueToString = (
   values: string[],
   toString: (token: string) => string
-) => values.map(toString).join(',')
+) => values.map(toString).join(',');
 
 const startWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-') + String(token)}%`
-  )
+  );
 
 const endsWithToString = ({ value, is }: FilterModel) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}`
-  )
+  );
 
 const containsToString = ({ value, is }: FilterModel) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}%`
-  )
+  );
 
 const otherToString = ({ value, is }: FilterModel) =>
   multiValueToString(
     value,
     (token: string) => `${isItemToString(is, '', '-')}${String(token)}`
-  )
+  );
 
 const blankToString = ({ is }: FilterModel) =>
-  `${isItemToString(is, '', '-')}EMPTY`
+  `${isItemToString(is, '', '-')}EMPTY`;
 
 const nullToString = ({ is }: FilterModel) =>
-  `${isItemToString(is, '', '-')}NULL`
+  `${isItemToString(is, '', '-')}NULL`;
 
-const anyvalueToString = () => ''
+const anyvalueToString = () => '';
 
 const filterToStringMap: FilterItemToStringMapType = {
   startsWith: startWithToString,
@@ -118,16 +118,16 @@ const filterToStringMap: FilterItemToStringMapType = {
   user_attribute: userAttributeToString,
   anyvalue: anyvalueToString,
   other: otherToString, // doesn't match to a UI component
-}
+};
 
 /**
  * Maps a FilterItem to a function for converting it to an expression
  */
 const stringToExpression = (item: FilterModel): string => {
   const toStringFunction: FilterItemToStringFunction =
-    filterToStringMap[item.type]
-  return toStringFunction?.(item) || ''
-}
+    filterToStringMap[item.type];
+  return toStringFunction?.(item) || '';
+};
 
 /**
  * itemIsNotEmpty is to filter out empty nodes when
@@ -137,10 +137,10 @@ const itemIsNotEmpty = ({ type, value }: FilterModel) =>
   !(
     ['match', 'contains', 'startsWith', 'endsWith', 'other'].indexOf(type) >
       -1 && isEmpty(value)
-  )
+  );
 /**
  * Converts the AST to an array of FilterItems and then
  * converts each item into its expression representation
  */
 export const stringFilterToString = (root: FilterASTNode) =>
-  treeToString(root, stringToExpression, itemIsNotEmpty)
+  treeToString(root, stringToExpression, itemIsNotEmpty);

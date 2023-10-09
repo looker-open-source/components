@@ -24,24 +24,24 @@
 
  */
 
-import pick from 'lodash/pick'
-import React from 'react'
-import styled from 'styled-components'
-import type { DensityRamp } from '@looker/design-tokens'
-import { StyledIconBase } from '@styled-icons/styled-icon'
+import pick from 'lodash/pick';
+import React from 'react';
+import styled from 'styled-components';
+import type { DensityRamp } from '@looker/design-tokens';
+import { StyledIconBase } from '@styled-icons/styled-icon';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
   useRippleHandlers,
-} from '../Ripple'
-import type { AccordionIndicatorProps } from './types'
-import { accordionDimensions } from './accordionDimensions'
+} from '../Ripple';
+import type { AccordionIndicatorProps } from './types';
+import { accordionDimensions } from './accordionDimensions';
 
 const size = (density: DensityRamp = 0) =>
-  accordionDimensions(density).indicatorSize
+  accordionDimensions(density).indicatorSize;
 const gap = (density: DensityRamp = 0) =>
-  accordionDimensions(density).indicatorGap
+  accordionDimensions(density).indicatorGap;
 
 // TODO: Get ripple onto AccordionIndicator
 export const AccordionIndicator = styled(
@@ -57,17 +57,17 @@ export const AccordionIndicator = styled(
       style: rippleStyle,
     } = useRipple({
       color: 'neutral',
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(props, rippleHandlerKeys)
-    )
+    );
 
     const rippleContainerProps = {
       className: rippleClassName,
       style: rippleStyle,
-    }
+    };
 
     /**
      * Ripple effect should only appear when the
@@ -75,7 +75,7 @@ export const AccordionIndicator = styled(
      * rest of its disclosure. When it is a separate click
      * target, it receives tabIndex -1 from the parent disclosure.
      */
-    const isIndicatorToggleOnly = props.tabIndex === -1
+    const isIndicatorToggleOnly = props.tabIndex === -1;
 
     return (
       <div {...props} {...(isIndicatorToggleOnly && rippleHandlers)}>
@@ -83,7 +83,7 @@ export const AccordionIndicator = styled(
           {children}
         </RippleContainer>
       </div>
-    )
+    );
   }
 )<AccordionIndicatorProps>`
   align-items: center;
@@ -105,11 +105,11 @@ export const AccordionIndicator = styled(
     vertical-align: top;
     width: ${({ density, theme }) => theme.sizes[size(density)]};
   }
-`
+`;
 
 const RippleContainer = styled.div<{ density: DensityRamp }>`
   ${rippleStyle}
   border-radius: 50%;
   height: ${({ density, theme }) => theme.sizes[size(density)]};
   width: ${({ density, theme }) => theme.sizes[size(density)]};
-`
+`;

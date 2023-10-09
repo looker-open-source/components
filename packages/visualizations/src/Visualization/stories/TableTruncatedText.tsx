@@ -23,9 +23,9 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { mockTableConfig } from '@looker/visualizations-adapters'
-import { Visualization } from '../'
+import React from 'react';
+import { mockTableConfig } from '@looker/visualizations-adapters';
+import { Visualization } from '../';
 
 export default function TruncatedText() {
   return (
@@ -97,5 +97,5 @@ export default function TruncatedText() {
         pivots: [],
       }}
     />
-  )
+  );
 }

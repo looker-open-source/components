@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { CheckboxGroup } from '..'
-import type { CheckboxGroupProps } from '..'
+import React from 'react';
+import { CheckboxGroup } from '..';
+import type { CheckboxGroupProps } from '..';
 
 const mockOptions = [
   {
@@ -26,14 +26,14 @@ const mockOptions = [
     label: 'Mozzarella',
     value: 'mozzarella',
   },
-]
+];
 
 export default function DisabledItem(props: CheckboxGroupProps) {
   const {
     options = mockOptions,
     defaultValue = ['cheddar'],
     ...restProps
-  } = props
+  } = props;
 
   return (
     <CheckboxGroup
@@ -42,5 +42,5 @@ export default function DisabledItem(props: CheckboxGroupProps) {
       options={options}
       {...restProps}
     />
-  )
+  );
 }

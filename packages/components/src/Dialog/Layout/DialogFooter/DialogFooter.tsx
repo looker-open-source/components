@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { ModalFooterProps } from '../../../Modal/ModalFooter'
-import { ModalFooter } from '../../../Modal/ModalFooter'
+import styled from 'styled-components';
+import type { ModalFooterProps } from '../../../Modal/ModalFooter';
+import { ModalFooter } from '../../../Modal/ModalFooter';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface DialogFooterProps extends ModalFooterProps {}
@@ -15,4 +15,4 @@ export const DialogFooter = styled(ModalFooter).attrs(
     px,
     py,
   })
-)<DialogFooterProps>``
+)<DialogFooterProps>``;

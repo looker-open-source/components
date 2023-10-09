@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from '../ErrorIcon'
-export * from './InputText'
-export * from './InputTextContent'
-export * from './InputTextContext'
-export * from './types'
+export * from '../ErrorIcon';
+export * from './InputText';
+export * from './InputTextContent';
+export * from './InputTextContext';
+export * from './types';

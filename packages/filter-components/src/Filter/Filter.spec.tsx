@@ -23,16 +23,16 @@
  SOFTWARE.
 
  */
-import { ComponentsProvider } from '@looker/components'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React, { useState } from 'react'
-import { Filter } from './Filter'
-import type { FilterChangeProps } from './types/filter_props'
+import { ComponentsProvider } from '@looker/components';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React, { useState } from 'react';
+import { Filter } from './Filter';
+import type { FilterChangeProps } from './types/filter_props';
 
 describe('Filter', () => {
   it('reflects changes to the expression prop', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     const { rerender } = renderWithTheme(
       <Filter
         expression=""
@@ -41,8 +41,8 @@ describe('Filter', () => {
         name="Test Filter"
         allowMultipleValues={true}
       />
-    )
-    expect(screen.getByText('is any time')).toBeVisible()
+    );
+    expect(screen.getByText('is any time')).toBeVisible();
 
     rerender(
       <ComponentsProvider>
@@ -54,14 +54,14 @@ describe('Filter', () => {
           allowMultipleValues={true}
         />
       </ComponentsProvider>
-    )
-    expect(screen.getByDisplayValue('is in the year')).toBeVisible()
-    expect(screen.getByDisplayValue('1999')).toBeVisible()
-    expect(onChangeMock).not.toHaveBeenCalled()
-  })
+    );
+    expect(screen.getByDisplayValue('is in the year')).toBeVisible();
+    expect(screen.getByDisplayValue('1999')).toBeVisible();
+    expect(onChangeMock).not.toHaveBeenCalled();
+  });
 
   it('reflects changes to the filter type prop', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     const { rerender } = renderWithTheme(
       <Filter
         expression="1999"
@@ -70,9 +70,9 @@ describe('Filter', () => {
         name="Test Filter"
         allowMultipleValues={true}
       />
-    )
-    expect(screen.getByDisplayValue('is in the year')).toBeVisible()
-    expect(screen.getByDisplayValue('1999')).toBeVisible()
+    );
+    expect(screen.getByDisplayValue('is in the year')).toBeVisible();
+    expect(screen.getByDisplayValue('1999')).toBeVisible();
 
     rerender(
       <ComponentsProvider>
@@ -84,20 +84,20 @@ describe('Filter', () => {
           allowMultipleValues={true}
         />
       </ComponentsProvider>
-    )
-    expect(screen.getByDisplayValue('is')).toBeVisible()
-    expect(screen.getByText('1999')).toBeVisible()
-  })
+    );
+    expect(screen.getByDisplayValue('is')).toBeVisible();
+    expect(screen.getByText('1999')).toBeVisible();
+  });
 
   it('handles multi-step interactive changes', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     // Simulate a controlled expression prop
     const TestComponent = () => {
-      const [expression, setExpression] = useState('')
+      const [expression, setExpression] = useState('');
       const handleChange = (value: { expression: string }) => {
-        onChangeMock(value)
-        setExpression(value.expression)
-      }
+        onChangeMock(value);
+        setExpression(value.expression);
+      };
       return (
         <Filter
           expression={expression}
@@ -106,36 +106,36 @@ describe('Filter', () => {
           name="Test Filter"
           allowMultipleValues={true}
         />
-      )
-    }
+      );
+    };
 
-    renderWithTheme(<TestComponent />)
-    const select = screen.getByDisplayValue('is')
-    fireEvent.click(select)
-    fireEvent.click(screen.getByText('is between'))
+    renderWithTheme(<TestComponent />);
+    const select = screen.getByDisplayValue('is');
+    fireEvent.click(select);
+    fireEvent.click(screen.getByText('is between'));
     fireEvent.change(screen.getByTestId('low'), {
       target: { value: '5' },
-    })
+    });
 
-    expect(onChangeMock).toHaveBeenCalledWith({ expression: '[5,]' })
+    expect(onChangeMock).toHaveBeenCalledWith({ expression: '[5,]' });
     // If the expression were to be re-parsed now, it would change to >=
     // Verify that UI is still on "is between"
-    expect(screen.getByDisplayValue('is between')).toBeVisible()
+    expect(screen.getByDisplayValue('is between')).toBeVisible();
     fireEvent.change(screen.getByTestId('high'), {
       target: { value: '10' },
-    })
-    expect(onChangeMock).toHaveBeenCalledWith({ expression: '[5,]' })
-  })
+    });
+    expect(onChangeMock).toHaveBeenCalledWith({ expression: '[5,]' });
+  });
 
   it('handles multi-step interactive changes with proper on change', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     // Simulate a controlled expression prop
     const TestComponent = () => {
-      const [expression, setExpression] = useState('[5,]')
+      const [expression, setExpression] = useState('[5,]');
       const handleChange = (value: { expression: string }) => {
-        onChangeMock(value)
-        setExpression(value.expression)
-      }
+        onChangeMock(value);
+        setExpression(value.expression);
+      };
       return (
         <Filter
           expression={expression}
@@ -144,25 +144,25 @@ describe('Filter', () => {
           name="Test Filter"
           allowMultipleValues={true}
         />
-      )
-    }
+      );
+    };
 
-    renderWithTheme(<TestComponent />)
-    expect(onChangeMock).not.toHaveBeenCalled()
+    renderWithTheme(<TestComponent />);
+    expect(onChangeMock).not.toHaveBeenCalled();
     fireEvent.change(screen.getByTestId('single-number'), {
       target: { value: '5' },
-    })
+    });
     // on change is not called when the expression does not change
-    expect(onChangeMock).not.toHaveBeenCalled()
+    expect(onChangeMock).not.toHaveBeenCalled();
 
     fireEvent.change(screen.getByTestId('single-number'), {
       target: { value: '6' },
-    })
-    expect(onChangeMock).toHaveBeenCalledWith({ expression: '>=6' })
-  })
+    });
+    expect(onChangeMock).toHaveBeenCalledWith({ expression: '>=6' });
+  });
 
   it('use dispatchConfigTypeChange to call onChange in EditMode', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     // Simulate a controlled expression prop in EditMode
     // using dispatchConfigTypeChange=true
     const TestComponent = () => (
@@ -175,14 +175,14 @@ describe('Filter', () => {
         dispatchConfigTypeChange={true}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    renderWithTheme(<TestComponent />)
-    expect(onChangeMock).toHaveBeenCalledWith({ expression: '1' })
-  })
+    renderWithTheme(<TestComponent />);
+    expect(onChangeMock).toHaveBeenCalledWith({ expression: '1' });
+  });
 
   it('does not call onChange when dispatchConfigTypeChange is false', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     // Simulate a controlled expression prop in View Mode
     const TestComponent = () => (
       <Filter
@@ -194,21 +194,21 @@ describe('Filter', () => {
         dispatchConfigTypeChange={false}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    renderWithTheme(<TestComponent />)
-    expect(onChangeMock).not.toHaveBeenCalled()
-  })
+    renderWithTheme(<TestComponent />);
+    expect(onChangeMock).not.toHaveBeenCalled();
+  });
 
   it('does not switch component types while typing (Matches Advanced)', () => {
     // Simulate changing props outside of React state (like Redux)
-    let expression = '5 mont'
+    let expression = '5 mont';
     const onChange = (newValue: FilterChangeProps) => {
-      expression = newValue.expression
-    }
+      expression = newValue.expression;
+    };
 
     const TestComponent = () => {
-      const [, setUpdate] = useState(false)
+      const [, setUpdate] = useState(false);
       return (
         <>
           <button onClick={() => setUpdate(true)}>rerender</button>
@@ -220,34 +220,34 @@ describe('Filter', () => {
             allowMultipleValues={true}
           />
         </>
-      )
-    }
+      );
+    };
 
-    renderWithTheme(<TestComponent />)
-    const inputs = screen.getAllByRole('textbox')
-    expect(inputs[0]).toHaveValue('matches (advanced)')
-    expect(inputs[1]).toHaveValue('5 mont')
+    renderWithTheme(<TestComponent />);
+    const inputs = screen.getAllByRole('textbox');
+    expect(inputs[0]).toHaveValue('matches (advanced)');
+    expect(inputs[1]).toHaveValue('5 mont');
 
-    fireEvent.change(inputs[1], { target: { value: '5 month' } })
+    fireEvent.change(inputs[1], { target: { value: '5 month' } });
     // Simulate "delayed" rerender triggered by Redux
-    fireEvent.click(screen.getByText('rerender'))
+    fireEvent.click(screen.getByText('rerender'));
 
-    const updatedInputs = screen.getAllByRole('textbox')
-    expect(updatedInputs[0]).toHaveValue('matches (advanced)')
-    expect(updatedInputs[1]).toHaveValue('5 month')
-  })
+    const updatedInputs = screen.getAllByRole('textbox');
+    expect(updatedInputs[0]).toHaveValue('matches (advanced)');
+    expect(updatedInputs[1]).toHaveValue('5 month');
+  });
 
   it('requires at least one of: expressionType, field, type', () => {
     // @ts-expect-error: require one of expressionType, field, or type
-    renderWithTheme(<Filter expression="" name="test" />)
+    renderWithTheme(<Filter expression="" name="test" />);
     // Just expressionType: good
     renderWithTheme(
       <Filter expression="" name="test" expressionType="string" />
-    )
+    );
     // Just field: good
-    renderWithTheme(<Filter expression="" name="test" field={{}} />)
+    renderWithTheme(<Filter expression="" name="test" field={{}} />);
     // Just type: good
-    renderWithTheme(<Filter expression="" name="test" type="date_filter" />)
+    renderWithTheme(<Filter expression="" name="test" type="date_filter" />);
     // expressionType, field and type: good
     renderWithTheme(
       <Filter
@@ -257,6 +257,6 @@ describe('Filter', () => {
         field={{}}
         type="field_filter"
       />
-    )
-  })
-})
+    );
+  });
+});

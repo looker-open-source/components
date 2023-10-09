@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import pickBy from 'lodash/pickBy'
-import identity from 'lodash/identity'
-import type { FontFamilyChoices } from '../../system'
+import pickBy from 'lodash/pickBy';
+import identity from 'lodash/identity';
+import type { FontFamilyChoices } from '../../system';
 import type {
   FontFamilies,
   FontFamilyFallbacks,
-} from '../../system/typography/font_families'
-import { fontFacesToFamily } from './fontFacesToFamily'
+} from '../../system/typography/font_families';
+import { fontFacesToFamily } from './fontFacesToFamily';
 
 export const generateFontFamilies = (
   defaultFonts: FontFamilyChoices,
@@ -20,7 +20,7 @@ export const generateFontFamilies = (
   const fontFamilies: FontFamilyChoices = {
     ...defaultFonts,
     ...pickBy(customFonts, identity),
-  }
+  };
 
   Object.entries(fontFamilies).map(
     ([key, fontFace]) =>
@@ -28,7 +28,7 @@ export const generateFontFamilies = (
         fontFace,
         fallbacks[key as FontFamilies]
       ))
-  )
+  );
 
-  return fontFamilies
-}
+  return fontFamilies;
+};

@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterModel, StringFilterType } from '@looker/filter-expressions'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
+import type { FilterModel, StringFilterType } from '@looker/filter-expressions';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
 
-import { StringFilter } from './StringFilter'
+import { StringFilter } from './StringFilter';
 
 describe('String filter test', () => {
   it('should render a StringFilter', () => {
@@ -16,7 +16,7 @@ describe('String filter test', () => {
       is: true,
       type: 'match',
       value: [],
-    } as FilterModel<StringFilterType>
+    } as FilterModel<StringFilterType>;
     renderWithTheme(
       <StringFilter
         item={item}
@@ -30,9 +30,9 @@ describe('String filter test', () => {
         onAdd={jest.fn()}
         onRemove={jest.fn()}
       />
-    )
-    const inputs = screen.getAllByRole('textbox')
-    expect(inputs[0]).toHaveValue('is')
-    expect(inputs[1]).toHaveValue('')
-  })
-})
+    );
+    const inputs = screen.getAllByRole('textbox');
+    expect(inputs[0]).toHaveValue('is');
+    expect(inputs[1]).toHaveValue('');
+  });
+});

@@ -24,16 +24,16 @@
 
  */
 
-import styled from 'styled-components'
-import { ListItemLabel } from '../ListItem'
-import { generateIndent } from '../Tree/utils'
-import { lkFieldItemDensity } from './defaults'
+import styled from 'styled-components';
+import { ListItemLabel } from '../ListItem';
+import { generateIndent } from '../Tree/utils';
+import { lkFieldItemDensity } from './defaults';
 
 export type LkFieldItemContentProps = {
-  cursorPointer?: boolean
-  depth: number
-  focusVisible: boolean
-}
+  cursorPointer?: boolean;
+  depth: number;
+  focusVisible: boolean;
+};
 
 export const LkFieldItemContent = styled.div.attrs<LkFieldItemContentProps>(
   ({ role = 'treeitem' }) => ({
@@ -111,4 +111,4 @@ export const LkFieldItemContent = styled.div.attrs<LkFieldItemContentProps>(
     color: ${({ theme }) => theme.colors.text1};
     cursor: not-allowed;
   }
-`
+`;

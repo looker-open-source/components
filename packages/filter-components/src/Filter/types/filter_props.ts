@@ -28,13 +28,13 @@ import type {
   UserAttributeWithValue,
   FilterASTNode,
   FilterModel,
-} from '@looker/filter-expressions'
-import type { ILookmlModelExploreField } from '@looker/sdk'
-import type { Option } from './option'
-import type { ValidationMessageProps } from '@looker/components'
+} from '@looker/filter-expressions';
+import type { ILookmlModelExploreField } from '@looker/sdk';
+import type { Option } from './option';
+import type { ValidationMessageProps } from '@looker/components';
 
 export interface FilterChangeProps {
-  expression: string
+  expression: string;
 }
 
 type ExpressionTypeProps = {
@@ -42,26 +42,26 @@ type ExpressionTypeProps = {
    * The type of the expression. Required if field is not provided.
    * Will be derived from field and type if absent.
    */
-  expressionType: FilterExpressionType
+  expressionType: FilterExpressionType;
   /**
    * The field associated with the filter.
    * Required if expressionType is not provided.
    */
-  field: ILookmlModelExploreField | null
+  field: ILookmlModelExploreField | null;
   /**
    * The type on the DashboardFilter, e.g. field_filter,
    * used to derive expressionType if that is not provided
    */
-  type: string
-}
+  type: string;
+};
 
 type AtLeastOnePropertyOf<T> = {
-  [K in keyof T]: { [L in K]: T[L] } & { [L in Exclude<keyof T, K>]?: T[L] }
-}[keyof T]
+  [K in keyof T]: { [L in K]: T[L] } & { [L in Exclude<keyof T, K>]?: T[L] };
+}[keyof T];
 // Use a union to get "either / or" required
 // Use an intersection + Partial to make them both also optional
 // Combined result is "at least one of"
-type ExpressionTypeOrFieldProps = AtLeastOnePropertyOf<ExpressionTypeProps>
+type ExpressionTypeOrFieldProps = AtLeastOnePropertyOf<ExpressionTypeProps>;
 
 /**
  * Interface for the <Filter/> component's props property.
@@ -71,74 +71,74 @@ export type FilterProps = ExpressionTypeOrFieldProps & {
   /**
    * The UI config that determines how a control filter will render and behave
    */
-  config?: any
+  config?: any;
   /**
    * The current value of the filter.
    * See {@link https://cloud.google.com/looker/docs/reference/filter-expressions Looker Filter Expressions}.
    */
-  expression: string
+  expression: string;
   /**
    * Used to generate unique key for multi-condition advanced filters
    */
-  name: string
+  name: string;
   /**
    * Flag for filters where suggestions are link to another filter
    */
-  isLinked?: boolean
+  isLinked?: boolean;
   /**
    * Suggestions are currently loading
    */
-  isLoading?: boolean
+  isLoading?: boolean;
   /**
    * Filter will render error styling if this is true and expression is empty
    */
-  isRequired?: boolean
+  isRequired?: boolean;
   /**
    * Render filter horizontally (applies to checkboxes and radio buttons)
    */
-  inline?: boolean
+  inline?: boolean;
   /**
    * Called when the filter expression is changed
    */
-  onChange?: (value: FilterChangeProps) => void
+  onChange?: (value: FilterChangeProps) => void;
   /**
    * Called in the event that user is typing in a suggestable filter, but the results
    * are at the front-end limit of 999, so filtering must be done in the API
    */
-  onInputChange?: (value: string) => void
+  onInputChange?: (value: string) => void;
   /**
    * Called when user attributes are needed in the filter
    */
-  loadUserAttributes?: () => void
+  loadUserAttributes?: () => void;
   /**
    * Can be initially empty – loadUserAttributes will be called when they are needed
    */
-  userAttributes?: UserAttributeWithValue[]
+  userAttributes?: UserAttributeWithValue[];
   /**
    * Suggestions for the filter – see useSuggestable hook for fetching suggestions via the API
    */
-  suggestions?: string[]
+  suggestions?: string[];
   /**
    * Enumerations for the filter
    */
-  enumerations?: Option[] | null
+  enumerations?: Option[] | null;
   /**
    * Used to initialize filters in Edit Mode – do not use if filter is not editable
    */
-  dispatchConfigTypeChange?: boolean
+  dispatchConfigTypeChange?: boolean;
   /**
    * Skip checking if expression can be rendered by filter control
    */
-  skipFilterConfigCheck?: boolean
+  skipFilterConfigCheck?: boolean;
   /**
    * Allow multiple values to filter by
    */
-  allowMultipleValues?: boolean
+  allowMultipleValues?: boolean;
   /**
    * Hide the add button even when allowMultipleValues is true
    */
-  hideAdd?: boolean
-}
+  hideAdd?: boolean;
+};
 
 /**
  * Interface for <InternalFilter /> and <InternalFilterAdvanced />
@@ -148,8 +148,8 @@ export interface InternalFilterProps
     FilterProps,
     'type' | 'expressionType' | 'expression' | 'loadUserAttributes' | 'onChange'
   > {
-  expressionType: FilterExpressionType
-  ast: FilterASTNode | undefined
-  changeFilter: (id: number, newItem: FilterModel) => void
-  validationMessage: ValidationMessageProps
+  expressionType: FilterExpressionType;
+  ast: FilterASTNode | undefined;
+  changeFilter: (id: number, newItem: FilterModel) => void;
+  validationMessage: ValidationMessageProps;
 }

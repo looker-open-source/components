@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import throttle from 'lodash/throttle'
-import { useSafeLayoutEffect } from './useSafeLayoutEffect'
+import throttle from 'lodash/throttle';
+import { useMemo } from 'react';
+import { useSafeLayoutEffect } from './useSafeLayoutEffect';
 
 /**
  * Calls the provided handler function when the element is resized.
@@ -13,28 +14,19 @@ import { useSafeLayoutEffect } from './useSafeLayoutEffect'
  * @param handler the function to call on resize
  */
 export const useResize = (element: HTMLElement | null, handler: () => void) => {
+  const throttledHandler = useMemo(() => throttle(handler, 100), [handler]);
   useSafeLayoutEffect(() => {
-    const throttledHandler = throttle(handler, 100)
+    if (!element) return;
 
-    if (!element) {
-      return
-    }
+    handler();
+    const resizeObserver = new ResizeObserver(throttledHandler);
 
-    handler()
-
-    const resizeObserver = new ResizeObserver(() => throttledHandler())
-
-    if (element) {
-      resizeObserver.observe(element as unknown as HTMLElement)
-    }
-
-    window.addEventListener('resize', throttledHandler)
+    resizeObserver.observe(element);
+    window.addEventListener('resize', throttledHandler);
 
     return () => {
-      window.removeEventListener('resize', throttledHandler)
-      if (resizeObserver) {
-        resizeObserver.disconnect()
-      }
-    }
-  }, [handler, element])
-}
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', throttledHandler);
+    };
+  }, [handler, throttledHandler, element]);
+};

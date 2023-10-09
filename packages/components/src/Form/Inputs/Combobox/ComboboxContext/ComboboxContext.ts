@@ -24,59 +24,62 @@
 
  */
 
-import type { Ref, MutableRefObject, Dispatch, SetStateAction } from 'react'
-import { createContext } from 'react'
+import type { Ref, MutableRefObject, Dispatch, SetStateAction } from 'react';
+import { createContext } from 'react';
 import type {
   ComboboxData,
   ComboboxMultiData,
   ComboboxTransition,
   ComboboxState,
   ComboboxMultiActionPayload,
-} from '../utils/state'
+} from '../utils/state';
 import type {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionIndicatorProps,
   ComboboxOptionObject,
-} from '../types'
+} from '../types';
 
 export interface ComboboxContextProps<
   TData = ComboboxData,
   TChange = ComboboxCallback,
   TTransition = ComboboxTransition
 > {
-  data: TData
-  inputCallbackRef?: Ref<HTMLInputElement>
-  inputElement?: HTMLInputElement | null
-  wrapperElement?: HTMLDivElement | null
-  listRef?: MutableRefObject<HTMLElement | null>
-  onChange?: TChange
-  optionsRef?: MutableRefObject<ComboboxOptionObject[]>
-  state?: ComboboxState
-  transition?: TTransition
-  id?: string
-  autoCompletePropRef?: MutableRefObject<boolean>
-  persistSelectionPropRef?: MutableRefObject<boolean>
-  closeOnSelectPropRef?: MutableRefObject<boolean>
-  inputReadOnlyPropRef?: MutableRefObject<boolean>
-  windowingPropRef?: MutableRefObject<boolean>
-  freeInputPropRef?: MutableRefObject<boolean>
-  isScrollingRef?: MutableRefObject<boolean>
-  indicatorPropRef?: MutableRefObject<ComboboxOptionIndicatorProps['indicator']>
-  isVisible?: boolean
-  openOnFocus?: boolean
-  openOnClick?: boolean
-  listScrollPosition?: number
-  setListScrollPosition?: Dispatch<SetStateAction<number>>
-  listClientRect?: DOMRect
-  setListClientRect?: Dispatch<SetStateAction<DOMRect | undefined>>
+  data: TData;
+  inputCallbackRef?: Ref<HTMLInputElement>;
+  inputElement?: HTMLInputElement | null;
+  wrapperElement?: HTMLDivElement | null;
+  listRef?: MutableRefObject<HTMLElement | null>;
+  onChange?: TChange;
+  optionsRef?: MutableRefObject<ComboboxOptionObject[]>;
+  state?: ComboboxState;
+  transition?: TTransition;
+  id?: string;
+  autoCompletePropRef?: MutableRefObject<boolean>;
+  persistSelectionPropRef?: MutableRefObject<boolean>;
+  closeOnSelectPropRef?: MutableRefObject<boolean>;
+  inputReadOnlyPropRef?: MutableRefObject<boolean>;
+  windowingPropRef?: MutableRefObject<boolean>;
+  freeInputPropRef?: MutableRefObject<boolean>;
+  isScrollingRef?: MutableRefObject<boolean>;
+  indicatorPropRef?: MutableRefObject<
+    ComboboxOptionIndicatorProps['indicator']
+  >;
+  isVisible?: boolean;
+  openOnFocus?: boolean;
+  openOnClick?: boolean;
+  shouldRenderListInline?: boolean;
+  listScrollPosition?: number;
+  setListScrollPosition?: Dispatch<SetStateAction<number>>;
+  listClientRect?: DOMRect;
+  setListClientRect?: Dispatch<SetStateAction<DOMRect | undefined>>;
 }
 
 export type ComboboxMultiContextProps = ComboboxContextProps<
   ComboboxMultiData,
   ComboboxMultiCallback,
   ComboboxTransition<ComboboxMultiActionPayload>
->
+>;
 
 const baseData = {
   // the value the user has typed, we derived this also when the developer is
@@ -84,31 +87,31 @@ const baseData = {
   inputValue: undefined,
   // the value the user has navigated to with the keyboard
   navigationOption: undefined,
-}
+};
 
 export const defaultData: ComboboxData = {
   ...baseData,
   // the value the user has typed, we derived this also when the developer is
   // controlling the value of Combobox
   option: undefined,
-}
+};
 
 export const defaultMultiData: ComboboxMultiData = {
   ...baseData,
   options: [],
-}
+};
 
 export const ComboboxContext = createContext<ComboboxContextProps>({
   data: defaultData,
-})
+});
 
 export const ComboboxMultiContext = createContext<ComboboxMultiContextProps>({
   data: defaultMultiData,
-})
+});
 
 // Allows us to put the option's value on context so that ComboboxOptionText
 // can work it's highlight text magic no matter what else is rendered around
 // it.
 export const OptionContext = createContext<ComboboxOptionObject | undefined>(
   undefined
-)
+);

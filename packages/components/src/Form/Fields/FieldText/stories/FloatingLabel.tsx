@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function FloatingLabel(props: FieldTextProps) {
   const {
@@ -15,7 +15,7 @@ export default function FloatingLabel(props: FieldTextProps) {
     description = 'Some important information about this field',
     detail = '0/50',
     ...restProps
-  } = props
+  } = props;
   return (
     <ExtendComponentsThemeProvider
       themeCustomizations={{ defaults: { externalLabel: false } }}
@@ -28,5 +28,5 @@ export default function FloatingLabel(props: FieldTextProps) {
         {...restProps}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

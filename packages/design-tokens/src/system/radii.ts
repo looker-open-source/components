@@ -9,13 +9,13 @@ import type {
   SizeNone,
   SizeSmall,
   SizeXSmall,
-} from './size'
+} from './size';
 
 export type RadiusSizes =
   | SizeNone
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
-export type Radii = Record<RadiusSizes, string>
+export type Radii = Record<RadiusSizes, string>;

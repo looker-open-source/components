@@ -18,7 +18,7 @@ export enum FilterUIType {
   TagList = 'tag_list',
 }
 export interface FilterUIConfig {
-  display: string // FilterUIDisplay
-  options?: any
-  type: string // FilterUIType
+  display: string; // FilterUIDisplay
+  options?: any;
+  type: string; // FilterUIType
 }

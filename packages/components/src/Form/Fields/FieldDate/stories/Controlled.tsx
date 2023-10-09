@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldDate } from '..'
-import { Button } from '../../../../Button'
-import { Popover, PopoverContent } from '../../../../Popover'
+import React, { useState } from 'react';
+import { FieldDate } from '..';
+import { Button } from '../../../../Button';
+import { Popover, PopoverContent } from '../../../../Popover';
 
 export default function Controlled() {
-  const [controlledDate, setControlledDate] = useState<Date>()
+  const [controlledDate, setControlledDate] = useState<Date>();
 
   function handleNextWeekClick() {
-    setControlledDate(new Date())
+    setControlledDate(new Date());
   }
 
   return (
@@ -28,5 +28,5 @@ export default function Controlled() {
         {controlledDate ? controlledDate.toString() : 'Select Dates'}
       </Button>
     </Popover>
-  )
+  );
 }

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { deriveColorPalette } from './deriveColorPalette'
+import { deriveColorPalette } from './deriveColorPalette';
 
 describe('deriveColorPalette', () => {
   test('it creates an color alternates from a base set', () => {
-    const colorPalette = deriveColorPalette(['#fa8072'])
+    const colorPalette = deriveColorPalette(['#fa8072']);
     expect(colorPalette).toMatchInlineSnapshot(`
       Array [
         "#fa8072",
@@ -21,6 +21,6 @@ describe('deriveColorPalette', () => {
         "#ba8983",
         "#83b5ba",
       ]
-    `)
-  })
-})
+    `);
+  });
+});

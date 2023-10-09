@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export const lkFieldItemDensity = -3
+export const lkFieldItemDensity = -3;

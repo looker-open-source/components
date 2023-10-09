@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/sv'
+import dateLocale from 'date-fns/locale/sv';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Flikar',
   },
-}
+};
 
-export const svSE = mergeLocaleObjects([], 'sv-SE', resources, dateLocale)
+export const svSE = mergeLocaleObjects([], 'sv-SE', resources, dateLocale);

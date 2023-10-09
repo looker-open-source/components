@@ -24,9 +24,9 @@
 
  */
 
-import React from 'react'
-import { Info } from '@styled-icons/material/Info'
-import type { DataTableColumns } from '../../DataTable/Column'
+import React from 'react';
+import { Info } from '@styled-icons/material/Info';
+import type { DataTableColumns } from '../../DataTable/Column';
 
 export const columns: DataTableColumns = [
   {
@@ -99,4 +99,4 @@ export const columns: DataTableColumns = [
     title: 'Calcium',
     type: 'number',
   },
-]
+];

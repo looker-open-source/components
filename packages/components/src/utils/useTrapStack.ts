@@ -24,11 +24,11 @@
 
  */
 
-import type { TrapStackContextProps } from '@looker/components-providers'
-import type { Context, Ref } from 'react'
-import { useContext, useEffect } from 'react'
-import { useID } from './useID'
-import { useCallbackRef } from './useCallbackRef'
+import type { TrapStackContextProps } from '@looker/components-providers';
+import type { Context, Ref } from 'react';
+import { useContext, useEffect } from 'react';
+import { useID } from './useID';
+import { useCallbackRef } from './useCallbackRef';
 
 export interface UseTrapStackBaseProps<
   Element extends HTMLElement = HTMLElement
@@ -37,19 +37,19 @@ export interface UseTrapStackBaseProps<
    * Turns off functionality completely, for use in components
    * where trap behavior can be optionally disabled
    */
-  disabled?: boolean
+  disabled?: boolean;
   /**
    * A forwarded ref to be merged with the ref returned in the hook result
    */
-  ref?: Ref<Element>
+  ref?: Ref<Element>;
 }
 
 export interface UseTrapStackProps<
   Element extends HTMLElement = HTMLElement,
   Options = unknown
 > extends UseTrapStackBaseProps<Element> {
-  context: Context<TrapStackContextProps<Options>>
-  options?: Options
+  context: Context<TrapStackContextProps<Options>>;
+  options?: Options;
 }
 
 /**
@@ -63,19 +63,19 @@ export const useTrapStack = <E extends HTMLElement = HTMLElement, O = unknown>({
   ref,
   options,
 }: UseTrapStackProps<E, O>): [E | null, (node: E | null) => void] => {
-  const id = useID()
-  const [element, callbackRef] = useCallbackRef(ref)
+  const id = useID();
+  const [element, callbackRef] = useCallbackRef(ref);
   const { addTrap, removeTrap, disableCurrentTrap, enableCurrentTrap } =
-    useContext(context)
+    useContext(context);
 
   useEffect(() => {
     if (!addTrap) {
       // eslint-disable-next-line no-console
       console.warn(
         `${context.displayName} is missing. Please wrap all @looker/components in a ComponentsProvider.`
-      )
+      );
     }
-  }, [addTrap, context])
+  }, [addTrap, context]);
 
   useEffect(() => {
     if (element) {
@@ -84,18 +84,18 @@ export const useTrapStack = <E extends HTMLElement = HTMLElement, O = unknown>({
       // we need to manually disable the existing trap so that elements
       // inside the new Popover/Dialog won't be "trapped out"
       if (disabled) {
-        disableCurrentTrap?.()
+        disableCurrentTrap?.();
       } else {
-        addTrap?.(id, { element, options })
+        addTrap?.(id, { element, options });
       }
     }
     return () => {
       if (disabled) {
-        enableCurrentTrap?.()
+        enableCurrentTrap?.();
       } else {
-        removeTrap?.(id)
+        removeTrap?.(id);
       }
-    }
+    };
   }, [
     disabled,
     id,
@@ -105,7 +105,7 @@ export const useTrapStack = <E extends HTMLElement = HTMLElement, O = unknown>({
     removeTrap,
     disableCurrentTrap,
     enableCurrentTrap,
-  ])
+  ]);
 
-  return [element, callbackRef]
-}
+  return [element, callbackRef];
+};

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldToggleSwitchProps } from '..'
-import { FieldToggleSwitch } from '..'
+import React from 'react';
+import type { FieldToggleSwitchProps } from '..';
+import { FieldToggleSwitch } from '..';
 
 export default function Basic(props: FieldToggleSwitchProps) {
   const {
@@ -13,7 +13,7 @@ export default function Basic(props: FieldToggleSwitchProps) {
     name = 'thumbsUp',
     id = 'id',
     ...restProps
-  } = props
+  } = props;
 
-  return <FieldToggleSwitch id={id} label={label} name={name} {...restProps} />
+  return <FieldToggleSwitch id={id} label={label} name={name} {...restProps} />;
 }

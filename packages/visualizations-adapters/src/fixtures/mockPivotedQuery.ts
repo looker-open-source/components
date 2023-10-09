@@ -24,13 +24,13 @@
 
  */
 
-import type { SDKRecord, Fields, Pivots } from '../types'
+import type { SDKRecord, Fields, Pivots } from '../types';
 
 export const mockPivotedQuery: {
-  data: SDKRecord[]
-  fields: Fields
-  pivots: Pivots
-  totals: Record<string, number>
+  data: SDKRecord[];
+  fields: Fields;
+  pivots: Pivots;
+  totals: Record<string, number>;
 } = {
   data: [
     {
@@ -1148,4 +1148,4 @@ export const mockPivotedQuery: {
     '2019-12 - orders.count': 48,
     'orders.created_month___null - orders.count': 0,
   },
-}
+};

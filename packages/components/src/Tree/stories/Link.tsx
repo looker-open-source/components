@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TreeItem, Tree, TreeCollection } from '..'
+import React from 'react';
+import { TreeItem, Tree, TreeCollection } from '..';
 
 export default function Link() {
   return (
@@ -28,5 +28,5 @@ export default function Link() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

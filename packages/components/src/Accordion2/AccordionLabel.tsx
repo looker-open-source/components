@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const AccordionLabel = styled.div`
   flex: 1;
@@ -11,4 +11,4 @@ export const AccordionLabel = styled.div`
     min-width prevent truncate text from growing AccordionLabel past the disclosure's 100% width
    */
   min-width: 0;
-`
+`;

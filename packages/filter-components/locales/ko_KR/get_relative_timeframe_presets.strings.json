@@ -21,13 +21,13 @@
     "value": "지난 90일"
   },
   "Previous Month": {
-    "value": "이전 달"
+    "value": "지난달"
   },
   "Previous Quarter": {
     "value": "이전 분기"
   },
   "Previous Week": {
-    "value": "이전 주"
+    "value": "지난주"
   },
   "Previous Year": {
     "value": "이전 연도"
@@ -42,13 +42,13 @@
     "value": "이번 주"
   },
   "This Year": {
-    "value": "이번 연도"
+    "value": "올해"
   },
   "Today": {
     "value": "오늘"
   },
   "Year To Date": {
-    "value": "연간 누계(YTD)"
+    "value": "올해 시작부터 오늘까지"
   },
   "Yesterday": {
     "value": "어제"

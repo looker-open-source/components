@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import {
   OverlaySurface,
   OverlaySurfaceContentArea,
-} from '../Overlay/OverlaySurface'
+} from '../Overlay/OverlaySurface';
 
 export const NestedMenuSurface = styled(OverlaySurface)`
   &[data-placement] {
@@ -16,4 +16,4 @@ export const NestedMenuSurface = styled(OverlaySurface)`
   ${OverlaySurfaceContentArea} {
     box-shadow: ${({ theme }) => theme.elevations.plus2};
   }
-`
+`;

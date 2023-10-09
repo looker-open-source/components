@@ -2,16 +2,16 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import styled from 'styled-components'
-import Highlight, { defaultProps } from 'prism-react-renderer'
-import type { Language } from 'prism-react-renderer'
-import { theme } from '@looker/components'
+import React from 'react';
+import styled from 'styled-components';
+import Highlight, { defaultProps } from 'prism-react-renderer';
+import type { Language } from 'prism-react-renderer';
+import { theme } from '@looker/components';
 
 type CodeBlockProps = {
-  code: string
-  language: Language
-}
+  code: string;
+  language: Language;
+};
 
 export const CodeBlock = ({ code, language }: CodeBlockProps) => {
   return (
@@ -31,18 +31,18 @@ export const CodeBlock = ({ code, language }: CodeBlockProps) => {
         </Pre>
       )}
     </Highlight>
-  )
-}
+  );
+};
 const Pre = styled.pre`
   border-radius: ${theme.radii.large};
   margin: ${theme.sizes.small};
   padding: ${theme.sizes.small};
   text-align: left;
-`
+`;
 
 const Line = styled.div`
   display: table-row;
-`
+`;
 
 const LineNo = styled.span`
   display: table-cell;
@@ -50,8 +50,8 @@ const LineNo = styled.span`
   padding-right: ${theme.sizes.small};
   text-align: right;
   user-select: none;
-`
+`;
 
 const LineContent = styled.span`
   display: table-cell;
-`
+`;

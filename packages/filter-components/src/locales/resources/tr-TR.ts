@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/tr'
-import { trTR as componentsLocale } from '@looker/components'
-import { trTR as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/tr';
+import { trTR as componentsLocale } from '@looker/components';
+import { trTR as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Değer gerekli',
   },
-}
+  UserAttributes: {
+    placeholder: 'Seç...',
+  },
+};
 
 export const trTR = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'tr-TR',
   resources,
   dateLocale
-)
+);

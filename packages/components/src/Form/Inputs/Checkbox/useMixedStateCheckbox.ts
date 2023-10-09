@@ -2,38 +2,38 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { Dispatch, SetStateAction } from 'react'
-import { useEffect } from 'react'
-import some from 'lodash/some'
-import every from 'lodash/every'
-import type { MixedBoolean } from './Checkbox'
+import type { Dispatch, SetStateAction } from 'react';
+import { useEffect } from 'react';
+import some from 'lodash/some';
+import every from 'lodash/every';
+import type { MixedBoolean } from './Checkbox';
 
 export interface CheckboxTreeAction {
-  state: MixedBoolean
-  setState: Dispatch<SetStateAction<MixedBoolean>>
+  state: MixedBoolean;
+  setState: Dispatch<SetStateAction<MixedBoolean>>;
 }
 
 export interface CheckboxTree {
-  parent: CheckboxTreeAction
-  children: CheckboxTreeAction[]
+  parent: CheckboxTreeAction;
+  children: CheckboxTreeAction[];
 }
 
 export function useMixedStateCheckbox({ parent, children }: CheckboxTree) {
   useEffect(() => {
     if (every(children, ['state', true])) {
-      parent.setState(true)
+      parent.setState(true);
     } else if (some(children, ['state', true])) {
-      parent.setState('mixed')
+      parent.setState('mixed');
     } else {
-      parent.setState(false)
+      parent.setState(false);
     }
-  }, [children, parent])
+  }, [children, parent]);
 
   const handleParentChange = () => {
-    const newState = parent.state !== true
-    parent.setState(newState)
-    children.map(child => child.setState(newState))
-  }
+    const newState = parent.state !== true;
+    parent.setState(newState);
+    children.map(child => child.setState(newState));
+  };
 
-  return handleParentChange
+  return handleParentChange;
 }

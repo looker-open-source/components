@@ -1,6 +1,6 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} a {{coords2}}"
+    "value": "Da {{coords1}} a {{coords2}}"
   },
   "distance unit from lat, lon": {
     "value": "{{distance}} {{unit}} da {{lat}}, {{lon}}"
@@ -9,10 +9,10 @@
     "value": "è ovunque"
   },
   "is not null": {
-    "value": "non è zero"
+    "value": "non è null"
   },
   "is null": {
-    "value": "è zero"
+    "value": "è null"
   },
   "lat degrees north": {
     "value": "{{lat}}°N"

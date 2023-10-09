@@ -24,40 +24,40 @@
 
  */
 
-import React, { Children, cloneElement, useRef, useState } from 'react'
+import React, { Children, cloneElement, useRef, useState } from 'react';
 
 export interface UseTabsProps {
-  controlledIndex?: number
-  defaultIndex?: number
-  index?: number
-  isControlled?: boolean
-  onChange?: (index: number) => void
+  controlledIndex?: number;
+  defaultIndex?: number;
+  index?: number;
+  isControlled?: boolean;
+  onChange?: (index: number) => void;
 }
 
 export interface TabsProps extends UseTabsProps {
-  children: JSX.Element[]
+  children: JSX.Element[];
 }
 
 /**
  * @deprecated Use `Tabs2` and `Tab2` instead
  */
 export function useTabs(props?: UseTabsProps) {
-  const defaultIndex = (props && props.defaultIndex) || 0
-  const onChange = props && props.onChange
-  const isControlled = (props && props.isControlled) || false
+  const defaultIndex = (props && props.defaultIndex) || 0;
+  const onChange = props && props.onChange;
+  const isControlled = (props && props.isControlled) || false;
 
-  const [selectedIndex, setSelectedIndex] = useState(defaultIndex)
+  const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
 
   return {
     onSelectTab: (index: number) => {
-      onChange && onChange(index)
+      onChange && onChange(index);
       if (!isControlled) {
-        setSelectedIndex(index)
+        setSelectedIndex(index);
       }
     },
     selectedIndex:
       isControlled && props ? props.controlledIndex : selectedIndex,
-  }
+  };
 }
 
 /**
@@ -69,19 +69,19 @@ export const Tabs = ({
   defaultIndex,
   onChange,
 }: TabsProps) => {
-  const { current: isControlled } = useRef(controlledIndex !== undefined)
+  const { current: isControlled } = useRef(controlledIndex !== undefined);
 
   /* eslint-disable no-console */
   if (!isControlled && controlledIndex !== undefined) {
     console.warn(
       'Tabs is changing from uncontrolled to controlled. Tabs should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled Tabs for the lifetime of the component. Check the `index` prop being passed in.'
-    )
+    );
   }
 
   if (isControlled && controlledIndex === undefined) {
     console.warn(
       'Tabs is changing from uncontrolled to controlled. Tabs should not switch from uncontrolled to controlled (or vice versa). Decide between using a controlled or uncontrolled Tabs for the lifetime of the component. Check the `index` prop being passed in.'
-    )
+    );
   }
   /* eslint-enable no-console */
 
@@ -90,11 +90,11 @@ export const Tabs = ({
     defaultIndex,
     isControlled,
     onChange,
-  })
+  });
 
   const clonedChildren = Children.map(children, (child: JSX.Element) => {
-    return cloneElement(child, tabs)
-  })
+    return cloneElement(child, tabs);
+  });
 
-  return <>{clonedChildren}</>
-}
+  return <>{clonedChildren}</>;
+};

@@ -1,43 +1,43 @@
 {
   "complete day": "完整天",
   "complete days": {
-    "value": "完整天"
+    "value": "天整"
   },
   "complete fiscal quarter": "完整财政季度",
   "complete fiscal quarters": {
-    "value": "完整财政季度"
+    "value": "个完整财季"
   },
   "complete fiscal year": "完整财政年度",
   "complete fiscal years": {
-    "value": "完整财政年度"
+    "value": "个完整财年"
   },
   "complete hour": "完整小时",
   "complete hours": {
-    "value": "完整小时"
+    "value": "小时整"
   },
   "complete minute": "完整分钟",
   "complete minutes": {
-    "value": "完整分钟"
+    "value": "分钟整"
   },
   "complete month": "完整月",
   "complete months": {
-    "value": "完整月"
+    "value": "个月整"
   },
   "complete quarter": "完整季度",
   "complete quarters": {
-    "value": "完整季度"
+    "value": "个季度整"
   },
   "complete second": "完整秒",
   "complete seconds": {
-    "value": "完整秒"
+    "value": "秒整"
   },
   "complete week": "完整周",
   "complete weeks": {
-    "value": "完整周"
+    "value": "周整"
   },
   "complete year": "完整年",
   "complete years": {
-    "value": "完整年"
+    "value": "年整"
   },
   "day": "天",
   "days": {
@@ -45,11 +45,11 @@
   },
   "fiscal quarter": "财政季度",
   "fiscal quarters": {
-    "value": "个财政季度"
+    "value": "财季"
   },
   "fiscal year": "财政年度",
   "fiscal years": {
-    "value": "个财政年度"
+    "value": "财年"
   },
   "hour": "小时",
   "hours": {
@@ -61,11 +61,11 @@
   },
   "month": "月",
   "months": {
-    "value": "个月"
+    "value": "月"
   },
   "quarter": "季度",
   "quarters": {
-    "value": "个季度"
+    "value": "季度"
   },
   "second": "秒",
   "seconds": {

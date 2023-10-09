@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { hsv } from 'd3-hsv'
-import type { SimpleHSV } from '../types'
+import { hsv } from 'd3-hsv';
+import type { SimpleHSV } from '../types';
 
 export const hsvToHex = (color: SimpleHSV) =>
-  hsv(color.h, color.s, color.v).hex()
+  hsv(color.h, color.s, color.v).hex();

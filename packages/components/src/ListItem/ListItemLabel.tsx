@@ -3,23 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
-import type { ReactNode } from 'react'
-import React from 'react'
-import styled, { useTheme } from 'styled-components'
-import type { TruncateConfigProp } from '../Truncate'
-import { TruncateOptionally } from '../Truncate'
-import type { ListItemColorProp } from './types'
-import { listItemDimensions, listItemLabelColor } from './utils'
-import { listItemPaddingY } from './utils/listItemPaddingY'
+import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens';
+import type { ReactNode } from 'react';
+import React from 'react';
+import styled, { useTheme } from 'styled-components';
+import type { TruncateConfigProp } from '../Truncate';
+import { TruncateOptionally } from '../Truncate';
+import type { ListItemColorProp } from './types';
+import { listItemDimensions, listItemLabelColor } from './utils';
+import { listItemPaddingY } from './utils/listItemPaddingY';
 
 type ListItemLabelProps = CompatibleHTMLProps<HTMLElement> &
   ListItemColorProp &
   DensityProp & {
-    disabled?: boolean
-    description?: ReactNode
-    truncate?: TruncateConfigProp
-  }
+    disabled?: boolean;
+    description?: ReactNode;
+    truncate?: TruncateConfigProp;
+  };
 
 export const ListItemLabel = styled(
   ({
@@ -31,13 +31,13 @@ export const ListItemLabel = styled(
     truncate,
     ...props
   }: ListItemLabelProps) => {
-    const theme = useTheme()
+    const theme = useTheme();
     const {
       descriptionFontSize,
       descriptionLineHeight,
       labelFontSize,
       labelLineHeight,
-    } = listItemDimensions(density || theme.defaults.density)
+    } = listItemDimensions(density || theme.defaults.density);
 
     return (
       <div {...props}>
@@ -60,7 +60,7 @@ export const ListItemLabel = styled(
           </TruncateOptionally>
         )}
       </div>
-    )
+    );
   }
 )`
   display: flex;
@@ -74,4 +74,4 @@ export const ListItemLabel = styled(
   min-width: 0;
 
   ${({ density = 0 }) => listItemPaddingY(density)}
-`
+`;

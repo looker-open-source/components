@@ -71,4 +71,4 @@ module.exports = {
     'unit-no-unknown': true,
     'value-no-vendor-prefix': true,
   },
-}
+};

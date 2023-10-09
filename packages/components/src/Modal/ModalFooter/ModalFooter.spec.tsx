@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { ModalFooter } from '../ModalFooter/ModalFooter'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { ModalFooter } from '../ModalFooter/ModalFooter';
 
 describe('ModalFooter', () => {
   test('basic', () => {
@@ -14,27 +14,27 @@ describe('ModalFooter', () => {
       <ModalFooter>
         <button>Cancel</button>
       </ModalFooter>
-    )
-    expect(screen.getByRole('button')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
 
   test('has correct flex style', () => {
     renderWithTheme(
       <ModalFooter>
         <button>Cancel</button>
       </ModalFooter>
-    )
+    );
     expect(screen.getByRole('button')?.closest('footer')).toHaveStyle(
       'flex-direction: row-reverse'
-    )
-  })
+    );
+  });
 
   test('secondary', () => {
     renderWithTheme(
       <ModalFooter secondary={<button>Done</button>}>
         <button>Cancel</button>
       </ModalFooter>
-    )
-    expect(screen.getByText('Done')).toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.getByText('Done')).toBeInTheDocument();
+  });
+});

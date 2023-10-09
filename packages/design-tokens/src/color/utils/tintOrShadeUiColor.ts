@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import getLuminance from 'polished/lib/color/getLuminance'
-import shade from 'polished/lib/color/shade'
-import tint from 'polished/lib/color/tint'
-import { scaleMixAmount } from './scaleMixAmount'
+import getLuminance from 'polished/lib/color/getLuminance';
+import shade from 'polished/lib/color/shade';
+import tint from 'polished/lib/color/tint';
+import { scaleMixAmount } from './scaleMixAmount';
 
 /**
  * Tints or shades a color based on the luminosity of the color
@@ -23,11 +23,11 @@ import { scaleMixAmount } from './scaleMixAmount'
  * @param color
  */
 export const tintOrShadeUiColor = (mixAmount: number, color: string) => {
-  const isBright = getLuminance(color) > 0.5
-  const mixAdjustment = isBright ? mixAmount : scaleMixAmount(mixAmount, 1.5)
+  const isBright = getLuminance(color) > 0.5;
+  const mixAdjustment = isBright ? mixAmount : scaleMixAmount(mixAmount, 1.5);
 
   /* shade & tint functions cannot exceed 100% */
-  const mixPercent = mixAdjustment > 100 ? 1 : mixAdjustment / 100
+  const mixPercent = mixAdjustment > 100 ? 1 : mixAdjustment / 100;
 
-  return (isBright ? shade : tint)(mixPercent, color)
-}
+  return (isBright ? shade : tint)(mixPercent, color);
+};

@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import type { ListColor } from '../'
-import { List } from '../'
-import { ListItem, ButtonItem, ButtonToggle } from '../../'
+import React, { useState } from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import type { ListColor } from '../../ListItem';
+import { List } from '../';
+import { ListItem, ButtonItem, ButtonToggle } from '../../';
 
 export default function Color() {
-  const [colorVal, setColorVal] = useState<ListColor>('calculation')
+  const [colorVal, setColorVal] = useState<ListColor>('calculation');
   return (
     <>
       <ButtonToggle
@@ -40,5 +40,5 @@ export default function Color() {
         </ListItem>
       </List>
     </>
-  )
+  );
 }

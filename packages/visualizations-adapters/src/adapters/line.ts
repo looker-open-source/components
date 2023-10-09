@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
+import type { VisWrapperProps } from '../VisWrapper';
 import type {
   CommonCartesianProperties,
   Fields,
@@ -14,23 +14,23 @@ import type {
   LinearPositions,
   SupportedChartTypes,
   ChartLayoutProps,
-} from '../types'
+} from '../types';
 
-export type CLineSeries = Partial<CSeriesBasic & CSeriesPoints & CSeriesLine>
+export type CLineSeries = Partial<CSeriesBasic & CSeriesPoints & CSeriesLine>;
 
 export type CLineBase = {
-  positioning?: LinearPositions
-  series?: CLineSeries[] | { [key: string]: CLineSeries }
-  render_null_values?: boolean
-} & Omit<CommonCartesianProperties, 'series'>
+  positioning?: LinearPositions;
+  series?: CLineSeries[] | { [key: string]: CLineSeries };
+  render_null_values?: boolean;
+} & Omit<CommonCartesianProperties, 'series'>;
 
 export type CLine = {
-  type?: SupportedChartTypes['line']
-} & CLineBase
+  type?: SupportedChartTypes['line'];
+} & CLineBase;
 
 export type LineProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    fields: Fields
-    config: CLine
-  }
+    data: SDKRecord[];
+    fields: Fields;
+    config: CLine;
+  };

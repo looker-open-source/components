@@ -24,12 +24,12 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Aside } from './Aside/Aside'
-import { Footer, Header, Layout, Page, Section } from './'
+import 'jest-styled-components';
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Aside } from './Aside/Aside';
+import { Footer, Header, Layout, Page, Section } from './';
 
 describe('Semantics', () => {
   test('whole page scrolls together by default', () => {
@@ -46,12 +46,12 @@ describe('Semantics', () => {
           I'm the Footer
         </Footer>
       </Page>
-    )
-    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument()
+    );
+    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument();
     expect(screen.getByText("I'm the header").closest('div')).toHaveStyle(
       'overflow: auto;'
-    )
-  })
+    );
+  });
 
   test('using prop fixed on page will have Header and Footer fixed while the rest of the page scrolls', () => {
     renderWithTheme(
@@ -67,12 +67,12 @@ describe('Semantics', () => {
           I'm the Footer
         </Footer>
       </Page>
-    )
-    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument()
+    );
+    expect(screen.getByText("I'm the Aside before")).toBeInTheDocument();
     expect(screen.getByText("I'm the header").closest('div')).toHaveStyle(
       'overflow: hidden;'
-    )
-  })
+    );
+  });
 
   test('using prop scrollWithin will have areas scrolling together.', () => {
     renderWithTheme(
@@ -83,17 +83,17 @@ describe('Semantics', () => {
           <Aside scrollWithin>I'm the Aside after</Aside>
         </Layout>
       </Page>
-    )
+    );
     expect(screen.getByText("I'm the Aside before")).toHaveStyle(
       'height: fit-content;'
-    )
+    );
     expect(screen.getByText("I'm the main area")).toHaveStyle(
       'height: fit-content;'
-    )
+    );
     expect(screen.getByText("I'm the Aside after")).toHaveStyle(
       'height: fit-content;'
-    )
-  })
+    );
+  });
 
   test('using prop scrollWithin will have only selected areas scrolling together.', () => {
     renderWithTheme(
@@ -106,15 +106,15 @@ describe('Semantics', () => {
           </Layout>
         </Layout>
       </Page>
-    )
+    );
     expect(screen.getByText("I'm the Aside before")).not.toHaveStyleRule(
       'height'
-    )
+    );
     expect(screen.getByText("I'm the main area")).toHaveStyle({
       height: 'fit-content',
-    })
+    });
     expect(screen.getByText("I'm the Aside after")).toHaveStyle({
       height: 'fit-content',
-    })
-  })
-})
+    });
+  });
+});

@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './FocusTrapProvider'
-export * from './types'
+export * from './FocusTrapProvider';
+export * from './types';

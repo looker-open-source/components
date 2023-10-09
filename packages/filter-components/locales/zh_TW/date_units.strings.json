@@ -6,13 +6,13 @@
     "value": "天"
   },
   "fiscal quarter": {
-    "value": "個會計季度"
+    "value": "會計季度"
   },
   "fiscal quarters": {
     "value": "個會計季度"
   },
   "fiscal year": {
-    "value": "個會計年度"
+    "value": "會計年度"
   },
   "fiscal years": {
     "value": "個會計年度"
@@ -30,10 +30,10 @@
     "value": "分鐘"
   },
   "month": {
-    "value": "月"
+    "value": "個月"
   },
   "months": {
-    "value": "月"
+    "value": "個月"
   },
   "quarter": {
     "value": "季"

@@ -2,19 +2,19 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Flex } from '@looker/components'
+import { Flex } from '@looker/components';
 import type {
   BoxFilterItem,
   ExactLocationFilterItem,
-} from '@looker/filter-expressions'
-import pick from 'lodash/pick'
-import React from 'react'
+} from '@looker/filter-expressions';
+import pick from 'lodash/pick';
+import React from 'react';
 
-import { LocationExact } from '../LocationExact'
+import { LocationExact } from '../LocationExact';
 
 interface LocationBoxProps {
-  onChange: (id: string, value: any) => void
-  item: BoxFilterItem
+  onChange: (id: string, value: any) => void;
+  item: BoxFilterItem;
 }
 
 export const LocationBox = ({ item, onChange }: LocationBoxProps) => (
@@ -47,4 +47,4 @@ export const LocationBox = ({ item, onChange }: LocationBoxProps) => (
       latString="TO LATITUDE"
     />
   </Flex>
-)
+);

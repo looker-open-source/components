@@ -2,18 +2,18 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { IconButton } from '@looker/components'
-import { Add } from '@styled-icons/material/Add'
-import { Close } from '@styled-icons/material/Close'
-import { useTranslation } from '../../../../../utils'
-import type { MouseEvent } from 'react'
-import React from 'react'
+import { IconButton } from '@looker/components';
+import { Add } from '@styled-icons/material/Add';
+import { Close } from '@styled-icons/material/Close';
+import { useTranslation } from '../../../../../utils';
+import type { MouseEvent } from 'react';
+import React from 'react';
 
 interface AddRemoveButtonsProps {
-  onAdd: (e: MouseEvent) => void
-  onRemove: (e: MouseEvent) => void
-  showAdd: boolean
-  showRemove: boolean
+  onAdd: (e: MouseEvent) => void;
+  onRemove: (e: MouseEvent) => void;
+  showAdd: boolean;
+  showRemove: boolean;
 }
 
 export const AddRemoveButtons = ({
@@ -22,7 +22,7 @@ export const AddRemoveButtons = ({
   showAdd,
   showRemove,
 }: AddRemoveButtonsProps) => {
-  const { t } = useTranslation('AddRemoveButtons')
+  const { t } = useTranslation('AddRemoveButtons');
   return (
     <>
       {showRemove && (
@@ -49,5 +49,5 @@ export const AddRemoveButtons = ({
         />
       )}
     </>
-  )
-}
+  );
+};

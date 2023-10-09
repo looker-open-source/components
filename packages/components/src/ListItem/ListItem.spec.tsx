@@ -24,85 +24,97 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { act, fireEvent, configure, screen } from '@testing-library/react'
-import { Science } from '@styled-icons/material-outlined'
-import { List } from '../List'
-import { ListItem } from './ListItem'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { act, fireEvent, configure, screen } from '@testing-library/react';
+import { Science } from '@styled-icons/material-outlined';
+import { List } from '../List';
+import { ListItem } from './ListItem';
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('ListItem', () => {
   test('ripple effect', () => {
-    renderWithTheme(<ListItem>List Item</ListItem>)
+    renderWithTheme(<ListItem>List Item</ListItem>);
 
-    const listItem = screen.getByText('List Item').closest('button')
-    expect(listItem).not.toHaveClass('bg-on fg-in')
+    const listItem = screen.getByText('List Item').closest('button');
+    expect(listItem).not.toHaveClass('bg-on fg-in');
     expect(listItem).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-scale-end': '1',
       '--ripple-scale-start': '0.1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
-    })
+    });
 
-    listItem && fireEvent.focus(listItem)
-    expect(listItem).toHaveClass('bg-on')
+    listItem && fireEvent.focus(listItem);
+    expect(listItem).toHaveClass('bg-on');
 
-    listItem && fireEvent.mouseDown(listItem)
-    expect(listItem).toHaveClass('bg-on fg-in')
+    listItem && fireEvent.mouseDown(listItem);
+    expect(listItem).toHaveClass('bg-on fg-in');
 
     // foreground is locked for a minimum time to animate the ripple
-    listItem && fireEvent.mouseUp(listItem)
-    runTimers()
-    expect(listItem).toHaveClass('bg-on fg-out')
-    runTimers()
-    expect(listItem).toHaveClass('bg-on')
+    listItem && fireEvent.mouseUp(listItem);
+    runTimers();
+    expect(listItem).toHaveClass('bg-on fg-out');
+    runTimers();
+    expect(listItem).toHaveClass('bg-on');
 
-    listItem && fireEvent.blur(listItem)
-    expect(listItem).not.toHaveClass('bg-on fg-in')
-    fireEvent.click(document)
-  })
+    listItem && fireEvent.blur(listItem);
+    expect(listItem).not.toHaveClass('bg-on fg-in');
+  });
+
+  test('ripple with color, colorOnHover', () => {
+    // check another color
+    renderWithTheme(
+      <ListItem colorOnHover color="measure">
+        List Item
+      </ListItem>
+    );
+    const listItem = screen.getByText('List Item').closest('button');
+    expect(listItem).toHaveStyle({ '--ripple-color': '#C2772E' });
+  });
 
   test('children', () => {
-    renderWithTheme(<ListItem>who!</ListItem>)
-    expect(screen.getByText('who!')).toBeVisible()
-  })
+    renderWithTheme(<ListItem>who!</ListItem>);
+    expect(screen.getByText('who!')).toBeVisible();
+  });
 
   test('description', () => {
-    renderWithTheme(<ListItem description="are you?">who!</ListItem>)
-    expect(screen.getByText('are you?')).toBeVisible()
-    expect(screen.getByRole('listitem')).not.toHaveAttribute('description')
-  })
+    renderWithTheme(<ListItem description="are you?">who!</ListItem>);
+    expect(screen.getByText('are you?')).toBeVisible();
+    expect(screen.getByRole('listitem')).not.toHaveAttribute('description');
+  });
 
   test('detail', () => {
-    renderWithTheme(<ListItem detail="Is an excellent question">who!</ListItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
-    expect(screen.getByRole('listitem')).not.toHaveAttribute('detail')
-  })
+    renderWithTheme(
+      <ListItem detail="Is an excellent question">who!</ListItem>
+    );
+    expect(screen.getByText('Is an excellent question')).toBeVisible();
+    expect(screen.getByRole('listitem')).not.toHaveAttribute('detail');
+  });
 
   test('iconGutter', () => {
     renderWithTheme(
       <List iconGutter>
         <ListItem>who!</ListItem>
       </List>
-    )
-    expect(screen.getByText('who!')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('who!')).toBeVisible();
+  });
 
   describe('color', () => {
     test('theme.colors.key', () => {
@@ -110,71 +122,77 @@ describe('ListItem', () => {
         <ListItem selected color="key">
           who!
         </ListItem>
-      )
-      expect(screen.getByText('who!')).toHaveStyle('color: #262d33')
-      expect(screen.getByRole('listitem')).toHaveStyle('background: #f3f2ff')
-    })
+      );
+      expect(screen.getByText('who!')).toHaveStyle('color: #262d33');
+      expect(screen.getByRole('listitem')).toHaveStyle(
+        'background-color: #f3f2ff'
+      );
+    });
 
     test('theme', () => {
       renderWithTheme(
         <ListItem color="calculation" icon={<Science data-testid="icon" />}>
           who!
         </ListItem>
-      )
-      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
+      );
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220');
       expect(screen.getByTestId('icon').parentNode).toHaveStyle(
         'color: #319220'
-      )
-    })
+      );
+    });
 
     test('theme selected', () => {
       renderWithTheme(
         <ListItem selected color="calculation">
           who!
         </ListItem>
-      )
-      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
-      expect(screen.getByRole('listitem')).toHaveStyle('background: #eaf4e8')
-    })
+      );
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220');
+      expect(screen.getByRole('listitem')).toHaveStyle(
+        'background-color: #eaf4e8'
+      );
+    });
 
     test('theme + selected + hover', () => {
       renderWithTheme(
         <ListItem hovered selected color="calculation">
           who!
         </ListItem>
-      )
-      expect(screen.getByText('who!')).toHaveStyle('color: #319220')
-      expect(screen.getByRole('listitem')).toHaveStyle('background: #eaf4e8')
-    })
+      );
+      expect(screen.getByText('who!')).toHaveStyle('color: #319220');
+      expect(screen.getByRole('listitem')).toHaveStyle(
+        'background-color: #eaf4e8'
+      );
+    });
 
     test('custom', () => {
       renderWithTheme(
         <ListItem color="#cc0000" icon={<Science data-testid="icon" />}>
           who!
         </ListItem>
-      )
-      expect(screen.getByText('who!')).toHaveStyle('color: #cc0000')
+      );
+      expect(screen.getByText('who!')).toHaveStyle('color: #cc0000');
       expect(screen.getByTestId('icon').parentNode).toHaveStyle(
         'color: #cc0000'
-      )
-    })
-  })
+      );
+    });
+  });
 
   test('truncate', () => {
     renderWithTheme(
       <ListItem truncate>
         Some long text to truncate in my list item label
       </ListItem>
-    )
+    );
     expect(
       screen.getByText('Some long text to truncate in my list item label')
-    ).toBeVisible()
-  })
+    ).toBeVisible();
+  });
 
   test('renders icon', () => {
-    renderWithTheme(<ListItem icon={<Science />}>Icon</ListItem>)
-    expect(screen.getByText('Icon')).toBeInTheDocument()
-  })
+    renderWithTheme(<ListItem icon={<Science />}>Icon</ListItem>);
+    expect(screen.getByText('Icon')).toBeInTheDocument();
+  });
 
   test('renders artwork', () => {
     renderWithTheme(
@@ -187,54 +205,54 @@ describe('ListItem', () => {
       >
         Artwork
       </ListItem>
-    )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument();
+  });
 
   // At the moment, JSDom doesn't support the pseudo-selector parameter in getComputedStyle
   test.skip('has a key color border on key press', () => {
-    configure({ computedStyleSupportsPseudoElements: true })
-    renderWithTheme(<ListItem>Item</ListItem>)
-    const item = screen.getByRole('listitem')
+    configure({ computedStyleSupportsPseudoElements: true });
+    renderWithTheme(<ListItem>Item</ListItem>);
+    const item = screen.getByRole('listitem');
     fireEvent.keyUp(item, {
       key: 'Enter',
-    })
+    });
     expect(window.getComputedStyle(item, ':after')).toHaveAttribute(
       'border',
       'solid 2px #9785F2'
-    )
-  })
+    );
+  });
 
   test('is not clickable when disabled', () => {
-    const callbackFn = jest.fn()
+    const callbackFn = jest.fn();
 
     renderWithTheme(
       <ListItem itemRole="button" disabled onClick={callbackFn}>
         Item
       </ListItem>
-    )
+    );
 
-    const item = screen.getByText('Item')
-    expect(item.closest('button')).toHaveAttribute('type', 'button')
-    fireEvent.click(item)
+    const item = screen.getByText('Item');
+    expect(item.closest('button')).toHaveAttribute('type', 'button');
+    fireEvent.click(item);
 
-    expect(callbackFn).toHaveBeenCalledTimes(0)
-  })
+    expect(callbackFn).toHaveBeenCalledTimes(0);
+  });
 
   test('has rel="noopener noreferrer" when it has target="_blank" and no passed-in rel prop value', () => {
     renderWithTheme(
       <ListItem itemRole="link" href="https://google.com" target="_blank">
         Link
       </ListItem>
-    )
+    );
 
-    const item = screen.getByRole('listitem')
+    const item = screen.getByRole('listitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('target', '_blank')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'noopener noreferrer')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('target', '_blank');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 
   test('auto appends "noopener noreferrer" to rel prop value when itemRole="link", target="_blank" and rel is not undefined', () => {
     renderWithTheme(
@@ -246,37 +264,37 @@ describe('ListItem', () => {
       >
         Link
       </ListItem>
-    )
+    );
 
-    const item = screen.getByRole('listitem')
+    const item = screen.getByRole('listitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('target', '_blank')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('target', '_blank');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer');
+  });
 
   test('does not auto append "noopener noreferrer" to link without target="_blank"', () => {
     renderWithTheme(
       <ListItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
       </ListItem>
-    )
+    );
 
-    const item = screen.getByRole('listitem')
+    const item = screen.getByRole('listitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'nogouda')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'nogouda');
+  });
 
   test('renders label container as <div> when itemRole="none"', () => {
-    renderWithTheme(<ListItem itemRole="none">No Role</ListItem>)
-    expect(screen.getByRole('listitem').nodeName).toBe('DIV')
-  })
+    renderWithTheme(<ListItem itemRole="none">No Role</ListItem>);
+    expect(screen.getByRole('listitem').nodeName).toBe('DIV');
+  });
 
   test('does not trigger onClick on detail click when accessory === true', () => {
-    const onClick = jest.fn()
+    const onClick = jest.fn();
     renderWithTheme(
       <ListItem
         detail={{ content: 'Detail', options: { accessory: true } }}
@@ -284,15 +302,15 @@ describe('ListItem', () => {
       >
         Dimension
       </ListItem>
-    )
-    fireEvent.click(screen.getByText('Dimension'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(screen.getByText('Detail'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-  })
+    );
+    fireEvent.click(screen.getByText('Dimension'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByText('Detail'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 
   test('triggers onClick on detail click when accessory === false', () => {
-    const onClick = jest.fn()
+    const onClick = jest.fn();
     renderWithTheme(
       <ListItem
         detail={{ content: 'Detail', options: { accessory: false } }}
@@ -300,12 +318,12 @@ describe('ListItem', () => {
       >
         Dimension
       </ListItem>
-    )
-    fireEvent.click(screen.getByText('Dimension'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(screen.getByText('Detail'))
-    expect(onClick).toHaveBeenCalledTimes(2)
-  })
+    );
+    fireEvent.click(screen.getByText('Dimension'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByText('Detail'));
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
 
   test('hides and shows detail when detailHoverDisclosure === true', () => {
     renderWithTheme(
@@ -314,82 +332,82 @@ describe('ListItem', () => {
       >
         Label
       </ListItem>
-    )
+    );
 
-    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
-    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
-    expect(screen.getByText('Detail')).toBeInTheDocument()
-  })
+    expect(screen.queryByText('Detail')).not.toBeInTheDocument();
+    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true });
+    expect(screen.getByText('Detail')).toBeInTheDocument();
+  });
 
   test('onKeyUp callback functions', () => {
-    const onKeyUp = jest.fn()
-    renderWithTheme(<ListItem onKeyUp={onKeyUp}>Label</ListItem>)
+    const onKeyUp = jest.fn();
+    renderWithTheme(<ListItem onKeyUp={onKeyUp}>Label</ListItem>);
 
     fireEvent.keyUp(screen.getByText('Label'), {
       charCode: 13,
       code: 13,
       key: 'Enter',
-    })
+    });
 
-    expect(onKeyUp).toHaveBeenCalled()
-  })
+    expect(onKeyUp).toHaveBeenCalled();
+  });
 
   test('warns on disabled link', () => {
-    const globalConsole = global.console
-    const warnMock = jest.fn()
+    const globalConsole = global.console;
+    const warnMock = jest.fn();
 
     global.console = {
       warn: warnMock,
-    } as unknown as Console
+    } as unknown as Console;
 
     renderWithTheme(
       <ListItem itemRole="link" disabled>
         Disabled but not
       </ListItem>
-    )
+    );
     expect(warnMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
           "itemRole=\\"link\\" and disabled cannot be combined - use itemRole=\\"button\\" if you need to offer a disabled ListItem",
         ],
       ]
-    `)
+    `);
 
-    global.console = globalConsole
-  })
+    global.console = globalConsole;
+  });
 
   test('properly passes aria related props to label container', () => {
     renderWithTheme(
       <ListItem aria-current="location" aria-describedby="something-else">
         ListItem with aria props
       </ListItem>
-    )
+    );
 
-    const label = screen.getByRole('listitem')
-    expect(label).toHaveAttribute('aria-current', 'location')
-    expect(label).toHaveAttribute('aria-describedby', 'something-else')
+    const label = screen.getByRole('listitem');
+    expect(label).toHaveAttribute('aria-current', 'location');
+    expect(label).toHaveAttribute('aria-describedby', 'something-else');
 
-    const wrapper = screen.getByRole('none')
-    expect(wrapper).not.toHaveAttribute('aria-current', 'location')
-    expect(wrapper).not.toHaveAttribute('aria-describedby', 'something-else')
-  })
+    const wrapper = screen.getByRole('none');
+    expect(wrapper).not.toHaveAttribute('aria-current', 'location');
+    expect(wrapper).not.toHaveAttribute('aria-describedby', 'something-else');
+  });
 
   test('has left padding on detail', () => {
-    renderWithTheme(<ListItem detail="Detail">Dimension</ListItem>)
+    renderWithTheme(<ListItem detail="Detail">Dimension</ListItem>);
 
     expect(screen.getByText('Detail')).toHaveStyleRule(
       'padding-left',
       '0.75rem'
-    )
-  })
+    );
+  });
 
   test('no left padding on detail when accessory === true', () => {
     renderWithTheme(
       <ListItem detail={{ content: 'Detail', options: { accessory: true } }}>
         Dimension
       </ListItem>
-    )
+    );
 
-    expect(screen.getByText('Detail')).toHaveStyleRule('padding-left', '0')
-  })
-})
+    expect(screen.getByText('Detail')).toHaveStyleRule('padding-left', '0');
+  });
+});

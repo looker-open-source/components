@@ -24,8 +24,8 @@
 
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
 import {
   maxWidth,
   minWidth,
@@ -33,20 +33,20 @@ import {
   space,
   shouldForwardProp,
   width,
-} from '@looker/design-tokens'
-import type { SizeRamp } from '@looker/design-tokens'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import styled, { css } from 'styled-components'
-import pick from 'lodash/pick'
+} from '@looker/design-tokens';
+import type { SizeRamp } from '@looker/design-tokens';
+import { StyledIconBase } from '@styled-icons/styled-icon';
+import styled, { css } from 'styled-components';
+import pick from 'lodash/pick';
 import {
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
   rippleHandlerKeys,
-} from '../Ripple'
-import { buttonSize, buttonIconSizeMap, buttonPadding } from './size'
-import { buttonIcon } from './icon'
-import type { ButtonColorProps, ButtonProps } from './types'
+} from '../Ripple';
+import { buttonSize, buttonIconSizeMap, buttonPadding } from './size';
+import { buttonIcon } from './icon';
+import type { ButtonColorProps, ButtonProps } from './types';
 
 const buttonCSS = css<ButtonColorProps>`
   ${reset}
@@ -68,7 +68,8 @@ const buttonCSS = css<ButtonColorProps>`
   vertical-align: middle;
   white-space: nowrap;
 
-  &[disabled] {
+  &[disabled],
+  &[aria-disabled='true'] {
     cursor: default;
     filter: grayscale(0.3);
     opacity: 0.25;
@@ -76,7 +77,7 @@ const buttonCSS = css<ButtonColorProps>`
 
   ${buttonSize}
   ${space}
-`
+`;
 
 export const buttonIconSize = css<ButtonProps>`
   ${StyledIconBase} {
@@ -85,14 +86,14 @@ export const buttonIconSize = css<ButtonProps>`
     width: ${({ theme, size = 'medium' }) =>
       theme.sizes[buttonIconSizeMap[size] as keyof SizeRamp]};
   }
-`
+`;
 
 export const ButtonOuter = styled.button
   .withConfig({ shouldForwardProp })
   .attrs(({ color = 'key' }) => ({ color }))<ButtonProps>`
   ${buttonCSS}
   ${({ fullWidth }) => fullWidth && `width: 100%;`}
-`
+`;
 
 export const ButtonBase = styled(
   forwardRef((props: ButtonProps, forwardedRef: Ref<HTMLButtonElement>) => {
@@ -106,20 +107,23 @@ export const ButtonBase = styled(
       size = 'medium',
       style,
       ...restProps
-    } = props
+    } = props;
 
     const { callbacks, ...rippleProps } = useBoundedRipple({
       className,
       color: rippleBackgroundColor || color || 'key',
       ref: forwardedRef,
       style,
-    })
+    });
 
+    // convert aria-disabled to a boolean
+    const ariaDisabled =
+      restProps['aria-disabled'] && restProps['aria-disabled'] !== 'false';
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(restProps, rippleHandlerKeys),
-      restProps.disabled
-    )
+      restProps.disabled || ariaDisabled
+    );
     return (
       <ButtonOuter
         px={buttonPadding(!!(iconBefore || iconAfter), size)}
@@ -132,10 +136,10 @@ export const ButtonBase = styled(
         {children}
         {iconAfter}
       </ButtonOuter>
-    )
+    );
   })
 )`
   ${buttonIcon}
   ${buttonIconSize}
   ${rippleStyle}
-`
+`;

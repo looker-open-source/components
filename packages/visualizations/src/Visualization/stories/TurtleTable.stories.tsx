@@ -24,11 +24,11 @@
 
  */
 
-import React from 'react'
-import type { Story } from '@storybook/react'
-import { Sparkline } from '@looker/visualizations-visx'
-import { Table } from '@looker/visualizations-table'
-import { Visualization } from '../Visualization'
+import React from 'react';
+import type { Story } from '@storybook/react';
+import { Sparkline } from '@looker/visualizations-visx';
+import { Table } from '@looker/visualizations-table';
+import { Visualization } from '../Visualization';
 import type {
   Fields,
   TableProps,
@@ -36,45 +36,45 @@ import type {
   CommonCartesianProperties,
   SDKRecord,
   Pivots,
-} from '@looker/visualizations-adapters'
-import { mockPivotedQuery } from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
+import { mockPivotedQuery } from '@looker/visualizations-adapters';
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/TurtleTable',
-}
+};
 
 type StoryTemplateProps = Omit<TableProps, 'config' | 'fields' | 'data'> & {
-  config: Omit<CTable, 'type'>
-}
+  config: Omit<CTable, 'type'>;
+};
 
 export type TurtleProps = {
-  width: number
-  height: number
-  margin?: { top: number; right: number; bottom: number; left: number }
-  levels?: number
-  fields: Fields
-  data: SDKRecord[]
-  config: CommonCartesianProperties
-  pivots: Pivots
-}
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+  levels?: number;
+  fields: Fields;
+  data: SDKRecord[];
+  config: CommonCartesianProperties;
+  pivots: Pivots;
+};
 
 // we assign this value to a constant to ensure that fields and data
 // objects remain in sync.
-const NESTED_DATA_KEY = 'orderCount'
-const ROW_HEIGHT = 75
+const NESTED_DATA_KEY = 'orderCount';
+const ROW_HEIGHT = 75;
 
 const nestSparklines = (data: SDKRecord[]) => {
   return data.reduce<SDKRecord[]>((acc, d) => {
     // the first entry is the dimension (brand name), and the rest of the rows are the
     // quarterly sales information we want to pass to the Sparkline.
-    const [parentDimension, ...measurePairs] = Object.entries(d)
+    const [parentDimension, ...measurePairs] = Object.entries(d);
 
     // `nonPivotedData` represents a single data row.
     // e.g. [{entry: 1, orderCount: 10}, {entry: 2, orderCount: 15}, ...etc]
     const nonPivotedData: SDKRecord[] = measurePairs.map(([_, value], i) => {
-      return { entry: i, [NESTED_DATA_KEY]: value }
-    })
+      return { entry: i, [NESTED_DATA_KEY]: value };
+    });
 
     // now for each row in the table we render a Sparkline using the `nonPivotedData`
     // that we built above.
@@ -94,9 +94,9 @@ const nestSparklines = (data: SDKRecord[]) => {
           />
         ),
       },
-    ]
-  }, [])
-}
+    ];
+  }, []);
+};
 
 const TurtleTableComponent = ({
   fields,
@@ -105,7 +105,7 @@ const TurtleTableComponent = ({
   pivots,
   height,
 }: TurtleProps) => {
-  const nestedData = nestSparklines(data)
+  const nestedData = nestSparklines(data);
 
   return (
     <Table
@@ -120,8 +120,8 @@ const TurtleTableComponent = ({
       pivots={pivots}
       defaultRowHeight={ROW_HEIGHT}
     />
-  )
-}
+  );
+};
 
 const Template: Story<StoryTemplateProps> = () => {
   return (
@@ -134,7 +134,7 @@ const Template: Story<StoryTemplateProps> = () => {
       }}
       config={{ type: 'turtle_table' }}
     />
-  )
-}
+  );
+};
 
-export const TurtleTable = Template.bind({})
+export const TurtleTable = Template.bind({});

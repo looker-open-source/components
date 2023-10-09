@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './InputFilters'
+export * from './InputFilters';
 export type {
   FieldFilter,
   FieldFilterOptions,
   InputFiltersProps,
-} from './types'
+} from './types';

@@ -24,160 +24,160 @@
 
  */
 
-import React from 'react'
-import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
+import React from 'react';
+import { firePasteEvent, renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
 
-import { parseOption } from '../Combobox/utils'
-import { InputChips } from './InputChips'
+import { parseOption } from '../Combobox/utils';
+import { InputChips } from './InputChips';
 
 describe('InputChips', () => {
   test('values are added on Enter keydown', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
-    fireEvent.change(input, { target: { value: 'tag1' } })
-    expect(onChangeMock).not.toHaveBeenCalled()
+    );
+    const input = screen.getByPlaceholderText('type here');
+    fireEvent.change(input, { target: { value: 'tag1' } });
+    expect(onChangeMock).not.toHaveBeenCalled();
 
-    fireEvent.keyDown(input, { key: 'Enter' })
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-    expect(input).toHaveValue('')
-  })
+    fireEvent.keyDown(input, { key: 'Enter' });
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1']);
+    expect(input).toHaveValue('');
+  });
 
   test('values are added when a comma is last character entered', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
 
     // if the last character entered is a comma, values are added
-    fireEvent.change(input, { target: { value: 'tag1,' } })
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-    expect(input).toHaveValue('')
-  })
+    fireEvent.change(input, { target: { value: 'tag1,' } });
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1']);
+    expect(input).toHaveValue('');
+  });
 
   test('values are not added when a comma is escaped', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
 
     // if the last character entered is an escaped comma, values not are added
-    fireEvent.change(input, { target: { value: 'tag1\\,' } })
-    expect(onChangeMock).not.toHaveBeenCalled()
-    expect(input).toHaveValue('tag1\\,')
-  })
+    fireEvent.change(input, { target: { value: 'tag1\\,' } });
+    expect(onChangeMock).not.toHaveBeenCalled();
+    expect(input).toHaveValue('tag1\\,');
+  });
 
   test('values are added when pasting', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
     // Newlines are stripped when pasting into a text input,
     // but InputChips saves the clipboard with newlines intact from the onPaste
     firePasteEvent(
       input,
       `tag1
 tag2`
-    )
-    fireEvent.change(input, { target: { value: 'tag1  tag2' } })
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
+    );
+    fireEvent.change(input, { target: { value: 'tag1  tag2' } });
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2']);
 
     // If change follows a paste, no need for the last character to be a comma
-    onChangeMock.mockClear()
-    firePasteEvent(input, `tag1,tag2`)
-    fireEvent.change(input, { target: { value: 'tag1, tag2' } })
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
-  })
+    onChangeMock.mockClear();
+    firePasteEvent(input, `tag1,tag2`);
+    fireEvent.change(input, { target: { value: 'tag1, tag2' } });
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2']);
+  });
 
   test('values are added on blur', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
-    fireEvent.change(input, { target: { value: 'tag1' } })
-    expect(onChangeMock).not.toHaveBeenCalled()
+    );
+    const input = screen.getByPlaceholderText('type here');
+    fireEvent.change(input, { target: { value: 'tag1' } });
+    expect(onChangeMock).not.toHaveBeenCalled();
 
-    fireEvent.blur(input)
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-    expect(input).toHaveValue('')
-  })
+    fireEvent.blur(input);
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1']);
+    expect(input).toHaveValue('');
+  });
 
   test('new values are appended to existing values', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips
         onChange={onChangeMock}
         values={['tag1']}
         placeholder="type here"
       />
-    )
-    const input = screen.getByPlaceholderText('type here')
-    fireEvent.change(input, { target: { value: 'tag2,' } })
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2'])
-    expect(input).toHaveValue('')
-  })
+    );
+    const input = screen.getByPlaceholderText('type here');
+    fireEvent.change(input, { target: { value: 'tag2,' } });
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1', 'tag2']);
+    expect(input).toHaveValue('');
+  });
 
   test('values are removed on backspace keydown', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips
         onChange={onChangeMock}
         values={['tag1']}
         placeholder="type here"
       />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
 
     // If there is text in the input, Backspace doesn't remove values
-    fireEvent.change(input, { target: { value: 't' } })
-    fireEvent.keyDown(input, { key: 'Backspace' })
-    expect(onChangeMock).not.toHaveBeenCalled()
+    fireEvent.change(input, { target: { value: 't' } });
+    fireEvent.keyDown(input, { key: 'Backspace' });
+    expect(onChangeMock).not.toHaveBeenCalled();
 
-    fireEvent.change(input, { target: { value: '' } })
-    fireEvent.keyDown(input, { key: 'Backspace' })
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith([])
-  })
+    fireEvent.change(input, { target: { value: '' } });
+    fireEvent.keyDown(input, { key: 'Backspace' });
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith([]);
+  });
 
   test('all values are removed by clicking clear field', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={['tag1', 'tag2']} />
-    )
-    const clear = screen.getByText('Clear Field')
+    );
+    const clear = screen.getByText('Clear Field');
 
-    fireEvent.click(clear)
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith([])
-  })
+    fireEvent.click(clear);
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith([]);
+  });
 
   test('values are removed by clicking remove on the chip', () => {
-    const onChangeMock = jest.fn()
-    renderWithTheme(<InputChips onChange={onChangeMock} values={['tag1']} />)
-    const remove = screen.getByText('Delete')
+    const onChangeMock = jest.fn();
+    renderWithTheme(<InputChips onChange={onChangeMock} values={['tag1']} />);
+    const remove = screen.getByText('Delete');
 
-    fireEvent.click(remove)
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith([])
-  })
+    fireEvent.click(remove);
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith([]);
+  });
 
   test('new values are validated', () => {
-    const onChangeMock = jest.fn()
-    const onValidationFailMock = jest.fn()
-    const onDuplicateMock = jest.fn()
+    const onChangeMock = jest.fn();
+    const onValidationFailMock = jest.fn();
+    const onDuplicateMock = jest.fn();
 
-    const validate = jest.fn(value => value === 'tag1')
+    const validate = jest.fn(value => value === 'tag1');
     renderWithTheme(
       <InputChips
         onChange={onChangeMock}
@@ -187,25 +187,25 @@ tag2`
         onValidationFail={onValidationFailMock}
         onDuplicate={onDuplicateMock}
       />
-    )
-    const input = screen.getByPlaceholderText('type here')
-    fireEvent.change(input, { target: { value: 'tag2,' } })
+    );
+    const input = screen.getByPlaceholderText('type here');
+    fireEvent.change(input, { target: { value: 'tag2,' } });
     // onChange is not called if there are now new valid values
-    expect(onChangeMock).not.toHaveBeenCalled()
+    expect(onChangeMock).not.toHaveBeenCalled();
     // invalid value remains in the input
-    expect(input).toHaveValue('tag2')
-    expect(onValidationFailMock).toHaveBeenCalledWith(['tag2'])
+    expect(input).toHaveValue('tag2');
+    expect(onValidationFailMock).toHaveBeenCalledWith(['tag2']);
 
     // value should be trimmed before validation
-    fireEvent.change(input, { target: { value: ' tag1,' } })
-    expect(onChangeMock).toHaveBeenCalledTimes(1)
-    expect(onChangeMock).toHaveBeenCalledWith(['tag1'])
-    expect(input).toHaveValue('')
-  })
+    fireEvent.change(input, { target: { value: ' tag1,' } });
+    expect(onChangeMock).toHaveBeenCalledTimes(1);
+    expect(onChangeMock).toHaveBeenCalledWith(['tag1']);
+    expect(input).toHaveValue('');
+  });
 
   describe('formatInputValue', () => {
     test('false', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -214,15 +214,15 @@ tag2`
           placeholder="type here"
           formatInputValue={false}
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
-      fireEvent.change(input, { target: { value: '  no trim  ,' } })
-      expect(onChangeMock).toHaveBeenCalledWith(['  no trim  '])
-      expect(input).toHaveValue('')
-    })
+      );
+      const input = screen.getByPlaceholderText('type here');
+      fireEvent.change(input, { target: { value: '  no trim  ,' } });
+      expect(onChangeMock).toHaveBeenCalledWith(['  no trim  ']);
+      expect(input).toHaveValue('');
+    });
 
     test('custom', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -231,17 +231,17 @@ tag2`
           placeholder="type here"
           formatInputValue={(value: string) => value.toUpperCase()}
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
-      fireEvent.change(input, { target: { value: '  no trim  ,' } })
-      expect(onChangeMock).toHaveBeenCalledWith(['  NO TRIM  '])
-      expect(input).toHaveValue('')
-    })
-  })
+      );
+      const input = screen.getByPlaceholderText('type here');
+      fireEvent.change(input, { target: { value: '  no trim  ,' } });
+      expect(onChangeMock).toHaveBeenCalledWith(['  NO TRIM  ']);
+      expect(input).toHaveValue('');
+    });
+  });
 
   test('duplicate values are not added', () => {
-    const onChangeMock = jest.fn()
-    const onDuplicateMock = jest.fn()
+    const onChangeMock = jest.fn();
+    const onDuplicateMock = jest.fn();
 
     renderWithTheme(
       <InputChips
@@ -250,31 +250,31 @@ tag2`
         placeholder="type here"
         onDuplicate={onDuplicateMock}
       />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
 
     // value should be trimmed before validation
-    fireEvent.change(input, { target: { value: ' tag1,' } })
-    expect(onChangeMock).toHaveBeenCalledTimes(0)
-    expect(onDuplicateMock).toHaveBeenCalledWith(['tag1'])
-    expect(input).toHaveValue('tag1')
-  })
+    fireEvent.change(input, { target: { value: ' tag1,' } });
+    expect(onChangeMock).toHaveBeenCalledTimes(0);
+    expect(onDuplicateMock).toHaveBeenCalledWith(['tag1']);
+    expect(input).toHaveValue('tag1');
+  });
 
   test('escaped commas and tabs are preserved', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
 
     renderWithTheme(
       <InputChips onChange={onChangeMock} values={[]} placeholder="type here" />
-    )
-    const input = screen.getByPlaceholderText('type here')
+    );
+    const input = screen.getByPlaceholderText('type here');
 
-    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,' } })
-    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2'])
-  })
+    fireEvent.change(input, { target: { value: 'tag\\,1,tag\\	2,' } });
+    expect(onChangeMock).toHaveBeenCalledWith(['tag,1', 'tag	2']);
+  });
 
   describe('removeOnBackspace', () => {
     test('true by default', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -282,18 +282,18 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
+      );
+      const input = screen.getByPlaceholderText('type here');
 
       fireEvent.keyDown(input, {
         key: 'Backspace',
-      })
+      });
 
-      expect(onChangeMock).toHaveBeenCalledWith(['foo'])
-    })
+      expect(onChangeMock).toHaveBeenCalledWith(['foo']);
+    });
 
     test('false', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -302,19 +302,19 @@ tag2`
           placeholder="type here"
           removeOnBackspace={false}
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
+      );
+      const input = screen.getByPlaceholderText('type here');
 
       fireEvent.keyDown(input, {
         key: 'Backspace',
-      })
+      });
 
-      expect(onChangeMock).not.toHaveBeenCalled()
-    })
-  })
+      expect(onChangeMock).not.toHaveBeenCalled();
+    });
+  });
 
   test('mousedown on a chip does not focus the inner input', () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers();
 
     renderWithTheme(
       <InputChips
@@ -322,25 +322,25 @@ tag2`
         values={['foo', 'bar']}
         placeholder="type here"
       />
-    )
+    );
 
-    const chip = screen.getByText('bar')
-    const deleteButton = screen.getAllByText('Delete')[0]
-    const input = screen.getByPlaceholderText('type here')
+    const chip = screen.getByText('bar');
+    const deleteButton = screen.getAllByText('Delete')[0];
+    const input = screen.getByPlaceholderText('type here');
 
-    fireEvent.mouseDown(chip)
-    expect(input).not.toHaveFocus()
+    fireEvent.mouseDown(chip);
+    expect(input).not.toHaveFocus();
 
     // Focus should move _after_ delete button is clicked
-    fireEvent.click(deleteButton)
-    expect(input).toHaveFocus()
+    fireEvent.click(deleteButton);
+    expect(input).toHaveFocus();
 
-    jest.runOnlyPendingTimers()
-    jest.useRealTimers()
-  })
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
 
   test('mousedown on clear button does not focus the inner input', () => {
-    jest.useFakeTimers()
+    jest.useFakeTimers();
 
     renderWithTheme(
       <InputChips
@@ -348,36 +348,36 @@ tag2`
         values={['foo', 'bar']}
         placeholder="type here"
       />
-    )
+    );
 
-    const clear = screen.getByText('Clear Field')
-    const input = screen.getByPlaceholderText('type here')
+    const clear = screen.getByText('Clear Field');
+    const input = screen.getByPlaceholderText('type here');
 
-    fireEvent.mouseDown(clear)
-    expect(input).not.toHaveFocus()
+    fireEvent.mouseDown(clear);
+    expect(input).not.toHaveFocus();
 
     // Focus should move _after_ clear button is clicked
-    fireEvent.click(clear)
-    expect(input).toHaveFocus()
+    fireEvent.click(clear);
+    expect(input).toHaveFocus();
 
-    jest.runOnlyPendingTimers()
-    jest.useRealTimers()
-  })
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
 
   describe('Selecting chips', () => {
     // Utils to check for selected values
     function hasSelectedValues(values: string[]) {
-      const selectedChips = screen.getAllByRole('option', { selected: true })
-      expect(selectedChips).toHaveLength(values.length)
+      const selectedChips = screen.getAllByRole('option', { selected: true });
+      expect(selectedChips).toHaveLength(values.length);
       values.forEach((value, index) => {
-        expect(selectedChips[index]).toHaveTextContent(value)
-      })
-      expect(screen.getByTestId('hidden-input')).toHaveValue(values.join(','))
+        expect(selectedChips[index]).toHaveTextContent(value);
+      });
+      expect(screen.getByTestId('hidden-input')).toHaveValue(values.join(','));
     }
     function hasNoSelectedValues() {
       expect(
         screen.queryByRole('option', { selected: true })
-      ).not.toBeInTheDocument()
+      ).not.toBeInTheDocument();
     }
 
     test('arrow keys', () => {
@@ -387,34 +387,34 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      );
+      const input = screen.getByPlaceholderText('type here');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
       fireEvent.keyDown(input, {
         key: 'ArrowLeft',
-      })
+      });
       // Focus has moved to the hidden input
-      expect(hiddenInput).toHaveFocus()
-      hasSelectedValues(['bar'])
+      expect(hiddenInput).toHaveFocus();
+      hasSelectedValues(['bar']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowLeft',
-      })
-      hasSelectedValues(['foo'])
+      });
+      hasSelectedValues(['foo']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowRight',
-      })
-      hasSelectedValues(['bar'])
+      });
+      hasSelectedValues(['bar']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowRight',
-      })
+      });
       // Focus moves back to the main input
-      expect(input).toHaveFocus()
-      hasNoSelectedValues()
-    })
+      expect(input).toHaveFocus();
+      hasNoSelectedValues();
+    });
 
     test('arrow + shift keys', () => {
       renderWithTheme(
@@ -423,44 +423,44 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      );
+      const input = screen.getByPlaceholderText('type here');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
       fireEvent.keyDown(input, {
         key: 'ArrowLeft',
         shiftKey: true,
-      })
-      hasSelectedValues(['bar'])
+      });
+      hasSelectedValues(['bar']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowLeft',
         shiftKey: true,
-      })
-      hasSelectedValues(['foo', 'bar'])
+      });
+      hasSelectedValues(['foo', 'bar']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowRight',
         shiftKey: true,
-      })
+      });
       // Focus moves back to the main input
-      expect(input).toHaveFocus()
-      hasNoSelectedValues()
+      expect(input).toHaveFocus();
+      hasNoSelectedValues();
 
       // Move to the first value
       fireEvent.keyDown(input, {
         key: 'ArrowLeft',
-      })
+      });
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowLeft',
-      })
+      });
       // Then select both values with ArrowRight + shift
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowRight',
         shiftKey: true,
-      })
-      hasSelectedValues(['foo', 'bar'])
-    })
+      });
+      hasSelectedValues(['foo', 'bar']);
+    });
 
     test('cmd/ctrl + a', () => {
       renderWithTheme(
@@ -469,32 +469,32 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
-      const input = screen.getByPlaceholderText('type here')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      );
+      const input = screen.getByPlaceholderText('type here');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
       fireEvent.keyDown(input, {
         key: 'a',
-      })
-      hasNoSelectedValues()
+      });
+      hasNoSelectedValues();
 
       fireEvent.keyDown(hiddenInput, {
         ctrlKey: true,
         key: 'a',
-      })
-      hasSelectedValues(['foo', 'bar'])
+      });
+      hasSelectedValues(['foo', 'bar']);
 
       fireEvent.keyDown(hiddenInput, {
         key: 'ArrowRight',
-      })
-      hasNoSelectedValues()
+      });
+      hasNoSelectedValues();
 
       fireEvent.keyDown(hiddenInput, {
         key: 'a',
         metaKey: true,
-      })
-      hasSelectedValues(['foo', 'bar'])
-    })
+      });
+      hasSelectedValues(['foo', 'bar']);
+    });
 
     test('clicking', () => {
       renderWithTheme(
@@ -503,45 +503,45 @@ tag2`
           values={['foo', 'bar', 'baz']}
           placeholder="type here"
         />
-      )
-      const foo = screen.getByText('foo')
-      const baz = screen.getByText('baz')
+      );
+      const foo = screen.getByText('foo');
+      const baz = screen.getByText('baz');
 
-      fireEvent.click(foo)
-      hasSelectedValues(['foo'])
-      fireEvent.click(baz)
-      hasSelectedValues(['baz'])
+      fireEvent.click(foo);
+      hasSelectedValues(['foo']);
+      fireEvent.click(baz);
+      hasSelectedValues(['baz']);
       // command key toggles values
-      fireEvent.click(foo, { metaKey: true })
-      hasSelectedValues(['foo', 'baz'])
-      fireEvent.click(baz, { metaKey: true })
-      hasSelectedValues(['foo'])
+      fireEvent.click(foo, { metaKey: true });
+      hasSelectedValues(['foo', 'baz']);
+      fireEvent.click(baz, { metaKey: true });
+      hasSelectedValues(['foo']);
 
-      const input = screen.getByPlaceholderText('type here')
-      fireEvent.focus(input)
-      hasNoSelectedValues()
+      const input = screen.getByPlaceholderText('type here');
+      fireEvent.focus(input);
+      hasNoSelectedValues();
 
-      fireEvent.click(baz)
-      hasSelectedValues(['baz'])
+      fireEvent.click(baz);
+      hasSelectedValues(['baz']);
       // control key toggles values
-      fireEvent.click(foo, { ctrlKey: true })
-      hasSelectedValues(['foo', 'baz'])
-      fireEvent.click(baz, { ctrlKey: true })
-      hasSelectedValues(['foo'])
+      fireEvent.click(foo, { ctrlKey: true });
+      hasSelectedValues(['foo', 'baz']);
+      fireEvent.click(baz, { ctrlKey: true });
+      hasSelectedValues(['foo']);
 
-      fireEvent.focus(input)
-      hasNoSelectedValues()
+      fireEvent.focus(input);
+      hasNoSelectedValues();
 
-      fireEvent.click(baz)
+      fireEvent.click(baz);
       // shift key selects everything between
-      fireEvent.click(foo, { shiftKey: true })
-      hasSelectedValues(['foo', 'bar', 'baz'])
-    })
-  })
+      fireEvent.click(foo, { shiftKey: true });
+      hasSelectedValues(['foo', 'bar', 'baz']);
+    });
+  });
 
   describe('copying / removing selected chips', () => {
     test('delete & backspace keys', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -549,26 +549,26 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
+      );
 
-      const foo = screen.getByText('foo')
-      const bar = screen.getByText('bar')
-      const input = screen.getByPlaceholderText('type here')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      const foo = screen.getByText('foo');
+      const bar = screen.getByText('bar');
+      const input = screen.getByPlaceholderText('type here');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
-      fireEvent.click(foo)
-      expect(hiddenInput).toHaveFocus()
-      fireEvent.keyDown(hiddenInput, { key: 'Delete' })
-      expect(onChangeMock).toHaveBeenCalledWith(['bar'])
-      expect(input).toHaveFocus()
+      fireEvent.click(foo);
+      expect(hiddenInput).toHaveFocus();
+      fireEvent.keyDown(hiddenInput, { key: 'Delete' });
+      expect(onChangeMock).toHaveBeenCalledWith(['bar']);
+      expect(input).toHaveFocus();
 
-      fireEvent.click(bar)
-      fireEvent.keyDown(hiddenInput, { key: 'Backspace' })
-      expect(onChangeMock).toHaveBeenCalledWith(['foo'])
-    })
+      fireEvent.click(bar);
+      fireEvent.keyDown(hiddenInput, { key: 'Backspace' });
+      expect(onChangeMock).toHaveBeenCalledWith(['foo']);
+    });
 
     test('copy', () => {
-      document.execCommand = jest.fn()
+      document.execCommand = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -576,19 +576,19 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
+      );
 
-      const foo = screen.getByText('foo')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      const foo = screen.getByText('foo');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
-      fireEvent.click(foo)
-      fireEvent.keyDown(hiddenInput, { key: 'c', metaKey: true })
-      expect(document.execCommand).toHaveBeenCalledWith('copy')
-    })
+      fireEvent.click(foo);
+      fireEvent.keyDown(hiddenInput, { key: 'c', metaKey: true });
+      expect(document.execCommand).toHaveBeenCalledWith('copy');
+    });
 
     test('cut', () => {
-      document.execCommand = jest.fn()
-      const onChangeMock = jest.fn()
+      document.execCommand = jest.fn();
+      const onChangeMock = jest.fn();
 
       renderWithTheme(
         <InputChips
@@ -596,17 +596,17 @@ tag2`
           values={['foo', 'bar']}
           placeholder="type here"
         />
-      )
+      );
 
-      const foo = screen.getByText('foo')
-      const hiddenInput = screen.getByTestId('hidden-input')
+      const foo = screen.getByText('foo');
+      const hiddenInput = screen.getByTestId('hidden-input');
 
-      fireEvent.click(foo)
-      fireEvent.keyDown(hiddenInput, { ctrlKey: true, key: 'x' })
-      expect(document.execCommand).toHaveBeenCalledWith('copy')
-      expect(onChangeMock).toHaveBeenCalledWith(['bar'])
-    })
-  })
+      fireEvent.click(foo);
+      fireEvent.keyDown(hiddenInput, { ctrlKey: true, key: 'x' });
+      expect(document.execCommand).toHaveBeenCalledWith('copy');
+      expect(onChangeMock).toHaveBeenCalledWith(['bar']);
+    });
+  });
 
   test('formatChip', () => {
     renderWithTheme(
@@ -618,15 +618,27 @@ tag2`
           'example@example.com',
         ]}
         formatChip={(value: string) => {
-          const option = parseOption(value)
-          return option.label || option.value
+          const option = parseOption(value);
+          return option.label || option.value;
         }}
       />
-    )
+    );
 
-    const chips = screen.getAllByRole('option')
-    expect(chips[0]).toHaveTextContent('Foo Bar')
-    expect(chips[1]).toHaveTextContent('Baz Qux')
-    expect(chips[2]).toHaveTextContent('example@example.com')
-  })
-})
+    const chips = screen.getAllByRole('option');
+    expect(chips[0]).toHaveTextContent('Foo Bar');
+    expect(chips[1]).toHaveTextContent('Baz Qux');
+    expect(chips[2]).toHaveTextContent('example@example.com');
+  });
+
+  test('latest values passed to onBlur', () => {
+    const onBlurMock = jest.fn();
+    renderWithTheme(
+      <InputChips onChange={() => null} values={[]} onBlur={onBlurMock} />
+    );
+    const input = screen.getByRole('textbox');
+    fireEvent.change(input, { target: { value: 'tag1' } });
+    fireEvent.blur(input);
+
+    expect(onBlurMock.mock.calls[0][1]).toEqual(['tag1']);
+  });
+});

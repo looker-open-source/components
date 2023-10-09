@@ -50,13 +50,13 @@
 
  */
 
-import { getFallbackElement, getTabStops } from '../../utils/getNextFocus'
+import { getFallbackElement, getTabStops } from '../../utils/getNextFocus';
 
 export const itemSelector =
-  '[role="treeitem"]:not(:disabled),[role="listitem"]:not(:disabled),[role="menuitem"]:not(:disabled)'
+  '[role="treeitem"]:not(:disabled),[role="listitem"]:not(:disabled),[role="menuitem"]:not(:disabled)';
 
 export const getItems = (ref: HTMLElement): HTMLElement[] =>
-  Array.from(ref.querySelectorAll(itemSelector))
+  Array.from(ref.querySelectorAll(itemSelector));
 
 /**
  * Returns the next focusable inside an element in a given direction
@@ -68,45 +68,46 @@ export const getNextItemFocus = (
   element: HTMLElement,
   vertical?: boolean
 ) => {
-  const items = getItems(element)
-  const focusedElement = document.activeElement
+  const items = getItems(element);
+  const focusedElement = document.activeElement;
 
   if (items.length > 0 && focusedElement instanceof HTMLElement) {
-    const isItemFocused = focusedElement && items.includes(focusedElement)
+    const isItemFocused = focusedElement && items.includes(focusedElement);
     const closestWrapper = focusedElement?.closest(
       'li:not(:disabled),[role=group]:not(:disabled)'
-    )
+    );
 
     if (closestWrapper instanceof HTMLElement) {
       if (vertical) {
         const target = isItemFocused
           ? focusedElement
-          : closestWrapper.querySelector(itemSelector)
+          : closestWrapper.querySelector(itemSelector);
 
-        const next = items.findIndex(el => el === target) + direction
+        const next = items.findIndex(el => el === target) + direction;
 
         if (next === items.length || !items[next]) {
-          return getFallbackElement(direction, element, items)
+          return getFallbackElement(direction, element, items);
         }
 
-        return items[next]
+        return items[next];
       } else if (vertical === false) {
         const tabStops = getTabStops(
           closestWrapper,
           'a,input,button:not(:disabled),[tabindex="0"],[tabindex="-1"]:not(:disabled)'
-        )
+        );
 
-        const next = tabStops.findIndex(el => el === focusedElement) + direction
+        const next =
+          tabStops.findIndex(el => el === focusedElement) + direction;
 
         if (next === tabStops.length || !tabStops[next]) {
-          return getFallbackElement(direction, focusedElement, tabStops)
+          return getFallbackElement(direction, focusedElement, tabStops);
         }
 
-        return tabStops[next]
+        return tabStops[next];
       }
     }
   }
 
   // Tabbing to a Tree should trigger this fallback condition
-  return getFallbackElement(direction, element, items)
-}
+  return getFallbackElement(direction, element, items);
+};

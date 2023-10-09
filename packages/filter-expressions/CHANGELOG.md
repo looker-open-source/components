@@ -1,3 +1,10 @@
+## 1.0.4 (2023-09-20)
+
+### Bug Fixes
+
+- Filters handle number type custom fields b/285598151
+- Escape backslash inside quotes in string filter b/270200431
+
 # 1.0.2 (2023-01-26)
 
 ### Bug Fixes

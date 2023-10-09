@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { FormEvent } from 'react'
+import React from 'react';
+import type { ChangeEvent } from 'react';
 import type {
   CArea,
   CBar,
@@ -12,9 +12,9 @@ import type {
   CScatter,
   CTable,
   CSeriesBasic,
-} from '@looker/visualizations-adapters'
-import has from 'lodash/has'
-import { FieldToggleSwitch } from '@looker/components'
+} from '@looker/visualizations-adapters';
+import has from 'lodash/has';
+import { FieldToggleSwitch } from '@looker/components';
 
 /**
  * A list of relevant charts that access this configuration
@@ -25,7 +25,7 @@ export type CVisibleSupported =
   | CColumn
   | CLine
   | CScatter
-  | CTable
+  | CTable;
 
 const renderFor: Array<CVisibleSupported['type']> = [
   'area',
@@ -34,26 +34,29 @@ const renderFor: Array<CVisibleSupported['type']> = [
   'line',
   'scatter',
   'table',
-]
+];
 
 export type SeriesVisibleProps = {
-  chartType: CVisibleSupported['type']
-  series: CSeriesBasic
-  onSeriesChange: (series: CSeriesBasic) => void
-}
+  chartType: CVisibleSupported['type'];
+  series: CSeriesBasic;
+  onSeriesChange: (series: CSeriesBasic) => void;
+};
 
 export const SeriesVisible = (props: SeriesVisibleProps) => {
-  const { chartType, series, onSeriesChange } = props
+  const { chartType, series, onSeriesChange } = props;
 
   if (!renderFor.includes(chartType) && !has(series, 'visible')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
-    const draft = { ...series, visible: (e.target as HTMLInputElement).checked }
-    onSeriesChange(draft)
-  }
+  const handleChange = (e: ChangeEvent) => {
+    const draft = {
+      ...series,
+      visible: (e.target as HTMLInputElement).checked,
+    };
+    onSeriesChange(draft);
+  };
 
   return (
     <FieldToggleSwitch
@@ -61,5 +64,5 @@ export const SeriesVisible = (props: SeriesVisibleProps) => {
       onChange={handleChange}
       on={!!series.visible}
     />
-  )
-}
+  );
+};

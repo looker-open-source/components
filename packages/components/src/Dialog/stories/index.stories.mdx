@@ -1,14 +1,14 @@
-import { Dialog } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyAnimationCallbacks from '!!raw-loader!./AnimationCallbacks'
-import storyBasic from '!!raw-loader!./Basic'
-import storyControlled from '!!raw-loader!./Controlled'
-import storyHeight from '!!raw-loader!./Height'
-import storyMediumContent from '!!raw-loader!./MediumContent'
-import storyPlacementCover from '!!raw-loader!./PlacementCover'
-import storyPlacementTop from '!!raw-loader!./PlacementTop'
-import storyUseDialog from '!!raw-loader!./UseDialog'
+import { Dialog } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyAnimationCallbacks from './AnimationCallbacks?raw';
+import storyBasic from './Basic?raw';
+import storyControlled from './Controlled?raw';
+import storyHeight from './Height?raw';
+import storyMediumContent from './MediumContent?raw';
+import storyPlacementCover from './PlacementCover?raw';
+import storyPlacementTop from './PlacementTop?raw';
+import storyUseDialog from './UseDialog?raw';
 
 <Meta component={Dialog} title="Docs/Dialog" />
 
@@ -95,20 +95,20 @@ Determines how surface is positioned in the the viewport.
 ## DialogContext
 
 ```js static
-import React, { useContext } from 'react'
-import { Button, DialogContext } from '@looker/components'
+import React, { useContext } from 'react';
+import { Button, DialogContext } from '@looker/components';
 
 export function DialogContextDemo() {
   return (
     <DialogContext.Consumer>
       {({ close }) => <Button onClick={close}>Close!</Button>}
     </DialogContext.Consumer>
-  )
+  );
 }
 
 export function DailogUseContextDemo() {
-  const { close } = useContext(DialogContext)
-  return <Button onClick={close}>Close!</Button>
+  const { close } = useContext(DialogContext);
+  return <Button onClick={close}>Close!</Button>;
 }
 ```
 
@@ -124,18 +124,17 @@ in `ComponentsProvider`, which manage competing scroll locks and focus traps fro
 In rare cases, such as nesting a popover from another library inside a `Dialog`, you may need to temporarily disable these behaviors:
 
 ```js static
-import { ScrollLockContext } from '@looker/components-providers'
-import { useContext } from 'react'
+import { ScrollLockContext } from '@looker/components-providers';
+import { useContext } from 'react';
 
-const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } = useContext(
-  ScrollLockContext
-)
+const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } =
+  useContext(ScrollLockContext);
 
 function toggleScrollLock() {
   if (activeTrapRef && activeTrapRef.current) {
-    disableCurrentTrap()
+    disableCurrentTrap();
   } else {
-    enableCurrentTrap()
+    enableCurrentTrap();
   }
 }
 ```

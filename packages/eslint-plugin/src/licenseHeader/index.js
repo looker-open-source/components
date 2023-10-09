@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-const path = require('path')
-const readPkgUp = require('read-pkg-up')
-const deriveLintErrorCode = require('./deriveLintErrorCode')
+const path = require('path');
+const readPkgUp = require('read-pkg-up');
+const deriveLintErrorCode = require('./deriveLintErrorCode');
 
 module.exports = {
   overrides: [
@@ -36,27 +36,27 @@ module.exports = {
       create(context) {
         const { packageJson } = readPkgUp.sync({
           cwd: path.dirname(context.getFilename()),
-        })
+        });
 
-        const sourceCode = context.getSourceCode()
+        const sourceCode = context.getSourceCode();
 
         return {
           Program: node => {
             if (packageJson.private) {
-              return
+              return;
             }
 
-            const headerComments = sourceCode.getCommentsBefore(node)
+            const headerComments = sourceCode.getCommentsBefore(node);
 
             const sourceLineCount = sourceCode.getLocFromIndex(
               sourceCode.getText().length
-            ).line
+            ).line;
 
             const { lintErrors, currentLicenseHeaderNode, draftLicenseHeader } =
               deriveLintErrorCode({
                 headerComments,
                 sourceLineCount,
-              })
+              });
 
             lintErrors.forEach(messageId => {
               context.report({
@@ -69,19 +69,19 @@ module.exports = {
                     return fixer.replaceText(
                       currentLicenseHeaderNode,
                       draftLicenseHeader
-                    )
+                    );
                   } else {
                     return fixer.insertTextBefore(
                       sourceCode.getFirstToken(node),
                       draftLicenseHeader + '\n\n'
-                    )
+                    );
                   }
                 },
-              })
-            })
+              });
+            });
           },
-        }
+        };
       },
     },
   },
-}
+};

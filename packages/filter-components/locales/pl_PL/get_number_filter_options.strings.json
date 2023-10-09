@@ -1,15 +1,15 @@
 {
   "exclusive": {
-    "value": "[wyłącznie]"
+    "value": "(przedział otwarty)"
   },
   "inclusive": {
-    "value": "[włącznie]"
+    "value": "[przedział domknięty]"
   },
   "is": {
     "value": "jest"
   },
   "is between": {
-    "value": "jest między"
+    "value": "jest pomiędzy"
   },
   "is greater": {
     "value": "jest >"
@@ -27,7 +27,7 @@
     "value": "nie jest"
   },
   "is not between": {
-    "value": "nie jest między"
+    "value": "nie jest pomiędzy"
   },
   "is not null": {
     "value": "nie ma wartości null"
@@ -36,9 +36,9 @@
     "value": "ma wartość null"
   },
   "left exclusive": {
-    "value": "[pozostałe — wyłącznie]"
+    "value": "(przedział lewostronnie otwarty]"
   },
   "right exclusive": {
-    "value": "[prawidłowe — wyłącznie]"
+    "value": "[przedział prawostronnie otwarty)"
   }
 }

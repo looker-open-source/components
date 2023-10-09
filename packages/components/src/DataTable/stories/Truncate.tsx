@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { DataTableItem, DataTableCell, DataTable, Truncate } from '../..'
-import type { DataTableColumns } from '../../'
+import React from 'react';
+import { DataTableItem, DataTableCell, DataTable, Truncate } from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function Basic() {
   const columns: DataTableColumns = [
@@ -20,7 +20,7 @@ export default function Basic() {
       title: 'Description',
       type: 'string',
     },
-  ]
+  ];
 
   return (
     <DataTable caption="Cheeses example" columns={columns}>
@@ -51,5 +51,5 @@ export default function Basic() {
         </DataTableCell>
       </DataTableItem>
     </DataTable>
-  )
+  );
 }

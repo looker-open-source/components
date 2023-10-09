@@ -24,7 +24,7 @@
 
  */
 
-import type { Fields } from '../types'
+import type { Fields } from '../types';
 
 export const mockFields: Fields = {
   measures: [
@@ -83,7 +83,7 @@ export const mockFields: Fields = {
     },
   ],
   pivots: [],
-}
+};
 
 export const mockFieldsRowTotals: Fields = {
   measures: [
@@ -192,7 +192,7 @@ export const mockFieldsRowTotals: Fields = {
       },
     },
   ],
-}
+};
 
 export const mockPivotedFields: Fields = {
   measures: [
@@ -287,4 +287,4 @@ export const mockPivotedFields: Fields = {
       },
     },
   ],
-}
+};

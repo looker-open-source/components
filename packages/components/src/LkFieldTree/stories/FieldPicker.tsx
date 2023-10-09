@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ParagraphProps } from '../..'
-import { Aside, Box2, Paragraph } from '../..'
-import { TreeBranch, TreeCollection } from '../../Tree'
-import { LkFieldGroupTree, LkFieldViewTree } from '..'
-import { FieldPickerItem } from './FieldPickerItem'
+import React from 'react';
+import type { ParagraphProps } from '../..';
+import { Aside, Box2, Paragraph } from '../..';
+import { TreeBranch, TreeCollection } from '../../Tree';
+import { LkFieldGroupTree, LkFieldViewTree } from '..';
+import { FieldPickerItem } from './FieldPickerItem';
 
 const FieldGroupHeading = (props: ParagraphProps) => (
   <Paragraph
@@ -22,7 +22,7 @@ const FieldGroupHeading = (props: ParagraphProps) => (
     style={{ lineHeight: '0.75rem' }}
     {...props}
   />
-)
+);
 
 const fields = (
   <>
@@ -57,7 +57,7 @@ const fields = (
       Calc
     </FieldPickerItem>
   </>
-)
+);
 
 export const FieldPicker = () => (
   <Aside>
@@ -71,4 +71,4 @@ export const FieldPicker = () => (
       <LkFieldViewTree label={<strong>Users</strong>}>{fields}</LkFieldViewTree>
     </TreeCollection>
   </Aside>
-)
+);

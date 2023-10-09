@@ -1,4 +1,4 @@
 {
-  "Measures of type 'date' are currently not supported": "현재 '날짜' 유형의 Measure는 지원되지 않음",
+  "Measures of type 'date' are currently not supported": "'date' 유형의 측정은 현재 지원되지 않습니다.",
   "No chart found for type \"{{type}}\"": "유형 \"{{type}}\"의 차트를 찾을 수 없음"
 }

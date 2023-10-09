@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { generateTheme } from './generateTheme'
+export { generateTheme } from './generateTheme';

@@ -24,122 +24,122 @@
 
  */
 
-import { linePositioning } from './linePositioning'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
+import { linePositioning } from './linePositioning';
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures';
 
 describe('linePositioning', () => {
   test('default', () => {
-    const config = { ...mockLineConfig }
-    delete config.positioning
+    const config = { ...mockLineConfig };
+    delete config.positioning;
     expect(
       linePositioning({ config, data: mockSdkDataResponse, fields: mockFields })
         .config.positioning
-    ).toEqual('overlay')
-  })
+    ).toEqual('overlay');
+  });
 
   describe('config.positioning ===', () => {
     test('grouped', () => {
-      const config = { ...mockLineConfig, positioning: 'overlay' as const }
+      const config = { ...mockLineConfig, positioning: 'overlay' as const };
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('overlay')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('overlay');
+    });
 
     test('percent', () => {
-      const config = { ...mockLineConfig, positioning: 'percent' as const }
+      const config = { ...mockLineConfig, positioning: 'percent' as const };
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('percent')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('percent');
+    });
 
     test('stacked', () => {
-      const config = { ...mockLineConfig, positioning: 'stacked' as const }
+      const config = { ...mockLineConfig, positioning: 'stacked' as const };
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
-  })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
+  });
 
   describe('config.stacking ===', () => {
     test('grouped', () => {
-      const config = { ...mockLineConfig, stacking: 'grouped' as const }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: 'grouped' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('overlay')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('overlay');
+    });
 
     test('stacked', () => {
-      const config = { ...mockLineConfig, stacking: 'stacked' as const }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: 'stacked' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
 
     test('percent', () => {
-      const config = { ...mockLineConfig, stacking: 'percent' as const }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: 'percent' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('percent')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('percent');
+    });
 
     test('overlay', () => {
-      const config = { ...mockLineConfig, stacking: 'overlay' as const }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: 'overlay' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('overlay')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('overlay');
+    });
 
     test('normal', () => {
-      const config = { ...mockLineConfig, stacking: 'normal' as const }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: 'normal' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
 
     test("''", () => {
-      const config = { ...mockLineConfig, stacking: '' as 'overlay' }
-      delete config.positioning
+      const config = { ...mockLineConfig, stacking: '' as 'overlay' };
+      delete config.positioning;
 
       const { config: transformedConfig } = linePositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('overlay')
-    })
-  })
-})
+      });
+      expect(transformedConfig.positioning).toEqual('overlay');
+    });
+  });
+});

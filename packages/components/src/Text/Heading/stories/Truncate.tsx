@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Heading } from '../Heading'
+import React from 'react';
+import { Heading } from '../Heading';
 
 export default function Truncate() {
   return (
@@ -14,5 +14,5 @@ export default function Truncate() {
       needed to prove that this is work properly. Are we there yet? Maybe? I
       sure hope so!
     </Heading>
-  )
+  );
 }

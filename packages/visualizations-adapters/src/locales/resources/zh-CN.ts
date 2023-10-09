@@ -3,24 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { zhCN as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { zhCN as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
     Config: '配置',
     Dimensions: '维度',
     Error: '错误',
-    Measures: '度量值',
+    Measures: '测量',
     Result: '结果',
     error: '错误',
-    ok: '确认',
+    ok: '确定',
   },
   ErrorBoundary: {
-    'Something went wrong': '出错了',
+    'Something went wrong': '出了点问题',
   },
-  translation: {
-    'Row Total': '行总计',
+  KeyValueList: {
     false: 'False',
     null: '空值',
     true: 'True',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': '行总计',
   },
-}
+};
 
-export const zhCN = mergeLocaleObjects([componentsLocale], 'zh-CN', resources)
+export const zhCN = mergeLocaleObjects([componentsLocale], 'zh-CN', resources);

@@ -27,27 +27,27 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import every from 'lodash/every'
-import isMatch from 'lodash/isMatch'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../../utils'
-import { useFocusManagement } from '../utils/useFocusManagement'
-import type { ComboboxMultiCallback, ComboboxOptionObject } from '../types'
-import type { ComboboxMultiData } from '../utils/state'
+import every from 'lodash/every';
+import isMatch from 'lodash/isMatch';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../../utils';
+import { useFocusManagement } from '../utils/useFocusManagement';
+import type { ComboboxMultiCallback, ComboboxOptionObject } from '../types';
+import type { ComboboxMultiData } from '../utils/state';
 import {
   reducerMulti,
   useReducerMachine,
   ComboboxActionType,
-} from '../utils/state'
-import { ComboboxMultiContext, defaultMultiData } from '../ComboboxContext'
-import type { ComboboxCommonProps } from '../Combobox'
-import { ComboboxWrapper } from '../ComboboxWrapper'
-import type { ComboboxWrapperProps } from '../ComboboxWrapper'
-import { useComboboxRefs } from '../utils/useComboboxRefs'
-import { useComboboxToggle } from '../utils/useComboboxToggle'
-import { useScrollState } from '../utils/useScrollState'
+} from '../utils/state';
+import { ComboboxMultiContext, defaultMultiData } from '../ComboboxContext';
+import type { ComboboxCommonProps } from '../Combobox';
+import { ComboboxWrapper } from '../ComboboxWrapper';
+import type { ComboboxWrapperProps } from '../ComboboxWrapper';
+import { useComboboxRefs } from '../utils/useComboboxRefs';
+import { useComboboxToggle } from '../utils/useComboboxToggle';
+import { useScrollState } from '../utils/useScrollState';
 
 function compareOptions(
   optionsA: ComboboxOptionObject[],
@@ -55,7 +55,7 @@ function compareOptions(
 ) {
   return every(optionsA, optionA =>
     optionsB.find(optionB => isMatch(optionA, optionB))
-  )
+  );
 }
 
 export interface ComboboxMultiProps
@@ -64,11 +64,11 @@ export interface ComboboxMultiProps
   /**
    * The current option (controlled)
    */
-  values?: ComboboxOptionObject[]
+  values?: ComboboxOptionObject[];
   /**
    * The initial option (uncontrolled)
    */
-  defaultValues?: ComboboxOptionObject[]
+  defaultValues?: ComboboxOptionObject[];
 }
 
 export const ComboboxMultiInternal = forwardRef(
@@ -85,15 +85,16 @@ export const ComboboxMultiInternal = forwardRef(
       onClose,
       onOpen,
       id: propsID,
+      shouldRenderListInline,
 
       ...rest
     }: ComboboxMultiProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    const initialValues = values || defaultValues
+    const initialValues = values || defaultValues;
     const initialData: ComboboxMultiData = {
       options: initialValues || [],
-    }
+    };
 
     const [state, data, transition] = useReducerMachine(
       reducerMulti,
@@ -101,9 +102,10 @@ export const ComboboxMultiInternal = forwardRef(
         ...defaultMultiData,
         ...initialData,
       },
-      { inputValues: [], options: [] }
-    )
-    const { lastActionType, options } = data
+      { inputValues: [], options: [] },
+      shouldRenderListInline
+    );
+    const { lastActionType, options } = data;
 
     if (
       values !== undefined &&
@@ -112,18 +114,18 @@ export const ComboboxMultiInternal = forwardRef(
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
           options: values,
-        })
+        });
     }
 
-    const focusManagement = useFocusManagement(lastActionType)
+    const focusManagement = useFocusManagement(lastActionType);
 
-    const id = useID(propsID)
+    const id = useID(propsID);
 
-    const isVisible = useComboboxToggle(state, options, onOpen, onClose)
+    const isVisible = useComboboxToggle(state, options, onOpen, onClose);
 
-    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef);
 
-    const scrollState = useScrollState()
+    const scrollState = useScrollState();
 
     const context = {
       ...commonRefs,
@@ -137,18 +139,19 @@ export const ComboboxMultiInternal = forwardRef(
       openOnFocus,
       state,
       transition,
-    }
+    };
 
     return (
       <ComboboxMultiContext.Provider value={context}>
         <ComboboxWrapper id={id} {...rest} isVisible={isVisible} ref={ref} />
       </ComboboxMultiContext.Provider>
-    )
+    );
   }
-)
+);
 
 export const ComboboxMulti = styled(ComboboxMultiInternal).attrs(
-  ({ display = 'flex' }) => ({
+  ({ display = 'flex', flexDirection, shouldRenderListInline }) => ({
     display,
+    flexDirection: flexDirection || (shouldRenderListInline && 'column'),
   })
-)``
+)``;

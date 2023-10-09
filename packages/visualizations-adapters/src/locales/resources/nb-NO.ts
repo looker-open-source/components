@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nbNO as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { nbNO as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Noe gikk galt',
   },
-  translation: {
-    'Row Total': 'Radsum',
+  KeyValueList: {
     false: 'falsk',
     null: 'null',
     true: 'sann',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Radsum',
   },
-}
+};
 
-export const nbNO = mergeLocaleObjects([componentsLocale], 'nb-NO', resources)
+export const nbNO = mergeLocaleObjects([componentsLocale], 'nb-NO', resources);

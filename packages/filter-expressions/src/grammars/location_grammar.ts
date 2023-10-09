@@ -23,10 +23,10 @@
  SOFTWARE.
 
  */
-import { initializer } from './common/initializer'
-import { numbers } from './common/numbers'
-import { whitespace } from './common/whitespace'
-import { userAttribute } from './user_attribute_grammar'
+import { initializer } from './common/initializer';
+import { numbers } from './common/numbers';
+import { whitespace } from './common/whitespace';
+import { userAttribute } from './user_attribute_grammar';
 
 // Location Filter Grammar
 // ==========================
@@ -99,7 +99,7 @@ LON = number {
 	return value
 }
 COMMA = ","
-`
+`;
 
 export const locationGrammar = [
   initializer,
@@ -107,4 +107,4 @@ export const locationGrammar = [
   userAttribute,
   numbers,
   whitespace,
-].join('')
+].join('');

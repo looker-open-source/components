@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import { FieldDate } from '..'
-import { Button } from '../../../../Button'
+import React, { useState } from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import { FieldDate } from '..';
+import { Button } from '../../../../Button';
 
 export default function ControlledFloatingLabelNoValue(externalLabel = true) {
-  const [today, setToday] = useState<Date | undefined>()
-  const onClickSelectToday = () => setToday(new Date())
+  const [today, setToday] = useState<Date | undefined>();
+  const onClickSelectToday = () => setToday(new Date());
   return (
     <ExtendComponentsThemeProvider
       themeCustomizations={{ defaults: { externalLabel: false } }}
@@ -23,5 +23,5 @@ export default function ControlledFloatingLabelNoValue(externalLabel = true) {
         onChange={setToday}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

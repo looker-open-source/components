@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref, FormEventHandler } from 'react'
-import React, { forwardRef, useContext, createContext } from 'react'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { SpaceHelperProps } from '../Layout'
-import { SpaceVertical } from '../Layout'
-import type { ValidationMessageProps } from './ValidationMessage'
+import type { Ref, FormEventHandler } from 'react';
+import React, { forwardRef, useContext, createContext } from 'react';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { SpaceHelperProps } from '../Layout';
+import { SpaceVertical } from '../Layout';
+import type { ValidationMessageProps } from './ValidationMessage';
 
-export type ValidationMessages = Record<string, ValidationMessageProps>
+export type ValidationMessages = Record<string, ValidationMessageProps>;
 
 export interface FormProps
   extends SpaceHelperProps,
@@ -20,21 +20,21 @@ export interface FormProps
    *  of the validated field and the value holds the information for the corresponding
    *  message and validation type.
    */
-  validationMessages?: ValidationMessages
-  onChange?: FormEventHandler<HTMLFormElement>
-  onInput?: FormEventHandler<HTMLFormElement>
-  onSubmit?: FormEventHandler<HTMLFormElement>
+  validationMessages?: ValidationMessages;
+  onChange?: FormEventHandler<HTMLFormElement>;
+  onInput?: FormEventHandler<HTMLFormElement>;
+  onSubmit?: FormEventHandler<HTMLFormElement>;
 }
 
 export interface FormContextProps {
-  validationMessages?: ValidationMessages
+  validationMessages?: ValidationMessages;
 }
 
-export const FormContext = createContext<FormContextProps>({})
+export const FormContext = createContext<FormContextProps>({});
 
 export const Form = forwardRef(
   (props: FormProps, ref: Ref<HTMLFormElement>) => {
-    const { validationMessages, ...rest } = props
+    const { validationMessages, ...rest } = props;
     return (
       <FormContext.Provider
         value={{
@@ -43,31 +43,31 @@ export const Form = forwardRef(
       >
         <SpaceVertical as="form" {...rest} ref={ref} />
       </FormContext.Provider>
-    )
+    );
   }
-)
+);
 
-Form.displayName = 'Form'
+Form.displayName = 'Form';
 
 export interface ChildProp {
-  children?: JSX.Element
+  children?: JSX.Element;
 }
 
 export interface UseFormContextProps {
-  name?: string
-  validationMessage?: ValidationMessageProps
+  name?: string;
+  validationMessage?: ValidationMessageProps;
 }
 
 export function useFormContext({
   name,
   validationMessage,
 }: UseFormContextProps) {
-  const context = useContext(FormContext)
-  let vMessage
+  const context = useContext(FormContext);
+  let vMessage;
   if (context.validationMessages && name) {
-    vMessage = context.validationMessages[name]
+    vMessage = context.validationMessages[name];
   } else if (validationMessage) {
-    vMessage = validationMessage
+    vMessage = validationMessage;
   }
-  return vMessage
+  return vMessage;
 }

@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/fi'
+import dateLocale from 'date-fns/locale/fi';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Välilehdet',
   },
-}
+};
 
-export const fiFI = mergeLocaleObjects([], 'fi-FI', resources, dateLocale)
+export const fiFI = mergeLocaleObjects([], 'fi-FI', resources, dateLocale);

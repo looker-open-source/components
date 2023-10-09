@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './PopoverContent'
+export * from './PopoverContent';

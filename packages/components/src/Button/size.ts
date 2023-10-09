@@ -30,8 +30,8 @@ import type {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-} from '@looker/design-tokens'
-import { variant } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { variant } from '@looker/design-tokens';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -40,21 +40,21 @@ export type ButtonBaseSizes =
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
 export type ButtonSizes =
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
 export interface ButtonSizeProps {
   /**
    * Defines the size of the button.
    * @default medium
    */
-  size?: ButtonBaseSizes
+  size?: ButtonBaseSizes;
 }
 
 /**
@@ -68,7 +68,7 @@ export const buttonSizeMap = {
   small: 28,
   medium: 36,
   large: 44,
-}
+};
 
 /* The size of an icon relative to the Button size inside an IconButton */
 export const iconButtonIconSizeMap = {
@@ -77,7 +77,7 @@ export const iconButtonIconSizeMap = {
   small: 'small',
   medium: 'small',
   large: 'medium',
-}
+};
 
 /* The size of an icon relative to the Button size inside a Button, ButtonOutline and ButtonTransparent */
 export const buttonIconSizeMap = {
@@ -86,7 +86,7 @@ export const buttonIconSizeMap = {
   small: 'xxsmall',
   medium: 'xsmall',
   large: 'small',
-}
+};
 
 export const buttonPadding = (
   hasIcon: boolean,
@@ -94,17 +94,17 @@ export const buttonPadding = (
 ) => {
   switch (size) {
     case 'xxsmall':
-      return 'xsmall'
+      return 'xsmall';
     case 'xsmall':
-      return 'small'
+      return 'small';
     case 'small':
-      return hasIcon ? 'small' : 'large'
+      return hasIcon ? 'small' : 'large';
     case 'medium':
     case 'large':
     default:
-      return hasIcon ? 'medium' : '1.5rem'
+      return hasIcon ? 'medium' : '1.5rem';
   }
-}
+};
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const buttonSize = variant({
@@ -131,4 +131,4 @@ export const buttonSize = variant({
       height: `${buttonSizeMap.large}px`,
     },
   },
-})
+});

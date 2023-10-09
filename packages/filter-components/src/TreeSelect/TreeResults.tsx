@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,80 +24,98 @@
 
  */
 
-import { NoMatchingFields } from './NoMatchingFields'
-import { ShortcutTree } from './ShortcutTree'
-import { Tree } from './Tree'
-import type { TreeModel } from './types'
-import { hasAnyVisibleEntry, openOrCloseNodes, searchTree } from './utils'
+import { NoMatchingFields } from './NoMatchingFields';
+import { TreeSelectContext } from './TreeSelectContext';
+import {
+  getWindowedTreeContent,
+  listItemDimensions,
+  Spinner,
+  TreeCollectionContext,
+  useWindowedOptions,
+  useWindowedTreeState,
+} from '@looker/components';
+import type { ComboboxOptionObject } from '@looker/components';
 
-import React from 'react'
+import type { TreeModel } from './types';
+import { useTreeResultsState } from './utils/use_tree_results_state';
+import type { UseTreeResultsStateResultItem } from './utils/use_tree_results_state';
+
+import React, { useContext, useMemo } from 'react';
+
+import { TREE_SELECT_DENSITY } from './Section';
+// Get the item height for the selected density
+const { height } = listItemDimensions(TREE_SELECT_DENSITY);
 
 export type TreeResultsProps = {
-  searchInputValue: string
-  tree?: TreeModel[]
-  shortcutTree?: TreeModel[]
-  onSelectedFieldChange: (fieldData: TreeModel['payload']) => void
-}
+  searchInputValue: string;
+  tree?: TreeModel[];
+  onSelectedFieldChange?: (fieldData: TreeModel['payload']) => void;
+};
 
 /**
- * TreeSelect without an associated search field.
- * This may be used in composition with a search field.
- * It may also be rendered in a popover.
+ * Results list for TreeSelect
  */
-export const TreeResults = ({
-  searchInputValue,
-  tree,
-  shortcutTree,
-  onSelectedFieldChange,
-}: TreeResultsProps) => {
-  const [stateTree, updateTree] = React.useState(tree)
+export const TreeResults = ({ searchInputValue, tree }: TreeResultsProps) => {
+  const { nodeToToggle } = useContext(TreeSelectContext);
 
-  const isNoMatch = React.useMemo(
-    () => !!searchInputValue && !hasAnyVisibleEntry(stateTree),
-    [searchInputValue, stateTree]
-  )
+  // Filters & transforms the tree as user searches & toggles sections
+  const processedTree = useTreeResultsState({
+    nodeToToggle,
+    searchInputValue,
+    tree,
+  });
 
-  React.useEffect(() => {
-    if (stateTree) {
-      updateTree(searchTree(stateTree, searchInputValue))
+  const isNoMatch = useMemo(
+    () => !!searchInputValue && !processedTree?.length,
+    [searchInputValue, processedTree]
+  );
+
+  const { map, shownIDs, toggleNode, treesWithIDs } = useWindowedTreeState({
+    trees: processedTree,
+  });
+
+  // Get a list of options for Combobox windowing behavior, including keyboard nav
+  const options: ComboboxOptionObject[] = [];
+  const addToOptions = (node: UseTreeResultsStateResultItem) => {
+    options.push(node.option);
+    if (node.isOpen) {
+      node.items?.forEach(addToOptions);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchInputValue])
+  };
+  processedTree?.forEach(addToOptions);
 
-  React.useEffect(() => {
-    if (tree) {
-      updateTree(searchTree(tree, searchInputValue))
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tree])
+  // Get the windowing properties
+  const { scrollTo, ...windowResult } = useWindowedOptions(
+    // windowing always enabled
+    options.length > 70,
+    // All visible "options"
+    options,
+    // All navigable "options"
+    // (in some other Combobox use cases, not all options can be navigated to)
+    options,
+    // false = not multi select
+    false,
+    height
+  );
 
-  const handleFieldClick = (
-    _label: string,
-    fieldData?: TreeModel['payload']
-  ) => {
-    if (fieldData) {
-      onSelectedFieldChange(fieldData)
-    }
+  if (isNoMatch) {
+    return <NoMatchingFields />;
   }
 
-  const onSectionClick = (updateNode: { id: string; isOpen: boolean }) => {
-    if (stateTree) {
-      updateTree(openOrCloseNodes(stateTree, updateNode))
-    }
+  if (!tree) {
+    return <Spinner mx="auto" />;
   }
 
-  return isNoMatch ? (
-    <NoMatchingFields />
-  ) : (
-    <>
-      {shortcutTree && (
-        <ShortcutTree tree={shortcutTree} onFieldClick={handleFieldClick} />
-      )}
-      <Tree
-        tree={stateTree}
-        onSectionClick={onSectionClick}
-        onFieldClick={handleFieldClick}
-      />
-    </>
-  )
-}
+  const content = getWindowedTreeContent({
+    ...windowResult,
+    shownIDs,
+    treesWithIDs,
+  });
+
+  return (
+    <TreeCollectionContext.Provider value={{ toggleNode, toggleStateMap: map }}>
+      {scrollTo}
+      {content}
+    </TreeCollectionContext.Provider>
+  );
+};

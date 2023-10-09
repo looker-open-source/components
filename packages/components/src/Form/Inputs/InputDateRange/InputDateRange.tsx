@@ -23,68 +23,68 @@
  SOFTWARE.
 
  */
-import type { FocusEvent, FormEvent, KeyboardEvent, Ref } from 'react'
+import type { FocusEvent, ChangeEvent, KeyboardEvent, Ref } from 'react';
 import React, {
   forwardRef,
   useEffect,
   useCallback,
   useMemo,
   useState,
-} from 'react'
-import styled from 'styled-components'
-import isFunction from 'lodash/isFunction'
-import isEmpty from 'lodash/isEmpty'
-import { isBefore, isSameDay } from 'date-fns'
-import type { Locale } from 'date-fns'
-import { CalendarToday } from '@styled-icons/material/CalendarToday'
-import { useTranslation } from '../../../utils'
-import type { RangeModifier } from '../../../Calendar/types'
-import { Calendar } from '../../../Calendar/Calendar'
-import { formatDateString, parseDateFromString } from '../../../Calendar/utils'
-import { VisuallyHidden } from '../../../VisuallyHidden'
-import { usePopover } from '../../../Popover'
-import type { InlineInputTextProps } from '../InlineInputText'
-import { InlineInputTextBase } from '../InlineInputText'
-import { InputTextContent } from '../InputText/InputTextContent'
-import { ErrorIcon } from '../ErrorIcon'
-import { IconButton } from '../../../Button/IconButton'
-import { Space } from '../../../Layout/Space'
-import { useToggle, useID } from '../../../utils/'
-import type { ValidationType } from '../../ValidationMessage'
+} from 'react';
+import styled from 'styled-components';
+import isFunction from 'lodash/isFunction';
+import isEmpty from 'lodash/isEmpty';
+import { isBefore, isSameDay } from 'date-fns';
+import type { Locale } from 'date-fns';
+import { CalendarToday } from '@styled-icons/material/CalendarToday';
+import { useTranslation } from '../../../utils';
+import type { RangeModifier } from '../../../Calendar/types';
+import { Calendar } from '../../../Calendar/Calendar';
+import { formatDateString, parseDateFromString } from '../../../Calendar/utils';
+import { VisuallyHidden } from '../../../VisuallyHidden';
+import { usePopover } from '../../../Popover';
+import type { InlineInputTextProps } from '../InlineInputText';
+import { InlineInputTextBase } from '../InlineInputText';
+import { InputTextContent } from '../InputText/InputTextContent';
+import { ErrorIcon } from '../ErrorIcon';
+import { IconButton } from '../../../Button/IconButton';
+import { Space } from '../../../Layout/Space';
+import { useToggle, useID } from '../../../utils/';
+import type { ValidationType } from '../../ValidationMessage';
 import {
   inputCSS,
   inputTextDisabled,
   inputTextFocus,
   inputTextHover,
   inputTextValidation,
-} from '../InputText'
-import { inputHeight } from '../height'
+} from '../InputText';
+import { inputHeight } from '../height';
 
 export type InputDateRangeProps = {
-  'aria-labelledby'?: string
-  dateStringFormat?: string
-  disabled?: boolean
-  id?: string
-  locale?: Locale
-  onChange: (range: RangeModifier) => void
-  onValidationFail?: (value: string) => void
-  readOnly?: boolean
-  ref?: Ref<HTMLInputElement>
-  validationType?: ValidationType
-  value: RangeModifier
-}
+  'aria-labelledby'?: string;
+  dateStringFormat?: string;
+  disabled?: boolean;
+  id?: string;
+  locale?: Locale;
+  onChange: (range: RangeModifier) => void;
+  onValidationFail?: (value: string) => void;
+  readOnly?: boolean;
+  ref?: Ref<HTMLInputElement>;
+  validationType?: ValidationType;
+  value: RangeModifier;
+};
 
-type Endpoint = keyof RangeModifier
+type Endpoint = keyof RangeModifier;
 
 const getTextForDate =
   (range?: RangeModifier, dateStringFormat?: string, locale?: Locale) =>
   (endpoint?: Endpoint) => {
-    const date = endpoint ? range?.[endpoint] : undefined
-    return formatDateString(date, dateStringFormat, locale)
-  }
+    const date = endpoint ? range?.[endpoint] : undefined;
+    return formatDateString(date, dateStringFormat, locale);
+  };
 
 const getViewMonthFromValue = (value: RangeModifier) =>
-  value.from || value.to || new Date()
+  value.from || value.to || new Date();
 
 export const InputDateRange = styled(
   // eslint-disable-next-line react/display-name
@@ -100,132 +100,133 @@ export const InputDateRange = styled(
       readOnly,
       value,
       validationType,
-    } = props
-    const { t } = useTranslation('InputDateRange')
+    } = props;
+    const { t } = useTranslation('InputDateRange');
 
-    const [viewMonth, setViewMonth] = useState(getViewMonthFromValue(value))
+    const [viewMonth, setViewMonth] = useState(getViewMonthFromValue(value));
 
-    const startDateLabelledby = `startDate-labelledby-${id}`
-    const endDateLabelledby = `endDate-labelledby-${id}`
+    const startDateLabelledby = `startDate-labelledby-${id}`;
+    const endDateLabelledby = `endDate-labelledby-${id}`;
 
     const dateTexts = useMemo(() => {
-      const getText = getTextForDate(value, dateStringFormat, locale)
+      const getText = getTextForDate(value, dateStringFormat, locale);
       return {
         from: getText('from'),
         to: getText('to'),
-      }
-    }, [value, dateStringFormat, locale])
+      };
+    }, [value, dateStringFormat, locale]);
 
     // FROM state
-    const [fromTextInputValue, setFromTextInputValue] = useState(dateTexts.from)
+    const [fromTextInputValue, setFromTextInputValue] = useState(
+      dateTexts.from
+    );
     useEffect(() => {
-      setFromTextInputValue(dateTexts.from)
-    }, [dateTexts.from])
+      setFromTextInputValue(dateTexts.from);
+    }, [dateTexts.from]);
 
-    const fromID = useID(id && `from-${id}`)
+    const fromID = useID(id && `from-${id}`);
 
     // TO state
-    const [toTextInputValue, setToTextInputValue] = useState(dateTexts.to)
+    const [toTextInputValue, setToTextInputValue] = useState(dateTexts.to);
     useEffect(() => {
-      setToTextInputValue(dateTexts.to)
-    }, [dateTexts.to])
+      setToTextInputValue(dateTexts.to);
+    }, [dateTexts.to]);
 
-    const toID = useID(id && `to-${id}`)
+    const toID = useID(id && `to-${id}`);
 
     // Based on an event's target, get the endpoint by the id attribute
     const getEndpoint = useCallback(
       ({ id }: HTMLInputElement) => {
-        return id === fromID ? 'from' : 'to'
+        return id === fromID ? 'from' : 'to';
       },
       [fromID]
-    )
+    );
 
     // Called from blur and enter key events, parse the date when user is done typing
     const updateRangeFromInput = useCallback(
       (currentTarget: HTMLInputElement) => {
-        const inputValue = currentTarget.value
-        const endpoint = getEndpoint(currentTarget)
-        let validationMessage = inputValue
-        const valueEndpoint = value[endpoint]
+        const inputValue = currentTarget.value;
+        const endpoint = getEndpoint(currentTarget);
+        let validationMessage = inputValue;
+        const valueEndpoint = value[endpoint];
 
         if (inputValue === '') {
           // empty string is valid
-          validationMessage = ''
+          validationMessage = '';
           if (valueEndpoint) {
             // Input has been cleared, remove the endpoint's date
-            const newRange = { ...value }
-            delete newRange[endpoint]
-            onChange(newRange)
+            const newRange = { ...value };
+            delete newRange[endpoint];
+            onChange(newRange);
           }
         } else {
           const parsedValue = parseDateFromString(
             inputValue,
             locale,
             dateStringFormat
-          )
+          );
           // Check if the date has changed
           if (parsedValue) {
             // string was parse-able as a date
-            const newRange = { ...value, [endpoint]: parsedValue }
+            const newRange = { ...value, [endpoint]: parsedValue };
             validationMessage =
               newRange.from &&
               newRange.to &&
               !isBefore(newRange.from, newRange.to)
                 ? 'Invalid range'
-                : ''
+                : '';
             if (!valueEndpoint || !isSameDay(valueEndpoint, parsedValue)) {
               // User has entered a new and valid date – call onChange
               // with an updated range, and update the Calendar's viewMonth
-              setViewMonth(parsedValue)
-              onChange(newRange)
+              setViewMonth(parsedValue);
+              onChange(newRange);
             }
           }
         }
         if (validationMessage && isFunction(onValidationFail)) {
-          onValidationFail(validationMessage)
+          onValidationFail(validationMessage);
         }
       },
       [dateStringFormat, getEndpoint, locale, onChange, onValidationFail, value]
-    )
+    );
 
     const handleBlur = useCallback(
       (e: FocusEvent<HTMLInputElement>) => {
-        updateRangeFromInput(e.currentTarget)
+        updateRangeFromInput(e.currentTarget);
       },
       [updateRangeFromInput]
-    )
+    );
 
     const handleKeyDown = useCallback(
       (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
           // Don't submit a form if there is one
-          e.preventDefault()
+          e.preventDefault();
           // Update values when the user hits return
-          updateRangeFromInput(e.currentTarget)
+          updateRangeFromInput(e.currentTarget);
         }
       },
       [updateRangeFromInput]
-    )
+    );
 
-    const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
-      const { currentTarget } = e
-      const { value } = currentTarget
-      const endpoint = getEndpoint(currentTarget)
+    const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const { value } = e.target;
+      const endpoint = getEndpoint(e.target);
       if (endpoint === 'from') {
-        setFromTextInputValue(value)
+        setFromTextInputValue(value);
       } else {
-        setToTextInputValue(value)
+        setToTextInputValue(value);
       }
-    }
+    };
 
     // Calendar Popover
-    const { value: isOpen, change: setOpen, toggle } = useToggle()
+    const { value: isOpen, change: setOpen, toggle } = useToggle();
     // Update the Calendar viewMonth to reflect the current value
     // each time the icon is clicked
     const handleIconClick = useCallback(() => {
-      setViewMonth(getViewMonthFromValue(value))
-      toggle()
-    }, [toggle, value])
+      setViewMonth(getViewMonthFromValue(value));
+      toggle();
+    }, [toggle, value]);
 
     const { popover, ref: popoverRef } = usePopover({
       content: (
@@ -250,7 +251,7 @@ export const InputDateRange = styled(
       ref,
       setOpen,
       triggerToggle: false,
-    })
+    });
 
     // Props shared by both inputs
     const commonInputProps: InlineInputTextProps = {
@@ -260,7 +261,7 @@ export const InputDateRange = styled(
       onChange: handleInputChange,
       onKeyDown: handleKeyDown,
       readOnly,
-    }
+    };
 
     return (
       <InputTextGroupWrapper
@@ -304,9 +305,9 @@ export const InputDateRange = styled(
         </Space>
         {popover}
       </InputTextGroupWrapper>
-    )
+    );
   })
-)``
+)``;
 
 const HyphenWrapper = styled.span<{ hasInputValues: boolean }>`
   align-items: center;
@@ -316,11 +317,11 @@ const HyphenWrapper = styled.span<{ hasInputValues: boolean }>`
   .label-down & {
     display: none;
   }
-`
+`;
 
 interface InputTextGroupWrapperProps {
-  disabled?: boolean
-  validationType?: 'error'
+  disabled?: boolean;
+  validationType?: 'error';
 }
 
 const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
@@ -358,4 +359,4 @@ const InputTextGroupWrapper = styled.div<InputTextGroupWrapperProps>`
       padding: 0 ${({ theme }) => theme.space.u2};
     }
   }
-`
+`;

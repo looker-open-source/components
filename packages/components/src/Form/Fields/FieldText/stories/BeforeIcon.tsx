@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import * as MaterialIcons from '@styled-icons/material'
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import * as MaterialIcons from '@styled-icons/material';
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function BeforeIcon(props: FieldTextProps) {
   const {
@@ -14,7 +14,7 @@ export default function BeforeIcon(props: FieldTextProps) {
     label = 'First Name',
     iconBefore = <MaterialIcons.Settings />,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldText
@@ -23,5 +23,5 @@ export default function BeforeIcon(props: FieldTextProps) {
       iconBefore={iconBefore}
       {...restProps}
     />
-  )
+  );
 }

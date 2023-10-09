@@ -27,17 +27,17 @@ import {
   closeCombobox,
   getAllComboboxOptionText,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { Filter } from '../../../../../../Filter'
+} from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { Filter } from '../../../../../../Filter';
 import {
   testField,
   testFilterUIConfig,
-} from '../../../../../../utils/filter_test_utils'
+} from '../../../../../../utils/filter_test_utils';
 
 describe('This Date filter test', () => {
-  const expression = 'this year'
+  const expression = 'this year';
   it('filter is set to this date filter type', () => {
     renderWithTheme(
       <Filter
@@ -49,9 +49,9 @@ describe('This Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
-    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is this')
-  })
+    );
+    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is this');
+  });
 
   it('should render a ThisNextLast component', () => {
     renderWithTheme(
@@ -64,12 +64,12 @@ describe('This Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    const unitsDropdown = screen.getAllByRole('textbox')[1]
-    expect(unitsDropdown).toHaveValue('year')
+    const unitsDropdown = screen.getAllByRole('textbox')[1];
+    expect(unitsDropdown).toHaveValue('year');
 
-    fireEvent.click(unitsDropdown)
+    fireEvent.click(unitsDropdown);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "day",
@@ -78,10 +78,10 @@ describe('This Date filter test', () => {
         "quarter",
         "year",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});
 
 describe('Last Date filter test', () => {
   it('filter is set to last date filter type', () => {
@@ -95,9 +95,9 @@ describe('Last Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
-    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is previous')
-  })
+    );
+    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is previous');
+  });
 
   it('should render a ThisNextLast Last component with Fiscal unit options', () => {
     renderWithTheme(
@@ -110,12 +110,12 @@ describe('Last Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    const unitsDropdown = screen.getAllByRole('textbox')[1]
-    expect(unitsDropdown).toHaveValue('fiscal year')
+    const unitsDropdown = screen.getAllByRole('textbox')[1];
+    expect(unitsDropdown).toHaveValue('fiscal year');
 
-    fireEvent.click(unitsDropdown)
+    fireEvent.click(unitsDropdown);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "second",
@@ -129,10 +129,10 @@ describe('Last Date filter test', () => {
         "fiscal quarter",
         "fiscal year",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});
 
 describe('Next Date filter test', () => {
   it('filter is set to next date filter type', () => {
@@ -146,9 +146,9 @@ describe('Next Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
-    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is next')
-  })
+    );
+    expect(screen.getAllByRole('textbox')[0]).toHaveValue('is next');
+  });
 
   it('should render a ThisNextLast Next component with Fiscal unit options', () => {
     renderWithTheme(
@@ -161,12 +161,12 @@ describe('Next Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    const unitsDropdown = screen.getAllByRole('textbox')[1]
-    expect(unitsDropdown).toHaveValue('week')
+    const unitsDropdown = screen.getAllByRole('textbox')[1];
+    expect(unitsDropdown).toHaveValue('week');
 
-    fireEvent.click(unitsDropdown)
+    fireEvent.click(unitsDropdown);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "day",
@@ -177,7 +177,7 @@ describe('Next Date filter test', () => {
         "fiscal quarter",
         "fiscal year",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});

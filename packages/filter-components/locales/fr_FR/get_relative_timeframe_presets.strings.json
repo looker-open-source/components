@@ -1,24 +1,24 @@
 {
   "Last 14 Days": {
-    "value": "14 derniers jours"
+    "value": "14 derniers jours"
   },
   "Last 180 Days": {
-    "value": "180 derniers jours"
+    "value": "180 derniers jours"
   },
   "Last 28 Days": {
-    "value": "28 derniers jours"
+    "value": "28 derniers jours"
   },
   "Last 30 Days": {
-    "value": "30 derniers jours"
+    "value": "30 derniers jours"
   },
   "Last 365 Days": {
-    "value": "365 derniers jours"
+    "value": "365 derniers jours"
   },
   "Last 7 Days": {
-    "value": "7 derniers jours"
+    "value": "7 derniers jours"
   },
   "Last 90 Days": {
-    "value": "90 derniers jours"
+    "value": "90 derniers jours"
   },
   "Previous Month": {
     "value": "Mois précédent"
@@ -33,7 +33,7 @@
     "value": "Année précédente"
   },
   "This Month": {
-    "value": "Ce mois-ci"
+    "value": "Ce mois"
   },
   "This Quarter": {
     "value": "Ce trimestre"

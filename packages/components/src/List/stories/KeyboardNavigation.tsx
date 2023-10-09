@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { IconButton, ListItem } from '../../'
-import { List } from '../'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { IconButton, ListItem } from '../../';
+import { List } from '../';
 
 export default function KeyboardNavigation() {
   return (
@@ -38,5 +38,5 @@ export default function KeyboardNavigation() {
         Gouda
       </ListItem>
     </List>
-  )
+  );
 }

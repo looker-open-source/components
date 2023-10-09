@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/uk'
+import dateLocale from 'date-fns/locale/uk';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Вкладки',
   },
-}
+};
 
-export const ukUA = mergeLocaleObjects([], 'uk-UA', resources, dateLocale)
+export const ukUA = mergeLocaleObjects([], 'uk-UA', resources, dateLocale);

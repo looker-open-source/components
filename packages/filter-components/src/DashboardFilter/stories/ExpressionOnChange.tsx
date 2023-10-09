@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Paragraph, SpaceVertical } from '@looker/components'
-import { DashboardFilter } from '../DashboardFilter'
+import React, { useState } from 'react';
+import { Paragraph, SpaceVertical } from '@looker/components';
+import { DashboardFilter } from '../DashboardFilter';
 
 export default function ExpressionOnChange() {
-  const [expression, setExpression] = useState('[0,100]')
+  const [expression, setExpression] = useState('[0,100]');
   return (
     <SpaceVertical>
       <DashboardFilter
@@ -25,5 +25,5 @@ export default function ExpressionOnChange() {
         <strong>Current filter expression:</strong> {expression}
       </Paragraph>
     </SpaceVertical>
-  )
+  );
 }

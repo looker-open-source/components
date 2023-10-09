@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './ModalLayout'
+export * from './ModalLayout';

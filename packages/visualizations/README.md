@@ -21,8 +21,8 @@ You'll also need to satisfy a few peer dependencies - Looker/components, React, 
 Looker Visualization Components are designed to be used in a React environment that has been authenticated with our [API](https://cloud.google.com/looker/docs/reference/api-and-integration/api-getting-started), using the [Javascript SDK](https://developers.looker.com/api/getting-started). That step will be handled automatically when building within the [Looker extension framework](https://cloud.google.com/looker/docs/data-modeling/extension-framework/extension-framework-intro).
 
 ```jsx
-import { Query, Visualization } from '@looker/visualizations'
-import { DataProvider } from '@looker/components-data'
+import { Query, Visualization } from '@looker/visualizations';
+import { DataProvider } from '@looker/components-data';
 ```
 
 Once authenticated, you can pass the SDK object to the `DataProvider` and a query ID (numeric) or slug (string) to the `Query` component, which will then handle the data fetching.
@@ -30,7 +30,7 @@ Once authenticated, you can pass the SDK object to the `DataProvider` and a quer
 Within the `Query` component you can render any of our [standard charts](https://cloud.google.com/looker/docs/exploring-data/visualizing-query-results/visualization-types) using the `Visualization` component. This will parse the SDK response, include any specified config overrides, and run everything through our adapters to render charts an you would expect to see inside our internal visualization builder. You can also replace `Visualization` with any custom component to recieve those same props.
 
 ```jsx
-<DataProvider sdk={core40SDK}>
+<DataProvider sdk={coreSDK}>
   // passing a string slug into the query prop:
   <Query query="evomfl66xHx1jZk2Hzvv1R">
     <Visualization />

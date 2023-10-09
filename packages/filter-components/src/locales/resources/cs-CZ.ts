@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/cs'
-import { csCZ as componentsLocale } from '@looker/components'
-import { csCZ as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/cs';
+import { csCZ as componentsLocale } from '@looker/components';
+import { csCZ as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Hodnota je povinná',
   },
-}
+  UserAttributes: {
+    placeholder: 'Vybrat...',
+  },
+};
 
 export const csCZ = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'cs-CZ',
   resources,
   dateLocale
-)
+);

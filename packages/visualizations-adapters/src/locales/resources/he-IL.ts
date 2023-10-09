@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { heIL as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { heIL as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'משהו השתבש',
   },
-  translation: {
-    'Row Total': 'סכום שורה',
+  KeyValueList: {
     false: 'לא נכון',
     null: 'ריק',
     true: 'נכון',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'סכום שורה',
   },
-}
+};
 
-export const heIL = mergeLocaleObjects([componentsLocale], 'he-IL', resources)
+export const heIL = mergeLocaleObjects([componentsLocale], 'he-IL', resources);

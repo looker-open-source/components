@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Aside, Page, Section } from '../../Layout'
-import { Panel, Panels } from '..'
-import { Button } from '../../Button'
-import { TreeCollection, Tree, TreeItem } from '../../Tree'
+import React from 'react';
+import { Aside, Page, Section } from '../../Layout';
+import { Panel, Panels } from '..';
+import { Button } from '../../Button';
+import { TreeCollection, Tree, TreeItem } from '../../Tree';
 
 export default function WithTree() {
   return (
@@ -32,5 +32,5 @@ export default function WithTree() {
       </Aside>
       <Section>Main content</Section>
     </Page>
-  )
+  );
 }

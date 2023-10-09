@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const PanelWindow = styled.div`
   bottom: 0;
@@ -14,4 +14,4 @@ export const PanelWindow = styled.div`
   position: absolute;
   width: 100%;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor};
-`
+`;

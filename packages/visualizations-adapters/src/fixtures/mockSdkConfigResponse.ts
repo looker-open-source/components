@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { RawApiConfigResponse } from '../types'
+import type { RawApiConfigResponse } from '../types';
 
 /*
  * This object represents the vis config as it is returned by our SDK. It does not match the
@@ -74,4 +74,4 @@ export const mockSdkConfigResponse: RawApiConfigResponse = {
   hidden_fields: ['orders.average_total_amount_of_order_usd'],
   hidden_pivots: {},
   custom_color: '#72D16D',
-}
+};

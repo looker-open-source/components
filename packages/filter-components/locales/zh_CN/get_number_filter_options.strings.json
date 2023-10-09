@@ -1,44 +1,44 @@
 {
   "exclusive": {
-    "value": "(不包含)"
+    "value": "（不含边界值）"
   },
   "inclusive": {
-    "value": "[包含]"
+    "value": "[含边界值]"
   },
   "is": {
-    "value": "为"
+    "value": "是"
   },
   "is between": {
-    "value": "介于"
+    "value": "介于下列二者之间："
   },
   "is greater": {
-    "value": ">"
+    "value": "大于"
   },
   "is greater equal": {
-    "value": ">="
+    "value": "大于等于"
   },
   "is less": {
-    "value": "<"
+    "value": "小于"
   },
   "is less equal": {
-    "value": "<="
+    "value": "小于等于"
   },
   "is not": {
-    "value": "不为"
+    "value": "不是"
   },
   "is not between": {
-    "value": "不介于"
+    "value": "不介于下列二者之间："
   },
   "is not null": {
-    "value": "不为空值"
+    "value": "不是 null"
   },
   "is null": {
-    "value": "为空值"
+    "value": "是 null"
   },
   "left exclusive": {
-    "value": "(左侧不包含]"
+    "value": "(不含左侧边界值]"
   },
   "right exclusive": {
-    "value": "[右侧不包含)"
+    "value": "[不含右侧边界值)"
   }
 }

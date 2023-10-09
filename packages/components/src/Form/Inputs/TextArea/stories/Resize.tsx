@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TextArea } from '../..'
+import React from 'react';
+import { TextArea } from '../..';
 
 export default function Resize() {
   return (
@@ -14,5 +14,5 @@ export default function Resize() {
       <TextArea resize={false} placeholder="no resize" />
       <TextArea resize="vertical" placeholder="only resize vertically" />
     </>
-  )
+  );
 }

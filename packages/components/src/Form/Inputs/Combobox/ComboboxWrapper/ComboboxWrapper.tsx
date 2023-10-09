@@ -9,10 +9,10 @@ import type {
   LayoutProps,
   TypographyProps,
   SpaceProps,
-} from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import { Box } from '../../../../Layout'
+} from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import { Box } from '../../../../Layout';
 
 export interface ComboboxWrapperProps
   extends FlexboxProps,
@@ -26,7 +26,7 @@ export interface ComboboxWrapperProps
   /**
    * The optional a11y aria label for combobox Wrapper element that has popup
    */
-  wrapperAriaLabel?: string
+  wrapperAriaLabel?: string;
 }
 
 export const ComboboxWrapper = forwardRef(
@@ -35,7 +35,7 @@ export const ComboboxWrapper = forwardRef(
       isVisible,
       ...rest
     }: ComboboxWrapperProps & {
-      isVisible: boolean
+      isVisible: boolean;
     },
     ref: Ref<HTMLDivElement>
   ) => {
@@ -49,6 +49,6 @@ export const ComboboxWrapper = forwardRef(
         aria-label={`${rest.wrapperAriaLabel || ''} combobox`}
         aria-expanded={isVisible}
       />
-    )
+    );
   }
-)
+);

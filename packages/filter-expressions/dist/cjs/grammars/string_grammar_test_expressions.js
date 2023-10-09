@@ -1,0 +1,199 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.stringGrammarTestItems = void 0;
+var stringGrammarTestItems = [{
+  expression: 'FOO',
+  describe: 'is FOO',
+  type: 'match',
+  output: 'FOO'
+}, {
+  expression: 'FOO,BAR',
+  describe: 'is FOO or BAR',
+  type: 'match',
+  output: 'FOO,BAR'
+}, {
+  expression: '%FOO%',
+  describe: 'contains FOO',
+  type: 'contains',
+  output: '%FOO%'
+}, {
+  expression: '%FOO%',
+  describe: 'contains FOO',
+  type: 'contains',
+  output: '%FOO%'
+}, {
+  expression: '%100^%^_^^ FOO 100^%^_^^%',
+  describe: 'contains 100%_^ FOO 100%_^',
+  type: 'contains',
+  output: '%100^%^_^^ FOO 100^%^_^^%'
+}, {
+  expression: 'FOO%',
+  describe: 'starts with FOO',
+  type: 'startsWith',
+  output: 'FOO%'
+}, {
+  expression: '100^%^_^^ FOO%',
+  describe: 'starts with 100%_^ FOO',
+  type: 'startsWith',
+  output: '100^%^_^^ FOO%'
+}, {
+  expression: '%FOO',
+  describe: 'ends with FOO',
+  type: 'endsWith',
+  output: '%FOO'
+}, {
+  expression: '%FOO 100^%^_^^',
+  describe: 'ends with FOO 100%_^',
+  type: 'endsWith',
+  output: '%FOO 100^%^_^^'
+}, {
+  expression: 'EMPTY',
+  describe: 'is blank',
+  type: 'blank',
+  output: 'EMPTY'
+}, {
+  expression: 'empty',
+  describe: 'is blank',
+  type: 'blank',
+  output: 'EMPTY'
+}, {
+  expression: 'NULL',
+  describe: 'is null',
+  type: 'null',
+  output: 'NULL'
+}, {
+  expression: 'null',
+  describe: 'is null',
+  type: 'null',
+  output: 'NULL'
+}, {
+  expression: '-FOO',
+  describe: 'is not FOO',
+  type: '!match',
+  output: '-FOO'
+}, {
+  expression: '-FOO,-BAR',
+  describe: 'is not FOO or BAR',
+  type: '!match',
+  output: '-FOO,-BAR'
+}, {
+  expression: '-%FOO%',
+  describe: 'does not contain FOO',
+  type: '!contains',
+  output: '-%FOO%'
+}, {
+  expression: '-FOO%',
+  describe: 'does not start with FOO',
+  type: '!startsWith',
+  output: '-FOO%'
+}, {
+  expression: '-%FOO',
+  describe: 'does not end with FOO',
+  type: '!endsWith',
+  output: '-%FOO'
+}, {
+  expression: '-EMPTY',
+  describe: 'is not blank',
+  type: '!blank',
+  output: '-EMPTY'
+}, {
+  expression: '-empty',
+  describe: 'is not blank',
+  type: '!blank',
+  output: '-EMPTY'
+}, {
+  expression: '-null',
+  describe: 'is not null',
+  type: '!null',
+  output: '-NULL'
+}, {
+  expression: 'FOO%,BAR',
+  describe: 'starts with FOO or is BAR',
+  type: 'startsWith',
+  output: 'FOO%,BAR'
+}, {
+  expression: 'FOO%,-FOOD',
+  describe: 'starts with FOO, and is not FOOD',
+  type: 'startsWith',
+  output: 'FOO%,-FOOD'
+}, {
+  expression: 'F%OD',
+  describe: 'F%OD',
+  type: 'other',
+  output: 'F%OD'
+}, {
+  expression: '_UF',
+  describe: '_UF',
+  type: 'other',
+  output: '_UF'
+}, {
+  expression: '  hello  ',
+  describe: 'is   hello  ',
+  type: 'match',
+  output: '^ ^ hello^ ^ ^ '
+}, {
+  expression: '',
+  describe: 'is any value',
+  type: 'match',
+  output: ''
+}, {
+  expression: 't-shirt',
+  describe: 'is t-shirt',
+  type: 'match',
+  output: 't-shirt'
+}, {
+  expression: '"t-shirt \\"new\\" style"',
+  describe: 'is "t-shirt "new" style"',
+  type: 'match',
+  output: '"t-shirt \\"new\\" style"'
+}, {
+  expression: '"100% Silk Camisole \\"Angelina Jolie\'s Favorite\\" By Mary Green"',
+  describe: 'is "100% Silk Camisole "Angelina Jolie\'s Favorite" By Mary Green"',
+  type: 'match',
+  output: '"100% Silk Camisole \\"Angelina Jolie\'s Favorite\\" By Mary Green"'
+}, {
+  expression: '"\\"DANCE\\" Tube Socks,T1418,multi-co..."',
+  describe: 'is ""DANCE" Tube Socks,T1418,multi-co..."',
+  type: 'match',
+  output: '"\\"DANCE\\" Tube Socks,T1418,multi-co..."'
+}, {
+  expression: '"Intentional^caret"',
+  describe: 'is Intentional^caret',
+  type: 'match',
+  output: '"Intentional^caret"'
+}, {
+  expression: "{{ _user_attributes['id'] }}",
+  describe: "",
+  type: 'user_attribute',
+  output: "{{ _user_attributes['id'] }}"
+}, {
+  expression: 'sub^_region',
+  describe: 'is sub_region',
+  type: 'match',
+  output: '"sub_region"'
+}, {
+  expression: '"quoted_underscore"',
+  describe: 'is quoted_underscore',
+  type: 'match',
+  output: '"quoted_underscore"'
+}, {
+  expression: 'hello^ ^ ',
+  describe: 'is hello ',
+  type: 'match',
+  output: 'hello^ ^ '
+}, {
+  expression: '^ whitespace^ ^ ',
+  describe: 'is  whitespace ',
+  type: 'match',
+  output: '^ whitespace^ ^ '
+}, {
+  expression: '%^ whitespace^ %',
+  describe: 'contains whitespace',
+  type: 'contains',
+  output: '%whitespace%'
+}];
+exports.stringGrammarTestItems = stringGrammarTestItems;
+//# sourceMappingURL=string_grammar_test_expressions.js.map

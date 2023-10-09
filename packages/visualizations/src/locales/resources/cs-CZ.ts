@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { csCZ as componentsLocale } from '@looker/components'
-import { csCZ as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { csCZ as visualizationstableLocale } from '@looker/visualizations-table'
-import { csCZ as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { csCZ as componentsLocale } from '@looker/components';
+import { csCZ as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { csCZ as visualizationstableLocale } from '@looker/visualizations-table';
+import { csCZ as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Pro typ „{{type}}“ nebyl nalezen žádný graf',
   },
-}
+};
 
 export const csCZ = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const csCZ = mergeLocaleObjects(
   ],
   'cs-CZ',
   resources
-)
+);

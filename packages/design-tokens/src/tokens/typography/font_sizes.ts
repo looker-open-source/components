@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FontSizeRamp } from '../../system'
+import type { FontSizeRamp } from '../../system';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const fontSizes: FontSizeRamp = {
@@ -17,5 +17,5 @@ export const fontSizes: FontSizeRamp = {
   small: '0.875rem',
   xsmall: '0.75rem',
   xxsmall: '0.6875rem',
-}
+};
 /* eslint-enable sort-keys */

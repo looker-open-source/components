@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { MixedBoolean } from '../../Form'
-import { Checkbox } from '../../Form'
-import { ItemTarget } from './ItemTarget'
+import React from 'react';
+import type { MixedBoolean } from '../../Form';
+import { Checkbox } from '../../Form';
+import { ItemTarget } from './ItemTarget';
 
 export interface DataTableCheckboxProps {
-  id?: string
-  checked?: MixedBoolean
-  disabled?: boolean
-  onChange?: () => void
+  id?: string;
+  checked?: MixedBoolean;
+  disabled?: boolean;
+  onChange?: () => void;
 }
 
-export const checkListProps = ['checked', 'disabled', 'onChange', 'id']
+export const checkListProps = ['checked', 'disabled', 'onChange', 'id'];
 
 export const DataTableCheckbox = ({
   id,
@@ -23,15 +23,15 @@ export const DataTableCheckbox = ({
   checked,
   disabled,
 }: DataTableCheckboxProps) => {
-  const handleCellOnClick = () => !disabled && onChange && onChange()
+  const handleCellOnClick = () => !disabled && onChange && onChange();
   const handleOnKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) =>
-    event.key === 'Enter' && event.currentTarget.click()
+    event.key === 'Enter' && event.currentTarget.click();
 
-  let ariaLabel: string | undefined = 'Select all rows'
+  let ariaLabel: string | undefined = 'Select all rows';
   if (id !== 'headerId') {
-    ariaLabel = undefined
+    ariaLabel = undefined;
   } else if (checked) {
-    ariaLabel = 'Select none'
+    ariaLabel = 'Select none';
   }
 
   return (
@@ -44,5 +44,5 @@ export const DataTableCheckbox = ({
         tabIndex={-1}
       />
     </ItemTarget>
-  )
-}
+  );
+};

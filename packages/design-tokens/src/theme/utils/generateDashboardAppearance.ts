@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Colors } from '../../color/types'
-import type { DashboardAppearance } from '../dashboardAppearance'
-import { TileTitleAlignment } from '../dashboardAppearance'
+import type { Colors } from '../../color/types';
+import type { DashboardAppearance } from '../dashboardAppearance';
+import { TileTitleAlignment } from '../dashboardAppearance';
 
 export const generateDashboardAppearance = (
   colors: Colors
@@ -25,4 +25,4 @@ export const generateDashboardAppearance = (
     title_alignment: TileTitleAlignment.center,
   },
   title: true,
-})
+});

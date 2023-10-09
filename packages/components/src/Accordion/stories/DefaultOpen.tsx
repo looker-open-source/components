@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Accordion, Fieldset, FieldText } from '../..'
+import React from 'react';
+import { Accordion, Fieldset, FieldText } from '../..';
 
 export default function DefaultOpen() {
   return (
@@ -23,5 +23,5 @@ export default function DefaultOpen() {
     >
       Advanced Options
     </Accordion>
-  )
+  );
 }

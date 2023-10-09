@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadio } from '../'
+import React from 'react';
+import { FieldRadio } from '../';
 
 export default function Error() {
   return (
@@ -14,5 +14,5 @@ export default function Error() {
       name="thumbsUp"
       validationMessage={{ message: 'This is an error', type: 'error' }}
     />
-  )
+  );
 }

@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { ListItem } from '..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { ListItem } from '..';
 
 export default function ClickEvent() {
   return (
@@ -16,5 +16,5 @@ export default function ClickEvent() {
     >
       Cheddar
     </ListItem>
-  )
+  );
 }

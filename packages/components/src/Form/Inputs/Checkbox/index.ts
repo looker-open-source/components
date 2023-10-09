@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Checkbox'
-export * from './useMixedStateCheckbox'
+export * from './Checkbox';
+export * from './useMixedStateCheckbox';

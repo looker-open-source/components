@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ruRU as componentsLocale } from '@looker/components'
-import { ruRU as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { ruRU as visualizationstableLocale } from '@looker/visualizations-table'
-import { ruRU as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ruRU as componentsLocale } from '@looker/components';
+import { ruRU as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { ruRU as visualizationstableLocale } from '@looker/visualizations-table';
+import { ruRU as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'График для типа «{{type}}» не обнаружен',
   },
-}
+};
 
 export const ruRU = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const ruRU = mergeLocaleObjects(
   ],
   'ru-RU',
   resources
-)
+);

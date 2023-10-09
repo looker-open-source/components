@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import React from 'react'
-import { FilterErrorMessage } from './FilterErrorMessage'
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import React from 'react';
+import { FilterErrorMessage } from './FilterErrorMessage';
 
 describe('FilterErrorMessage tests', () => {
   it('displays that the required filter is in an error state', () => {
@@ -22,7 +22,7 @@ describe('FilterErrorMessage tests', () => {
           },
         ]}
       />
-    )
-    expect(screen.getByText('Selection required')).toBeVisible()
-  })
-})
+    );
+    expect(screen.getByText('Selection required')).toBeVisible();
+  });
+});

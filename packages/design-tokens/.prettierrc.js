@@ -1,1 +1,1 @@
-module.exports = require('@looker/prettier-config')
+module.exports = require('@looker/prettier-config');

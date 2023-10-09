@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { ComboboxMultiProps } from '../..'
-import { Paragraph, Button, SpaceVertical } from '../../../../../'
-import { ComboboxMultiInput } from '../../ComboboxMultiInput'
-import { ComboboxMultiOption } from '../../ComboboxMultiOption'
-import { ComboboxMultiList } from '../../ComboboxList'
-import { ComboboxMulti } from '..'
+import React, { useState } from 'react';
+import type { ComboboxMultiProps } from '../..';
+import { Paragraph, Button, SpaceVertical } from '../../../../../';
+import { ComboboxMultiInput } from '../../ComboboxMultiInput';
+import { ComboboxMultiOption } from '../../ComboboxMultiOption';
+import { ComboboxMultiList } from '../../ComboboxList';
+import { ComboboxMulti } from '..';
 
 export default function ControlledInputValue(props: ComboboxMultiProps) {
   const {
@@ -17,11 +17,11 @@ export default function ControlledInputValue(props: ComboboxMultiProps) {
     values: valuesProp = [{ value: 'Apples' }],
     onChange: _onChange,
     ...restProps
-  } = props
+  } = props;
 
-  const [inputValue, setInputValue] = useState('starting value')
-  const [values, setValues] = useState(valuesProp)
-  const handleClick = () => setInputValue('bananas')
+  const [inputValue, setInputValue] = useState('starting value');
+  const [values, setValues] = useState(valuesProp);
+  const handleClick = () => setInputValue('bananas');
   return (
     <SpaceVertical width={width} align="start">
       <Paragraph>Current inputValue: {inputValue}</Paragraph>
@@ -42,5 +42,5 @@ export default function ControlledInputValue(props: ComboboxMultiProps) {
         </ComboboxMultiList>
       </ComboboxMulti>
     </SpaceVertical>
-  )
+  );
 }

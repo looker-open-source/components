@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './FieldRadioGroup'
+export * from './FieldRadioGroup';

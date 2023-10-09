@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import type { SliderProps } from '../../Inputs/Slider'
-import { Slider } from '../../Inputs/Slider'
-import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import type { SliderProps } from '../../Inputs/Slider';
+import { Slider } from '../../Inputs/Slider';
+import type { FieldProps } from '../Field';
+import { Field, omitFieldProps, pickFieldProps } from '../Field';
 
 export interface FieldSliderProps
   extends SliderProps,
@@ -18,7 +18,7 @@ export interface FieldSliderProps
 
 const FieldSliderComponent = forwardRef(
   (props: FieldSliderProps, ref: Ref<HTMLInputElement>) => {
-    const id = useID(props.id)
+    const id = useID(props.id);
     return (
       <Field data-testid="FieldSliderId" {...pickFieldProps(props)} id={id}>
         <Slider
@@ -28,10 +28,10 @@ const FieldSliderComponent = forwardRef(
           ref={ref}
         />
       </Field>
-    )
+    );
   }
-)
+);
 
-FieldSliderComponent.displayName = 'FieldSliderComponent'
+FieldSliderComponent.displayName = 'FieldSliderComponent';
 
-export const FieldSlider = styled(FieldSliderComponent)``
+export const FieldSlider = styled(FieldSliderComponent)``;

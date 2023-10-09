@@ -24,14 +24,14 @@
 
  */
 
-import styled from 'styled-components'
-import React, { useState } from 'react'
-import { BulkActions } from './BulkActions'
-import { DataTableContext } from './DataTableContext'
-import { DataTableFilters } from './Filters/DataTableFilters'
-import { Table } from './Table'
-import type { DataTableProps } from './types'
-import { allItemsSelected } from './utils/allItemsSelected'
+import styled from 'styled-components';
+import React, { useState } from 'react';
+import { BulkActions } from './BulkActions';
+import { DataTableContext } from './DataTableContext';
+import { DataTableFilters } from './Filters/DataTableFilters';
+import { Table } from './Table';
+import type { DataTableProps } from './types';
+import { allItemsSelected } from './utils/allItemsSelected';
 
 export const DataTableLayout = (props: DataTableProps) => {
   const {
@@ -43,19 +43,19 @@ export const DataTableLayout = (props: DataTableProps) => {
     firstColumnStuck: explicitFirstColumnStuck,
     onSort,
     select,
-  } = props
+  } = props;
 
   /**
    * Extract columns that the user can specify visibility on
    */
   const columnsVisibleDefault = columns
     .filter(c => c.hide === false)
-    .map(c => c.id)
+    .map(c => c.id);
 
   /**
    * An array of column IDs that should be displayed to the user
    */
-  const [columnsVisible, setColumnsVisible] = useState(columnsVisibleDefault)
+  const [columnsVisible, setColumnsVisible] = useState(columnsVisibleDefault);
 
   /**
    * Array in which each entry represents the visibility status of every available column
@@ -63,7 +63,7 @@ export const DataTableLayout = (props: DataTableProps) => {
    */
   const columnsDisplayState = columns.map(
     c => c.hide === undefined || columnsVisible.includes(c.id)
-  )
+  );
 
   /**
    * Deciding if the first column of the table should be stuck is slightly complex.
@@ -74,11 +74,11 @@ export const DataTableLayout = (props: DataTableProps) => {
    *
    */
 
-  let firstColumnStuck = Boolean(select)
+  let firstColumnStuck = Boolean(select);
   if (columnsDisplayState[0] === false) {
-    firstColumnStuck = false
+    firstColumnStuck = false;
   } else if (explicitFirstColumnStuck !== undefined) {
-    firstColumnStuck = explicitFirstColumnStuck
+    firstColumnStuck = explicitFirstColumnStuck;
   }
 
   const context = {
@@ -87,7 +87,7 @@ export const DataTableLayout = (props: DataTableProps) => {
     columnsDisplayState,
     onSort,
     select,
-  }
+  };
 
   const filters = filterInput && (
     <DataTableFilters
@@ -97,7 +97,7 @@ export const DataTableLayout = (props: DataTableProps) => {
     >
       {filterInput}
     </DataTableFilters>
-  )
+  );
 
   return (
     <DataTableContext.Provider value={context}>
@@ -115,9 +115,9 @@ export const DataTableLayout = (props: DataTableProps) => {
         />
       </div>
     </DataTableContext.Provider>
-  )
-}
+  );
+};
 
 export const DataTable = styled(DataTableLayout)<DataTableProps>`
   width: 100%;
-`
+`;

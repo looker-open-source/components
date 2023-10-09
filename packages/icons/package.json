@@ -2,8 +2,8 @@
   "name": "@looker/icons",
   "license": "MIT",
   "version": "1.5.21",
-  "main": "lib/main/index.js",
-  "module": "lib/module/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
@@ -37,10 +37,12 @@
     "h2x-types": "^1.1.0",
     "number-to-words": "^1.2.4",
     "prettier": "2.8.2",
-    "react": "16.14.0"
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "peerDependencies": {
-    "react": "16.14.0 - 18"
+    "react": "16.14.0 - 18",
+    "react-dom": "16.14.0 - 18"
   },
   "eslintConfig": {
     "root": true,

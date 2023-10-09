@@ -24,34 +24,34 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
     ' complete': ' abgeschlossen',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
-    ago: 'her',
+    ago: 'vor',
     'from now': 'ab jetzt',
     'is any time': 'ist jederzeit',
-    'is before': 'ist vor dem',
+    'is before': 'ist vor',
     'is day': 'ist {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      'ist vom {{dateTimeStart}} bis zum {{dateTimeEnd}}',
-    'is in month year': 'ist in {{month}} {{year}}',
-    'is in the last': 'ist in den letzten {{describeInterval}}',
+      'ist von {{dateTimeStart}} bis {{dateTimeEnd}}',
+    'is in month year': 'ist im {{month}} {{year}}',
+    'is in the last': 'ist im letzten {{describeInterval}}',
     'is in the year year': 'ist im Jahr {{year}}',
-    'is interval ago': 'ist {{interval}} her',
+    'is interval ago': 'ist vor {{interval}}',
     'is intervalStart intervalType for intervalEnd':
-      'ist {{intervalStart}} {{intervalType}} für {{intervalEnd}}',
+      'ist {{intervalStart}} {{intervalType}} bis {{intervalEnd}}',
     'is not null': 'ist nicht null',
     'is on dateTime': 'ist am {{dateTime}}',
-    'is on or after': 'ist am oder nach dem',
-    'is previous unitLabel': 'ist vorherige/r/s {{unitLabel}}',
+    'is on or after': 'ist am oder nach',
+    'is previous unitLabel': 'ist vorherige(s/r) {{unitLabel}}',
     'is type unitLabel': 'ist {{type}} {{unitLabel}}',
-    next: 'nächste(r/s)',
+    next: 'nächste(s/r)',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} jetzt',
-    this: 'diese(r/s)',
+    this: 'diese/dieses/dieser',
     'this startInterval to endInterval':
       'diese/r/s {{startInterval}} bis {{endInterval}}',
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
@@ -75,8 +75,8 @@ const resources = {
     'lon degrees west': '{{lon}}°W',
   },
   describe_number: {
-    'is in range range': 'befindet sich im Bereich {{range}}',
-    'is not in range range': 'befindet sich nicht im Bereich {{range}}',
+    'is in range range': 'ist im Bereich {{range}}',
+    'is not in range range': 'ist nicht im Bereich {{range}}',
   },
   describe_string: {
     blank: 'leer',
@@ -109,25 +109,25 @@ const resources = {
   },
   get_unit_label: {
     'complete day': 'vollständiger Tag',
-    'complete days': 'vollständige Tage',
+    'complete days': 'ganze Tage',
     'complete fiscal quarter': 'vollständiges Geschäftsquartal',
-    'complete fiscal quarters': 'vollständige Geschäftsquartale',
+    'complete fiscal quarters': 'ganze Geschäftsquartale',
     'complete fiscal year': 'vollständiges Geschäftsjahr',
-    'complete fiscal years': 'vollständige Geschäftsjahre',
+    'complete fiscal years': 'ganze Geschäftsjahre',
     'complete hour': 'vollständige Stunde',
-    'complete hours': 'vollständige Stunden',
+    'complete hours': 'ganze Stunden',
     'complete minute': 'vollständige Minute',
-    'complete minutes': 'vollständige Minuten',
+    'complete minutes': 'ganze Minuten',
     'complete month': 'vollständiger Monat',
-    'complete months': 'vollständige Monate',
+    'complete months': 'ganze Monate',
     'complete quarter': 'vollständiges Quartal',
-    'complete quarters': 'vollständige Quartale',
+    'complete quarters': 'ganze Quartale',
     'complete second': 'vollständige Sekunde',
-    'complete seconds': 'vollständige Sekunden',
+    'complete seconds': 'ganze Sekunden',
     'complete week': 'vollständige Woche',
-    'complete weeks': 'vollständige Wochen',
+    'complete weeks': 'ganze Wochen',
     'complete year': 'vollständiges Jahr',
-    'complete years': 'vollständige Jahre',
+    'complete years': 'ganze Jahre',
     day: 'Tag',
     days: 'Tage',
     'fiscal quarter': 'Geschäftsquartal',
@@ -155,6 +155,6 @@ const resources = {
   summary: {
     'Value required': 'Wert erforderlich',
   },
-}
+};
 
-export const deDE = mergeLocaleObjects([], 'de-DE', resources)
+export const deDE = mergeLocaleObjects([], 'de-DE', resources);

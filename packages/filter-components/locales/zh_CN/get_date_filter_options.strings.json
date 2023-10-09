@@ -1,44 +1,44 @@
 {
   "is": {
-    "value": "为"
+    "value": "是"
   },
   "is any time": {
-    "value": "任意时间"
+    "value": "在任意时间"
   },
   "is before": {
     "value": "早于"
   },
   "is in range": {
-    "value": "在范围内"
+    "value": "在如下范围内："
   },
   "is in the last": {
-    "value": "在上一个"
+    "value": "在最后"
   },
   "is in the month": {
-    "value": "月份为"
+    "value": "在当月"
   },
   "is in the year": {
-    "value": "本年度"
+    "value": "在如下年份："
   },
   "is next": {
-    "value": "为下一个"
+    "value": "是下一"
   },
   "is not null": {
-    "value": "不为空值"
+    "value": "不是 null"
   },
   "is null": {
-    "value": "为空值"
+    "value": "是 null"
   },
   "is on or after": {
-    "value": "等于或晚于"
+    "value": "不早于"
   },
   "is on the day": {
-    "value": "为当天"
+    "value": "在当天"
   },
   "is previous": {
-    "value": "为上一个"
+    "value": "是上一"
   },
   "is this": {
-    "value": "为此"
+    "value": "是本"
   }
 }

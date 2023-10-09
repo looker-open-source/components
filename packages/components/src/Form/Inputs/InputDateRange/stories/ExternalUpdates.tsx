@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Button } from '../../../../Button'
-import type { RangeModifier } from '../../../../Calendar'
-import { Space, SpaceVertical } from '../../../../Layout'
-import { InputDateRange } from '../InputDateRange'
+import React, { useState } from 'react';
+import { Button } from '../../../../Button';
+import type { RangeModifier } from '../../../../Calendar';
+import { Space, SpaceVertical } from '../../../../Layout';
+import { InputDateRange } from '../InputDateRange';
 
 export default function ExternalUpdates() {
   const [value, setValue] = useState<RangeModifier>({
     from: new Date('June 3, 2019'),
     to: new Date('June 9, 2019'),
-  })
+  });
 
   return (
     <SpaceVertical>
@@ -40,5 +40,5 @@ export default function ExternalUpdates() {
       </Space>
       <InputDateRange value={value} onChange={setValue} />
     </SpaceVertical>
-  )
+  );
 }

@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref } from 'react'
-import React, { Children, cloneElement, forwardRef } from 'react'
-import type { FontSizeProps, PaddingProps } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { useArrowKeyNav, useTranslation } from '../utils'
-import { tabListCSS } from '../Tabs2/TabList2'
+import type { Ref } from 'react';
+import React, { Children, cloneElement, forwardRef } from 'react';
+import type { FontSizeProps, PaddingProps } from '@looker/design-tokens';
+import styled from 'styled-components';
+import { useArrowKeyNav, useTranslation } from '../utils';
+import { tabListCSS } from '../Tabs2/TabList2';
 
 export interface TabListProps extends PaddingProps, FontSizeProps {
-  children: JSX.Element[]
-  selectedIndex?: number
-  onSelectTab?: (index: number) => void
-  className?: string
-  distribute?: boolean
+  children: JSX.Element[];
+  selectedIndex?: number;
+  onSelectTab?: (index: number) => void;
+  className?: string;
+  distribute?: boolean;
 }
 
 /**
@@ -27,7 +27,7 @@ export const TabList = styled(
       { children, selectedIndex, onSelectTab, className }: TabListProps,
       ref: Ref<HTMLDivElement>
     ) => {
-      const { t } = useTranslation('TabList')
+      const { t } = useTranslation('TabList');
 
       const clonedChildren = Children.map(
         children,
@@ -36,11 +36,11 @@ export const TabList = styled(
             index,
             onSelect: () => onSelectTab && onSelectTab(index),
             selected: index === selectedIndex,
-          })
+          });
         }
-      )
+      );
 
-      const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
+      const navProps = useArrowKeyNav({ axis: 'horizontal', ref });
 
       return (
         <div
@@ -51,11 +51,11 @@ export const TabList = styled(
         >
           {clonedChildren}
         </div>
-      )
+      );
     }
   )
 ).attrs(({ fontSize = 'small' }) => ({
   fontSize,
 }))`
   ${tabListCSS}
-`
+`;

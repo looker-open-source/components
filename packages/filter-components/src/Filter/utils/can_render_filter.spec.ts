@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterExpressionType } from '@looker/filter-expressions'
-import { canRenderFilter } from './can_render_filter'
+import type { FilterExpressionType } from '@looker/filter-expressions';
+import { canRenderFilter } from './can_render_filter';
 
 const renderFilterTests: TestItem[] = [
   {
@@ -34,22 +34,24 @@ const renderFilterTests: TestItem[] = [
     config: { type: 'range_slider', display: 'inline' },
     result: false,
   },
-]
+];
 
 interface TestItem {
-  expression: string
-  expressionType: FilterExpressionType
-  config: { type: string; display: string }
-  result: boolean
+  expression: string;
+  expressionType: FilterExpressionType;
+  config: { type: string; display: string };
+  result: boolean;
 }
 
 const testFilterConfig = (testItem: TestItem) => {
   test(`${testItem.expression} ${testItem.config.type} ${testItem.result}`, () => {
-    const { result, expression, expressionType, config } = testItem
-    expect(canRenderFilter({ expression, expressionType, config })).toBe(result)
-  })
-}
+    const { result, expression, expressionType, config } = testItem;
+    expect(canRenderFilter({ expression, expressionType, config })).toBe(
+      result
+    );
+  });
+};
 
 describe('Test that filter can be rendered', () => {
-  renderFilterTests.forEach(testFilterConfig)
-})
+  renderFilterTests.forEach(testFilterConfig);
+});

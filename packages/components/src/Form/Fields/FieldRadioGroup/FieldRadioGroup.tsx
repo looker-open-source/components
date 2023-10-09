@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import type { FieldProps } from '../Field'
-import { Field, omitFieldProps, pickFieldProps } from '../Field'
-import type { RadioGroupProps } from '../../Inputs'
-import { RadioGroup } from '../../Inputs'
+import React from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import { useFormContext } from '../../Form';
+import type { FieldProps } from '../Field';
+import { Field, omitFieldProps, pickFieldProps } from '../Field';
+import type { RadioGroupProps } from '../../Inputs';
+import { RadioGroup } from '../../Inputs';
 
 export interface FieldRadioGroupProps
   extends RadioGroupProps,
     Omit<FieldProps, 'detail'> {
-  inputsInline?: boolean
+  inputsInline?: boolean;
 }
 
 const FieldRadioGroupLayout = ({
@@ -25,8 +25,8 @@ const FieldRadioGroupLayout = ({
   inputsInline,
   ...props
 }: FieldRadioGroupProps) => {
-  const validationMessage = useFormContext(props)
-  const id = useID(propsID)
+  const validationMessage = useFormContext(props);
+  const id = useID(propsID);
 
   return (
     <Field {...pickFieldProps(props)} id={id}>
@@ -41,9 +41,9 @@ const FieldRadioGroupLayout = ({
         validationType={validationMessage && validationMessage.type}
       />
     </Field>
-  )
-}
+  );
+};
 
-FieldRadioGroupLayout.displayName = 'FieldRadioGroupLayout'
+FieldRadioGroupLayout.displayName = 'FieldRadioGroupLayout';
 
-export const FieldRadioGroup = styled(FieldRadioGroupLayout)``
+export const FieldRadioGroup = styled(FieldRadioGroupLayout)``;

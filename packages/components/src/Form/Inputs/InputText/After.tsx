@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Span } from '../../../Text'
-import { ErrorIcon } from '../ErrorIcon'
-import { InputTextContent } from './InputTextContent'
-import type { InputTextProps } from './types'
+import React from 'react';
+import { Span } from '../../../Text';
+import { ErrorIcon } from '../ErrorIcon';
+import { InputTextContent } from './InputTextContent';
+import type { InputTextProps } from './types';
 
 export const After = ({
   after,
@@ -22,13 +22,13 @@ export const After = ({
     <InputTextContent pl="u2" pr="u2">
       {iconAfter || <Span fontSize="small">{after}</Span>}
     </InputTextContent>
-  )
+  );
 
   const validationIcon = !noErrorIcon && validationType === 'error' && (
     <InputTextContent pl={after || iconAfter ? 'u1' : 'u2'} pr="u2">
       <ErrorIcon />
     </InputTextContent>
-  )
+  );
 
   return (
     <>
@@ -41,5 +41,5 @@ export const After = ({
         after || validationIcon
       )}
     </>
-  )
-}
+  );
+};

@@ -24,29 +24,29 @@
 
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../../ariaProps'
+} from '../../ariaProps';
 import type {
   ComboboxMultiInputProps,
   ComboboxMultiProps,
-} from '../../Combobox'
+} from '../../Combobox';
 import {
   ComboboxMulti,
   ComboboxMultiInput,
   ComboboxMultiList,
-} from '../../Combobox'
-import type { InputChipsValidationProps } from '../../InputChips'
-import type { SelectBaseProps } from '../Select'
-import { SelectOptions } from '../SelectOptions'
-import type { SelectOptionObject } from '../types'
-import { getOptions } from '../utils/options'
-import { useFlatOptions } from '../utils/useFlatOptions'
-import { useShouldWindowOptions } from '../utils/useWindowedOptions'
+} from '../../Combobox';
+import type { InputChipsValidationProps } from '../../InputChips';
+import type { SelectBaseProps } from '../Select';
+import { SelectOptions } from '../SelectOptions';
+import type { SelectOptionObject } from '../types';
+import { getOptions } from '../utils/options';
+import { useFlatOptions } from '../utils/useFlatOptions';
+import { useShouldWindowOptions } from '../utils/useWindowedOptions';
 
 export interface SelectMultiProps
   extends Omit<ComboboxMultiProps, 'values' | 'defaultValues' | 'onChange'>,
@@ -61,22 +61,22 @@ export interface SelectMultiProps
    * Should the list close after an option is selected
    * @default false
    */
-  closeOnSelect?: boolean
+  closeOnSelect?: boolean;
 
   /**
    * Value of the initial option
    */
-  defaultValues?: string[]
+  defaultValues?: string[];
 
   /**
    * Handle an option being selected
    */
-  onChange?: (values?: string[]) => void
+  onChange?: (values?: string[]) => void;
 
   /**
    * Values of the current selected option (controlled)
    */
-  values?: string[]
+  values?: string[];
 }
 
 const SelectMultiComponent = forwardRef(
@@ -112,22 +112,22 @@ const SelectMultiComponent = forwardRef(
     }: SelectMultiProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const optionValues = getOptions(values, navigationOptions)
-    const defaultOptionValues = getOptions(defaultValues, navigationOptions)
+    const { flatOptions, navigationOptions } = useFlatOptions(options);
+    const optionValues = getOptions(values, navigationOptions);
+    const defaultOptionValues = getOptions(defaultValues, navigationOptions);
 
     function handleChange(options: SelectOptionObject[] = []) {
-      const newValues = options && options.map(option => option.value)
-      onChange && onChange(newValues)
+      const newValues = options && options.map(option => option.value);
+      onChange && onChange(newValues);
     }
 
     function handleInputChange(value: string) {
-      onFilter?.(value)
+      onFilter?.(value);
     }
 
-    const ariaProps = pickAriaAndValidationProps(props)
+    const ariaProps = pickAriaAndValidationProps(props);
 
-    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp);
 
     return (
       <ComboboxMulti
@@ -183,10 +183,10 @@ const SelectMultiComponent = forwardRef(
           </ComboboxMultiList>
         )}
       </ComboboxMulti>
-    )
+    );
   }
-)
+);
 
-SelectMultiComponent.displayName = 'SelectMultiComponent'
+SelectMultiComponent.displayName = 'SelectMultiComponent';
 
-export const SelectMulti = styled(SelectMultiComponent)``
+export const SelectMulti = styled(SelectMultiComponent)``;

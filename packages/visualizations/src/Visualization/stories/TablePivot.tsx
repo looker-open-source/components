@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { Fields } from '@looker/visualizations-adapters'
+import React from 'react';
+import type { Fields } from '@looker/visualizations-adapters';
 import {
   buildChartConfig,
   buildPivotFields,
@@ -12,26 +12,26 @@ import {
   tabularPivotResponse,
   mockSdkPivotDataResponse,
   mockSdkConfigResponse,
-} from '@looker/visualizations-adapters'
-import { Visualization } from '../Visualization'
+} from '@looker/visualizations-adapters';
+import { Visualization } from '../Visualization';
 
 export default function Pivot() {
   const mockPivotFields = buildPivotFields({
     fields: mockSdkPivotedFieldsResponse as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const mockPivotData = tabularPivotResponse({
     data: [...mockSdkPivotDataResponse],
     fields: mockSdkPivotedFieldsResponse as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const config = buildChartConfig({
     config: { ...mockSdkConfigResponse, type: 'table' },
     data: mockPivotData,
     fields: mockPivotFields,
-  })
+  });
 
   return (
     <Visualization
@@ -41,5 +41,5 @@ export default function Pivot() {
       pivots={mockPivots}
       height={600}
     />
-  )
+  );
 }

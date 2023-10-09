@@ -15,7 +15,7 @@
     "value": "회계 연도"
   },
   "fiscal years": {
-    "value": "회계 연수"
+    "value": "회계 연도"
   },
   "hour": {
     "value": "시간"
@@ -33,7 +33,7 @@
     "value": "월"
   },
   "months": {
-    "value": "월"
+    "value": "개월"
   },
   "quarter": {
     "value": "분기"

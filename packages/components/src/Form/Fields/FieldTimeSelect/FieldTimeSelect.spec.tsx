@@ -24,10 +24,10 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { FieldTimeSelect } from './FieldTimeSelect'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { FieldTimeSelect } from './FieldTimeSelect';
 
 describe('FieldTimeSelect', () => {
   test('should associate label and input field', () => {
@@ -37,9 +37,9 @@ describe('FieldTimeSelect', () => {
         id="field-time-select"
         interval={10}
       />
-    )
-    expect(screen.getByLabelText('Field Time Label').tagName).toEqual('INPUT')
-  })
+    );
+    expect(screen.getByLabelText('Field Time Label').tagName).toEqual('INPUT');
+  });
 
   test('should accept required attributes', () => {
     renderWithTheme(
@@ -49,12 +49,12 @@ describe('FieldTimeSelect', () => {
         interval={10}
         required
       />
-    )
-    expect(screen.getByText('required')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('required')).toBeVisible();
+  });
 
   test('should display error message', () => {
-    const errorMessage = 'This is an error'
+    const errorMessage = 'This is an error';
 
     renderWithTheme(
       <FieldTimeSelect
@@ -63,13 +63,13 @@ describe('FieldTimeSelect', () => {
         label="Label"
         validationMessage={{ message: errorMessage, type: 'error' }}
       />
-    )
+    );
 
-    expect(screen.getByText('This is an error')).toBeVisible()
-  })
+    expect(screen.getByText('This is an error')).toBeVisible();
+  });
 
   test('should trigger onChange handler', () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
 
     renderWithTheme(
       <FieldTimeSelect
@@ -78,50 +78,50 @@ describe('FieldTimeSelect', () => {
         interval={10}
         onChange={onChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Label'))
+    fireEvent.click(screen.getByLabelText('Label'));
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: '2pm' },
-    })
-    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
-    expect(onChange).toHaveBeenCalledTimes(1)
-    fireEvent.click(document)
-  })
+    });
+    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' });
+    expect(onChange).toHaveBeenCalledTimes(1);
+    fireEvent.click(document);
+  });
 
   test('should display error message for invalid time input', () => {
     renderWithTheme(
       <FieldTimeSelect label="Label" id="field-time-select" interval={10} />
-    )
+    );
 
-    const input = screen.getByLabelText('Label')
-    fireEvent.click(input)
+    const input = screen.getByLabelText('Label');
+    fireEvent.click(input);
     fireEvent.change(input, {
       target: { value: 'invalid time' },
-    })
-    fireEvent.keyDown(input, { key: 'Enter' })
+    });
+    fireEvent.keyDown(input, { key: 'Enter' });
     expect(
       screen.getAllByText('Please use format HH:MM')[0]
-    ).toBeInTheDocument()
-    fireEvent.blur(input)
-  })
+    ).toBeInTheDocument();
+    fireEvent.blur(input);
+  });
 
   test('should reset any format errors on blur', () => {
     renderWithTheme(
       <FieldTimeSelect label="Label" id="field-time-select" interval={10} />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Label'))
+    fireEvent.click(screen.getByLabelText('Label'));
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: 'invalid time' },
-    })
-    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' })
+    });
+    fireEvent.keyDown(screen.getByLabelText('Label'), { key: 'Enter' });
     expect(
       screen.getAllByText('Please use format HH:MM')[0]
-    ).toBeInTheDocument()
-    fireEvent.click(document)
-    fireEvent.blur(screen.getByLabelText('Label'))
-    const errorMessage = screen.queryByText('Please use format HH:MM')
-    expect(errorMessage).not.toBeInTheDocument()
-  })
-})
+    ).toBeInTheDocument();
+    fireEvent.click(document);
+    fireEvent.blur(screen.getByLabelText('Label'));
+    const errorMessage = screen.queryByText('Please use format HH:MM');
+    expect(errorMessage).not.toBeInTheDocument();
+  });
+});

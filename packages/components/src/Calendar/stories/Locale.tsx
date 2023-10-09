@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import ko from 'date-fns/locale/ko'
-import { Calendar } from '../..'
+import React, { useState } from 'react';
+import ko from 'date-fns/locale/ko';
+import { Calendar } from '../..';
 
 export default function Locale() {
-  const initialDate = new Date('Jul 1, 2021')
-  const [date, setDate] = useState(initialDate)
-  const [viewMonth, setViewMonth] = useState(initialDate)
+  const initialDate = new Date('Jul 1, 2021');
+  const [date, setDate] = useState(initialDate);
+  const [viewMonth, setViewMonth] = useState(initialDate);
 
   return (
     <Calendar
@@ -20,5 +20,5 @@ export default function Locale() {
       onMonthChange={setViewMonth}
       locale={ko}
     />
-  )
+  );
 }

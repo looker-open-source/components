@@ -3,11 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { textBlends } from '../blendPoints'
-import type { BlendColors, DerivativeColors, SpecifiableColors } from '../types'
-import { accentBlendScale, generateInteractive } from './generateStatefulColors'
-import { mixColors } from './mixColors'
-import { mixScaledColors } from './mixScaledColors'
+import { textBlends } from '../blendPoints';
+import type {
+  BlendColors,
+  DerivativeColors,
+  SpecifiableColors,
+} from '../types';
+import {
+  accentBlendScale,
+  generateInteractive,
+} from './generateStatefulColors';
+import { mixColors } from './mixColors';
+import { mixScaledColors } from './mixScaledColors';
 
 export const generateDerivativeColors = (
   {
@@ -26,7 +33,7 @@ export const generateDerivativeColors = (
     informAccent: mixScaledColors(accentBlendScale, inform, background),
     positiveAccent: mixScaledColors(accentBlendScale, positive, background),
     warnAccent: mixScaledColors(accentBlendScale, warn, background),
-  }
+  };
 
   return {
     body: body || text5,
@@ -37,5 +44,5 @@ export const generateDerivativeColors = (
     neutral: mixColors(textBlends[1], text, background),
     title: title || text5,
     ...accents,
-  }
-}
+  };
+};

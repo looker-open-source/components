@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ChipButton, Space } from '../..'
+import React from 'react';
+import { ChipButton, Space } from '../..';
 
 export default function MaxWidth() {
   return (
@@ -14,5 +14,5 @@ export default function MaxWidth() {
         Very long text inside the chip will be truncated
       </ChipButton>
     </Space>
-  )
+  );
 }

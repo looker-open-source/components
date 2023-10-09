@@ -1,32 +1,32 @@
 {
   "complete days": {
-    "value": "終了した日"
+    "value": "全日"
   },
   "complete fiscal quarters": {
-    "value": "終了した会計四半期"
+    "value": "全会計四半期"
   },
   "complete fiscal years": {
-    "value": "終了した会計年度"
+    "value": "全会計年度"
   },
   "complete hours": {
-    "value": "終了した時間"
+    "value": "全時間"
   },
   "complete minutes": {
-    "value": "終了した分"
+    "value": "全分"
   },
   "complete months": {
-    "value": "終了した月"
+    "value": "全月"
   },
   "complete quarters": {
-    "value": "終了した四半期"
+    "value": "全四半期"
   },
   "complete seconds": {
-    "value": "終了した秒"
+    "value": "全秒"
   },
   "complete weeks": {
-    "value": "終了した週"
+    "value": "全週"
   },
   "complete years": {
-    "value": "終了した年"
+    "value": "全年"
   }
 }

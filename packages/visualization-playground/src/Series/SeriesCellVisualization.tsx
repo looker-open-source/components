@@ -2,42 +2,42 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { FormEvent } from 'react'
-import type { CTable, CTableSeries } from '@looker/visualizations-adapters'
-import { FieldCheckbox } from '@looker/components'
-import has from 'lodash/has'
+import React from 'react';
+import type { ChangeEvent } from 'react';
+import type { CTable, CTableSeries } from '@looker/visualizations-adapters';
+import { FieldCheckbox } from '@looker/components';
+import has from 'lodash/has';
 
 /**
  * A list of relevant charts that access this configuration
  */
-export type CCellVisualizationSupported = CTable
+export type CCellVisualizationSupported = CTable;
 
-const renderFor: Array<CCellVisualizationSupported['type']> = ['table']
+const renderFor: Array<CCellVisualizationSupported['type']> = ['table'];
 
 export type SeriesCellVisualizationProps = {
-  chartType: CCellVisualizationSupported['type']
-  series: CTableSeries
-  onSeriesChange: (series: CTableSeries) => void
-}
+  chartType: CCellVisualizationSupported['type'];
+  series: CTableSeries;
+  onSeriesChange: (series: CTableSeries) => void;
+};
 
 export const SeriesCellVisualization = (
   props: SeriesCellVisualizationProps
 ) => {
-  const { chartType, series, onSeriesChange } = props
+  const { chartType, series, onSeriesChange } = props;
 
   if (!renderFor.includes(chartType) && !has(series, 'cell_visualization')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
+  const handleChange = (e: ChangeEvent) => {
     const draft = {
       ...series,
       cell_visualization: (e.target as HTMLInputElement).checked,
-    }
-    onSeriesChange(draft)
-  }
+    };
+    onSeriesChange(draft);
+  };
 
   return (
     <FieldCheckbox
@@ -45,5 +45,5 @@ export const SeriesCellVisualization = (
       onChange={handleChange}
       checked={!!series.cell_visualization}
     />
-  )
-}
+  );
+};

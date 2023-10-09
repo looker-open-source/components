@@ -2,36 +2,36 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { Dispatch, SetStateAction } from 'react'
+import React from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   LegendTypes,
   LegendValues,
   CPie,
   CAll,
   CPieLegend,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
-import { FieldSelect, Fieldset } from '@looker/components'
+import { FieldSelect, Fieldset } from '@looker/components';
 
 export type LegendProps = {
-  config: CPie
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-}
+  config: CPie;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+};
 
-const legendTypes: LegendTypes[] = ['legend', 'labels']
+const legendTypes: LegendTypes[] = ['legend', 'labels'];
 const legendValues: LegendValues[] = [
   'label',
   'label_percent',
   'label_value',
   'percent',
   'value',
-]
+];
 
 export const LegendPie = ({ onConfigChange, config }: LegendProps) => {
-  const { legend } = config
+  const { legend } = config;
 
-  if (!legend) return null
+  if (!legend) return null;
 
   const handleTypeChange = (newType: string) => {
     const draft: CPie = {
@@ -40,9 +40,9 @@ export const LegendPie = ({ onConfigChange, config }: LegendProps) => {
         ...(legend as CPieLegend),
         type: newType as LegendTypes,
       },
-    }
-    onConfigChange(draft)
-  }
+    };
+    onConfigChange(draft);
+  };
 
   const handleValuesChange = (newVal: string) => {
     const draft: CPie = {
@@ -51,9 +51,9 @@ export const LegendPie = ({ onConfigChange, config }: LegendProps) => {
         ...(legend as CPieLegend),
         value: newVal as LegendValues,
       },
-    }
-    onConfigChange(draft)
-  }
+    };
+    onConfigChange(draft);
+  };
 
   return (
     <Fieldset legend="Legend Options" accordion defaultOpen>
@@ -74,5 +74,5 @@ export const LegendPie = ({ onConfigChange, config }: LegendProps) => {
         />
       )}
     </Fieldset>
-  )
-}
+  );
+};

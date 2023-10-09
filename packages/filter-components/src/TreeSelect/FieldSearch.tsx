@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,209 +24,104 @@
 
  */
 import {
-  Box,
-  Flex,
-  Icon,
-  IconButton,
-  InputText,
-  Label,
-  Text,
-} from '@looker/components'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import { Search } from '@styled-icons/material-outlined/Search'
-import React from 'react'
-import styled from 'styled-components'
+  ComboboxContext,
+  ComboboxInput,
+  Field,
+  Span,
+} from '@looker/components';
+import get from 'lodash/get';
+import { Search } from '@styled-icons/material-outlined/Search';
+import React, { useContext, useEffect, useRef } from 'react';
+import type { KeyboardEvent } from 'react';
+import styled from 'styled-components';
+import { TreeSelectContext } from './TreeSelectContext';
 
 interface FieldSearchProps {
-  disabled?: boolean
-  fieldSearchInputId?: string
-  width?: string | number
-  height?: string | number
-  placeholder?: string
-  label?: string
-  onClick?: (event: React.MouseEvent) => void
-  value?: string
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void
-  onFocus?: (event: React.FocusEvent) => void
-  isOpen?: boolean
-  withDropdown?: boolean
-  showSelectedSection?: boolean
-  disabledText?: React.ReactNode
+  className?: string;
+  disabled?: boolean;
+  placeholder?: string;
+  label?: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  selectedSection?: string;
+  disabledText?: React.ReactNode;
 }
 
-type Ref = React.Ref<HTMLDivElement>
+export const FieldSearch = styled(
+  ({
+    className,
+    disabled,
+    label,
+    onChange,
+    placeholder,
+    selectedSection,
+    disabledText,
+  }: FieldSearchProps) => {
+    const {
+      data: { navigationOption },
+      id,
+      isVisible,
+    } = useContext(ComboboxContext);
+    const { setNodeToToggle, withDropdown } = useContext(TreeSelectContext);
 
-export const FieldSearch = React.forwardRef(
-  (
-    {
-      disabled,
-      fieldSearchInputId,
-      width,
-      height,
-      label,
-      onClick,
-      value,
-      onChange,
-      onFocus,
-      placeholder,
-      isOpen,
-      withDropdown,
-      showSelectedSection,
-      disabledText,
-    }: FieldSearchProps,
-    ref: Ref
-  ) => {
-    const [section, field] = value?.split('•') || []
+    // If someone toggles a node twice without moving from it,
+    // navigationOption.payload.isOpen will be out of date
+    // so we need to track the value with a ref
+    const isOpenRef = useRef(!!get(navigationOption?.payload, 'isOpen'));
+    useEffect(() => {
+      isOpenRef.current = !!get(navigationOption?.payload, 'isOpen');
+    }, [isOpenRef, navigationOption]);
+
+    // For keyboard interaction we need to replace option selection
+    // with tree toggle when children are present
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (['Enter', 'Spacebar'].includes(event.key)) {
+        if (navigationOption) {
+          const { payload = {} } = navigationOption;
+          const children = get(payload, 'children');
+          if (children) {
+            const id = String(get(payload, 'id'));
+            const isOpen = !isOpenRef.current;
+            setNodeToToggle?.({ id, isOpen });
+            isOpenRef.current = isOpen;
+            event.preventDefault();
+          }
+        }
+      }
+    };
+
+    const showSection =
+      !isVisible && withDropdown && !disabledText && selectedSection;
 
     return (
-      <Flex
-        position="relative"
-        flexDirection="column"
-        width={width}
-        height={height}
-        overflow="hidden"
-        flexShrink={0}
-      >
-        {label && (
-          <SearchLabel htmlFor={fieldSearchInputId}>{label}</SearchLabel>
-        )}
-        <SearchInput
+      <Field className={className} id={`listbox-input-${id}`} label={label}>
+        <ComboboxInput
           disabled={disabled}
-          ref={ref}
-          flexWrap="nowrap"
-          alignItems="center"
-          onClick={onClick}
-          px="small"
+          iconBefore={<Search />}
+          onChange={onChange}
+          onKeyDown={handleKeyDown}
+          placeholder={disabledText ? '' : placeholder}
+          autoComplete={false}
+          freeInput={!withDropdown}
         >
-          <Icon icon={<Search />} size={24} />
-          {disabledText ? (
-            <TextContainer px="small">{disabledText}</TextContainer>
-          ) : (
-            <InnerInputText
-              id={label ? fieldSearchInputId : undefined}
-              display={
-                // eslint-disable-next-line no-nested-ternary
-                showSelectedSection && withDropdown
-                  ? isOpen || value === ''
-                    ? 'block'
-                    : 'none'
-                  : 'block'
-              }
-              width="100%"
-              height="auto"
-              value={value}
-              onChange={onChange}
-              onFocus={onFocus}
-              placeholder={placeholder}
-              autoComplete="off"
-            />
+          {disabledText}
+          {showSection && (
+            <Span className="section-name">{selectedSection} &bull;</Span>
           )}
-          {!disabledText &&
-            showSelectedSection &&
-            withDropdown &&
-            !isOpen &&
-            value && (
-              <TextContainer px="xsmall">
-                <SectionText>{section}</SectionText>
-                <DividerText>•</DividerText>
-                <FieldText>{field}</FieldText>
-              </TextContainer>
-            )}
-          <IconButton
-            tooltipDisabled={true}
-            label="View fields"
-            icon={<ExpandMore />}
-            size="small"
-            outline={false}
-            p="none"
-            mr="xsmall"
-          />
-        </SearchInput>
-      </Flex>
-    )
+        </ComboboxInput>
+      </Field>
+    );
   }
-)
-
-const InnerInputText = styled(InputText)`
-  &:focus,
-  &:focus-within {
-    box-shadow: none;
+)`
+  /* Give room for elements in the same row (Advanced toggle) */
+  flex: 1;
+  .inner {
+    align-items: center;
+    display: flex;
+    width: 100%;
   }
-`
-
-const TextContainer = styled(Box)`
-  cursor: text;
-  display: table;
-  font-size: ${({ theme }) => theme.fontSizes.small};
-  overflow: hidden;
-  width: 100%;
-  table-layout: fixed;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`
-
-const SectionText = styled(Text)`
-  color: ${({ theme }) => theme.colors.text4};
-  font-size: ${({ theme }) => theme.fontSizes.small};
-`
-
-const DividerText = styled(Text)`
-  color: ${({ theme }) => theme.colors.text4};
-  font-size: ${({ theme }) => theme.fontSizes.small};
-`
-
-const FieldText = styled(Text)`
-  color: ${({ theme }) => theme.colors.text4};
-  font-size: ${({ theme }) => theme.fontSizes.small};
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-`
-
-const SearchLabel = styled(Label)`
-  color: ${({ theme }) => theme.colors.text2};
-  font-size: ${({ theme }) => theme.fontSizes.xsmall};
-  font-weight: ${({ theme }) => theme.fontWeights.normal};
-  margin-bottom: ${({ theme: { space } }) => space.xsmall};
-`
-
-const SearchInput = styled(Flex)`
-  border: solid 1px ${({ theme }) => theme.colors.ui2};
-  border-radius: ${({ theme }) => theme.radii.medium};
-  height: 48px;
-  padding-right: 0;
-
-  &:focus-within {
-    border-color: ${({ theme }) => theme.colors.keyFocus};
-    box-shadow: 0 0 1px ${({ theme }) => theme.colors.keyFocus};
+  .section-name + input {
+    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+    padding-left: ${({ theme }) => theme.space.u1};
   }
-
-  &[disabled] {
-    background-color: ${({ theme: { colors } }) => colors.ui1};
-    border-color: ${({ theme: { colors } }) => colors.ui2};
-    * {
-      color: ${({ theme: { colors } }) => colors.text1};
-      pointer-events: none;
-    }
-  }
-
-  ${InputText} {
-    border: none;
-    font-size: ${({ theme }) => theme.fontSizes.small};
-    outline: none;
-
-    :not(:focus) {
-      color: ${({ theme }) => theme.colors.text4};
-    }
-  }
-
-  ${IconButton} {
-    color: ${({ theme }) => theme.colors.text1};
-    margin-right: 6px;
-
-    &:focus,
-    &:hover {
-      color: ${({ theme }) => theme.colors.text5};
-      background-color: transparent;
-      border-color: transparent;
-    }
-  }
-`
+`;

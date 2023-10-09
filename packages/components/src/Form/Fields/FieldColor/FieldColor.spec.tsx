@@ -24,46 +24,46 @@
 
  */
 
-import 'jest-styled-components'
-import '@testing-library/jest-dom/extend-expect'
-import type { FormEvent } from 'react'
-import React, { useState } from 'react'
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
+import type { ChangeEvent } from 'react';
+import React, { useState } from 'react';
+import { fireEvent, screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
 
-import { Button } from '../../../Button'
-import { FieldColor } from './FieldColor'
+import { Button } from '../../../Button';
+import { FieldColor } from './FieldColor';
 
 describe('FieldColor', () => {
   const FieldColorValidationMessage = () => {
     return (
       <FieldColor validationMessage={{ message: 'Error!', type: 'error' }} />
-    )
-  }
+    );
+  };
 
   test('with a validation message', () => {
-    renderWithTheme(<FieldColorValidationMessage />)
-    expect(screen.getByText('Error!')).toBeInTheDocument()
-  })
+    renderWithTheme(<FieldColorValidationMessage />);
+    expect(screen.getByText('Error!')).toBeInTheDocument();
+  });
 
   test('A FieldColor with description has proper aria setup', () => {
-    const description = 'This is a description'
+    const description = 'This is a description';
 
     renderWithTheme(
       <FieldColor id="test" defaultValue="example" description={description} />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const descriptionDom = screen.getByText(description)
-    expect(descriptionDom.parentElement).toBeInTheDocument()
-    expect(descriptionDom.parentElement?.id).toEqual(id)
-  })
+    const descriptionDom = screen.getByText(description);
+    expect(descriptionDom.parentElement).toBeInTheDocument();
+    expect(descriptionDom.parentElement?.id).toEqual(id);
+  });
 
   test('A FieldColor with error has proper aria setup', () => {
-    const errorMessage = 'This is an error'
+    const errorMessage = 'This is an error';
 
     renderWithTheme(
       <FieldColor
@@ -71,48 +71,48 @@ describe('FieldColor', () => {
         defaultValue="example"
         validationMessage={{ message: errorMessage, type: 'error' }}
       />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const errorMessageDom = screen.getByText(errorMessage)
-    expect(errorMessageDom.parentElement).toBeInTheDocument()
-    expect(errorMessageDom.parentElement?.id).toEqual(id)
-  })
+    const errorMessageDom = screen.getByText(errorMessage);
+    expect(errorMessageDom.parentElement).toBeInTheDocument();
+    expect(errorMessageDom.parentElement?.id).toEqual(id);
+  });
 
   test('with an onChange', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <FieldColor onChange={onChangeMock} label="Background Color" />
-    )
-    const input = screen.getByLabelText('Background Color')
-    fireEvent.change(input, { target: { value: '#FFFF00' } })
+    );
+    const input = screen.getByLabelText('Background Color');
+    fireEvent.change(input, { target: { value: '#FFFF00' } });
     expect(onChangeMock).toHaveBeenCalledWith({
       currentTarget: { value: '#FFFF00' },
       target: { value: '#FFFF00' },
-    })
+    });
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('with a defaultValue', () => {
     renderWithTheme(
       <FieldColor defaultValue="purple" label="Background Color" />
-    )
-    const input = screen.getByLabelText('Background Color')
-    expect(input).toHaveValue('purple')
-  })
+    );
+    const input = screen.getByLabelText('Background Color');
+    expect(input).toHaveValue('purple');
+  });
 
   test('with controlled state', () => {
     function Wrapper() {
-      const [value, setValue] = useState('')
+      const [value, setValue] = useState('');
       function handleClick() {
-        setValue('yellow')
+        setValue('yellow');
       }
-      function handleChange(e: FormEvent<HTMLInputElement>) {
-        setValue(e.currentTarget.value)
+      function handleChange(e: ChangeEvent<HTMLInputElement>) {
+        setValue(e.target.value);
       }
       return (
         <>
@@ -123,18 +123,18 @@ describe('FieldColor', () => {
             placeholder="Select a color"
           />
         </>
-      )
+      );
     }
-    renderWithTheme(<Wrapper />)
+    renderWithTheme(<Wrapper />);
 
-    const button = screen.getByText('Turn yellow')
-    const input = screen.getByPlaceholderText('Select a color')
-    expect(input).toHaveValue('')
-    fireEvent.click(button)
-    expect(input).toHaveValue('yellow')
-    fireEvent.change(input, { target: { value: 'purple' } })
-    expect(input).toHaveValue('purple')
+    const button = screen.getByText('Turn yellow');
+    const input = screen.getByPlaceholderText('Select a color');
+    expect(input).toHaveValue('');
+    fireEvent.click(button);
+    expect(input).toHaveValue('yellow');
+    fireEvent.change(input, { target: { value: 'purple' } });
+    expect(input).toHaveValue('purple');
 
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+});

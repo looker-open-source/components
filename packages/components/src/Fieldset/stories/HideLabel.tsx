@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Fieldset } from '../'
-import { FieldText } from '../../Form'
+import React from 'react';
+import { Fieldset } from '../';
+import { FieldText } from '../../Form';
 
 export default function Inline() {
   return (
@@ -21,5 +21,5 @@ export default function Inline() {
         <FieldText label="Third Label" />
       </Fieldset>
     </>
-  )
+  );
 }

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { RuleTester } = require('eslint')
-const rule = require('.').rules['license-header']
+const { RuleTester } = require('eslint');
+const rule = require('.').rules['license-header'];
 
 jest.mock('read-pkg-up', () => ({
   sync: jest.fn(() => ({
@@ -12,9 +12,9 @@ jest.mock('read-pkg-up', () => ({
       private: true,
     },
   })),
-}))
+}));
 
-const filename = '@looker/components/src/index.js'
+const filename = '@looker/components/src/index.js';
 
 new RuleTester().run('license-header', rule, {
   valid: [
@@ -24,4 +24,4 @@ new RuleTester().run('license-header', rule, {
     },
   ],
   invalid: [],
-})
+});

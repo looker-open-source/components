@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '../'
+import React, { useState } from 'react';
+import { InputChips } from '../';
 
 export default function ClearIconLabel() {
-  const [values, setValues] = useState(['cheddar', 'gouda'])
+  const [values, setValues] = useState(['cheddar', 'gouda']);
 
   return (
     <InputChips
@@ -16,5 +16,5 @@ export default function ClearIconLabel() {
       values={values}
       onChange={setValues}
     />
-  )
+  );
 }

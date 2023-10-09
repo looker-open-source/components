@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Accordion2, SpaceVertical, Grid } from '../..'
+import React from 'react';
+import { Accordion2, SpaceVertical, Grid } from '../..';
 
 export default function Density() {
   return (
@@ -26,5 +26,5 @@ export default function Density() {
         </Accordion2>
       </Grid>
     </SpaceVertical>
-  )
+  );
 }

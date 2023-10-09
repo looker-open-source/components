@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadio } from '../'
+import React from 'react';
+import { FieldRadio } from '../';
 
 export default function DetailDescription() {
   return (
@@ -15,5 +15,5 @@ export default function DetailDescription() {
       detail="0/50"
       description="Describe something here"
     />
-  )
+  );
 }

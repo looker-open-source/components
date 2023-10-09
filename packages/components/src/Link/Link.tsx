@@ -27,13 +27,13 @@
 import type {
   CompatibleHTMLProps,
   TypographyProps,
-} from '@looker/design-tokens'
-import { reset, typography, omitStyledProps } from '@looker/design-tokens'
-import { Launch } from '@styled-icons/material/Launch'
-import omit from 'lodash/omit'
-import styled from 'styled-components'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+} from '@looker/design-tokens';
+import { reset, typography, omitStyledProps } from '@looker/design-tokens';
+import { Launch } from '@styled-icons/material/Launch';
+import omit from 'lodash/omit';
+import styled from 'styled-components';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
 
 export interface LinkProps
   extends CompatibleHTMLProps<HTMLAnchorElement>,
@@ -42,7 +42,7 @@ export interface LinkProps
    * Use the theme `key` color rather than `link`
    * @default false
    */
-  keyColor?: boolean
+  keyColor?: boolean;
 
   /**
    * Display underline.
@@ -52,14 +52,14 @@ export interface LinkProps
    * When undefined underline is only displayed when Link has :hover, :focus, :active and :visited
    * @default undefined
    */
-  underline?: boolean
+  underline?: boolean;
 
   /**
    * Display an icon indicating that the link is to an external resource
    * Also sets `rel="external noreferrer" on generated link.
    * @default false
    */
-  isExternal?: boolean
+  isExternal?: boolean;
 
   /**
    * Disable `Link`'s automatic additional of `rel` for `target="_blank" &
@@ -70,7 +70,7 @@ export interface LinkProps
    *
    * @default false
    */
-  dangerouslyDisableRel?: boolean
+  dangerouslyDisableRel?: boolean;
 }
 
 /**
@@ -82,7 +82,7 @@ const ExternalLinkIndicator = styled(Launch)`
   height: ${({ theme }) => theme.sizes.xxsmall};
   margin-left: ${({ theme }) => theme.space.u1};
   width: ${({ theme }) => theme.sizes.xxsmall};
-`
+`;
 
 /**
  * Generate appropriate LinkType based on properties
@@ -96,24 +96,24 @@ const generateLinkTypes = ({
   rel,
   target,
 }: LinkProps) => {
-  if (dangerouslyDisableRel) return rel
-  const linkTypes = rel ? rel.split(' ') : []
+  if (dangerouslyDisableRel) return rel;
+  const linkTypes = rel ? rel.split(' ') : [];
 
   if (target === '_blank') {
-    linkTypes.push('noopener', 'noreferrer')
+    linkTypes.push('noopener', 'noreferrer');
   } else if (isExternal) {
-    linkTypes.push('external', 'noreferrer')
+    linkTypes.push('external', 'noreferrer');
   }
 
-  return [...new Set(linkTypes)].join(' ')
-}
+  return [...new Set(linkTypes)].join(' ');
+};
 
-const linkStyleProps = ['keyColor', 'underline']
+const linkStyleProps = ['keyColor', 'underline'];
 
 const LinkLayout = forwardRef(
   (props: LinkProps, ref: Ref<HTMLAnchorElement>) => {
-    const { children, isExternal, ...restProps } = props
-    const enhancedRel = generateLinkTypes(props)
+    const { children, isExternal, ...restProps } = props;
+    const enhancedRel = generateLinkTypes(props);
 
     return (
       <a
@@ -127,9 +127,9 @@ const LinkLayout = forwardRef(
         {children}
         {isExternal && <ExternalLinkIndicator />}
       </a>
-    )
+    );
   }
-)
+);
 
 /**
  * The `<Link />` component renders an `<a>` tag that accepts an `href` property.
@@ -162,4 +162,4 @@ export const Link = styled(LinkLayout)`
     text-decoration: ${({ underline }) =>
       underline === false ? 'none' : 'underline'};
   }
-`
+`;

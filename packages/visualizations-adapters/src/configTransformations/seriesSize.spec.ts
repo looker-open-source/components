@@ -24,30 +24,30 @@
 
  */
 
-import { seriesSize } from './seriesSize'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { CScatterSeries } from '../adapters'
+import { seriesSize } from './seriesSize';
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { CScatterSeries } from '../adapters';
 
 describe('seriesSize', () => {
-  const size_by_field = 'orders.count'
+  const size_by_field = 'orders.count';
 
   test('series as array', () => {
     const series: CScatterSeries[] = [
       { color: 'blue' },
       { color: 'red', size_by: 'orders.average_total_amount_of_order_usd' },
-    ]
+    ];
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, size_by_field, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual([
       { ...series[0], size_by: 'orders.count' },
       { ...series[1], size_by: 'orders.average_total_amount_of_order_usd' },
-    ])
-  })
+    ]);
+  });
 
   test('series as object', () => {
     const series: { [key: string]: CScatterSeries } = {
@@ -56,13 +56,13 @@ describe('seriesSize', () => {
         color: 'red',
         size_by: 'orders.average_total_amount_of_order_usd',
       },
-    }
+    };
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, size_by_field, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual({
       'orders.count': { ...series['orders.count'], size_by: 'orders.count' },
@@ -70,41 +70,41 @@ describe('seriesSize', () => {
         ...series['orders.average_total_amount_of_order_usd'],
         size_by: 'orders.average_total_amount_of_order_usd',
       },
-    })
-  })
+    });
+  });
 
   test('Array series: removes invalid size_by keys', () => {
-    const series: CScatterSeries[] = [{ size_by: '' }, { size_by: 'none' }]
+    const series: CScatterSeries[] = [{ size_by: '' }, { size_by: 'none' }];
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual([
       { size_by: false },
       { size_by: false },
-    ])
-  })
+    ]);
+  });
 
   test('Named series: removes invalid size_by keys', () => {
     const series: { [key: string]: CScatterSeries } = {
       'orders.count': {
         size_by: 'none',
       },
-    }
+    };
 
     const transformedConfig = seriesSize({
       config: { ...mockLineConfig, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual(
       expect.objectContaining({
         'orders.count': { size_by: false },
       })
-    )
-  })
-})
+    );
+  });
+});

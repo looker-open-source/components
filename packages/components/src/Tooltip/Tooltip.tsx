@@ -29,27 +29,27 @@ import type {
   PropsWithoutRef,
   ReactNode,
   Ref,
-} from 'react'
-import React, { cloneElement, forwardRef, isValidElement } from 'react'
-import { mergeClassNames, useWrapEvent } from '../utils'
-import type { TooltipProps, TooltipRenderProp } from './types'
-import { useTooltip } from './useTooltip'
+} from 'react';
+import React, { cloneElement, forwardRef, isValidElement } from 'react';
+import { mergeClassNames, useWrapEvent } from '../utils';
+import type { TooltipProps, TooltipRenderProp } from './types';
+import { useTooltip } from './useTooltip';
 
 function isRenderProp(
   children: ReactNode | TooltipRenderProp
 ): children is TooltipRenderProp {
-  return typeof children === 'function'
+  return typeof children === 'function';
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {}
+const noop = () => {};
 
 type RefAttributes = {
   /**
    * @deprecated not actually forwarded, will be removed in 3.x release
    */
-  ref?: Ref<unknown>
-}
+  ref?: Ref<unknown>;
+};
 
 export const Tooltip: ForwardRefExoticComponent<
   PropsWithoutRef<TooltipProps> & RefAttributes
@@ -72,7 +72,7 @@ export const Tooltip: ForwardRefExoticComponent<
       // ariaExpanded=true indicates an open Popover – disable the tooltip
       disabled: disabled || ariaExpanded,
       ...props,
-    })
+    });
     const {
       className,
       onBlur,
@@ -80,11 +80,11 @@ export const Tooltip: ForwardRefExoticComponent<
       onMouseOut,
       onMouseOver,
       ...restDomProps
-    } = domProps
+    } = domProps;
 
-    let target: ReactNode = children
+    let target: ReactNode = children;
 
-    const childProps = isValidElement(children) ? children.props : undefined
+    const childProps = isValidElement(children) ? children.props : undefined;
 
     const wrappedHandlers = {
       onBlur: useWrapEvent(onBlur, childProps?.onBlur),
@@ -92,7 +92,7 @@ export const Tooltip: ForwardRefExoticComponent<
       onFocus: useWrapEvent(onFocus, childProps?.onFocus),
       onMouseOut: useWrapEvent(onMouseOut, childProps?.onMouseOut),
       onMouseOver: useWrapEvent(onMouseOver, childProps?.onMouseOver),
-    }
+    };
 
     if (isValidElement(children)) {
       target = cloneElement(children, {
@@ -105,14 +105,14 @@ export const Tooltip: ForwardRefExoticComponent<
         'aria-haspopup': ariaHaspopup,
         // Tooltip
         className: mergeClassNames([className, children.props.className]),
-      })
+      });
     } else if (isRenderProp(children)) {
-      target = children(domProps)
+      target = children(domProps);
     } else {
       // eslint-disable-next-line no-console
       console.warn(
         `Element "${typeof target}" can't be used as target for Tooltip`
-      )
+      );
     }
 
     return (
@@ -120,6 +120,6 @@ export const Tooltip: ForwardRefExoticComponent<
         {tooltip}
         {target}
       </>
-    )
+    );
   }
-)
+);

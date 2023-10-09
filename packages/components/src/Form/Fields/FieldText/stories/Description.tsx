@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function Description(props: FieldTextProps) {
   const {
@@ -13,7 +13,7 @@ export default function Description(props: FieldTextProps) {
     label = 'First Name',
     description = 'Some important information about this field',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldText
@@ -22,5 +22,5 @@ export default function Description(props: FieldTextProps) {
       description={description}
       {...restProps}
     />
-  )
+  );
 }

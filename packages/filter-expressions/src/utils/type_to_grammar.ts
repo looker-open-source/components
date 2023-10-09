@@ -29,14 +29,14 @@ import {
   numberGrammar,
   stringGrammar,
   tierGrammar,
-} from '../grammars'
+} from '../grammars';
 import type {
   FilterASTNode,
   FilterItemToStringFunction,
   FilterToStringFunctionType,
   FilterExpressionType,
   TransformFunction,
-} from '../types'
+} from '../types';
 import {
   anyNumberItem,
   anyStringItem,
@@ -46,32 +46,32 @@ import {
   numberFilterTypes,
   stringFilterTypes,
   tierFilterTypes,
-} from '../types'
-import { dateFilterToString } from './date/date_filter_to_string'
-import { describeDate } from './date/describe_date'
-import { describeLocation } from './location/describe_location'
-import { locationToString } from './location/location_to_string'
-import { describeNumber } from './number/describe_number'
-import { numberToString } from './number/number_to_string'
-import { describeString } from './string/describe_string'
-import { stringFilterToString } from './string/string_filter_to_string'
-import { describeTier } from './tier/describe_tier'
-import { tierFilterToString } from './tier/tier_filter_to_string'
-import { numberTransform } from './transform/numberTransform'
-import { stringTransform } from './transform/stringTransform'
+} from '../types';
+import { dateFilterToString } from './date/date_filter_to_string';
+import { describeDate } from './date/describe_date';
+import { describeLocation } from './location/describe_location';
+import { locationToString } from './location/location_to_string';
+import { describeNumber } from './number/describe_number';
+import { numberToString } from './number/number_to_string';
+import { describeString } from './string/describe_string';
+import { stringFilterToString } from './string/string_filter_to_string';
+import { describeTier } from './tier/describe_tier';
+import { tierFilterToString } from './tier/tier_filter_to_string';
+import { numberTransform } from './transform/numberTransform';
+import { stringTransform } from './transform/stringTransform';
 
 interface GrammarMapTypeOptions {
-  grammar: string
-  toString: FilterToStringFunctionType
-  transform?: TransformFunction
-  describe: FilterItemToStringFunction
-  anyvalue: FilterASTNode
-  subTypes: readonly string[]
+  grammar: string;
+  toString: FilterToStringFunctionType;
+  transform?: TransformFunction;
+  describe: FilterItemToStringFunction;
+  anyvalue: FilterASTNode;
+  subTypes: readonly string[];
 }
 
 type GrammarMapType = {
-  [K in FilterExpressionType]: GrammarMapTypeOptions
-}
+  [K in FilterExpressionType]: GrammarMapTypeOptions;
+};
 
 /**
  * A map of available filter types and the grammar properties needed to parse and display
@@ -82,7 +82,7 @@ const dateGrammarOptions: GrammarMapTypeOptions = {
   describe: describeDate,
   anyvalue: anyValue,
   subTypes: dateFilterTypes,
-}
+};
 
 export const grammarsMap: GrammarMapType = {
   date: dateGrammarOptions,
@@ -118,7 +118,7 @@ export const grammarsMap: GrammarMapType = {
     anyvalue: anyValue,
     subTypes: locationFilterTypes,
   },
-}
+};
 
 export const typeToGrammar = (type: FilterExpressionType) =>
-  grammarsMap[type] || {}
+  grammarsMap[type] || {};

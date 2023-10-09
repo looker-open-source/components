@@ -1,3 +1,13 @@
+## 3.1.3 (2023-09-20)
+
+### Bug Fixes
+
+- Use correct event types on input/field components b/297352388
+
+### Features
+
+- **Popover:** Support arrow b/298663106
+
 # [3.1.0](https://github.com/looker-open-source/components/compare/22.16.0...3.1.0) (2022-11-15)
 
 ### Bug Fixes

@@ -7,22 +7,22 @@ import type {
   SupportedChartTypes,
   RawApiConfigResponse,
   SDKRecord,
-} from './'
+} from './';
 
 export type KnownChartTypes =
   | keyof SupportedChartTypes
-  | RawApiConfigResponse['type']
+  | RawApiConfigResponse['type'];
 
 export interface ConfigHelperArgs<ChartConfig> {
   config: Omit<ChartConfig, 'type'> &
     Partial<Omit<RawApiConfigResponse, 'type'>> & {
-      type?: KnownChartTypes
-    }
-  fields: Fields
-  data: SDKRecord[]
+      type?: KnownChartTypes;
+    };
+  fields: Fields;
+  data: SDKRecord[];
 }
 
 // helper function args and return value must match for easy function composition
 export type ConfigHelper<ChartConfig> = (
   args: ConfigHelperArgs<ChartConfig>
-) => ConfigHelperArgs<ChartConfig>
+) => ConfigHelperArgs<ChartConfig>;

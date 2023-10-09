@@ -3,24 +3,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { CircleContainer } from './ProgressSvg'
-import type { ProgressCircularSizes } from './size'
-import { progressCircularSVG } from './size'
+import React from 'react';
+import styled from 'styled-components';
+import type { Colors } from '@looker/design-tokens';
+import { CircleContainer } from './ProgressSvg';
+import type { ProgressCircularSizes } from './size';
+import { progressCircularSVG } from './size';
 
 interface DeterminateProgressProps {
-  size: ProgressCircularSizes
-  progress?: number
+  size: ProgressCircularSizes;
+  progress?: number;
+  color: keyof Colors;
 }
 
 export const DeterminateProgress = ({
   size,
   progress = 0,
+  color,
 }: DeterminateProgressProps) => {
-  const { stroke, half, radius, dashArray } = progressCircularSVG({ size })
+  const { stroke, half, radius, dashArray } = progressCircularSVG({ size });
 
-  const progressOffset = (1 - progress) * (2 * Math.PI * radius)
+  const progressOffset = (1 - progress) * (2 * Math.PI * radius);
 
   return (
     <DeterminateContainer>
@@ -35,20 +38,23 @@ export const DeterminateProgress = ({
           strokeDasharray={dashArray}
           strokeDashoffset={progressOffset}
           strokeWidth={stroke}
+          color={color}
         />
       </CircleContainer>
     </DeterminateContainer>
-  )
-}
+  );
+};
 
 const DeterminateContainer = styled.div`
   height: 100%;
   position: absolute;
   transform: rotate(-90deg);
   width: 100%;
-`
+`;
 
-const DeterminateCircle = styled.circle`
-  stroke: ${({ theme }) => theme.colors.key};
+const DeterminateCircle = styled.circle<{ color: keyof Colors }>`
+  stroke: ${({ theme, color }) => {
+    return theme.colors[color];
+  }};
   transition: stroke-dashoffset 500ms;
-`
+`;

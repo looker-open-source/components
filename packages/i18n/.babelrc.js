@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 module.exports = api => {
-  api.cache.forever()
+  api.cache.forever();
   return {
     presets: [require('@looker/babel-preset-typescript')],
-  }
-}
+  };
+};

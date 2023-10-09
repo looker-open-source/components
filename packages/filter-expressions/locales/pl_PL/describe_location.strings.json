@@ -3,10 +3,10 @@
     "value": "{{coords1}} do {{coords2}}"
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} z {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} od {{lat}}, {{lon}}"
   },
   "is anywhere": {
-    "value": "ma dowolną wartość"
+    "value": "jest w dowolnym miejscu"
   },
   "is not null": {
     "value": "nie ma wartości null"

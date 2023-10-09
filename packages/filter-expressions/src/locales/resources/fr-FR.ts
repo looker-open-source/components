@@ -24,30 +24,31 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
-    ' complete': ' terminé',
+    ' complete': ' complètes',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'auparavant',
     'from now': 'à partir de maintenant',
-    'is any time': 'est à tout moment',
-    'is before': 'est situé avant',
+    'is any time': 'a lieu à une date indifférente',
+    'is before': 'est antérieur à',
     'is day': 'est {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      'est de {{dateTimeStart}} à {{dateTimeEnd}}',
-    'is in month year': 'est en {{month}} {{year}}',
-    'is in the last': 'est dans le dernier {{describeInterval}}',
-    'is in the year year': "est dans l'année {{year}}",
-    'is interval ago': 'est il y a {{interval}}',
+      "a lieu du {{dateTimeStart}} jusqu'au {{dateTimeEnd}}",
+    'is in month year': 'a lieu en {{month}} {{year}}',
+    'is in the last':
+      'a lieu dans le dernier intervalle de {{describeInterval}}',
+    'is in the year year': 'a lieu en {{year}}',
+    'is interval ago': 'il y a {{interval}}',
     'is intervalStart intervalType for intervalEnd':
-      'est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}',
+      'a lieu entre {{intervalStart}} {{intervalType}} et {{intervalEnd}}',
     'is not null': "n'est pas nul",
-    'is on dateTime': 'est le {{dateTime}}',
-    'is on or after': 'est situé le jour même ou après',
-    'is previous unitLabel': 'est avant {{unitLabel}}',
-    'is type unitLabel': 'est {{type}} {{unitLabel}}',
+    'is on dateTime': 'a lieu le {{dateTime}}',
+    'is on or after': 'date du ou est ultérieur à',
+    'is previous unitLabel': 'date du/de la {{unitLabel}} précédent(e)',
+    'is type unitLabel': 'est de type {{type}} {{unitLabel}}',
     next: 'suivant',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} maintenant',
@@ -57,26 +58,27 @@ const resources = {
     'value complete unitLabel': '{{value}}{{complete}} {{unitLabel}}',
   },
   describe_is_any_value: {
-    'any value': "n'importe quelle valeur",
+    'any value': 'toute valeur',
   },
   describe_is_item: {
     'is not value': "n'est pas {{value}}",
     'is value': 'est {{value}}',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} vers {{coords2}}',
-    'distance unit from lat, lon': '{{distance}} {{unit}} de {{lat}}, {{lon}}',
+    'coords1 to coords2': 'De {{coords1}} à {{coords2}}',
+    'distance unit from lat, lon':
+      '{{distance}} {{unit}} du point {{lat}}, {{lon}}',
     'is anywhere': "est n'importe où",
     'is not null': "n'est pas nul",
     'is null': 'est nul',
-    'lat degrees north': '{{lat}}°N',
-    'lat degrees south': '{{lat}}°S',
-    'lon degrees east': '{{lon}}°E',
-    'lon degrees west': '{{lon}}°O',
+    'lat degrees north': '{{lat}}° N',
+    'lat degrees south': '{{lat}}° S',
+    'lon degrees east': '{{lon}}° E',
+    'lon degrees west': '{{lon}}° O',
   },
   describe_number: {
-    'is in range range': 'est à portée {{range}}',
-    'is not in range range': "n'est pas à portée {{range}}",
+    'is in range range': 'est compris dans la plage {{range}}',
+    'is not in range range': "n'est pas compris dans la plage {{range}}",
   },
   describe_string: {
     blank: 'vide',
@@ -88,7 +90,7 @@ const resources = {
     'starts with value': 'commence par {{value}}',
   },
   get_distance_unit_labels: {
-    feet: 'pied',
+    feet: 'pieds',
     kilometers: 'kilomètres',
     meters: 'mètres',
     miles: 'miles',
@@ -153,8 +155,8 @@ const resources = {
     'a or b': '{{a}} ou {{b}}',
   },
   summary: {
-    'Value required': 'Valeur requise',
+    'Value required': 'Veuillez saisir une valeur',
   },
-}
+};
 
-export const frFR = mergeLocaleObjects([], 'fr-FR', resources)
+export const frFR = mergeLocaleObjects([], 'fr-FR', resources);

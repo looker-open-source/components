@@ -32,10 +32,10 @@ const createOption = (value: string): Option => ({
 })
 
 export const createOptions = (values?: string | string[]) => {
-  if (!values) return []
-  const valuesArray: any[] = !Array.isArray(values) ? [values] : values
-  return valuesArray.map((value) => createOption(value))
-}
+  if (!values?.length) return [];
+  const valuesArray: string[] = Array.isArray(values) ? values : [values];
+  return valuesArray.map(value => createOption(value));
+};
 
 /**
  * Creates an option from an enumeration's label and value.

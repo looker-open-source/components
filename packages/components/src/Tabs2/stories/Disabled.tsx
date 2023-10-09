@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Tabs2, Tab2 } from '../..'
+import React from 'react';
+import { Tabs2, Tab2 } from '../..';
 
 export default function Disabled() {
   return (
@@ -19,5 +19,5 @@ export default function Disabled() {
         Humans tab is disabled
       </Tab2>
     </Tabs2>
-  )
+  );
 }

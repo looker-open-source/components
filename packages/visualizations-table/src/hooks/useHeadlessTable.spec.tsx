@@ -23,24 +23,24 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import type { MouseEvent } from 'react'
-import { renderHook, act } from '@testing-library/react-hooks'
-import { render, screen } from '@testing-library/react'
+import React from 'react';
+import type { MouseEvent } from 'react';
+import { renderHook, act } from '@testing-library/react-hooks';
+import { render, screen } from '@testing-library/react';
 import {
   mockData,
   mockFields,
   mockTableConfig,
   mockDataWithRowTotals,
   mockFieldsRowTotals,
-} from '@looker/visualizations-adapters'
-import type { SDKRecord } from '@looker/visualizations-adapters'
-import { flexRender } from '@tanstack/react-table'
-import type { Column, Header } from '@tanstack/react-table'
-import { useHeadlessTable } from './useHeadlessTable'
+} from '@looker/visualizations-adapters';
+import type { SDKRecord } from '@looker/visualizations-adapters';
+import { flexRender } from '@tanstack/react-table';
+import type { Column, Header } from '@tanstack/react-table';
+import { useHeadlessTable } from './useHeadlessTable';
 const wrapper = ({ children }: React.PropsWithChildren<unknown>) => (
   <>{children}</>
-)
+);
 
 it('configures table object', () => {
   const { result } = renderHook(
@@ -51,10 +51,10 @@ it('configures table object', () => {
         config: mockTableConfig,
       }),
     { wrapper }
-  )
+  );
 
-  const tableRows = result.current.table.getRowModel().rows
-  const firstRow = tableRows[0].getVisibleCells()
+  const tableRows = result.current.table.getRowModel().rows;
+  const firstRow = tableRows[0].getVisibleCells();
 
   const RowComponent = () => (
     <table>
@@ -66,18 +66,18 @@ it('configures table object', () => {
         </tr>
       </tbody>
     </table>
-  )
+  );
 
-  render(<RowComponent />)
-  const tableCells = screen.getAllByRole('cell')
+  render(<RowComponent />);
+  const tableCells = screen.getAllByRole('cell');
 
   expect(tableCells.map(cell => cell.textContent)).toEqual([
     '2019-12-22',
     'California',
     '3087',
     '1088',
-  ])
-})
+  ]);
+});
 
 it('Handles table sorting state', () => {
   const { result, rerender } = renderHook(
@@ -88,10 +88,10 @@ it('Handles table sorting state', () => {
         config: mockTableConfig,
       }),
     { wrapper }
-  )
+  );
 
   // column sorted descending
-  expect(result.current.sorting).toEqual([{ id: 'orders.count', desc: true }])
+  expect(result.current.sorting).toEqual([{ id: 'orders.count', desc: true }]);
 
   act(() => {
     result.current.handleTableSort(
@@ -103,14 +103,14 @@ it('Handles table sorting state', () => {
         } as Column<SDKRecord, unknown>,
       } as Header<SDKRecord, unknown>,
       { shiftKey: false } as MouseEvent<Element>
-    )
-  })
+    );
+  });
 
-  rerender()
+  rerender();
 
   // sorting reversed: `desc` now set to `false`
-  expect(result.current.sorting).toEqual([{ id: 'orders.count', desc: false }])
-})
+  expect(result.current.sorting).toEqual([{ id: 'orders.count', desc: false }]);
+});
 
 it('Handles table with row totals', () => {
   const { result } = renderHook(
@@ -121,10 +121,10 @@ it('Handles table with row totals', () => {
         config: { ...mockTableConfig, show_row_totals: true },
       }),
     { wrapper }
-  )
+  );
 
-  const tableRows = result.current.table.getRowModel().rows
-  const firstRow = tableRows[0].getVisibleCells()
+  const tableRows = result.current.table.getRowModel().rows;
+  const firstRow = tableRows[0].getVisibleCells();
 
   const RowComponent = () => (
     <table>
@@ -136,18 +136,18 @@ it('Handles table with row totals', () => {
         </tr>
       </tbody>
     </table>
-  )
+  );
 
-  render(<RowComponent />)
-  const tableCells = screen.getAllByRole('cell')
+  render(<RowComponent />);
+  const tableCells = screen.getAllByRole('cell');
   expect(tableCells.map(cell => cell.textContent)).toEqual([
     '',
     '',
     '89',
     '39',
     '128',
-  ])
-})
+  ]);
+});
 
 it('Hides row totals when show_row_totals is false', () => {
   const { result } = renderHook(
@@ -158,10 +158,10 @@ it('Hides row totals when show_row_totals is false', () => {
         config: { ...mockTableConfig, show_row_totals: false },
       }),
     { wrapper }
-  )
+  );
 
-  const tableRows = result.current.table.getRowModel().rows
-  const firstRow = tableRows[0].getVisibleCells()
+  const tableRows = result.current.table.getRowModel().rows;
+  const firstRow = tableRows[0].getVisibleCells();
 
   const RowComponent = () => (
     <table>
@@ -173,12 +173,17 @@ it('Hides row totals when show_row_totals is false', () => {
         </tr>
       </tbody>
     </table>
-  )
+  );
 
-  render(<RowComponent />)
-  const tableCells = screen.getAllByRole('cell')
-  expect(tableCells.map(cell => cell.textContent)).toEqual(['', '', '89', '39'])
-})
+  render(<RowComponent />);
+  const tableCells = screen.getAllByRole('cell');
+  expect(tableCells.map(cell => cell.textContent)).toEqual([
+    '',
+    '',
+    '89',
+    '39',
+  ]);
+});
 
 it('controls column visibility based on series visibility', () => {
   const { result } = renderHook(
@@ -205,10 +210,10 @@ it('controls column visibility based on series visibility', () => {
         },
       }),
     { wrapper }
-  )
+  );
 
-  const tableRows = result.current.table.getRowModel().rows
-  const firstRow = tableRows[0].getVisibleCells()
+  const tableRows = result.current.table.getRowModel().rows;
+  const firstRow = tableRows[0].getVisibleCells();
 
   const RowComponent = () => (
     <table>
@@ -220,14 +225,14 @@ it('controls column visibility based on series visibility', () => {
         </tr>
       </tbody>
     </table>
-  )
+  );
 
-  render(<RowComponent />)
-  const tableCells = screen.getAllByRole('cell')
+  render(<RowComponent />);
+  const tableCells = screen.getAllByRole('cell');
 
   expect(tableCells.map(cell => cell.textContent)).toEqual([
     '2019-12-22',
     'California',
     '3087',
-  ])
-})
+  ]);
+});

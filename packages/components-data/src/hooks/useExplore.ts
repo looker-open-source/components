@@ -24,14 +24,14 @@
 
  */
 
-import { useEffect } from 'react'
-import type { IError, ILookmlModelExplore } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import useSWR from 'swr'
-import { getErrorResponse } from '../utils'
-import { useSDK, useQueryMetadata, DataState } from '.'
+import { useEffect } from 'react';
+import type { IError, ILookmlModelExplore } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
+import useSWR from 'swr';
+import { getErrorResponse } from '../utils';
+import { useSDK, useQueryMetadata, DataState } from '.';
 
 /**
  * A shared hook for fetching the Field Groups associated with query ID.
@@ -42,8 +42,8 @@ import { useSDK, useQueryMetadata, DataState } from '.'
  */
 
 export const useExplore = (id: number) => {
-  const sdk = useSDK()
-  const { setModelExplore, getModelExplore } = DataState.useContainer()
+  const sdk = useSDK();
+  const { setModelExplore, getModelExplore } = DataState.useContainer();
 
   /*
    * Check for stored values
@@ -51,8 +51,8 @@ export const useExplore = (id: number) => {
    */
   const {
     metadata: { model, view },
-  } = useQueryMetadata(id)
-  const explore = getModelExplore(model, view)
+  } = useQueryMetadata(id);
+  const explore = getModelExplore(model, view);
 
   /*
    * Dispatch network request
@@ -61,11 +61,11 @@ export const useExplore = (id: number) => {
 
   const fetcher = async () => {
     if (id > 0 && model && view && isEmpty(explore)) {
-      return await sdk.lookml_model_explore(model, view)
+      return await sdk.lookml_model_explore(model, view);
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     ILookmlModelExplore,
@@ -74,7 +74,7 @@ export const useExplore = (id: number) => {
     `useExplore-${model}-${view}`, // caution: argument string must be unique to this instance
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   /*
    * Publish SWR response to central data store
@@ -83,7 +83,7 @@ export const useExplore = (id: number) => {
 
   useEffect(() => {
     const draftExplore: ILookmlModelExplore =
-      (SWRData?.ok && SWRData.value) || {}
+      (SWRData?.ok && SWRData.value) || {};
 
     if (
       id &&
@@ -92,14 +92,14 @@ export const useExplore = (id: number) => {
       !isEmpty(draftExplore) &&
       !isEqual(draftExplore, explore)
     ) {
-      setModelExplore(model, view, draftExplore)
+      setModelExplore(model, view, draftExplore);
     }
-  }, [id, SWRData, explore, model, setModelExplore, view])
+  }, [id, SWRData, explore, model, setModelExplore, view]);
 
   return {
     explore,
     isOK: !!explore,
     isPending: isValidating,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

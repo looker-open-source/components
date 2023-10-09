@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Checkbox } from '../Checkbox'
+import React from 'react';
+import { Checkbox } from '../Checkbox';
 
 export default function ReadOnlyCheckedMixed() {
-  return <Checkbox readOnly checked="mixed" />
+  return <Checkbox readOnly checked="mixed" />;
 }

@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import type {
   CompatibleHTMLProps,
   FontSizes,
   ResponsiveValue,
   TextTransformProps,
-} from '@looker/design-tokens'
-import { textTransform } from '@looker/design-tokens'
-import type { TextBaseProps } from '../Text/TextBase'
-import { TextBase } from '../Text/TextBase'
-import type { TruncateCSSProps } from '../truncate'
-import { truncateCSS } from '../truncate'
+} from '@looker/design-tokens';
+import { textTransform } from '@looker/design-tokens';
+import type { TextBaseProps } from '../Text/TextBase';
+import { TextBase } from '../Text/TextBase';
+import type { TruncateCSSProps } from '../truncate';
+import { truncateCSS } from '../truncate';
 
-type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+type HeadingLevels = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface HeadingProps
   extends TextBaseProps,
@@ -26,31 +26,31 @@ export interface HeadingProps
   /** Heading level from h1-h6
    * @default: 'h2'
    */
-  as?: HeadingLevels
+  as?: HeadingLevels;
 }
 
 const headingLevelFontSize = (as: HeadingLevels) => {
   switch (as) {
     case 'h1':
-      return 'xxlarge'
+      return 'xxlarge';
     case 'h3':
-      return 'large'
+      return 'large';
     case 'h4':
-      return 'medium'
+      return 'medium';
     case 'h5':
-      return 'small'
+      return 'small';
     case 'h6':
-      return 'xsmall'
+      return 'xsmall';
     case 'h2':
     default:
-      return 'xlarge'
+      return 'xlarge';
   }
-}
+};
 
 const headingLineHeight = (
   as: HeadingLevels,
   fontSize?: ResponsiveValue<FontSizes>
-): ResponsiveValue<FontSizes> => fontSize || headingLevelFontSize(as)
+): ResponsiveValue<FontSizes> => fontSize || headingLevelFontSize(as);
 
 export const Heading = styled(TextBase).attrs<HeadingProps>(
   ({
@@ -71,4 +71,4 @@ export const Heading = styled(TextBase).attrs<HeadingProps>(
 )<HeadingProps>`
   ${textTransform}
   ${truncateCSS}
-`
+`;

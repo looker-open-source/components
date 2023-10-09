@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
+import React from 'react';
 import {
   Table,
   TableHead,
@@ -11,8 +11,8 @@ import {
   TableHeaderCell,
   TableBody,
   TableDataCell,
-} from '../../../../Table'
-import { DateFormat } from '../DateFormat'
+} from '../../../../Table';
+import { DateFormat } from '../DateFormat';
 
 export const DateFormatTable = () => {
   return (
@@ -50,5 +50,5 @@ export const DateFormatTable = () => {
         </TableRow>
       </TableBody>
     </Table>
-  )
-}
+  );
+};

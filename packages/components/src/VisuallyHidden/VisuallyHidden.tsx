@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const visuallyHiddenStyle = css`
   clip: rect(1px, 1px, 1px, 1px);
@@ -14,8 +14,8 @@ export const visuallyHiddenStyle = css`
   top: 0;
   width: 1px;
   color: #000;
-`
+`;
 
 export const VisuallyHidden = styled.div`
   ${visuallyHiddenStyle}
-`
+`;

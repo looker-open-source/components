@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const iconButtonOutline = css`
   border: 1px solid ${({ theme: { colors } }) => colors.ui3};
@@ -27,4 +27,4 @@ export const iconButtonOutline = css`
       border-color: ${({ theme: { colors } }) => colors.ui3};
     }
   }
-`
+`;

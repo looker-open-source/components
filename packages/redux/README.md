@@ -1,189 +1,203 @@
 ## @looker/redux
 
-> Our own abstractions to make how we use Redux simpler.
+> Makes using Redux not so much like using Redux.
 
-## Notes
+Redux requires significant boilerplate to adopt. Even with tools like `@reduxjs/toolkit`, there is still unnecessary boilerplate and using it in your components isn't any less cumbersome in practice. Furthermore, when you need to expose your data API to consumers, it exposes the fact that you're using Redux and that shouldn't be the case.
 
-Our usage of Redux is moving more towards slices and sagas and the API contained in this package is geared towards guiding us down that path.
+`@looker/redux` is designed to allow you to easily build your data layer with Redux and Redux Toolkit, but the resulting API that is exposed to components is just hooks, POJOs and functions. Consumers call a hook, and they get back a state object and actions that are just functions.
 
-## Utilities
+## Usage
 
-### createSliceHooks
+```tsx
+import { createSlice, createSliceHooks } from '@looker/redux';
+import React from 'react';
+
+interface State {
+  count: number;
+}
+
+const initialState: State = {
+  count: 0,
+};
+
+const slice = createSlice({
+  // The name of the slice. Dot-notation creates nested state objects.
+  // some.data = { some: { data: { count: 0 } } }
+  name: 'some.data',
+
+  // State is inferred as long as you cast your initial state.
+  initialState,
+
+  // Reducers create corresponding actions.
+  reducers: {
+    increment(state) {
+      state.count++;
+    },
+  },
+});
+
+// This is all consumers of the data API need to know about.
+export const { useSlice } = createSliceHooks({ slice });
+
+export const MyComponent = () => {
+  const [state, actions] = useSlice();
+  return <button onClick={actions.increment}>Clicked: {state.count}</button>;
+};
+```
+
+## API
+
+### createFetchHooks(options)
+
+> Like `createSliceHooks` but automates slice and saga creation around a single `fetch` function. It can be used for any `async` function, but is called `fetch` because a very common use case would be to call a REST API. It's like RTK query but much more streamlined.
+
+```ts
+import { createFetchHooks } from '@looker/redux';
+
+export const { useSlice } = createFetchHooks({
+  // The key used in the Redux store.
+  name: 'my-fetch',
+
+  // The fetch function used to return some data.
+  fetch: () => fetch('/some/api'),
+
+  // What the state will default to prior to calling the fetch function.
+  initialState: [],
+});
+```
+
+### createSliceHooks(options)
 
 > Returns hooks that are automatically bound to your typed state, slices and sagas.
 
-`createSliceHooks` takes a `slice` and `saga` initializer and returns hooks - composed of other hooks in this API - that are automatically bound to your typed state, slices and sagas (optional) so you can focus on the important parts of your data and less about implementation details. It assumes that your using `@reduxjs/toolkit` as this produces information that `createSliceHooks` uses internally.
+```ts
+import { createSlice, createSliceHooks } from '@looker/redux';
 
-`createSliceHooks` also ensures your reducers and sagas are registered with the store (and registered only once), so you don't need to worry about doing this as side effects of an import or the component lifecycle. Dynamically registering them also ensures your code can be properly code-split.
+export const { useSlice } = createSliceHooks({
+  // Default: false. When set to true, it will remove any state and reducers
+  // from the store, and cancel any sagas that have been registered.
+  autoExpire: false,
 
-`createSliceHooks` returns the following hooks:
+  // The slice to create the hooks for. The reducers are automatically added
+  // to the store when used for the first time. The slice's name is used as
+  // the state key where it will be stored. Dot-notation will create nested
+  // objects. For example, some.data will create { some: { data: {} }}.
+  slice: createSlice({}),
 
-- `useActions` - returns the actions from your slice bound to `dispatch` using `bindActionActionCreators`.
-- `useStoreState` - ensures your reducers and sagas have been registered and returns the top-level state from your slice.
+  // The saga to register and run immediately. This is the main saga that
+  // will register effects for all of the other sagas that perform
+  // side-effects.
+  saga: function* () {},
+});
+```
 
-#### Your data file
+#### useSlice()
 
-You use `createSliceHooks` in the file that exports the data layer for your connected components. You can structure this any way you want as long as you pass it a slice and saga. The following file is a minimal version of what you might start with:
+The `useSlice` hook returned from `createFetchHooks` and `createSliceHooks` will return a tuple of `[state, actions]` very similar to React's `useState` hook. Actions are automatically bound to the `dispatch` function for the store, so all you need to do is call them like functions and they will be dispatched accordingly.
+
+### createStore(options)
+
+> Creates a store that is enhanced to dynamically add reducers and sagas. It accepts all of the same options that `configureStore` from `@reduxjs/toolkit` accepts.
 
 ```ts
-import { createSlice } from '@reduxjs/toolkit'
-import { createSliceHooks } from '@looker/redux'
+import { createStore } from '@looker/redux';
 
-interface State {
-  count: number
-}
-
-const slice = createSlice({
-  name: 'some/data',
-  initialState: {
-    count: 0,
-  },
-  reducers: {
-    increment(state) {
-      state.count++
+const store = createStore({
+  // When you preload state, corresponding reducers are automatically created
+  // so that Redux doesn't throw an error and you can retrieve the state if
+  // necessary. When your reducers are dynamically added, they override the
+  // initial reducers and will return any preloaded state that exists.
+  preloadedState: {
+    some: {
+      data: {
+        count: 1,
+      },
     },
   },
-})
-
-export const { useActions, useStoreState } = createSliceHooks(slice)
+});
 ```
 
-Notice that nothing besides `useActions` and `useStoreState` is exported because your component generally won't need to know about anything else.
+### Store
 
-#### Your connected component file
+> Ensures a store is provided to the descendant component tree.
 
-Your component file might look like the following. It assumes that there is a store being provided in the context tree.
+The `Store` component does the following:
+
+1. If a store is found, noop and render children.
+2. If a store is not found, render a `<Provider />`, providing it a new store, and render children.
+
+This is very useful for tests where you will always want a store for components that use Redux:
 
 ```tsx
-import React from 'react'
-import { useActions, useStoreState } from './data'
+import { Store } from '@looker/redux';
+import { render } from '@testing-library/react';
+import React from 'react';
 
-export const MyComponent = () => {
-  const actions = useActions()
-  const state = useStoreState()
-  return (
-    <button onClick={() => actions.increment()}>Clicked: {state.count}</button>
-  )
-}
+const { useSlice } = createFetchHooks({
+  name: 'test',
+  fetch: Promise.resolve('test'),
+  initialState: '',
+});
+
+const Component = () => {
+  const [state, actions] = useSlice();
+  useEffect(() => {
+    actions.fetch();
+  }, []);
+  return <div>{state}</div>;
+};
+
+test('render', async () => {
+  const r = render(
+    <Store>
+      <Component />
+    </Store>
+  );
+  expect(await r.getByText('test')).toBeInTheDocument();
+});
 ```
 
-Notice, first, that you don't need to pass anything to these hooks. They're bound to your slice, and optionally sagas, so your data layer can be a black-box API (in a good way). Also, notice how actions are pre-bound; you don't need to worry about calling `useDispatch`.
+### useStore()
 
-Most of the time, you'll probably only be using these APIs in your connected component. However, you there may also be cases where you want to export them as part of your API to share state and actions. In either case, the usage is similar because you don't need to know about slices or sagas and how they're registered.
+> Returns the nearest store from context.
 
-### createStore
+This is essentially just an alias for `useStore` from `react-redux`. However, it will ensure the store that is provided was created using `createStore` from `@looker/redux` since it requires the store be enhanced with certain methods in order to be used.
 
-> Creates a store that is pre-configured for Looker usage and is enhanced to dynamically add reducers and sagas.
+## Testing
+
+You [should](https://kentcdodds.com/blog/write-tests) be writing integration tests at your component level to get the most bang for your buck. However, it is still good to write unit tests. The next best thing is testing your reducers. Redux Toolkit makes this easy out of the box:
 
 ```ts
-import { createStore } from '@looker/redux'
+import { mySlice } from './mySlice';
 
-const store = createStore()
+// Using getInitialState has two purposes:
+// 1. You use state as the first argument to the reducer.
+// 2. It automatically infers the correct type.
+const state = mySlice.getInitialState();
+
+describe('mySlice', () => {
+  // Testing the initial state isn't exactly necessary and is akin to snapshot
+  // testing. However, changing initial state can unexpectedly change initial
+  // UI state. Testing this can be useful for ensuring changes are intentional.
+  // It also sets the state to make sure subsequent tests don't give false
+  // positives (i.e. initial state is the same as the result of an action).
+  it('initialState', () => {
+    expect(state).toEqual({
+      something: '',
+    });
+  });
+
+  // Testing a reducer is done by calling the reducer function on the slice.
+  // You pass it the state you got from getInitialState() and, because actions
+  // are just functions, you call the action and the return value is the second
+  // argument. The result is the new state, so you test to make sure it's what
+  // you'd expect and that's it.
+  it('setSomething', () => {
+    expect(
+      mySlice.reducer(state, mySlice.actions.setSomething('test'))
+    ).toEqual({
+      something: 'test',
+    });
+  });
+});
 ```
-
-The `createStore()` function accepts all of the options that `configureStore()` from `@reduxjs/toolkit` does, except that `middleware` is required to be an array of middleware as `createStore` preloads middleware.
-
-_We create several, very similar stores across the codebase. Currently both `web/` and `web/scenes/admin` each have their own stores, and many tests also use a store. This function sets up a store so that it can be used anywhere in the codebase, and eventually, hopefully, only use the single configuration provided by this function._
-
-## Hooks
-
-The hooks here are all composed into the hooks that `createSliceHooks` returns. They are:
-
-- `useActions(slice: Slice)` - Binds a slice's action creators to dispatch().
-- `useSaga(saga: any)` - Adds a saga to the nearest store.
-- `useSagas(saga: any[])` - Adds an array of sagas to the nearest store. Generally used for backward compatibility where `registerSagas` was previously used.
-- `useSlice(slice: Slice)` - Adds a slice to the nearest store.
-- `useStoreState<State>(slice: Slice, saga: any): State` - Adds a saga and slice to the nearest store and returns the root state for the slice.
-
-These hooks generally require you pass some form of a `slice` or `saga` into them, exposing more of your data layer's implementation details, but it does mean that you can adopt this API incrementally, for whatever reason.
-
-Each of the following examples assumes a `./data` file with the following:
-
-```ts
-import { createSlice } from '@reduxjs/toolkit'
-
-// Exported to show full API.
-export interface State {
-  count: number
-}
-
-// Exported to show full API.
-// Empty to show how to use sagas.
-export function* initSagas() {}
-
-// Exported to show full API.
-export const slice = createSlice({
-  name: 'some/data',
-  initialState: {
-    count: 0,
-  },
-  reducers: {
-    increment(state) {
-      state.count++
-    },
-  },
-})
-
-// If you use these hooks, you don't need to export the above items.
-export const { useActions, useStoreState } = createSliceHooks(slice, initSagas)
-```
-
-### Composing hooks individually
-
-```tsx
-import { useActions, useSaga, useSlice } from '@looker/redux'
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { saga, slice, State } from './data'
-
-function selectState(store: any): State {
-  return store?.data?.[slice.name]
-}
-
-export const MyComponent = () => {
-  useSaga(saga)
-  useSlice(slice)
-  const actions = useActions(slice)
-  const state = useSelector(selectState)
-  return (
-    <button onClick={() => actions.increment()}>Clicked: {state.count}</button>
-  )
-}
-```
-
-This is the most long-winded approach, but might be necessary if you can only use certain parts of the API. For example, you may only have time to refactor to dynamically register sagas, and might still have globally registered reducers which you will refactor at a later time. Maybe vice versa, or you might still be using thunks.
-
-### Composing hooks with useStoreState
-
-```tsx
-import { useActions, useStoreState } from '@looker/redux'
-import React from 'react'
-import { saga, slice, State } from './data'
-
-export const MyComponent = () => {
-  const actions = useActions(slice)
-  const state = useStoreState<State>(slice, saga)
-  return (
-    <button onClick={() => actions.increment()}>Clicked: {state.count}</button>
-  )
-}
-```
-
-The major difference between this example and the one above is that this one hides the implementation detail of having to register slices and sagas. You must still pass them in, however. This usage is the most likely scenario for adopting incrementally if you are already using `@reduxjs/tookit` and sagas.
-
-### Compared to createSliceHooks
-
-```tsx
-import React from 'react'
-import { useActions, useStoreState } from './data'
-
-export const MyComponent = () => {
-  const actions = useActions()
-  const state = useStoreState()
-  return (
-    <button onClick={() => actions.increment()}>Clicked: {state.count}</button>
-  )
-}
-```
-
-This example shows the ideal scenario. Your component doesn't have to know about, slices, sagas, state types or manually dispatching. `MyComponent` acts much like `connect()` normally would, mapping state and props onto `<button />`.

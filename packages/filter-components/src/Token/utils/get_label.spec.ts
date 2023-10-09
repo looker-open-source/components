@@ -24,12 +24,12 @@
 
  */
 
-import type { FilterProps } from '../../Filter/types/filter_props'
-import { getLabel } from './get_label'
-import { i18nInit } from '../../utils'
+import type { FilterProps } from '../../Filter/types/filter_props';
+import { getLabel } from './get_label';
+import { i18nInit } from '../../utils';
 
 describe('getLabel', () => {
-  i18nInit()
+  i18nInit();
   const defaultFilterProps = {
     config: {},
     name: 'name',
@@ -37,28 +37,28 @@ describe('getLabel', () => {
     expression: 'value',
     field: { parameter: false },
     expressionType: 'tier' as const,
-  }
+  };
   const getFilter = (propsOverride: Partial<FilterProps> = {}) => {
-    return { ...defaultFilterProps, ...propsOverride }
-  }
+    return { ...defaultFilterProps, ...propsOverride };
+  };
 
   describe('when filter is not a parameter', () => {
     it('should return the value', () => {
-      expect(getLabel(getFilter())).toBe('is value')
-    })
+      expect(getLabel(getFilter())).toBe('is value');
+    });
 
     describe('and fieldOptions is unavailable', () => {
       it('should return the value', () => {
-        const filter = { ...getFilter(), fieldOptions: null }
-        expect(getLabel(filter)).toBe('is value')
-      })
-    })
-  })
+        const filter = { ...getFilter(), fieldOptions: null };
+        expect(getLabel(filter)).toBe('is value');
+      });
+    });
+  });
 
   describe('when filter is a parameter', () => {
     describe('and label is available', () => {
       it('should return the label', () => {
-        const filterState = getFilter()
+        const filterState = getFilter();
         const filter = {
           ...filterState,
           field: {
@@ -66,10 +66,10 @@ describe('getLabel', () => {
             has_allowed_values: true,
             enumerations: defaultFilterProps.enumerations,
           },
-        }
-        expect(getLabel(filter)).toBe('is label')
-      })
-    })
+        };
+        expect(getLabel(filter)).toBe('is label');
+      });
+    });
 
     describe('and label is not available', () => {
       describe('and value is not in the enumerations', () => {
@@ -81,21 +81,21 @@ describe('getLabel', () => {
               field: { parameter: true },
               label: undefined,
               expression: '2020/09/21',
-            }
-            expect(getLabel(filter)).toBe('is on 2020/09/21')
-          })
-        })
+            };
+            expect(getLabel(filter)).toBe('is on 2020/09/21');
+          });
+        });
 
         describe('and value is not available', () => {
           it('should return `is any value``', () => {
             const filter = getFilter({
               field: { parameter: true },
               expression: undefined,
-            })
-            expect(getLabel(filter)).toBe('is any value')
-          })
-        })
-      })
+            });
+            expect(getLabel(filter)).toBe('is any value');
+          });
+        });
+      });
 
       describe('and value is not in the enumerations and enumerations is null', () => {
         it('should return `is any value``', () => {
@@ -103,10 +103,10 @@ describe('getLabel', () => {
             field: { parameter: true },
             enumerations: null,
             expression: undefined,
-          })
-          expect(getLabel(filter)).toBe('is any value')
-        })
-      })
+          });
+          expect(getLabel(filter)).toBe('is any value');
+        });
+      });
 
       describe('and value is in the enumerations', () => {
         it('should return `is any value``', () => {
@@ -119,7 +119,7 @@ describe('getLabel', () => {
               label: 'label from enum',
               value: 'value',
             },
-          ]
+          ];
           const filter = getFilter({
             field: {
               parameter: true,
@@ -127,10 +127,10 @@ describe('getLabel', () => {
               enumerations,
             },
             enumerations,
-          })
-          expect(getLabel(filter)).toBe('is label from enum')
-        })
-      })
-    })
-  })
-})
+          });
+          expect(getLabel(filter)).toBe('is label from enum');
+        });
+      });
+    });
+  });
+});

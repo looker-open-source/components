@@ -9,14 +9,14 @@ import {
   DialogContext,
   FieldCheckbox,
   FieldRadioGroup,
-} from '@looker/components'
-import React from 'react'
-import { Popover } from '..'
+} from '@looker/components';
+import React from 'react';
+import { Popover } from '..';
 
 export default function PopoverFieldRadioGroup() {
   const Wrapper = () => {
-    const [value, setValue] = React.useState('')
-    const { closeModal } = React.useContext(DialogContext)
+    const [value, setValue] = React.useState('');
+    const { closeModal } = React.useContext(DialogContext);
 
     return (
       <Box pt="u3" width="100%">
@@ -34,8 +34,8 @@ export default function PopoverFieldRadioGroup() {
         </Box>
         <Button onClick={closeModal}>Done</Button>
       </Box>
-    )
-  }
+    );
+  };
   return (
     <ComponentsProvider>
       <Box p="ui1" className="App">
@@ -44,5 +44,5 @@ export default function PopoverFieldRadioGroup() {
         </Popover>
       </Box>
     </ComponentsProvider>
-  )
+  );
 }

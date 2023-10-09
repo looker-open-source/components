@@ -8,4 +8,4 @@
  * Only escape the string if it does not represent a finite number
  */
 export const escapeParameterValue = (value: string) =>
-  value.replace(/([\^_%,"']|^-)/g, '^$1')
+  value.replace(/([\^_%,"']|^-)/g, '^$1');

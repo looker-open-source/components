@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Slider } from '..'
-import { Label } from '../../../'
-import type { SliderProps } from '../'
+import React from 'react';
+import { Slider } from '..';
+import { Label } from '../../../';
+import type { SliderProps } from '../';
 
 export default function LabeledSlider(props: SliderProps) {
   return (
@@ -14,5 +14,5 @@ export default function LabeledSlider(props: SliderProps) {
       <Label id="slider-label">Slider:</Label>
       <Slider aria-labelledby="slider-label" {...props} />
     </>
-  )
+  );
 }

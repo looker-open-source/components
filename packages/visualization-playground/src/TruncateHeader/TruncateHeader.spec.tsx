@@ -2,18 +2,18 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { mockTableConfig } from '@looker/visualizations-adapters'
-import { TruncateHeader } from './TruncateHeader'
+import React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { mockTableConfig } from '@looker/visualizations-adapters';
+import { TruncateHeader } from './TruncateHeader';
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('TruncateHeader', () => {
-  const handleConfigChange = jest.fn()
+  const handleConfigChange = jest.fn();
 
   it('hidden when truncate_header is unsupported', () => {
     const { container } = renderWithTheme(
@@ -21,10 +21,10 @@ describe('TruncateHeader', () => {
         config={{ type: 'unsupported' as 'table' }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    expect(container).toBeEmptyDOMElement()
-  })
+    expect(container).toBeEmptyDOMElement();
+  });
 
   it('toggles truncate_header', () => {
     renderWithTheme(
@@ -32,14 +32,14 @@ describe('TruncateHeader', () => {
         config={{ ...mockTableConfig, truncate_header: true }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Truncate header'))
+    fireEvent.click(screen.getByLabelText('Truncate header'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         truncate_header: false,
       })
-    )
-  })
-})
+    );
+  });
+});

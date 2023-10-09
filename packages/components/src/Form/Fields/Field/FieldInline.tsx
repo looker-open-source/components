@@ -24,14 +24,14 @@
 
  */
 
-import React, { isValidElement } from 'react'
-import styled from 'styled-components'
-import { Label } from '../../Label/Label'
-import { Paragraph, Span } from '../../../Text'
-import { ValidationMessage } from '../../ValidationMessage/ValidationMessage'
-import { Truncate } from '../../../Truncate'
-import { RequiredStar } from './RequiredStar'
-import type { FieldBaseProps } from './types'
+import React, { isValidElement } from 'react';
+import styled from 'styled-components';
+import { Label } from '../../Label/Label';
+import { Paragraph, Span } from '../../../Text';
+import { ValidationMessage } from '../../ValidationMessage/ValidationMessage';
+import { Truncate } from '../../../Truncate';
+import { RequiredStar } from './RequiredStar';
+import type { FieldBaseProps } from './types';
 
 /**
  * `<FieldInline />` allows the rendering of a label (for FieldCheckbox, FieldRadio and FieldToggleSwitch),
@@ -40,7 +40,7 @@ import type { FieldBaseProps } from './types'
  */
 
 interface FieldInlinePropsInternal extends FieldBaseProps {
-  id: string
+  id: string;
 }
 
 const FieldInlineLayout = ({
@@ -53,13 +53,13 @@ const FieldInlineLayout = ({
   required,
   validationMessage,
 }: FieldInlinePropsInternal) => {
-  const describedbyId = `describedby-${id}`
+  const describedbyId = `describedby-${id}`;
 
   const inputWithAriaDescribed = isValidElement(children)
     ? React.cloneElement(children, {
         'aria-describedby': describedbyId,
       })
-    : children
+    : children;
 
   return (
     <div className={className}>
@@ -74,8 +74,8 @@ const FieldInlineLayout = ({
         {validationMessage && <ValidationMessage {...validationMessage} />}
       </MessageArea>
     </div>
-  )
-}
+  );
+};
 
 const FieldDetail = styled(Span)`
   color: ${({ theme }) => theme.colors.text2};
@@ -88,7 +88,7 @@ const FieldDetail = styled(Span)`
   -ms-grid-row: 1;
   /* stylelint-enable */
   padding-left: ${({ theme }) => theme.space.u2};
-`
+`;
 
 const FieldDescription = styled(Paragraph)`
   color: ${({ theme }) => theme.colors.text2};
@@ -96,7 +96,7 @@ const FieldDescription = styled(Paragraph)`
   line-height: ${({ theme }) => theme.lineHeights.xsmall};
   padding-bottom: ${({ theme }) => theme.space.u05};
   padding-top: ${({ theme }) => theme.space.u05};
-`
+`;
 
 const InputArea = styled.div`
   grid-column: 1;
@@ -107,7 +107,7 @@ const InputArea = styled.div`
   -ms-grid-column-span: 1;
   -ms-grid-row: 1;
   /* stylelint-enable */
-`
+`;
 
 const MessageArea = styled.div`
   grid-column: 2;
@@ -119,7 +119,7 @@ const MessageArea = styled.div`
   -ms-grid-column-span: 2;
   -ms-grid-row: 2;
   /* stylelint-enable */
-`
+`;
 
 export const FieldInline = styled(FieldInlineLayout)`
   align-items: center;
@@ -148,4 +148,4 @@ export const FieldInline = styled(FieldInlineLayout)`
     -ms-grid-row: 1;
     /* stylelint-enable */
   }
-`
+`;

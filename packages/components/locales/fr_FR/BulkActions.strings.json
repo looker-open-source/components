@@ -1,8 +1,8 @@
 {
-  "AllPageCountDisplayedSelected": "La totalité des éléments affichés sur {{pageCount}} sélectionnés",
-  "AllTotalCountSelected": "La totalité des {{totalCount}} éléments sélectionnés",
-  "Bulk Actions": "Actions en bloc",
-  "Clear Selection": "Effacer la sélection",
-  "SelectAllCountResults": "Sélectionner la totalité des {{totalCount}} résultats",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} éléments affichés sur {{pageCount}} sélectionnés"
+  "AllPageCountDisplayedSelected": "Tous les éléments affichés sélectionnés ({{pageCount}})",
+  "AllTotalCountSelected": "Tous les éléments sélectionnés ({{totalCount}})",
+  "Bulk Actions": "Actions groupées",
+  "Clear Selection": "Annuler la sélection",
+  "SelectAllCountResults": "Sélectionner tous les résultats ({{totalCount}})",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} éléments sélectionnés sur {{pageCount}} éléments affichés"
 }

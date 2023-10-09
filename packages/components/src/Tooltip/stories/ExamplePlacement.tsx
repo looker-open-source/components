@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Tooltip } from '../Tooltip'
-import { Button } from '../../Button'
-import { Space } from '../../Layout'
+import React from 'react';
+import { Tooltip } from '../Tooltip';
+import { Button } from '../../Button';
+import { Space } from '../../Layout';
 
 export default function ExamplePlacement() {
   return (
@@ -23,5 +23,5 @@ export default function ExamplePlacement() {
         <Button>Right</Button>
       </Tooltip>
     </Space>
-  )
+  );
 }

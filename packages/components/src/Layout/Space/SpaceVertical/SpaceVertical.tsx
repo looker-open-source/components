@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { SpaceHelperProps } from '../Space'
-import { defaultGap, spaceCSS } from '../Space'
+import { shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { SpaceHelperProps } from '../Space';
+import { defaultGap, spaceCSS } from '../Space';
 
 export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
   /**
@@ -15,7 +15,7 @@ export interface SpaceVerticalProps extends Omit<SpaceHelperProps, 'align'> {
    * `start` & `end` will apply a `flex-start` and `flex-end` behavior respectively.
    * @default start
    */
-  align?: SpaceHelperProps['align']
+  align?: SpaceHelperProps['align'];
 }
 
 export const SpaceVertical = styled.div
@@ -29,4 +29,4 @@ export const SpaceVertical = styled.div
   /* gap throws off spacing for around & evenly */
   ${({ around, evenly, gap = defaultGap, theme: { space } }) =>
     !around && !evenly && `gap: ${space[gap]} 0;`}
-`
+`;

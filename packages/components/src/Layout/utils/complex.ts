@@ -8,17 +8,17 @@ import type {
   BoxShadowProps,
   ColorProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   border,
   boxShadow,
   color,
   reset,
   typography,
-} from '@looker/design-tokens'
-import { css } from 'styled-components'
-import type { SimpleLayoutProps } from './simple'
-import { simpleLayoutCSS } from './simple'
+} from '@looker/design-tokens';
+import { css } from 'styled-components';
+import type { SimpleLayoutProps } from './simple';
+import { simpleLayoutCSS } from './simple';
 
 /**
  * @deprecated - use `CommonLayoutProps` instead.
@@ -31,8 +31,8 @@ export type ComplexLayoutProps = BorderProps &
     /**
      * Workaround for Styled Components merge with DOM `color` prop merge issue
      */
-    color?: string
-  }
+    color?: string;
+  };
 
 /**
  * Used as a common styled-system helper for `Box`& `Flex` & `FlexItem`
@@ -63,4 +63,4 @@ export const complexLayoutCSS = css`
   ${boxShadow}
   ${color}
   ${typography}
-`
+`;

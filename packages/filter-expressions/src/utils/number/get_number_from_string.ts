@@ -4,7 +4,7 @@
  */
 
 const isUnsafeIntegerString = (text: string) =>
-  text.length > 15 && text.indexOf('.') === -1
+  text.length > 15 && text.indexOf('.') === -1;
 
 /**
  * Converts a string to a number, using BigInt for numbers of
@@ -14,7 +14,7 @@ const isUnsafeIntegerString = (text: string) =>
  */
 export const getNumberFromString = (text: string) => {
   if (isUnsafeIntegerString(text)) {
-    return BigInt(text)
+    return BigInt(text);
   }
-  return Number(text)
-}
+  return Number(text);
+};

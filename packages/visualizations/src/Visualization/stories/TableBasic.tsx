@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { Fields } from '@looker/visualizations-adapters'
+import React from 'react';
+import type { Fields } from '@looker/visualizations-adapters';
 import {
   buildChartConfig,
   mockSdkFieldsResponse,
@@ -11,11 +11,11 @@ import {
   mockSdkDataResponse,
   mockSdkConfigResponse,
   mockTotals,
-} from '@looker/visualizations-adapters'
-import { Visualization } from '../'
+} from '@looker/visualizations-adapters';
+import { Visualization } from '../';
 
 export default function Basic() {
-  const data = tabularResponse([...mockSdkDataResponse])
+  const data = tabularResponse([...mockSdkDataResponse]);
 
   const config = buildChartConfig({
     config: {
@@ -26,7 +26,7 @@ export default function Basic() {
     },
     data,
     fields: mockSdkFieldsResponse as Fields,
-  })
+  });
 
   return (
     <Visualization
@@ -36,5 +36,5 @@ export default function Basic() {
       totals={mockTotals}
       config={config}
     />
-  )
+  );
 }

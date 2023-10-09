@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { DataTableHeader } from './DataTableHeader'
+export { DataTableHeader } from './DataTableHeader';

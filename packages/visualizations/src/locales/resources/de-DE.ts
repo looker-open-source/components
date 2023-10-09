@@ -3,29 +3,29 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { deDE as componentsLocale } from '@looker/components'
-import { deDE as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { deDE as visualizationstableLocale } from '@looker/visualizations-table'
-import { deDE as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { deDE as componentsLocale } from '@looker/components';
+import { deDE as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { deDE as visualizationstableLocale } from '@looker/visualizations-table';
+import { deDE as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
     'No children passed to Query component':
-      'Keine untergeordneten Elemente an Abfragekomponente weitergegeben',
+      'Keine untergeordneten Elemente an Abfragekomponente übergeben',
     'Query component received both dashboard and query props':
-      'Abfragekomponente hat Dashboard- und Abfrageeigenschaften erhalten',
+      'Die Abfragekomponente hat sowohl Dashboard- als auch Abfrageattribute erhalten',
   },
   QueryError: {
     Error: 'Fehler',
   },
   Visualization: {
     "Measures of type 'date' are currently not supported":
-      'Measures des Typs „Datum“ werden zur Zeit nicht unterstützt',
+      'Messungen vom Typ „Datum“ werden derzeit nicht unterstützt',
     'No chart found for type "{{type}}"':
       'Dein Diagramm für Typ „{{type}}“ gefunden',
   },
-}
+};
 
 export const deDE = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const deDE = mergeLocaleObjects(
   ],
   'de-DE',
   resources
-)
+);

@@ -2,15 +2,15 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useMemo } from 'react'
-import { useTranslation } from '../../../../utils'
-import type { Option } from '../../../types/option'
+import { useMemo } from 'react';
+import { useTranslation } from '../../../../utils';
+import type { Option } from '../../../types/option';
 
 export const useFilterOptions = (
   options: Option[],
   showMatchesAdvanced: boolean
 ) => {
-  const { t } = useTranslation('get_filter_options')
+  const { t } = useTranslation('get_filter_options');
   return useMemo(
     () =>
       showMatchesAdvanced
@@ -24,5 +24,5 @@ export const useFilterOptions = (
           ]
         : options,
     [options, showMatchesAdvanced, t]
-  )
-}
+  );
+};

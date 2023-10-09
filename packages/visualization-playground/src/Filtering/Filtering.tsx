@@ -24,32 +24,32 @@
 
  */
 
-import type { FormEvent } from 'react'
-import React, { useState, useEffect, useCallback } from 'react'
+import type { FormEvent } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   useQueryId,
   useQueryIdFromDashboard,
   useQueryMetadata,
   useCreateQuery,
-} from '@looker/components-data'
-import { Button, Fieldset } from '@looker/components'
-import type { IQuery, IWriteQuery } from '@looker/sdk'
-import type { InputTypes } from '../QueryInput'
-import { ActiveFilters } from '../ActiveFilters'
+} from '@looker/components-data';
+import { Button, Fieldset } from '@looker/components';
+import type { IQuery, IWriteQuery } from '@looker/sdk';
+import type { InputTypes } from '../QueryInput';
+import { ActiveFilters } from '../ActiveFilters';
 
 type FilteringProps = {
-  setQueryIdentifier: (id: string | number) => void
-  setFetchBy: (type: InputTypes) => void
+  setQueryIdentifier: (id: string | number) => void;
+  setFetchBy: (type: InputTypes) => void;
 } & (
   | {
-      dashboard?: never
-      query?: string | number
+      dashboard?: never;
+      query?: string | number;
     }
   | {
-      dashboard?: number
-      query?: never
+      dashboard?: number;
+      query?: never;
     }
-)
+);
 
 const createQueryRequest = (
   { client_id, ...query }: IQuery,
@@ -58,9 +58,9 @@ const createQueryRequest = (
   const result: Partial<IWriteQuery> = {
     ...query,
     filters: newFilters,
-  }
-  return result
-}
+  };
+  return result;
+};
 
 export const Filtering = ({
   query,
@@ -70,67 +70,67 @@ export const Filtering = ({
 }: FilteringProps) => {
   const [draftQueryMetadata, setDraftQueryMetadata] = useState<
     Partial<IWriteQuery> | undefined
-  >()
+  >();
 
-  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard)
-  const { queryId } = useQueryId(query || dashboardQueryId)
+  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard);
+  const { queryId } = useQueryId(query || dashboardQueryId);
   const {
     metadata,
     metadata: { filters: currentFilters = {} },
-  } = useQueryMetadata(queryId)
+  } = useQueryMetadata(queryId);
 
   const [draftFilters, setDraftFilters] =
-    useState<IQuery['filters']>(currentFilters)
-  const [isFieldsetOpen, setIsFieldsetOpen] = useState(false)
+    useState<IQuery['filters']>(currentFilters);
+  const [isFieldsetOpen, setIsFieldsetOpen] = useState(false);
 
   // caution: side effects!
   // create a new query when the draftQueryMetadata is updated
-  const { queryId: draftQueryId } = useCreateQuery(draftQueryMetadata)
+  const { queryId: draftQueryId } = useCreateQuery(draftQueryMetadata);
 
   const handleFilterSubmit = (e: FormEvent) => {
-    e.preventDefault()
-    const newQuery = createQueryRequest(metadata, draftFilters)
-    setDraftQueryMetadata(newQuery)
-  }
+    e.preventDefault();
+    const newQuery = createQueryRequest(metadata, draftFilters);
+    setDraftQueryMetadata(newQuery);
+  };
 
   // convert value to string in order to approximate deep object comparison in useCallback
-  const draftFilterJSONString = JSON.stringify(draftFilters)
+  const draftFilterJSONString = JSON.stringify(draftFilters);
 
   const handleRemoveFilter = useCallback(
     (name: string) => {
-      const draftFiltersCopy = JSON.parse(draftFilterJSONString)
-      delete draftFiltersCopy[name]
-      setDraftFilters(draftFiltersCopy)
+      const draftFiltersCopy = JSON.parse(draftFilterJSONString);
+      delete draftFiltersCopy[name];
+      setDraftFilters(draftFiltersCopy);
     },
     [draftFilterJSONString]
-  )
+  );
 
   const handleUpdateFilter = useCallback(
     (name: string, expression: string) => {
-      const draftFiltersCopy = JSON.parse(draftFilterJSONString)
-      setDraftFilters({ ...draftFiltersCopy, [name]: expression })
+      const draftFiltersCopy = JSON.parse(draftFilterJSONString);
+      setDraftFilters({ ...draftFiltersCopy, [name]: expression });
     },
     [draftFilterJSONString]
-  )
+  );
 
   useEffect(() => {
     if (draftQueryId && draftQueryId !== queryId) {
       // render new query that was created by `useCreateNewQuery`
-      setQueryIdentifier(draftQueryId)
+      setQueryIdentifier(draftQueryId);
       // if starting from a dashboard ID, update UI to query ID input
-      setFetchBy('query')
+      setFetchBy('query');
       // reset local state post submit
-      setDraftQueryMetadata(undefined)
+      setDraftQueryMetadata(undefined);
     }
-  }, [draftQueryId, queryId, setFetchBy, setQueryIdentifier])
+  }, [draftQueryId, queryId, setFetchBy, setQueryIdentifier]);
 
   useEffect(() => {
-    setDraftFilters(metadata.filters)
-    setIsFieldsetOpen(Object.keys(currentFilters || {}).length > 0)
-  }, [currentFilters, metadata.filters])
+    setDraftFilters(metadata.filters);
+    setIsFieldsetOpen(Object.keys(currentFilters || {}).length > 0);
+  }, [currentFilters, metadata.filters]);
 
   if (!queryId) {
-    return null
+    return null;
   }
 
   return (
@@ -150,5 +150,5 @@ export const Filtering = ({
         <Button onClick={handleFilterSubmit}>Run</Button>
       </Fieldset>
     </form>
-  )
-}
+  );
+};

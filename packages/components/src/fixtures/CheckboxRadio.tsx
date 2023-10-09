@@ -55,7 +55,7 @@ export const options = [
     label: 'Roquefort',
     value: 'roquefort-3',
   },
-]
+];
 
 export const fieldOptions = [
   {
@@ -74,4 +74,4 @@ export const fieldOptions = [
     label: 'Roquefort',
     value: 'roquefort',
   },
-]
+];

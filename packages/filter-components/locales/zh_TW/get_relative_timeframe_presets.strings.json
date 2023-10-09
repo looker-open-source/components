@@ -1,24 +1,24 @@
 {
   "Last 14 Days": {
-    "value": "過去 14 天內"
+    "value": "過去 14 天"
   },
   "Last 180 Days": {
-    "value": "過去 180 天內"
+    "value": "過去 180 天"
   },
   "Last 28 Days": {
-    "value": "過去 28 天內"
+    "value": "過去 28 天"
   },
   "Last 30 Days": {
-    "value": "過去 30 天內"
+    "value": "過去 30 天"
   },
   "Last 365 Days": {
-    "value": "過去 365 天內"
+    "value": "過去 365 天"
   },
   "Last 7 Days": {
-    "value": "過去 7 天內"
+    "value": "過去 7 天"
   },
   "Last 90 Days": {
-    "value": "過去 90 天內"
+    "value": "過去 90 天"
   },
   "Previous Month": {
     "value": "上個月"
@@ -27,10 +27,10 @@
     "value": "上一季"
   },
   "Previous Week": {
-    "value": "上一週"
+    "value": "上週"
   },
   "Previous Year": {
-    "value": "上一年度"
+    "value": "去年"
   },
   "This Month": {
     "value": "本月"
@@ -42,13 +42,13 @@
     "value": "本週"
   },
   "This Year": {
-    "value": "本年度"
+    "value": "今年"
   },
   "Today": {
     "value": "今天"
   },
   "Year To Date": {
-    "value": "年初至今"
+    "value": "本年迄今"
   },
   "Yesterday": {
     "value": "昨天"

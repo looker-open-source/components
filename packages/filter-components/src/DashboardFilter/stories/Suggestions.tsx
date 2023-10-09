@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { DashboardFilter } from '../DashboardFilter'
+import React, { useState } from 'react';
+import { DashboardFilter } from '../DashboardFilter';
 
 export default function Suggestions() {
-  const [expression, setExpression] = useState('')
+  const [expression, setExpression] = useState('');
   return (
     <DashboardFilter
       filter={{
@@ -30,5 +30,5 @@ export default function Suggestions() {
       expression={expression}
       onChange={setExpression}
     />
-  )
+  );
 }

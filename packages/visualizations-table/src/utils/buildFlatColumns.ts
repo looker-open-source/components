@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SDKRecord, TableProps } from '@looker/visualizations-adapters'
-import type { ColumnDef } from '@tanstack/table-core'
-import { buildDimensionColumns, buildMeasureColumns } from '.'
+import type { SDKRecord, TableProps } from '@looker/visualizations-adapters';
+import type { ColumnDef } from '@tanstack/table-core';
+import { buildDimensionColumns, buildMeasureColumns } from '.';
 
-type FlatColumnsProps = Pick<TableProps, 'config' | 'fields'>
+type FlatColumnsProps = Pick<TableProps, 'config' | 'fields'>;
 
 /**
  * Renders a flat array of column definitions to render
@@ -26,5 +26,5 @@ export const buildFlatColumns = ({
   return [
     ...buildDimensionColumns(fields.dimensions),
     ...Object.values(buildMeasureColumns(fields.measures, config)).flat(),
-  ]
-}
+  ];
+};

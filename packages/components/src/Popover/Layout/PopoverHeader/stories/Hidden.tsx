@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { PopoverHeader } from '../..'
+import React from 'react';
+import { PopoverHeader } from '../..';
 
 export default function Hidden() {
-  return <PopoverHeader hidden>Header Text</PopoverHeader>
+  return <PopoverHeader hidden>Header Text</PopoverHeader>;
 }

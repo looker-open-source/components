@@ -33,9 +33,9 @@ import {
   Heading,
   FieldToggleSwitch,
   useToggle,
-} from '@looker/components'
-import React from 'react'
-import { Popover, PopoverContent } from '..'
+} from '@looker/components';
+import React from 'react';
+import { Popover, PopoverContent } from '..';
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -63,12 +63,12 @@ const options = [
   { label: 'Oranges5', value: '35' },
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
-]
+];
 
 export default function PopoverFocusTrap() {
-  const { value, toggle } = useToggle(false)
+  const { value, toggle } = useToggle(false);
   function getButtonAlert(text: string) {
-    return () => alert(text)
+    return () => alert(text);
   }
 
   return (
@@ -166,5 +166,5 @@ export default function PopoverFocusTrap() {
       <Paragraph>Long text</Paragraph>
       <Paragraph>Long text</Paragraph>
     </SpaceVertical>
-  )
+  );
 }

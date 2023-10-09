@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function FloatingLabel() {
-  const [values, setValues] = useState<string[]>(['apples'])
+  const [values, setValues] = useState<string[]>(['apples']);
 
   return (
     <FieldChips
@@ -16,5 +16,5 @@ export default function FloatingLabel() {
       values={values}
       onChange={setValues}
     />
-  )
+  );
 }

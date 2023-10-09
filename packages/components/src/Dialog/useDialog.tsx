@@ -24,25 +24,25 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React, { useState } from 'react'
+import type { ReactNode } from 'react';
+import React, { useState } from 'react';
 import type {
   DrawerPlacements,
   DialogDrawerWidth,
-} from '../Drawer/DrawerSurface'
-import { Portal } from '../Portal'
+} from '../Drawer/DrawerSurface';
+import { Portal } from '../Portal';
 import {
   useAnimationState,
   useControlWarn,
   useFocusTrap,
   useID,
   useScrollLock,
-} from '../utils'
-import { Backdrop } from './Backdrop'
-import { DialogContext } from './DialogContext'
-import type { DialogSurfaceProps, DialogPlacements } from './DialogSurface'
-import { DialogSurface } from './DialogSurface'
-import type { DialogWidth } from './dialogWidth'
+} from '../utils';
+import { Backdrop } from './Backdrop';
+import { DialogContext } from './DialogContext';
+import type { DialogSurfaceProps, DialogPlacements } from './DialogSurface';
+import { DialogSurface } from './DialogSurface';
+import type { DialogWidth } from './dialogWidth';
 
 export interface UseDialogBaseProps {
   /**
@@ -50,13 +50,13 @@ export interface UseDialogBaseProps {
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Popover is closed
    */
-  canClose?: () => boolean
+  canClose?: () => boolean;
 
   /**
    * Content to rendered within the Dialog surface.
    * @required
    */
-  content: ReactNode
+  content: ReactNode;
 
   /**
    * Dialog will be displayed immediately when rendered.
@@ -64,38 +64,38 @@ export interface UseDialogBaseProps {
    * be used treat this component as "controlled"
    * @default false
    */
-  defaultOpen?: boolean
+  defaultOpen?: boolean;
 
   /**
    * The id of the dialog (if absent, a random id will be generated)
    */
-  id?: string
+  id?: string;
 
   /**
    * Dialog will be displayed immediately when rendered.
    * @default undefined
    */
-  isOpen?: boolean
+  isOpen?: boolean;
 
   /**
    * function available after dialog is closed
    */
-  onAfterClose?: () => void
+  onAfterClose?: () => void;
 
   /**
    * function available after dialog is opened
    */
-  onAfterOpen?: () => void
+  onAfterOpen?: () => void;
 
   /**
    * Specify a callback to be called each time this Dialog is closed
    */
-  onClose?: () => void
+  onClose?: () => void;
 
   /**
    * Optional, for a controlled version of the component
    */
-  setOpen?: (open: boolean) => void
+  setOpen?: (open: boolean) => void;
 }
 
 export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
@@ -104,26 +104,26 @@ export interface UseDialogProps extends UseDialogBaseProps, DialogSurfaceProps {
    * This is intended for internal components use only (specifically `Drawer`)
    * @private
    */
-  Surface?: React.ComponentType
+  Surface?: React.ComponentType;
 }
 
 export interface UseDialogPropsInternal
   extends Omit<UseDialogProps, 'placement' | 'width'> {
-  placement?: DialogPlacements | DrawerPlacements
-  width?: DialogWidth | DialogDrawerWidth
+  placement?: DialogPlacements | DrawerPlacements;
+  width?: DialogWidth | DialogDrawerWidth;
 }
 
 export interface UseDialogResponseDom {
-  onClick: () => void
-  role: string
-  'aria-expanded': boolean
+  onClick: () => void;
+  role: string;
+  'aria-expanded': boolean;
 }
 
 export interface UseDialogResponse {
-  isOpen: boolean
-  setOpen: (open: boolean) => void
-  dialog: ReactNode
-  domProps: UseDialogResponseDom
+  isOpen: boolean;
+  setOpen: (open: boolean) => void;
+  dialog: ReactNode;
+  domProps: UseDialogResponseDom;
 }
 
 export const useDialog = ({
@@ -140,18 +140,18 @@ export const useDialog = ({
   id,
   ...surfaceProps
 }: UseDialogPropsInternal): UseDialogResponse => {
-  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen);
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'useDialog',
-  })
+  });
 
   if (Boolean(onClose) && Boolean(controlledSetOpen)) {
     // eslint-disable-next-line no-console
     throw new Error(
       'useDialog does not support setting both `setOpen` and `onClose`. Use just `setOpen`'
-    )
+    );
   }
 
   /**
@@ -159,39 +159,39 @@ export const useDialog = ({
    * Eventually we need to deprecate support for `isOpen` without specifying a `setOpen`
    *  explicitly so we can unwind this semi-controlled state.
    */
-  const isPartiallyControlled = controlledIsOpen !== undefined
+  const isPartiallyControlled = controlledIsOpen !== undefined;
 
   const isOpen =
     isPartiallyControlled || isControlled
       ? controlledIsOpen || false
-      : uncontrolledIsOpen
+      : uncontrolledIsOpen;
 
   const { busy, className, renderDOM } = useAnimationState({
     enter: defaultOpen ? 'none' : undefined,
     isOpen,
     onAfterEntered: onAfterOpen,
     onAfterExited: onAfterClose,
-  })
+  });
 
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen
-      : setUncontrolledIsOpen
+      : setUncontrolledIsOpen;
 
-  const [, focusRef] = useFocusTrap({ clickOutsideDeactivates: true })
-  const [, portalRef] = useScrollLock({ ref: focusRef })
+  const [, focusRef] = useFocusTrap({ clickOutsideDeactivates: true });
+  const [, portalRef] = useScrollLock({ ref: focusRef });
 
-  const handleOpen = () => setOpen(true)
+  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
-    if (canClose && !canClose()) return
-    setOpen(false)
-    onClose && onClose()
-  }
+    if (canClose && !canClose()) return;
+    setOpen(false);
+    onClose && onClose();
+  };
 
-  const RenderSurface = CustomSurface || DialogSurface
+  const RenderSurface = CustomSurface || DialogSurface;
 
-  const dialogId = useID(id)
+  const dialogId = useID(id);
 
   const dialog = renderDOM && (
     <DialogContext.Provider
@@ -215,7 +215,7 @@ export const useDialog = ({
         </RenderSurface>
       </Portal>
     </DialogContext.Provider>
-  )
+  );
 
   return {
     dialog,
@@ -226,5 +226,5 @@ export const useDialog = ({
     },
     isOpen,
     setOpen,
-  }
-}
+  };
+};

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { LineHeightRamp } from '../../system'
+import type { LineHeightRamp } from '../../system';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const lineHeights: LineHeightRamp = {
@@ -17,4 +17,4 @@ export const lineHeights: LineHeightRamp = {
   small: '1.25rem',
   xsmall: '1rem',
   xxsmall: '1rem',
-}
+};

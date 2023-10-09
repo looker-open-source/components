@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { thTH as componentsLocale } from '@looker/components'
-import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { thTH as visualizationstableLocale } from '@looker/visualizations-table'
-import { thTH as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { thTH as componentsLocale } from '@looker/components';
+import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { thTH as visualizationstableLocale } from '@looker/visualizations-table';
+import { thTH as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -24,7 +24,7 @@ const resources = {
       'ขณะนี้ไม่รองรับค่าวัดประเภท "วันที่"',
     'No chart found for type "{{type}}"': 'ไม่พบแผนภูมิสำหรับประเภท "{{type}}"',
   },
-}
+};
 
 export const thTH = mergeLocaleObjects(
   [
@@ -35,4 +35,4 @@ export const thTH = mergeLocaleObjects(
   ],
   'th-TH',
   resources
-)
+);

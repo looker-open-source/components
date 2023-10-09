@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FontFamilyChoices, FontFamilyFallbacks } from '../../system'
-import { generateFontFamilies } from '../../utils/typography'
+import type { FontFamilyChoices, FontFamilyFallbacks } from '../../system';
+import { generateFontFamilies } from '../../utils/typography';
 
 const sansSerifFontFallbacks = [
   "'Noto Sans'",
@@ -17,7 +17,7 @@ const sansSerifFontFallbacks = [
   'Helvetica',
   'Arial',
   'sans-serif',
-]
+];
 
 export const defaultFontFallbacks: FontFamilyFallbacks = {
   body: sansSerifFontFallbacks,
@@ -30,15 +30,15 @@ export const defaultFontFallbacks: FontFamilyFallbacks = {
     "'source-code-pro'",
     'monospace',
   ],
-}
+};
 
 export const defaultFonts: FontFamilyChoices = {
   body: 'Roboto',
   brand: 'Roboto',
   code: "'Roboto Mono'",
-}
+};
 
 export const fontFamilies = generateFontFamilies(
   defaultFonts,
   defaultFontFallbacks
-)
+);

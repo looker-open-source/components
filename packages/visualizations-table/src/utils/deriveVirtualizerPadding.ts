@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { Virtualizer } from '@tanstack/react-virtual'
+import type { Virtualizer } from '@tanstack/react-virtual';
 
 /**
  * Utility used for virtual scrolling calculations, derived from the
@@ -15,13 +15,13 @@ import type { Virtualizer } from '@tanstack/react-virtual'
 export const deriveVirtualizerPadding = (
   virtualizer: Virtualizer<HTMLDivElement | null, unknown>
 ) => {
-  const virtualItems = virtualizer.getVirtualItems()
+  const virtualItems = virtualizer.getVirtualItems();
 
-  const head = virtualItems?.[0]
-  const tail = virtualItems?.[virtualItems.length - 1]
+  const head = virtualItems?.[0];
+  const tail = virtualItems?.[virtualItems.length - 1];
 
-  const paddingStart = head ? head.start : 0
-  const paddingEnd = tail ? virtualizer.getTotalSize() - tail.end : 0
+  const paddingStart = head ? head.start : 0;
+  const paddingEnd = tail ? virtualizer.getTotalSize() - tail.end : 0;
 
-  return [paddingStart, paddingEnd]
-}
+  return [paddingStart, paddingEnd];
+};

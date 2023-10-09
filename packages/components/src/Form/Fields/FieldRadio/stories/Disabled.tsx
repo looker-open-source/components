@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadio } from '../'
+import React from 'react';
+import { FieldRadio } from '../';
 
 export default function Disabled() {
   return (
@@ -14,5 +14,5 @@ export default function Disabled() {
       name="thumbsUp"
       disabled={true}
     />
-  )
+  );
 }

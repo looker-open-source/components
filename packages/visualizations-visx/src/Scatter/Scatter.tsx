@@ -24,25 +24,25 @@
 
  */
 
-import React, { Fragment } from 'react'
-import { DataProvider, GlyphSeries, XYChart } from '@visx/xychart'
-import type { AxisScaleOutput, AxisScale } from '@visx/axis'
-import type { LinearScaleConfig } from '@visx/scale'
+import React, { Fragment } from 'react';
+import { DataProvider, GlyphSeries, XYChart } from '@visx/xychart';
+import type { AxisScaleOutput, AxisScale } from '@visx/axis';
+import type { LinearScaleConfig } from '@visx/scale';
 import type {
   ScatterProps,
   SDKRecord,
   CScatterSeries,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import {
   DEFAULT_HEIGHT,
   VisWrapper,
   hexToRgba,
   getSeriesMax,
   getSeriesMin,
-} from '@looker/visualizations-adapters'
-import { XYLegend } from '../XYLegend'
-import isArray from 'lodash/isArray'
-import get from 'lodash/get'
+} from '@looker/visualizations-adapters';
+import { XYLegend } from '../XYLegend';
+import isArray from 'lodash/isArray';
+import get from 'lodash/get';
 import {
   concatDimensions,
   getX,
@@ -55,11 +55,11 @@ import {
   getDefaultGlyphSize,
   dimensionToDate,
   isDateQuery,
-} from '../utils'
+} from '../utils';
 
-import { XYTooltip } from '../XYTooltip'
-import { Glyph } from '../Glyph'
-import { Grid } from '../Grid'
+import { XYTooltip } from '../XYTooltip';
+import { Glyph } from '../Glyph';
+import { Grid } from '../Grid';
 
 export const Scatter = ({
   data,
@@ -73,33 +73,33 @@ export const Scatter = ({
    * the tabularReponse call. This new array combines existing dimension properties
    * with a single `dimension` property.
    */
-  const formattedData = concatDimensions(data, fields)
+  const formattedData = concatDimensions(data, fields);
 
   const { XAxis, YAxis, chartMargin } = useAxis({
     config,
     data: formattedData,
     fields,
-  })
+  });
 
-  const chartTheme = useChartTheme(config.series)
+  const chartTheme = useChartTheme(config.series);
 
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
-    return null
+    return null;
   }
 
   const plots: JSX.Element[] | undefined = fields.measures.map((measure, i) => {
     const series: CScatterSeries = isArray(config.series)
       ? get(config, ['series', i])
-      : get(config, ['series', measure.name])
+      : get(config, ['series', measure.name]);
 
-    if (!series.visible) return <Fragment key={i}></Fragment>
+    if (!series.visible) return <Fragment key={i}></Fragment>;
 
-    const { style, shape, size_by, line_width = 1 } = series
-    const id = `marker-${shape}-${i}`
+    const { style, shape, size_by, line_width = 1 } = series;
+    const id = `marker-${shape}-${i}`;
 
-    const sizeByMax = size_by ? getSeriesMax(size_by, data) : 0
-    const sizeByMin = size_by ? getSeriesMin(size_by, data) : 0
+    const sizeByMax = size_by ? getSeriesMax(size_by, data) : 0;
+    const sizeByMin = size_by ? getSeriesMin(size_by, data) : 0;
 
     return (
       <Fragment key={id}>
@@ -119,9 +119,9 @@ export const Scatter = ({
                 sizeProps[size_by],
                 sizeByMin,
                 sizeByMax
-              )
+              );
             } else {
-              return getDefaultGlyphSize(line_width)
+              return getDefaultGlyphSize(line_width);
             }
           }}
           renderGlyph={({ size, color, x, y }) => {
@@ -134,19 +134,19 @@ export const Scatter = ({
                 fill={hexToRgba(color, 0.6)}
                 stroke={style === 'filled' ? false : undefined}
               />
-            )
+            );
           }}
         />
       </Fragment>
-    )
-  })
+    );
+  });
 
-  const domain = getYAxisRange({ config, data: formattedData, fields })
+  const domain = getYAxisRange({ config, data: formattedData, fields });
 
   const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
-  }
+  };
 
   return (
     <DataProvider
@@ -171,5 +171,5 @@ export const Scatter = ({
         <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
-  )
-}
+  );
+};

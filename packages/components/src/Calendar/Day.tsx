@@ -23,20 +23,20 @@
  SOFTWARE.
 
  */
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { Locale } from 'date-fns'
-import { getDate, isSameDay } from 'date-fns'
-import React from 'react'
-import styled from 'styled-components'
-import pick from 'lodash/pick'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { Locale } from 'date-fns';
+import { getDate, isSameDay } from 'date-fns';
+import React from 'react';
+import styled from 'styled-components';
+import pick from 'lodash/pick';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useRipple,
   useRippleHandlers,
-} from '../Ripple'
-import type { DateSelectionProps } from './types'
-import { formatDateString } from './utils'
+} from '../Ripple';
+import type { DateSelectionProps } from './types';
+import { formatDateString } from './utils';
 
 export const HitArea = styled.div`
   height: ${({ theme }) => theme.space.u8};
@@ -45,17 +45,17 @@ export const HitArea = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   width: ${({ theme }) => theme.space.u8};
-`
+`;
 
 type DayProps = Omit<
   CompatibleHTMLProps<HTMLButtonElement>,
   'onSelect' | 'type'
 > &
   DateSelectionProps & {
-    date: Date
-    locale: Locale
-    selected?: boolean
-  }
+    date: Date;
+    locale: Locale;
+    selected?: boolean;
+  };
 
 export const Day = styled(
   ({
@@ -68,19 +68,19 @@ export const Day = styled(
     style,
     ...props
   }: DayProps) => {
-    const dateString = formatDateString(date, 'EEE MMM dd, yyyy', locale)
-    const today = isSameDay(date, new Date())
+    const dateString = formatDateString(date, 'EEE MMM dd, yyyy', locale);
+    const today = isSameDay(date, new Date());
     const handleClick = () => {
-      onSelect(date)
-    }
+      onSelect(date);
+    };
 
-    const handleHoverFocus = () => onDraftSelect(date)
+    const handleHoverFocus = () => onDraftSelect(date);
 
     const { callbacks, ...rippleProps } = useRipple({
       className,
       color: 'neutral',
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
@@ -90,9 +90,10 @@ export const Day = styled(
         onMouseEnter: handleHoverFocus,
       },
       props.disabled
-    )
+    );
 
     return (
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         {...props}
         aria-current={today ? 'date' : 'false'}
@@ -107,7 +108,7 @@ export const Day = styled(
         <HitArea />
         {getDate(date)}
       </button>
-    )
+    );
   }
 )`
   ${rippleStyle}
@@ -133,4 +134,4 @@ export const Day = styled(
     border: 1px solid ${({ theme }) => theme.colors.key};
     color: ${({ theme }) => theme.colors.background};
   }
-`
+`;

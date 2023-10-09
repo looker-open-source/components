@@ -6,16 +6,16 @@
     "value": "天"
   },
   "fiscal quarter": {
-    "value": "财政季度"
+    "value": "财季"
   },
   "fiscal quarters": {
-    "value": "个财政季度"
+    "value": "财季"
   },
   "fiscal year": {
-    "value": "财政年度"
+    "value": "财年"
   },
   "fiscal years": {
-    "value": "个财政年度"
+    "value": "财年"
   },
   "hour": {
     "value": "小时"
@@ -33,13 +33,13 @@
     "value": "月"
   },
   "months": {
-    "value": "个月"
+    "value": "月"
   },
   "quarter": {
     "value": "季度"
   },
   "quarters": {
-    "value": "个季度"
+    "value": "季度"
   },
   "second": {
     "value": "秒"

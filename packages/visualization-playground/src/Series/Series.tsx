@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import type { Dispatch, SetStateAction } from 'react'
+import React from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   CAll,
   SupportedChartTypes,
@@ -36,39 +36,39 @@ import type {
   CSeriesSize,
   Fields,
   ValueOf,
-} from '@looker/visualizations-adapters'
-import { isNumeric } from '@looker/visualizations-adapters'
-import { Fieldset, Grid, Divider } from '@looker/components'
-import { SeriesColor } from './SeriesColor'
-import type { CColorSupported } from './SeriesColor'
-import { SeriesVisible } from './SeriesVisible'
-import type { CVisibleSupported } from './SeriesVisible'
-import { SeriesLabel } from './SeriesLabel'
-import type { CLabelSupported } from './SeriesLabel'
-import { SeriesLineWidth } from './SeriesLineWidth'
-import type { CLineWidthSupported } from './SeriesLineWidth'
-import { SeriesPointShape } from './SeriesPointShape'
-import type { CPointShapeSupported } from './SeriesPointShape'
-import { SeriesPointStyle } from './SeriesPointStyle'
-import type { CPointStyleSupported } from './SeriesPointStyle'
-import { SeriesSizeBy } from './SeriesSizeBy'
-import type { CSeriesSizeBySupported } from './SeriesSizeBy'
-import { SeriesCellVisualization } from './SeriesCellVisualization'
-import type { CCellVisualizationSupported } from './SeriesCellVisualization'
-import { SeriesValueFormat } from './SeriesValueFormat'
-import type { CValueFormatSupported } from './SeriesValueFormat'
-import partial from 'lodash/partial'
-import set from 'lodash/set'
-import styled from 'styled-components'
-import has from 'lodash/has'
+} from '@looker/visualizations-adapters';
+import { isNumeric } from '@looker/visualizations-adapters';
+import { Fieldset, Grid, Divider } from '@looker/components';
+import { SeriesColor } from './SeriesColor';
+import type { CColorSupported } from './SeriesColor';
+import { SeriesVisible } from './SeriesVisible';
+import type { CVisibleSupported } from './SeriesVisible';
+import { SeriesLabel } from './SeriesLabel';
+import type { CLabelSupported } from './SeriesLabel';
+import { SeriesLineWidth } from './SeriesLineWidth';
+import type { CLineWidthSupported } from './SeriesLineWidth';
+import { SeriesPointShape } from './SeriesPointShape';
+import type { CPointShapeSupported } from './SeriesPointShape';
+import { SeriesPointStyle } from './SeriesPointStyle';
+import type { CPointStyleSupported } from './SeriesPointStyle';
+import { SeriesSizeBy } from './SeriesSizeBy';
+import type { CSeriesSizeBySupported } from './SeriesSizeBy';
+import { SeriesCellVisualization } from './SeriesCellVisualization';
+import type { CCellVisualizationSupported } from './SeriesCellVisualization';
+import { SeriesValueFormat } from './SeriesValueFormat';
+import type { CValueFormatSupported } from './SeriesValueFormat';
+import partial from 'lodash/partial';
+import set from 'lodash/set';
+import styled from 'styled-components';
+import has from 'lodash/has';
 
 /**
  * A list of relevant charts that access this configuration
  */
 type SupportedChartConfig = {
-  type?: ValueOf<SupportedChartTypes>
-  series?: CScatterSeries | CTableSeries | CLineSeries
-}
+  type?: ValueOf<SupportedChartTypes>;
+  series?: CScatterSeries | CTableSeries | CLineSeries;
+};
 
 const renderFor: Array<SupportedChartConfig['type']> = [
   'area',
@@ -80,44 +80,44 @@ const renderFor: Array<SupportedChartConfig['type']> = [
   'sparkline',
   'table',
   'single_value',
-]
+];
 
 export type SeriesProps = {
-  config: SupportedChartConfig
-  fields: Fields
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-}
+  config: SupportedChartConfig;
+  fields: Fields;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+};
 
 export const Series = (props: SeriesProps) => {
-  const { config, fields, onConfigChange } = props
-  const { series = {} } = config
+  const { config, fields, onConfigChange } = props;
+  const { series = {} } = config;
 
   if (!renderFor.includes(config.type) && !has(config, 'series')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
   const handleChange = (
     seriesKey: string,
     newSeries: CSeriesBasic | CSeriesLine
   ) => {
-    const draft = set({ ...config }, ['series', seriesKey], newSeries)
-    onConfigChange(draft as CAll)
-  }
+    const draft = set({ ...config }, ['series', seriesKey], newSeries);
+    onConfigChange(draft as CAll);
+  };
 
   const seriesList: Array<[string, CSeriesBasic | CSeriesLine]> = Array.isArray(
     series
   )
     ? series.map((s, i) => [String(i), s])
-    : Object.entries(series)
+    : Object.entries(series);
 
   return (
     <>
       {seriesList.map(([key, s], i) => {
-        const handleSeriesChange = partial(handleChange, key)
+        const handleSeriesChange = partial(handleChange, key);
 
         // Sparkline only renders the first series
-        const seriesDisabled = config.type === 'sparkline' && i > 0
+        const seriesDisabled = config.type === 'sparkline' && i > 0;
 
         return (
           <StyledFieldset
@@ -178,11 +178,11 @@ export const Series = (props: SeriesProps) => {
             />
             <Divider my="xxlarge" />
           </StyledFieldset>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
 const StyledFieldset = styled(Fieldset)`
   legend {
@@ -190,4 +190,4 @@ const StyledFieldset = styled(Fieldset)`
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-`
+`;

@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { CommonLayoutProps } from '../utils/common'
-import { commonLayoutCSS } from '../utils/common'
-import { headerFooterCSS } from './Header'
+import { shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { CommonLayoutProps } from '../utils/common';
+import { commonLayoutCSS } from '../utils/common';
+import { headerFooterCSS } from './Header';
 
-export type FooterProps = CommonLayoutProps
+export type FooterProps = CommonLayoutProps;
 
 export const Footer = styled.footer.withConfig({
   shouldForwardProp,
@@ -17,4 +17,4 @@ export const Footer = styled.footer.withConfig({
   ${commonLayoutCSS}
   ${headerFooterCSS}
   width: 100%;
-`
+`;

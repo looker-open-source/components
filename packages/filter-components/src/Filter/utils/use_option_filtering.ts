@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import { useDebounce } from 'use-debounce'
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from '../../utils'
-import type { Option } from '../types/option'
-import { createOptions, filterOptions } from './option_utils'
+import { useDebounce } from 'use-debounce';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from '../../utils';
+import type { Option } from '../types/option';
+import { createOptions, filterOptions } from './option_utils';
 const useExtendedOptions = (
   options: Option[],
   values: string[],
@@ -43,23 +43,23 @@ const useExtendedOptions = (
       !excludeValues &&
       filterTerm === '' &&
       values.length > 0 &&
-      options.length >= limit
+      options.length >= limit;
 
     const valueInOptions = (value: string) =>
-      options.find((option: Option) => option.value === value)
+      options.find((option: Option) => option.value === value);
 
     const reducer = (acc: string[], value: string) => {
       if (!valueInOptions(value)) {
-        acc.push(value)
+        acc.push(value);
       }
-      return acc
-    }
+      return acc;
+    };
 
-    const valuesToAppend = needToAppendValues ? values.reduce(reducer, []) : []
+    const valuesToAppend = needToAppendValues ? values.reduce(reducer, []) : [];
 
-    return [...options, ...createOptions(valuesToAppend)]
-  }, [options, values, filterTerm, limit, excludeValues])
-}
+    return [...options, ...createOptions(valuesToAppend)];
+  }, [options, values, filterTerm, limit, excludeValues]);
+};
 
 /**
  * Adds a debounce to the filter term / onInputChange call
@@ -69,58 +69,58 @@ const useExtendedOptions = (
 export const useDebouncedFilterTerm = (
   onInputChange?: (value: string) => void
 ) => {
-  const { t } = useTranslation('use_option_filtering')
+  const { t } = useTranslation('use_option_filtering');
 
-  const [filterTerm, setFilterTerm] = useState('')
-  const [debouncedFilterTerm] = useDebounce(filterTerm, 150, { leading: true })
+  const [filterTerm, setFilterTerm] = useState('');
+  const [debouncedFilterTerm] = useDebounce(filterTerm, 150, { leading: true });
 
-  const isFirstRender = useRef(true)
+  const isFirstRender = useRef(true);
   useEffect(() => {
     if (!isFirstRender.current) {
       // No need to call on initial render since
       // suggestions should be pre-fetched for any filter that uses them
-      onInputChange?.(debouncedFilterTerm.trim())
+      onInputChange?.(debouncedFilterTerm.trim());
     }
-    isFirstRender.current = false
+    isFirstRender.current = false;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedFilterTerm])
+  }, [debouncedFilterTerm]);
 
   const noOptionsLabel =
     filterTerm === ''
       ? t('No values')
-      : `${t('No values match')} "${debouncedFilterTerm}"`
+      : `${t('No values match')} "${debouncedFilterTerm}"`;
 
   return {
     debouncedFilterTerm,
     noOptionsLabel,
     onFilter: setFilterTerm,
-  }
-}
+  };
+};
 
 export interface UseOptionFilteringProps {
   /**
    * Whether to remove the selected value(s) from the filtered options
    */
-  excludeValues?: boolean
+  excludeValues?: boolean;
   /**
    * If there are more initial options than this number, instead of filtering
    * options on the front end, the API will be hit every keystroke and
    * filtering will occur in the backend.
    * @default 999
    */
-  limit?: number
+  limit?: number;
   /**
    * Callback to receive debounced filter term
    */
-  onInputChange?: (value: string) => void
+  onInputChange?: (value: string) => void;
   /**
    * List of available options
    */
-  options: Option[]
+  options: Option[];
   /**
    * Currently selected value(s)
    */
-  value: string | string[]
+  value: string | string[];
 }
 
 /**
@@ -133,17 +133,18 @@ export const useOptionFiltering = ({
   options,
   value,
 }: UseOptionFilteringProps) => {
-  let values: string[]
+  let values: string[];
   if (typeof value === 'string') {
     if (value === '') {
-      values = []
+      values = [];
     } else {
-      values = [value]
+      values = [value];
     }
   } else {
-    values = value
+    values = value;
   }
-  const { debouncedFilterTerm, ...rest } = useDebouncedFilterTerm(onInputChange)
+  const { debouncedFilterTerm, ...rest } =
+    useDebouncedFilterTerm(onInputChange);
 
   const extendedOptions = useExtendedOptions(
     options,
@@ -151,7 +152,7 @@ export const useOptionFiltering = ({
     debouncedFilterTerm,
     limit,
     excludeValues
-  )
+  );
 
   const filteredOptions = useMemo(() => {
     // If filtering on backend, filter term will be empty but we still need to filter out current values
@@ -159,13 +160,13 @@ export const useOptionFiltering = ({
       extendedOptions,
       debouncedFilterTerm,
       excludeValues ? values : []
-    )
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [extendedOptions, debouncedFilterTerm, values])
+  }, [extendedOptions, debouncedFilterTerm, values]);
 
   return {
     filteredOptions,
     debouncedFilterTerm,
     ...rest,
-  }
-}
+  };
+};

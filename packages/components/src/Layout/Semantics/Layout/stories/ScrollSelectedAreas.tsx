@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { LayoutProps } from '../..'
-import { Page, Layout, Aside, Section } from '../..'
-import { Constitution, ConstitutionShort } from '../../../..'
-import { Heading } from '../../../../Text'
+import React from 'react';
+import type { LayoutProps } from '../..';
+import { Page, Layout, Aside, Section } from '../..';
+import { Constitution, ConstitutionShort } from '../../../..';
+import { Heading } from '../../../../Text';
 
 export default function ScrollSelectedAreas(props: LayoutProps) {
-  const { hasAside, ...rest } = props
+  const { hasAside, ...rest } = props;
   return (
     <Page fixed>
       <Layout hasAside={hasAside} {...rest}>
@@ -37,5 +37,5 @@ export default function ScrollSelectedAreas(props: LayoutProps) {
         </Layout>
       </Layout>
     </Page>
-  )
+  );
 }

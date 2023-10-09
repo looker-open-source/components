@@ -6,39 +6,39 @@
     "value": "[포함]"
   },
   "is": {
-    "value": "이(가)"
+    "value": "다음과 일치:"
   },
   "is between": {
-    "value": "이(가) 다음 두 값 사이임"
+    "value": "다음 두 값 사이에 있음:"
   },
   "is greater": {
-    "value": "이(가) >"
+    "value": ">"
   },
   "is greater equal": {
-    "value": "이(가) >="
+    "value": ">="
   },
   "is less": {
-    "value": "이(가) <"
+    "value": "<"
   },
   "is less equal": {
-    "value": "이(가) <="
+    "value": "<="
   },
   "is not": {
-    "value": "이(가) 다음이 아님"
+    "value": "다음과 일치하지 않음:"
   },
   "is not between": {
-    "value": "이(가) 다음 두 값 사이가 아님"
+    "value": "다음 두 값 사이에 있지 않음:"
   },
   "is not null": {
-    "value": "이(가) null이 아님"
+    "value": "null 아님"
   },
   "is null": {
-    "value": "이(가) null임"
+    "value": "null"
   },
   "left exclusive": {
-    "value": "(왼쪽-제외]"
+    "value": "(왼쪽 제외]"
   },
   "right exclusive": {
-    "value": "[오른쪽-제외)"
+    "value": "[오른쪽 제외)"
   }
 }

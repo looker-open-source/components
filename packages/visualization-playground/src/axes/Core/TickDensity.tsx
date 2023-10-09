@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
-import type { FormEvent } from 'react'
-import type { YAxisConfig } from '@looker/visualizations-adapters'
-import { Slider, FieldRadio, Field, useID } from '@looker/components'
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import type { YAxisConfig } from '@looker/visualizations-adapters';
+import { Slider, FieldRadio, Field, useID } from '@looker/components';
 
 export type TickDensityProps = {
-  axis: YAxisConfig
-  onAxisChange: (axis: YAxisConfig) => void
-}
+  axis: YAxisConfig;
+  onAxisChange: (axis: YAxisConfig) => void;
+};
 
 export const TickDensity = (props: TickDensityProps) => {
   const {
@@ -39,29 +39,29 @@ export const TickDensity = (props: TickDensityProps) => {
     // TODO: uncomment this when tick density is supported
     // axis: { tick_density },
     onAxisChange,
-  } = props
+  } = props;
 
-  const [densityToggle, setDensityToggle] = useState<string>()
+  const [densityToggle, setDensityToggle] = useState<string>();
   // TODO: uncomment this when tick density is supported
   // tick_density === 'default' ? 'default' : 'custom'
 
-  const handleSliderChange = (e: FormEvent) => {
+  const handleSliderChange = (e: ChangeEvent) => {
     const draft = {
       ...axis,
       tick_density: parseInt((e.target as HTMLInputElement).value),
-    }
-    onAxisChange(draft)
-  }
+    };
+    onAxisChange(draft);
+  };
 
-  const handleToggleChange = (e: FormEvent) => {
-    const { value } = e.target as HTMLInputElement
-    setDensityToggle(value)
+  const handleToggleChange = (e: ChangeEvent) => {
+    const { value } = e.target as HTMLInputElement;
+    setDensityToggle(value);
     // TODO: uncomment this when tick density is supported
     // const densityValue = value === 'default' ? 'default' : 50
     // onAxisChange({ ...axis, tick_density: densityValue })
-  }
+  };
 
-  const groupID = useID()
+  const groupID = useID();
 
   return (
     <>
@@ -96,5 +96,5 @@ export const TickDensity = (props: TickDensityProps) => {
         />
       )}
     </>
-  )
-}
+  );
+};

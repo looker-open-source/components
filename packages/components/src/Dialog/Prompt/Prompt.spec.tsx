@@ -28,25 +28,25 @@ import {
   fireEvent,
   screen,
   waitForElementToBeRemoved,
-} from '@testing-library/react'
-import React, { useState } from 'react'
+} from '@testing-library/react';
+import React, { useState } from 'react';
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { StatefulColor } from '@looker/design-tokens'
-import { theme } from '@looker/design-tokens'
-import { Button } from '../../Button'
-import { Prompt } from './Prompt'
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { StatefulColor } from '@looker/design-tokens';
+import { theme } from '@looker/design-tokens';
+import { Button } from '../../Button';
+import { Prompt } from './Prompt';
 
-const onSaveCallback = jest.fn()
+const onSaveCallback = jest.fn();
 
 const requiredProps = {
   inputLabel: 'Foo',
   onSave: (_: string, close: () => void) => {
-    close()
-    onSaveCallback()
+    close();
+    onSaveCallback();
   },
   title: 'Bar',
-}
+};
 
 const optionalProps = {
   cancelColor: 'critical' as StatefulColor,
@@ -55,119 +55,119 @@ const optionalProps = {
   onCancel: jest.fn(),
   saveLabel: 'Save Cheese',
   secondary: <div>Secondary Cheese</div>,
-}
+};
 
 afterEach(() => {
-  onSaveCallback.mockClear()
-})
+  onSaveCallback.mockClear();
+});
 
 test('<Prompt/> with defaults', async () => {
   renderWithTheme(
     <Prompt {...requiredProps}>
       {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
-  )
+  );
 
-  const opener = screen.getByText('Open Prompt')
-  fireEvent.click(opener)
+  const opener = screen.getByText('Open Prompt');
+  fireEvent.click(opener);
 
-  const saveButton = screen.getByText('Save')
-  const input = screen.getByPlaceholderText(requiredProps.inputLabel)
+  const saveButton = screen.getByText('Save');
+  const input = screen.getByPlaceholderText(requiredProps.inputLabel);
 
-  expect(input).toBeVisible()
-  expect(screen.getByText(requiredProps.title)).toBeVisible()
-  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`)
+  expect(input).toBeVisible();
+  expect(screen.getByText(requiredProps.title)).toBeVisible();
+  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`);
 
-  fireEvent.click(saveButton)
-  expect(onSaveCallback).toHaveBeenCalledTimes(0)
+  fireEvent.click(saveButton);
+  expect(onSaveCallback).toHaveBeenCalledTimes(0);
 
-  fireEvent.change(input, { target: { value: 'Has Text In It' } })
-  fireEvent.click(saveButton)
-  expect(onSaveCallback).toHaveBeenCalledTimes(1)
+  fireEvent.change(input, { target: { value: 'Has Text In It' } });
+  fireEvent.click(saveButton);
+  expect(onSaveCallback).toHaveBeenCalledTimes(1);
 
   await waitForElementToBeRemoved(() =>
     screen.queryByText(requiredProps.inputLabel)
-  )
-  expect(screen.queryByText(requiredProps.inputLabel)).not.toBeInTheDocument()
-  expect(screen.queryByText(requiredProps.title)).not.toBeInTheDocument()
-})
+  );
+  expect(screen.queryByText(requiredProps.inputLabel)).not.toBeInTheDocument();
+  expect(screen.queryByText(requiredProps.title)).not.toBeInTheDocument();
+});
 
 test('<Prompt/> with custom props', () => {
   renderWithTheme(
     <Prompt {...optionalProps} {...requiredProps}>
       {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
-  )
+  );
 
-  const opener = screen.getByText('Open Prompt')
-  fireEvent.click(opener)
+  const opener = screen.getByText('Open Prompt');
+  fireEvent.click(opener);
 
-  const saveButton = screen.getByText(optionalProps.saveLabel)
-  const cancelButton = screen.getByText(optionalProps.cancelLabel)
+  const saveButton = screen.getByText(optionalProps.saveLabel);
+  const cancelButton = screen.getByText(optionalProps.cancelLabel);
 
-  expect(cancelButton).toBeInTheDocument()
-  expect(cancelButton).toHaveStyleRule(`color: ${theme.colors.critical}`)
-  expect(saveButton).toBeInTheDocument()
-  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`)
+  expect(cancelButton).toBeInTheDocument();
+  expect(cancelButton).toHaveStyleRule(`color: ${theme.colors.critical}`);
+  expect(saveButton).toBeInTheDocument();
+  expect(saveButton).toHaveStyleRule(`background: ${theme.colors.key}`);
   expect(
     screen.getByDisplayValue(optionalProps.defaultValue)
-  ).toBeInTheDocument()
-  expect(screen.getByText('Secondary Cheese')).toBeInTheDocument()
+  ).toBeInTheDocument();
+  expect(screen.getByText('Secondary Cheese')).toBeInTheDocument();
 
-  fireEvent.click(screen.getByText('Cancel Cheese'))
-  expect(optionalProps.onCancel).toHaveBeenCalledTimes(1)
-  expect(onSaveCallback).toHaveBeenCalledTimes(0)
-})
+  fireEvent.click(screen.getByText('Cancel Cheese'));
+  expect(optionalProps.onCancel).toHaveBeenCalledTimes(1);
+  expect(onSaveCallback).toHaveBeenCalledTimes(0);
+});
 
 test('<Prompt /> does not clear value after closing', () => {
   renderWithTheme(
     <Prompt {...requiredProps}>
       {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
-  )
+  );
 
-  const opener = screen.getByText('Open Prompt')
-  fireEvent.click(opener)
+  const opener = screen.getByText('Open Prompt');
+  fireEvent.click(opener);
 
-  const cancelButton = screen.getByText('Cancel')
-  let input = screen.getByPlaceholderText(requiredProps.inputLabel)
+  const cancelButton = screen.getByText('Cancel');
+  let input = screen.getByPlaceholderText(requiredProps.inputLabel);
 
-  fireEvent.change(input, { target: { value: 'Hello World' } })
-  expect(input).toHaveValue('Hello World')
-  fireEvent.click(cancelButton)
+  fireEvent.change(input, { target: { value: 'Hello World' } });
+  expect(input).toHaveValue('Hello World');
+  fireEvent.click(cancelButton);
 
-  fireEvent.click(opener)
+  fireEvent.click(opener);
   // Note: Need to re-query for the input; not doing so results in stale value on the input element
-  input = screen.getByPlaceholderText(requiredProps.inputLabel)
-  expect(input).toHaveValue('Hello World')
-})
+  input = screen.getByPlaceholderText(requiredProps.inputLabel);
+  expect(input).toHaveValue('Hello World');
+});
 
 test('<Prompt /> clears value after closing with clearOnCancel', () => {
   renderWithTheme(
     <Prompt clearOnCancel {...requiredProps}>
       {open => <Button onClick={open}>Open Prompt</Button>}
     </Prompt>
-  )
+  );
 
-  const opener = screen.getByText('Open Prompt')
-  fireEvent.click(opener)
+  const opener = screen.getByText('Open Prompt');
+  fireEvent.click(opener);
 
-  const cancelButton = screen.getByText('Cancel')
-  let input = screen.getByPlaceholderText(requiredProps.inputLabel)
+  const cancelButton = screen.getByText('Cancel');
+  let input = screen.getByPlaceholderText(requiredProps.inputLabel);
 
-  fireEvent.change(input, { target: { value: 'Hello World' } })
-  expect(input).toHaveValue('Hello World')
-  fireEvent.click(cancelButton)
+  fireEvent.change(input, { target: { value: 'Hello World' } });
+  expect(input).toHaveValue('Hello World');
+  fireEvent.click(cancelButton);
 
-  fireEvent.click(opener)
+  fireEvent.click(opener);
   // Note: Need to re-query for the input; not doing so results in stale value on the input element
-  input = screen.getByPlaceholderText(requiredProps.inputLabel)
-  expect(input).toHaveValue('')
-})
+  input = screen.getByPlaceholderText(requiredProps.inputLabel);
+  expect(input).toHaveValue('');
+});
 
 test('<Prompt /> updates when defaultValue changes', () => {
   const PromptTest = () => {
-    const [defaultValue, setDefaultValue] = useState('Gouda')
+    const [defaultValue, setDefaultValue] = useState('Gouda');
 
     return (
       <>
@@ -178,16 +178,16 @@ test('<Prompt /> updates when defaultValue changes', () => {
           Set Default Value to Swiss
         </Button>
       </>
-    )
-  }
+    );
+  };
 
-  renderWithTheme(<PromptTest />)
+  renderWithTheme(<PromptTest />);
 
-  fireEvent.click(screen.getByText('Open Prompt'))
-  screen.getByDisplayValue('Gouda')
-  fireEvent.click(screen.getByText('Cancel'))
+  fireEvent.click(screen.getByText('Open Prompt'));
+  screen.getByDisplayValue('Gouda');
+  fireEvent.click(screen.getByText('Cancel'));
 
-  fireEvent.click(screen.getByText('Set Default Value to Swiss'))
-  fireEvent.click(screen.getByText('Open Prompt'))
-  screen.getByDisplayValue('Swiss')
-})
+  fireEvent.click(screen.getByText('Set Default Value to Swiss'));
+  fireEvent.click(screen.getByText('Open Prompt'));
+  screen.getByDisplayValue('Swiss');
+});

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { DashboardFilter } from '../DashboardFilter'
+import React, { useState } from 'react';
+import { DashboardFilter } from '../DashboardFilter';
 
 export default function Required() {
-  const [expression, setExpression] = useState('')
+  const [expression, setExpression] = useState('');
   return (
     <DashboardFilter
       filter={{
@@ -20,5 +20,5 @@ export default function Required() {
       expression={expression}
       onChange={setExpression}
     />
-  )
+  );
 }

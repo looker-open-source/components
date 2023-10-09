@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FieldFilter } from '../Form/Inputs/InputFilters'
+import type { FieldFilter } from '../Form/Inputs/InputFilters';
 
 export const filters: FieldFilter[] = [
   {
@@ -23,4 +23,4 @@ export const filters: FieldFilter[] = [
     multiple: true,
     options: ['France', 'England', 'Italy', 'Netherlands', 'United States'],
   },
-]
+];

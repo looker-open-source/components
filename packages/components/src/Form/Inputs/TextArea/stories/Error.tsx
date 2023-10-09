@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TextArea } from '../..'
+import React from 'react';
+import { TextArea } from '../..';
 
 export default function Error() {
-  return <TextArea validationType="error" />
+  return <TextArea validationType="error" />;
 }

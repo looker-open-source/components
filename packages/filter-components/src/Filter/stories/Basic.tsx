@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { FilterProps, FilterChangeProps } from '../types/filter_props'
-import { Filter } from '../Filter'
+import React, { useState } from 'react';
+import type { FilterProps, FilterChangeProps } from '../types/filter_props';
+import { Filter } from '../Filter';
 
 export default function Basic({
   allowMultipleValues = true,
   expressionType = 'number',
   ...props
 }: FilterProps) {
-  const [expression, setExpression] = useState(props.expression || '')
+  const [expression, setExpression] = useState(props.expression || '');
   const handleChange = (value: FilterChangeProps) => {
-    props.onChange?.(value)
-    setExpression(value.expression)
-  }
+    props.onChange?.(value);
+    setExpression(value.expression);
+  };
   return (
     <Filter
       {...props}
@@ -25,5 +25,5 @@ export default function Basic({
       expression={expression}
       expressionType={expressionType}
     />
-  )
+  );
 }

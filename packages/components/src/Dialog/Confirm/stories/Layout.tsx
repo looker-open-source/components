@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ConfirmLayout, Button, ButtonTransparent } from '../../..'
+import React from 'react';
+import { ConfirmLayout, Button, ButtonTransparent } from '../../..';
 
 export default function Layout() {
   function handleConfirm() {
-    alert('Changes discarded')
+    alert('Changes discarded');
   }
   function handleCancel() {
-    alert('Went back')
+    alert('Went back');
   }
   return (
     <ConfirmLayout
@@ -28,5 +28,5 @@ export default function Layout() {
         </ButtonTransparent>
       }
     />
-  )
+  );
 }

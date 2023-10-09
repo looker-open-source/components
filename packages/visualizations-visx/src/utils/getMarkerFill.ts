@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Theme } from '@looker/components'
-import type { CLineSeries } from '@looker/visualizations-adapters'
+import type { Theme } from '@looker/components';
+import type { CLineSeries } from '@looker/visualizations-adapters';
 
 /**
  * Sets marker fill color based on series configuration, with theme fallback
@@ -16,10 +16,10 @@ import type { CLineSeries } from '@looker/visualizations-adapters'
 
 export const getMarkerFill = (series: CLineSeries, lookerTheme: Theme) => {
   if (series.style === 'outline') {
-    return lookerTheme.colors.background
+    return lookerTheme.colors.background;
   }
   if (series.color) {
-    return series.color
+    return series.color;
   }
-  return lookerTheme.colors.key
-}
+  return lookerTheme.colors.key;
+};

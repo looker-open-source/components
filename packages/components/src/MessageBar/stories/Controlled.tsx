@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { MessageBar, ButtonOutline } from '../..'
-import { useToggle } from '../../utils'
+import React from 'react';
+import { MessageBar, ButtonOutline } from '../..';
+import { useToggle } from '../../utils';
 
 export default function Controlled() {
-  const { value, setOff, setOn } = useToggle(true)
+  const { value, setOff, setOn } = useToggle(true);
 
   return (
     <>
@@ -21,5 +21,5 @@ export default function Controlled() {
         </ButtonOutline>
       )}
     </>
-  )
+  );
 }

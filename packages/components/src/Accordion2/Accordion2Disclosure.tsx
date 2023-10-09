@@ -24,22 +24,22 @@
 
  */
 
-import type { Ref, ReactNode } from 'react'
-import React, { forwardRef } from 'react'
-import styled, { css } from 'styled-components'
-import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens'
-import { shouldForwardProp } from '@looker/design-tokens'
-import type { FocusVisibleProps } from '../utils'
-import { focusVisibleCSSWrapper } from '../utils'
-import { AccordionLabel } from './AccordionLabel'
-import type { AccordionIndicatorPosition } from './types'
+import type { Ref, ReactNode } from 'react';
+import React, { forwardRef } from 'react';
+import styled, { css } from 'styled-components';
+import type { CompatibleHTMLProps, DensityProp } from '@looker/design-tokens';
+import { shouldForwardProp } from '@looker/design-tokens';
+import type { FocusVisibleProps } from '../utils';
+import { focusVisibleCSSWrapper } from '../utils';
+import { AccordionLabel } from './AccordionLabel';
+import type { AccordionIndicatorPosition } from './types';
 
 export type Accordion2DisclosureProps = CompatibleHTMLProps<HTMLElement> &
   DensityProp &
   FocusVisibleProps & {
-    indicator: ReactNode
-    indicatorPosition?: AccordionIndicatorPosition
-  }
+    indicator: ReactNode;
+    indicatorPosition?: AccordionIndicatorPosition;
+  };
 
 const Accordion2DisclosureInternal = forwardRef(
   (
@@ -57,9 +57,9 @@ const Accordion2DisclosureInternal = forwardRef(
       {indicatorPosition !== 'left' && indicator}
     </div>
   )
-)
+);
 
-Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
+Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal';
 
 /**
  * Default AccordionLabel typography styles.
@@ -73,7 +73,7 @@ Accordion2DisclosureInternal.displayName = 'Accordion2DisclosureInternal'
 const labelTypographyDefaults = css`
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
-`
+`;
 
 /**
  * This is provided for legacy implementation support within `Tree` & `NavList`
@@ -110,4 +110,4 @@ export const Accordion2Disclosure = styled(
       box-shadow: inset 0 0 0 2px ${theme.colors.keyFocus};
     `
   )}
-`
+`;

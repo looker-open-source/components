@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { system } from 'styled-system'
+import { system } from 'styled-system';
 
 export interface TextColorProps {
-  color?: string
+  color?: string;
 }
 
 export const textColor = system({
@@ -14,4 +14,4 @@ export const textColor = system({
     property: 'color',
     scale: 'colors',
   },
-})
+});

@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { HandleProps } from './Handle'
-import { HANDLE_SIZE, handleCSS } from './Handle'
+import styled from 'styled-components';
+import type { HandleProps } from './Handle';
+import { HANDLE_SIZE, handleCSS } from './Handle';
 
 interface Handle2dProps extends HandleProps {
-  y: number
+  y: number;
 }
 
 export const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
@@ -19,4 +19,4 @@ export const Handle2d = styled.div.attrs<Handle2dProps>(({ color, x, y }) => ({
   },
 }))<Handle2dProps>`
   ${handleCSS}
-`
+`;

@@ -24,34 +24,34 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { omitStyledProps } from '@looker/design-tokens'
-import { PersonOutline } from '@styled-icons/material/PersonOutline'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import type { IconType } from '../Icon'
-import type { AvatarUserProps } from './AvatarUser'
-import { AvatarUser } from './AvatarUser'
-import type { AvatarIconProps } from './AvatarIcon'
-import { AvatarIcon } from './AvatarIcon'
-import { avatarButtonOverrides } from './Avatar'
+import React from 'react';
+import styled from 'styled-components';
+import { omitStyledProps } from '@looker/design-tokens';
+import { PersonOutline } from '@styled-icons/material/PersonOutline';
+import { StyledIconBase } from '@styled-icons/styled-icon';
+import type { IconType } from '../Icon';
+import type { AvatarUserProps } from './AvatarUser';
+import { AvatarUser } from './AvatarUser';
+import type { AvatarIconProps } from './AvatarIcon';
+import { AvatarIcon } from './AvatarIcon';
+import { avatarButtonOverrides } from './Avatar';
 
 export interface AvatarComboProps
   extends Omit<AvatarIconProps & AvatarUserProps, 'size'> {
-  secondaryIcon: IconType
+  secondaryIcon: IconType;
   /**
    * Icon & border color for secondary AvatarIcon
    * @default keyFocus
    **/
-  secondaryColor?: string
+  secondaryColor?: string;
   /**
    * Background for secondary AvatarIcon
    * @default background
    **/
-  secondaryBg?: string
+  secondaryBg?: string;
 }
 
-const AvatarIconSecondary = styled(AvatarIcon)``
+const AvatarIconSecondary = styled(AvatarIcon)``;
 
 const AvatarLayout = ({
   secondaryIcon,
@@ -63,7 +63,7 @@ const AvatarLayout = ({
   role,
   ...props
 }: AvatarComboProps) => {
-  const BaseElement = role === 'button' ? 'button' : 'div'
+  const BaseElement = role === 'button' ? 'button' : 'div';
 
   return (
     <BaseElement {...omitStyledProps(props)}>
@@ -78,8 +78,8 @@ const AvatarLayout = ({
         icon={secondaryIcon}
       />
     </BaseElement>
-  )
-}
+  );
+};
 
 export const AvatarCombo = styled(AvatarLayout)`
   ${avatarButtonOverrides}
@@ -100,4 +100,4 @@ export const AvatarCombo = styled(AvatarLayout)`
       width: 14px;
     }
   }
-`
+`;

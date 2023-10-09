@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DataTableColumns } from '../Column'
+import type { DataTableColumns } from '../Column';
 
 export const stringComparator = (stringA: string, stringB: string) => {
-  const upperCasedStringA = stringA.toUpperCase()
-  const upperCasedStringB = stringB.toUpperCase()
+  const upperCasedStringA = stringA.toUpperCase();
+  const upperCasedStringB = stringB.toUpperCase();
 
-  if (upperCasedStringA < upperCasedStringB) return -1
-  if (upperCasedStringA > upperCasedStringB) return 1
-  return 0
-}
+  if (upperCasedStringA < upperCasedStringB) return -1;
+  if (upperCasedStringA > upperCasedStringB) return 1;
+  return 0;
+};
 
 export const dateComparator = (dateA: Date, dateB: Date) => {
-  if (dateA < dateB) return -1
-  if (dateA > dateB) return 1
-  return 0
-}
+  if (dateA < dateB) return -1;
+  if (dateA > dateB) return 1;
+  return 0;
+};
 
 // Guy Ellis 2022-09-23 - The data table sorting is based on a DataTableColumnType which is either undefined or
 // one of "string" | "number" | "date". The comparator in the sort method is based on the data type.
@@ -31,8 +31,8 @@ export const dateComparator = (dateA: Date, dateB: Date) => {
 // given data type or we might want to pass the comparator() method as a parameter. This would allow up to
 // remove the no-explicit-any disable. b/201417582
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type DataTableDatum = Record<string, any>
-export type DataTableData = DataTableDatum[]
+export type DataTableDatum = Record<string, any>;
+export type DataTableData = DataTableDatum[];
 
 export const doDataTableSort = <T>(
   data: T[],
@@ -41,38 +41,38 @@ export const doDataTableSort = <T>(
   sortDirection: 'asc' | 'desc'
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sortedData: Array<{ [key: string]: any }> = [...data]
-  const updatedColumns = [...columns]
-  const targetColumn = updatedColumns.find(column => column.id === id)
+  const sortedData: Array<{ [key: string]: any }> = [...data];
+  const updatedColumns = [...columns];
+  const targetColumn = updatedColumns.find(column => column.id === id);
 
   // The default sort behavior only allows for one column to appear sorted at a time
   // Using delete operator to clean out all sortDirection properties in our columns array
-  columns.forEach(column => delete column.sortDirection)
+  columns.forEach(column => delete column.sortDirection);
   if (targetColumn) {
     if (targetColumn.type === 'number') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => b[id] - a[id])
+        sortedData.sort((a, b) => b[id] - a[id]);
       } else {
-        sortedData.sort((a, b) => a[id] - b[id])
+        sortedData.sort((a, b) => a[id] - b[id]);
       }
     } else if (targetColumn.type === 'date') {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => dateComparator(b[id], a[id]))
+        sortedData.sort((a, b) => dateComparator(b[id], a[id]));
       } else {
-        sortedData.sort((a, b) => dateComparator(a[id], b[id]))
+        sortedData.sort((a, b) => dateComparator(a[id], b[id]));
       }
     } else {
       if (sortDirection === 'desc') {
-        sortedData.sort((a, b) => stringComparator(b[id], a[id]))
+        sortedData.sort((a, b) => stringComparator(b[id], a[id]));
       } else {
-        sortedData.sort((a, b) => stringComparator(a[id], b[id]))
+        sortedData.sort((a, b) => stringComparator(a[id], b[id]));
       }
     }
-    targetColumn.sortDirection = sortDirection
+    targetColumn.sortDirection = sortDirection;
   }
 
   return {
     columns: updatedColumns,
     data: sortedData as T[],
-  }
-}
+  };
+};

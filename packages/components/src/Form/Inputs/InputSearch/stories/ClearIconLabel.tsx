@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputSearch } from '../'
-import type { InputSearchProps } from '../'
+import React from 'react';
+import { InputSearch } from '../';
+import type { InputSearchProps } from '../';
 
 export default function ClearIconLabel(props: InputSearchProps) {
   const {
     clearIconLabel = 'Reset this seach field',
     value = 'my query',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputSearch clearIconLabel={clearIconLabel} value={value} {...restProps} />
-  )
+  );
 }

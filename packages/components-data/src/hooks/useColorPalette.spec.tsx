@@ -3,26 +3,26 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderHook } from '@testing-library/react-hooks'
-import { DEFAULT_SERIES_COLORS } from '@looker/visualizations-adapters'
-import { ContextWrapper, sdkMethodColorCollectionListener } from '../testUtils'
-import { useColorPalette } from './useColorPalette'
+import React from 'react';
+import { renderHook } from '@testing-library/react-hooks';
+import { DEFAULT_SERIES_COLORS } from '@looker/visualizations-adapters';
+import { ContextWrapper, sdkMethodColorCollectionListener } from '../testUtils';
+import { useColorPalette } from './useColorPalette';
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('useColorPalette', () => {
   const wrapper = ({ children }: React.PropsWithChildren<unknown>) => (
     <ContextWrapper>{children}</ContextWrapper>
-  )
+  );
 
   it('returns DEFAULT_SERIES_COLORS when argument is undefined', () => {
-    const { result } = renderHook(() => useColorPalette(), { wrapper })
-    expect(result.current.colorPalette).toEqual(DEFAULT_SERIES_COLORS)
-    expect(sdkMethodColorCollectionListener).not.toHaveBeenCalled()
-  })
+    const { result } = renderHook(() => useColorPalette(), { wrapper });
+    expect(result.current.colorPalette).toEqual(DEFAULT_SERIES_COLORS);
+    expect(sdkMethodColorCollectionListener).not.toHaveBeenCalled();
+  });
 
   it('returns color palette based on collection_id and paletted_id', async () => {
     const { result, waitForNextUpdate } = renderHook(
@@ -32,9 +32,9 @@ describe('useColorPalette', () => {
           palette_id: '18d0c733-1d87-42a9-934f-4ba8ef81d736',
         }),
       { wrapper }
-    )
+    );
 
-    await waitForNextUpdate()
+    await waitForNextUpdate();
 
     expect(result.current.colorPalette).toEqual([
       '#3D52B9',
@@ -49,12 +49,12 @@ describe('useColorPalette', () => {
       '#24BED5',
       '#149888',
       '#6F38BB',
-    ])
-    expect(sdkMethodColorCollectionListener).toHaveBeenCalledTimes(1)
-  })
+    ]);
+    expect(sdkMethodColorCollectionListener).toHaveBeenCalledTimes(1);
+  });
 
   it('returns custom color palette when that is present', async () => {
-    const customColors = ['#FFFFFF', '#FF0000', '#00FF00']
+    const customColors = ['#FFFFFF', '#FF0000', '#00FF00'];
 
     const { result, waitForNextUpdate } = renderHook(
       () =>
@@ -68,11 +68,11 @@ describe('useColorPalette', () => {
           },
         }),
       { wrapper }
-    )
+    );
 
-    await waitForNextUpdate()
+    await waitForNextUpdate();
 
-    expect(result.current.colorPalette).toEqual(customColors)
-    expect(sdkMethodColorCollectionListener).toHaveBeenCalledTimes(1)
-  })
-})
+    expect(result.current.colorPalette).toEqual(customColors);
+    expect(sdkMethodColorCollectionListener).toHaveBeenCalledTimes(1);
+  });
+});

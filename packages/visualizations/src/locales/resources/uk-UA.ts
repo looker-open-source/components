@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ukUA as componentsLocale } from '@looker/components'
-import { ukUA as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { ukUA as visualizationstableLocale } from '@looker/visualizations-table'
-import { ukUA as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ukUA as componentsLocale } from '@looker/components';
+import { ukUA as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { ukUA as visualizationstableLocale } from '@looker/visualizations-table';
+import { ukUA as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Для типу «{{type}}» не знайдено діаграми',
   },
-}
+};
 
 export const ukUA = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const ukUA = mergeLocaleObjects(
   ],
   'uk-UA',
   resources
-)
+);

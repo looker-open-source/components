@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ukUA as componentsLocale } from '@looker/components'
-import { ukUA as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ukUA as componentsLocale } from '@looker/components';
+import { ukUA as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Сортувати за спаданням',
     Totals: 'Підсумки',
   },
-}
+};
 
 export const ukUA = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'uk-UA',
   resources
-)
+);

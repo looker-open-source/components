@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-import lighten from 'polished/lib/color/lighten'
+import lighten from 'polished/lib/color/lighten';
 
-export const itemSelectedColor = (color: string) => lighten(0.04, color)
+export const itemSelectedColor = (color: string) => lighten(0.04, color);

@@ -24,20 +24,20 @@
 
  */
 
-import type { CompatibleHTMLProps, Theme } from '@looker/design-tokens'
-import pick from 'lodash/pick'
-import type { ReactNode, Ref } from 'react'
+import type { CompatibleHTMLProps, Theme } from '@looker/design-tokens';
+import pick from 'lodash/pick';
+import type { ReactNode, Ref } from 'react';
 import React, {
   Children,
   cloneElement,
   forwardRef,
   isValidElement,
   useContext,
-} from 'react'
-import styled from 'styled-components'
-import { DataTableContext } from '../DataTableContext'
-import type { DataTableCheckboxProps } from './DataTableCheckbox'
-import { DataTableCheckbox, checkListProps } from './DataTableCheckbox'
+} from 'react';
+import styled from 'styled-components';
+import { DataTableContext } from '../DataTableContext';
+import type { DataTableCheckboxProps } from './DataTableCheckbox';
+import { DataTableCheckbox, checkListProps } from './DataTableCheckbox';
 
 export interface DataTableRowProps
   extends DataTableCheckboxProps,
@@ -46,13 +46,13 @@ export interface DataTableRowProps
    * Content displayed after selection checkbox (optional) and row cells.
    * Used for DataTableActions
    */
-  secondary?: ReactNode
-  hasCheckbox?: boolean
+  secondary?: ReactNode;
+  hasCheckbox?: boolean;
   /**
    * Display checkbox as `th` instead of `td`
    * @default false
    */
-  isHeaderRow?: boolean
+  isHeaderRow?: boolean;
 }
 
 const DataTableRowLayout = forwardRef(
@@ -66,34 +66,34 @@ const DataTableRowLayout = forwardRef(
       onClick,
       onKeyDown,
       secondary,
-    } = props
+    } = props;
 
-    const ColumnType = isHeaderRow ? 'th' : 'td'
-    const { columns, columnsDisplayState } = useContext(DataTableContext)
-    const getColumnSize = (index: number) => columns && columns[index].size
+    const ColumnType = isHeaderRow ? 'th' : 'td';
+    const { columns, columnsDisplayState } = useContext(DataTableContext);
+    const getColumnSize = (index: number) => columns && columns[index].size;
 
     const sizedChildren = Children.map(children, (child, index) => {
       if (columnsDisplayState && !columnsDisplayState[index]) {
-        return null
+        return null;
       }
 
-      const size = getColumnSize(index)
+      const size = getColumnSize(index);
       const cellProps =
         index === 0
           ? { id: `rowheader-${id}`, role: 'rowheader', size }
-          : { size }
-      return isValidElement(child) && cloneElement(child, cellProps)
-    })
+          : { size };
+      return isValidElement(child) && cloneElement(child, cellProps);
+    });
 
     const handleOnClick = (event: React.MouseEvent<HTMLElement>) => {
       return event.target instanceof HTMLAnchorElement
         ? undefined
-        : onClick && onClick(event)
-    }
+        : onClick && onClick(event);
+    };
 
     const suppressClickPropagation = (event: React.MouseEvent<HTMLElement>) => {
-      event.stopPropagation()
-    }
+      event.stopPropagation();
+    };
 
     return (
       <tr
@@ -112,11 +112,11 @@ const DataTableRowLayout = forwardRef(
         {sizedChildren}
         <ColumnType onClick={suppressClickPropagation}>{secondary}</ColumnType>
       </tr>
-    )
+    );
   }
-)
+);
 
-DataTableRowLayout.displayName = 'DataTableRowLayout'
+DataTableRowLayout.displayName = 'DataTableRowLayout';
 
 const getRowHoverColor = (
   theme: Theme,
@@ -125,10 +125,10 @@ const getRowHoverColor = (
   isSelected: boolean
 ) => {
   if (!isHeader && hasOnClick) {
-    return isSelected ? theme.colors.keyAccent : theme.colors.ui1
+    return isSelected ? theme.colors.keyAccent : theme.colors.ui1;
   }
-  return undefined
-}
+  return undefined;
+};
 
 export const DataTableRow = styled(DataTableRowLayout)`
   td,
@@ -166,4 +166,4 @@ export const DataTableRow = styled(DataTableRowLayout)`
       border-left-color: ${({ theme }) => theme.colors.key};
     }
   }
-`
+`;

@@ -24,15 +24,15 @@
 
  */
 
-import React from 'react'
-import { Info } from '@styled-icons/material'
+import React from 'react';
+import { Info } from '@styled-icons/material';
 import {
   Explore,
   TableChart,
   Visibility,
-} from '@styled-icons/material-outlined'
+} from '@styled-icons/material-outlined';
 
-import { Tree, TreeCollection, TreeItem, IconButton } from '../..'
+import { Tree, TreeCollection, TreeItem, IconButton } from '../..';
 
 export default function LongLabels() {
   return (
@@ -149,5 +149,5 @@ export default function LongLabels() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

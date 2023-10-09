@@ -24,28 +24,28 @@
 
  */
 
-import React from 'react'
-import { waitFor, render } from '@testing-library/react'
-import { mockSdkConfigResponse } from '@looker/visualizations-adapters'
-import { ContextWrapper, sdkMethodQueryListener } from '../testUtils'
-import { useQueryMetadata } from './useQueryMetadata'
+import React from 'react';
+import { waitFor, render } from '@testing-library/react';
+import { mockSdkConfigResponse } from '@looker/visualizations-adapters';
+import { ContextWrapper, sdkMethodQueryListener } from '../testUtils';
+import { useQueryMetadata } from './useQueryMetadata';
 
 // mock to track results from front-end data store
-const dataContainerListener = jest.fn()
+const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  queryId?: number
-}
+  queryId?: number;
+};
 
 const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
-  const response = useQueryMetadata(queryId)
-  dataContainerListener(response)
-  return null
-}
+  const response = useQueryMetadata(queryId);
+  dataContainerListener(response);
+  return null;
+};
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('useQueryMetadata', () => {
   it('fetches metadata on mount', async () => {
@@ -53,9 +53,11 @@ describe('useQueryMetadata', () => {
       <ContextWrapper>
         <TestComponent />
       </ContextWrapper>
-    )
+    );
 
-    await waitFor(() => expect(sdkMethodQueryListener).toHaveBeenCalledTimes(1))
+    await waitFor(() =>
+      expect(sdkMethodQueryListener).toHaveBeenCalledTimes(1)
+    );
 
     expect(dataContainerListener).toHaveBeenLastCalledWith(
       expect.objectContaining({
@@ -65,11 +67,11 @@ describe('useQueryMetadata', () => {
           vis_config: expect.objectContaining(mockSdkConfigResponse),
         },
       })
-    )
-  })
+    );
+  });
 
   it('does not dispatch request if data already exists for given id', async () => {
-    const defaultConfig = { type: 'sparkline' as const }
+    const defaultConfig = { type: 'sparkline' as const };
     render(
       <ContextWrapper
         initialState={{
@@ -89,7 +91,7 @@ describe('useQueryMetadata', () => {
       >
         <TestComponent queryId={456} />
       </ContextWrapper>
-    )
+    );
     await waitFor(() =>
       expect(dataContainerListener).toHaveBeenCalledWith({
         isOK: true,
@@ -100,8 +102,8 @@ describe('useQueryMetadata', () => {
           vis_config: defaultConfig,
         },
       })
-    )
+    );
     // important: assert that it was able to retrieve results without dispatching sdk request
-    expect(sdkMethodQueryListener).not.toHaveBeenCalled()
-  })
-})
+    expect(sdkMethodQueryListener).not.toHaveBeenCalled();
+  });
+});

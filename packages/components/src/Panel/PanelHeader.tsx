@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { useTheme } from 'styled-components'
-import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack'
-import { Heading } from '../Text'
-import { useTranslation } from '../utils'
-import { Space } from '../Layout'
-import { IconButton } from '../Button'
-import type { PanelBaseProps } from './types'
+import React from 'react';
+import { useTheme } from 'styled-components';
+import { ArrowBack } from '@styled-icons/material-rounded/ArrowBack';
+import { Heading } from '../Text';
+import { useTranslation } from '../utils';
+import { Space } from '../Layout';
+import { IconButton } from '../Button';
+import type { PanelBaseProps } from './types';
 
 export const PanelHeader = ({
   closeLabel,
@@ -18,10 +18,10 @@ export const PanelHeader = ({
   iconToggle = false,
   title,
 }: PanelBaseProps) => {
-  const { t } = useTranslation('PanelHeader')
-  const defaultLabel = t('CloseTitle', { title })
+  const { t } = useTranslation('PanelHeader');
+  const defaultLabel = t('CloseTitle', { title });
 
-  const { space } = useTheme()
+  const { space } = useTheme();
 
   return (
     <Space
@@ -44,5 +44,5 @@ export const PanelHeader = ({
       />
       <Heading fontSize="xlarge">{title}</Heading>
     </Space>
-  )
-}
+  );
+};

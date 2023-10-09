@@ -1,0 +1,12 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
+import type { DensityProp } from '@looker/design-tokens';
+import type { ListColor } from './types';
+export declare type ListItemContextProps = DensityProp & {
+    iconGutter: boolean;
+    color?: ListColor;
+};
+export declare const ListItemContext: import("react").Context<ListItemContextProps>;

@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/pt'
+import dateLocale from 'date-fns/locale/pt';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Separadores',
   },
-}
+};
 
-export const ptPT = mergeLocaleObjects([], 'pt-PT', resources, dateLocale)
+export const ptPT = mergeLocaleObjects([], 'pt-PT', resources, dateLocale);

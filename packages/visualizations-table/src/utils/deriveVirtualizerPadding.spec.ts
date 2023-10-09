@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { deriveVirtualizerPadding } from './deriveVirtualizerPadding'
-import type { Virtualizer } from '@tanstack/react-virtual'
-import noop from 'lodash/noop'
+import { deriveVirtualizerPadding } from './deriveVirtualizerPadding';
+import type { Virtualizer } from '@tanstack/react-virtual';
+import noop from 'lodash/noop';
 
-const mockTotalSize = 17180
+const mockTotalSize = 17180;
 
 const mockVirtualItems = [
   {
@@ -33,18 +33,18 @@ const mockVirtualItems = [
     key: 90,
     measureElement: noop,
   },
-]
+];
 
 const mockVirualizer: Partial<Virtualizer<HTMLDivElement | null, unknown>> = {
   getTotalSize: () => mockTotalSize,
   getVirtualItems: () => mockVirtualItems,
-}
+};
 
 it('returns start and end spacer padding values', () => {
   const [paddingStart, paddingEnd] = deriveVirtualizerPadding(
     mockVirualizer as Virtualizer<HTMLDivElement | null, unknown>
-  )
+  );
 
-  expect(paddingStart).toEqual(mockVirtualItems[0].start)
-  expect(paddingEnd).toEqual(mockTotalSize - mockVirtualItems[2].end)
-})
+  expect(paddingStart).toEqual(mockVirtualItems[0].start);
+  expect(paddingEnd).toEqual(mockTotalSize - mockVirtualItems[2].end);
+});

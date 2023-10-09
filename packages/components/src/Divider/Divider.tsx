@@ -7,7 +7,7 @@ import type {
   CompatibleHTMLProps,
   PositionProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   color,
   position,
@@ -15,16 +15,16 @@ import {
   space,
   shouldForwardProp,
   variant,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface DividerProps
   extends CompatibleHTMLProps<HTMLHRElement>,
     PositionProps,
     SpaceProps {
-  appearance?: 'default' | 'light' | 'dark' | 'onDark'
-  customColor?: string
-  size?: string | number
+  appearance?: 'default' | 'light' | 'dark' | 'onDark';
+  customColor?: string;
+  size?: string | number;
 }
 
 const appearanceVariant = variant({
@@ -43,7 +43,7 @@ const appearanceVariant = variant({
       bg: 'text2',
     },
   },
-})
+});
 
 export const DividerBase = styled.hr
   .withConfig({ shouldForwardProp })
@@ -64,9 +64,9 @@ export const DividerBase = styled.hr
   ${space}
 
   ${({ customColor }) => (customColor ? color : appearanceVariant)}
-`
+`;
 
 export const Divider = styled(DividerBase)`
   height: ${({ size }) => size};
   width: 100%;
-`
+`;

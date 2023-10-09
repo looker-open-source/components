@@ -1,8 +1,8 @@
 {
   "AllPageCountDisplayedSelected": "표시된 항목 {{pageCount}}개 모두 선택됨",
-  "AllTotalCountSelected": "{{totalCount}}개 항목 모두 선택됨",
+  "AllTotalCountSelected": "항목 {{totalCount}}개 모두 선택됨",
   "Bulk Actions": "일괄 작업",
-  "Clear Selection": "선택 지우기",
-  "SelectAllCountResults": "{{totalCount}}개 결과 모두 선택",
-  "SelectedCountOfTotalDisplayed": "표시된 항목 {{selectedItemCount}}/{{pageCount}}개 선택됨"
+  "Clear Selection": "항목 선택 해제",
+  "SelectAllCountResults": "검색결과 {{totalCount}}개 모두 선택",
+  "SelectedCountOfTotalDisplayed": "표시된 항목 {{pageCount}}개 중 {{selectedItemCount}}개 선택됨"
 }

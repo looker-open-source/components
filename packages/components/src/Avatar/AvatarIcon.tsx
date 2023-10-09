@@ -24,32 +24,32 @@
 
  */
 
-import React from 'react'
-import { omitStyledProps, variant } from '@looker/design-tokens'
-import { PersonOutline } from '@styled-icons/material/PersonOutline'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import styled from 'styled-components'
-import type { IconType } from '../Icon'
-import type { AvatarProps } from './Avatar'
-import { avatarCSS } from './Avatar'
+import React from 'react';
+import { omitStyledProps, variant } from '@looker/design-tokens';
+import { PersonOutline } from '@styled-icons/material/PersonOutline';
+import { StyledIconBase } from '@styled-icons/styled-icon';
+import styled from 'styled-components';
+import type { IconType } from '../Icon';
+import type { AvatarProps } from './Avatar';
+import { avatarCSS } from './Avatar';
 
 export interface AvatarIconProps extends AvatarProps {
   /**
    * Icon to display. If not sent will default to `<PersonOutline />` from Material Icons
    */
-  icon?: IconType
+  icon?: IconType;
 
   /**
    * Icon fill & border color
    * @default keyFocus
    */
-  color?: string
+  color?: string;
 
   /**
    * Background color
    * @default background
    */
-  bg?: string
+  bg?: string;
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -77,7 +77,7 @@ const size = variant({
       width: '36px',
     },
   },
-})
+});
 
 const AvatarLayout = ({
   color,
@@ -85,10 +85,10 @@ const AvatarLayout = ({
   role,
   ...props
 }: AvatarIconProps) => {
-  const BaseElement = role === 'button' ? 'button' : 'div'
+  const BaseElement = role === 'button' ? 'button' : 'div';
 
-  return <BaseElement {...omitStyledProps(props)}>{icon}</BaseElement>
-}
+  return <BaseElement {...omitStyledProps(props)}>{icon}</BaseElement>;
+};
 
 /**
  * Display an Avatar with the specified Icon
@@ -107,4 +107,4 @@ export const AvatarIcon = styled(AvatarLayout).attrs(
   ${StyledIconBase} {
     ${size}
   }
-`
+`;

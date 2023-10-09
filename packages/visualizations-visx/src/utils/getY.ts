@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SDKRecord } from '@looker/visualizations-adapters'
+import type { SDKRecord } from '@looker/visualizations-adapters';
 
 /**
  * Get X value from sdk data response
@@ -14,6 +14,6 @@ import type { SDKRecord } from '@looker/visualizations-adapters'
  */
 
 export const getY = (d: SDKRecord, i: number) => {
-  const values = Object.values(d)
-  return values[i + 1]
-}
+  const values = Object.values(d);
+  return values[i + 1];
+};

@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 import type {
   CompatibleHTMLProps,
   SizeProps,
   SpaceProps,
-} from '@looker/design-tokens'
-import { reset, size, space, shouldForwardProp } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { reset, size, space, shouldForwardProp } from '@looker/design-tokens';
 
 export interface SwatchProps
   extends SizeProps,
@@ -18,7 +18,7 @@ export interface SwatchProps
   /**
    * The background color to display on the swatch.
    */
-  color?: string
+  color?: string;
 }
 
 const emptySwatch = css`
@@ -34,7 +34,7 @@ const emptySwatch = css`
     transform: rotate(-45deg);
     width: 100%;
   }
-`
+`;
 
 export const Swatch = styled.div
   .withConfig({ shouldForwardProp })
@@ -57,4 +57,4 @@ export const Swatch = styled.div
    &:hover {
      border: 1px solid ${({ theme: { colors } }) => colors.ui4};
    }
- `
+ `;

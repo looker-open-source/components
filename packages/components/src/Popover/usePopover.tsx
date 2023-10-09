@@ -24,15 +24,22 @@
 
  */
 
-import type { WidthProps } from '@looker/design-tokens'
-import type { Placement } from '@popperjs/core'
-import type { AriaAttributes, ReactNode, Ref, SyntheticEvent } from 'react'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Flex } from '../Layout'
-import { Portal } from '../Portal'
-import { DialogContext } from '../Dialog'
-import { OverlaySurface } from '../Overlay/OverlaySurface'
-import type { UsePopperProps } from '../utils'
+import type { WidthProps, MinWidthProps } from '@looker/design-tokens';
+import type { Placement } from '@popperjs/core';
+import type { AriaAttributes, ReactNode, Ref, SyntheticEvent } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { Flex } from '../Layout';
+import { Portal } from '../Portal';
+import { DialogContext } from '../Dialog';
+import { OverlaySurface } from '../Overlay/OverlaySurface';
+import type { OverlaySurfaceProps } from '../Overlay/OverlaySurface';
+import type { UsePopperProps } from '../utils';
 import {
   useCallbackRef,
   useFocusTrap,
@@ -40,26 +47,28 @@ import {
   useScrollLock,
   useForkedRef,
   useID,
-} from '../utils'
-import type { UsePopoverToggleProps } from './usePopoverToggle'
-import { usePopoverToggle } from './usePopoverToggle'
-import { useVerticalSpace } from './useVerticalSpace'
+} from '../utils';
+import type { UsePopoverToggleProps } from './usePopoverToggle';
+import { usePopoverToggle } from './usePopoverToggle';
+import { useVerticalSpace } from './useVerticalSpace';
 
-type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>
+type AriaHaspopupProps = Pick<AriaAttributes, 'aria-haspopup'>;
 
 export interface UsePopoverProps
   extends AriaHaspopupProps,
     WidthProps,
-    UsePopoverToggleProps {
+    MinWidthProps,
+    UsePopoverToggleProps,
+    Pick<OverlaySurfaceProps, 'arrow'> {
   /**
    * Content to render within the Popover surface.
    */
-  content: ReactNode
+  content: ReactNode;
 
   /**
    * Specify a callback to be called each time this Popover is closed
    */
-  onClose?: () => void
+  onClose?: () => void;
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
@@ -67,58 +76,58 @@ export interface UsePopoverProps
    * info.
    * @default bottom
    */
-  placement?: Placement
+  placement?: Placement;
 
-  portalElement?: HTMLDivElement | null
+  portalElement?: HTMLDivElement | null;
 
   /**
    * By default Popover will reposition itself if they overflow the widow.
    * You can use the pin property to override this behavior.
    */
-  pin?: boolean
+  pin?: boolean;
 
   /**
    * Set whether to disable scrolling outside the popover
    */
-  disableScrollLock?: boolean
+  disableScrollLock?: boolean;
 
   /**
    * The trigger element to use (alternatively use the ref returned)
    */
-  triggerElement?: HTMLElement | null
+  triggerElement?: HTMLElement | null;
 
   /**
    * Whether to trap focus within the popover
    * @default true
    */
-  focusTrap?: boolean
+  focusTrap?: boolean;
 
   /**
    * Will be merged with the ref in the return
    */
-  ref?: Ref<HTMLElement>
+  ref?: Ref<HTMLElement>;
 
   /**
    * Whether to lock scrolling outside the popover
    * @default true
    */
-  scrollLock?: boolean
+  scrollLock?: boolean;
 
   /**
    * Custom surface component to render the content in
    * @private
    */
-  surface?: typeof OverlaySurface
+  surface?: typeof OverlaySurface;
 
   /**
    * The id of the dialog (if absent, a random id will be generated)
    */
-  id?: string
+  id?: string;
 
   /**
    * Optional Aria Label if not using Popover Header for A11Y
    */
-  ariaLabel?: string
+  ariaLabel?: string;
 }
 
 const useOpenWithoutElement = (
@@ -127,23 +136,23 @@ const useOpenWithoutElement = (
 ) => {
   const [openWithoutElem, setOpenWithoutElem] = useState(
     isOpen && element === null
-  )
+  );
   useEffect(() => {
     if (element && openWithoutElem) {
-      setOpenWithoutElem(false)
+      setOpenWithoutElem(false);
     }
-  }, [openWithoutElem, element])
-  return openWithoutElem
-}
+  }, [openWithoutElem, element]);
+  return openWithoutElem;
+};
 
 export interface UsePopoverResponseDom extends AriaHaspopupProps {
-  onClick: (event: SyntheticEvent) => void
+  onClick: (event: SyntheticEvent) => void;
   /**
    * Used by popper.js to position the OverlaySurface relative to the trigger
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref: Ref<any>
-  'aria-expanded': boolean
+  ref: Ref<any>;
+  'aria-expanded': boolean;
 }
 
 export const usePopover = ({
@@ -164,19 +173,23 @@ export const usePopover = ({
   ref,
   surface,
   width,
+  minWidth,
   id,
   ariaLabel,
+  arrow,
+  allowTriggerClick,
 }: UsePopoverProps) => {
-  const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock })
-  const [, focusRef] = useFocusTrap({ disabled: !focusTrap })
+  const [scrollElement, scrollRef] = useScrollLock({ disabled: !scrollLock });
+  const [, focusRef] = useFocusTrap({ disabled: !focusTrap });
 
-  const [newTriggerElement, callbackRef] = useCallbackRef(ref)
+  const [newTriggerElement, callbackRef] = useCallbackRef(ref);
   // If the triggerElement is passed in props, use that instead of the new element
   const element =
-    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement
+    typeof triggerElement === 'undefined' ? newTriggerElement : triggerElement;
 
   const [isOpen, setOpen] = usePopoverToggle(
     {
+      allowTriggerClick,
       canClose,
       cancelClickOutside,
       isOpen: controlledIsOpen,
@@ -185,35 +198,35 @@ export const usePopover = ({
     },
     scrollElement,
     element
-  )
+  );
 
   // Detect when isOpen has changed from true to false and call onClose
-  const prevIsOpenRef = useRef(isOpen)
+  const prevIsOpenRef = useRef(isOpen);
   useEffect(() => {
     if (prevIsOpenRef.current && !isOpen) {
-      onClose?.()
+      onClose?.();
     }
-    prevIsOpenRef.current = isOpen
-  }, [isOpen, onClose])
+    prevIsOpenRef.current = isOpen;
+  }, [isOpen, onClose]);
 
-  const openWithoutElem = useOpenWithoutElement(isOpen, element)
+  const openWithoutElem = useOpenWithoutElement(isOpen, element);
 
   const handleOpen = (event: SyntheticEvent) => {
     // If the element is not already set via ref, set it now
     if (!element) {
-      callbackRef(event.currentTarget as HTMLElement)
+      callbackRef(event.currentTarget as HTMLElement);
     }
     if (!disabled) {
-      setOpen(true)
+      setOpen(true);
     }
-    event.stopPropagation()
-    event.preventDefault()
-  }
+    event.stopPropagation();
+    event.preventDefault();
+  };
 
   const handleClose = useCallback(() => {
-    if (canClose && !canClose()) return
-    setOpen(false)
-  }, [canClose, setOpen])
+    if (canClose && !canClose()) return;
+    setOpen(false);
+  }, [canClose, setOpen]);
 
   const usePopperProps = useMemo<UsePopperProps>(
     () => ({
@@ -241,25 +254,25 @@ export const usePopover = ({
       },
     }),
     [element, pin, propsPlacement]
-  )
-  const { placement, popperInstanceRef, style, targetRef } =
-    usePopper(usePopperProps)
+  );
+  const { placement, popperInstanceRef, style, styleArrow, targetRef } =
+    usePopper(usePopperProps);
 
   const verticalSpace = useVerticalSpace(
     element,
     pin,
-    propsPlacement,
+    placement,
     isOpen,
     style
-  )
+  );
 
-  const surfaceRef = useForkedRef(targetRef, focusRef)
+  const surfaceRef = useForkedRef(targetRef, focusRef);
 
-  const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>()
+  const [containerElement, contentContainerRef] = useCallbackRef<HTMLElement>();
 
-  const SurfaceComponent = surface || OverlaySurface
+  const SurfaceComponent = surface || OverlaySurface;
 
-  const _id = useID(id)
+  const _id = useID(id);
 
   const contextValue = useMemo(
     () => ({
@@ -267,7 +280,7 @@ export const usePopover = ({
       id: _id,
     }),
     [handleClose, _id]
-  )
+  );
 
   const popover = content && !openWithoutElem && isOpen && !disabled && (
     <DialogContext.Provider value={contextValue}>
@@ -277,10 +290,13 @@ export const usePopover = ({
           aria-labelledby={ariaLabel ? undefined : `${_id}-heading`}
           aria-modal={true}
           maxWidth={width}
+          minWidth={minWidth}
           placement={placement}
           ref={surfaceRef}
           role="dialog"
           style={style}
+          styleArrow={styleArrow}
+          arrow={arrow}
         >
           <Flex
             alignItems="flex-start"
@@ -296,7 +312,7 @@ export const usePopover = ({
         </SurfaceComponent>
       </Portal>
     </DialogContext.Provider>
-  )
+  );
   return {
     contentContainer: containerElement,
     domProps: {
@@ -310,5 +326,5 @@ export const usePopover = ({
     popover,
     popperInstanceRef,
     ref: callbackRef,
-  }
-}
+  };
+};

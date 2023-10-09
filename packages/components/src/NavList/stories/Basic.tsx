@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { NavList, ListItem } from '../..'
-import type { ListProps } from '../../List'
+import React, { useState } from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { NavList, ListItem } from '../..';
+import type { ListProps } from '../../List';
 
 export default function Basic(props: ListProps) {
-  const [selected, setSelected] = useState(false)
+  const [selected, setSelected] = useState(false);
   const handleClick = () => {
-    setSelected(!selected)
-  }
+    setSelected(!selected);
+  };
   return (
     <NavList {...props}>
       <ListItem
@@ -39,5 +39,5 @@ export default function Basic(props: ListProps) {
         some point waaaayyyy out in the nether regions of a long line of text
       </ListItem>
     </NavList>
-  )
+  );
 }

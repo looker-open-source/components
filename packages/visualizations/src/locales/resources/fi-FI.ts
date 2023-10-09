@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { fiFI as componentsLocale } from '@looker/components'
-import { fiFI as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { fiFI as visualizationstableLocale } from '@looker/visualizations-table'
-import { fiFI as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { fiFI as componentsLocale } from '@looker/components';
+import { fiFI as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { fiFI as visualizationstableLocale } from '@looker/visualizations-table';
+import { fiFI as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Kaaviota ei löytynyt tyypille "{{type}}"',
   },
-}
+};
 
 export const fiFI = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const fiFI = mergeLocaleObjects(
   ],
   'fi-FI',
   resources
-)
+);

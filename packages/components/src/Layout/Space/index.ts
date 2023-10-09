@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Space'
-export * from './SpaceVertical'
+export * from './Space';
+export * from './SpaceVertical';

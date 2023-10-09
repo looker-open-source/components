@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Badge, Space } from '../..'
+import React from 'react';
+import { Badge, Space } from '../..';
 
 export default function Sizes() {
   return (
@@ -13,5 +13,5 @@ export default function Sizes() {
       <Badge size="medium">Medium</Badge>
       <Badge size="large">Large</Badge>
     </Space>
-  )
+  );
 }

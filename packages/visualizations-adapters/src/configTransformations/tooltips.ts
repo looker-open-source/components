@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ConfigHelper, CommonCartesianProperties } from '../types'
+import type { ConfigHelper, CommonCartesianProperties } from '../types';
 
 /**
  * Add option to enable or disable tooltips
@@ -13,7 +13,7 @@ export const tooltips: ConfigHelper<CommonCartesianProperties> = ({
   data,
   fields,
 }) => {
-  const isTooltipsSet = typeof config.tooltips !== 'undefined'
+  const isTooltipsSet = typeof config.tooltips !== 'undefined';
 
   return {
     config: {
@@ -22,5 +22,5 @@ export const tooltips: ConfigHelper<CommonCartesianProperties> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

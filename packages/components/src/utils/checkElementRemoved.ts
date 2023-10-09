@@ -13,13 +13,13 @@ export const checkElementRemoved = (
   mutationsList: MutationRecord[],
   element?: HTMLElement
 ) => {
-  if (!element) return false
+  if (!element) return false;
   return mutationsList.some(({ type, removedNodes }) => {
     if (type === 'childList' && removedNodes.length > 0) {
       return Array.from(removedNodes).some(node => {
-        return node.contains(element)
-      })
+        return node.contains(element);
+      });
     }
-    return false
-  })
-}
+    return false;
+  });
+};

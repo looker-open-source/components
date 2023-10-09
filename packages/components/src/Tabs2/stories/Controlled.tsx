@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Tabs2, Tab2, Paragraph, Button } from '../..'
+import React, { useState } from 'react';
+import { Tabs2, Tab2, Paragraph, Button } from '../..';
 
 export default function Controlled() {
-  const [currentTabId, setTabId] = useState<string>('cats')
+  const [currentTabId, setTabId] = useState<string>('cats');
 
   return (
     <>
@@ -22,5 +22,5 @@ export default function Controlled() {
         </Tab2>
       </Tabs2>
     </>
-  )
+  );
 }

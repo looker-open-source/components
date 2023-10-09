@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Dialog, DialogLayout, ButtonOutline, Checkbox } from '../..'
+import React from 'react';
+import { Dialog, DialogLayout, ButtonOutline, Checkbox } from '../..';
 
 export default function WithCheckbox() {
   return (
@@ -18,5 +18,5 @@ export default function WithCheckbox() {
     >
       <ButtonOutline>Open Dialog</ButtonOutline>
     </Dialog>
-  )
+  );
 }

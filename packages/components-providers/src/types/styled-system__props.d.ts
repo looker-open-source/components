@@ -25,6 +25,6 @@
  */
 
 declare module '@styled-system/props' {
-  export function omit(props: any): {}
-  export function pick(props: any): {}
+  export function omit(props: any): {};
+  export function pick(props: any): {};
 }

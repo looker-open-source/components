@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Icon, Space } from '../..'
+import React from 'react';
+import { Icon, Space } from '../..';
 
 export default function Artwork() {
   return (
@@ -39,5 +39,5 @@ export default function Artwork() {
         }
       />
     </Space>
-  )
+  );
 }

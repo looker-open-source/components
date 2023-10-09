@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/th'
-import { thTH as componentsLocale } from '@looker/components'
-import { thTH as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/th';
+import { thTH as componentsLocale } from '@looker/components';
+import { thTH as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'ต้องระบุค่า',
   },
-}
+  UserAttributes: {
+    placeholder: 'เลือก...',
+  },
+};
 
 export const thTH = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'th-TH',
   resources,
   dateLocale
-)
+);

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ltLT as componentsLocale } from '@looker/components'
-import { ltLT as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { ltLT as visualizationstableLocale } from '@looker/visualizations-table'
-import { ltLT as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ltLT as componentsLocale } from '@looker/components';
+import { ltLT as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { ltLT as visualizationstableLocale } from '@looker/visualizations-table';
+import { ltLT as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -24,7 +24,7 @@ const resources = {
       'Šiuo metu datos tipo matai nepalaikomi',
     'No chart found for type "{{type}}"': 'Nerasta „{{type}}“ tipo diagrama',
   },
-}
+};
 
 export const ltLT = mergeLocaleObjects(
   [
@@ -35,4 +35,4 @@ export const ltLT = mergeLocaleObjects(
   ],
   'lt-LT',
   resources
-)
+);

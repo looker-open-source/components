@@ -1,6 +1,6 @@
 {
-  "Shift + Click to sort additional columns": "Shift + クリックで、追加の列を並べ替えます",
-  "Sort ascending": "昇順で並べ替え",
-  "Sort descending": "降順で並べ替え",
+  "Shift + Click to sort additional columns": "Shift キーを押しながらクリックすると、追加の列を並べ替えることができます",
+  "Sort ascending": "昇順に並べ替え",
+  "Sort descending": "降順に並べ替え",
   "Totals": "合計"
 }

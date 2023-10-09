@@ -32,18 +32,18 @@ import type {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-} from '@looker/design-tokens'
-import type { Placement } from '@popperjs/core'
-import type { Property } from 'csstype'
-import type { IconProps } from '../Icon'
-import type { TooltipProps } from '../Tooltip'
-import type { ButtonBaseProps } from './types'
+} from '@looker/design-tokens';
+import type { Placement } from '@popperjs/core';
+import type { Property } from 'csstype';
+import type { IconProps } from '../Icon';
+import type { TooltipProps } from '../Tooltip';
+import type { ButtonBaseProps } from './types';
 interface IconButtonVariantProps {
   /**
    * Defines the variant or mapping of colors to style properties, like border of the button.
    * @default false
    */
-  outline?: boolean
+  outline?: boolean;
 }
 
 export type IconButtonSizes =
@@ -51,9 +51,9 @@ export type IconButtonSizes =
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
-export type ToggleColor = 'key' | 'calculation' | 'dimension' | 'measure'
+export type ToggleColor = 'key' | 'calculation' | 'dimension' | 'measure';
 
 export interface ToggleColorProps {
   /**
@@ -61,7 +61,7 @@ export interface ToggleColorProps {
    * Supports 'calculation', 'dimension', 'measure' and 'key'
    * @default key
    */
-  toggleColor?: ToggleColor
+  toggleColor?: ToggleColor;
 }
 export interface IconButtonProps
   extends Omit<CompatibleHTMLProps<HTMLButtonElement>, 'children' | 'type'>,
@@ -70,51 +70,51 @@ export interface IconButtonProps
     ToggleColorProps,
     Pick<IconProps, 'icon'>,
     SpaceProps {
-  type?: 'button' | 'submit' | 'reset'
+  type?: 'button' | 'submit' | 'reset';
   /**
    * Display border
    * @default false
    */
-  outline?: boolean
+  outline?: boolean;
   /**
    *  A hidden text label for the IconButton that is accessible to assistive technology
    */
-  label: TooltipProps['content']
+  label: TooltipProps['content'];
   /**
    *  Sets the size of the button
    * @default xsmall
    */
-  size?: IconButtonSizes
+  size?: IconButtonSizes;
   /**
    *  Optional square icon button variant
    * @default round
    */
-  shape?: 'round' | 'square'
+  shape?: 'round' | 'square';
   /**
    * If the IconButton is in the optional toggled on or toggled off state
    */
-  toggle?: boolean
+  toggle?: boolean;
   /**
    * to improve toggle's behavior this prop will update the background-color to `${toggleColor}Accent` when toggle is true
    * @default false
    */
-  toggleBackground?: boolean
+  toggleBackground?: boolean;
   /**
    * By default IconButton shows a Tooltip with the Button's label text. Setting disableTooltip will disable that behavior.
    * @default false
    */
 
-  tooltipDisabled?: boolean
+  tooltipDisabled?: boolean;
   /**
    * Placement of the built-in Tooltip.
    */
-  tooltipPlacement?: Placement
+  tooltipPlacement?: Placement;
   /**
    * Width of the built-in Tooltip.
    */
-  tooltipWidth?: string
+  tooltipWidth?: string;
   /**
    * Text alignment of the built-in Tooltip.
    */
-  tooltipTextAlign?: Property.TextAlign
+  tooltipTextAlign?: Property.TextAlign;
 }

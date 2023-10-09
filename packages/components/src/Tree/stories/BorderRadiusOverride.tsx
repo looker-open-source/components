@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { TreeItem, Tree, TreeCollection } from '..'
-import { generateBorderRadius } from '../utils/generateBorderRadius'
+import React from 'react';
+import styled from 'styled-components';
+import { TreeItem, Tree, TreeCollection } from '..';
+import { generateBorderRadius } from '../utils/generateBorderRadius';
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
-`
+`;
 
 export default function BorderRadiusOverride() {
   return (
@@ -27,5 +27,5 @@ export default function BorderRadiusOverride() {
         <TreeItem selected>Created Quarter</TreeItem>
       </BorderRadiusOverrideTree>
     </TreeCollection>
-  )
+  );
 }

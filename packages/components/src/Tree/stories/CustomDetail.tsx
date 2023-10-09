@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { TreeCollection, TreeItem, Tree } from '..'
-import { IconButton } from '../../Button'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { TreeCollection, TreeItem, Tree } from '..';
+import { IconButton } from '../../Button';
 
 export default function CustomDetail() {
   return (
@@ -49,5 +49,5 @@ export default function CustomDetail() {
         </TreeItem>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

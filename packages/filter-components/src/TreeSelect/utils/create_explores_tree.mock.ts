@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { ILookmlModelExplore } from '@looker/sdk/src/4.0u/models'
+import type { ILookmlModelExplore } from '@looker/sdk/src/4.0u/models';
 
 export const explores: ILookmlModelExplore[] = [
   {
@@ -63,7 +63,7 @@ export const explores: ILookmlModelExplore[] = [
       ],
     },
   },
-]
+];
 
 export const expected = [
   {
@@ -180,7 +180,7 @@ export const expected = [
       },
     ],
   },
-]
+];
 
 export const explore_with_groups: ILookmlModelExplore[] = [
   {
@@ -238,7 +238,7 @@ export const explore_with_groups: ILookmlModelExplore[] = [
       ],
     },
   },
-]
+];
 
 export const explore_with_groups_expected = [
   {
@@ -408,7 +408,7 @@ export const explore_with_groups_expected = [
     payload: { explore: 'explore-a', model: 'model-a' },
     value: 'explore-a',
   },
-]
+];
 
 export const more_robust_explores: ILookmlModelExplore[] = [
   {
@@ -553,7 +553,7 @@ export const more_robust_explores: ILookmlModelExplore[] = [
       ],
     },
   },
-]
+];
 
 export const more_robust_expected = [
   {
@@ -882,7 +882,7 @@ export const more_robust_expected = [
     payload: { explore: 'explore-a', model: 'model-a' },
     value: 'explore-a',
   },
-]
+];
 
 // kevins_spectacular_test_data
 export const explore_unsorted: ILookmlModelExplore[] = [
@@ -929,7 +929,7 @@ export const explore_unsorted: ILookmlModelExplore[] = [
       ],
     },
   },
-]
+];
 
 export const explore_unsorted_expected = [
   {
@@ -1068,4 +1068,4 @@ export const explore_unsorted_expected = [
     payload: { explore: 'explore-a', model: 'model-a' },
     value: 'explore-a',
   },
-]
+];

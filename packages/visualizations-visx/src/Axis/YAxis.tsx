@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { Axis, ThemeContext as VisxThemeContext } from '@visx/xychart'
-import React, { useContext } from 'react'
-import type { Fields } from '@looker/visualizations-adapters'
-import { Tick } from './Tick'
+import { Axis, ThemeContext as VisxThemeContext } from '@visx/xychart';
+import React, { useContext } from 'react';
+import type { Fields } from '@looker/visualizations-adapters';
+import { Tick } from './Tick';
 
 export type YAxisProps = {
-  fields: Fields
-  showTicks?: boolean
-  label?: string
-  labelDx: number
-  valueFormat?: string | null
-}
+  fields: Fields;
+  showTicks?: boolean;
+  label?: string;
+  labelDx: number;
+  valueFormat?: string | null;
+};
 
 export const YAxis = ({
   showTicks,
@@ -23,7 +23,7 @@ export const YAxis = ({
   valueFormat,
   fields,
 }: YAxisProps) => {
-  const visxTheme = useContext(VisxThemeContext)
+  const visxTheme = useContext(VisxThemeContext);
 
   return (
     <Axis
@@ -38,5 +38,5 @@ export const YAxis = ({
       }
       orientation="left"
     />
-  )
-}
+  );
+};

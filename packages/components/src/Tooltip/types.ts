@@ -24,15 +24,15 @@
 
  */
 
-import type { CompatibleHTMLProps, Transitions } from '@looker/design-tokens'
-import type { Placement } from '@popperjs/core'
-import type { Property } from 'csstype'
-import type { ReactElement, ReactNode, Ref } from 'react'
-import type { MenuDomProps } from '../Menu'
+import type { CompatibleHTMLProps, Transitions } from '@looker/design-tokens';
+import type { Placement } from '@popperjs/core';
+import type { Property } from 'csstype';
+import type { ReactElement, ReactNode, Ref } from 'react';
+import type { MenuDomProps } from '../Menu';
 
 // import { UsePopoverResponseDom } from '../Popover'
 
-export type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode
+export type TooltipRenderProp = (props: UseTooltipResponseDom) => ReactNode;
 
 export interface UseTooltipProps {
   /**
@@ -40,73 +40,73 @@ export interface UseTooltipProps {
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Tooltip is closed
    */
-  canClose?: () => boolean
+  canClose?: () => boolean;
   /**
    * Specify a callback to be called before trying to open the Tooltip.
    * Useful for cases when something needs to be checked on the trigger element first.
    */
-  canOpen?: (triggerElement: HTMLElement) => boolean
-  isOpen?: boolean
+  canOpen?: (triggerElement: HTMLElement) => boolean;
+  isOpen?: boolean;
   /**
    * Can be one of: top, bottom, left, right, auto, with the modifiers: start,
    * end. This value comes directly from popperjs. See
    * https://popper.js.org/popper-documentation.html#Popper.placements for more
    * info.
    */
-  placement?: Placement
+  placement?: Placement;
   /**
    * Content to display inside the tooltip. Can be a string or JSX.
    * If not defined, the Tooltip will not render.
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  content?: ReactNode
+  content?: ReactNode;
   /**
    * Specify a fixed content width.
    * @default auto
    */
-  width?: string
+  width?: string;
   /**
    * Specify a fixed max-width.
    * @default none
    */
-  maxWidth?: string
+  maxWidth?: string;
   /**
    * Specify the text alignment within tooltips.
    * @default center
    */
-  textAlign?: Property.TextAlign
+  textAlign?: Property.TextAlign;
 
   /**
    * The id of the span containing the tooltip text (if absent, a random id will be generated)
    */
-  id?: string
+  id?: string;
 
   /**
    * Tooltip background and text color is inverted from the page default
    * @default true
    * @private
    */
-  invert?: boolean
+  invert?: boolean;
 
   /**
    * The trigger element ref to use (if absent, one will be created and returned)
    */
-  triggerElement?: HTMLElement | null
+  triggerElement?: HTMLElement | null;
 
   /**
    * If true, the useTooltip hook will return nothing
    */
-  disabled?: boolean
+  disabled?: boolean;
 
   /**
    * Delay
    */
-  delay?: Transitions
+  delay?: Transitions;
 
   /**
    * Pass in custom aria describedById to be used instead of using the id of tooltip content
    */
-  ariaDescribedById?: string
+  ariaDescribedById?: string;
 }
 
 type UseTooltipCallbacks = Required<
@@ -114,7 +114,7 @@ type UseTooltipCallbacks = Required<
     CompatibleHTMLProps<HTMLElement>,
     'onBlur' | 'onFocus' | 'onMouseOut' | 'onMouseOver'
   >
->
+>;
 
 export type UseTooltipResponseDom = UseTooltipCallbacks &
   Pick<CompatibleHTMLProps<HTMLElement>, 'aria-describedby' | 'className'> & {
@@ -122,15 +122,15 @@ export type UseTooltipResponseDom = UseTooltipCallbacks &
      * @deprecated returns a no-op function, will be removed in 3.x release
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ref: Ref<any>
-  }
+    ref: Ref<any>;
+  };
 export interface TooltipProps extends UseTooltipProps, Partial<MenuDomProps> {
-  content: ReactNode
+  content: ReactNode;
   /**
    * Component to receive tooltip behavior or render prop function that
    * receives tooltip props and returns a component
    */
   children:
     | ReactElement<UseTooltipResponseDom & MenuDomProps>
-    | TooltipRenderProp
+    | TooltipRenderProp;
 }

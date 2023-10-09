@@ -23,22 +23,21 @@
  SOFTWARE.
 
  */
-import type { FilterASTNode, FilterModel } from '@looker/filter-expressions'
+import type { FilterASTNode, FilterModel } from '@looker/filter-expressions';
 import {
   getExpressionType,
   typeToGrammar,
-  hasUserAttributeNode,
   parseFilterExpression,
   updateNode,
-} from '@looker/filter-expressions'
-import isEmpty from 'lodash/isEmpty'
-import React, { useMemo, useRef, useState } from 'react'
-import type { FilterProps } from './types/filter_props'
-import { useFilterConfig, useValidationMessage } from './utils'
-import { updateASTFromProps } from './utils/update_ast'
-import { isValidFilterType } from './utils/filter_token_type_map'
-import { ControlFilter } from './components/ControlFilter'
-import { AdvancedFilter } from './components/AdvancedFilter'
+} from '@looker/filter-expressions';
+import React, { useMemo, useRef, useState } from 'react';
+import type { FilterProps } from './types/filter_props';
+import { useFilterConfig, useValidationMessage } from './utils';
+import { updateASTFromProps } from './utils/update_ast';
+import { isValidFilterType } from './utils/filter_token_type_map';
+import { ControlFilter } from './components/ControlFilter';
+import { AdvancedFilter } from './components/AdvancedFilter';
+import { checkAndLoadUserAttributes } from './utils/check_and_load_user_attributes';
 
 /**
  * The top-level filter component that generates an AST from the expression
@@ -58,78 +57,82 @@ export const Filter = ({
     return (
       propsExpressionType ||
       getExpressionType({ type, field: props.field || undefined })
-    )
-  }, [propsExpressionType, type, props.field])
+    );
+  }, [propsExpressionType, type, props.field]);
 
-  const validationMessage = useValidationMessage(expression, props.isRequired)
+  const validationMessage = useValidationMessage(expression, props.isRequired);
 
   const getAST = () =>
-    updateASTFromProps(expressionType, expression, props.userAttributes)
+    updateASTFromProps({
+      expressionType,
+      expression,
+      userAttributes: props.userAttributes,
+      loadUserAttributes,
+    });
 
-  const [ast, setAST] = useState(getAST)
+  const [ast, setAST] = useState(getAST);
 
   // Track changes in the expression & type props that will
   // require updateASTFromProps to be re-run
-  const expressionRef = useRef(expression)
-  const typeRef = useRef(expressionType)
+  const expressionRef = useRef(expression);
+  const typeRef = useRef(expressionType);
 
   // This ref tracks whether the AST has been updated internally
   // and avoids deriving it from props if so
   // (The internally updated AST may better reflect user interactions)
-  const internallyUpdating = useRef(false)
+  const internallyUpdating = useRef(false);
   if (
     !internallyUpdating.current &&
     (expressionRef.current !== expression || typeRef.current !== expressionType)
   ) {
-    setAST(getAST)
-    expressionRef.current = expression
-    typeRef.current = expressionType
+    setAST(getAST);
+    expressionRef.current = expression;
+    typeRef.current = expressionType;
   }
 
   const updateExpression = (newAST: FilterASTNode) => {
-    const { toString } = typeToGrammar(expressionType)
+    const { toString } = typeToGrammar(expressionType);
     if (newAST.type === 'matchesAdvanced') {
       if (newAST.expression === undefined || newAST.expression === null) {
-        return expression
-      } else return newAST.expression
+        return expression;
+      } else return newAST.expression;
     } else {
-      return toString(newAST, expressionType, props.field || undefined)
+      return toString(newAST, expressionType, props.field || undefined);
     }
-  }
+  };
 
   const updateAST = (newAST: FilterASTNode | undefined) => {
-    internallyUpdating.current = true
+    internallyUpdating.current = true;
     requestAnimationFrame(() => {
-      internallyUpdating.current = false
-    })
-    setAST(newAST)
+      internallyUpdating.current = false;
+    });
+    setAST(newAST);
     if (newAST) {
-      // userAttributes is empty and ast has a node set to userAttribute type
       if (
-        loadUserAttributes &&
-        isEmpty(props.userAttributes) &&
-        hasUserAttributeNode(newAST)
+        checkAndLoadUserAttributes(
+          loadUserAttributes,
+          props.userAttributes,
+          newAST
+        )
       ) {
-        loadUserAttributes()
-      } else {
         try {
-          const newExpression = updateExpression(newAST)
+          const newExpression = updateExpression(newAST);
           // verify newExpression is valid
           parseFilterExpression(
             expressionType,
             newExpression,
             props.userAttributes
-          )
-          expressionRef.current = newExpression
+          );
+          expressionRef.current = newExpression;
           // call onChange with new expression
-          props.onChange?.({ expression: newExpression })
-        } catch ({ message }) {
+          props.onChange?.({ expression: newExpression });
+        } catch (error) {
           // expression derived from UI change is invalid
           // catch silently and let user continue editing filter
         }
       }
     }
-  }
+  };
 
   const { uiConfig: config } = useFilterConfig({
     ast: ast || {},
@@ -138,9 +141,9 @@ export const Filter = ({
     suggestions: props.suggestions,
     enumerations: props.enumerations,
     skipFilterConfigCheck,
-  })
+  });
 
-  const isControlFilter = config && isValidFilterType(config.type)
+  const isControlFilter = config && isValidFilterType(config.type);
   /**
    * Captures Filter UI changes, updates AST and generates a new expression
    */
@@ -148,7 +151,7 @@ export const Filter = ({
     // UI only exists with a valid AST
     if (ast) {
       if (isControlFilter) {
-        props.onChange?.({ expression: updateExpression(newItem) })
+        props.onChange?.({ expression: updateExpression(newItem) });
       } else {
         // generate new AST
         const item =
@@ -161,13 +164,13 @@ export const Filter = ({
                     ? expression
                     : newItem.expression,
               }
-            : { ...newItem, expression: null }
-        updateAST(updateNode(ast, id, item))
+            : { ...newItem, expression: null };
+        updateAST(updateNode(ast, id, item));
       }
     }
-  }
+  };
 
-  if (!ast) return null
+  if (!ast) return null;
 
   return isControlFilter ? (
     <ControlFilter
@@ -188,5 +191,5 @@ export const Filter = ({
       changeFilter={changeFilter}
       validationMessage={validationMessage}
     />
-  )
-}
+  );
+};

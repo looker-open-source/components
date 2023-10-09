@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Handle'
-export * from './Handle2d'
+export * from './Handle';
+export * from './Handle2d';

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { TreeItem, Tree } from '..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { TreeItem, Tree } from '..';
 
 export default function Callbacks() {
   return (
@@ -17,5 +17,5 @@ export default function Callbacks() {
     >
       <TreeItem>Gouda</TreeItem>
     </Tree>
-  )
+  );
 }

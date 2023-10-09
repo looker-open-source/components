@@ -24,33 +24,33 @@
 
  */
 
-import React from 'react'
-import styled, { css } from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { ValidationType } from '../../ValidationMessage'
-import { ErrorIcon } from '../ErrorIcon'
+import React from 'react';
+import styled, { css } from 'styled-components';
+import type { CompatibleInputHTMLProps } from '@looker/design-tokens';
+import type { ValidationType } from '../../ValidationMessage';
+import { ErrorIcon } from '../ErrorIcon';
 import {
   inputTextHover,
   inputTextFocus,
   inputTextDisabled,
   inputTextValidation,
   inputCSS,
-} from '../InputText'
-import type { SimpleLayoutProps } from '../../../Layout/utils/simple'
-import { simpleLayoutCSS } from '../../../Layout/utils/simple'
-import { pickInputProps } from '../InputProps'
+} from '../InputText';
+import type { SimpleLayoutProps } from '../../../Layout/utils/simple';
+import { simpleLayoutCSS } from '../../../Layout/utils/simple';
+import { pickInputProps } from '../InputProps';
 
-type TextAreaResize = 'vertical' | 'none' | boolean
+type TextAreaResize = 'vertical' | 'none' | boolean;
 
 export interface TextAreaProps
   extends Omit<SimpleLayoutProps, 'size'>,
-    CompatibleHTMLProps<HTMLTextAreaElement> {
+    CompatibleInputHTMLProps<HTMLTextAreaElement> {
   /**
    * Allows the end-user to resize vertical height of textarea
    * @default vertical
    */
-  resize?: TextAreaResize
-  validationType?: ValidationType
+  resize?: TextAreaResize;
+  validationType?: ValidationType;
 }
 
 const TextAreaLayout = ({
@@ -58,7 +58,7 @@ const TextAreaLayout = ({
   validationType,
   ...props
 }: TextAreaProps) => {
-  const textareaProps = pickInputProps(props)
+  const textareaProps = pickInputProps(props);
 
   return (
     <div className={className}>
@@ -68,20 +68,20 @@ const TextAreaLayout = ({
       />
       {validationType && <ErrorIcon />}
     </div>
-  )
-}
+  );
+};
 
 const textAreaResize = ({ resize }: TextAreaProps) => {
   if (resize === false) {
-    resize = 'none'
+    resize = 'none';
   } else if (resize === true) {
-    resize = 'vertical'
+    resize = 'vertical';
   }
 
   return css`
     resize: ${resize};
-  `
-}
+  `;
+};
 
 export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
   ({ resize = 'vertical', minHeight = '6.25rem' }) => ({
@@ -129,6 +129,6 @@ export const TextArea = styled(TextAreaLayout).attrs<TextAreaProps>(
 
     ${inputTextValidation}
   }
-`
+`;
 
-TextArea.displayName = 'TextArea'
+TextArea.displayName = 'TextArea';

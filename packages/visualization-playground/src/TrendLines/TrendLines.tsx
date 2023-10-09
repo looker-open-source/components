@@ -23,9 +23,9 @@
  SOFTWARE.
 
  */
-import type { SetStateAction, Dispatch } from 'react'
-import React from 'react'
-import type { TrendLine, CAll } from '@looker/visualizations-adapters'
+import type { SetStateAction, Dispatch } from 'react';
+import React from 'react';
+import type { TrendLine, CAll } from '@looker/visualizations-adapters';
 import {
   Dialog,
   Button,
@@ -42,17 +42,17 @@ import {
   FieldText,
   Flex,
   FlexItem,
-} from '@looker/components'
-import { Checkbox } from '../Checkbox'
-import partial from 'lodash/partial'
-import isArray from 'lodash/isArray'
-import { Add } from '@styled-icons/material/Add'
-import { Remove } from '@styled-icons/material/Remove'
+} from '@looker/components';
+import { Checkbox } from '../Checkbox';
+import partial from 'lodash/partial';
+import isArray from 'lodash/isArray';
+import { Add } from '@styled-icons/material/Add';
+import { Remove } from '@styled-icons/material/Remove';
 
 interface TrendLinesEditorProps {
-  name: string
-  value?: TrendLine[]
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
+  name: string;
+  value?: TrendLine[];
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
 }
 
 // const trendLineDefaults: TrendLine = {
@@ -70,14 +70,14 @@ export const TrendLines = ({ value }: TrendLinesEditorProps) => {
     // TODO: re-enable config change when we support reference lines
     // const newValue = [...(value || []), trendLineDefaults]
     // handleConfigChange(name, newValue)
-  }
+  };
 
   const removeLine = (index: number) => {
-    const newValue = [...(value || [])]
-    newValue.splice(index, 1)
+    const newValue = [...(value || [])];
+    newValue.splice(index, 1);
     // TODO: re-enable config change when we support reference lines
     // handleConfigChange(name, newValue)
-  }
+  };
 
   return (
     <Dialog
@@ -108,12 +108,12 @@ export const TrendLines = ({ value }: TrendLinesEditorProps) => {
         Edit Trend Lines ({value?.length || 0})
       </ButtonTransparent>
     </Dialog>
-  )
-}
+  );
+};
 
 interface TrendLineFormProps extends TrendLine {
-  arrayPos: number
-  onDelete: () => void
+  arrayPos: number;
+  onDelete: () => void;
 }
 
 const TrendLineForm = ({
@@ -129,7 +129,7 @@ const TrendLineForm = ({
     regression_type,
     series_index,
     show_label,
-  } = lineProps
+  } = lineProps;
 
   return (
     <>
@@ -210,5 +210,5 @@ const TrendLineForm = ({
       </div>
       <Divider />
     </>
-  )
-}
+  );
+};

@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { GrammarTestItem } from './grammar_test_utils'
+import type { GrammarTestItem } from './grammar_test_utils';
 
 export const stringGrammarTestItems: GrammarTestItem[] = [
   { expression: 'FOO', describe: 'is FOO', type: 'match', output: 'FOO' },
@@ -250,4 +250,4 @@ export const stringGrammarTestItems: GrammarTestItem[] = [
     type: 'contains',
     output: '%whitespace%',
   },
-]
+];

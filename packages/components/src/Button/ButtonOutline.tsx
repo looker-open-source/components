@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { ButtonBase } from './ButtonBase'
+import styled from 'styled-components';
+import { ButtonBase } from './ButtonBase';
 
 export const ButtonOutline = styled(ButtonBase)`
   background: ${({ theme, color = 'key' }) => theme.colors[`${color}Text`]};
@@ -17,4 +17,4 @@ export const ButtonOutline = styled(ButtonBase)`
       theme.colors[`${color}Focus`]};
     color: ${({ theme, color = 'key' }) => theme.colors[color]};
   }
-`
+`;

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ukUA as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ukUA as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Виникла проблема',
   },
-  translation: {
-    'Row Total': 'Підсумок рядка',
+  KeyValueList: {
     false: 'false',
     null: 'null',
     true: 'true',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Підсумок рядка',
   },
-}
+};
 
-export const ukUA = mergeLocaleObjects([componentsLocale], 'uk-UA', resources)
+export const ukUA = mergeLocaleObjects([componentsLocale], 'uk-UA', resources);

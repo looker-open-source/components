@@ -23,98 +23,98 @@
  SOFTWARE.
 
  */
-import React, { useEffect } from 'react'
-import { render, waitFor } from '@testing-library/react'
-import { AppContext } from '../AppContext'
-import { useLocalStorage } from './useLocalStorage'
+import React, { useEffect } from 'react';
+import { render, waitFor } from '@testing-library/react';
+import { AppContext } from '../AppContext';
+import { useLocalStorage } from './useLocalStorage';
 
 const mockLocalStorage: Record<string, string> = {
   'TEST-DATA-STORE': 'true',
-}
+};
 
 const localStorageGetItem = jest
   .fn()
-  .mockImplementation((key: string) => Promise.resolve(mockLocalStorage[key]))
+  .mockImplementation((key: string) => Promise.resolve(mockLocalStorage[key]));
 
 const localStorageSetItem = jest
   .fn()
   .mockImplementation((key: string, val: string) => {
-    mockLocalStorage[key] = val
-  })
+    mockLocalStorage[key] = val;
+  });
 
 afterEach(() => {
-  jest.fn()
-})
+  jest.fn();
+});
 
 const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
     <AppContext.Provider value={{ localStorageGetItem, localStorageSetItem }}>
       {children}
     </AppContext.Provider>
-  )
-}
+  );
+};
 
 describe('useLocalStorage', () => {
   it('writes to localstorage', () => {
-    const valStateListener = jest.fn()
-    const localStorageListener = jest.fn()
+    const valStateListener = jest.fn();
+    const localStorageListener = jest.fn();
 
     const TestComponent = ({ value }: { value: string }) => {
-      const [valState, setValState] = useLocalStorage('VALUE-PROP', value)
+      const [valState, setValState] = useLocalStorage('VALUE-PROP', value);
 
-      valStateListener(valState)
-      localStorageListener(mockLocalStorage)
+      valStateListener(valState);
+      localStorageListener(mockLocalStorage);
 
       useEffect(() => {
-        setValState(value)
-      }, [value, setValState])
+        setValState(value);
+      }, [value, setValState]);
 
-      return null
-    }
+      return null;
+    };
 
     // set initial localstorage value
     const { rerender } = render(
       <MockContextWrapper>
         <TestComponent value="hello world" />
       </MockContextWrapper>
-    )
+    );
 
-    expect(valStateListener).toHaveBeenLastCalledWith('hello world')
+    expect(valStateListener).toHaveBeenLastCalledWith('hello world');
     expect(localStorageListener).toHaveBeenLastCalledWith(
       expect.objectContaining({ 'VALUE-PROP': '"hello world"' }) // stored in JSON string format
-    )
+    );
 
     // update localstorage value
     rerender(
       <MockContextWrapper>
         <TestComponent value="goodbye world" />
       </MockContextWrapper>
-    )
+    );
 
-    expect(valStateListener).toHaveBeenLastCalledWith('goodbye world')
+    expect(valStateListener).toHaveBeenLastCalledWith('goodbye world');
     expect(localStorageListener).toHaveBeenLastCalledWith(
       expect.objectContaining({ 'VALUE-PROP': '"goodbye world"' }) // stored in JSON string format
-    )
-  })
+    );
+  });
 
   it('reads from localstorage', async () => {
-    const valStateListener = jest.fn()
+    const valStateListener = jest.fn();
 
     const TestComponent = () => {
       // value for `TEST-DATA-STORE` already set before rendering
-      const [valState] = useLocalStorage('TEST-DATA-STORE')
-      valStateListener(valState)
-      return null
-    }
+      const [valState] = useLocalStorage('TEST-DATA-STORE');
+      valStateListener(valState);
+      return null;
+    };
 
     render(
       <MockContextWrapper>
         <TestComponent />
       </MockContextWrapper>
-    )
+    );
 
     await waitFor(() => {
-      expect(valStateListener).toHaveBeenLastCalledWith(true)
-    })
-  })
-})
+      expect(valStateListener).toHaveBeenLastCalledWith(true);
+    });
+  });
+});

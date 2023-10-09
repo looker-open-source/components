@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useTranslation } from '../../../../utils'
-import { useUserAttributeOption } from './get_user_attribute_option'
+import { useTranslation } from '../../../../utils';
+import { useUserAttributeOption } from './get_user_attribute_option';
 
 export const useNumberFilterOptions = (isParameter: boolean) => {
-  const { t } = useTranslation('get_number_filter_options')
-  const userAttributeOption = useUserAttributeOption()
+  const { t } = useTranslation('get_number_filter_options');
+  const userAttributeOption = useUserAttributeOption();
   if (isParameter) {
-    return [{ value: '=', label: t('is') }, userAttributeOption]
+    return [{ value: '=', label: t('is') }, userAttributeOption];
   }
   return [
     { value: '=', label: t('is') },
@@ -23,15 +23,15 @@ export const useNumberFilterOptions = (isParameter: boolean) => {
     { value: '!between', label: t('is not between') },
     { value: '!null', label: t('is not null') },
     userAttributeOption,
-  ]
-}
+  ];
+};
 
 export const useBetweenOptions = () => {
-  const { t } = useTranslation('get_number_filter_options')
+  const { t } = useTranslation('get_number_filter_options');
   return [
     { value: '[]', label: t('inclusive') },
     { value: '()', label: t('exclusive') },
     { value: '[)', label: t('right exclusive') },
     { value: '(]', label: t('left exclusive') },
-  ]
-}
+  ];
+};

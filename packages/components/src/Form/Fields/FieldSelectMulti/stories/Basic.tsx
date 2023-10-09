@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
-import type { FieldSelectMultiProps } from '../../FieldSelectMulti'
+import React from 'react';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
+import type { FieldSelectMultiProps } from '../../FieldSelectMulti';
 
 export default function Basic(props: FieldSelectMultiProps) {
   return (
@@ -20,5 +20,5 @@ export default function Basic(props: FieldSelectMultiProps) {
       isFilterable={true}
       {...props}
     />
-  )
+  );
 }

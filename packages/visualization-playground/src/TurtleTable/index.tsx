@@ -24,35 +24,35 @@
 
  */
 
-import React from 'react'
+import React from 'react';
 import type {
   Fields,
   SDKRecord,
   CommonCartesianProperties,
   Pivots,
-} from '@looker/visualizations-adapters'
-import { Table, Sparkline } from '@looker/visualizations'
-import { DEFAULT_HEIGHT } from '@looker/visualizations-adapters'
-import { MessageBar } from '@looker/components'
+} from '@looker/visualizations-adapters';
+import { Table, Sparkline } from '@looker/visualizations';
+import { DEFAULT_HEIGHT } from '@looker/visualizations-adapters';
+import { MessageBar } from '@looker/components';
 
 export type TurtleProps = {
-  width: number
-  height: number
-  margin?: { top: number; right: number; bottom: number; left: number }
-  levels?: number
-  fields: Fields
-  data: SDKRecord[]
-  config: CommonCartesianProperties
-  pivots: Pivots
-}
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+  levels?: number;
+  fields: Fields;
+  data: SDKRecord[];
+  config: CommonCartesianProperties;
+  pivots: Pivots;
+};
 
 const nestSparklines = (data: SDKRecord[], dataKey: string) => {
   const transformedData = data.reduce<SDKRecord[]>((acc, d) => {
-    const [parentDimension, ...measurePairs] = Object.entries(d)
+    const [parentDimension, ...measurePairs] = Object.entries(d);
 
     const nonPivotedData: SDKRecord[] = measurePairs.map(([_, value], i) => {
-      return { item: i, [dataKey]: value }
-    })
+      return { item: i, [dataKey]: value };
+    });
 
     return [
       ...acc,
@@ -69,11 +69,11 @@ const nestSparklines = (data: SDKRecord[], dataKey: string) => {
           />
         ),
       },
-    ]
-  }, [])
+    ];
+  }, []);
 
-  return transformedData
-}
+  return transformedData;
+};
 
 export const TurtleTable = ({
   height = DEFAULT_HEIGHT * 2,
@@ -93,12 +93,12 @@ export const TurtleTable = ({
         Turtle Table: Please select one dimension, one measure, and one pivot to
         render this visualization.
       </MessageBar>
-    )
+    );
   }
 
-  const NESTED_DATA_KEY = 'nestedData'
+  const NESTED_DATA_KEY = 'nestedData';
 
-  const nestedData = nestSparklines(data, NESTED_DATA_KEY)
+  const nestedData = nestSparklines(data, NESTED_DATA_KEY);
 
   return (
     <Table
@@ -113,5 +113,5 @@ export const TurtleTable = ({
       width={width}
       height={height}
     />
-  )
-}
+  );
+};

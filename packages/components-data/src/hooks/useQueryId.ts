@@ -24,14 +24,14 @@
 
  */
 
-import { useEffect, useMemo } from 'react'
-import { isNumeric } from '@looker/visualizations-adapters'
-import type { IQuery, IError } from '@looker/sdk'
-import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
-import useSWR from 'swr'
-import { getErrorResponse } from '../utils'
-import { useSDK } from './useSDK'
-import { DataState } from './useDataState'
+import { useEffect, useMemo } from 'react';
+import { isNumeric } from '@looker/visualizations-adapters';
+import type { IQuery, IError } from '@looker/sdk';
+import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl';
+import useSWR from 'swr';
+import { getErrorResponse } from '../utils';
+import { useSDK } from './useSDK';
+import { DataState } from './useDataState';
 
 /**
  * useQueryId is a hook for getting the numeric query id from a string slug
@@ -39,20 +39,20 @@ import { DataState } from './useDataState'
  * @returns the numeric id associated with the query and async request state
  */
 export const useQueryId = (slugOrId: string | number = '') => {
-  const sdk = useSDK()
-  const { getIdFromSlug, setBySlug, getById } = DataState.useContainer()
+  const sdk = useSDK();
+  const { getIdFromSlug, setBySlug, getById } = DataState.useContainer();
 
   /*
    * Check for stored value
    * -----------------------------------------------------------
    */
 
-  const querySlug = slugOrId.toString()
-  const queryId = getIdFromSlug(querySlug)
+  const querySlug = slugOrId.toString();
+  const queryId = getIdFromSlug(querySlug);
   const cachedQuery = useMemo(
     () => getById(queryId, 'metadata') || ({} as IQuery),
     [getById, queryId]
-  )
+  );
 
   /*
    * Dispatch network request
@@ -65,13 +65,13 @@ export const useQueryId = (slugOrId: string | number = '') => {
       return Promise.resolve({
         ok: true,
         value: { id: querySlug },
-      }) as unknown as Promise<ISDKSuccessResponse<IQuery>>
+      }) as unknown as Promise<ISDKSuccessResponse<IQuery>>;
     } else if (querySlug && !queryId) {
-      return await sdk.query_for_slug(querySlug)
+      return await sdk.query_for_slug(querySlug);
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IQuery,
@@ -80,7 +80,7 @@ export const useQueryId = (slugOrId: string | number = '') => {
     `useQueryId-${querySlug}`, // caution: argument string must be unique to this instance
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   /*
    * Publish SWR response to central data store
@@ -88,19 +88,19 @@ export const useQueryId = (slugOrId: string | number = '') => {
    */
 
   useEffect(() => {
-    const { id, ...SWRValue } = SWRData?.ok ? SWRData.value : ({} as IQuery)
+    const { id, ...SWRValue } = SWRData?.ok ? SWRData.value : ({} as IQuery);
 
-    const draftQuery = { ...cachedQuery, ...SWRValue }
+    const draftQuery = { ...cachedQuery, ...SWRValue };
 
     if (id && Number(id) !== queryId) {
-      setBySlug(querySlug, Number(id), { metadata: draftQuery })
+      setBySlug(querySlug, Number(id), { metadata: draftQuery });
     }
-  }, [SWRData, queryId, querySlug, setBySlug, cachedQuery])
+  }, [SWRData, queryId, querySlug, setBySlug, cachedQuery]);
 
   return {
     isOK: !!queryId,
     isPending: isValidating,
     queryId,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

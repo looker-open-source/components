@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
+import React from 'react';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
 
 export default function Disabled() {
   return (
@@ -20,5 +20,5 @@ export default function Disabled() {
       isFilterable={true}
       disabled
     />
-  )
+  );
 }

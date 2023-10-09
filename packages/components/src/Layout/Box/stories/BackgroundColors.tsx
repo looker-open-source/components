@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space, Code } from '../../..'
+import React from 'react';
+import { Box, Space, Code } from '../../..';
 
 export default function BackgroundColors() {
   return (
@@ -13,5 +13,5 @@ export default function BackgroundColors() {
         My background is <Code>positive</Code>.
       </Box>
     </Space>
-  )
+  );
 }

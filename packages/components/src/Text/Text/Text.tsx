@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { SpanProps } from '../Span/Span'
-import { Span } from '../Span/Span'
+import styled from 'styled-components';
+import type { SpanProps } from '../Span/Span';
+import { Span } from '../Span/Span';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TextProps extends SpanProps {}
@@ -24,4 +24,4 @@ export const Text = styled(Span).attrs<TextProps>(
     fontSize,
     lineHeight: lineHeight || fontSize,
   })
-)<TextProps>``
+)<TextProps>``;

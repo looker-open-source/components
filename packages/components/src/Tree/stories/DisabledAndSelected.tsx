@@ -3,15 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode } from 'react'
-import React from 'react'
-import { TreeCollection, TreeItem, Tree } from '..'
-import { Grid } from '../../Layout/Grid'
-import type { ListItemColor } from '../../ListItem'
+import type { ReactNode } from 'react';
+import React from 'react';
+import { TreeCollection, TreeItem, Tree } from '..';
+import { Grid } from '../../Layout/Grid';
 
 interface BasicProps {
-  children: ReactNode
-  color?: ListItemColor
+  children: ReactNode;
+  color?: string;
 }
 
 const Basic = ({ children, ...props }: BasicProps) => (
@@ -27,7 +26,7 @@ const Basic = ({ children, ...props }: BasicProps) => (
       </Tree>
     </Tree>
   </TreeCollection>
-)
+);
 
 export default function DisabledAndSelected() {
   return (
@@ -42,5 +41,5 @@ export default function DisabledAndSelected() {
         <strong>Dimension</strong>
       </Basic>
     </Grid>
-  )
+  );
 }

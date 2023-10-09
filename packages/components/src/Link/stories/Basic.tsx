@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Link, Space } from '../..'
+import React from 'react';
+import { Link, Space } from '../..';
 
 export default function Basic() {
   return (
@@ -14,5 +14,5 @@ export default function Basic() {
         👍 I am a link with an id
       </Link>
     </Space>
-  )
+  );
 }

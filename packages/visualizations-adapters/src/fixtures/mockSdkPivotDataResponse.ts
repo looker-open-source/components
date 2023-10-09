@@ -2065,4 +2065,4 @@ export const mockSdkPivotDataResponse = [
       },
     },
   },
-]
+];

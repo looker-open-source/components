@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Link } from '../..'
+import React from 'react';
+import { Link } from '../..';
 
 export default function KeyColor() {
   return (
@@ -13,5 +13,5 @@ export default function KeyColor() {
         Rendered in the brand color
       </Link>
     </>
-  )
+  );
 }

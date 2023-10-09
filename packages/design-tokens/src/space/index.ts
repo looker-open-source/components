@@ -24,15 +24,15 @@
 
  */
 
-import type { LegacySpaceRamp, SpaceRamp, UnitRamp } from './types'
+import type { LegacySpaceRamp, SpaceRamp, UnitRamp } from './types';
 export {
   LegacySpaceRamp,
   SpaceRamp,
   SpacingSizes,
   UnitSizes,
   UnitRamp,
-} from './types'
-export type { SpaceProps } from 'styled-system'
+} from './types';
+export type { SpaceProps } from 'styled-system';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
@@ -84,7 +84,7 @@ const legacySpacing: LegacySpaceRamp = {
    * @deprecated Use UnitSizes instead
    */
   xxxxlarge: '5rem',
-}
+};
 
 export const units: UnitRamp = {
   none: '0rem',
@@ -105,9 +105,9 @@ export const units: UnitRamp = {
   u14: '3.5rem',
   u15: '3.75rem',
   u16: '4em',
-}
+};
 
 export const space: SpaceRamp = {
   ...legacySpacing,
   ...units,
-}
+};

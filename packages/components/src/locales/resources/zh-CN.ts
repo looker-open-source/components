@@ -24,35 +24,35 @@
 
  */
 
-import dateLocale from 'date-fns/locale/zh-CN'
+import dateLocale from 'date-fns/locale/zh-CN';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
     'Clear Field': '清除字段',
   },
   AvatarButton: {
-    'Profile Picture': '个人资料图片',
+    'Profile Picture': '个人资料照片',
   },
   AvatarUser: {
     Avatar: '头像',
   },
   BulkActions: {
-    AllPageCountDisplayedSelected: '已选择 {{pageCount}} 页上显示的所有项目',
-    AllTotalCountSelected: '已选择所有 {{totalCount}} 个项目',
+    AllPageCountDisplayedSelected: '已选择显示的全部 {{pageCount}} 项',
+    AllTotalCountSelected: '已选择全部 {{totalCount}} 项',
     'Bulk Actions': '批量操作',
-    'Clear Selection': '清除选定内容',
-    SelectAllCountResults: '选择所有 {{totalCount}} 个结果',
+    'Clear Selection': '清除所选内容',
+    SelectAllCountResults: '选择全部 {{totalCount}} 个结果',
     SelectedCountOfTotalDisplayed:
-      '已选择 {{pageCount}} 页上显示的所有 {{selectedItemCount}} 个项目',
+      '已选择显示的 {{selectedItemCount}} 项（共 {{pageCount}} 项）',
   },
   CalendarNav: {
     'next month': '下个月',
     'previous month': '上个月',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': '复选标记 - 混合',
+    'Check Mark Mixed': '对勾标记混合',
   },
   Chip: {
     Delete: '删除',
@@ -79,7 +79,7 @@ const resources = {
     Options: '选项',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': '请使用格式 HH:MM',
+    'Please use format HHMM': '请使用 HH:MM 格式',
   },
   GetIntentLabel: {
     Error: '错误',
@@ -95,15 +95,14 @@ const resources = {
     'Start date': '开始日期',
   },
   InputFilters: {
-    'Clear Filters': '清除筛选条件',
-    'Filter List': '筛选条件列表',
-    'bottom-start': '从底部开始',
+    'Clear Filters': '清除过滤条件',
+    'Filter List': '过滤条件列表',
   },
   InputTimeSelect: {
     'Select time': '选择时间',
   },
   MessageBar: {
-    DismissIntent: '取消 {{intent}}',
+    DismissIntent: '关闭{{intent}}',
   },
   ModalHeaderCloseButton: {
     Close: '关闭',
@@ -118,14 +117,14 @@ const resources = {
     of: '/',
   },
   Pagination: {
-    'First page of results': '第一页结果',
-    'Last page of results': '最后一页结果',
-    'Next page of results': '下一页结果',
-    'Previous page of results': '上一页结果',
+    'First page of results': '结果的第一页',
+    'Last page of results': '结果的最后一页',
+    'Next page of results': '结果的下一页',
+    'Previous page of results': '结果的上一页',
     of: '/',
   },
   PanelHeader: {
-    CloseTitle: '关闭 {{title}}',
+    CloseTitle: '关闭{{title}}',
   },
   PopoverFooter: {
     Done: '完成',
@@ -135,9 +134,9 @@ const resources = {
     Save: '保存',
   },
   RangeSlider: {
-    'Maximum Name': '最大 {{name}}',
+    'Maximum Name': '{{name}}上限',
     'Maximum Value': '最大值',
-    'Minimum Name': '最小 {{name}}',
+    'Minimum Name': '{{name}}下限',
     'Minimum Value': '最小值',
   },
   RequiredStar: {
@@ -148,8 +147,8 @@ const resources = {
     'No options': '无选项',
   },
   TabList: {
-    Tabs: '选项卡',
+    Tabs: '标签页',
   },
-}
+};
 
-export const zhCN = mergeLocaleObjects([], 'zh-CN', resources, dateLocale)
+export const zhCN = mergeLocaleObjects([], 'zh-CN', resources, dateLocale);

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure'
-import { LkFieldTree } from './LkFieldTree'
+import styled from 'styled-components';
+import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure';
+import { LkFieldTree } from './LkFieldTree';
 
 /**
  * LkFieldGroupTree is typically used to represent a group of Looker fields
@@ -17,11 +17,11 @@ export const LkFieldGroupTree = styled(LkFieldTree)`
   > ${LkFieldTreeAccordionDisclosure} {
     /* Margin is to set the equivalent of the two icons (info and menu) 48px */
     margin-right: ${({ isOpen, selected }) => {
-      const DEFAULT_ICON_BUTTON_SIZE = 24
+      const DEFAULT_ICON_BUTTON_SIZE = 24;
 
       return !isOpen && selected
         ? `calc(${DEFAULT_ICON_BUTTON_SIZE}px * 2)`
-        : undefined
+        : undefined;
     }};
   }
-`
+`;

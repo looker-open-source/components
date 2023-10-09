@@ -24,55 +24,55 @@
 
  */
 
-import type { KeyboardEvent } from 'react'
-import type { ScaleOrdinal } from 'd3-scale'
-import type { CPie } from '@looker/visualizations-adapters'
-import React, { useState } from 'react'
-import { LegendOrdinal } from '@visx/legend'
-import type { DefaultTheme } from 'styled-components'
-import styled, { css, useTheme } from 'styled-components'
-import { useMeasuredElement, useCallbackRef } from '@looker/components'
-import pick from 'lodash/pick'
-import { useTranslation } from '../utils'
-import { PieLegendControls } from './PieLegendControls'
-import { getLabelContent } from './getLabelContent'
-import type { LegendOrientations } from './types'
+import type { KeyboardEvent } from 'react';
+import type { ScaleOrdinal } from 'd3-scale';
+import type { CPie } from '@looker/visualizations-adapters';
+import React, { useState } from 'react';
+import { LegendOrdinal } from '@visx/legend';
+import type { DefaultTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
+import { useMeasuredElement, useCallbackRef } from '@looker/components';
+import pick from 'lodash/pick';
+import { useTranslation } from '../utils';
+import { PieLegendControls } from './PieLegendControls';
+import { getLabelContent } from './getLabelContent';
+import type { LegendOrientations } from './types';
 
 type PieLegendProps = {
   /*
    * A hash of relevant legend settings, such as position
    */
-  legendConfig: CPie['legend']
+  legendConfig: CPie['legend'];
   /*
    * The domain and range to render within the legend
    */
-  scale: ScaleOrdinal<string, string>
+  scale: ScaleOrdinal<string, string>;
   /*
    * Key/Value data to derive legend values
    */
-  data: Record<string, number>
+  data: Record<string, number>;
   /*
    * The accumulated total value reperesented by the pie chart.
    * For use in deriving percentages for each slice.
    */
-  measureTotal: number
+  measureTotal: number;
   /*
    * The height (in pixels) available for pie/legend content.
    */
-  height: number
+  height: number;
   /*
    * The width (in pixels) available for pie/legend content.
    */
-  width: number
-}
+  width: number;
+};
 
 const getLegendStyle = (
   scale: ScaleOrdinal<string, string>,
   orientation: LegendOrientations,
   theme: DefaultTheme
 ) => {
-  const domain = scale.domain()
-  const rows = domain.length > 3 ? 3 : 1
+  const domain = scale.domain();
+  const rows = domain.length > 3 ? 3 : 1;
 
   return orientation === 'horizontal'
     ? {
@@ -81,8 +81,8 @@ const getLegendStyle = (
         gridColumnGap: theme.space.small,
         gridAutoFlow: `column`,
       }
-    : {}
-}
+    : {};
+};
 
 export const PieLegend = ({
   legendConfig,
@@ -92,55 +92,55 @@ export const PieLegend = ({
   height,
   width,
 }: PieLegendProps) => {
-  const { t } = useTranslation('PieLegend')
+  const { t } = useTranslation('PieLegend');
 
   // track state for scrolling through very long legends
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
 
-  const theme = useTheme()
-  const { position } = legendConfig || {}
+  const theme = useTheme();
+  const { position } = legendConfig || {};
   const ORIENTATION: LegendOrientations =
-    position === 'top' || position === 'bottom' ? 'horizontal' : 'vertical'
+    position === 'top' || position === 'bottom' ? 'horizontal' : 'vertical';
 
   // find the dimensions of content and container to trigger pagination behavior
-  const [contentElement, contentRef] = useCallbackRef(null)
+  const [contentElement, contentRef] = useCallbackRef(null);
   const [{ height: contentHeight, width: contentWidth }] =
-    useMeasuredElement(contentElement)
-  const [containerElement, containerRef] = useCallbackRef(null)
-  const [containerElementRect] = useMeasuredElement(containerElement)
+    useMeasuredElement(contentElement);
+  const [containerElement, containerRef] = useCallbackRef(null);
+  const [containerElementRect] = useMeasuredElement(containerElement);
 
   // containerDimensions falls back to height prop in jest testing environment
   const containerHeight =
-    typeof DOMRect === 'function' ? containerElementRect.height : height
+    typeof DOMRect === 'function' ? containerElementRect.height : height;
   const containerWidth =
-    typeof DOMRect === 'function' ? containerElementRect.width : width
+    typeof DOMRect === 'function' ? containerElementRect.width : width;
 
   const pageSize =
-    ORIENTATION === 'horizontal' ? containerWidth * 0.9 : containerHeight * 0.9
+    ORIENTATION === 'horizontal' ? containerWidth * 0.9 : containerHeight * 0.9;
   const totalPages =
     ORIENTATION === 'horizontal'
       ? Math.floor(contentWidth / Math.max(pageSize, 1))
-      : Math.floor(contentHeight / Math.max(pageSize, 1))
+      : Math.floor(contentHeight / Math.max(pageSize, 1));
 
   // event handlers
   const handleNextPage = () => {
-    setPage(Math.min(page + 1, totalPages))
-  }
+    setPage(Math.min(page + 1, totalPages));
+  };
 
   const handlePrevPage = () => {
-    setPage(Math.max(page - 1, 0))
-  }
+    setPage(Math.max(page - 1, 0));
+  };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
-      handleNextPage()
-      e.preventDefault()
+      handleNextPage();
+      e.preventDefault();
     }
     if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-      handlePrevPage()
-      e.preventDefault()
+      handlePrevPage();
+      e.preventDefault();
     }
-  }
+  };
 
   return (
     <LegendWrapper
@@ -166,8 +166,8 @@ export const PieLegend = ({
         >
           <LegendOrdinal
             labelFormat={label => {
-              const datum = pick(data, label as string)
-              return getLabelContent(measureTotal, datum, legendConfig)
+              const datum = pick(data, label as string);
+              return getLabelContent(measureTotal, datum, legendConfig);
             }}
             scale={scale}
             shape="circle"
@@ -185,17 +185,17 @@ export const PieLegend = ({
         handlePrevClick={handlePrevPage}
       />
     </LegendWrapper>
-  )
-}
+  );
+};
 
 type OrientationConfig = {
-  orientation: LegendOrientations
-}
+  orientation: LegendOrientations;
+};
 
 type LegendWrapperProps = {
-  maxHeight: number
-  maxWidth: number
-} & OrientationConfig
+  maxHeight: number;
+  maxWidth: number;
+} & OrientationConfig;
 
 const LegendWrapper = styled.div<LegendWrapperProps>`
   border: 1px solid transparent;
@@ -209,19 +209,19 @@ const LegendWrapper = styled.div<LegendWrapperProps>`
       return css`
         align-items: center;
         grid-template-columns: 1fr auto;
-      `
+      `;
     } else {
       return css`
         grid-template-rows: 1fr auto;
         padding: ${theme.space.medium} 0;
-      `
+      `;
     }
   }}
   width: fit-content;
   &:focus {
     border-color: ${({ theme }) => theme.colors.key};
   }
-`
+`;
 
 const LegendContent = styled.figure`
   margin: 0;
@@ -231,12 +231,12 @@ const LegendContent = styled.figure`
   .visx-legend-label {
     width: max-content;
   }
-`
+`;
 
 type ContentPositionerProps = {
-  pageNumber: number
-  pageSize: number
-} & OrientationConfig
+  pageNumber: number;
+  pageSize: number;
+} & OrientationConfig;
 
 const ContentPositioner = styled.div<ContentPositionerProps>`
   overflow: visible;
@@ -247,12 +247,12 @@ const ContentPositioner = styled.div<ContentPositionerProps>`
       // slide content left/right
       return css`
         transform: translateX(${pageNumber * pageSize * -1}px);
-      `
+      `;
     } else {
       // slide content up/down
       return css`
         transform: translateY(${pageNumber * pageSize * -1}px);
-      `
+      `;
     }
   }}
-`
+`;

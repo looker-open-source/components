@@ -24,14 +24,14 @@
 
  */
 
-import React from 'react'
-import { renderHook } from '@testing-library/react-hooks'
-import { render, screen } from '@testing-library/react'
-import { useVirtual } from './useVirtual'
+import React from 'react';
+import { renderHook } from '@testing-library/react-hooks';
+import { render, screen } from '@testing-library/react';
+import { useVirtual } from './useVirtual';
 
 const wrapper = ({ children }: React.PropsWithChildren<unknown>) => (
   <>{children}</>
-)
+);
 
 const mockDomRect = {
   x: 146,
@@ -43,7 +43,7 @@ const mockDomRect = {
   bottom: 290,
   left: 146,
   toJSON: () => ({}),
-}
+};
 
 it('Configures virtual scrolling object', () => {
   const { result } = renderHook(
@@ -61,10 +61,10 @@ it('Configures virtual scrolling object', () => {
     {
       wrapper,
     }
-  )
+  );
 
-  expect(result.current.virtualRows.length).toEqual(15)
-})
+  expect(result.current.virtualRows.length).toEqual(15);
+});
 
 it('Simulates scroll height with OffsetBottom component', () => {
   const { result } = renderHook(
@@ -82,9 +82,9 @@ it('Simulates scroll height with OffsetBottom component', () => {
     {
       wrapper,
     }
-  )
+  );
 
-  const { OffsetBottom } = result.current
+  const { OffsetBottom } = result.current;
 
   const MockTableComponent = () => (
     <table>
@@ -92,13 +92,13 @@ it('Simulates scroll height with OffsetBottom component', () => {
         <OffsetBottom />
       </tbody>
     </table>
-  )
+  );
 
-  render(<MockTableComponent />)
+  render(<MockTableComponent />);
 
-  const spacer = screen.getByRole('cell')
-  expect(spacer).toHaveAttribute('height', '150')
-})
+  const spacer = screen.getByRole('cell');
+  expect(spacer).toHaveAttribute('height', '150');
+});
 
 it('Simulates scroll height with OffsetTop component', () => {
   const { result } = renderHook(
@@ -116,9 +116,9 @@ it('Simulates scroll height with OffsetTop component', () => {
     {
       wrapper,
     }
-  )
+  );
 
-  const { OffsetTop } = result.current
+  const { OffsetTop } = result.current;
 
   const MockTableComponent = () => (
     <table>
@@ -126,10 +126,10 @@ it('Simulates scroll height with OffsetTop component', () => {
         <OffsetTop />
       </tbody>
     </table>
-  )
+  );
 
-  render(<MockTableComponent />)
+  render(<MockTableComponent />);
 
-  const spacer = screen.getByRole('cell')
-  expect(spacer).toHaveAttribute('height', '120')
-})
+  const spacer = screen.getByRole('cell');
+  expect(spacer).toHaveAttribute('height', '120');
+});

@@ -3,30 +3,30 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ListItemColor } from '../types'
-import { listItemColorAppliesToLabel, listItemColorOptions } from '../types'
+import { listItemColorAppliesToLabel } from '../types';
+import { isListColor } from './isListColor';
 
 const listItemColor = (
-  color?: ListItemColor,
+  color?: string,
   disabled?: boolean,
   defaultColor?: string
 ) => {
   if (disabled) {
-    return 'text1'
+    return 'text1';
   } else if (color) {
     if (listItemColorAppliesToLabel.includes(color)) {
       // Theme "slot" & color is applied to label
-      return color
-    } else if (!listItemColorOptions.includes(color)) {
+      return color;
+    } else if (!isListColor(color)) {
       // HTML color
-      return color
+      return color;
     }
   }
-  return defaultColor
-}
+  return defaultColor;
+};
 
-export const listItemIconColor = (color?: ListItemColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text2')
+export const listItemIconColor = (color?: string, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text2');
 
-export const listItemLabelColor = (color?: ListItemColor, disabled?: boolean) =>
-  listItemColor(color, disabled, 'text5')
+export const listItemLabelColor = (color?: string, disabled?: boolean) =>
+  listItemColor(color, disabled, 'text5');

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import React from 'react'
-import type { FieldTimeSelectProps } from '../'
-import { FieldTimeSelect } from '../'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import React from 'react';
+import type { FieldTimeSelectProps } from '../';
+import { FieldTimeSelect } from '../';
 
 export default function FloatingLabel(props: FieldTimeSelectProps) {
   const {
@@ -14,7 +14,7 @@ export default function FloatingLabel(props: FieldTimeSelectProps) {
     interval = 10,
     label = 'Select Time',
     ...restProps
-  } = props
+  } = props;
   return (
     <ExtendComponentsThemeProvider
       themeCustomizations={{ defaults: { externalLabel: false } }}
@@ -26,5 +26,5 @@ export default function FloatingLabel(props: FieldTimeSelectProps) {
         {...restProps}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

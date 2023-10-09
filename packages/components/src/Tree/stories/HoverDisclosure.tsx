@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TreeCollection, Tree, TreeItem } from '..'
-import { Button } from '../../Button'
+import React from 'react';
+import { TreeCollection, Tree, TreeItem } from '..';
+import { Button } from '../../Button';
 
 export default function HoverDisclosure() {
   return (
@@ -20,5 +20,5 @@ export default function HoverDisclosure() {
         <TreeItem>Cheddar</TreeItem>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

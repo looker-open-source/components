@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 import type {
   LayoutProps,
   SpaceProps,
   PositionProps,
-} from '@looker/design-tokens'
-import { layout, space, position } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { layout, space, position } from '@looker/design-tokens';
 
 export interface SimpleLayoutProps
   extends LayoutProps,
@@ -24,4 +24,4 @@ export const simpleLayoutCSS = css`
   ${layout}
   ${space}
   ${position}
-`
+`;

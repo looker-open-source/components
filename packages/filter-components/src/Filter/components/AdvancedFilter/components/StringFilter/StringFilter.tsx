@@ -23,26 +23,26 @@
  SOFTWARE.
 
  */
-import type { StringFilterType } from '@looker/filter-expressions'
+import type { StringFilterType } from '@looker/filter-expressions';
 import {
   convertOptionToType,
   convertTypeToOption,
   sanitizeString,
-} from '@looker/filter-expressions'
-import type { ElementType } from 'react'
-import React from 'react'
-import type { FilterParamProps } from '../../../../types/filter_param_props'
-import { GroupSelect } from '../GroupSelect'
-import { stringFilterTypeToFilter } from './utils/string_filter_type_to_filter'
-import { useStringFilterOptions, useFilterOptions } from '../../utils'
-import { ItemLayout } from '../ItemLayout'
+} from '@looker/filter-expressions';
+import type { ElementType } from 'react';
+import React from 'react';
+import type { FilterParamProps } from '../../../../types/filter_param_props';
+import { GroupSelect } from '../GroupSelect';
+import { stringFilterTypeToFilter } from './utils/string_filter_type_to_filter';
+import { useStringFilterOptions, useFilterOptions } from '../../utils';
+import { ItemLayout } from '../ItemLayout';
 
 const typesUsingSuggestions: StringFilterType[] = [
   'match',
   'contains',
   'startsWith',
   'endsWith',
-]
+];
 
 export const StringFilter = ({
   item,
@@ -56,12 +56,12 @@ export const StringFilter = ({
   validationMessage,
   ...rest
 }: FilterParamProps<StringFilterType>) => {
-  const isParameter = rest.field?.parameter
-  const stringFilterOptions = useStringFilterOptions(isParameter)
+  const isParameter = rest.field?.parameter;
+  const stringFilterOptions = useStringFilterOptions(isParameter);
   const options = useFilterOptions(
     stringFilterOptions,
     !isParameter && showMatchesAdvanced
-  )
+  );
   const typeChange = (value: string) =>
     onChange(
       item.id,
@@ -69,15 +69,15 @@ export const StringFilter = ({
         { ...item, ...convertOptionToType(String(value)) },
         userAttributes
       )
-    )
+    );
 
   const FilterComponent: ElementType = stringFilterTypeToFilter(
     item.type,
     isParameter,
     rest.allowMultipleOptions
-  )
+  );
 
-  const selectValue = convertTypeToOption(item)
+  const selectValue = convertTypeToOption(item);
   return (
     <ItemLayout item={item} {...rest}>
       <GroupSelect
@@ -101,5 +101,5 @@ export const StringFilter = ({
         isLoading={isLoading}
       />
     </ItemLayout>
-  )
-}
+  );
+};

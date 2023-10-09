@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { RadioGroup } from '../'
-import type { RadioGroupProps } from '../'
+import React from 'react';
+import { RadioGroup } from '../';
+import type { RadioGroupProps } from '../';
 
 const mockOptions = [
   {
@@ -16,14 +16,14 @@ const mockOptions = [
     label: 'Gouda',
     value: 'gouda',
   },
-]
+];
 
 export default function Basic(props: RadioGroupProps) {
   const {
     options = mockOptions,
     defaultValue = 'cheddar',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <RadioGroup
@@ -32,5 +32,5 @@ export default function Basic(props: RadioGroupProps) {
       options={options}
       {...restProps}
     />
-  )
+  );
 }

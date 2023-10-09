@@ -45,7 +45,7 @@ import {
   DashboardFilter,
   // Optional locale module (Korea)
   koKR,
-} from '@looker/filter-components'
+} from '@looker/filter-components';
 
 export const FiltersSection = ({ filters, filterValues, updateFilters }) => {
   return (
@@ -59,8 +59,8 @@ export const FiltersSection = ({ filters, filterValues, updateFilters }) => {
         />
       ))}
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```
 
 \* `ComponentsProvider` is the provider for [`@looker/components`](https://components.looker.com), re-exported in this package. The `@looker/components` library provides the lower-level components used to build the filter components. If you are already using it in your app, you don't need to add another `ComponentsProvider`.
@@ -121,6 +121,6 @@ Takes a filter and an `onChange` callback, as well as on optional `expression` f
 The `summary` function returns a localized summary of a filter expression, given the expression's type, the expression itself, and the user attributes and field, if applicable.
 
 ```js
-summary('number', '[0,20],>30')
+summary('number', '[0,20],>30');
 // 'is in range [0, 20] or is > 30'
 ```

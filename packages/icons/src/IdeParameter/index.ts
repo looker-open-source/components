@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './IdeParameter'
+export * from './IdeParameter';

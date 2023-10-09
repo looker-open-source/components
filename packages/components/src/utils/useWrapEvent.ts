@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SyntheticEvent } from 'react'
-import { useCallback } from 'react'
+import type { SyntheticEvent } from 'react';
+import { useCallback } from 'react';
 
 export function useWrapEvent<E extends SyntheticEvent>(
   ourHandler: (e: E) => void,
@@ -12,11 +12,11 @@ export function useWrapEvent<E extends SyntheticEvent>(
 ) {
   return useCallback(
     (event: E) => {
-      theirHandler && theirHandler(event)
+      theirHandler && theirHandler(event);
       if (!event.defaultPrevented) {
-        return ourHandler(event)
+        return ourHandler(event);
       }
     },
     [ourHandler, theirHandler]
-  )
+  );
 }

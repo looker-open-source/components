@@ -3,13 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TreeCollection } from '../../Tree'
-import { LkFieldItem, LkFieldTree } from '../'
-import type { LkFieldTreeProps } from '../'
+import React from 'react';
+import { TreeCollection } from '../../Tree';
+import { LkFieldItem, LkFieldTree } from '../';
+import type { LkFieldTreeProps } from '../';
 
 export default function Basic(props: LkFieldTreeProps) {
-  const { label = <strong>Orders</strong>, defaultOpen = true, ...rest } = props
+  const {
+    label = <strong>Orders</strong>,
+    defaultOpen = true,
+    ...rest
+  } = props;
 
   return (
     <TreeCollection>
@@ -29,5 +33,5 @@ export default function Basic(props: LkFieldTreeProps) {
         </LkFieldTree>
       </LkFieldTree>
     </TreeCollection>
-  )
+  );
 }

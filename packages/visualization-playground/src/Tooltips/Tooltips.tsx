@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { Dispatch, SetStateAction, FormEvent } from 'react'
+import React from 'react';
+import type { Dispatch, SetStateAction, ChangeEvent } from 'react';
 import type {
   CAll,
   CPie,
@@ -12,18 +12,18 @@ import type {
   CBar,
   CColumn,
   CScatter,
-} from '@looker/visualizations-adapters'
-import { FieldCheckbox } from '@looker/components'
+} from '@looker/visualizations-adapters';
+import { FieldCheckbox } from '@looker/components';
 
 /**
  * A list of relevant charts that access this configuration
  */
-type SupportedChartConfig = CPie | CLine | CArea | CBar | CColumn | CScatter
+type SupportedChartConfig = CPie | CLine | CArea | CBar | CColumn | CScatter;
 
 type TooltipsProps = {
-  config: SupportedChartConfig
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-}
+  config: SupportedChartConfig;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+};
 
 const renderFor: Array<SupportedChartConfig['type']> = [
   'area',
@@ -32,23 +32,23 @@ const renderFor: Array<SupportedChartConfig['type']> = [
   'line',
   'pie',
   'scatter',
-]
+];
 
 export const Tooltips = (props: TooltipsProps) => {
-  const { config, onConfigChange } = props
+  const { config, onConfigChange } = props;
 
-  const { tooltips } = config
+  const { tooltips } = config;
 
   if (!renderFor.includes(config.type)) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
-    const { checked } = e.target as HTMLInputElement
-    const draft = { ...config, tooltips: checked }
-    onConfigChange(draft)
-  }
+  const handleChange = (e: ChangeEvent) => {
+    const { checked } = e.target as HTMLInputElement;
+    const draft = { ...config, tooltips: checked };
+    onConfigChange(draft);
+  };
 
   return (
     <FieldCheckbox
@@ -56,5 +56,5 @@ export const Tooltips = (props: TooltipsProps) => {
       checked={tooltips}
       onChange={handleChange}
     />
-  )
-}
+  );
+};

@@ -24,9 +24,9 @@
 
  */
 
-import type { CSSProperties } from 'react'
-import { useEffect, useState } from 'react'
-import type { Placement } from '@popperjs/core'
+import type { CSSProperties } from 'react';
+import { useEffect, useState } from 'react';
+import type { Placement } from '@popperjs/core';
 
 const topPlacements: Placement[] = [
   'top',
@@ -34,7 +34,7 @@ const topPlacements: Placement[] = [
   'top-end',
   'right-end',
   'left-end',
-]
+];
 
 const bottomPlacements: Placement[] = [
   'bottom',
@@ -42,7 +42,7 @@ const bottomPlacements: Placement[] = [
   'bottom-end',
   'right-start',
   'left-start',
-]
+];
 
 const sidePlacements: Placement[] = [
   'left-start',
@@ -51,7 +51,7 @@ const sidePlacements: Placement[] = [
   'right-start',
   'right-end',
   'right',
-]
+];
 
 export const useVerticalSpace = (
   element: HTMLElement | null,
@@ -61,48 +61,49 @@ export const useVerticalSpace = (
   // Included to trigger an update if Popper's positioning moves
   popperStyle: CSSProperties
 ) => {
-  const [spaceTop, setSpaceTop] = useState(0)
-  const [spaceBottom, setSpaceBottom] = useState(0)
-  const placementIsBottom = placement && bottomPlacements.includes(placement)
-  const placementIsTop = placement && topPlacements.includes(placement)
-  const placementIsSide = placement && sidePlacements.includes(placement)
+  const [spaceTop, setSpaceTop] = useState(0);
+  const [spaceBottom, setSpaceBottom] = useState(0);
+  const [maxForPlacement, setMaxForPlacement] = useState(0);
+  const placementIsBottom = placement && bottomPlacements.includes(placement);
+  const placementIsTop = placement && topPlacements.includes(placement);
+  const placementIsSide = placement && sidePlacements.includes(placement);
 
   useEffect(() => {
     const getVerticalSpace = () => {
       if (element) {
         if (placementIsBottom || placementIsTop) {
-          const { top, bottom } = element.getBoundingClientRect()
+          const { top, bottom } = element.getBoundingClientRect();
           // If pin = true, we only care about the space on the placement side
           // Otherwise, we want both the top and bottom and pick the bigger
           if (!pin || placementIsTop) {
             // If placement is to the side, the height of the trigger should be included
-            const spaceTop = placementIsSide ? bottom : top
-            setSpaceTop(spaceTop)
+            const spaceTop = placementIsSide ? bottom : top;
+            setSpaceTop(spaceTop);
           } else if (pin) {
-            setSpaceTop(0)
+            setSpaceTop(0);
           }
           if (!pin || placementIsBottom) {
             // If placement is to the side, the height of the trigger should be included
-            const sideToUse = placementIsSide ? top : bottom
-            setSpaceBottom(window.innerHeight - sideToUse)
+            const sideToUse = placementIsSide ? top : bottom;
+            setSpaceBottom(window.innerHeight - sideToUse);
           } else if (pin) {
-            setSpaceBottom(0)
+            setSpaceBottom(0);
           }
         } else {
           // Horizontally placed Popovers can be as tall as the window
-          setSpaceTop(window.innerHeight)
+          setSpaceTop(window.innerHeight);
         }
       }
-    }
+    };
 
     if (isOpen) {
-      window.addEventListener('resize', getVerticalSpace)
-      getVerticalSpace()
+      window.addEventListener('resize', getVerticalSpace);
+      getVerticalSpace();
     }
 
     return () => {
-      window.removeEventListener('resize', getVerticalSpace)
-    }
+      window.removeEventListener('resize', getVerticalSpace);
+    };
   }, [
     element,
     pin,
@@ -111,16 +112,31 @@ export const useVerticalSpace = (
     placementIsSide,
     isOpen,
     popperStyle.transform,
-  ])
+  ]);
 
-  // Set height to the larger, popper will take care of flipping as needed
-  const max = Math.max(spaceTop, spaceBottom)
+  useEffect(() => {
+    // Update the max height based on the actual placement after initial render
+    // so that if more height is added inside the popover (e.g. an expanding
+    // node in TreeSelect) it will not overflow the page.
+    const t = window.setTimeout(() => {
+      if (isOpen) {
+        setMaxForPlacement(placementIsBottom ? spaceBottom : spaceTop);
+      }
+    }, 0);
+    return () => {
+      window.clearTimeout(t);
+    };
+  }, [placementIsBottom, spaceBottom, spaceTop, isOpen]);
 
-  const windowHeight = typeof window !== `undefined` ? window.innerHeight : 50
+  // Initially use the larger of top vs bottom and popperjs will flip as needed
+  const totalMax = Math.max(spaceTop, spaceBottom);
+  const max = maxForPlacement || totalMax;
+
+  const windowHeight = typeof window !== `undefined` ? window.innerHeight : 50;
 
   // If the height of the overlay will be 50px or less,
   // it's too small to scroll
   // Popper will awkwardly move the overlay to try to fit in the window
   // but that's better than squishing it so small.
-  return max > 50 ? max : windowHeight
-}
+  return max > 50 ? max : windowHeight;
+};

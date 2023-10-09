@@ -1,2 +1,0 @@
-
-//# sourceMappingURL=column.js.map

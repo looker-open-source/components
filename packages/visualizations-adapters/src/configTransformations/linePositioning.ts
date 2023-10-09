@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CArea, CLine } from '../adapters'
-import type { ConfigHelper, RawApiConfigResponse } from '../types'
+import type { CArea, CLine } from '../adapters';
+import type { ConfigHelper, RawApiConfigResponse } from '../types';
 
 /**
  * Convert 'stacking' prop to 'positioning' and set Area chart default value
@@ -14,11 +14,11 @@ export const linePositioning: ConfigHelper<CArea | CLine> = ({
   data,
   fields,
 }) => {
-  type AllKeys = RawApiConfigResponse['stacking'] | 'default'
+  type AllKeys = RawApiConfigResponse['stacking'] | 'default';
 
-  const { positioning, stacking, ...restConfig } = config
+  const { positioning, stacking, ...restConfig } = config;
 
-  const currentPositioning = positioning || stacking || ''
+  const currentPositioning = positioning || stacking || '';
 
   const GROUP_MODES: Record<AllKeys, CArea['positioning']> = {
     default: 'overlay',
@@ -27,7 +27,7 @@ export const linePositioning: ConfigHelper<CArea | CLine> = ({
     overlay: 'overlay',
     percent: 'percent',
     stacked: 'stacked',
-  }
+  };
 
   return {
     config: {
@@ -37,5 +37,5 @@ export const linePositioning: ConfigHelper<CArea | CLine> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

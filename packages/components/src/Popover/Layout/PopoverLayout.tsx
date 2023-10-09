@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ModalLayoutProps } from '../../Modal/ModalLayout'
-import { ModalLoading } from '../../Modal/ModalLayout'
-import { PopoverContent } from './PopoverContent'
-import type { PopoverFooterProps } from './PopoverFooter'
-import { PopoverFooter } from './PopoverFooter'
-import { PopoverHeader } from './PopoverHeader'
+import React from 'react';
+import type { ModalLayoutProps } from '../../Modal/ModalLayout';
+import { ModalLoading } from '../../Modal/ModalLayout';
+import { PopoverContent } from './PopoverContent';
+import type { PopoverFooterProps } from './PopoverFooter';
+import { PopoverFooter } from './PopoverFooter';
+import { PopoverHeader } from './PopoverHeader';
 
 export type PopoverLayoutProps = ModalLayoutProps &
   Pick<PopoverFooterProps, 'closeButton'> & {
@@ -17,8 +17,8 @@ export type PopoverLayoutProps = ModalLayoutProps &
      * Header will not be visually available but it will still properly announced in screen reader scenarios
      * @default false
      */
-    hideHeader?: boolean
-  }
+    hideHeader?: boolean;
+  };
 
 export const PopoverLayout = ({
   children,
@@ -28,7 +28,7 @@ export const PopoverLayout = ({
   hideHeader = false,
   isLoading,
 }: PopoverLayoutProps) => {
-  const internalFooter = typeof footer === 'boolean' ? null : footer
+  const internalFooter = typeof footer === 'boolean' ? null : footer;
 
   return (
     <>
@@ -46,5 +46,5 @@ export const PopoverLayout = ({
         </PopoverFooter>
       )}
     </>
-  )
-}
+  );
+};

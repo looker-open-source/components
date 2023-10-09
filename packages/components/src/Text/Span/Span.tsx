@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import type {
   CompatibleHTMLProps,
   TextTransformProps,
-} from '@looker/design-tokens'
-import { textTransform } from '@looker/design-tokens'
-import type { TextBaseProps } from '../Text/TextBase'
-import { TextBase } from '../Text/TextBase'
+} from '@looker/design-tokens';
+import { textTransform } from '@looker/design-tokens';
+import type { TextBaseProps } from '../Text/TextBase';
+import { TextBase } from '../Text/TextBase';
 
 export interface SpanProps
   extends TextBaseProps,
@@ -29,4 +29,4 @@ export const Span = styled(TextBase).attrs<SpanProps>(
   })
 )<SpanProps>`
   ${textTransform}
-`
+`;

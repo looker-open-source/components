@@ -2,28 +2,28 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import type { FormEvent, SyntheticEvent } from 'react'
-import { Tooltip } from '../Tooltip'
-import { Button } from '../../Button'
-import { Popover, PopoverContent } from '../../Popover'
-import { FieldToggleSwitch } from '../../Form'
-import { Space, SpaceVertical } from '../../Layout'
-import { Text } from '../../Text'
+import React, { useState } from 'react';
+import type { ChangeEvent, SyntheticEvent } from 'react';
+import { Tooltip } from '../Tooltip';
+import { Button } from '../../Button';
+import { Popover, PopoverContent } from '../../Popover';
+import { FieldToggleSwitch } from '../../Form';
+import { Space, SpaceVertical } from '../../Layout';
+import { Text } from '../../Text';
 
 export default function NestedInPopover() {
-  const [prevent, setPrevent] = useState(false)
-  function handleChange(e: FormEvent<HTMLInputElement>) {
-    setPrevent(e.currentTarget.checked)
+  const [prevent, setPrevent] = useState(false);
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setPrevent(e.target.checked);
   }
 
-  const [lastEvent, setLastEvent] = useState('N/A')
+  const [lastEvent, setLastEvent] = useState('N/A');
   const getHandler = (text: string) => (e: SyntheticEvent) => {
-    setLastEvent(text)
+    setLastEvent(text);
     if (prevent) {
-      e.preventDefault()
+      e.preventDefault();
     }
-  }
+  };
 
   const handlers = {
     onBlur: getHandler('blur'),
@@ -31,7 +31,7 @@ export default function NestedInPopover() {
     onFocus: getHandler('focus'),
     onMouseOut: getHandler('mouse out'),
     onMouseOver: getHandler('mouse over'),
-  }
+  };
 
   return (
     <SpaceVertical p="u5">
@@ -49,5 +49,5 @@ export default function NestedInPopover() {
         />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

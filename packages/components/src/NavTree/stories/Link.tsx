@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { NavTree, NavTreeItem } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { NavTree, NavTreeItem } from '../..';
 
 export default function Link() {
   return (
@@ -21,5 +21,5 @@ export default function Link() {
         Some Item
       </NavTreeItem>{' '}
     </NavTree>
-  )
+  );
 }

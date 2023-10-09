@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { InputText, Select } from '@looker/components'
-import React from 'react'
-import styled, { css } from 'styled-components'
-import type { StringSingleSelectProps } from '../../../../types/string_select_props'
-import type { TokenStyleProps } from '../../../../utils/filter_styles'
-import { tokenStylePlaceholder } from '../../../../utils/filter_styles'
-import { useOptionFiltering } from '../../../../utils/use_option_filtering'
-import { usePlaceholder } from '../../../../utils/use_placeholder'
+import { InputText, Select } from '@looker/components';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import type { StringSingleSelectProps } from '../../../../types/string_select_props';
+import type { TokenStyleProps } from '../../../../utils/filter_styles';
+import { tokenStylePlaceholder } from '../../../../utils/filter_styles';
+import { useOptionFiltering } from '../../../../utils/use_option_filtering';
+import { usePlaceholder } from '../../../../utils/use_placeholder';
 
 const DropdownMenuComponent = ({
   value,
@@ -24,9 +24,9 @@ const DropdownMenuComponent = ({
     value,
     options,
     onInputChange,
-  })
+  });
 
-  const placeholderProps = usePlaceholder(value, validationMessage)
+  const placeholderProps = usePlaceholder(value, validationMessage);
 
   return (
     <Select
@@ -49,8 +49,8 @@ const DropdownMenuComponent = ({
       noErrorIcon
       validationType={validationMessage?.type}
     />
-  )
-}
+  );
+};
 
 export const DropdownMenu = styled(DropdownMenuComponent)`
   ${InputText} {
@@ -69,4 +69,4 @@ export const DropdownMenu = styled(DropdownMenuComponent)`
           `
         : ''}
   }
-`
+`;

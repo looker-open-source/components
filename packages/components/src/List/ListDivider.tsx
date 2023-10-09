@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import type { SpaceProps } from '@looker/design-tokens'
-import { space } from '@looker/design-tokens'
-import { Divider } from '../Divider'
+import React from 'react';
+import styled from 'styled-components';
+import type { SpaceProps } from '@looker/design-tokens';
+import { space } from '@looker/design-tokens';
+import { Divider } from '../Divider';
 
 const ListDividerLayout = (props: React.ComponentProps<'li'>) => (
   <li {...props} aria-hidden="true">
     <Divider appearance="light" />
   </li>
-)
+);
 
 /**
  * Divider component used to create borders between items
@@ -28,4 +28,4 @@ export const ListDivider = styled(ListDividerLayout)<SpaceProps>`
   & + & {
     display: none;
   }
-`
+`;

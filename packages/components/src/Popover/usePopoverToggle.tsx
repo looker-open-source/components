@@ -24,53 +24,58 @@
 
  */
 
-import { useState, useEffect } from 'react'
-import { useControlWarn } from '../utils/useControlWarn'
+import { useState, useEffect } from 'react';
+import { useControlWarn } from '../utils/useControlWarn';
 
 const isNodeInOrAfter = (nodeA: Node, nodeB: Node) => {
-  const relationship = nodeA.compareDocumentPosition(nodeB)
+  const relationship = nodeA.compareDocumentPosition(nodeB);
   return (
     relationship === Node.DOCUMENT_POSITION_FOLLOWING ||
     relationship ===
       Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
-  )
-}
+  );
+};
 
 export interface UsePopoverToggleProps {
   /**
    * If true, the Popover will not render
    */
-  disabled?: boolean
+  disabled?: boolean;
 
   /**
    * When true, display Surface and it's contained content
    * @default false
    */
-  isOpen?: boolean
+  isOpen?: boolean;
 
   /**
    * Specify a callback to be called before trying to close the Popover. This allows for
    * use-cases where the user might lose work (think common "Save before closing warning" type flow)
    * Specify a callback to be called each time this Popover is closed
    */
-  canClose?: () => boolean
+  canClose?: () => boolean;
 
   /**
    * Optional, for a controlled version of the component
    */
-  setOpen?: (open: boolean) => void
+  setOpen?: (open: boolean) => void;
 
   /**
    * Whether to close the popover when the toggle is clicked again
    * @default true
    */
-  triggerToggle?: boolean
+  triggerToggle?: boolean;
 
   /**
    * Whether to honor the first click outside the popover
    * @default false
    */
-  cancelClickOutside?: boolean
+  cancelClickOutside?: boolean;
+
+  /**
+   * Optional allow event when trigger is clicked
+   */
+  allowTriggerClick?: boolean;
 }
 
 export const usePopoverToggle = (
@@ -80,26 +85,27 @@ export const usePopoverToggle = (
     canClose,
     triggerToggle,
     cancelClickOutside = false,
+    allowTriggerClick = false,
   }: UsePopoverToggleProps,
   portalElement: HTMLElement | null,
   triggerElement: HTMLElement | null
 ): [boolean, (value: boolean) => void] => {
-  const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen)
+  const [uncontrolledIsOpen, uncontrolledSetOpen] = useState(controlledIsOpen);
   const [mouseDownTarget, setMouseDownTarget] = useState<EventTarget | null>(
     null
-  )
+  );
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'usePopover',
-  })
-  const isOpen = isControlled ? controlledIsOpen : uncontrolledIsOpen
+  });
+  const isOpen = isControlled ? controlledIsOpen : uncontrolledIsOpen;
   const setOpen =
-    isControlled && controlledSetOpen ? controlledSetOpen : uncontrolledSetOpen
+    isControlled && controlledSetOpen ? controlledSetOpen : uncontrolledSetOpen;
 
   useEffect(() => {
     const checkCloseAndStopEvent = (event: MouseEvent) => {
-      if (canClose && !canClose()) return
+      if (canClose && !canClose()) return;
 
       // Check if the click started in (or on top of) the popover
       // If so, don't close the popover even if the user has dragged
@@ -108,7 +114,7 @@ export const usePopoverToggle = (
       // unintentional drag, which closes the popover
       if (portalElement && mouseDownTarget) {
         if (isNodeInOrAfter(portalElement, mouseDownTarget as Node)) {
-          return
+          return;
         }
       }
 
@@ -117,64 +123,66 @@ export const usePopoverToggle = (
         portalElement &&
         isNodeInOrAfter(portalElement, event.target as Node)
       ) {
-        return
+        return;
       }
 
       const clickedOnToggle =
-        triggerElement && triggerElement.contains(event.target as Node)
+        triggerElement && triggerElement.contains(event.target as Node);
 
       if (!triggerToggle && clickedOnToggle) {
-        return
+        return;
       }
 
-      setOpen(false)
+      setOpen(false);
 
       // User clicked the trigger while the Popover was open
       if (clickedOnToggle) {
-        // stopPropagation because instant Popover re-opening is silly
-        event.stopPropagation()
-        // preventDefault for consistency because handleOpen does it
-        event.preventDefault()
-        return
+        if (!allowTriggerClick) {
+          // stopPropagation because instant Popover re-opening is silly
+          event.stopPropagation();
+          // preventDefault for consistency because handleOpen does it
+          event.preventDefault();
+        }
+        return;
       }
 
       if (!cancelClickOutside) {
-        return
+        return;
       }
 
-      event.stopPropagation()
-      event.preventDefault()
-    }
+      event.stopPropagation();
+      event.preventDefault();
+    };
 
     const handleMouseDown = (event: MouseEvent) => {
-      setMouseDownTarget(event.target)
-      checkCloseAndStopEvent(event)
-    }
+      setMouseDownTarget(event.target);
+      checkCloseAndStopEvent(event);
+    };
 
     const handleClickOutside = (event: MouseEvent) => {
-      checkCloseAndStopEvent(event)
-      setMouseDownTarget(null)
-    }
+      checkCloseAndStopEvent(event);
+      setMouseDownTarget(null);
+    };
 
     const handleMouseUp = () => {
-      setMouseDownTarget(null)
-    }
+      setMouseDownTarget(null);
+    };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleMouseDown, true)
-      document.addEventListener('click', handleClickOutside, true)
+      document.addEventListener('mousedown', handleMouseDown, true);
+      document.addEventListener('click', handleClickOutside, true);
     } else if (mouseDownTarget) {
       // popover was closed via mousedown, but still need to cancel next click
-      document.addEventListener('click', handleClickOutside, true)
+      document.addEventListener('click', handleClickOutside, true);
       // and then cleanup mouseDownTarget
-      document.addEventListener('mouseup', handleMouseUp)
+      document.addEventListener('mouseup', handleMouseUp);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleMouseDown, true)
-      document.removeEventListener('click', handleClickOutside, true)
-      document.removeEventListener('mouseup', handleMouseUp)
-    }
+      document.removeEventListener('mousedown', handleMouseDown, true);
+      document.removeEventListener('click', handleClickOutside, true);
+      document.removeEventListener('mouseup', handleMouseUp);
+    };
   }, [
     cancelClickOutside,
     canClose,
@@ -184,7 +192,8 @@ export const usePopoverToggle = (
     portalElement,
     triggerToggle,
     mouseDownTarget,
-  ])
+    allowTriggerClick,
+  ]);
 
-  return [isOpen, setOpen]
-}
+  return [isOpen, setOpen];
+};

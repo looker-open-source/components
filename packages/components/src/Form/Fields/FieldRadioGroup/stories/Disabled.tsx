@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadioGroup } from '../'
+import React from 'react';
+import { FieldRadioGroup } from '../';
 
 export default function Disabled() {
   const options = [
@@ -20,7 +20,7 @@ export default function Disabled() {
     { label: 'Gouda', value: 'gouda-3' },
     { disabled: true, label: 'Swiss', value: 'swiss-3' },
     { label: 'Roquefort', value: 'roquefort-3' },
-  ]
+  ];
   return (
     <FieldRadioGroup
       label="Cheeses"
@@ -28,5 +28,5 @@ export default function Disabled() {
       options={options}
       disabled={true}
     />
-  )
+  );
 }

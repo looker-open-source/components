@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-export type TransitionNone = 'none'
-export type TransitionRapid = 'rapid'
-export type TransitionQuick = 'quick'
-export type TransitionSimple = 'simple'
-export type TransitionModerate = 'moderate'
-export type TransitionComplex = 'complex'
-export type TransitionIntricate = 'intricate'
+export type TransitionNone = 'none';
+export type TransitionRapid = 'rapid';
+export type TransitionQuick = 'quick';
+export type TransitionSimple = 'simple';
+export type TransitionModerate = 'moderate';
+export type TransitionComplex = 'complex';
+export type TransitionIntricate = 'intricate';
 
 export type Transitions =
   | TransitionNone
@@ -18,6 +18,6 @@ export type Transitions =
   | TransitionSimple
   | TransitionModerate
   | TransitionComplex
-  | TransitionIntricate
+  | TransitionIntricate;
 
-export type TransitionRamp = Record<Transitions, number>
+export type TransitionRamp = Record<Transitions, number>;

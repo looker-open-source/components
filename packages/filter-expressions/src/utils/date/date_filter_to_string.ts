@@ -28,82 +28,82 @@ import type {
   FilterDateTimeModel,
   FilterExpressionType,
   FilterModel,
-} from '../../types'
-import { userAttributeToString } from '../user_attribute/user_attribute_to_string'
+} from '../../types';
+import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
 
-import nullItemToString from '../to_string/null_item_to_string'
-import { treeToString } from '../tree/tree_to_string'
-import { isDateTime } from './is_date_time'
-import { zeroPad2, zeroPad4 } from './zero_pad'
-import { hasTimeFilterDateTimeModel } from './date_conversions'
+import nullItemToString from '../to_string/null_item_to_string';
+import { treeToString } from '../tree/tree_to_string';
+import { isDateTime } from './is_date_time';
+import { zeroPad2, zeroPad4 } from './zero_pad';
+import { hasTimeFilterDateTimeModel } from './date_conversions';
 
 export interface DateFilterItemToStringMapType {
-  [name: string]: DateFilterItemToStringFunction
+  [name: string]: DateFilterItemToStringFunction;
 }
 
 export type DateFilterItemToStringFunction = (
   item: FilterModel,
   showTime: boolean
-) => string
+) => string;
 
 const datetime = (date?: FilterDateTimeModel, showTime?: boolean): string => {
-  if (!date) return 'Invalid Date'
-  const { year, month, day, hour, minute } = date
-  let result = String(zeroPad4(year))
-  result += month ? `/${zeroPad2(month)}` : ''
-  result += day ? `/${zeroPad2(day)}` : ''
+  if (!date) return 'Invalid Date';
+  const { year, month, day, hour, minute } = date;
+  let result = String(zeroPad4(year));
+  result += month ? `/${zeroPad2(month)}` : '';
+  result += day ? `/${zeroPad2(day)}` : '';
   if (showTime) {
-    result += hour !== undefined ? ` ${zeroPad2(hour)}` : ''
-    result += minute !== undefined ? `:${zeroPad2(minute)}` : ''
+    result += hour !== undefined ? ` ${zeroPad2(hour)}` : '';
+    result += minute !== undefined ? `:${zeroPad2(minute)}` : '';
   }
-  return result
-}
+  return result;
+};
 
 const beforeAfter = (item: FilterModel, showTime: boolean) => {
-  const { type, range, date, fromnow, unit } = item
+  const { type, range, date, fromnow, unit } = item;
   if (range === 'absolute') {
-    return `${type} ${datetime(date, showTime)}`
+    return `${type} ${datetime(date, showTime)}`;
   }
 
-  const fromNowAgoText = fromnow ? 'from now' : 'ago'
+  const fromNowAgoText = fromnow ? 'from now' : 'ago';
   return unit === 'now'
     ? `${type} 0 minutes ${fromNowAgoText}`
-    : `${type} ${intervalToString(item)} ${fromNowAgoText}`
-}
+    : `${type} ${intervalToString(item)} ${fromNowAgoText}`;
+};
 
 const dateRange = ({ start, end }: FilterModel, showTime: boolean) =>
-  `${datetime(start, showTime)} to ${datetime(end, showTime)}`
+  `${datetime(start, showTime)} to ${datetime(end, showTime)}`;
 
 const thisRange = ({ startInterval, endInterval }: FilterModel) =>
-  `this ${startInterval} to ${endInterval}`
+  `this ${startInterval} to ${endInterval}`;
 
-const intervalToString = ({ value, unit }: FilterModel) => `${value} ${unit}`
+const intervalToString = ({ value, unit }: FilterModel) => `${value} ${unit}`;
 
-const typeAndUnitToString = ({ type, unit }: FilterModel) => `${type} ${unit}`
+const typeAndUnitToString = ({ type, unit }: FilterModel) => `${type} ${unit}`;
 
-const yearToString = ({ year }: FilterModel) => `${zeroPad4(year)}`
+const yearToString = ({ year }: FilterModel) => `${zeroPad4(year)}`;
 
 const monthToString = ({ year, month }: FilterModel) =>
-  `${zeroPad4(year)}-${zeroPad2(month)}`
+  `${zeroPad4(year)}-${zeroPad2(month)}`;
 
-const dayToString = ({ day }: FilterModel) => `${day}`
+const dayToString = ({ day }: FilterModel) => `${day}`;
 
 const on = ({ date }: FilterModel, showTime: boolean) =>
-  `${datetime(date, showTime && hasTimeFilterDateTimeModel(date))}`
+  `${datetime(date, showTime && hasTimeFilterDateTimeModel(date))}`;
 
 const relative = ({ startInterval, intervalType, endInterval }: FilterModel) =>
   `${intervalToString(startInterval)} ${intervalType} for ${intervalToString(
     endInterval
-  )}`
+  )}`;
 
 const pastToString = (item: FilterModel) =>
   `${intervalToString(item)}${
     item.complete ? ' ago for ' + intervalToString(item) : ''
-  }`
+  }`;
 
-const pastAgoToString = (item: FilterModel) => `${intervalToString(item)} ago`
+const pastAgoToString = (item: FilterModel) => `${intervalToString(item)} ago`;
 
-const notNullToString = () => `not null`
+const notNullToString = () => `not null`;
 
 const filterToStringMap: DateFilterItemToStringMapType = {
   null: nullItemToString,
@@ -124,7 +124,7 @@ const filterToStringMap: DateFilterItemToStringMapType = {
   relative,
   anyvalue: () => '',
   user_attribute: userAttributeToString,
-}
+};
 
 /**
  * Maps a FilterItem to a function for converting it to an expression
@@ -133,9 +133,9 @@ const dateToString =
   (showTime: boolean) =>
   (item: FilterModel): string => {
     const toStringFunction: DateFilterItemToStringFunction =
-      filterToStringMap[item.type]
-    return toStringFunction?.(item, showTime) || ''
-  }
+      filterToStringMap[item.type];
+    return toStringFunction?.(item, showTime) || '';
+  };
 
 /**
  * Converts the AST to an array of FilterItems and then
@@ -144,4 +144,4 @@ const dateToString =
 export const dateFilterToString = (
   root: FilterASTNode,
   type: FilterExpressionType
-) => treeToString(root, dateToString(isDateTime(type)))
+) => treeToString(root, dateToString(isDateTime(type)));

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { thTH as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { thTH as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'มีสิ่งผิดปกติเกิดขึ้น',
   },
-  translation: {
-    'Row Total': 'ยอดรวมของแถว',
+  KeyValueList: {
     false: 'เท็จ',
     null: 'เป็นค่าว่าง',
     true: 'จริง',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'ยอดรวมของแถว',
   },
-}
+};
 
-export const thTH = mergeLocaleObjects([componentsLocale], 'th-TH', resources)
+export const thTH = mergeLocaleObjects([componentsLocale], 'th-TH', resources);

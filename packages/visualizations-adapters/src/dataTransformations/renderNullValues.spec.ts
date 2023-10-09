@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nullValueZero } from './nullValueZero'
-import { mockFields } from '../fixtures'
+import { nullValueZero } from './nullValueZero';
+import { mockFields } from '../fixtures';
 
 describe('nullValueZero', () => {
   const mockData = [
@@ -23,14 +23,14 @@ describe('nullValueZero', () => {
       'orders.count': 4000,
       'orders.average_total_amount_of_order_usd': 15,
     },
-  ]
+  ];
 
   it('replaces null values with 0 when render_null_values is true', () => {
     const { data: draftData } = nullValueZero({
       data: mockData,
       fields: mockFields,
       config: { type: 'line', render_null_values: true },
-    })
+    });
 
     expect(draftData).toMatchInlineSnapshot(`
       Array [
@@ -50,16 +50,16 @@ describe('nullValueZero', () => {
           "orders.created_month": "2017-09",
         },
       ]
-    `)
-  })
+    `);
+  });
 
   it('passes through unmodified data when render_null_values is false', () => {
     const { data: draftData } = nullValueZero({
       data: mockData,
       fields: mockFields,
       config: { type: 'line', render_null_values: false },
-    })
+    });
 
-    expect(draftData).toEqual(mockData)
-  })
-})
+    expect(draftData).toEqual(mockData);
+  });
+});

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const reset = css`
   font-family: inherit;
   margin: 0;
   padding: 0;
-`
+`;

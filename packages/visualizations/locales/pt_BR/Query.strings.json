@@ -1,4 +1,4 @@
 {
-  "No children passed to Query component": "Nenhum dependente passou para componente de consulta",
-  "Query component received both dashboard and query props": "O componente de consulta recebeu propriedades de dashboard e consulta"
+  "No children passed to Query component": "Nenhum filho foi transmitido ao componente de consulta",
+  "Query component received both dashboard and query props": "O componente de consulta recebeu as propostas de consultas e dashboard"
 }

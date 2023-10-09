@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { TableDataCell } from '.'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { TableDataCell } from '.';
 
 test('TableDataCell', () => {
   renderWithTheme(
@@ -17,7 +17,7 @@ test('TableDataCell', () => {
         </tr>
       </tbody>
     </table>
-  )
-  expect(screen.getByTestId('table-data-cell')).toBeInTheDocument()
-  expect(screen.getByTestId('table-data-cell').tagName).toEqual('TD')
-})
+  );
+  expect(screen.getByTestId('table-data-cell')).toBeInTheDocument();
+  expect(screen.getByTestId('table-data-cell').tagName).toEqual('TD');
+});

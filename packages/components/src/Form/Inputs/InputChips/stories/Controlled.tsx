@@ -3,30 +3,30 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '../'
-import { usePreviousValue, Paragraph, Button } from '../../../../'
+import React, { useState } from 'react';
+import { InputChips } from '../';
+import { usePreviousValue, Paragraph, Button } from '../../../../';
 
 export default function Controlled() {
-  const [values, setValues] = useState<string[]>(['cheddar'])
-  const previousInputValues = usePreviousValue<string[]>(values)
-  const [inputValue, setInputValue] = useState('')
-  const [renderUndoButton, setRenderUndoButton] = useState(false)
+  const [values, setValues] = useState<string[]>(['cheddar']);
+  const previousInputValues = usePreviousValue<string[]>(values);
+  const [inputValue, setInputValue] = useState('');
+  const [renderUndoButton, setRenderUndoButton] = useState(false);
   function handleChange(newValues: string[]) {
-    setValues(newValues)
-    setRenderUndoButton(true)
+    setValues(newValues);
+    setRenderUndoButton(true);
   }
   function handleInputChange(newValue: string) {
-    setInputValue(newValue)
+    setInputValue(newValue);
   }
   function handleClear() {
-    setRenderUndoButton(true)
+    setRenderUndoButton(true);
   }
   function handleUndo() {
     if (typeof previousInputValues !== 'undefined') {
-      setValues(previousInputValues)
+      setValues(previousInputValues);
     }
-    setRenderUndoButton(false)
+    setRenderUndoButton(false);
   }
   return (
     <>
@@ -55,5 +55,5 @@ export default function Controlled() {
         </Paragraph>
       )}
     </>
-  )
+  );
 }

@@ -1,11 +1,11 @@
 {
   "Clear all": {
-    "value": "Limpar tudo"
+    "value": "Remover tudo"
   },
   "Remove": {
     "value": "Remover"
   },
   "Toggle": {
-    "value": "Ativar"
+    "value": "Alternar"
   }
 }

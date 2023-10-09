@@ -9,16 +9,16 @@
     "value": "位置"
   },
   "feet": {
-    "value": "英呎"
+    "value": "英尺"
   },
   "is anywhere": {
-    "value": "任意處"
+    "value": "為任何地方"
   },
   "is not null": {
-    "value": "不是 Null"
+    "value": "不是空值"
   },
   "is null": {
-    "value": "是 Null"
+    "value": "為空值"
   },
   "kilometers": {
     "value": "公里"
@@ -27,6 +27,6 @@
     "value": "公尺"
   },
   "miles": {
-    "value": "英哩"
+    "value": "英里"
   }
 }

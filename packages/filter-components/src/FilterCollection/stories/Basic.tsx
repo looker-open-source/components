@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { IAPIMethods } from '@looker/sdk-rtl'
-import { FilterCollection } from '../FilterCollection'
-import { DashboardFilter } from '../../DashboardFilter'
+import React from 'react';
+import type { IAPIMethods } from '@looker/sdk-rtl';
+import { FilterCollection } from '../FilterCollection';
+import { DashboardFilter } from '../../DashboardFilter';
 
 export default function Suggestions() {
   // From dashboard API
@@ -38,32 +38,32 @@ export default function Suggestions() {
       ui_config: { type: 'radio_buttons' },
       listens_to_filters: ['State'],
     },
-  ]
+  ];
 
-  const states = ['Alaska', 'Hawaii']
-  const citiesAlaska = ['Anchorage', 'Juneau']
-  const citiesHawaii = ['Honolulu', 'Kona']
+  const states = ['Alaska', 'Hawaii'];
+  const citiesAlaska = ['Anchorage', 'Juneau'];
+  const citiesHawaii = ['Honolulu', 'Kona'];
   // Mock SDK instance for fetching suggested values
   const sdkMock = {
     ok: (value: any) => value,
     get: (uri: string, params: { [key: string]: any }) => {
-      let suggestions: string[] = []
+      let suggestions: string[] = [];
       if (uri.includes('users.state')) {
-        suggestions = states
+        suggestions = states;
       } else {
         if (params.filters?.['users.state'] === 'Alaska') {
-          suggestions = citiesAlaska
+          suggestions = citiesAlaska;
         } else if (params.filters?.['users.state'] === 'Hawaii') {
-          suggestions = citiesHawaii
+          suggestions = citiesHawaii;
         } else {
-          suggestions = [...citiesAlaska, ...citiesHawaii]
+          suggestions = [...citiesAlaska, ...citiesHawaii];
         }
       }
       return {
         suggestions,
-      }
+      };
     },
-  } as unknown as IAPIMethods
+  } as unknown as IAPIMethods;
 
   return (
     <FilterCollection sdk={sdkMock}>
@@ -77,5 +77,5 @@ export default function Suggestions() {
         />
       ))}
     </FilterCollection>
-  )
+  );
 }

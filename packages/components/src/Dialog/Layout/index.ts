@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './DialogContent'
-export * from './DialogFooter'
-export * from './DialogHeader'
-export * from './DialogLayout'
+export * from './DialogContent';
+export * from './DialogFooter';
+export * from './DialogHeader';
+export * from './DialogLayout';

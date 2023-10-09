@@ -28,31 +28,31 @@ import {
   Breakpoint,
   Dialog,
   DialogLayout,
-} from '@looker/components'
-import React, { useRef } from 'react'
-import { TokenBase } from '../../../../../../../Token'
-import { useTranslation } from '../../../../../../../utils'
-import type { DayRange } from '../../types/day_range'
+} from '@looker/components';
+import React, { useRef } from 'react';
+import { TokenBase } from '../../../../../../../Token';
+import { useTranslation } from '../../../../../../../utils';
+import type { DayRange } from '../../types/day_range';
 import type {
   AllPresetTimeframes,
   RelativeTimeframeModel,
-} from '../../types/relative_timeframe_types'
-import { useRelativeTimeframeToString } from '../../utils/relative_timeframe_to_string'
-import { RelativeTimeframePopoverContent } from './components/RelativeTimeframePopoverContent'
+} from '../../types/relative_timeframe_types';
+import { useRelativeTimeframeToString } from '../../utils/relative_timeframe_to_string';
+import { RelativeTimeframePopoverContent } from './components/RelativeTimeframePopoverContent';
 
 interface RelativeTimeframesProps {
-  value: RelativeTimeframeModel
-  onChange: (value: RelativeTimeframeModel) => void
+  value: RelativeTimeframeModel;
+  onChange: (value: RelativeTimeframeModel) => void;
 }
 
 // the shape of PopperInstance copied from @popperjs/core type definitions (v2.4.0)
 type PopperInstance = {
-  state: any
-  destroy: () => void
-  forceUpdate: () => void
-  update: () => Promise<any>
-  setOptions: (options: any) => Promise<any>
-}
+  state: any;
+  destroy: () => void;
+  forceUpdate: () => void;
+  update: () => Promise<any>;
+  setOptions: (options: any) => Promise<any>;
+};
 
 export const RelativeTimeframes = ({
   value,
@@ -60,22 +60,22 @@ export const RelativeTimeframes = ({
 }: RelativeTimeframesProps) => {
   // track the popperjs instance returned by usePopper
   // https://popper.js.org/docs/v2/constructors/#instance
-  const internalPopoverInstanceRef = useRef<PopperInstance | undefined>()
+  const internalPopoverInstanceRef = useRef<PopperInstance | undefined>();
 
-  const { t } = useTranslation('RelativeTimeframe')
+  const { t } = useTranslation('RelativeTimeframe');
 
   const handlePresetChange = (selected: AllPresetTimeframes) => {
-    onChange(selected)
-  }
+    onChange(selected);
+  };
 
   const handleCustomChange = (range: DayRange) => {
-    onChange(range)
-  }
+    onChange(range);
+  };
 
   const handleNav = () => {
     // recalculate popper position when content changes
-    internalPopoverInstanceRef.current?.update()
-  }
+    internalPopoverInstanceRef.current?.update();
+  };
 
   const popoverContent = (
     <RelativeTimeframePopoverContent
@@ -84,26 +84,26 @@ export const RelativeTimeframes = ({
       onCustomChange={handleCustomChange}
       onPresetChange={handlePresetChange}
     />
-  )
+  );
 
   const popoverProps = {
     content: popoverContent,
     pin: true,
     placement: 'bottom-start' as const,
-  }
+  };
 
-  const { popover, open, ref, popperInstanceRef } = usePopover(popoverProps)
+  const { popover, open, ref, popperInstanceRef } = usePopover(popoverProps);
 
   // hoist popperInstanceRef for use in handleNav callback
-  internalPopoverInstanceRef.current = popperInstanceRef.current
+  internalPopoverInstanceRef.current = popperInstanceRef.current;
 
-  const label = useRelativeTimeframeToString(value)
+  const label = useRelativeTimeframeToString(value);
 
   const overlayTrigger = (
     <TokenBase ref={ref} onClick={open} aria-selected="true">
       {label}
     </TokenBase>
-  )
+  );
 
   return (
     <>
@@ -125,5 +125,5 @@ export const RelativeTimeframes = ({
         {overlayTrigger}
       </Breakpoint>
     </>
-  )
-}
+  );
+};

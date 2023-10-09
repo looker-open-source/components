@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import type { ReactElement } from 'react'
-import { ComponentsProvider } from '@looker/components'
-import { useTheme } from 'styled-components'
-import { Table } from '@looker/visualizations-table'
+import React from 'react';
+import type { ReactElement } from 'react';
+import { ComponentsProvider } from '@looker/components';
+import { useTheme } from 'styled-components';
+import { Table } from '@looker/visualizations-table';
 import {
   Area,
   Bar,
@@ -36,9 +36,9 @@ import {
   Line,
   Scatter,
   Pie,
-} from '@looker/visualizations-visx'
-import { SingleValue } from '@looker/visualizations-single-value'
-import { ErrorBoundary } from '@looker/visualizations-adapters'
+} from '@looker/visualizations-visx';
+import { SingleValue } from '@looker/visualizations-single-value';
+import { ErrorBoundary } from '@looker/visualizations-adapters';
 import type {
   ChartLayoutProps,
   VisWrapperProps,
@@ -47,24 +47,24 @@ import type {
   Fields,
   CAll,
   Pivots,
-} from '@looker/visualizations-adapters'
-import has from 'lodash/has'
-import { QueryError } from '../QueryError'
-import { useTranslation } from '../utils'
+} from '@looker/visualizations-adapters';
+import has from 'lodash/has';
+import { QueryError } from '../QueryError';
+import { useTranslation } from '../utils';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-type FunctionComponentType = (props: any) => ReactElement<any, any> | null
+type FunctionComponentType = (props: any) => ReactElement<any, any> | null;
 export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   /*
    * debug renders the raw query data and query config rather than the chart
    * @default false
    */
-  data?: SDKRecord[]
-  fields?: Fields
-  config?: CAll
-  totals?: Record<string, number>
-  pivots?: Pivots
-  chartTypeMap?: Record<string, FunctionComponentType>
+  data?: SDKRecord[];
+  fields?: Fields;
+  config?: CAll;
+  totals?: Record<string, number>;
+  pivots?: Pivots;
+  chartTypeMap?: Record<string, FunctionComponentType>;
 }
 
 export const defaultChartTypeMap: Record<
@@ -81,7 +81,7 @@ export const defaultChartTypeMap: Record<
   single_value: SingleValue,
   sparkline: Sparkline,
   table: Table,
-}
+};
 
 const VisualizationComponent = ({
   height,
@@ -93,10 +93,10 @@ const VisualizationComponent = ({
   config,
   chartTypeMap = {},
 }: VisualizationProps) => {
-  const { t } = useTranslation('Visualization')
+  const { t } = useTranslation('Visualization');
 
   if (fields?.measures.some(measure => measure.type === 'date')) {
-    throw new Error(t("Measures of type 'date' are currently not supported"))
+    throw new Error(t("Measures of type 'date' are currently not supported"));
   }
 
   // Merge user chart type overrides with our standard library
@@ -104,11 +104,11 @@ const VisualizationComponent = ({
     {},
     defaultChartTypeMap,
     chartTypeMap
-  )
+  );
 
   if (has(completeChartTypeMap, config?.type || '')) {
     const ChartComponent =
-      completeChartTypeMap[config?.type as keyof SupportedChartTypes]
+      completeChartTypeMap[config?.type as keyof SupportedChartTypes];
 
     return (
       <ChartComponent
@@ -120,7 +120,7 @@ const VisualizationComponent = ({
         width={width}
         height={height}
       />
-    )
+    );
   } else {
     return (
       <QueryError
@@ -128,12 +128,12 @@ const VisualizationComponent = ({
           type: config?.type,
         })}
       />
-    )
+    );
   }
-}
+};
 
 export const Visualization = (props: VisualizationProps) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   if (!theme) {
     // Recursively wrap Visualization in ComponentsProvider to ensure that
@@ -143,12 +143,12 @@ export const Visualization = (props: VisualizationProps) => {
       <ComponentsProvider>
         <Visualization {...props} />
       </ComponentsProvider>
-    )
+    );
   }
 
   return (
     <ErrorBoundary {...props}>
       <VisualizationComponent {...props} />
     </ErrorBoundary>
-  )
-}
+  );
+};

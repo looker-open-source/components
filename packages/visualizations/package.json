@@ -2,8 +2,8 @@
   "name": "@looker/visualizations",
   "license": "MIT",
   "version": "1.1.4",
-  "main": "lib/main/index.js",
-  "module": "lib/module/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
@@ -16,17 +16,17 @@
     "directory": "packages/visualizations"
   },
   "files": [
-    "src",
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "buildLocales": "lk buildLocales",
+    "lint-i18n": "lk lintLocales",
+    "postprepare": "lk updateLocales",
     "prepublishOnly": "lk prepublishOnly",
     "test": "lk test",
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "^4.1.3",
+    "@looker/components": "^5.0.3",
     "@looker/components-data": "^1.0.3",
     "@looker/i18n": "^1.0.0",
     "@looker/sdk": "^22.4.2",
@@ -46,9 +46,11 @@
     "@looker/eslint-config-oss": "*",
     "@looker/jest-config": "*",
     "@looker/prettier-config": "*",
-    "@storybook/testing-react": "0.0.22",
-    "@testing-library/react": "*",
-    "prettier": "2.8.2"
+    "@storybook/react": "7.0.18",
+    "@testing-library/react": "12.1.5",
+    "prettier": "2.8.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
   "peerDependencies": {
     "react": "16.14.0 - 18",

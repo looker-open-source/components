@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import dateLocale from 'date-fns/locale/fr'
-import { frFR as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/fr';
+import { frFR as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   PieLegend: {
@@ -17,13 +17,13 @@ const resources = {
     'Previous page': 'Page précédente',
   },
   XYTooltip: {
-    'Points sized by': 'Taille des points selon',
+    'Points sized by': 'Points dimensionnés suivant',
   },
-}
+};
 
 export const frFR = mergeLocaleObjects(
   [visualizationsadaptersLocale],
   'fr-FR',
   resources,
   dateLocale
-)
+);

@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import { fontSize, padding, reset } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
-import { useArrowKeyNav, useTranslation } from '../utils'
-import { TabIndicator } from './TabIndicator'
-import type { TabList2Props } from './types'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import { fontSize, padding, reset } from '@looker/design-tokens';
+import styled, { css } from 'styled-components';
+import { useArrowKeyNav, useTranslation } from '../utils';
+import { TabIndicator } from './TabIndicator';
+import type { TabList2Props } from './types';
 
 // add tabListCSS to the style of the component once TabList is deprecated
 export const tabListCSS = css<TabList2Props>`
@@ -37,13 +37,13 @@ export const tabListCSS = css<TabList2Props>`
         right: 0;
       }
     `}
-`
+`;
 
 export const TabList2 = styled(
   forwardRef(
     ({ children, className }: TabList2Props, ref: Ref<HTMLDivElement>) => {
-      const { t } = useTranslation('TabList')
-      const navProps = useArrowKeyNav({ axis: 'horizontal', ref })
+      const { t } = useTranslation('TabList');
+      const navProps = useArrowKeyNav({ axis: 'horizontal', ref });
 
       return (
         <div
@@ -54,11 +54,11 @@ export const TabList2 = styled(
         >
           {children}
         </div>
-      )
+      );
     }
   )
 ).attrs(({ fontSize = 'small' }) => ({
   fontSize,
 }))`
   ${tabListCSS}
-`
+`;

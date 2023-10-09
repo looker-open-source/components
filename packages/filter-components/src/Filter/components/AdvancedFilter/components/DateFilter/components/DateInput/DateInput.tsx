@@ -2,18 +2,18 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Box, InputDate, Popover } from '@looker/components'
-import React from 'react'
-import styled from 'styled-components'
-import { TokenBase } from '../../../../../../../Token/Token'
-import type { PlacementProps } from '../../../../../../utils/filter_styles'
-import { inputPlacementStyle } from '../../../../../../utils/filter_styles'
-import { FILTERS_DATE_FORMAT, formatDate } from '../../utils/format_date'
+import { Box, InputDate, Popover } from '@looker/components';
+import React from 'react';
+import styled from 'styled-components';
+import { TokenBase } from '../../../../../../../Token/Token';
+import type { PlacementProps } from '../../../../../../utils/filter_styles';
+import { inputPlacementStyle } from '../../../../../../utils/filter_styles';
+import { FILTERS_DATE_FORMAT, formatDate } from '../../utils/format_date';
 
 interface DateInputProps extends PlacementProps {
-  className?: string
-  date: Date
-  onChange: (date: Date) => void
+  className?: string;
+  date: Date;
+  onChange: (date: Date) => void;
 }
 
 export const DateInputInternal = ({
@@ -22,7 +22,7 @@ export const DateInputInternal = ({
   onChange,
 }: DateInputProps) => {
   const handleDayChange = (d?: Date) => {
-    const newDate = d || new Date(Date.now())
+    const newDate = d || new Date(Date.now());
     // Note: We can't just pass the date object through because that would change the time of the date value.
     // https://github.com/gpbl/react-day-picker/issues/473
     onChange(
@@ -34,8 +34,8 @@ export const DateInputInternal = ({
         date.getMinutes(),
         date.getSeconds()
       )
-    )
-  }
+    );
+  };
 
   return (
     <Popover
@@ -56,9 +56,9 @@ export const DateInputInternal = ({
         {formatDate(date)}
       </TokenBase>
     </Popover>
-  )
-}
+  );
+};
 
 export const DateInput = styled(DateInputInternal)`
   ${inputPlacementStyle}
-`
+`;

@@ -2,13 +2,13 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { useToggle } from '../../../../utils'
-import { Aside, FieldToggleSwitch, Space } from '../../../..'
-import type { AsideProps } from '../../..'
+import React from 'react';
+import { useToggle } from '../../../../utils';
+import { Aside, FieldToggleSwitch, Space } from '../../../..';
+import type { AsideProps } from '../../..';
 
 export default function AsideCollapse(props: AsideProps) {
-  const { value, toggle } = useToggle(false)
+  const { value, toggle } = useToggle(false);
 
   return (
     <Space>
@@ -22,5 +22,5 @@ export default function AsideCollapse(props: AsideProps) {
         on={value}
       />
     </Space>
-  )
+  );
 }

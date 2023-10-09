@@ -3,21 +3,21 @@
     "value": "空白"
   },
   "contains value": {
-    "value": "包含 {{value}}"
+    "value": "包含「{{value}}」"
   },
   "does not contain value": {
-    "value": "不包含 {{value}}"
+    "value": "不含「{{value}}」"
   },
   "does not end with value": {
-    "value": "結尾並非 {{value}}"
+    "value": "結尾不是「{{value}}」"
   },
   "does not start with value": {
-    "value": "開頭並非 {{value}}"
+    "value": "開頭不是「{{value}}」"
   },
   "ends with value": {
-    "value": "結尾為 {{value}}"
+    "value": "結尾為「{{value}}」"
   },
   "starts with value": {
-    "value": "開頭為 {{value}}"
+    "value": "開頭為「{{value}}」"
   }
 }

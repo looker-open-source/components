@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
 import {
   mockFields,
   mockData,
   mockDataWithNull,
-} from '@looker/visualizations-adapters'
-import { Sparkline } from './Sparkline'
+} from '@looker/visualizations-adapters';
+import { Sparkline } from './Sparkline';
 
 describe('Sparkline Chart', () => {
   it('renders an svg based derived from two dimensional response', () => {
@@ -41,7 +41,7 @@ describe('Sparkline Chart', () => {
         data={mockData}
         fields={mockFields}
       />
-    )
+    );
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`
       <svg
         data-testid="sparkline-chart"
@@ -56,8 +56,8 @@ describe('Sparkline Chart', () => {
           stroke-width="3"
         />
       </svg>
-    `)
-  })
+    `);
+  });
   it('accepts line width overrides', () => {
     renderWithTheme(
       <Sparkline
@@ -65,11 +65,11 @@ describe('Sparkline Chart', () => {
         data={mockData}
         fields={mockFields}
       />
-    )
-    const linePath = screen.getByTestId('sparkline-chart').firstChild
+    );
+    const linePath = screen.getByTestId('sparkline-chart').firstChild;
 
-    expect(linePath).toHaveAttribute('stroke-width', '5')
-  })
+    expect(linePath).toHaveAttribute('stroke-width', '5');
+  });
   it('renders multiple svg paths when encountering a null data point', () => {
     renderWithTheme(
       <Sparkline
@@ -77,7 +77,7 @@ describe('Sparkline Chart', () => {
         data={mockDataWithNull}
         fields={mockFields}
       />
-    )
+    );
 
     expect(screen.getByTestId('sparkline-chart')).toMatchInlineSnapshot(`
       <svg
@@ -101,6 +101,6 @@ describe('Sparkline Chart', () => {
           stroke-width="3"
         />
       </svg>
-    `)
-  })
-})
+    `);
+  });
+});

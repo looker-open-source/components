@@ -24,37 +24,37 @@
 
  */
 
-import { densityTarget } from '@looker/design-tokens'
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Spinner } from '../Spinner'
-import { Heading } from '../Text'
+import { densityTarget } from '@looker/design-tokens';
+import React from 'react';
+import styled, { css } from 'styled-components';
+import { Spinner } from '../Spinner';
+import { Heading } from '../Text';
 import {
   useArrowKeyNav,
   useCallbackRef,
   useIsTruncated,
   useTranslation,
-} from '../utils'
+} from '../utils';
 import {
   getNumericColumnIndices,
   numericColumnCSS,
-} from './utils/dataTableFormatting'
-import type { DataTableProps } from './types'
-import { DataTableHeader } from './Header/DataTableHeader'
-import { edgeShadow } from './utils/edgeShadow'
-import { getNextFocus } from './getNextFocus'
+} from './utils/dataTableFormatting';
+import type { DataTableProps } from './types';
+import { DataTableHeader } from './Header/DataTableHeader';
+import { edgeShadow } from './utils/edgeShadow';
+import { getNextFocus } from './getNextFocus';
 
 export interface TableProps extends DataTableProps {
   /**
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  caption: string
-  columnsVisible: string[]
+  caption: string;
+  columnsVisible: string[];
 }
 
 export const TableLayout = (props: TableProps) => {
-  const { t } = useTranslation('DataTable')
-  const noResultsDisplayText = t('No Results')
+  const { t } = useTranslation('DataTable');
+  const noResultsDisplayText = t('No Results');
   const {
     caption,
     children,
@@ -63,27 +63,27 @@ export const TableLayout = (props: TableProps) => {
     headerRowId,
     noResultsDisplay = noResultsDisplayText,
     state,
-  } = props
-  const [element, ref] = useCallbackRef()
-  const overflow = useIsTruncated(element, columnsVisible.length)
+  } = props;
+  const [element, ref] = useCallbackRef();
+  const overflow = useIsTruncated(element, columnsVisible.length);
 
   const noResultsContent =
     typeof noResultsDisplay === 'string' ? (
       <Heading color="text1">{noResultsDisplay}</Heading>
     ) : (
       noResultsDisplay
-    )
+    );
 
   const interimState = state && (
     <InterimState>
       {state === 'loading' ? <Spinner /> : noResultsContent}
     </InterimState>
-  )
+  );
 
   const navProps = useArrowKeyNav<HTMLTableElement>({
     axis: 'both',
     getNextFocus,
-  })
+  });
 
   return (
     <>
@@ -101,8 +101,8 @@ export const TableLayout = (props: TableProps) => {
       </TableScroll>
       {interimState}
     </>
-  )
-}
+  );
+};
 
 /**
  * Apply specialized styling to the first column if `select` mode is active
@@ -128,7 +128,7 @@ const selectColumn = css<TableProps>`
             min-width: 0;
           }
         `}
-`
+`;
 
 /**
  * Apply specialized styling to the last column where actions are presented.
@@ -142,7 +142,7 @@ const actionsColumn = css`
     padding: 0;
     width: 100%;
   }
-`
+`;
 
 /**
  * Make some columns "sticky" depending on DataTable configuration
@@ -179,7 +179,7 @@ const stickyColumns = css<TableProps>`
     position: sticky;
     right: 0;
   }
-`
+`;
 
 export const Table = styled(TableLayout)`
   border-collapse: initial;
@@ -219,15 +219,15 @@ export const Table = styled(TableLayout)`
 
   ${({ columns, columnsVisible }) =>
     numericColumnCSS(getNumericColumnIndices(columns, columnsVisible))}
-`
+`;
 
 const InterimState = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => theme.space.u8};
-`
+`;
 
 export const TableScroll = styled.div`
   overflow-x: auto;
-`
+`;

@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { mockLineConfig } from '@looker/visualizations-adapters'
-import { YAxis } from './YAxis'
+import React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { mockLineConfig } from '@looker/visualizations-adapters';
+import { YAxis } from './YAxis';
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('YAxis', () => {
-  const handleConfigChange = jest.fn()
+  const handleConfigChange = jest.fn();
 
   it('renders y-axis toggle when there are multiple config objects', () => {
     renderWithTheme(
@@ -45,11 +45,11 @@ describe('YAxis', () => {
         }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    expect(screen.getByText('1')).toBeInTheDocument() // button group value
-    expect(screen.getByText('2')).toBeInTheDocument() // button group value
-  })
+    expect(screen.getByText('1')).toBeInTheDocument(); // button group value
+    expect(screen.getByText('2')).toBeInTheDocument(); // button group value
+  });
 
   it('hidden when Y-Axis is unsupported', () => {
     const { container } = renderWithTheme(
@@ -57,10 +57,10 @@ describe('YAxis', () => {
         config={{ type: 'unsupported' as 'line' }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    expect(container).toBeEmptyDOMElement()
-  })
+    expect(container).toBeEmptyDOMElement();
+  });
 
   it('toggles YAxis gridlines', () => {
     renderWithTheme(
@@ -68,16 +68,16 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ gridlines: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Render Gridlines'))
+    fireEvent.click(screen.getByLabelText('Render Gridlines'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ gridlines: true }],
       })
-    )
-  })
+    );
+  });
 
   it('updates YAxis label value', () => {
     renderWithTheme(
@@ -85,18 +85,18 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ label: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: 'New Label' },
-    })
+    });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ label: 'New Label' }],
       })
-    )
-  })
+    );
+  });
 
   it('sets YAxis label to false when text input is empty', () => {
     renderWithTheme(
@@ -104,18 +104,18 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ label: 'Default Label' }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: '' },
-    })
+    });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ label: false }],
       })
-    )
-  })
+    );
+  });
 
   it('toggles YAxis values', () => {
     renderWithTheme(
@@ -123,16 +123,16 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ values: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Show Values'))
+    fireEvent.click(screen.getByLabelText('Show Values'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ values: true }],
       })
-    )
-  })
+    );
+  });
 
   it('updates range: min', () => {
     renderWithTheme(
@@ -140,16 +140,16 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ range: ['auto', 'auto'] }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.change(screen.getByLabelText('Y-min'), { target: { value: 20 } })
+    fireEvent.change(screen.getByLabelText('Y-min'), { target: { value: 20 } });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ range: [20, 'auto'] }],
       })
-    )
-  })
+    );
+  });
 
   it('updates range: max', () => {
     renderWithTheme(
@@ -157,14 +157,14 @@ describe('YAxis', () => {
         config={{ ...mockLineConfig, y_axis: [{ range: ['auto', 'auto'] }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.change(screen.getByLabelText('Y-max'), { target: { value: 50 } })
+    fireEvent.change(screen.getByLabelText('Y-max'), { target: { value: 50 } });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         y_axis: [{ range: ['auto', 50] }],
       })
-    )
-  })
-})
+    );
+  });
+});

@@ -1,43 +1,43 @@
 {
   "complete day": "pełny dzień",
   "complete days": {
-    "value": "pełnych dni"
+    "value": "pełne dni"
   },
   "complete fiscal quarter": "pełny kwartał fiskalny",
   "complete fiscal quarters": {
-    "value": "pełnych kw. fiskalnych"
+    "value": "pełne kwartały podatkowe"
   },
   "complete fiscal year": "pełny rok fiskalny",
   "complete fiscal years": {
-    "value": "pełne lata fiskalne/pełnych lat fiskalnych"
+    "value": "pełne lata podatkowe"
   },
   "complete hour": "pełna godzina",
   "complete hours": {
-    "value": "pełnych godz."
+    "value": "pełne godziny"
   },
   "complete minute": "pełna minuta",
   "complete minutes": {
-    "value": "pełnych min"
+    "value": "pełne minuty"
   },
   "complete month": "pełny miesiąc",
   "complete months": {
-    "value": "pełnych mies."
+    "value": "pełne miesiące"
   },
   "complete quarter": "pełny kwartał",
   "complete quarters": {
-    "value": "pełnych kw."
+    "value": "pełne kwartały"
   },
   "complete second": "pełna sekunda",
   "complete seconds": {
-    "value": "pełnych sek."
+    "value": "pełne sekundy"
   },
   "complete week": "pełny tydzień",
   "complete weeks": {
-    "value": "pełnych tyg."
+    "value": "pełne tygodnie"
   },
   "complete year": "pełny rok",
   "complete years": {
-    "value": "pełne lata/pełnych lat"
+    "value": "pełne lata"
   },
   "day": "dzień",
   "days": {
@@ -45,38 +45,38 @@
   },
   "fiscal quarter": "kwartał fiskalny",
   "fiscal quarters": {
-    "value": "kw. fiskalne"
+    "value": "kwartały podatkowe"
   },
   "fiscal year": "rok fiskalny",
   "fiscal years": {
-    "value": "lata fiskalne/lat fiskalnych"
+    "value": "lata podatkowe"
   },
   "hour": "godzina",
   "hours": {
-    "value": "godz."
+    "value": "godziny"
   },
   "minute": "minuta",
   "minutes": {
-    "value": "min"
+    "value": "minuty"
   },
   "month": "miesiąc",
   "months": {
-    "value": "mies."
+    "value": "miesiące"
   },
   "quarter": "kwartał",
   "quarters": {
-    "value": "kw."
+    "value": "kwartały"
   },
   "second": "sekunda",
   "seconds": {
-    "value": "sek."
+    "value": "sekundy"
   },
   "week": "tydzień",
   "weeks": {
-    "value": "tyg."
+    "value": "tygodnie"
   },
   "year": "rok",
   "years": {
-    "value": "lat/lata"
+    "value": "lata"
   }
 }

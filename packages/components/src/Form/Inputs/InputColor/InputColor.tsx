@@ -24,28 +24,28 @@
 
  */
 
-import type { ChangeEvent, FormEvent, Ref } from 'react'
-import React, { useState, forwardRef, useEffect } from 'react'
-import styled from 'styled-components'
-import { useWrapEvent } from '../../../utils'
-import { PopoverLayout } from '../../../Popover'
-import type { InputTextProps } from '../InputText'
-import type { ComboboxOptionObject, ComboboxProps } from '../Combobox'
-import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
+import type { ChangeEvent, Ref } from 'react';
+import React, { useState, forwardRef, useEffect } from 'react';
+import styled from 'styled-components';
+import { useWrapEvent } from '../../../utils';
+import { PopoverLayout } from '../../../Popover';
+import type { InputTextProps } from '../InputText';
+import type { ComboboxOptionObject, ComboboxProps } from '../Combobox';
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox';
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../ariaProps'
-import { Swatch } from './Swatch'
+} from '../ariaProps';
+import { Swatch } from './Swatch';
 import {
   isValidColor,
   hsvToHex,
   simpleHsvToHex,
   stringToSimpleHsv,
-} from './utils'
-import type { SimpleHSV } from './types'
-import { ColorPicker } from './ColorPicker'
-import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions'
+} from './utils';
+import type { SimpleHSV } from './types';
+import { ColorPicker } from './ColorPicker';
+import { DEFAULT_INPUT_COLOR_WIDTH } from './dimensions';
 
 export type InputColorProps = Omit<
   ComboboxProps,
@@ -56,10 +56,10 @@ export type InputColorProps = Omit<
      * No longer supported and will be removed in an upcoming 3.x release
      * @deprecated
      */
-    hideInput?: boolean
-    value?: string
-    defaultValue?: string
-  }
+    hideInput?: boolean;
+    value?: string;
+    defaultValue?: string;
+  };
 
 const createEventWithHSVValue = (
   color: SimpleHSV | string,
@@ -74,11 +74,11 @@ const createEventWithHSVValue = (
       name,
       value: typeof color === 'string' ? color : simpleHsvToHex(color),
     },
-  } as ChangeEvent<HTMLInputElement>
-}
+  } as ChangeEvent<HTMLInputElement>;
+};
 
 function getColorFromText(text?: string) {
-  return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined
+  return text && isValidColor(text) ? stringToSimpleHsv(text) : undefined;
 }
 
 const InputColorInternal = forwardRef(
@@ -100,55 +100,55 @@ const InputColorInternal = forwardRef(
     }: InputColorProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const initialColor = getColorFromText(value || defaultValue)
+    const initialColor = getColorFromText(value || defaultValue);
 
-    const [color, setColor] = useState<SimpleHSV | undefined>(initialColor)
-    const [inputTextValue, setInputTextValue] = useState(value || defaultValue)
-    const [isFocused, setIsFocused] = useState(false)
+    const [color, setColor] = useState<SimpleHSV | undefined>(initialColor);
+    const [inputTextValue, setInputTextValue] = useState(value || defaultValue);
+    const [isFocused, setIsFocused] = useState(false);
 
-    const handleFocus = () => setIsFocused(true)
-    const handleBlur = () => setIsFocused(false)
-    const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
-    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
+    const wrappedOnFocus = useWrapEvent(handleFocus, onFocus);
+    const wrappedOnBlur = useWrapEvent(handleBlur, onBlur);
 
     useEffect(() => {
       if (value && value !== inputTextValue) {
-        setColor(stringToSimpleHsv(value))
-        !isFocused && setInputTextValue(value)
+        setColor(stringToSimpleHsv(value));
+        !isFocused && setInputTextValue(value);
       }
-    }, [isFocused, value, inputTextValue])
+    }, [isFocused, value, inputTextValue]);
 
     const callOnChange = (newColor: SimpleHSV | string) => {
-      onChange?.(createEventWithHSVValue(newColor, name))
-    }
+      onChange?.(createEventWithHSVValue(newColor, name));
+    };
 
     const setColorState = (newColor?: SimpleHSV) => {
-      setColor(newColor)
-      const newTextValue = newColor ? simpleHsvToHex(newColor) : ''
-      setInputTextValue(newTextValue)
+      setColor(newColor);
+      const newTextValue = newColor ? simpleHsvToHex(newColor) : '';
+      setInputTextValue(newTextValue);
       // When clicking the clear button, newColor is undefined,
       // so we pass an empty string to callOnChange to clear the input
-      callOnChange(newColor || '')
-    }
+      callOnChange(newColor || '');
+    };
 
-    const handleInputTextChange = (e: FormEvent<HTMLInputElement>) => {
-      const newValue = e.currentTarget.value
-      setInputTextValue(newValue)
+    const handleInputTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+      const newValue = e.currentTarget.value;
+      setInputTextValue(newValue);
 
-      const isValid = isValidColor(newValue) || newValue === ''
+      const isValid = isValidColor(newValue) || newValue === '';
       if (isValid) {
-        callOnChange(newValue)
+        callOnChange(newValue);
       }
-      setColor(getColorFromText(newValue))
-    }
+      setColor(getColorFromText(newValue));
+    };
 
     const handleClear = (value?: ComboboxOptionObject) => {
       if (!value) {
-        setColorState()
+        setColorState();
       }
-    }
+    };
 
-    const ariaProps = pickAriaAndValidationProps(props)
+    const ariaProps = pickAriaAndValidationProps(props);
 
     return (
       <Combobox {...omitAriaAndValidationProps(props)} onChange={handleClear}>
@@ -186,8 +186,8 @@ const InputColorInternal = forwardRef(
           </ComboboxList>
         )}
       </Combobox>
-    )
+    );
   }
-)
+);
 
-export const InputColor = styled(InputColorInternal)``
+export const InputColor = styled(InputColorInternal)``;

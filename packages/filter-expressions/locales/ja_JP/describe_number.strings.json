@@ -1,8 +1,8 @@
 {
   "is in range range": {
-    "value": "が指定の範囲内（{{range}}）"
+    "value": "{{range}} の範囲内"
   },
   "is not in range range": {
-    "value": "が次の範囲外（{{range}}）"
+    "value": "{{range}} の範囲外"
   }
 }

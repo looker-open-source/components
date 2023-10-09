@@ -9,16 +9,16 @@
     "value": "場所"
   },
   "feet": {
-    "value": "feet"
+    "value": "フィート"
   },
   "is anywhere": {
-    "value": "がいずれかの場所にある"
+    "value": "任意の場所"
   },
   "is not null": {
-    "value": "が Null でない"
+    "value": "null ではない"
   },
   "is null": {
-    "value": "が Null である"
+    "value": "null である"
   },
   "kilometers": {
     "value": "キロメートル"

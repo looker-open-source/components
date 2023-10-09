@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { MenuItem, MenuList } from '../../..'
-import type { MenuListProps } from '../MenuList'
+import React from 'react';
+import { MenuItem, MenuList } from '../../..';
+import type { MenuListProps } from '../MenuList';
 
 export default function Basic(props: MenuListProps) {
   return (
@@ -13,5 +13,5 @@ export default function Basic(props: MenuListProps) {
       <MenuItem>Cheddar</MenuItem>
       <MenuItem>Swiss</MenuItem>
     </MenuList>
-  )
+  );
 }

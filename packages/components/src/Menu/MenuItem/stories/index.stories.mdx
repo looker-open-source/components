@@ -1,15 +1,15 @@
-import { MenuItem } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyDetail from '!!raw-loader!./Detail'
-import storyDescription from '!!raw-loader!./Description'
-import storyIcon from '!!raw-loader!./Icon'
-import storyWithTooltip from '!!raw-loader!./WithTooltip'
-import storyArtwork from '!!raw-loader!./Artwork'
-import storyDisabled from '!!raw-loader!./Disabled'
-import storySelected from '!!raw-loader!./Selected'
-import storyLink from '!!raw-loader!./Link'
+import { MenuItem } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyDetail from './Detail?raw';
+import storyDescription from './Description?raw';
+import storyIcon from './Icon?raw';
+import storyWithTooltip from './WithTooltip?raw';
+import storyArtwork from './Artwork?raw';
+import storyDisabled from './Disabled?raw';
+import storySelected from './Selected?raw';
+import storyLink from './Link?raw';
 
 <Meta component={MenuItem} title="Docs/MenuItem" />
 
@@ -23,18 +23,20 @@ For accessibility reasons, if you want your `MenuItem` to link somewhere then yo
 An icon can optionally be assigned to each item via the `icon` property.
 
 **Note:** `itemRole="link"` and `disabled` cannot be combined (use `itemRole="button" if you need to offer a disabled`MenuItem`)
-<Editor code={storyBasic} />
 
+<Editor code={storyBasic} />
 
 ## Detail & Description
 
 Use the `detail` and/or `description` prop to provide extra explanatory information on a given item.
+
 <Editor code={storyDetail} />
 <Editor code={storyDescription} />
 
 ## Tooltip
 
 To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` element.
+
 <Editor code={storyWithTooltip} />
 
 ## Icon
@@ -50,7 +52,6 @@ To implement a tooltip on a `MenuItem`, wrap the `MenuItem` in a `Tooltip` eleme
 Use the `disabled` prop to indicate an option that is not currently available.
 
 <Editor code={storyDisabled} />
-
 
 ## Selected
 

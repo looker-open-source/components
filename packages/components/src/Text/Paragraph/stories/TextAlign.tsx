@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Card, CardContent } from '../../../Card'
-import { Paragraph } from '../Paragraph'
+import React from 'react';
+import { Card, CardContent } from '../../../Card';
+import { Paragraph } from '../Paragraph';
 
 export default function TextAlign() {
   return (
@@ -29,5 +29,5 @@ export default function TextAlign() {
         </CardContent>
       </Card>
     </>
-  )
+  );
 }

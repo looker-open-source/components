@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ArrowDropDown } from '@styled-icons/material'
-import { ButtonOutline } from '../../Button'
-import { Box } from '../../Layout'
-import { Paragraph } from '../../Text'
-import { Popover } from '../Popover'
-import { PopoverContent } from '../Layout/PopoverContent'
+import React from 'react';
+import { ArrowDropDown } from '@styled-icons/material';
+import { ButtonOutline } from '../../Button';
+import { Box } from '../../Layout';
+import { Paragraph } from '../../Text';
+import { Popover } from '../Popover';
+import { PopoverContent } from '../Layout/PopoverContent';
 
 export const ContentOverflow = ({
   children,
@@ -33,4 +33,4 @@ export const ContentOverflow = ({
       </ButtonOutline>
     </Popover>
   </Box>
-)
+);

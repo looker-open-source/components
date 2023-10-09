@@ -24,79 +24,79 @@
 
  */
 
-import 'jest-styled-components'
-import React, { useState } from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen, act } from '@testing-library/react'
-import { MultiFunctionButton } from './MultiFunctionButton'
+import 'jest-styled-components';
+import React, { useState } from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen, act } from '@testing-library/react';
+import { MultiFunctionButton } from './MultiFunctionButton';
 
 const CopyToClipboard = () => {
-  const [change, setChange] = useState(false)
+  const [change, setChange] = useState(false);
 
   const handleSwap = () => {
-    setChange(true)
-    setTimeout(() => setChange(false), 1500)
-  }
+    setChange(true);
+    setTimeout(() => setChange(false), 1500);
+  };
   return (
     <MultiFunctionButton alternate={<button>Copied!</button>} swap={change}>
       <button onClick={handleSwap}>Copy to Clipboard</button>
     </MultiFunctionButton>
-  )
-}
+  );
+};
 
 describe('MultiFunctionButton', () => {
   test('render children', () => {
-    renderWithTheme(<CopyToClipboard />)
-    expect(screen.getByText('Copy to Clipboard')).toBeInTheDocument()
-  })
+    renderWithTheme(<CopyToClipboard />);
+    expect(screen.getByText('Copy to Clipboard')).toBeInTheDocument();
+  });
 
   test('if swap is false alternate button should display', () => {
     renderWithTheme(
       <MultiFunctionButton alternate={<button>Copied!</button>} swap={false}>
         <button>Copy to Clipboard</button>
       </MultiFunctionButton>
-    )
-    expect(screen.getByText('Copied!')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('Copied!')).toBeInTheDocument();
+  });
 
   test('alternate button is displayed when swap is true', () => {
-    renderWithTheme(<CopyToClipboard />)
-    const button = screen.getByText('Copy to Clipboard')
-    fireEvent.click(button)
-    expect(screen.getByText('Copied!')).toBeInTheDocument()
-  })
+    renderWithTheme(<CopyToClipboard />);
+    const button = screen.getByText('Copy to Clipboard');
+    fireEvent.click(button);
+    expect(screen.getByText('Copied!')).toBeInTheDocument();
+  });
 
   test('component switch focus based on the displayed button', () => {
-    renderWithTheme(<CopyToClipboard />)
-    const button = screen.getByText('Copy to Clipboard')
-    expect(button).not.toHaveFocus()
-    button.focus()
-    fireEvent.click(button)
-    const alternate = screen.getByText('Copied!')
-    expect(alternate).toHaveFocus()
-  })
-})
+    renderWithTheme(<CopyToClipboard />);
+    const button = screen.getByText('Copy to Clipboard');
+    expect(button).not.toHaveFocus();
+    button.focus();
+    fireEvent.click(button);
+    const alternate = screen.getByText('Copied!');
+    expect(alternate).toHaveFocus();
+  });
+});
 
 describe('MultiFunctionButton focus returns to children', () => {
   beforeEach(() => {
-    jest.useFakeTimers()
-  })
+    jest.useFakeTimers();
+  });
 
   afterEach(() => {
-    jest.runOnlyPendingTimers()
-    jest.useRealTimers()
-  })
+    jest.runOnlyPendingTimers();
+    jest.useRealTimers();
+  });
 
   test('after swap goes back to false', () => {
-    renderWithTheme(<CopyToClipboard />)
-    const button = screen.getByText('Copy to Clipboard')
-    button.focus()
-    fireEvent.click(button)
-    const alternate = screen.getByText('Copied!')
-    expect(alternate).toHaveFocus()
+    renderWithTheme(<CopyToClipboard />);
+    const button = screen.getByText('Copy to Clipboard');
+    button.focus();
+    fireEvent.click(button);
+    const alternate = screen.getByText('Copied!');
+    expect(alternate).toHaveFocus();
     act(() => {
-      jest.runOnlyPendingTimers()
-    })
-    expect(button).toHaveFocus()
-  })
-})
+      jest.runOnlyPendingTimers();
+    });
+    expect(button).toHaveFocus();
+  });
+});

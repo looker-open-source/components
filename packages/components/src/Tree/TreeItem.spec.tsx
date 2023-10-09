@@ -24,30 +24,30 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { TreeItem } from '.'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { TreeItem } from '.';
 
 describe('TreeItem', () => {
   test('Renders children', () => {
-    renderWithTheme(<TreeItem>Dimension</TreeItem>)
-    screen.getByText('Dimension')
-  })
+    renderWithTheme(<TreeItem>Dimension</TreeItem>);
+    screen.getByText('Dimension');
+  });
 
   test('Accepts onCLick and onKeyDown props', () => {
-    const handleClick = jest.fn()
-    const handleKeyDown = jest.fn()
+    const handleClick = jest.fn();
+    const handleKeyDown = jest.fn();
     renderWithTheme(
       <TreeItem onClick={handleClick} onKeyDown={handleKeyDown}>
         Dimension
       </TreeItem>
-    )
-    screen.getByText('Dimension')
-  })
+    );
+    screen.getByText('Dimension');
+  });
 
   test('Does not trigger onClick on detail click when accessory === true', () => {
-    const onClick = jest.fn()
+    const onClick = jest.fn();
     renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { accessory: true } }}
@@ -55,15 +55,15 @@ describe('TreeItem', () => {
       >
         Dimension
       </TreeItem>
-    )
-    fireEvent.click(screen.getByText('Dimension'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(screen.getByText('Detail'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-  })
+    );
+    fireEvent.click(screen.getByText('Dimension'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByText('Detail'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
 
   test('Triggers onClick on detail click when accessory === false', () => {
-    const onClick = jest.fn()
+    const onClick = jest.fn();
     renderWithTheme(
       <TreeItem
         detail={{ content: 'Detail', options: { accessory: false } }}
@@ -71,12 +71,12 @@ describe('TreeItem', () => {
       >
         Dimension
       </TreeItem>
-    )
-    fireEvent.click(screen.getByText('Dimension'))
-    expect(onClick).toHaveBeenCalledTimes(1)
-    fireEvent.click(screen.getByText('Detail'))
-    expect(onClick).toHaveBeenCalledTimes(2)
-  })
+    );
+    fireEvent.click(screen.getByText('Dimension'));
+    expect(onClick).toHaveBeenCalledTimes(1);
+    fireEvent.click(screen.getByText('Detail'));
+    expect(onClick).toHaveBeenCalledTimes(2);
+  });
 
   test('Hides and shows detail when detailHoverDisclosure is true', () => {
     renderWithTheme(
@@ -85,22 +85,36 @@ describe('TreeItem', () => {
       >
         Label
       </TreeItem>
-    )
+    );
 
-    expect(screen.queryByText('Detail')).not.toBeInTheDocument()
-    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true })
-    expect(screen.getByText('Detail')).toBeInTheDocument()
-  })
+    expect(screen.queryByText('Detail')).not.toBeInTheDocument();
+    fireEvent.mouseEnter(screen.getByText('Label'), { bubbles: true });
+    expect(screen.getByText('Detail')).toBeInTheDocument();
+  });
 
   test('theme.colors.key', () => {
     renderWithTheme(
       <TreeItem selected color="key">
         Whatever
       </TreeItem>
-    )
-    expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33')
-    expect(screen.getByRole('treeitem')).toHaveStyle('background: #f3f2ff')
-  })
+    );
+    expect(screen.getByText('Whatever')).toHaveStyle('color: #262d33');
+    expect(screen.getByRole('treeitem')).toHaveStyle('background: #f3f2ff');
+  });
+
+  test('border', () => {
+    renderWithTheme(
+      <TreeItem border color="measure">
+        Count
+      </TreeItem>
+    );
+    const item = screen.getByRole('treeitem', { name: 'Count' });
+    // If TreeItem has color, it gets its own border of that color superimposed on the Tree border
+    expect(item).toHaveStyleRule(
+      'background-image',
+      'linear-gradient( 90deg,transparent calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0 - 1px),#daad81 calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0 - 1px) calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0),transparent calc((1.25rem + 1px) / 2 + (1.25rem + 0.25rem) * 0) )'
+    );
+  });
 
   describe('link behavior', () => {
     test('renders as a link when itemRole="link" and disperses link-related props onto nested <a>', () => {
@@ -113,42 +127,42 @@ describe('TreeItem', () => {
         >
           Link
         </TreeItem>
-      )
+      );
 
-      const nestedLink = screen.getByRole('treeitem')
-      expect(nestedLink.nodeName).toBe('A')
-      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
-      expect(nestedLink).toHaveAttribute('target', '_blank')
+      const nestedLink = screen.getByRole('treeitem');
+      expect(nestedLink.nodeName).toBe('A');
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com');
+      expect(nestedLink).toHaveAttribute('target', '_blank');
 
       // Note: We expect links with target="_blank" to have "noopener noreferrer" autoappended to their rel prop
-      expect(nestedLink).toHaveAttribute('rel', 'hello noopener noreferrer')
-    })
+      expect(nestedLink).toHaveAttribute('rel', 'hello noopener noreferrer');
+    });
 
     test('has rel="noopener noreferrer" when it has target="_blank" and no passed-in rel prop value', () => {
       renderWithTheme(
         <TreeItem itemRole="link" href="https://google.com" target="_blank">
           Link
         </TreeItem>
-      )
+      );
 
-      const nestedLink = screen.getByRole('treeitem')
+      const nestedLink = screen.getByRole('treeitem');
 
-      expect(nestedLink).toHaveAttribute('target', '_blank')
-      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
-      expect(nestedLink).toHaveAttribute('rel', 'noopener noreferrer')
-    })
+      expect(nestedLink).toHaveAttribute('target', '_blank');
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com');
+      expect(nestedLink).toHaveAttribute('rel', 'noopener noreferrer');
+    });
 
     test('does not auto append "noopener noreferrer" to link without target="_blank"', () => {
       renderWithTheme(
         <TreeItem itemRole="link" rel="nogouda" href="https://google.com">
           Link
         </TreeItem>
-      )
+      );
 
-      const nestedLink = screen.getByRole('treeitem')
+      const nestedLink = screen.getByRole('treeitem');
 
-      expect(nestedLink).toHaveAttribute('href', 'https://google.com')
-      expect(nestedLink).toHaveAttribute('rel', 'nogouda')
-    })
-  })
-})
+      expect(nestedLink).toHaveAttribute('href', 'https://google.com');
+      expect(nestedLink).toHaveAttribute('rel', 'nogouda');
+    });
+  });
+});

@@ -24,33 +24,33 @@
 
  */
 
-import type { ValidationMessageProps } from '@looker/components'
-import { InputChips } from '@looker/components'
-import { getNumberFromString } from '@looker/filter-expressions'
-import type { ValueProps } from '@looker/filter-expressions'
-import React, { useRef, useEffect, useState } from 'react'
+import type { ValidationMessageProps } from '@looker/components';
+import { InputChips } from '@looker/components';
+import { getNumberFromString } from '@looker/filter-expressions';
+import type { ValueProps } from '@looker/filter-expressions';
+import React, { useRef, useEffect, useState } from 'react';
 import {
   inputPlacementStyle,
   multiInputWidth,
-} from '../../../../../../utils/filter_styles'
-import styled from 'styled-components'
+} from '../../../../../../utils/filter_styles';
+import styled from 'styled-components';
 
 interface MultiInputProps {
-  onChange?: (...args: any) => void
-  inputValue?: string
-  item: ValueProps
+  onChange?: (...args: any) => void;
+  inputValue?: string;
+  item: ValueProps;
 
-  className?: string
-  width?: string | number
-  placement?: 'right'
+  className?: string;
+  width?: string | number;
+  placement?: 'right';
   /** Text to be shown inside the input when there is no value entered  */
-  placeholder?: string
-  validationMessage?: ValidationMessageProps
+  placeholder?: string;
+  validationMessage?: ValidationMessageProps;
 }
 
 const validate = (value: string) => {
-  return value !== '' && !isNaN(Number(value))
-}
+  return value !== '' && !isNaN(Number(value));
+};
 
 export const MultiInputInternal = ({
   className,
@@ -60,23 +60,23 @@ export const MultiInputInternal = ({
   placeholder,
   validationMessage,
 }: MultiInputProps) => {
-  const ref = useRef<HTMLInputElement>(null)
-  const values = item.value.map(String)
-  const [inputValue, setInputValue] = useState('')
+  const ref = useRef<HTMLInputElement>(null);
+  const values = item.value.map(String);
+  const [inputValue, setInputValue] = useState('');
 
   const handleChange = (newValues: string[]) => {
-    onChange?.(item.id, { value: newValues.map(getNumberFromString) })
-  }
+    onChange?.(item.id, { value: newValues.map(getNumberFromString) });
+  };
 
   useEffect(() => {
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       if (validate(inputValue) && !document.body.contains(ref.current)) {
-        handleChange([...values, inputValue])
+        handleChange([...values, inputValue]);
       }
-    }
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputValue, values])
+  }, [inputValue, values]);
 
   return (
     <InputChips
@@ -92,9 +92,9 @@ export const MultiInputInternal = ({
       validationType={validationMessage?.type}
       noErrorIcon
     />
-  )
-}
+  );
+};
 
 export const MultiInput = styled(MultiInputInternal)`
   ${inputPlacementStyle}
-`
+`;

@@ -1,8 +1,8 @@
 {
   "Custom": {
-    "value": "사용자 지정"
+    "value": "커스텀"
   },
   "Presets": {
-    "value": "기본 설정"
+    "value": "사전 설정"
   }
 }

@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { Dispatch, SetStateAction } from 'react'
+import React from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type {
   CAll,
   CArea,
@@ -13,40 +13,44 @@ import type {
   CScatter,
   LinearPositions,
   BarPositions,
-} from '@looker/visualizations-adapters'
-import { FieldSelect } from '@looker/components'
+} from '@looker/visualizations-adapters';
+import { FieldSelect } from '@looker/components';
 
 /**
  * A list of relevant charts that access this configuration
  */
-type SupportedChartConfig = CBar | CColumn | CArea | CLine | CScatter
+type SupportedChartConfig = CBar | CColumn | CArea | CLine | CScatter;
 
-const renderFor: Array<SupportedChartConfig['type']> = ['area', 'bar', 'column']
+const renderFor: Array<SupportedChartConfig['type']> = [
+  'area',
+  'bar',
+  'column',
+];
 
-const barPositions: BarPositions[] = ['grouped', 'stacked', 'percent']
-const linePositions: LinearPositions[] = ['overlay', 'stacked', 'percent']
+const barPositions: BarPositions[] = ['grouped', 'stacked', 'percent'];
+const linePositions: LinearPositions[] = ['overlay', 'stacked', 'percent'];
 
 export type PositioningProps = {
-  config: SupportedChartConfig
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-}
+  config: SupportedChartConfig;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+};
 
 export const Positioning = (props: PositioningProps) => {
-  const { config, onConfigChange } = props
+  const { config, onConfigChange } = props;
   if (!renderFor.includes(config.type)) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
   const handleChange = (newPosition: string) => {
-    const draft = { ...config, positioning: newPosition }
-    onConfigChange(draft as SupportedChartConfig)
-  }
+    const draft = { ...config, positioning: newPosition };
+    onConfigChange(draft as SupportedChartConfig);
+  };
 
   const positions =
     config.type === 'bar' || config.type === 'column'
       ? barPositions
-      : linePositions
+      : linePositions;
 
   return (
     <FieldSelect
@@ -55,5 +59,5 @@ export const Positioning = (props: PositioningProps) => {
       onChange={handleChange}
       options={positions.map(p => ({ value: p }))}
     />
-  )
-}
+  );
+};

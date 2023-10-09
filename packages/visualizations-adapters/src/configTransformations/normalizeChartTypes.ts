@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import has from 'lodash/has'
+import has from 'lodash/has';
 import type {
   CAll,
   ConfigHelper,
   SupportedChartTypes,
   ValueOf,
   KnownChartTypes,
-} from '../types'
+} from '../types';
 
 export const CHART_TYPE_MAP: Record<
   KnownChartTypes | '',
@@ -34,11 +34,11 @@ export const CHART_TYPE_MAP: Record<
   single_value: 'single_value',
   sparkline: 'sparkline',
   table: 'table',
-}
+};
 
 const isKnownChartType = (type: string): type is keyof SupportedChartTypes => {
-  return has(CHART_TYPE_MAP, type)
-}
+  return has(CHART_TYPE_MAP, type);
+};
 
 /**
  * This function should be ran BEFORE all other config helpers.
@@ -49,13 +49,13 @@ export const normalizeChartTypes: ConfigHelper<CAll> = ({
   data,
   fields,
 }) => {
-  const { type = CHART_TYPE_MAP.default } = config
+  const { type = CHART_TYPE_MAP.default } = config;
 
-  const normalizedType = isKnownChartType(type) ? CHART_TYPE_MAP[type] : type
+  const normalizedType = isKnownChartType(type) ? CHART_TYPE_MAP[type] : type;
 
   return {
     config: { ...config, type: normalizedType },
     data,
     fields,
-  }
-}
+  };
+};

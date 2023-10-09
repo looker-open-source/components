@@ -2,26 +2,26 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Category } from '@looker/sdk'
-import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk'
-import type { FilterExpressionType } from '../types/filter_type'
+import { Category } from '@looker/sdk';
+import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk';
+import type { FilterExpressionType } from '../types/filter_type';
 
 interface FilterExpressionTypeMap {
-  [type: string]: FilterExpressionType
+  [type: string]: FilterExpressionType;
 }
 
 const getTimeframeExpressionType = (fieldType?: string) => {
-  if (!fieldType) return 'date'
+  if (!fieldType) return 'date';
 
   const isDateTime = ['date_time', 'hour', 'minute', 'second'].some(
     (timeString: string) => {
-      return fieldType.indexOf(timeString) > -1
+      return fieldType.indexOf(timeString) > -1;
     }
-  )
-  if (isDateTime) return 'date_time'
+  );
+  if (isDateTime) return 'date_time';
 
-  return 'date'
-}
+  return 'date';
+};
 
 /**
  * yields a value for the 'expressionType' prop on the Filter component
@@ -33,22 +33,24 @@ export const getExpressionTypeFromField = (
     // If parameter field has enumerations it always parsed as 'tier' but
     // visually should be treated differently if number type defined in LookML
     // bugs: b/187940941, b/199507872
-    return field.type as FilterExpressionType
+    return field.type as FilterExpressionType;
   }
   if (field.enumerations) {
-    return 'tier'
+    return 'tier';
   }
-  if (field.is_numeric) {
-    return 'number'
+  // A custom field may have type number but be missing is_numeric
+  if (field.is_numeric || field.type === 'number') {
+    return 'number';
   }
-  if (field.is_timeframe) {
-    return getTimeframeExpressionType(field.type)
+  // A custom field may have type date but be missing is_timeframe
+  if (field.is_timeframe || field.type === 'date') {
+    return getTimeframeExpressionType(field.type);
   }
   if (field.type === 'location' || field.type === 'location_bin_level') {
-    return 'location'
+    return 'location';
   }
-  return 'string'
-}
+  return 'string';
+};
 
 /**
  * Returns a valid filter expression type from a DashboardFilter object
@@ -58,7 +60,7 @@ export const getExpressionType = (
   filter: Pick<IDashboardFilter, 'type' | 'field'>
 ): FilterExpressionType => {
   if (filter.field) {
-    return getExpressionTypeFromField(filter.field)
+    return getExpressionTypeFromField(filter.field);
   }
 
   const filterExpressionMap: FilterExpressionTypeMap = {
@@ -68,6 +70,6 @@ export const getExpressionType = (
     // Catch for broken cases where field is not defined, display as a
     // string filter
     field_filter: 'string',
-  }
-  return filterExpressionMap[filter.type ?? 'field_filter']
-}
+  };
+  return filterExpressionMap[filter.type ?? 'field_filter'];
+};

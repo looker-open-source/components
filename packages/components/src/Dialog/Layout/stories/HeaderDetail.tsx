@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, DialogLayout } from '../../..'
+import React from 'react';
+import { Box, DialogLayout } from '../../..';
 
 export default function HeaderCloseButton() {
   return (
@@ -20,5 +20,5 @@ export default function HeaderCloseButton() {
         scrambled it to make a type specimen book.
       </DialogLayout>
     </Box>
-  )
+  );
 }

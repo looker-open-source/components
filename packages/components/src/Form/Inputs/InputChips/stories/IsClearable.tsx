@@ -3,11 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '../'
+import React, { useState } from 'react';
+import { InputChips } from '../';
 
 export default function IsClearable() {
-  const [values, setValues] = useState(['cheddar', 'gouda'])
+  const [values, setValues] = useState(['cheddar', 'gouda']);
 
-  return <InputChips isClearable={false} values={values} onChange={setValues} />
+  return (
+    <InputChips isClearable={false} values={values} onChange={setValues} />
+  );
 }

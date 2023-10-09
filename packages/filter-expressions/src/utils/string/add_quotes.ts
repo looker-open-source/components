@@ -14,4 +14,4 @@
  * @param value the filter value where special characters will be escaped
  */
 export const addQuotes = (value: string) =>
-  /^-|['",]/.test(value) ? `"${value}"` : value
+  /^-|['",]/.test(value) ? `"${value}"` : value;

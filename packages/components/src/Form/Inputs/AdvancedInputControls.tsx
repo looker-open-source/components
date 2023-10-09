@@ -24,41 +24,41 @@
 
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material/Close'
-import { Error } from '@styled-icons/material/Error'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowDropUp } from '@styled-icons/material/ArrowDropUp'
-import type { MouseEvent } from 'react'
-import React from 'react'
-import styled from 'styled-components'
-import { IconButton } from '../../Button'
-import { iconButtonColor } from '../../Button/iconButtonColor'
-import { Icon } from '../../Icon'
-import { Span } from '../../Text'
-import { useTranslation } from '../../utils'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { Close } from '@styled-icons/material/Close';
+import { Error } from '@styled-icons/material/Error';
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown';
+import { ArrowDropUp } from '@styled-icons/material/ArrowDropUp';
+import type { MouseEvent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import { IconButton } from '../../Button';
+import { iconButtonColor } from '../../Button/iconButtonColor';
+import { Icon } from '../../Icon';
+import { Span } from '../../Text';
+import { useTranslation } from '../../utils';
 
 export interface AdvancedInputControlsProps
   extends CompatibleHTMLProps<HTMLDivElement> {
   /**
    * customize the tooltip on the clear icon
    */
-  clearIconLabel?: string
-  isVisibleOptions?: boolean
-  onClear: (e: MouseEvent<HTMLButtonElement>) => void
-  showCaret?: boolean
-  showClear: boolean
-  summary?: string
+  clearIconLabel?: string;
+  isVisibleOptions?: boolean;
+  onClear: (e: MouseEvent<HTMLButtonElement>) => void;
+  showCaret?: boolean;
+  showClear: boolean;
+  summary?: string;
   /**
    * Display the error icon
    */
-  errorIcon?: boolean
+  errorIcon?: boolean;
 }
 
 export const AdvancedInputControls = styled(
   (props: AdvancedInputControlsProps) => {
-    const { t } = useTranslation('AdvancedInputControls')
-    const clearIconLabelText = t('Clear Field')
+    const { t } = useTranslation('AdvancedInputControls');
+    const clearIconLabelText = t('Clear Field');
     const {
       disabled,
       clearIconLabel = clearIconLabelText,
@@ -69,7 +69,7 @@ export const AdvancedInputControls = styled(
       summary,
       errorIcon,
       ...rest
-    } = props
+    } = props;
 
     return (
       <div {...rest}>
@@ -118,23 +118,23 @@ export const AdvancedInputControls = styled(
           />
         )}
       </div>
-    )
+    );
   }
 )`
   align-items: center;
   display: flex;
   max-height: 1.9rem;
   padding-right: ${({ theme }) => theme.space.u1};
-`
+`;
 
 const SearchControlDivider = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
   height: ${({ theme }) => theme.space.u5};
   margin-right: ${({ theme }) => theme.space.u1};
   width: 1px;
-`
+`;
 
 const CaretIcon = styled(Icon)`
   ${iconButtonColor}
   cursor: default;
-`
+`;

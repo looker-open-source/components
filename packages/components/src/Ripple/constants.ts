@@ -9,8 +9,8 @@
  * Defined in the format required by CSS transform translate, to avoid the need
  * for measurement or calculation.
  */
-export const RIPPLE_RATIO = 1.167
+export const RIPPLE_RATIO = 1.167;
 /**
  * The diagonal of a square, to make the ripple extend to the corners
  */
-export const SQUARE_RIPPLE = 1.414
+export const SQUARE_RIPPLE = 1.414;

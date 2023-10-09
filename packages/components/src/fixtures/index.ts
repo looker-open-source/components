@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Constitution'
-export * from './ListHelper'
+export * from './Constitution';
+export * from './ListHelper';

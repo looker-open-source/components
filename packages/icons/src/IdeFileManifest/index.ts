@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './IdeFileManifest'
+export * from './IdeFileManifest';

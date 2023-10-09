@@ -27,25 +27,25 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useForkedRef } from '../../../../utils'
-import { FauxCheckbox } from '../../Checkbox/FauxCheckbox'
-import { CheckMark } from '../../Checkbox/CheckMark'
-import type { ComboboxMultiContextProps } from '../ComboboxContext'
-import { ComboboxMultiContext } from '../ComboboxContext'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useForkedRef } from '../../../../utils';
+import { FauxCheckbox } from '../../Checkbox/FauxCheckbox';
+import { CheckMark } from '../../Checkbox/CheckMark';
+import type { ComboboxMultiContextProps } from '../ComboboxContext';
+import { ComboboxMultiContext } from '../ComboboxContext';
 import {
   comboboxOptionStyle,
   ComboboxOptionWrapper,
   ComboboxOptionText,
-} from '../ComboboxOption'
-import { ComboboxOptionIndicator } from '../ComboboxOptionIndicator'
-import type { ComboboxOptionProps } from '../types'
-import { useAddOptionToContext } from '../utils/useAddOptionToContext'
-import { useOptionEvents } from '../utils/useOptionEvents'
-import { useOptionStatus } from '../utils/useOptionStatus'
-import { useOptionScroll } from '../utils/useOptionScroll'
+} from '../ComboboxOption';
+import { ComboboxOptionIndicator } from '../ComboboxOptionIndicator';
+import type { ComboboxOptionProps } from '../types';
+import { useAddOptionToContext } from '../utils/useAddOptionToContext';
+import { useOptionEvents } from '../utils/useOptionEvents';
+import { useOptionStatus } from '../utils/useOptionStatus';
+import { useOptionScroll } from '../utils/useOptionScroll';
 
 export const ComboboxMultiOption = styled(
   // eslint-disable-next-line react/display-name
@@ -60,20 +60,20 @@ export const ComboboxMultiOption = styled(
       }: ComboboxOptionProps,
       forwardedRef: Ref<HTMLLIElement>
     ) => {
-      const { label, value } = props
+      const { label, value } = props;
 
       useAddOptionToContext<ComboboxMultiContextProps>(
         ComboboxMultiContext,
         value,
         label,
         scrollIntoView
-      )
+      );
       const optionEvents = useOptionEvents<ComboboxMultiContextProps>(
         props,
         ComboboxMultiContext
-      )
+      );
       const { isActive, isSelected } =
-        useOptionStatus<ComboboxMultiContextProps>(ComboboxMultiContext, value)
+        useOptionStatus<ComboboxMultiContextProps>(ComboboxMultiContext, value);
 
       const scrollRef = useOptionScroll(
         ComboboxMultiContext,
@@ -81,8 +81,8 @@ export const ComboboxMultiOption = styled(
         label,
         scrollIntoView,
         isActive
-      )
-      const ref = useForkedRef(scrollRef, forwardedRef)
+      );
+      const ref = useForkedRef(scrollRef, forwardedRef);
       return (
         <ComboboxOptionWrapper
           {...props}
@@ -103,7 +103,7 @@ export const ComboboxMultiOption = styled(
           </ComboboxOptionIndicator>
           {children || <ComboboxOptionText highlightText={highlightText} />}
         </ComboboxOptionWrapper>
-      )
+      );
     }
   )
 ).attrs(
@@ -127,4 +127,4 @@ export const ComboboxMultiOption = styled(
   ${FauxCheckbox} {
     margin-top: 1px;
   }
-`
+`;

@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { getYear, setYear } from 'date-fns'
-import React from 'react'
-import { ScrollableDateList } from './ScrollableDateList'
-import type { YearListProps } from './types'
-import { Year } from './Year'
+import { getYear, setYear } from 'date-fns';
+import React from 'react';
+import { ScrollableDateList } from './ScrollableDateList';
+import type { YearListProps } from './types';
+import { Year } from './Year';
 
 const getItemMonth = (baseDate: Date, offset: number) => {
-  const currentMonthIndex = getYear(baseDate)
-  return setYear(baseDate, currentMonthIndex + offset)
-}
+  const currentMonthIndex = getYear(baseDate);
+  return setYear(baseDate, currentMonthIndex + offset);
+};
 
 export const YearList = ({
   baseMonth,
@@ -33,5 +33,5 @@ export const YearList = ({
       itemProps={props}
       thresholdRatio={7 / 11}
     />
-  )
-}
+  );
+};

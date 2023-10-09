@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { IUserAttributeWithValue } from '@looker/sdk'
+import type { IUserAttributeWithValue } from '@looker/sdk';
 
 export type UserAttributeWithValue = {
   [K in keyof IUserAttributeWithValue]: IUserAttributeWithValue[K] extends
@@ -11,5 +11,5 @@ export type UserAttributeWithValue = {
     ? string | null
     : IUserAttributeWithValue[K] extends number | undefined
     ? number | null
-    : IUserAttributeWithValue[K]
-}
+    : IUserAttributeWithValue[K];
+};

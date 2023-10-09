@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Annotation, Label, Connector } from '@visx/annotation'
-import { pointRadial } from 'd3-shape'
-import { useTheme } from 'styled-components'
-import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
-import type { SDKRecord } from '@looker/visualizations-adapters'
-import { getConnectorLength } from './getConnectorLength'
+import React from 'react';
+import { Annotation, Label, Connector } from '@visx/annotation';
+import { pointRadial } from 'd3-shape';
+import { useTheme } from 'styled-components';
+import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie';
+import type { SDKRecord } from '@looker/visualizations-adapters';
+import { getConnectorLength } from './getConnectorLength';
 
 type PieLabelProps = {
-  arc: PieArcDatum<SDKRecord>
-  outerRadius: number
-  labelContent: string
-  datumColor: string
-}
+  arc: PieArcDatum<SDKRecord>;
+  outerRadius: number;
+  labelContent: string;
+  datumColor: string;
+};
 
 export const PieLabel = ({
   arc,
@@ -24,16 +24,16 @@ export const PieLabel = ({
   labelContent,
   datumColor,
 }: PieLabelProps) => {
-  const theme = useTheme()
-  const { startAngle, endAngle } = arc
-  const averageAngle = (startAngle + endAngle) / 2
+  const theme = useTheme();
+  const { startAngle, endAngle } = arc;
+  const averageAngle = (startAngle + endAngle) / 2;
 
-  const [connectorX, connectorY] = pointRadial(averageAngle, outerRadius)
+  const [connectorX, connectorY] = pointRadial(averageAngle, outerRadius);
 
-  const connectorLength = getConnectorLength(averageAngle, outerRadius)
-  const [labelX, labelY] = pointRadial(averageAngle, connectorLength)
+  const connectorLength = getConnectorLength(averageAngle, outerRadius);
+  const [labelX, labelY] = pointRadial(averageAngle, connectorLength);
 
-  const ANCHOR_POSITION = connectorX > 0 ? 'start' : 'end'
+  const ANCHOR_POSITION = connectorX > 0 ? 'start' : 'end';
 
   return (
     <Annotation x={connectorX} y={connectorY} dx={labelX} dy={labelY}>
@@ -52,5 +52,5 @@ export const PieLabel = ({
         title={labelContent}
       />
     </Annotation>
-  )
-}
+  );
+};

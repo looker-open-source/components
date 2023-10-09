@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InlineTextArea } from '../'
+import React from 'react';
+import { InlineTextArea } from '../';
 
 export default function Disabled() {
-  return <InlineTextArea readOnly value="READ ONLY..." />
+  return <InlineTextArea readOnly value="READ ONLY..." />;
 }

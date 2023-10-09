@@ -24,34 +24,34 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft'
-import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight'
-import { Flex } from '../Layout'
-import type { IconButtonProps } from '../Button'
-import { IconButton } from '../Button'
-import { Span } from '../Text'
-import { useTranslation } from '../utils'
-import { DoubleChevronLeft } from './DoubleChevronLeft'
-import { DoubleChevronRight } from './DoubleChevronRight'
+import React from 'react';
+import styled from 'styled-components';
+import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft';
+import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight';
+import { Flex } from '../Layout';
+import type { IconButtonProps } from '../Button';
+import { IconButton } from '../Button';
+import { Span } from '../Text';
+import { useTranslation } from '../utils';
+import { DoubleChevronLeft } from './DoubleChevronLeft';
+import { DoubleChevronRight } from './DoubleChevronRight';
 
 export interface PaginationProps {
-  className?: string
-  current: number
-  pages: number
-  onChange: (page: number) => void
+  className?: string;
+  current: number;
+  pages: number;
+  onChange: (page: number) => void;
   /**
    * If enabled controls will always be shown regardless of whether or not
    * there are any additional pages to be displayed.
    * @default false
    */
-  alwaysVisible?: boolean
+  alwaysVisible?: boolean;
 }
 
 const PaginationButton = (props: IconButtonProps) => (
   <IconButton outline shape="square" mx="xxsmall" {...props} />
-)
+);
 
 const PaginationLayout = ({
   alwaysVisible = false,
@@ -60,13 +60,13 @@ const PaginationLayout = ({
   pages,
   onChange,
 }: PaginationProps) => {
-  const { t } = useTranslation('Pagination')
-  if (pages <= 1 && !alwaysVisible) return null
+  const { t } = useTranslation('Pagination');
+  if (pages <= 1 && !alwaysVisible) return null;
 
-  const first = () => onChange(1)
-  const previous = () => onChange(current - 1)
-  const next = () => onChange(current + 1)
-  const last = () => onChange(pages)
+  const first = () => onChange(1);
+  const previous = () => onChange(current - 1);
+  const next = () => onChange(current + 1);
+  const last = () => onChange(pages);
 
   return (
     <Flex alignItems="center" className={className}>
@@ -99,7 +99,7 @@ const PaginationLayout = ({
         disabled={pages - current === 0}
       />
     </Flex>
-  )
-}
+  );
+};
 
-export const Pagination = styled(PaginationLayout)``
+export const Pagination = styled(PaginationLayout)``;

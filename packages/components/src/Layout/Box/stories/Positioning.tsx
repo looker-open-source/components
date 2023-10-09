@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function Positioning() {
   return (
@@ -21,5 +21,5 @@ export default function Positioning() {
         </Box>
       </Box>
     </Space>
-  )
+  );
 }

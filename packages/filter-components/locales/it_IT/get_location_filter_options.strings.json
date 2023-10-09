@@ -6,7 +6,7 @@
     "value": "Cerchio"
   },
   "Location": {
-    "value": "Posizione"
+    "value": "Località"
   },
   "feet": {
     "value": "piedi"
@@ -15,10 +15,10 @@
     "value": "è ovunque"
   },
   "is not null": {
-    "value": "non è zero"
+    "value": "non è null"
   },
   "is null": {
-    "value": "è zero"
+    "value": "è null"
   },
   "kilometers": {
     "value": "chilometri"

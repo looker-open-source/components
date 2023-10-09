@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '../'
+import React, { useState } from 'react';
+import { InputChips } from '../';
 
 export default function RemoveOnBackspace() {
-  const [values, setValues] = useState<string[]>(['cheddar', 'gouda'])
+  const [values, setValues] = useState<string[]>(['cheddar', 'gouda']);
   function handleChange(newValues: string[]) {
-    setValues(newValues)
+    setValues(newValues);
   }
   return (
     <InputChips
@@ -18,5 +18,5 @@ export default function RemoveOnBackspace() {
       onChange={handleChange}
       removeOnBackspace={false}
     />
-  )
+  );
 }

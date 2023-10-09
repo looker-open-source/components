@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './SelectOptions'
-export * from './SelectOptionDetail'
+export * from './SelectOptions';
+export * from './SelectOptionDetail';

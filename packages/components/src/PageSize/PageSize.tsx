@@ -24,47 +24,47 @@
 
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Select } from '../Form'
-import { useTranslation } from '../utils'
+import React from 'react';
+import styled from 'styled-components';
+import { Select } from '../Form';
+import { useTranslation } from '../utils';
 
 export interface PageSizeProps {
-  className?: string
+  className?: string;
   /**
    * Total number of items on all pages
    */
-  total: number
+  total: number;
   /**
    * Number of items per page
    * Note: The first value passed into this prop should a number included in the options array prop (or defaultPageSizes)
    */
-  value: number
+  value: number;
   /**
    * Array of page size options
    */
-  options?: number[]
+  options?: number[];
   /**
    * Callback that triggers when new value is selected
    */
-  onChange: (value: number) => void
+  onChange: (value: number) => void;
   /**
    * If enabled controls will always be shown regardless of whether or not
    * there are any additional pages to be displayed.
    * @default false
    */
-  alwaysVisible?: boolean
+  alwaysVisible?: boolean;
 }
 
-const defaultPageSizes = [10, 25, 50, 100]
+const defaultPageSizes = [10, 25, 50, 100];
 
 const stringToSelectOption = (option: string) => ({
   label: String(option),
   value: String(option),
-})
+});
 
 const arrayToSelectOptions = (options: Array<string | number>) =>
-  options.map(option => stringToSelectOption(String(option)))
+  options.map(option => stringToSelectOption(String(option)));
 
 export const PageSizeLayout = ({
   alwaysVisible = false,
@@ -74,9 +74,9 @@ export const PageSizeLayout = ({
   onChange,
   options = defaultPageSizes,
 }: PageSizeProps) => {
-  const { t } = useTranslation('PageSize')
+  const { t } = useTranslation('PageSize');
 
-  const handleOnChange = (newValue: string) => onChange(Number(newValue))
+  const handleOnChange = (newValue: string) => onChange(Number(newValue));
 
   return alwaysVisible || Math.min(...options) < total ? (
     <div className={className}>
@@ -93,11 +93,11 @@ export const PageSizeLayout = ({
         {t('of')} {total}
       </span>
     </div>
-  ) : null
-}
+  ) : null;
+};
 
 export const PageSize = styled(PageSizeLayout)`
   align-items: center;
   display: flex;
   font-size: ${({ theme }) => theme.fontSizes.small};
-`
+`;

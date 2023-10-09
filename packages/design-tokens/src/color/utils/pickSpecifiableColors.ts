@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import pick from 'lodash/pick'
-import type { Colors } from '../types'
-import { specifiableColors } from '../types'
+import pick from 'lodash/pick';
+import type { Colors } from '../types';
+import { specifiableColors } from '../types';
 
 export const pickSpecifiableColors = (colors: Colors) =>
-  pick(colors, specifiableColors)
+  pick(colors, specifiableColors);

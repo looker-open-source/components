@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { stringGrammar } from './string_grammar'
+import { stringGrammar } from './string_grammar';
 
 const grammar = `TierExpression
 = USER_ATTRIBUTE / MATCH_LIST / MATCH_TERM
@@ -22,5 +22,5 @@ MATCH_TERM
  return term
 }
 
-`
-export const tierGrammar = grammar.concat(stringGrammar)
+`;
+export const tierGrammar = grammar.concat(stringGrammar);

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Filter } from '../Filter'
+import React from 'react';
+import { Filter } from '../Filter';
 
 export default function MultiConditionDate() {
   return (
@@ -14,5 +14,5 @@ export default function MultiConditionDate() {
       expressionType="date"
       expression="this week,last week, next week"
     />
-  )
+  );
 }

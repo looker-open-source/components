@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { hiIN as componentsLocale } from '@looker/components'
-import { hiIN as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { hiIN as visualizationstableLocale } from '@looker/visualizations-table'
-import { hiIN as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { hiIN as componentsLocale } from '@looker/components';
+import { hiIN as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { hiIN as visualizationstableLocale } from '@looker/visualizations-table';
+import { hiIN as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       '"{{type}}" प्रकार के लिए कोई चार्ट नहीं मिला',
   },
-}
+};
 
 export const hiIN = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const hiIN = mergeLocaleObjects(
   ],
   'hi-IN',
   resources
-)
+);

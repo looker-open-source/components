@@ -23,35 +23,35 @@
  SOFTWARE.
 
  */
-import type { Ref, ReactNode } from 'react'
-import React, { forwardRef, useCallback } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { Fieldset } from '../../../Fieldset'
-import { FieldRadio } from '../../Fields/FieldRadio'
-import { inputHeight } from '../height'
-import type { FieldsetProps } from '../../../Fieldset'
+import type { Ref, ReactNode } from 'react';
+import React, { forwardRef, useCallback } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import { Fieldset } from '../../../Fieldset';
+import { FieldRadio } from '../../Fields/FieldRadio';
+import { inputHeight } from '../height';
+import type { FieldsetProps } from '../../../Fieldset';
 
 export interface RadioGroupOptionProps {
-  label: string
-  value: string
-  disabled?: boolean
-  detail?: ReactNode
+  label: string;
+  value: string;
+  disabled?: boolean;
+  detail?: ReactNode;
 }
 
 export type RadioGroupProps = Omit<FieldsetProps, 'onChange'> & {
-  name?: string
-  id?: string
-  inline?: boolean
-  autoFocus?: boolean
-  disabled?: boolean
-  required?: boolean
-  options: RadioGroupOptionProps[]
-  validationType?: 'error'
-  defaultValue?: string
-  value?: string
-  onChange?: (value: string) => void
-}
+  name?: string;
+  id?: string;
+  inline?: boolean;
+  autoFocus?: boolean;
+  disabled?: boolean;
+  required?: boolean;
+  options: RadioGroupOptionProps[];
+  validationType?: 'error';
+  defaultValue?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+};
 
 // For controlled scenario we want to use checked & value,
 // for uncontrolled, defaultChecked & defaultValue
@@ -61,9 +61,9 @@ function getCheckedProps(
   value?: string,
   defaultValue?: string
 ) {
-  const key = isControlled ? 'checked' : 'defaultChecked'
-  const valueToUse = isControlled ? value : defaultValue
-  return { [key]: valueToUse === optionValue }
+  const key = isControlled ? 'checked' : 'defaultChecked';
+  const valueToUse = isControlled ? value : defaultValue;
+  return { [key]: valueToUse === optionValue };
 }
 
 const RadioGroupLayout = forwardRef(
@@ -82,15 +82,15 @@ const RadioGroupLayout = forwardRef(
     }: RadioGroupProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const name = useID(propsName)
-    const isControlled = onChange !== undefined && defaultValue === undefined
+    const name = useID(propsName);
+    const isControlled = onChange !== undefined && defaultValue === undefined;
 
     const getChangeHandler = useCallback(
       (optionValue: string) => {
-        return onChange ? () => onChange(optionValue) : undefined
+        return onChange ? () => onChange(optionValue) : undefined;
       },
       [onChange]
-    )
+    );
 
     const radios = options.map((option, index) => {
       const checkedProps = getCheckedProps(
@@ -98,9 +98,9 @@ const RadioGroupLayout = forwardRef(
         isControlled,
         value,
         defaultValue
-      )
+      );
 
-      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {}
+      const autoFocusProps = index === 0 && autoFocus ? { autoFocus } : {};
 
       return (
         <FieldRadio
@@ -114,8 +114,8 @@ const RadioGroupLayout = forwardRef(
           {...checkedProps}
           {...autoFocusProps}
         />
-      )
-    })
+      );
+    });
 
     return (
       <Fieldset
@@ -130,14 +130,14 @@ const RadioGroupLayout = forwardRef(
       >
         {radios}
       </Fieldset>
-    )
+    );
   }
-)
+);
 
-RadioGroupLayout.displayName = 'RadioGroupLayout'
+RadioGroupLayout.displayName = 'RadioGroupLayout';
 
 export const RadioGroup = styled(RadioGroupLayout)`
   ${FieldRadio} {
     ${({ inline }) => (inline ? `line-height: ${inputHeight};` : '')}
   }
-`
+`;

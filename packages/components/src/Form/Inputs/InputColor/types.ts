@@ -4,17 +4,17 @@
  */
 
 export interface HueSaturation {
-  h: number
-  s: number
+  h: number;
+  s: number;
 }
 
 export interface SimpleHSV extends HueSaturation {
-  v: number
+  v: number;
 }
 
 export interface ColorPickerProps {
-  className?: string
-  hsv: SimpleHSV
-  setHsv: (hsv: SimpleHSV) => void
-  width: number
+  className?: string;
+  hsv: SimpleHSV;
+  setHsv: (hsv: SimpleHSV) => void;
+  width: number;
 }

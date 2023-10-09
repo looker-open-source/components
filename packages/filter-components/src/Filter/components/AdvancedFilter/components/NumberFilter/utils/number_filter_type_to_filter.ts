@@ -5,15 +5,15 @@
 import type {
   FilterTypeMap,
   NumberFilterType,
-} from '@looker/filter-expressions'
-import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttributes } from '../../UserAttributes'
+} from '@looker/filter-expressions';
+import { MatchesAdvanced } from '../../MatchesAdvanced';
+import { UserAttributes } from '../../UserAttributes';
 
-import { Between } from '../components/Between'
-import { MultiInput } from '../components/MultiInput'
-import { SingleNumberInput } from '../components/SingleNumberInput'
+import { Between } from '../components/Between';
+import { MultiInput } from '../components/MultiInput';
+import { SingleNumberInput } from '../components/SingleNumberInput';
 
-const Blank = () => ''
+const Blank = () => '';
 
 const filterTypeToNumberMap: FilterTypeMap<NumberFilterType> = {
   '=': MultiInput,
@@ -24,11 +24,11 @@ const filterTypeToNumberMap: FilterTypeMap<NumberFilterType> = {
   between: Between,
   null: Blank,
   user_attribute: UserAttributes,
-}
+};
 
 const filterTypeToNumberMapSingleInput: FilterTypeMap<string> = {
   '=': SingleNumberInput,
-}
+};
 
 export const numberFilterTypeToFilter = (
   type: NumberFilterType,
@@ -39,7 +39,7 @@ export const numberFilterTypeToFilter = (
     (!allowMultipleOptions || isParameterField) &&
     filterTypeToNumberMapSingleInput[type]
   ) {
-    return filterTypeToNumberMapSingleInput[type]
+    return filterTypeToNumberMapSingleInput[type];
   }
-  return filterTypeToNumberMap[type] || MatchesAdvanced
-}
+  return filterTypeToNumberMap[type] || MatchesAdvanced;
+};

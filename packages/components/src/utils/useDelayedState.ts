@@ -24,25 +24,25 @@
 
  */
 
-import type { Reducer } from 'react'
-import { useCallback, useEffect, useReducer } from 'react'
-import { undefinedCoalesce } from './undefinedCoalesce'
+import type { Reducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
+import { undefinedCoalesce } from './undefinedCoalesce';
 
 interface DelayedStateBase<T> {
-  delay: number | false
-  value: T
+  delay: number | false;
+  value: T;
 }
 
 interface DelayedStateState<T> extends DelayedStateBase<T> {
-  futureValue?: T
+  futureValue?: T;
 }
 
 interface DelayedStateAction<T> {
-  type: 'CHANGE' | 'DELAY_CHANGE' | 'WAIT_CHANGE'
-  payload?: Partial<DelayedStateBase<T>>
+  type: 'CHANGE' | 'DELAY_CHANGE' | 'WAIT_CHANGE';
+  payload?: Partial<DelayedStateBase<T>>;
 }
 
-type DelayReducer<T> = Reducer<DelayedStateState<T>, DelayedStateAction<T>>
+type DelayReducer<T> = Reducer<DelayedStateState<T>, DelayedStateAction<T>>;
 
 const reducer = <T>(
   state: DelayedStateState<T>,
@@ -56,7 +56,7 @@ const reducer = <T>(
         delay: false,
         futureValue: undefined,
         value: undefinedCoalesce([payload.value, state.futureValue]) as T,
-      }
+      };
     // If there's a current delay, update the futureValue
     // so as not to clobber the current value
     // Otherwise update state directly
@@ -65,7 +65,7 @@ const reducer = <T>(
         delay: state.delay,
         futureValue: state.delay ? payload.value : undefined,
         value: state.delay ? state.value : payload.value || state.value,
-      }
+      };
     case 'DELAY_CHANGE':
       // If value is already false, no need to turn on the delay
       return {
@@ -73,15 +73,15 @@ const reducer = <T>(
         delay: state.value === payload.value ? false : payload.delay || 0,
         futureValue: payload.value,
         value: state.value,
-      }
+      };
   }
-}
+};
 
 export interface UseDelayedStateReturn<T> {
-  change: (value: T) => void
-  delayChange: (value: T, delay?: number) => void
-  value: T
-  waitChange: (value: T) => void
+  change: (value: T) => void;
+  delayChange: (value: T, delay?: number) => void;
+  value: T;
+  waitChange: (value: T) => void;
 }
 
 /**
@@ -92,33 +92,33 @@ export function useDelayedState<T>(initialValue: T): UseDelayedStateReturn<T> {
   const [{ delay, value }, dispatch] = useReducer<DelayReducer<T>>(reducer, {
     delay: false,
     value: initialValue as T,
-  })
+  });
   const change = useCallback(
     (newValue: T) => dispatch({ payload: { value: newValue }, type: 'CHANGE' }),
     []
-  )
+  );
   const delayChange = useCallback(
     (newValue: T, delay?: number) =>
       dispatch({ payload: { delay, value: newValue }, type: 'DELAY_CHANGE' }),
     []
-  )
+  );
   const waitChange = useCallback(
     (newValue: T) =>
       dispatch({ payload: { value: newValue }, type: 'WAIT_CHANGE' }),
     []
-  )
+  );
 
   useEffect(() => {
-    let t: ReturnType<typeof setTimeout>
+    let t: ReturnType<typeof setTimeout>;
     if (delay !== false) {
       t = setTimeout(() => {
-        dispatch({ type: 'CHANGE' })
-      }, delay)
+        dispatch({ type: 'CHANGE' });
+      }, delay);
     }
     return () => {
-      clearTimeout(t)
-    }
-  }, [delay])
+      clearTimeout(t);
+    };
+  }, [delay]);
 
-  return { change, delayChange, value, waitChange }
+  return { change, delayChange, value, waitChange };
 }

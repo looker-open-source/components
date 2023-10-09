@@ -24,26 +24,26 @@
 
  */
 
-import '@testing-library/jest-dom/extend-expect'
-import { fireEvent, screen } from '@testing-library/react'
-import 'jest-styled-components'
-import React, { useRef } from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Button } from '../Button'
-import { Popover } from './Popover'
-import { PopoverLayout } from './Layout'
+import '@testing-library/jest-dom/extend-expect';
+import { fireEvent, screen } from '@testing-library/react';
+import 'jest-styled-components';
+import React, { useRef } from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Button } from '../Button';
+import { Popover } from './Popover';
+import { PopoverLayout } from './Layout';
 
-const SimpleContent = <div>simple content</div>
+const SimpleContent = <div>simple content</div>;
 
 describe('Popover', () => {
   afterEach(() => {
-    const root = document.getElementById('modal-root')
+    const root = document.getElementById('modal-root');
     if (root) {
       // remove modalRoot after every test so the DOCUMENT_POSITION_FOLLOWING check
       // won't misleadingly fail since render adds the output to the end of the body
-      document.body.removeChild(root)
+      document.body.removeChild(root);
     }
-  })
+  });
 
   test('Accessibility', () => {
     renderWithTheme(
@@ -57,68 +57,68 @@ describe('Popover', () => {
       >
         <Button>Open</Button>
       </Popover>
-    )
+    );
 
-    const openPopover = screen.getByText('Open')
-    fireEvent.click(openPopover)
+    const openPopover = screen.getByText('Open');
+    fireEvent.click(openPopover);
 
-    expect(screen.getByText('Header text')).toBeInTheDocument()
-    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    expect(screen.getByText('Header text')).toBeInTheDocument();
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByRole('dialog')).toHaveAttribute(
       'aria-labelledby',
       'a11y-heading'
-    )
+    );
     expect(screen.getByText('Header text')).toHaveAttribute(
       'id',
       'a11y-heading'
-    )
+    );
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('cloneElement style opens and closes', () => {
     renderWithTheme(
       <Popover content={SimpleContent}>
         <button>Test</button>
       </Popover>
-    )
+    );
 
     // Verify hidden
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
 
-    const trigger = screen.getByText('Test')
-    fireEvent.click(trigger)
+    const trigger = screen.getByText('Test');
+    fireEvent.click(trigger);
 
     // Find content
-    expect(screen.getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument();
 
-    fireEvent.click(trigger)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-  })
+    fireEvent.click(trigger);
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+  });
 
   test('renderProps style expanded opens and closes', () => {
     renderWithTheme(
       <Popover content={SimpleContent}>
         {popoverProps => <button {...popoverProps}>Test</button>}
       </Popover>
-    )
+    );
 
     // Verify hidden
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
 
-    const trigger = screen.getByText('Test')
-    fireEvent.click(trigger)
+    const trigger = screen.getByText('Test');
+    fireEvent.click(trigger);
 
     // Find content
-    expect(screen.getByText('simple content')).toBeInTheDocument()
+    expect(screen.getByText('simple content')).toBeInTheDocument();
 
-    fireEvent.click(trigger)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-  })
+    fireEvent.click(trigger);
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+  });
 
   test('preventDefault works on trigger 2nd click', () => {
     // preventDefault here avoids JSDOM error
-    const mockFormSubmit = jest.fn(e => e.preventDefault())
+    const mockFormSubmit = jest.fn(e => e.preventDefault());
 
     renderWithTheme(
       <form onSubmit={mockFormSubmit}>
@@ -126,17 +126,17 @@ describe('Popover', () => {
           <button>Test</button>
         </Popover>
       </form>
-    )
-    const trigger = screen.getByText('Test')
+    );
+    const trigger = screen.getByText('Test');
     // Click to open
-    fireEvent.click(trigger)
+    fireEvent.click(trigger);
     // Then click to close
-    fireEvent.click(trigger)
-    expect(mockFormSubmit).not.toHaveBeenCalled()
-  })
+    fireEvent.click(trigger);
+    expect(mockFormSubmit).not.toHaveBeenCalled();
+  });
 
   test('stopPropagation works - event on container is not called', () => {
-    const mockContainerOnClick = jest.fn()
+    const mockContainerOnClick = jest.fn();
 
     renderWithTheme(
       <div onClick={mockContainerOnClick}>
@@ -144,17 +144,17 @@ describe('Popover', () => {
           <button>Test</button>
         </Popover>
       </div>
-    )
-    const trigger = screen.getByText('Test')
-    fireEvent.click(trigger)
-    expect(screen.getByText('simple content')).toBeInTheDocument()
-    expect(mockContainerOnClick).not.toHaveBeenCalled()
+    );
+    const trigger = screen.getByText('Test');
+    fireEvent.click(trigger);
+    expect(screen.getByText('simple content')).toBeInTheDocument();
+    expect(mockContainerOnClick).not.toHaveBeenCalled();
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('Open popover does not cancel event on "dismissal click"', () => {
-    const doThing = jest.fn()
+    const doThing = jest.fn();
 
     renderWithTheme(
       <>
@@ -163,19 +163,19 @@ describe('Popover', () => {
         </Popover>
         <a onClick={doThing}>Do thing...</a>
       </>
-    )
+    );
 
-    const trigger = screen.getByText('Instant Click')
-    fireEvent.click(trigger) // open Popover
+    const trigger = screen.getByText('Instant Click');
+    fireEvent.click(trigger); // open Popover
 
-    const closer = screen.getByText('Do thing...')
-    fireEvent.click(closer)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-    expect(doThing).toBeCalledTimes(1)
-  })
+    const closer = screen.getByText('Do thing...');
+    fireEvent.click(closer);
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+    expect(doThing).toBeCalledTimes(1);
+  });
 
   test('With cancelClickOutside = true, open popover cancels 1st click event', () => {
-    const doThing = jest.fn()
+    const doThing = jest.fn();
 
     renderWithTheme(
       <>
@@ -184,20 +184,20 @@ describe('Popover', () => {
         </Popover>
         <a onClick={doThing}>Do thing...</a>
       </>
-    )
+    );
 
-    const trigger = screen.getByText('Instant Click')
-    fireEvent.click(trigger) // open Popover
+    const trigger = screen.getByText('Instant Click');
+    fireEvent.click(trigger); // open Popover
 
-    const closer = screen.getByText('Do thing...')
-    fireEvent.click(closer)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-    expect(doThing).toBeCalledTimes(0)
-  })
+    const closer = screen.getByText('Do thing...');
+    fireEvent.click(closer);
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+    expect(doThing).toBeCalledTimes(0);
+  });
 
   test('Popover trigger is shown/hidden on hover of hoverDisclosureRef', () => {
     const Component = () => {
-      const hoverRef = useRef<HTMLDivElement>(null)
+      const hoverRef = useRef<HTMLDivElement>(null);
       return (
         <div ref={hoverRef}>
           <Popover content={SimpleContent} hoverDisclosureRef={hoverRef}>
@@ -205,14 +205,14 @@ describe('Popover', () => {
           </Popover>
           Some text in the div
         </div>
-      )
-    }
-    renderWithTheme(<Component />)
+      );
+    };
+    renderWithTheme(<Component />);
 
-    const trigger = screen.queryByText('Instant Click')
-    const div = screen.getByText('Some text in the div')
+    const trigger = screen.queryByText('Instant Click');
+    const div = screen.getByText('Some text in the div');
 
-    expect(trigger).not.toBeInTheDocument()
+    expect(trigger).not.toBeInTheDocument();
 
     fireEvent(
       div,
@@ -220,29 +220,42 @@ describe('Popover', () => {
         bubbles: true,
         cancelable: true,
       })
-    )
-    const triggerNew = screen.getByText('Instant Click')
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-    fireEvent.click(triggerNew) // open Popover
-    expect(screen.getByText('simple content')).toBeInTheDocument()
+    );
+    const triggerNew = screen.getByText('Instant Click');
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+    fireEvent.click(triggerNew); // open Popover
+    expect(screen.getByText('simple content')).toBeInTheDocument();
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('onClose', () => {
-    const onCloseMock = jest.fn()
+    const onCloseMock = jest.fn();
     renderWithTheme(
       <Popover content={SimpleContent} onClose={onCloseMock}>
         <Button>Open</Button>
       </Popover>
-    )
+    );
 
-    const button = screen.getByText('Open')
-    fireEvent.click(button)
-    expect(screen.getByText('simple content')).toBeVisible()
+    const button = screen.getByText('Open');
+    fireEvent.click(button);
+    expect(screen.getByText('simple content')).toBeVisible();
 
-    fireEvent.click(document)
-    expect(screen.queryByText('simple content')).not.toBeInTheDocument()
-    expect(onCloseMock).toHaveBeenCalled()
-  })
-})
+    fireEvent.click(document);
+    expect(screen.queryByText('simple content')).not.toBeInTheDocument();
+    expect(onCloseMock).toHaveBeenCalled();
+  });
+
+  test('arrow', () => {
+    renderWithTheme(
+      <Popover content={SimpleContent} arrow>
+        <Button>Open</Button>
+      </Popover>
+    );
+    const button = screen.getByText('Open');
+    fireEvent.click(button);
+    expect(screen.getByTestId('overlay-arrow')).toBeVisible();
+    fireEvent.click(document);
+    expect(screen.queryByTestId('overlay-arrow')).not.toBeInTheDocument();
+  });
+});

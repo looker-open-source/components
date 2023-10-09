@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-export type LinearPositions = 'overlay' | 'stacked' | 'percent'
+export type LinearPositions = 'overlay' | 'stacked' | 'percent';
 
-export type BarPositions = 'grouped' | 'stacked' | 'percent'
+export type BarPositions = 'grouped' | 'stacked' | 'percent';

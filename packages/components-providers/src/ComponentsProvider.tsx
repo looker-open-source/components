@@ -28,19 +28,19 @@ import {
   generateTheme,
   googleFontUrl,
   theme as defaultTheme,
-} from '@looker/design-tokens'
-import React, { Fragment, useMemo } from 'react'
-import type { ReactNode } from 'react'
-import { HelmetProvider } from 'react-helmet-async'
-import { FocusTrapProvider } from './FocusTrap'
-import { ScrollLockProvider } from './ScrollLock'
-import type { UseI18nProps } from './I18n'
-import { useI18n } from './I18n'
-import type { ThemeProviderProps } from './ThemeProvider'
-import { ThemeProvider } from './ThemeProvider'
-import type { ExtendComponentsTheme } from './ExtendComponentsProvider'
-import { FontFaceLoader } from './FontFaceLoader'
-import { StyleDefender } from './StyleDefender'
+} from '@looker/design-tokens';
+import React, { Fragment, useMemo } from 'react';
+import type { ReactNode } from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import { FocusTrapProvider } from './FocusTrap';
+import { ScrollLockProvider } from './ScrollLock';
+import type { UseI18nProps } from './I18n';
+import { useI18n } from './I18n';
+import type { ThemeProviderProps } from './ThemeProvider';
+import { ThemeProvider } from './ThemeProvider';
+import type { ExtendComponentsTheme } from './ExtendComponentsProvider';
+import { FontFaceLoader } from './FontFaceLoader';
+import { StyleDefender } from './StyleDefender';
 export interface ComponentsProviderProps
   extends ThemeProviderProps,
     ExtendComponentsTheme,
@@ -49,12 +49,12 @@ export interface ComponentsProviderProps
    * Load any font faces specified on theme.fontSources
    * @default true
    */
-  loadFontSources?: boolean
+  loadFontSources?: boolean;
   /**
    * Load fonts from the Google Fonts CDN if not already available
    * @default false
    */
-  loadGoogleFonts?: boolean
+  loadGoogleFonts?: boolean;
 
   /**
    * Disables the "StyleDefender"
@@ -66,8 +66,8 @@ export interface ComponentsProviderProps
    *
    * @default false
    */
-  disableStyleDefender?: boolean
-  children?: ReactNode
+  disableStyleDefender?: boolean;
+  children?: ReactNode;
 }
 
 /**
@@ -100,23 +100,23 @@ export const ComponentsProvider = ({
     const draft = generateTheme(
       props.theme || defaultTheme,
       themeCustomizations
-    )
+    );
 
     if (loadGoogleFonts) {
       draft.fontSources = [
         ...(draft.fontSources || []),
         { url: googleFontUrl(draft) },
-      ]
+      ];
     }
 
-    return draft
-  }, [props.theme, loadGoogleFonts, themeCustomizations])
+    return draft;
+  }, [props.theme, loadGoogleFonts, themeCustomizations]);
 
-  useI18n({ dateLocale, locale, resources })
+  useI18n({ dateLocale, locale, resources });
 
   const ConditionalStyleDefender = disableStyleDefender
     ? Fragment
-    : StyleDefender
+    : StyleDefender;
 
   return (
     <HelmetProvider>
@@ -129,5 +129,5 @@ export const ComponentsProvider = ({
         </ConditionalStyleDefender>
       </ThemeProvider>
     </HelmetProvider>
-  )
-}
+  );
+};

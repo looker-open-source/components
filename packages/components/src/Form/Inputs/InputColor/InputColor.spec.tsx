@@ -24,39 +24,39 @@
 
  */
 
-import 'jest-styled-components'
-import '@testing-library/jest-dom/extend-expect'
-import type { FormEvent } from 'react'
-import React, { useState } from 'react'
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import 'jest-styled-components';
+import '@testing-library/jest-dom/extend-expect';
+import type { ChangeEvent } from 'react';
+import React, { useState } from 'react';
+import { fireEvent, screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
 
-import { Button } from '../../../Button'
-import { InputColor } from './InputColor'
+import { Button } from '../../../Button';
+import { InputColor } from './InputColor';
 
 describe('InputColor', () => {
   test('starts with a named color value', () => {
-    renderWithTheme(<InputColor value="green" />)
-    expect(screen.getByDisplayValue('green')).toBeInTheDocument()
-  })
+    renderWithTheme(<InputColor value="green" />);
+    expect(screen.getByDisplayValue('green')).toBeInTheDocument();
+  });
 
   test('responds to input value change', () => {
-    renderWithTheme(<InputColor value="green" />)
-    const input = screen.getByDisplayValue('green')
-    input.focus()
-    fireEvent.change(input, { target: { value: 'blue' } })
-    expect(screen.getByDisplayValue('blue')).toBeInTheDocument()
-    fireEvent.click(document)
-  })
+    renderWithTheme(<InputColor value="green" />);
+    const input = screen.getByDisplayValue('green');
+    input.focus();
+    fireEvent.change(input, { target: { value: 'blue' } });
+    expect(screen.getByDisplayValue('blue')).toBeInTheDocument();
+    fireEvent.click(document);
+  });
 
   test('with controlled state', () => {
     function Wrapper() {
-      const [value, setValue] = useState('')
+      const [value, setValue] = useState('');
       function handleClick() {
-        setValue('yellow')
+        setValue('yellow');
       }
-      function handleChange(e: FormEvent<HTMLInputElement>) {
-        setValue(e.currentTarget.value)
+      function handleChange(e: ChangeEvent<HTMLInputElement>) {
+        setValue(e.currentTarget.value);
       }
       return (
         <>
@@ -67,61 +67,61 @@ describe('InputColor', () => {
             placeholder="Select a color"
           />
         </>
-      )
+      );
     }
-    renderWithTheme(<Wrapper />)
+    renderWithTheme(<Wrapper />);
 
-    const button = screen.getByText('Turn yellow')
-    const input = screen.getByPlaceholderText('Select a color')
-    expect(input).toHaveValue('')
-    fireEvent.click(button)
-    expect(input).toHaveValue('yellow')
-    fireEvent.change(input, { target: { value: 'purple' } })
-    expect(input).toHaveValue('purple')
+    const button = screen.getByText('Turn yellow');
+    const input = screen.getByPlaceholderText('Select a color');
+    expect(input).toHaveValue('');
+    fireEvent.click(button);
+    expect(input).toHaveValue('yellow');
+    fireEvent.change(input, { target: { value: 'purple' } });
+    expect(input).toHaveValue('purple');
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('opens on swatch click', () => {
-    renderWithTheme(<InputColor value="green" />)
-    fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.getByTestId('color-picker')).toBeInTheDocument()
-    fireEvent.click(document)
-  })
+    renderWithTheme(<InputColor value="green" />);
+    fireEvent.click(screen.getByTestId('swatch'));
+    expect(screen.getByTestId('color-picker')).toBeInTheDocument();
+    fireEvent.click(document);
+  });
 
   test('can receive focus and blur handlers', () => {
-    const onBlur = jest.fn()
-    const onFocus = jest.fn()
+    const onBlur = jest.fn();
+    const onFocus = jest.fn();
     renderWithTheme(
       <InputColor onBlur={onBlur} onFocus={onFocus} value="green" />
-    )
+    );
 
-    const input = screen.getByDisplayValue('green')
+    const input = screen.getByDisplayValue('green');
 
-    input.focus()
-    expect(input).toHaveFocus()
-    expect(onFocus).toHaveBeenCalled()
+    input.focus();
+    expect(input).toHaveFocus();
+    expect(onFocus).toHaveBeenCalled();
 
-    input.blur()
-    expect(input).not.toHaveFocus()
-    expect(onBlur).toHaveBeenCalled()
-  })
+    input.blur();
+    expect(input).not.toHaveFocus();
+    expect(onBlur).toHaveBeenCalled();
+  });
 
   test('changes color on <ColorPicker/> click', () => {
-    renderWithTheme(<InputColor placeholder="Select a color" />)
+    renderWithTheme(<InputColor placeholder="Select a color" />);
     const input = screen.getByPlaceholderText(
       'Select a color'
-    ) as HTMLInputElement
+    ) as HTMLInputElement;
 
-    fireEvent.click(screen.getByTestId('swatch'))
+    fireEvent.click(screen.getByTestId('swatch'));
 
     const lightSaturationPreview = screen.getByTestId(
       'light-saturation-preview'
-    )
+    );
 
-    fireEvent.mouseDown(lightSaturationPreview, { clientX: 0, clientY: 0 })
+    fireEvent.mouseDown(lightSaturationPreview, { clientX: 0, clientY: 0 });
 
-    expect(input.value).toBe('#ffffff')
+    expect(input.value).toBe('#ffffff');
 
     /**
      * Close popover to silence act() warning
@@ -133,29 +133,29 @@ describe('InputColor', () => {
      * fire a mouseDown here, though, since the LightSaturationPreview uses mouse down
      * to the start the color handle movement / dragging.
      */
-    fireEvent.click(document)
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+    fireEvent.click(document);
+  });
 
   // mouseMove doesn't seem to move mouse position; leaving as test.skip( for now
   test.skip('changes color on <ColorPicker/> mouse drag', () => {
-    renderWithTheme(<InputColor placeholder="Select a color" />)
+    renderWithTheme(<InputColor placeholder="Select a color" />);
     const input = screen.getByPlaceholderText(
       'Select a color'
-    ) as HTMLInputElement
+    ) as HTMLInputElement;
 
-    fireEvent.click(screen.getByTestId('swatch'))
+    fireEvent.click(screen.getByTestId('swatch'));
 
     const lightSaturationPreview = screen.getByTestId(
       'light-saturation-preview'
-    )
+    );
 
-    fireEvent.mouseDown(lightSaturationPreview)
+    fireEvent.mouseDown(lightSaturationPreview);
 
-    fireEvent.mouseMove(lightSaturationPreview, { clientX: 200, clientY: 0 })
-    expect(input.value).toBe('#ff0000')
+    fireEvent.mouseMove(lightSaturationPreview, { clientX: 200, clientY: 0 });
+    expect(input.value).toBe('#ff0000');
 
-    fireEvent.mouseUp(lightSaturationPreview)
+    fireEvent.mouseUp(lightSaturationPreview);
 
     /**
      * Close popover to silence act() warning
@@ -167,36 +167,36 @@ describe('InputColor', () => {
      * fire a mouseDown here, though, since the LightSaturationPreview uses mouse down
      * to the start the color handle movement / dragging.
      */
-    fireEvent.click(document)
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+    fireEvent.click(document);
+  });
 
   test('disabled', () => {
-    renderWithTheme(<InputColor disabled value="green" />)
+    renderWithTheme(<InputColor disabled value="green" />);
 
     // Find input, verify it's disabled
-    expect(screen.getByRole('textbox')).toBeDisabled()
+    expect(screen.getByRole('textbox')).toBeDisabled();
 
     // Find swatch, verify clicking doesn't open Popover
-    fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
-  })
+    fireEvent.click(screen.getByTestId('swatch'));
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument();
+  });
 
   test('readOnly', () => {
-    renderWithTheme(<InputColor readOnly value="green" />)
+    renderWithTheme(<InputColor readOnly value="green" />);
 
     // Find input, verify it's readOnly
-    expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
+    expect(screen.getByRole('textbox')).toHaveAttribute('readonly');
 
     // Find swatch, verify clicking doesn't open Popover
-    fireEvent.click(screen.getByTestId('swatch'))
-    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument()
-  })
+    fireEvent.click(screen.getByTestId('swatch'));
+    expect(screen.queryByTestId('color-picker')).not.toBeInTheDocument();
+  });
 
   test('clear value', () => {
-    const onChangeMock = jest.fn()
-    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />)
-    fireEvent.change(screen.getByRole('textbox'), { target: { value: '' } })
+    const onChangeMock = jest.fn();
+    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />);
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: '' } });
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
@@ -212,15 +212,15 @@ describe('InputColor', () => {
           },
         ],
       ]
-    `)
+    `);
 
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('clear value with button', () => {
-    const onChangeMock = jest.fn()
-    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />)
-    fireEvent.click(screen.getByRole('button'))
+    const onChangeMock = jest.fn();
+    renderWithTheme(<InputColor value="green" onChange={onChangeMock} />);
+    fireEvent.click(screen.getByRole('button'));
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
@@ -236,6 +236,6 @@ describe('InputColor', () => {
           },
         ],
       ]
-    `)
-  })
-})
+    `);
+  });
+});

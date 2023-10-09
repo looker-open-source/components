@@ -24,33 +24,33 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
-    ' complete': ' completa',
+    ' complete': ' completato',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'fa',
-    'from now': 'da ora',
+    'from now': 'da adesso',
     'is any time': 'è in qualsiasi momento',
-    'is before': 'è prima di',
+    'is before': 'è precedente a',
     'is day': 'è {{day}}',
     'is from dateTimeStart until dateTimeEnd':
       'è dal giorno {{dateTimeStart}} fino al giorno {{dateTimeEnd}}',
-    'is in month year': 'è a {{month}} {{year}}',
-    'is in the last': 'è nell’ultimo {{describeInterval}}',
+    'is in month year': 'è in {{month}} {{year}}',
+    'is in the last': "è nell'ultimo {{describeInterval}}",
     'is in the year year': "è nell'anno {{year}}",
     'is interval ago': 'è {{interval}} fa',
     'is intervalStart intervalType for intervalEnd':
       'è {{intervalStart}} {{intervalType}} per {{intervalEnd}}',
-    'is not null': 'non è zero',
+    'is not null': 'non è null',
     'is on dateTime': 'è il giorno {{dateTime}}',
-    'is on or after': 'è il o dopo il',
-    'is previous unitLabel': 'è precedente {{unitLabel}}',
+    'is on or after': 'è in questa data o dopo',
+    'is previous unitLabel': 'è {{unitLabel}} precedente',
     'is type unitLabel': 'è {{type}} {{unitLabel}}',
-    next: 'avanti',
+    next: 'successivo',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
-    'prefix now': '{{prefix}} ora',
+    'prefix now': '{{prefix}} adesso',
     this: 'questo',
     'this startInterval to endInterval':
       'questo {{startInterval}} fino a {{endInterval}}',
@@ -64,11 +64,11 @@ const resources = {
     'is value': 'è {{value}}',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} a {{coords2}}',
+    'coords1 to coords2': 'Da {{coords1}} a {{coords2}}',
     'distance unit from lat, lon': '{{distance}} {{unit}} da {{lat}}, {{lon}}',
     'is anywhere': 'è ovunque',
-    'is not null': 'non è zero',
-    'is null': 'è zero',
+    'is not null': 'non è null',
+    'is null': 'è null',
     'lat degrees north': '{{lat}}°N',
     'lat degrees south': '{{lat}}°S',
     'lon degrees east': '{{lon}}°E',
@@ -94,18 +94,18 @@ const resources = {
     miles: 'miglia',
   },
   get_months: {
-    April: 'Aprile',
-    August: 'Agosto',
-    December: 'Dicembre',
-    February: 'Febbraio',
-    January: 'Gennaio',
-    July: 'Luglio',
-    June: 'Giugno',
-    March: 'Marzo',
-    May: 'Maggio',
-    November: 'Novembre',
-    October: 'Ottobre',
-    September: 'Settembre',
+    April: 'aprile',
+    August: 'agosto',
+    December: 'dicembre',
+    February: 'febbraio',
+    January: 'gennaio',
+    July: 'luglio',
+    June: 'giugno',
+    March: 'marzo',
+    May: 'mag',
+    November: 'novembre',
+    October: 'ottobre',
+    September: 'settembre',
   },
   get_unit_label: {
     'complete day': 'giorno completo',
@@ -150,11 +150,11 @@ const resources = {
     years: 'anni',
   },
   join_or: {
-    'a or b': '{{a}} oppure {{b}}',
+    'a or b': '{{a}} o {{b}}',
   },
   summary: {
     'Value required': 'Valore obbligatorio',
   },
-}
+};
 
-export const itIT = mergeLocaleObjects([], 'it-IT', resources)
+export const itIT = mergeLocaleObjects([], 'it-IT', resources);

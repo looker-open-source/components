@@ -24,27 +24,31 @@
 
  */
 
-import React, { useRef } from 'react'
-import type { FC } from 'react'
-import type { TableProps, CTableSeries } from '@looker/visualizations-adapters'
+import React, { useRef } from 'react';
+import type { FC } from 'react';
+import type { TableProps, CTableSeries } from '@looker/visualizations-adapters';
 import {
   getSeriesMax,
   getSeriesMin,
   DEFAULT_HEIGHT,
   DEFAULT_EMPTY_FIELDS,
-} from '@looker/visualizations-adapters'
-import { flexRender } from '@tanstack/react-table'
-import styled, { css } from 'styled-components'
-import { IconButton, Truncate, Box, Grid } from '@looker/components'
-import { useHeadlessTable, useVirtual } from '../hooks'
-import { useTranslation, getSortAssets, normalizeHeaderColumns } from '../utils'
-import { CellVisualization } from '../CellVisualization'
-import { ColumnTotals } from '../ColumnTotals'
-import { TableCell } from '../TableCell'
-import { TableHeadCell } from '../TableHeadCell'
+} from '@looker/visualizations-adapters';
+import { flexRender } from '@tanstack/react-table';
+import styled, { css } from 'styled-components';
+import { IconButton, Truncate, Box, Grid } from '@looker/components';
+import { useHeadlessTable, useVirtual } from '../hooks';
+import {
+  useTranslation,
+  getSortAssets,
+  normalizeHeaderColumns,
+} from '../utils';
+import { CellVisualization } from '../CellVisualization';
+import { ColumnTotals } from '../ColumnTotals';
+import { TableCell } from '../TableCell';
+import { TableHeadCell } from '../TableHeadCell';
 
-import numeral from 'numeral'
-import get from 'lodash/get'
+import numeral from 'numeral';
+import get from 'lodash/get';
 
 export const Table = ({
   config = { column_order: [], show_row_numbers: true, type: 'table' },
@@ -56,26 +60,26 @@ export const Table = ({
   totals,
   defaultRowHeight,
 }: TableProps) => {
-  const { t } = useTranslation('Table')
+  const { t } = useTranslation('Table');
 
-  const scrollContainer = useRef<HTMLDivElement>(null)
+  const scrollContainer = useRef<HTMLDivElement>(null);
 
   const { table, sorting, handleTableSort } = useHeadlessTable({
     data,
     config,
     fields,
     pivots,
-  })
+  });
 
-  const tableRows = table.getRowModel().rows
+  const tableRows = table.getRowModel().rows;
 
-  const dataToVirtualize = tableRows.map(row => row.getVisibleCells())
+  const dataToVirtualize = tableRows.map(row => row.getVisibleCells());
 
   const virtualizerAssets = useVirtual({
     data: dataToVirtualize,
     scrollContainer,
     defaultRowHeight,
-  })
+  });
 
   const {
     virtualRows,
@@ -84,26 +88,26 @@ export const Table = ({
     OffsetBottom,
     OffsetLeft,
     OffsetRight,
-  } = virtualizerAssets
+  } = virtualizerAssets;
 
   const {
     series = {},
     show_row_numbers,
     truncate_text,
     truncate_header,
-  } = config
+  } = config;
 
   const seriesMinMax = Object.fromEntries(
     fields.measures.map(({ name }) => {
-      const min = getSeriesMin(name, data)
-      const max = getSeriesMax(name, data)
-      return [name, { min, max }]
+      const min = getSeriesMin(name, data);
+      const max = getSeriesMax(name, data);
+      return [name, { min, max }];
     })
-  )
+  );
 
-  const headerGroups = normalizeHeaderColumns(table)
+  const headerGroups = normalizeHeaderColumns(table);
 
-  const rowNumWidth = String(data.length).length * 10
+  const rowNumWidth = String(data.length).length * 10;
 
   return (
     <ScrollWrapper width={width} height={height} ref={scrollContainer}>
@@ -122,19 +126,19 @@ export const Table = ({
 
                 {virtualColumns.map(
                   ({ index: columnIndex, measureElement, size }) => {
-                    const header = headerGroup.headers[columnIndex]
+                    const header = headerGroup.headers[columnIndex];
 
                     if (header) {
-                      const { header: headerContent } = header.column.columnDef
+                      const { header: headerContent } = header.column.columnDef;
 
                       const columnSortState = sorting.find(
                         s => s.id === header.id
-                      )
+                      );
 
                       const { SortIcon, sortText, ariaSort } = getSortAssets(
                         t,
                         columnSortState
-                      )
+                      );
 
                       return (
                         <TableHeadCell
@@ -166,22 +170,22 @@ export const Table = ({
                             )}
                           </TableHeadLayout>
                         </TableHeadCell>
-                      )
+                      );
                     } else {
-                      return null
+                      return null;
                     }
                   }
                 )}
 
                 <OffsetRight as="th" />
               </tr>
-            )
+            );
           })}
         </THead>
         <TBody>
           <OffsetTop />
           {virtualRows.map(({ index: rowIndex, measureElement, size }) => {
-            const tableRow = tableRows[rowIndex]
+            const tableRow = tableRows[rowIndex];
 
             return (
               <TableRow key={tableRow.id} ref={measureElement} height={size}>
@@ -193,27 +197,27 @@ export const Table = ({
 
                 {virtualColumns.map(({ index: columnIndex }) => {
                   const { column, getContext, ...cell } =
-                    dataToVirtualize[rowIndex][columnIndex]
+                    dataToVirtualize[rowIndex][columnIndex];
 
                   const measureIndex = fields.measures.findIndex(
                     m => m.name === column.id
-                  )
+                  );
                   const columnConfig: CTableSeries = Array.isArray(series)
                     ? series[measureIndex]
-                    : series[column.id]
+                    : series[column.id];
 
-                  const { cell: cellContent } = column.columnDef
+                  const { cell: cellContent } = column.columnDef;
 
                   const { max, min } = seriesMinMax?.[column.id] || {
                     max: Infinity,
                     min: 0,
-                  }
+                  };
 
                   const valueFormat = Array.isArray(series)
                     ? get(series, [measureIndex, 'value_format'])
-                    : get(series, [column.id, 'value_format'])
+                    : get(series, [column.id, 'value_format']);
 
-                  const CellValue = cell.getValue()
+                  const CellValue = cell.getValue();
 
                   return (
                     <TableCell key={cell.id}>
@@ -239,10 +243,10 @@ export const Table = ({
                         </CellContentLayout>
                       )}
                     </TableCell>
-                  )
+                  );
                 })}
               </TableRow>
-            )
+            );
           })}
           <OffsetBottom />
         </TBody>
@@ -257,8 +261,8 @@ export const Table = ({
         </TFoot>
       </TableElement>
     </ScrollWrapper>
-  )
-}
+  );
+};
 
 /**
  * Truncate table body content when truncateText is true
@@ -273,7 +277,7 @@ const CellContentWrapper: FC<{ truncateText: boolean }> = ({
     </Grid>
   ) : (
     <>{children}</>
-  )
+  );
 
 /**
  * Truncate header text when truncateHeader is true
@@ -281,40 +285,40 @@ const CellContentWrapper: FC<{ truncateText: boolean }> = ({
 const HeaderContentWrapper: FC<{ truncateHeader: boolean }> = ({
   truncateHeader,
   ...props
-}) => (truncateHeader ? <Truncate {...props} /> : <Box {...props} />)
+}) => (truncateHeader ? <Truncate {...props} /> : <Box {...props} />);
 
 const PlaceholderElement = styled.div.attrs<{ width?: number }>(
   ({ width }) => ({ style: { minWidth: width } })
-)<{ width?: number }>``
+)<{ width?: number }>``;
 
 const ScrollWrapper = styled.div<{ width?: number; height: number }>`
   max-height: ${({ height }) => `${height}px`};
   overflow: auto;
   max-width: ${({ width }) => (width ? `${width}px` : `100%`)};
   position: relative;
-`
+`;
 
 const TableElement = styled.table`
   width: 100%;
   color: ${({ theme }) => theme.colors.text5};
   font-family: ${({ theme }) => theme.fonts.body};
-`
+`;
 
 const THead = styled.thead`
   top: 0;
   position: sticky;
   z-index: 1;
-`
+`;
 
 const TFoot = styled.tfoot`
   position: sticky;
   bottom: 0px;
-`
+`;
 
 const TBody = styled.tbody`
   position: relative;
   z-index: 0;
-`
+`;
 
 const TableRow = styled.tr.attrs<{ height?: number }>(({ height }) => ({
   height,
@@ -329,13 +333,13 @@ const TableRow = styled.tr.attrs<{ height?: number }>(({ height }) => ({
       background-color: ${({ theme }) => theme.colors.background};
     }
   }
-`
+`;
 
 const CellContentLayout = styled.div`
   align-items: center;
   display: flex;
   gap: ${({ theme }) => theme.space.xxsmall};
-`
+`;
 
 const TableHeadLayout = styled.div.attrs<{ width?: number }>(({ width }) => ({
   style: { minWidth: width },
@@ -358,4 +362,4 @@ const TableHeadLayout = styled.div.attrs<{ width?: number }>(({ width }) => ({
       visibility: visible;
     }
   }
-`
+`;

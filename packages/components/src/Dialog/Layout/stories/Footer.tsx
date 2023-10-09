@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, DialogLayout } from '../../..'
+import React from 'react';
+import { Box, DialogLayout } from '../../..';
 
 export default function Footer() {
   return (
@@ -16,5 +16,5 @@ export default function Footer() {
         scrambled it to make a type specimen book.
       </DialogLayout>
     </Box>
-  )
+  );
 }

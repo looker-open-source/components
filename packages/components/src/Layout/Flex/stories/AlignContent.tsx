@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function AlignContent() {
   return (
@@ -62,5 +62,5 @@ export default function AlignContent() {
         </Flex>
       </Flex>
     </>
-  )
+  );
 }

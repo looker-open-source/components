@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import styled from 'styled-components'
-import { Code, Table } from '../../../src'
+import styled from 'styled-components';
+import { Code, Table } from '../../../src';
 
 export const DocTable = styled(Table)`
   font-size: ${({ theme }) => theme.fontSizes.small};
@@ -12,4 +12,4 @@ export const DocTable = styled(Table)`
   ${Code} {
     color: ${({ theme }) => theme.colors.key};
   }
-`
+`;

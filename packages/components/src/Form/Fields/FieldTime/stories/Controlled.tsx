@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { SpaceVertical, Paragraph, Space, Button } from '../../../../'
-import { FieldTime } from '..'
+import React, { useState } from 'react';
+import { SpaceVertical, Paragraph, Space, Button } from '../../../../';
+import { FieldTime } from '..';
 
 export default function Controlled() {
   const [controlledTime, setControlledTime] = useState<string | undefined>(
     '12:00'
-  )
+  );
   return (
     <SpaceVertical>
       <Paragraph>Selected: {controlledTime}</Paragraph>
@@ -18,21 +18,21 @@ export default function Controlled() {
       <Space>
         <Button
           onClick={() => {
-            setControlledTime('14:00')
+            setControlledTime('14:00');
           }}
         >
           2:00pm
         </Button>
         <Button
           onClick={() => {
-            setControlledTime('15:15')
+            setControlledTime('15:15');
           }}
         >
           3:15pm
         </Button>
         <Button
           onClick={() => {
-            setControlledTime('16:32')
+            setControlledTime('16:32');
           }}
         >
           4:32pm
@@ -45,5 +45,5 @@ export default function Controlled() {
         onChange={setControlledTime}
       />
     </SpaceVertical>
-  )
+  );
 }

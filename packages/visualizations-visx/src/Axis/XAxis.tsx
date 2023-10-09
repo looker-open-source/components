@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import {
   Axis,
   ThemeContext as VisxThemeContext,
   DataContext,
-} from '@visx/xychart'
-import type { XAxisProps } from './types'
-import { Tick } from './Tick'
+} from '@visx/xychart';
+import type { XAxisProps } from './types';
+import { Tick } from './Tick';
 
 export const XAxis = ({
   fields,
@@ -22,10 +22,10 @@ export const XAxis = ({
   tickSpace,
   valueFormat,
 }: XAxisProps) => {
-  const visxTheme = useContext(VisxThemeContext)
-  const { width = 0 } = useContext(DataContext)
+  const visxTheme = useContext(VisxThemeContext);
+  const { width = 0 } = useContext(DataContext);
 
-  const numTicks = Math.floor(width / tickSpace)
+  const numTicks = Math.floor(width / tickSpace);
 
   return (
     <Axis
@@ -48,5 +48,5 @@ export const XAxis = ({
         textAnchor: tickTextAnchor,
       })}
     />
-  )
-}
+  );
+};

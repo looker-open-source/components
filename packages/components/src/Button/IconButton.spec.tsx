@@ -24,52 +24,52 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
-import { ComponentsProvider } from '@looker/components-providers'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Favorite } from '@styled-icons/material'
-import { act, fireEvent, screen } from '@testing-library/react'
-import { Tooltip } from '../Tooltip'
-import { IconButton } from './IconButton'
+import 'jest-styled-components';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { ComponentsProvider } from '@looker/components-providers';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Favorite } from '@styled-icons/material';
+import { act, fireEvent, screen } from '@testing-library/react';
+import { Tooltip } from '../Tooltip';
+import { IconButton } from './IconButton';
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('IconButton', () => {
   test('toggle applies aria-pressed', () => {
-    renderWithTheme(<IconButton label="Test" icon={<Favorite />} toggle />)
-    const button = screen.getByRole('button')
-    expect(button).toHaveAttribute('aria-pressed')
-  })
+    renderWithTheme(<IconButton label="Test" icon={<Favorite />} toggle />);
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-pressed');
+  });
 
   test('aria-pressed not present without toggle', () => {
-    renderWithTheme(<IconButton label="Test" icon={<Favorite />} />)
-    const button = screen.getByRole('button')
-    expect(button).not.toHaveAttribute('aria-pressed')
-  })
+    renderWithTheme(<IconButton label="Test" icon={<Favorite />} />);
+    const button = screen.getByRole('button');
+    expect(button).not.toHaveAttribute('aria-pressed');
+  });
 
   test('allows for ARIA attributes', () => {
     renderWithTheme(
       <IconButton label="Test" icon={<Favorite />} aria-haspopup />
-    )
-    const button = screen.getByRole('button')
-    expect(button).toHaveAttribute('aria-haspopup')
-  })
+    );
+    const button = screen.getByRole('button');
+    expect(button).toHaveAttribute('aria-haspopup');
+  });
 
   test('accepts events', async () => {
-    const fauxMouseEnter = jest.fn()
-    const fauxClick = jest.fn()
+    const fauxMouseEnter = jest.fn();
+    const fauxClick = jest.fn();
 
     renderWithTheme(
       <IconButton
@@ -78,40 +78,40 @@ describe('IconButton', () => {
         onMouseEnter={fauxMouseEnter}
         onClick={fauxClick}
       />
-    )
+    );
 
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button');
 
-    fireEvent.mouseOver(button)
-    expect(fauxMouseEnter).toHaveBeenCalledTimes(1)
-    fireEvent.mouseOut(button)
-    runTimers()
+    fireEvent.mouseOver(button);
+    expect(fauxMouseEnter).toHaveBeenCalledTimes(1);
+    fireEvent.mouseOut(button);
+    runTimers();
 
-    fireEvent.click(button)
-    expect(fauxClick).toHaveBeenCalledTimes(1)
-  })
+    fireEvent.click(button);
+    expect(fauxClick).toHaveBeenCalledTimes(1);
+  });
 
   test('has built-in tooltip', async () => {
-    const label = 'Mark as my Favorite'
-    renderWithTheme(<IconButton label={label} icon={<Favorite />} />)
+    const label = 'Mark as my Favorite';
+    renderWithTheme(<IconButton label={label} icon={<Favorite />} />);
 
-    const notTooltip = screen.getByText(label)
-    expect(notTooltip).toBeInTheDocument() // accessibility text
+    const notTooltip = screen.getByText(label);
+    expect(notTooltip).toBeInTheDocument(); // accessibility text
 
-    const icon = screen.getByText(label)
-    fireEvent.mouseOver(icon)
-    runTimers()
+    const icon = screen.getByText(label);
+    fireEvent.mouseOver(icon);
+    runTimers();
 
-    const tooltip = screen.getAllByText(label)
-    expect(tooltip).toHaveLength(2)
-    expect(tooltip[1]).toBeVisible()
+    const tooltip = screen.getAllByText(label);
+    expect(tooltip).toHaveLength(2);
+    expect(tooltip[1]).toBeVisible();
 
-    fireEvent.mouseOut(icon)
-    runTimers()
-  })
+    fireEvent.mouseOut(icon);
+    runTimers();
+  });
 
   test('tooltipDisabled actually disables tooltip', () => {
-    const label = 'Mark as my Favorite'
+    const label = 'Mark as my Favorite';
     renderWithTheme(
       <IconButton
         id="test-iconButton"
@@ -119,43 +119,43 @@ describe('IconButton', () => {
         label={label}
         icon={<Favorite />}
       />
-    )
+    );
 
-    fireEvent.mouseOver(screen.getAllByText(label)[0])
-    runTimers()
+    fireEvent.mouseOver(screen.getAllByText(label)[0]);
+    runTimers();
 
     // Get Tooltip content
-    const notTooltip = screen.queryAllByText(label)
-    expect(notTooltip.length).toEqual(1)
-  })
+    const notTooltip = screen.queryAllByText(label);
+    expect(notTooltip.length).toEqual(1);
+  });
 
   test('built-in tooltip defers to outer tooltip', async () => {
-    const tooltip = 'Add to favorites'
-    const label = 'Mark as my Favorite'
+    const tooltip = 'Add to favorites';
+    const label = 'Mark as my Favorite';
     renderWithTheme(
       <Tooltip content={tooltip}>
         <IconButton label={label} icon={<Favorite />} />
       </Tooltip>
-    )
+    );
 
-    const button = screen.getByRole('button')
-    fireEvent.mouseOver(button)
-    runTimers()
+    const button = screen.getByRole('button');
+    fireEvent.mouseOver(button);
+    runTimers();
 
-    expect(screen.getByText(tooltip)).toBeInTheDocument()
+    expect(screen.getByText(tooltip)).toBeInTheDocument();
 
-    const iconLabel = screen.getByText(label)
-    expect(iconLabel).toBeInTheDocument()
+    const iconLabel = screen.getByText(label);
+    expect(iconLabel).toBeInTheDocument();
 
-    const tooltipContents = screen.getByText(tooltip) // Get all Tooltip contents
-    expect(tooltipContents).toBeVisible()
+    const tooltipContents = screen.getByText(tooltip); // Get all Tooltip contents
+    expect(tooltipContents).toBeVisible();
 
-    fireEvent.mouseOut(button)
-    runTimers()
-  })
+    fireEvent.mouseOut(button);
+    runTimers();
+  });
 
   test('built-in tooltip respects text-align, width props', async () => {
-    const label = 'Mark as my Favorite'
+    const label = 'Mark as my Favorite';
     renderWithTheme(
       <IconButton
         tooltipWidth="4rem"
@@ -163,28 +163,28 @@ describe('IconButton', () => {
         label={label}
         icon={<Favorite />}
       />
-    )
+    );
 
-    const trigger = screen.getByText(label)
-    fireEvent.mouseOver(trigger)
-    runTimers()
+    const trigger = screen.getByText(label);
+    fireEvent.mouseOver(trigger);
+    runTimers();
 
-    const tooltip = screen.queryAllByText(label)
-    expect(tooltip[0]).toBeVisible()
-    expect(tooltip[0]).toHaveStyleRule('max-width', '4rem')
-    expect(tooltip[0]).toHaveStyleRule('text-align', 'right')
+    const tooltip = screen.queryAllByText(label);
+    expect(tooltip[0]).toBeVisible();
+    expect(tooltip[0]).toHaveStyleRule('max-width', '4rem');
+    expect(tooltip[0]).toHaveStyleRule('text-align', 'right');
 
-    fireEvent.mouseOut(trigger)
-    runTimers()
-  })
+    fireEvent.mouseOut(trigger);
+    runTimers();
+  });
 
   test('toggleBackground renders a background', () => {
     renderWithTheme(
       <IconButton label="Test" toggle toggleBackground icon={<Favorite />} />
-    )
-    const button = screen.getByRole('button')
-    expect(button).toHaveStyle('background-color: #F3F2FF;')
-  })
+    );
+    const button = screen.getByRole('button');
+    expect(button).toHaveStyle('background-color: #F3F2FF;');
+  });
 
   test('toggleBackground with shape renders a round background', () => {
     renderWithTheme(
@@ -195,12 +195,12 @@ describe('IconButton', () => {
         toggle
         toggleBackground
       />
-    )
-    const button = screen.getByRole('button')
-    expect(button).toHaveStyle('background-color: #F3F2FF;')
-    expect(button).toHaveStyle('border-radius: 100%;')
-    expect(button).toHaveStyle('color: #6c43e0;')
-  })
+    );
+    const button = screen.getByRole('button');
+    expect(button).toHaveStyle('background-color: #F3F2FF;');
+    expect(button).toHaveStyle('border-radius: 100%;');
+    expect(button).toHaveStyle('color: #6c43e0;');
+  });
 
   test('toggleColor', () => {
     renderWithTheme(
@@ -211,11 +211,11 @@ describe('IconButton', () => {
         toggleColor="calculation"
         icon={<Favorite />}
       />
-    )
-    const button = screen.getByRole('button')
-    expect(button).toHaveStyle('background-color: #eaf4e8;')
-    expect(button).toHaveStyle('color: #319220;')
-  })
+    );
+    const button = screen.getByRole('button');
+    expect(button).toHaveStyle('background-color: #eaf4e8;');
+    expect(button).toHaveStyle('color: #319220;');
+  });
 
   test('toggleColor + :active', () => {
     renderWithTheme(
@@ -226,47 +226,47 @@ describe('IconButton', () => {
         toggle
         toggleColor="calculation"
       />
-    )
-    const button = screen.getByRole('button')
-    expect(button).toHaveStyle('color: #319220')
-  })
+    );
+    const button = screen.getByRole('button');
+    expect(button).toHaveStyle('color: #319220');
+  });
 
   describe('ripple effect', () => {
     test('default', () => {
-      renderWithTheme(<IconButton icon={<Favorite />} label="Test" />)
+      renderWithTheme(<IconButton icon={<Favorite />} label="Test" />);
 
-      const button = screen.getByRole('button')
-      expect(button).not.toHaveClass('bg-on fg-in')
+      const button = screen.getByRole('button');
+      expect(button).not.toHaveClass('bg-on fg-in');
       expect(button).toHaveStyle({
         '--ripple-color': '#71767a',
         '--ripple-scale-end': '1',
         '--ripple-scale-start': '0.1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
-      })
+      });
 
-      fireEvent.focus(button)
-      expect(button).toHaveClass('bg-on')
+      fireEvent.focus(button);
+      expect(button).toHaveClass('bg-on');
 
-      fireEvent.mouseDown(button)
-      expect(button).toHaveClass('bg-on fg-in')
+      fireEvent.mouseDown(button);
+      expect(button).toHaveClass('bg-on fg-in');
 
       // foreground is locked for a minimum time to animate the ripple
-      fireEvent.mouseUp(button)
-      runTimers()
-      expect(button).toHaveClass('bg-on fg-out')
-      runTimers()
-      expect(button).toHaveClass('bg-on')
+      fireEvent.mouseUp(button);
+      runTimers();
+      expect(button).toHaveClass('bg-on fg-out');
+      runTimers();
+      expect(button).toHaveClass('bg-on');
 
-      fireEvent.blur(button)
-      expect(button).not.toHaveClass('bg-on fg-in')
-    })
+      fireEvent.blur(button);
+      expect(button).not.toHaveClass('bg-on fg-in');
+    });
     test('toggle', () => {
-      renderWithTheme(<IconButton icon={<Favorite />} label="Test" toggle />)
+      renderWithTheme(<IconButton icon={<Favorite />} label="Test" toggle />);
 
-      const button = screen.getByRole('button')
-      expect(button).toHaveStyle({ '--ripple-color': '#6C43E0' })
-    })
+      const button = screen.getByRole('button');
+      expect(button).toHaveStyle({ '--ripple-color': '#6C43E0' });
+    });
 
     test('toggleColor', () => {
       renderWithTheme(
@@ -276,17 +276,17 @@ describe('IconButton', () => {
           toggle
           toggleColor="measure"
         />
-      )
+      );
 
-      const button = screen.getByRole('button')
-      expect(button).toHaveStyle({ '--ripple-color': '#C2772E' })
-    })
+      const button = screen.getByRole('button');
+      expect(button).toHaveStyle({ '--ripple-color': '#C2772E' });
+    });
 
     test('square', () => {
       // square shape should trigger the "bounded" styles, which need measurement
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       const globalGetBoundingClientRect =
-        Element.prototype.getBoundingClientRect
+        Element.prototype.getBoundingClientRect;
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
       Element.prototype.getBoundingClientRect = jest.fn(() => {
         return {
@@ -299,24 +299,24 @@ describe('IconButton', () => {
           width: 360,
           x: 0,
           y: 0,
-        }
-      })
+        };
+      });
       renderWithTheme(
         <IconButton icon={<Favorite />} label="Test" shape="square" />
-      )
+      );
 
-      const button = screen.getByRole('button')
+      const button = screen.getByRole('button');
       expect(button).toHaveStyle({
         '--ripple-color': '#71767a',
         '--ripple-scale-end': '1.414',
         '--ripple-scale-start': '0.1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
-      })
+      });
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
-      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-    })
-  })
+      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect;
+    });
+  });
 
   test('No useLayoutEffect warning', () => {
     // A React warning would cause the test to fail
@@ -324,6 +324,6 @@ describe('IconButton', () => {
       <ComponentsProvider>
         <IconButton icon={<Favorite />} label="Test" />
       </ComponentsProvider>
-    )
-  })
-})
+    );
+  });
+});

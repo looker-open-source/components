@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
+import type { VisWrapperProps } from '../VisWrapper';
 import type {
   ChartLayoutProps,
   SDKRecord,
@@ -11,20 +11,20 @@ import type {
   BarPositions,
   SupportedChartTypes,
   Fields,
-} from '../types'
+} from '../types';
 
 export type BarProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    config: CBar
-    fields: Fields
-  }
+    data: SDKRecord[];
+    config: CBar;
+    fields: Fields;
+  };
 
 export type BarBaseOptions = {
-  positioning?: BarPositions
-}
+  positioning?: BarPositions;
+};
 
 export type CBar = {
-  type?: SupportedChartTypes['bar']
+  type?: SupportedChartTypes['bar'];
 } & BarBaseOptions &
-  CommonCartesianProperties
+  CommonCartesianProperties;

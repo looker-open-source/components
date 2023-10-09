@@ -3,33 +3,33 @@
  * SPDX-License-Identifier: MIT
  */
 
-import arSA from 'date-fns/locale/ar-SA'
-import cs from 'date-fns/locale/cs'
-import da from 'date-fns/locale/da'
-import de from 'date-fns/locale/de'
-import enUS from 'date-fns/locale/en-US'
-import es from 'date-fns/locale/es'
-import fi from 'date-fns/locale/fi'
-import frCA from 'date-fns/locale/fr-CA'
-import fr from 'date-fns/locale/fr'
-import he from 'date-fns/locale/he'
-import hi from 'date-fns/locale/hi'
-import it from 'date-fns/locale/it'
-import ja from 'date-fns/locale/ja'
-import ko from 'date-fns/locale/ko'
-import lt from 'date-fns/locale/lt'
-import nb from 'date-fns/locale/nb'
-import nl from 'date-fns/locale/nl'
-import pl from 'date-fns/locale/pl'
-import ptBR from 'date-fns/locale/pt-BR'
-import pt from 'date-fns/locale/pt'
-import ru from 'date-fns/locale/ru'
-import sv from 'date-fns/locale/sv'
-import th from 'date-fns/locale/th'
-import tr from 'date-fns/locale/tr'
-import uk from 'date-fns/locale/uk'
-import zhCN from 'date-fns/locale/zh-CN'
-import zhTW from 'date-fns/locale/zh-TW'
+import arSA from 'date-fns/locale/ar-SA';
+import cs from 'date-fns/locale/cs';
+import da from 'date-fns/locale/da';
+import de from 'date-fns/locale/de';
+import enUS from 'date-fns/locale/en-US';
+import es from 'date-fns/locale/es';
+import fi from 'date-fns/locale/fi';
+import frCA from 'date-fns/locale/fr-CA';
+import fr from 'date-fns/locale/fr';
+import he from 'date-fns/locale/he';
+import hi from 'date-fns/locale/hi';
+import it from 'date-fns/locale/it';
+import ja from 'date-fns/locale/ja';
+import ko from 'date-fns/locale/ko';
+import lt from 'date-fns/locale/lt';
+import nb from 'date-fns/locale/nb';
+import nl from 'date-fns/locale/nl';
+import pl from 'date-fns/locale/pl';
+import ptBR from 'date-fns/locale/pt-BR';
+import pt from 'date-fns/locale/pt';
+import ru from 'date-fns/locale/ru';
+import sv from 'date-fns/locale/sv';
+import th from 'date-fns/locale/th';
+import tr from 'date-fns/locale/tr';
+import uk from 'date-fns/locale/uk';
+import zhCN from 'date-fns/locale/zh-CN';
+import zhTW from 'date-fns/locale/zh-TW';
 
 export const dateFnLocaleMap = {
   'ar-SA': arSA,
@@ -59,18 +59,18 @@ export const dateFnLocaleMap = {
   'uk-UA': uk,
   'zh-CN': zhCN,
   'zh-TW': zhTW,
-} as const
+} as const;
 
-export type LocaleCodes = keyof typeof dateFnLocaleMap
+export type LocaleCodes = keyof typeof dateFnLocaleMap;
 
 const isLocaleCode = (str: string): str is LocaleCodes => {
-  return str in dateFnLocaleMap
-}
+  return str in dateFnLocaleMap;
+};
 
 /**
  * Get date-fns locale from locale string
  * If possible, import locale directly from date-fns to save bundle size
  */
 export const getLocale = (locale: string) => {
-  return isLocaleCode(locale) ? dateFnLocaleMap[locale] : enUS
-}
+  return isLocaleCode(locale) ? dateFnLocaleMap[locale] : enUS;
+};

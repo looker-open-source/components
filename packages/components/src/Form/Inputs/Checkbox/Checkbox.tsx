@@ -24,14 +24,14 @@
 
  */
 
-import isUndefined from 'lodash/isUndefined'
-import noop from 'lodash/noop'
-import pick from 'lodash/pick'
-import type { Ref, FormEvent } from 'react'
-import React, { forwardRef, useState, useEffect } from 'react'
-import styled from 'styled-components'
-import type { SpaceProps } from '@looker/design-tokens'
-import { reset, space } from '@looker/design-tokens'
+import isUndefined from 'lodash/isUndefined';
+import noop from 'lodash/noop';
+import pick from 'lodash/pick';
+import type { ChangeEvent, Ref, MouseEvent } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
+import styled from 'styled-components';
+import type { SpaceProps } from '@looker/design-tokens';
+import { reset, space } from '@looker/design-tokens';
 import {
   inputRippleColor,
   RIPPLE_RATIO,
@@ -39,20 +39,20 @@ import {
   rippleStyle,
   useRipple,
   useRippleHandlers,
-} from '../../../Ripple'
-import type { InputProps } from '../InputProps'
-import { pickInputProps } from '../InputProps'
+} from '../../../Ripple';
+import type { InputProps } from '../InputProps';
+import { pickInputProps } from '../InputProps';
 
-import { CheckMark } from './CheckMark'
-import { CheckMarkMixed } from './CheckMarkMixed'
-import { FauxCheckbox } from './FauxCheckbox'
+import { CheckMark } from './CheckMark';
+import { CheckMarkMixed } from './CheckMarkMixed';
+import { FauxCheckbox } from './FauxCheckbox';
 
-export type MixedBoolean = true | false | 'mixed'
+export type MixedBoolean = true | false | 'mixed';
 
 export interface CheckboxProps
   extends SpaceProps,
     Omit<InputProps, 'type' | 'checked' | 'onClick'> {
-  checked?: MixedBoolean
+  checked?: MixedBoolean;
 }
 
 export const Checkbox = styled(
@@ -66,8 +66,8 @@ export const Checkbox = styled(
       style,
       validationType,
       ...restProps
-    } = props
-    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked)
+    } = props;
+    const [isChecked, setIsChecked] = useState<MixedBoolean>(!!defaultChecked);
 
     const { callbacks, ...rippleProps } = useRipple({
       className,
@@ -76,31 +76,36 @@ export const Checkbox = styled(
       // to make the halo slightly bigger than the container
       size: RIPPLE_RATIO,
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(restProps, rippleHandlerKeys),
       restProps.disabled
-    )
+    );
 
     const handleClick = readOnly
       ? undefined
-      : (e: FormEvent<HTMLInputElement>) => {
+      : (e: MouseEvent<HTMLInputElement>) => {
           if (isUndefined(checked)) {
-            setIsChecked(!isChecked)
+            setIsChecked(!isChecked);
           }
           if (onChange) {
-            onChange(e)
+            // convert mouse event to change event
+            const changeEvent: ChangeEvent<HTMLInputElement> = {
+              ...e,
+              target: e.currentTarget,
+            };
+            onChange(changeEvent);
           }
-        }
+        };
 
     // controlled component: update internal state when props.checked changes
     useEffect(() => {
       if (!isUndefined(checked)) {
-        setIsChecked(checked)
+        setIsChecked(checked);
       }
-    }, [checked])
+    }, [checked]);
 
     return (
       <div {...rippleProps}>
@@ -119,7 +124,7 @@ export const Checkbox = styled(
           {checked === 'mixed' ? <CheckMarkMixed /> : <CheckMark />}
         </FauxCheckbox>
       </div>
-    )
+    );
   })
 )`
   ${reset}
@@ -170,4 +175,4 @@ export const Checkbox = styled(
       }
     }
   }
-`
+`;

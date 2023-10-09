@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTimeProps } from '..'
-import { FieldTime } from '../'
+import React from 'react';
+import type { FieldTimeProps } from '..';
+import { FieldTime } from '../';
 
 export default function Disabled(props: FieldTimeProps) {
   const {
@@ -15,7 +15,7 @@ export default function Disabled(props: FieldTimeProps) {
     detail = 'detail',
     label = 'Label',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTime
@@ -26,5 +26,5 @@ export default function Disabled(props: FieldTimeProps) {
       disabled={disabled}
       {...restProps}
     />
-  )
+  );
 }

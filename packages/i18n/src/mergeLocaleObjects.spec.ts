@@ -24,8 +24,8 @@
 
  */
 
-import dateLocale from 'date-fns/locale/es'
-import { mergeLocaleObjects } from './mergeLocaleObjects'
+import dateLocale from 'date-fns/locale/es';
+import { mergeLocaleObjects } from './mergeLocaleObjects';
 
 const locale1 = {
   locale: 'es-ES',
@@ -36,7 +36,7 @@ const locale1 = {
       },
     },
   },
-}
+};
 const locale2 = {
   locale: 'es-ES',
   resources: {
@@ -46,7 +46,7 @@ const locale2 = {
       },
     },
   },
-}
+};
 
 const localeWithDate = {
   dateLocale,
@@ -58,12 +58,12 @@ const localeWithDate = {
       },
     },
   },
-}
+};
 
 test('it merges locales with no dateLocale', () => {
   const result = mergeLocaleObjects([locale1, locale2], 'es-ES', {
     NameSpace3: { TestKeyCurrent: 'Test Value Current' },
-  })
+  });
   expect(result).toMatchInlineSnapshot(`
     Object {
       "locale": "es-ES",
@@ -81,13 +81,13 @@ test('it merges locales with no dateLocale', () => {
         },
       },
     }
-  `)
-})
+  `);
+});
 
 test('it merges locales with possible dateLocale', () => {
   const result = mergeLocaleObjects([localeWithDate, locale1], 'es-ES', {
     NameSpace3: { TestKeyCurrent: 'Test Value Current' },
-  })
+  });
   expect(result).toMatchObject({
     dateLocale,
     locale: 'es-ES',
@@ -104,8 +104,8 @@ test('it merges locales with possible dateLocale', () => {
         },
       },
     },
-  })
-})
+  });
+});
 
 test('it uses the current dateLocale', () => {
   const result = mergeLocaleObjects(
@@ -115,7 +115,7 @@ test('it uses the current dateLocale', () => {
       NameSpace3: { TestKeyCurrent: 'Test Value Current' },
     },
     dateLocale
-  )
+  );
   expect(result).toMatchObject({
     dateLocale,
     locale: 'es-ES',
@@ -132,13 +132,13 @@ test('it uses the current dateLocale', () => {
         },
       },
     },
-  })
-})
+  });
+});
 
 test('it uses the current everything if locales array is empty', () => {
   const result = mergeLocaleObjects([], 'es-ES', {
     NameSpace3: { TestKeyCurrent: 'Test Value Current' },
-  })
+  });
   expect(result).toMatchInlineSnapshot(`
     Object {
       "locale": "es-ES",
@@ -150,5 +150,5 @@ test('it uses the current everything if locales array is empty', () => {
         },
       },
     }
-  `)
-})
+  `);
+});

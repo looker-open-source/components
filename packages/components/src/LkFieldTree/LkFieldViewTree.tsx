@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent'
-import { LkFieldTree } from './LkFieldTree'
+import styled from 'styled-components';
+import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent';
+import { LkFieldTree } from './LkFieldTree';
 
 /**
  * LkFieldViewTree is used to represent a Looker View and is expected to be
@@ -21,4 +21,4 @@ export const LkFieldViewTree = styled(LkFieldTree)`
 
   border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   padding: 0.25rem;
-`
+`;

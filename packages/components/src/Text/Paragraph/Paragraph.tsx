@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import type {
   CompatibleHTMLProps,
   LayoutProps,
   TextTransformProps,
-} from '@looker/design-tokens'
-import { layout, textTransform } from '@looker/design-tokens'
-import type { TruncateCSSProps } from '../truncate'
-import { truncateCSS } from '../truncate'
-import type { TextBaseProps } from '../Text/TextBase'
-import { TextBase } from '../Text/TextBase'
+} from '@looker/design-tokens';
+import { layout, textTransform } from '@looker/design-tokens';
+import type { TruncateCSSProps } from '../truncate';
+import { truncateCSS } from '../truncate';
+import type { TextBaseProps } from '../Text/TextBase';
+import { TextBase } from '../Text/TextBase';
 
 export interface ParagraphProps
   extends TextBaseProps,
@@ -33,4 +33,4 @@ export const Paragraph = styled(TextBase).attrs<ParagraphProps>(
   ${layout}
   ${textTransform}
   ${truncateCSS}
-`
+`;

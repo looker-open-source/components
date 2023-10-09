@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/de'
-import { deDE as componentsLocale } from '@looker/components'
-import { deDE as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/de';
+import { deDE as componentsLocale } from '@looker/components';
+import { deDE as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -62,7 +62,7 @@ const resources = {
     relative: '(relativ)',
   },
   Between: {
-    AND: 'AND',
+    AND: 'UND',
   },
   date_units: {
     day: 'Tag',
@@ -92,21 +92,21 @@ const resources = {
   get_date_filter_options: {
     is: 'ist',
     'is any time': 'ist jederzeit',
-    'is before': 'ist vor dem',
-    'is in range': 'befindet sich im Bereich',
-    'is in the last': 'ist in den letzten',
+    'is before': 'ist vor',
+    'is in range': 'ist im Bereich',
+    'is in the last': 'ist in der/im letzten',
     'is in the month': 'ist im Monat',
-    'is in the year': 'befindet sich im Jahr',
-    'is next': 'ist nächste/r/s',
+    'is in the year': 'ist im Jahr',
+    'is next': 'ist nächste(s/n)',
     'is not null': 'ist nicht null',
     'is null': 'ist null',
-    'is on or after': 'ist am oder nach dem',
+    'is on or after': 'ist am oder nach',
     'is on the day': 'ist am Tag',
-    'is previous': 'ist vorherige/r/s',
-    'is this': 'ist diese/r/s',
+    'is previous': 'ist vorherige(s/n)',
+    'is this': 'ist diese(s/n)',
   },
   get_filter_options: {
-    'matches advanced': 'Übereinstimmung (für Fortgeschrittene)',
+    'matches advanced': 'stimmt überein (erweitert)',
   },
   get_location_filter_options: {
     Box: 'Feld',
@@ -125,16 +125,16 @@ const resources = {
     inclusive: '[einschließlich]',
     is: 'ist',
     'is between': 'liegt zwischen',
-    'is greater': 'ist >',
-    'is greater equal': 'ist >=',
-    'is less': 'ist <',
-    'is less equal': 'ist <=',
+    'is greater': 'ist >',
+    'is greater equal': 'ist >=',
+    'is less': 'ist <',
+    'is less equal': 'ist <=',
     'is not': 'ist nicht',
     'is not between': 'liegt nicht zwischen',
     'is not null': 'ist nicht null',
     'is null': 'ist null',
-    'left exclusive': '(ausschließlich links]',
-    'right exclusive': '[ausschließlich rechts]',
+    'left exclusive': '(links ausschließlich]',
+    'right exclusive': '[rechts ausschließlich)',
   },
   get_relative_timeframe_presets: {
     'Last 14 Days': 'Letzte 14 Tage',
@@ -153,7 +153,7 @@ const resources = {
     'This Week': 'Diese Woche',
     'This Year': 'Dieses Jahr',
     Today: 'Heute',
-    'Year To Date': 'Dieses Jahr bis heute',
+    'Year To Date': 'Seit Jahresbeginn',
     Yesterday: 'Gestern',
   },
   get_string_filter_options: {
@@ -172,11 +172,11 @@ const resources = {
   },
   get_tier_filter_options: {
     is: 'ist',
-    'is any value': 'ist ein beliebiger Wert',
+    'is any value': 'ist beliebiger Wert',
     'is not': 'ist nicht',
   },
   get_user_attribute_option: {
-    'matches a user attribute': 'Übereinstimmung mit Benutzerattribut',
+    'matches a user attribute': 'stimmt mit einem Nutzerattribut überein',
   },
   MultiInput: {
     'Clear all': '',
@@ -186,41 +186,41 @@ const resources = {
   NoMatchingFields: {
     'No Matching Fields': 'Keine übereinstimmenden Felder',
     'Try Something Else':
-      'Versuchen Sie es mit einem anderen Suchbegriff oder beginnen Sie von vorne und erweitern Sie einen beliebigen Explore, um die verfügbaren Felder zu durchsuchen.',
+      'Versuchen Sie es mit einem anderen Suchbegriff oder beginnen Sie von vorn und maximieren Sie jeden Explore, um in verfügbaren Feldern zu suchen.',
   },
   NumberFilter: {
     'any value': 'beliebiger Wert',
   },
   OperatorLabel: {
-    AND: 'AND',
-    OR: 'OR',
+    AND: 'UND',
+    OR: 'ODER',
   },
   past_units: {
-    'complete days': 'vollständige Tage',
-    'complete fiscal quarters': 'vollständige Geschäftsquartale',
-    'complete fiscal years': 'vollständige Geschäftsjahre',
-    'complete hours': 'vollständige Stunden',
-    'complete minutes': 'vollständige Minuten',
-    'complete months': 'vollständige Monate',
-    'complete quarters': 'vollständige Quartale',
-    'complete seconds': 'vollständige Sekunden',
-    'complete weeks': 'vollständige Wochen',
-    'complete years': 'vollständige Jahre',
+    'complete days': 'ganze Tage',
+    'complete fiscal quarters': 'ganze Geschäftsquartale',
+    'complete fiscal years': 'ganze Geschäftsjahre',
+    'complete hours': 'ganze Stunden',
+    'complete minutes': 'ganze Minuten',
+    'complete months': 'ganze Monate',
+    'complete quarters': 'ganze Quartale',
+    'complete seconds': 'ganze Sekunden',
+    'complete weeks': 'ganze Wochen',
+    'complete years': 'ganze Jahre',
   },
   RadioGroup: {
     'any value': 'beliebiger Wert',
   },
   ReactSelectCustomIcons: {
-    'Clear all': 'Alle leeren',
+    'Clear all': 'Alle löschen',
     Remove: 'Entfernen',
-    Toggle: 'Umschalten',
+    Toggle: 'Ein-/Ausschalten',
   },
   Relative: {
-    ago: 'her',
+    ago: 'vor',
     'from now': 'ab jetzt',
   },
   RelativeTimeframe: {
-    'Choose a Timeframe': 'Zeitrahmen wählen',
+    'Choose a Timeframe': 'Zeitraum auswählen',
   },
   RelativeTimeframePopoverContent: {
     Custom: 'Benutzerdefiniert',
@@ -232,7 +232,7 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Ungültiger Wert',
     'No value is set for your user attribute':
-      'Für dieses Benutzerattribut ist kein Wert festgelegt',
+      'Für Ihr Nutzerattribut ist kein Wert festgelegt',
     'Selection required': 'Auswahl erforderlich',
   },
   use_option_filtering: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Wert erforderlich',
   },
-}
+  UserAttributes: {
+    placeholder: 'Auswählen…',
+  },
+};
 
 export const deDE = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'de-DE',
   resources,
   dateLocale
-)
+);

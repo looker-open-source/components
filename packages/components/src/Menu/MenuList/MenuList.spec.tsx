@@ -24,17 +24,17 @@
 
  */
 
-import { screen } from '@testing-library/react'
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { MenuItem } from '../MenuItem'
-import { MenuHeading } from '../MenuHeading'
-import { MenuDivider } from '../MenuDivider'
-import { MenuList } from './MenuList'
+import { screen } from '@testing-library/react';
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { MenuItem } from '../MenuItem';
+import { MenuHeading } from '../MenuHeading';
+import { MenuDivider } from '../MenuDivider';
+import { MenuList } from './MenuList';
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
 
 describe('MenuList', () => {
   describe('windowing', () => {
@@ -51,41 +51,41 @@ describe('MenuList', () => {
           width: 260,
           x: 0,
           y: 0,
-        }
-      })
-    })
+        };
+      });
+    });
 
     afterEach(() => {
-      jest.resetAllMocks()
+      jest.resetAllMocks();
       /* eslint-disable-next-line @typescript-eslint/unbound-method */
-      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-    })
+      Element.prototype.getBoundingClientRect = globalGetBoundingClientRect;
+    });
 
     test('windows a long list', () => {
-      const arr3000 = Array.from(Array(3000), (_, i) => i)
+      const arr3000 = Array.from(Array(3000), (_, i) => i);
       renderWithTheme(
         <MenuList>
           {arr3000.map(num => (
             <MenuItem key={num}>{num}</MenuItem>
           ))}
         </MenuList>
-      )
+      );
 
-      expect(screen.getByText('0')).toBeVisible()
-      expect(screen.getByText('15')).toBeVisible()
-      expect(screen.queryByText('16')).not.toBeInTheDocument()
+      expect(screen.getByText('0')).toBeVisible();
+      expect(screen.getByText('15')).toBeVisible();
+      expect(screen.queryByText('16')).not.toBeInTheDocument();
 
-      const totalItems = arr3000.length
-      const windowedItems = 16
-      const defaultItemHeight = 36
-      const height = (totalItems - windowedItems) * defaultItemHeight
-      expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`)
+      const totalItems = arr3000.length;
+      const windowedItems = 16;
+      const defaultItemHeight = 36;
+      const height = (totalItems - windowedItems) * defaultItemHeight;
+      expect(screen.queryByTestId('before')).not.toBeInTheDocument();
+      expect(screen.getByTestId('after')).toHaveStyle(`height: ${height}px;`);
       // Without overflow auto, windowing won't work.
       // Testing the style here because we can't test rendered height.
-      expect(screen.getByRole('menu')).toHaveStyle('overflow: auto')
-    })
-  })
+      expect(screen.getByRole('menu')).toHaveStyle('overflow: auto');
+    });
+  });
 
   describe('composition', () => {
     test('renders a MenuHeading, MenuDivider and MenuItems together', () => {
@@ -96,10 +96,10 @@ describe('MenuList', () => {
           <MenuDivider data-testid="divider" />
           <MenuItem>Last</MenuItem>
         </MenuList>
-      )
+      );
 
-      expect(screen.getByTestId('divider')).toBeVisible()
-      screen.getByText('My Menu List')
-    })
-  })
-})
+      expect(screen.getByTestId('divider')).toBeVisible();
+      screen.getByText('My Menu List');
+    });
+  });
+});

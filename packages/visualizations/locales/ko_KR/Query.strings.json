@@ -1,4 +1,4 @@
 {
-  "No children passed to Query component": "쿼리 구성 요소에 전달된 하위 항목 없음",
-  "Query component received both dashboard and query props": "쿼리 구성 요소에 대시보드와 쿼리 속성이 둘 다 수신됨"
+  "No children passed to Query component": "쿼리 구성요소에 전달된 하위 항목이 없습니다.",
+  "Query component received both dashboard and query props": "쿼리 구성요소에서 대시보드와 쿼리 속성을 둘 다 수신했습니다."
 }

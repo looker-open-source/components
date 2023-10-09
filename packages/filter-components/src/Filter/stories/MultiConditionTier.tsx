@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Filter } from '../Filter'
+import React from 'react';
+import { Filter } from '../Filter';
 
 export default function MultiConditionTier() {
   return (
@@ -14,5 +14,5 @@ export default function MultiConditionTier() {
       expressionType="tier"
       expression="20 to 29,{{ _user_attributes['locale'] }}"
     />
-  )
+  );
 }

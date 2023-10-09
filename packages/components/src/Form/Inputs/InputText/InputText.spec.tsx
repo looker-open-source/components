@@ -24,109 +24,111 @@
 
  */
 
-import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { AccountCircle } from '@styled-icons/material-outlined'
-import { Favorite } from '@styled-icons/material'
-import React from 'react'
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { AccountCircle } from '@styled-icons/material-outlined';
+import { Favorite } from '@styled-icons/material';
+import React from 'react';
 
-import { InputText } from './InputText'
+import { InputText } from './InputText';
 
-const globalConsole = global.console
-const warnMock = jest.fn()
+const globalConsole = global.console;
+const warnMock = jest.fn();
 
 beforeEach(() => {
-  jest.useFakeTimers()
+  jest.useFakeTimers();
   global.console = {
     warn: warnMock,
-  } as unknown as Console
-})
+  } as unknown as Console;
+});
 
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-  jest.resetAllMocks()
-  global.console = globalConsole
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+  jest.resetAllMocks();
+  global.console = globalConsole;
+});
 
 describe('InputText', () => {
   test('with name and id', () => {
-    renderWithTheme(<InputText name="Bob" id="Bobby" />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'Bob')
-    expect(screen.getByRole('textbox')).toHaveAttribute('id', 'Bobby')
-    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text')
-  })
+    renderWithTheme(<InputText name="Bob" id="Bobby" />);
+    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'Bob');
+    expect(screen.getByRole('textbox')).toHaveAttribute('id', 'Bobby');
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text');
+  });
 
   test('should accept disabled', () => {
-    renderWithTheme(<InputText disabled />)
-    expect(screen.getByRole('textbox')).toBeDisabled()
-  })
+    renderWithTheme(<InputText disabled />);
+    expect(screen.getByRole('textbox')).toBeDisabled();
+  });
 
   test('with a placeholder', () => {
-    renderWithTheme(<InputText placeholder="I am a placeholder" />)
+    renderWithTheme(<InputText placeholder="I am a placeholder" />);
     expect(
       screen.getByPlaceholderText('I am a placeholder')
-    ).toBeInTheDocument()
-  })
+    ).toBeInTheDocument();
+  });
 
   test('should accept readOnly', () => {
-    renderWithTheme(<InputText readOnly />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('readonly')
-  })
+    renderWithTheme(<InputText readOnly />);
+    expect(screen.getByRole('textbox')).toHaveAttribute('readonly');
+  });
 
   test('should accept type', () => {
-    renderWithTheme(<InputText type="tel" />)
-    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'tel')
-  })
+    renderWithTheme(<InputText type="tel" />);
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'tel');
+  });
 
   test('should accept required', () => {
-    renderWithTheme(<InputText required />)
-    expect(screen.getByRole('textbox')).toBeRequired()
-  })
+    renderWithTheme(<InputText required />);
+    expect(screen.getByRole('textbox')).toBeRequired();
+  });
 
   test('should accept defaultValue', () => {
-    renderWithTheme(<InputText defaultValue="Some value" />)
-    expect(screen.getByRole('textbox')).toHaveValue('Some value')
-  })
+    renderWithTheme(<InputText defaultValue="Some value" />);
+    expect(screen.getByRole('textbox')).toHaveValue('Some value');
+  });
 
   test('with aria-describedby', () => {
-    renderWithTheme(<InputText aria-describedby="some-id" />)
+    renderWithTheme(<InputText aria-describedby="some-id" />);
     expect(screen.getByRole('textbox')).toHaveAttribute(
       'aria-describedby',
       'some-id'
-    )
-  })
+    );
+  });
   test('autoResize', () => {
     const { container } = renderWithTheme(
       <InputText autoResize placeholder="resize me" />
-    )
-    expect(container.firstChild).toHaveStyleRule('width: auto')
+    );
+    expect(container.firstChild).toHaveStyleRule('width: auto');
     expect(screen.getByPlaceholderText('resize me')).toHaveStyleRule(
       'position: absolute'
-    )
-    expect(screen.getByText('resize me')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('resize me')).toBeVisible();
+  });
 
   test('with an error validation', () => {
-    renderWithTheme(<InputText placeholder="Hello" validationType="error" />)
-    expect(screen.getByPlaceholderText('Hello')).toHaveAttribute('aria-invalid')
-  })
+    renderWithTheme(<InputText placeholder="Hello" validationType="error" />);
+    expect(screen.getByPlaceholderText('Hello')).toHaveAttribute(
+      'aria-invalid'
+    );
+  });
 
   describe('before & after', () => {
     test('ReactNode', () => {
-      renderWithTheme(<InputText before="before" after="after" />)
+      renderWithTheme(<InputText before="before" after="after" />);
 
-      expect(screen.getByText('before')).toBeVisible()
-      expect(screen.getByText('after')).toBeVisible()
-    })
+      expect(screen.getByText('before')).toBeVisible();
+      expect(screen.getByText('after')).toBeVisible();
+    });
 
     test('Simple string', () => {
-      renderWithTheme(<InputText before="before" after="after" />)
+      renderWithTheme(<InputText before="before" after="after" />);
 
-      expect(screen.getByText('before')).toBeVisible()
-      expect(screen.getByText('after')).toBeVisible()
-    })
+      expect(screen.getByText('before')).toBeVisible();
+      expect(screen.getByText('after')).toBeVisible();
+    });
 
     test('icons', () => {
       renderWithTheme(
@@ -134,11 +136,11 @@ describe('InputText', () => {
           iconBefore={<Favorite title="Before Title" />}
           iconAfter={<AccountCircle title="After Title" />}
         />
-      )
+      );
 
-      expect(screen.getByTitle('Before Title')).toBeInTheDocument()
-      expect(screen.getByTitle('After Title')).toBeInTheDocument()
-    })
+      expect(screen.getByTitle('Before Title')).toBeInTheDocument();
+      expect(screen.getByTitle('After Title')).toBeInTheDocument();
+    });
 
     test('redundant ones should not render', () => {
       renderWithTheme(
@@ -150,10 +152,10 @@ describe('InputText', () => {
             after="%"
           />
         </>
-      )
+      );
 
-      expect(screen.queryByPlaceholderText('Hello')).not.toBeInTheDocument()
-      expect(screen.queryByPlaceholderText('Goodbye')).not.toBeInTheDocument()
+      expect(screen.queryByPlaceholderText('Hello')).not.toBeInTheDocument();
+      expect(screen.queryByPlaceholderText('Goodbye')).not.toBeInTheDocument();
       expect(warnMock.mock.calls).toMatchInlineSnapshot(`
         Array [
           Array [
@@ -163,56 +165,56 @@ describe('InputText', () => {
             "Use after or iconAfter, but not both at the same time.",
           ],
         ]
-      `)
-    })
+      `);
+    });
 
     test.skip('focus & blur behavior', () => {
-      const handleBlur = jest.fn()
-      const handleFocus = jest.fn()
+      const handleBlur = jest.fn();
+      const handleFocus = jest.fn();
       renderWithTheme(
         <InputText onBlur={handleBlur} onFocus={handleFocus} after="after" />
-      )
-      const after = screen.getByText('after')
+      );
+      const after = screen.getByText('after');
       /**
        * userEvent now (correctly) detects that `after` is `pointer-events: 'none'` and
        * can therefore not _actually_ be clicked. Disabling this test until someone can
        * come up with a workaround.
        */
-      userEvent.click(after)
-      expect(handleFocus).toHaveBeenCalled()
-      expect(screen.getByRole('textbox')).toHaveFocus()
+      userEvent.click(after);
+      expect(handleFocus).toHaveBeenCalled();
+      expect(screen.getByRole('textbox')).toHaveFocus();
 
-      userEvent.click(after)
-      expect(handleBlur).not.toHaveBeenCalled()
-      expect(screen.getByRole('textbox')).toHaveFocus()
-    })
-  })
+      userEvent.click(after);
+      expect(handleBlur).not.toHaveBeenCalled();
+      expect(screen.getByRole('textbox')).toHaveFocus();
+    });
+  });
 
   test('Should trigger onChange handler', () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
 
-    renderWithTheme(<InputText onChange={onChange} />)
+    renderWithTheme(<InputText onChange={onChange} />);
 
-    userEvent.type(screen.getByRole('textbox'), 'Hello world')
-    expect(onChange).toHaveBeenCalled()
-  })
+    userEvent.type(screen.getByRole('textbox'), 'Hello world');
+    expect(onChange).toHaveBeenCalled();
+  });
 
   test('onBlur & onFocus callbacks', () => {
-    const handleBlur = jest.fn()
-    const handleFocus = jest.fn()
+    const handleBlur = jest.fn();
+    const handleFocus = jest.fn();
     renderWithTheme(
       <>
         <InputText onBlur={handleBlur} onFocus={handleFocus} />
         <button>click</button>
       </>
-    )
+    );
 
-    userEvent.click(screen.getByRole('textbox'))
-    expect(handleFocus).toHaveBeenCalled()
-    expect(screen.getByRole('textbox')).toHaveFocus()
+    userEvent.click(screen.getByRole('textbox'));
+    expect(handleFocus).toHaveBeenCalled();
+    expect(screen.getByRole('textbox')).toHaveFocus();
 
-    userEvent.click(screen.getByText('click'))
-    expect(handleBlur).toHaveBeenCalled()
-    expect(screen.getByRole('textbox')).not.toHaveFocus()
-  })
-})
+    userEvent.click(screen.getByText('click'));
+    expect(handleBlur).toHaveBeenCalled();
+    expect(screen.getByRole('textbox')).not.toHaveFocus();
+  });
+});

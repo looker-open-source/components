@@ -6,12 +6,12 @@
 import {
   createShouldForwardProp,
   props,
-} from '@styled-system/should-forward-prop'
+} from '@styled-system/should-forward-prop';
 
-export const shouldForwardProp = createShouldForwardProp([...props])
+export const shouldForwardProp = createShouldForwardProp([...props]);
 
-export * from './color'
-export * from './elevation'
+export * from './color';
+export * from './elevation';
 export type {
   LegacySpaceRamp,
   SpaceRamp,
@@ -19,12 +19,12 @@ export type {
   SpaceProps,
   UnitRamp,
   UnitSizes,
-} from './space'
-export { units } from './space'
-export * from './theme'
-export * from './system'
+} from './space';
+export { units } from './space';
+export * from './theme';
+export * from './system';
 
 // Useful external utilities
-export { transitions } from './tokens/transitions'
-export * from './tokens/breakpoints'
-export * from './utils'
+export { transitions } from './tokens/transitions';
+export * from './tokens/breakpoints';
+export * from './utils';

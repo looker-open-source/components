@@ -24,13 +24,13 @@
 
  */
 
-import React, { useState } from 'react'
-import { useClickable, useWrapEvent } from '../utils'
-import { Accordion2Content } from './Accordion2Content'
-import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults'
-import { AccordionIndicator } from './AccordionIndicator'
-import type { Accordion2Props } from './types'
-import { useAriaLabelObjectRelationship } from './useAriaLabelObjectRelationship'
+import React, { useState } from 'react';
+import { useClickable, useWrapEvent } from '../utils';
+import { Accordion2Content } from './Accordion2Content';
+import { accordionDefaults, accordionLeftDefaults } from './accordionDefaults';
+import { AccordionIndicator } from './AccordionIndicator';
+import type { Accordion2Props } from './types';
+import { useAriaLabelObjectRelationship } from './useAriaLabelObjectRelationship';
 
 /**
  * `useAccordion2` hook returns the internal pieces of an `Accordion2` component
@@ -59,15 +59,15 @@ export const useAccordion2 = ({
   toggleOpen: propsToggleOpen,
   ...props
 }: Accordion2Props) => {
-  const [value, setValue] = useState(defaultOpen)
-  const toggle = () => setValue(!value)
+  const [value, setValue] = useState(defaultOpen);
+  const toggle = () => setValue(!value);
 
-  const isOpen = propsIsOpen !== undefined ? propsIsOpen : value
+  const isOpen = propsIsOpen !== undefined ? propsIsOpen : value;
 
   const onClick = useWrapEvent(() => {
-    isOpen ? onClose && onClose() : onOpen && onOpen()
-    propsToggleOpen !== undefined ? propsToggleOpen(!isOpen) : toggle()
-  }, propsOnClick)
+    isOpen ? onClose && onClose() : onOpen && onOpen();
+    propsToggleOpen !== undefined ? propsToggleOpen(!isOpen) : toggle();
+  }, propsOnClick);
 
   const clickableProps = useClickable({
     disabled,
@@ -75,17 +75,20 @@ export const useAccordion2 = ({
     onClick,
     onKeyUp,
     role,
-  })
+  });
 
-  const [labelProps, objectProps] = useAriaLabelObjectRelationship(id)
+  const [labelProps, objectProps] = useAriaLabelObjectRelationship(id);
 
-  const domProps = { ...props, className, id }
-
+  const domProps = {
+    ...props,
+    className: `${isOpen ? 'open' : 'closed'} ${className}`,
+    id,
+  };
   const indicator = (
     <AccordionIndicator density={density} indicatorPosition={indicatorPosition}>
       {isOpen ? indicatorIcons.open : indicatorIcons.close}
     </AccordionIndicator>
-  )
+  );
 
   const disclosureProps = {
     ...labelProps,
@@ -97,15 +100,15 @@ export const useAccordion2 = ({
     indicatorPosition,
     tabIndex,
     ...clickableProps,
-  }
+  };
 
   const contentDomProps = {
     ...objectProps,
     children,
     role: 'region',
-  }
+  };
 
-  const content = isOpen && <Accordion2Content {...contentDomProps} />
+  const content = isOpen && <Accordion2Content {...contentDomProps} />;
 
   return {
     content,
@@ -113,5 +116,5 @@ export const useAccordion2 = ({
     disclosureProps,
     domProps,
     isOpen,
-  }
-}
+  };
+};

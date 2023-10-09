@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DialogContent, Box, Paragraph } from '../../../..'
+import React from 'react';
+import { DialogContent, Box, Paragraph } from '../../../..';
 
 export default function Overflow() {
   return (
@@ -14,5 +14,5 @@ export default function Overflow() {
         <Box height="12rem" bg="rebeccapurple" />
       </DialogContent>
     </Box>
-  )
+  );
 }

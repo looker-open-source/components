@@ -24,7 +24,7 @@
 
  */
 
-import React from 'react'
+import React from 'react';
 import {
   Code,
   Text,
@@ -33,15 +33,15 @@ import {
   TableHead,
   TableHeaderCell,
   TableRow,
-} from '../../../src'
-import { DocTable } from './DocTable'
+} from '../../../src';
+import { DocTable } from './DocTable';
 
 const breakpointLabels = [
   'Breakpoint',
   'Starts At',
   'Definition',
   'Description',
-]
+];
 
 const breakpointList = [
   {
@@ -70,13 +70,13 @@ const breakpointList = [
     starts: '1200px',
   },
   { description: 'Wider screens', rem: '90rem', slot: 4, starts: '1440px' },
-]
+];
 
 export interface BreakpointExample {
-  slot: number
-  starts: string
-  rem: string
-  description: string
+  slot: number;
+  starts: string;
+  rem: string;
+  description: string;
 }
 
 const TableLabel = (label: string, key: number) => (
@@ -85,7 +85,7 @@ const TableLabel = (label: string, key: number) => (
       {label}
     </Text>
   </TableHeaderCell>
-)
+);
 
 const BreakpointRow = (
   slot: number,
@@ -102,11 +102,11 @@ const BreakpointRow = (
     </TableDataCell>
     <TableDataCell>{description}</TableDataCell>
   </TableRow>
-)
+);
 
 interface BreakpointTableProps {
-  breakpoints: BreakpointExample[]
-  labels: string[]
+  breakpoints: BreakpointExample[];
+  labels: string[];
 }
 
 export const BreakpointTable = ({
@@ -123,4 +123,4 @@ export const BreakpointTable = ({
       )}
     </TableBody>
   </DocTable>
-)
+);

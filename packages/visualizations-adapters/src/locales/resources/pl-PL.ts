@@ -3,32 +3,31 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { plPL as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { plPL as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
-    Config: 'Konfig.',
+    Config: 'Konfiguracja',
     Dimensions: 'Wymiary',
     Error: 'Błąd',
-    Measures: 'Miary',
-    Result: 'Wynik',
+    Measures: 'Wskaźniki',
+    Result: 'Wyniki',
     error: 'błąd',
-    ok: 'ok',
+    ok: 'OK',
   },
   ErrorBoundary: {
     'Something went wrong': 'Coś poszło nie tak',
   },
-  translation: {
-    'Row Total': 'Suma wiersza',
+  KeyValueList: {
     false: 'fałsz',
     null: 'ma wartość null',
     true: 'prawda',
-    undefined: 'niezdefiniowany',
+    undefined: 'nie zdefiniowano',
   },
   useNormalizedPivotLabels: {
-    'Row Total': 'Suma wiersza',
+    'Row Total': 'Łącznie w wierszu',
   },
-}
+};
 
-export const plPL = mergeLocaleObjects([componentsLocale], 'pl-PL', resources)
+export const plPL = mergeLocaleObjects([componentsLocale], 'pl-PL', resources);

@@ -6,8 +6,8 @@
 import type {
   DimensionMetadata,
   SDKRecord,
-} from '@looker/visualizations-adapters'
-import type { ColumnDef } from '@tanstack/table-core'
+} from '@looker/visualizations-adapters';
+import type { ColumnDef } from '@tanstack/table-core';
 
 /**
  * Renders dimension columns from fields.dimensions response.
@@ -22,6 +22,6 @@ export const buildDimensionColumns = (
       header: dimension.label,
       accessorFn: (data: SDKRecord) => data[dimension.name],
       id: dimension.name,
-    }
-  })
-}
+    };
+  });
+};

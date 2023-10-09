@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import styled from 'styled-components'
-import type { ParagraphProps } from '../Text'
-import { Paragraph } from '../Text'
-import type { TooltipProps } from './types'
+import styled from 'styled-components';
+import type { ParagraphProps } from '../Text';
+import { Paragraph } from '../Text';
+import type { TooltipProps } from './types';
 
 export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
   ({ textAlign = 'center', width }) => ({
@@ -24,4 +24,4 @@ export const TooltipContent = styled(Paragraph).attrs<TooltipProps>(
   text-transform: none;
   white-space: normal;
   word-break: break-word;
-`
+`;

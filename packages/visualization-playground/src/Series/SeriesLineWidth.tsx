@@ -2,52 +2,52 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { FormEvent } from 'react'
+import React from 'react';
+import type { ChangeEvent } from 'react';
 import type {
   CArea,
   CLine,
   CScatter,
   CSparkline,
   CSeriesLine,
-} from '@looker/visualizations-adapters'
-import { FieldSlider } from '@looker/components'
-import has from 'lodash/has'
+} from '@looker/visualizations-adapters';
+import { FieldSlider } from '@looker/components';
+import has from 'lodash/has';
 
 /**
  * A list of relevant charts that access this configuration
  */
-export type CLineWidthSupported = CArea | CLine | CSparkline | CScatter
+export type CLineWidthSupported = CArea | CLine | CSparkline | CScatter;
 
 const renderFor: Array<CLineWidthSupported['type']> = [
   'area',
   'line',
   'scatter',
   'sparkline',
-]
+];
 
 export type SeriesLineWidthProps = {
-  chartType: CLineWidthSupported['type']
-  series: CSeriesLine
-  onSeriesChange: (series: CSeriesLine) => void
-  disabled: boolean
-}
+  chartType: CLineWidthSupported['type'];
+  series: CSeriesLine;
+  onSeriesChange: (series: CSeriesLine) => void;
+  disabled: boolean;
+};
 
 export const SeriesLineWidth = (props: SeriesLineWidthProps) => {
-  const { chartType, series, onSeriesChange, ...restProps } = props
+  const { chartType, series, onSeriesChange, ...restProps } = props;
 
   if (!renderFor.includes(chartType) && !has(series, 'line_width')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
+  const handleChange = (e: ChangeEvent) => {
     const draft = {
       ...series,
       line_width: parseInt((e.target as HTMLInputElement).value),
-    }
-    onSeriesChange(draft)
-  }
+    };
+    onSeriesChange(draft);
+  };
 
   return (
     <FieldSlider
@@ -58,5 +58,5 @@ export const SeriesLineWidth = (props: SeriesLineWidthProps) => {
       value={series.line_width}
       {...restProps}
     />
-  )
-}
+  );
+};

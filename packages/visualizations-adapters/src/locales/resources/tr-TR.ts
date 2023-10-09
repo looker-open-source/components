@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { trTR as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { trTR as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Bir sorun oluştu',
   },
-  translation: {
-    'Row Total': 'Satır Toplamı',
+  KeyValueList: {
     false: 'yanlış',
     null: 'boş',
     true: 'doğru',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Satır Toplamı',
   },
-}
+};
 
-export const trTR = mergeLocaleObjects([componentsLocale], 'tr-TR', resources)
+export const trTR = mergeLocaleObjects([componentsLocale], 'tr-TR', resources);

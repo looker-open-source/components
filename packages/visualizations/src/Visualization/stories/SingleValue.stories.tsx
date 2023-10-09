@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Story } from '@storybook/react'
-import React from 'react'
-import { Visualization } from '../Visualization'
+import type { Story } from '@storybook/react';
+import React from 'react';
+import { Visualization } from '../Visualization';
 import type {
   Fields,
   SingleValueProps,
   CSingleValue,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 import {
   buildChartConfig,
@@ -18,25 +18,25 @@ import {
   mockSdkDataResponse,
   mockSdkFieldsResponse,
   tabularResponse,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/Single Value',
-}
+};
 
 type StoryTemplateProps = Omit<
   SingleValueProps,
   'config' | 'fields' | 'data'
 > & {
-  config: Omit<CSingleValue, 'type'>
-}
+  config: Omit<CSingleValue, 'type'>;
+};
 
 const Template: Story<StoryTemplateProps> = ({
   config: configProp,
   ...restProps
 }) => {
-  const data = tabularResponse([...mockSdkDataResponse])
+  const data = tabularResponse([...mockSdkDataResponse]);
 
   const config = buildChartConfig({
     config: {
@@ -46,7 +46,7 @@ const Template: Story<StoryTemplateProps> = ({
     },
     data,
     fields: mockSdkFieldsResponse as Fields,
-  })
+  });
 
   return (
     <Visualization
@@ -55,14 +55,14 @@ const Template: Story<StoryTemplateProps> = ({
       fields={mockSdkFieldsResponse as Fields}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export const SingleValue = Template.bind({})
-SingleValue.args = { height: 100 }
+export const SingleValue = Template.bind({});
+SingleValue.args = { height: 100 };
 
-export const CustomLabel = Template.bind({})
+export const CustomLabel = Template.bind({});
 CustomLabel.args = {
   height: 100,
   config: { series: [{ label: 'A Custom Label' }] },
-}
+};

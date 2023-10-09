@@ -4,4 +4,4 @@
  */
 
 // Required for ESLint parsing.
-module.exports = {}
+module.exports = {};

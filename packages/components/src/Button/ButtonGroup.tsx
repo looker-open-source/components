@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import xor from 'lodash/xor'
-import type { MouseEvent, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { ButtonItem } from './ButtonItem'
-import type { ButtonGroupOrToggleBaseProps } from './ButtonSet'
-import { ButtonSet } from './ButtonSet'
+import xor from 'lodash/xor';
+import type { MouseEvent, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { ButtonItem } from './ButtonItem';
+import type { ButtonGroupOrToggleBaseProps } from './ButtonSet';
+import { ButtonSet } from './ButtonSet';
 
 const ButtonGroupLayout = forwardRef(
   (
@@ -17,9 +17,9 @@ const ButtonGroupLayout = forwardRef(
     ref: Ref<HTMLDivElement>
   ) => {
     function handleItemClick(e: MouseEvent<HTMLButtonElement>) {
-      const newValue = xor(value, [e.currentTarget.value])
+      const newValue = xor(value, [e.currentTarget.value]);
       if (onChange) {
-        onChange(newValue)
+        onChange(newValue);
       }
     }
 
@@ -30,9 +30,9 @@ const ButtonGroupLayout = forwardRef(
         value={value}
         onItemClick={handleItemClick}
       />
-    )
+    );
   }
-)
+);
 
 export const ButtonGroup = styled(ButtonGroupLayout)`
   ${ButtonItem} {
@@ -53,4 +53,4 @@ export const ButtonGroup = styled(ButtonGroupLayout)`
       margin: ${({ theme }) => theme.space.u05};
     }
   }
-`
+`;

@@ -10,4 +10,4 @@ module.exports = {
     'import/order': 'off',
     'sort-keys-fix/sort-keys-fix': 'off',
   },
-}
+};

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const innerInputStyle = css`
   background: transparent;
@@ -25,4 +25,4 @@ export const innerInputStyle = css`
   ::placeholder {
     color: ${({ theme }) => theme.colors.text2};
   }
-`
+`;

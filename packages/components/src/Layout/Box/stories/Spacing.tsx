@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function Spacing() {
   return (
@@ -35,5 +35,5 @@ export default function Spacing() {
         </Box>
       </Space>
     </>
-  )
+  );
 }

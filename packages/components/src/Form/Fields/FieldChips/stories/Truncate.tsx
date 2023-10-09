@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function Truncate() {
   const [values, setValues] = useState<string[]>([
     'A very long token that will truncate',
-  ])
+  ]);
 
   return (
     <FieldChips
@@ -18,5 +18,5 @@ export default function Truncate() {
       onChange={setValues}
       width={250}
     />
-  )
+  );
 }

@@ -11,13 +11,13 @@ export const createSafeRel = (
    * `target="_blank" can be used to reverse tab-nab
    * https://owasp.org/www-community/attacks/Reverse_Tabnabbing
    */
-  const noTabNab = 'noopener noreferrer'
+  const noTabNab = 'noopener noreferrer';
 
   if (target === '_blank') {
     if (rel) {
-      return `${rel} ${noTabNab}`
+      return `${rel} ${noTabNab}`;
     } else {
-      return noTabNab
+      return noTabNab;
     }
-  } else return rel
-}
+  } else return rel;
+};

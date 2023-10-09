@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputTime } from '../'
-import type { InputTimeProps } from '../'
+import React from 'react';
+import { InputTime } from '../';
+import type { InputTimeProps } from '../';
 
 export default function Basic(props: InputTimeProps) {
-  return <InputTime {...props} />
+  return <InputTime {...props} />;
 }

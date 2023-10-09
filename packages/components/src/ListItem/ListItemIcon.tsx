@@ -3,27 +3,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DefaultTheme, StyledComponent } from 'styled-components'
-import styled, { useTheme } from 'styled-components'
-import type { DensityProp } from '@looker/design-tokens'
-import { color as colorHelper } from '@looker/design-tokens'
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import { IconPlaceholder } from '../Icon'
+import type { DefaultTheme, StyledComponent } from 'styled-components';
+import styled, { useTheme } from 'styled-components';
+import type { DensityProp } from '@looker/design-tokens';
+import { color as colorHelper } from '@looker/design-tokens';
+import { StyledIconBase } from '@styled-icons/styled-icon';
+import { IconPlaceholder } from '../Icon';
 import {
   listItemDimensions,
   listItemIconColor,
   listItemPaddingY,
-} from './utils'
-import type { ListItemDimensions } from './types'
+} from './utils';
+import type { ListItemDimensions } from './types';
 
 export type ListItemIconProps = DensityProp & {
-  color?: string
-  disabled?: boolean
-  alignStart?: boolean
-}
+  color?: string;
+  disabled?: boolean;
+  alignStart?: boolean;
+};
 
 type ListItemIconInternalProps = ListItemIconProps &
-  Pick<ListItemDimensions, 'height' | 'gap' | 'iconSize' | 'py'>
+  Pick<ListItemDimensions, 'height' | 'gap' | 'iconSize' | 'py'>;
 
 export const ListItemIcon: StyledComponent<
   'div',
@@ -31,10 +31,10 @@ export const ListItemIcon: StyledComponent<
   ListItemIconProps
 > = styled.div.attrs<ListItemIconProps>(
   ({ color, disabled, density, ...props }) => {
-    const theme = useTheme()
+    const theme = useTheme();
     const { height, gap, iconSize, py } = listItemDimensions(
       density || theme.defaults.density
-    )
+    );
 
     return {
       ...props,
@@ -44,7 +44,7 @@ export const ListItemIcon: StyledComponent<
       height,
       iconSize,
       py,
-    }
+    };
   }
 )<ListItemIconInternalProps>`
   align-self: ${({ alignStart }) => (alignStart ? 'flex-start' : 'center')};
@@ -60,4 +60,4 @@ export const ListItemIcon: StyledComponent<
     height: ${({ iconSize, theme }) => theme.sizes[iconSize]};
     width: ${({ iconSize, theme }) => theme.sizes[iconSize]};
   }
-`
+`;

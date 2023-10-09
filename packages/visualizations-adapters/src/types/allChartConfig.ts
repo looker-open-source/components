@@ -13,7 +13,7 @@ import type {
   CSparkline,
   CTable,
   CSingleValue,
-} from '../adapters'
+} from '../adapters';
 
 /*
  * These types represent common unions of our chart adapters.
@@ -34,14 +34,14 @@ export const SUPPORTED_CHART_TYPES = {
   single_value: 'single_value',
   sparkline: 'sparkline',
   table: 'table',
-} as const
+} as const;
 
-export type SupportedChartTypes = typeof SUPPORTED_CHART_TYPES
+export type SupportedChartTypes = typeof SUPPORTED_CHART_TYPES;
 
 /*
  * Cartesian charts which have some common config options
  */
-export type CCartesian = CArea | CBar | CColumn | CLine | CScatter
+export type CCartesian = CArea | CBar | CColumn | CLine | CScatter;
 
 /*
  * All supported chart config objects
@@ -57,4 +57,4 @@ export type CAll =
   | CScatter
   | CTable
   | CSingleValue
-  | { type: string }
+  | { type: string };

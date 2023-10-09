@@ -23,36 +23,36 @@
  SOFTWARE.
 
  */
-import type { FormEvent } from 'react'
-import React, { useState } from 'react'
+import type { ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import {
   SpaceVertical,
   ButtonToggle,
   ButtonItem,
   FieldText,
-} from '@looker/components'
-import type { YAxisConfig, XAxisConfig } from '@looker/visualizations-adapters'
-import partial from 'lodash/partial'
-import curry from 'lodash/curry'
-import { Checkbox } from '../../Checkbox'
-import { TickDensity } from './TickDensity'
-import { Range } from './Range'
-import has from 'lodash/has'
+} from '@looker/components';
+import type { YAxisConfig, XAxisConfig } from '@looker/visualizations-adapters';
+import partial from 'lodash/partial';
+import curry from 'lodash/curry';
+import { Checkbox } from '../../Checkbox';
+import { TickDensity } from './TickDensity';
+import { Range } from './Range';
+import has from 'lodash/has';
 
 export type CoreProps = {
-  axisConfig: YAxisConfig[] | XAxisConfig[]
-  onAxisChange: (axisIndex: number, axis: YAxisConfig | XAxisConfig) => void
-}
+  axisConfig: YAxisConfig[] | XAxisConfig[];
+  onAxisChange: (axisIndex: number, axis: YAxisConfig | XAxisConfig) => void;
+};
 
 export const Core = ({ onAxisChange, axisConfig }: CoreProps) => {
-  const [group, setGroup] = useState('1')
+  const [group, setGroup] = useState('1');
 
   const handleLabelChange = curry(
-    (i: number, axis: XAxisConfig, e: FormEvent) => {
-      const { value } = e.target as HTMLInputElement
-      onAxisChange(i, { ...axis, label: value.length ? value : false })
+    (i: number, axis: XAxisConfig, e: ChangeEvent) => {
+      const { value } = e.target as HTMLInputElement;
+      onAxisChange(i, { ...axis, label: value.length ? value : false });
     }
-  )
+  );
 
   return (
     <>
@@ -127,8 +127,8 @@ export const Core = ({ onAxisChange, axisConfig }: CoreProps) => {
               )}
             </SpaceVertical>
           )
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};

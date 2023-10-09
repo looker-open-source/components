@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './VisualizationPlayground'
-export * from './AppContext'
+export * from './VisualizationPlayground';
+export * from './AppContext';

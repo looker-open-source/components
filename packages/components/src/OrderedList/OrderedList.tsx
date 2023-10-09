@@ -31,7 +31,7 @@ import type {
   TypographyProps,
   PositionProps,
   LayoutProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   reset,
   space,
@@ -41,8 +41,8 @@ import {
   position,
   layout,
   variant,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface OrderedListProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -56,7 +56,7 @@ export interface OrderedListProps
    *
    * @default none
    */
-  type?: 'none' | 'number' | 'letter'
+  type?: 'none' | 'number' | 'letter';
 }
 
 const typeVariant = variant({
@@ -74,7 +74,7 @@ const typeVariant = variant({
       pl: 'u4',
     },
   },
-})
+});
 
 /**
  * We hit a weird issue with styled components when trying to use a styled.ol
@@ -103,4 +103,4 @@ export const OrderedList = styled.div
   li {
     margin-bottom: ${({ theme }) => theme.space.u1};
   }
-`
+`;

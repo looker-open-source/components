@@ -24,15 +24,15 @@
 
  */
 
-import React, { useCallback, useRef, useState } from 'react'
-import styled from 'styled-components'
-import { VisuallyHidden } from '../VisuallyHidden'
-import { useAnimationState, useControlWarn, useTrapStack } from '../utils'
-import { PanelHeader } from './PanelHeader'
-import { PanelsContext } from './Panels'
-import { PanelSurface } from './PanelSurface'
-import { PanelWindow } from './PanelWindow'
-import type { UsePanelProps, UsePanelResponse } from './types'
+import React, { useCallback, useRef, useState } from 'react';
+import styled from 'styled-components';
+import { VisuallyHidden } from '../VisuallyHidden';
+import { useAnimationState, useControlWarn, useTrapStack } from '../utils';
+import { PanelHeader } from './PanelHeader';
+import { PanelsContext } from './Panels';
+import { PanelSurface } from './PanelSurface';
+import { PanelWindow } from './PanelWindow';
+import type { UsePanelProps, UsePanelResponse } from './types';
 
 export const usePanel = ({
   canClose,
@@ -47,23 +47,23 @@ export const usePanel = ({
   disableAnimation,
   ...headerProps
 }: UsePanelProps): UsePanelResponse => {
-  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen)
+  const [uncontrolledIsOpen, setUncontrolledIsOpen] = useState(defaultOpen);
   const isControlled = useControlWarn({
     controllingProps: ['setOpen'],
     isControlledCheck: () => controlledSetOpen !== undefined,
     name: 'usePanel',
-  })
+  });
 
   if (Boolean(onClose) && Boolean(controlledSetOpen)) {
     // eslint-disable-next-line no-console
     throw new Error(
       'usePanel does not support setting both `setOpen` and `onClose`. Use just `setOpen`'
-    )
+    );
   }
 
-  const isOpen = isControlled ? controlledIsOpen || false : uncontrolledIsOpen
+  const isOpen = isControlled ? controlledIsOpen || false : uncontrolledIsOpen;
 
-  const firstRender = useRef(true)
+  const firstRender = useRef(true);
   const { busy, className, renderDOM } = useAnimationState({
     enter:
       disableAnimation || (isOpen && firstRender.current) ? 'none' : undefined,
@@ -71,35 +71,35 @@ export const usePanel = ({
     isOpen,
     onAfterEntered: onAfterOpen,
     onAfterExited: onAfterClose,
-  })
-  firstRender.current = false
+  });
+  firstRender.current = false;
 
   const setOpen =
     isControlled && controlledSetOpen
       ? controlledSetOpen
-      : setUncontrolledIsOpen
+      : setUncontrolledIsOpen;
 
-  const handleOpen = () => setOpen(true)
+  const handleOpen = () => setOpen(true);
 
   const handleClose = () => {
-    if (canClose && !canClose()) return
-    setOpen(false)
-    onClose && onClose()
-  }
+    if (canClose && !canClose()) return;
+    setOpen(false);
+    onClose && onClose();
+  };
 
   // Place focus on the surface when the panel opens
   const setInitialFocus = useCallback((element: HTMLDivElement | null) => {
-    element?.focus({ preventScroll: true })
-  }, [])
+    element?.focus({ preventScroll: true });
+  }, []);
 
   // The visibilityTrigger uses TrapStackContext to toggle visibility: visible
   // on the topmost panel and visibility: hidden on the container to avoid
   // focusing on content underneath the panel
   // Sync with 'entered' so that content underneath doesn't disappear during animation
-  const [, ref] = useTrapStack({ context: PanelsContext })
+  const [, ref] = useTrapStack({ context: PanelsContext });
   const visibilityTrigger = className === 'entered' && (
     <VisuallyHidden ref={ref} />
-  )
+  );
 
   const panel = renderDOM && (
     <PanelWindow>
@@ -116,7 +116,7 @@ export const usePanel = ({
         <PanelContent>{content}</PanelContent>
       </PanelSurface>
     </PanelWindow>
-  )
+  );
 
   return {
     domProps: {
@@ -127,10 +127,10 @@ export const usePanel = ({
     isOpen,
     panel,
     setOpen,
-  }
-}
+  };
+};
 
 const PanelContent = styled.div`
   flex: 1;
   overflow: auto;
-`
+`;

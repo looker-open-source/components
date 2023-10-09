@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useState } from 'react'
+import { useState } from 'react';
 
 export const useSelectManager = (
   possibilities: string[],
   defaultSelections: string[] = []
 ) => {
-  const [selections, setSelections] = useState<string[]>(defaultSelections)
+  const [selections, setSelections] = useState<string[]>(defaultSelections);
 
   const onSelect = (selectionId: string) => {
     /*
@@ -23,12 +23,12 @@ export const useSelectManager = (
             itemId => possibilities.includes(itemId) && itemId !== selectionId
           )
         : [...selections, selectionId]
-    )
-  }
+    );
+  };
 
   const onSelectAll = () => {
-    setSelections(selections.length ? [] : possibilities)
-  }
+    setSelections(selections.length ? [] : possibilities);
+  };
 
-  return { onSelect, onSelectAll, selections, setSelections }
-}
+  return { onSelect, onSelectAll, selections, setSelections };
+};

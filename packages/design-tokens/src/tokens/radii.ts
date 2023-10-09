@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Radii } from '../system'
+import type { Radii } from '../system';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const radii: Radii = {
@@ -12,4 +12,4 @@ export const radii: Radii = {
   small: '0.125rem',
   medium: '0.25rem',
   large: '0.5rem',
-}
+};

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DialogHeader } from '../../..'
+import React from 'react';
+import { DialogHeader } from '../../..';
 
 export default function HideClose() {
-  return <DialogHeader hideClose>Heading</DialogHeader>
+  return <DialogHeader hideClose>Heading</DialogHeader>;
 }

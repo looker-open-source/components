@@ -24,31 +24,31 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
-    ' complete': ' completo',
+    ' complete': ' concluído',
     'absolute prefix dateTime': '{{prefix}} {{dateTime}}',
     ago: 'atrás',
     'from now': 'a partir de agora',
-    'is any time': 'é qualquer momento',
-    'is before': 'está antes de',
+    'is any time': 'é em qualquer horário',
+    'is before': 'é anterior a',
     'is day': 'é {{day}}',
     'is from dateTimeStart until dateTimeEnd':
-      'é a partir de {{dateTimeStart}} até {{dateTimeEnd}}',
+      'é de {{dateTimeStart}} até {{dateTimeEnd}}',
     'is in month year': 'é em {{month}} de {{year}}',
-    'is in the last': 'é no último intervalo de {{describeInterval}}',
-    'is in the year year': 'é no ano de {{year}}',
-    'is interval ago': 'é {{interval}} atrás',
+    'is in the last': 'está no último {{describeInterval}}',
+    'is in the year year': 'está no ano {{year}}',
+    'is interval ago': 'há {{interval}}',
     'is intervalStart intervalType for intervalEnd':
-      'é {{intervalStart}} {{intervalType}} para {{intervalEnd}}',
+      'é {{intervalStart}} {{intervalType}} por {{intervalEnd}}',
     'is not null': 'não é nulo',
     'is on dateTime': 'é em {{dateTime}}',
-    'is on or after': 'está em ou depois de',
-    'is previous unitLabel': 'é a unidade {{unitLabel}} anterior',
+    'is on or after': 'em ou após',
+    'is previous unitLabel': 'é anterior a {{unitLabel}}',
     'is type unitLabel': 'é {{type}} {{unitLabel}}',
-    next: 'próximo',
+    next: 'próxima',
     'prefix interval timePassed': '{{prefix}} {{interval}} {{timePassed}}',
     'prefix now': '{{prefix}} agora',
     this: 'este',
@@ -63,9 +63,9 @@ const resources = {
     'is value': 'é {{value}}',
   },
   describe_location: {
-    'coords1 to coords2': '{{coords1}} para {{coords2}}',
+    'coords1 to coords2': '{{coords1}} a {{coords2}}',
     'distance unit from lat, lon': '{{distance}} {{unit}} de {{lat}}, {{lon}}',
-    'is anywhere': 'tem qualquer valor',
+    'is anywhere': 'está em qualquer lugar',
     'is not null': 'não é nulo',
     'is null': 'é nulo',
     'lat degrees north': '{{lat}}°N',
@@ -74,8 +74,8 @@ const resources = {
     'lon degrees west': '{{lon}}°O',
   },
   describe_number: {
-    'is in range range': 'está no intervalo {{range}}',
-    'is not in range range': 'não está no intervalo {{range}}',
+    'is in range range': 'está dentro do intervalo {{range}}',
+    'is not in range range': 'está fora do intervalo {{range}}',
   },
   describe_string: {
     blank: 'em branco',
@@ -89,7 +89,7 @@ const resources = {
   get_distance_unit_labels: {
     feet: 'pés',
     kilometers: 'quilômetros',
-    meters: 'metros',
+    meters: 'quadrados',
     miles: 'milhas',
   },
   get_months: {
@@ -101,32 +101,32 @@ const resources = {
     July: 'Julho',
     June: 'Junho',
     March: 'Março',
-    May: 'Maio',
+    May: 'Mai',
     November: 'Novembro',
     October: 'Outubro',
     September: 'Setembro',
   },
   get_unit_label: {
     'complete day': 'dia completo',
-    'complete days': 'dias completos',
+    'complete days': 'dias concluídos',
     'complete fiscal quarter': 'trimestre fiscal completo',
     'complete fiscal quarters': 'trimestres fiscais completos',
     'complete fiscal year': 'ano fiscal completo',
     'complete fiscal years': 'anos fiscais completos',
     'complete hour': 'hora completa',
-    'complete hours': 'horas completas',
+    'complete hours': 'horas concluídas',
     'complete minute': 'minuto completo',
-    'complete minutes': 'minutos completos',
+    'complete minutes': 'minutos concluídos',
     'complete month': 'mês completo',
-    'complete months': 'meses completos',
+    'complete months': 'meses concluídos',
     'complete quarter': 'trimestre completo',
-    'complete quarters': 'trimestres completos',
+    'complete quarters': 'trimestres concluídos',
     'complete second': 'segundo completo',
-    'complete seconds': 'segundos completos',
+    'complete seconds': 'segundos concluídos',
     'complete week': 'semana completa',
-    'complete weeks': 'semanas completas',
+    'complete weeks': 'semanas concluídas',
     'complete year': 'ano completo',
-    'complete years': 'anos completos',
+    'complete years': 'anos concluídos',
     day: 'dia',
     days: 'dias',
     'fiscal quarter': 'trimestre fiscal',
@@ -152,8 +152,8 @@ const resources = {
     'a or b': '{{a}} ou {{b}}',
   },
   summary: {
-    'Value required': 'Valor necessário',
+    'Value required': 'Valor obrigatório',
   },
-}
+};
 
-export const ptBR = mergeLocaleObjects([], 'pt-BR', resources)
+export const ptBR = mergeLocaleObjects([], 'pt-BR', resources);

@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { DensityRamp } from '@looker/design-tokens'
+import React from 'react';
+import type { DensityRamp } from '@looker/design-tokens';
 import {
   Box,
   Code,
@@ -15,10 +15,10 @@ import {
   List,
   ListItem,
   listItemDimensions,
-} from '../../../src'
-import { DocTable } from './DocTable'
+} from '../../../src';
+import { DocTable } from './DocTable';
 
-const densities: DensityRamp[] = [1, 0, -1, -2, -3]
+const densities: DensityRamp[] = [1, 0, -1, -2, -3];
 
 const DensityRow = ({ density }: { density: DensityRamp }) => (
   <TableRow>
@@ -39,7 +39,7 @@ const DensityRow = ({ density }: { density: DensityRamp }) => (
     </TableDataCell>
     <TableDataCell>{listItemDimensions(density).height}px</TableDataCell>
   </TableRow>
-)
+);
 
 export const DensityTable = () => (
   <DocTable maxWidth="1200px">
@@ -57,4 +57,4 @@ export const DensityTable = () => (
       ))}
     </TableBody>
   </DocTable>
-)
+);

@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './IdeDimensionGroup'
+export * from './IdeDimensionGroup';

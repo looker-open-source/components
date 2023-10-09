@@ -24,83 +24,82 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { act, fireEvent, screen } from '@testing-library/react'
-import { composeStories } from '@storybook/testing-react'
-import { RIPPLE_RATIO } from '../../../Ripple'
-import * as stories from './stories/index.stories'
-
-const { Basic, Disabled } = composeStories(stories)
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { act, fireEvent, screen } from '@testing-library/react';
+import { RIPPLE_RATIO } from '../../../Ripple';
+import { Basic, Disabled } from './stories/index.stories';
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 
 afterEach(() => {
-  jest.resetAllMocks()
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.resetAllMocks();
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 describe('Radio', () => {
   test('renders properly', () => {
-    renderWithTheme(<Basic />)
-    expect(screen.getByRole('radio')).toBeInTheDocument()
-  })
+    renderWithTheme(<Basic />);
+    expect(screen.getByRole('radio')).toBeInTheDocument();
+  });
 
   test('accepts defaultChecked prop', () => {
-    renderWithTheme(<Basic defaultChecked />)
-    expect(screen.getByRole('radio')).toBeChecked()
-  })
+    renderWithTheme(<Basic defaultChecked />);
+    expect(screen.getByRole('radio')).toBeChecked();
+  });
 
   test('should accept disabled prop', () => {
-    renderWithTheme(<Disabled />)
-    expect(screen.getAllByRole('radio')[0]).toBeDisabled()
-  })
+    renderWithTheme(<Disabled />);
+    expect(screen.getAllByRole('radio')[0]).toBeDisabled();
+  });
 
   test('should accept disabled and checked props together', () => {
-    renderWithTheme(<Disabled />)
-    expect(screen.getAllByRole('radio')[1]).toBeDisabled()
-    expect(screen.getAllByRole('radio')[1]).toBeChecked()
-  })
+    renderWithTheme(<Disabled />);
+    expect(screen.getAllByRole('radio')[1]).toBeDisabled();
+    expect(screen.getAllByRole('radio')[1]).toBeChecked();
+  });
 
   test('has aria-describedby attribute', () => {
-    renderWithTheme(<Basic aria-describedby="some-id" id="RadioID" />)
+    renderWithTheme(<Basic aria-describedby="some-id" id="RadioID" />);
     expect(screen.getByRole('radio')).toHaveAttribute(
       'aria-describedby',
       'some-id'
-    )
-  })
+    );
+  });
 
   test('renders with error', () => {
-    renderWithTheme(<Basic validationType="error" />)
-    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true')
-  })
+    renderWithTheme(<Basic validationType="error" />);
+    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true');
+  });
 
   test('renders checked with error', () => {
-    renderWithTheme(<Basic defaultChecked validationType="error" />)
-    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true')
-  })
+    renderWithTheme(<Basic defaultChecked validationType="error" />);
+    expect(screen.getByRole('radio')).toHaveAttribute('aria-invalid', 'true');
+  });
 
   test('should trigger onChange handler', () => {
-    const onChange = jest.fn()
-    renderWithTheme(<Basic id="radioID" onChange={onChange} />)
-    fireEvent.click(screen.getByRole('radio'))
-    expect(onChange).toHaveBeenCalledTimes(1)
-  })
+    const onChange = jest.fn();
+    renderWithTheme(<Basic id="radioID" onChange={onChange} />);
+    fireEvent.click(screen.getByRole('radio'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
 
   test('ripple effect', () => {
-    renderWithTheme(<Basic />)
+    renderWithTheme(<Basic />);
 
-    const radioWrapper = screen.getByRole('radio').closest('div') as HTMLElement
-    const radio = screen.getByRole('radio')
-    expect(radioWrapper).not.toHaveClass('bg-on fg-in')
+    const radioWrapper = screen
+      .getByRole('radio')
+      .closest('div') as HTMLElement;
+    const radio = screen.getByRole('radio');
+    expect(radioWrapper).not.toHaveClass('bg-on fg-in');
     expect(radioWrapper).toHaveStyle({
       '--ripple-color': '#71767a',
       '--ripple-overflow': 'visible',
@@ -108,22 +107,22 @@ describe('Radio', () => {
       '--ripple-scale-start': '0.1',
       '--ripple-size': '100%',
       '--ripple-translate': '0, 0',
-    })
+    });
 
-    fireEvent.focus(radio)
-    expect(radioWrapper).toHaveClass('bg-on')
+    fireEvent.focus(radio);
+    expect(radioWrapper).toHaveClass('bg-on');
 
-    fireEvent.mouseDown(radio)
-    expect(radioWrapper).toHaveClass('bg-on fg-in')
+    fireEvent.mouseDown(radio);
+    expect(radioWrapper).toHaveClass('bg-on fg-in');
 
     // foreground is locked for a minimum time to animate the ripple
-    fireEvent.mouseUp(radio)
-    runTimers()
-    expect(radioWrapper).toHaveClass('bg-on fg-out')
-    runTimers()
-    expect(radioWrapper).toHaveClass('bg-on')
+    fireEvent.mouseUp(radio);
+    runTimers();
+    expect(radioWrapper).toHaveClass('bg-on fg-out');
+    runTimers();
+    expect(radioWrapper).toHaveClass('bg-on');
 
-    fireEvent.blur(radio)
-    expect(radioWrapper).not.toHaveClass('bg-on fg-in')
-  })
-})
+    fireEvent.blur(radio);
+    expect(radioWrapper).not.toHaveClass('bg-on fg-in');
+  });
+});

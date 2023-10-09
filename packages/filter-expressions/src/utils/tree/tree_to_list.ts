@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterASTNode, FilterModel } from '../../types'
-import { inorderTraversal } from './inorder_traversal'
+import type { FilterASTNode, FilterModel } from '../../types';
+import { inorderTraversal } from './inorder_traversal';
 
 /**
  * Convert a FilterAST to a list of FilterASTNodes using in order traversal (left, node, right)
@@ -14,13 +14,13 @@ import { inorderTraversal } from './inorder_traversal'
  *      left(2)     right(4)
  */
 export const treeToList = (root: FilterASTNode): FilterModel[] => {
-  const orItems: FilterModel[] = []
-  const andItems: FilterModel[] = []
+  const orItems: FilterModel[] = [];
+  const andItems: FilterModel[] = [];
   inorderTraversal(root, (node: FilterASTNode) => {
-    const item = node as FilterModel
+    const item = node as FilterModel;
     if (item.type !== ',') {
-      ;(item.is ? orItems : andItems).push(item)
+      (item.is ? orItems : andItems).push(item);
     }
-  })
-  return [...orItems, ...andItems]
-}
+  });
+  return [...orItems, ...andItems];
+};

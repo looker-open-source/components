@@ -1,12 +1,12 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} para {{coords2}}"
+    "value": "{{coords1}} a {{coords2}}"
   },
   "distance unit from lat, lon": {
     "value": "{{distance}} {{unit}} de {{lat}}, {{lon}}"
   },
   "is anywhere": {
-    "value": "tem qualquer valor"
+    "value": "está em qualquer lugar"
   },
   "is not null": {
     "value": "não é nulo"

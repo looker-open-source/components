@@ -24,77 +24,77 @@
 
  */
 
-import React from 'react'
-import { useTheme } from 'styled-components'
-import { Group } from '@visx/group'
+import React from 'react';
+import { useTheme } from 'styled-components';
+import { Group } from '@visx/group';
 import type {
   Fields,
   SDKRecord,
   CommonCartesianProperties,
-} from '@looker/visualizations-adapters'
-import { DEFAULT_HEIGHT, getDataRange } from '@looker/visualizations-adapters'
-import { scaleLinear } from '@visx/scale'
-import { Point } from '@visx/point'
-import { Line, LineRadial } from '@visx/shape'
+} from '@looker/visualizations-adapters';
+import { DEFAULT_HEIGHT, getDataRange } from '@looker/visualizations-adapters';
+import { scaleLinear } from '@visx/scale';
+import { Point } from '@visx/point';
+import { Line, LineRadial } from '@visx/shape';
 
 export type RadarProps = {
-  width: number
-  height: number
-  margin?: { top: number; right: number; bottom: number; left: number }
-  levels?: number
-  fields: Fields
-  data: SDKRecord[]
-  config: { type: 'radar' } & CommonCartesianProperties
-}
+  width: number;
+  height: number;
+  margin?: { top: number; right: number; bottom: number; left: number };
+  levels?: number;
+  fields: Fields;
+  data: SDKRecord[];
+  config: { type: 'radar' } & CommonCartesianProperties;
+};
 
 const isOdd = (num: number) => {
-  return num % 2
-}
+  return num % 2;
+};
 
-const DEGREES = 360
+const DEGREES = 360;
 
 const genAngles = (length: number) => {
   // webbing is offset 1/2 section for odd-lengthed datasets
-  const angleOffset = isOdd(length) ? DEGREES / length / 2 : 0
+  const angleOffset = isOdd(length) ? DEGREES / length / 2 : 0;
 
   return [...new Array(length + 1)].map((_, i) => ({
     angle: i * (DEGREES / length) - angleOffset,
-  }))
-}
+  }));
+};
 
 const genPoints = (length: number, radius: number) => {
-  const step = (Math.PI * 2) / length
+  const step = (Math.PI * 2) / length;
   return [...new Array(length)].map((_, i) => ({
     x: radius * Math.sin(i * step),
     y: radius * Math.cos(i * step),
-  }))
-}
+  }));
+};
 
 function genPolygonPoints<Datum>(
   dataArray: Datum[],
   scale: (n: number) => number,
   getValue: (d: Datum) => number
 ) {
-  const step = (Math.PI * 2) / dataArray.length
+  const step = (Math.PI * 2) / dataArray.length;
   const points: { x: number; y: number }[] = new Array(dataArray.length).fill({
     x: 0,
     y: 0,
-  })
+  });
 
   const pointString: string = new Array(dataArray.length + 1)
     .fill('')
     .reduce((res, _, i) => {
-      if (i > dataArray.length) return res
-      const xVal = scale(getValue(dataArray[i - 1])) * Math.sin(i * step)
-      const yVal = scale(getValue(dataArray[i - 1])) * Math.cos(i * step)
-      points[i - 1] = { x: xVal, y: yVal }
-      res += `${xVal},${yVal} `
-      return res
-    })
-  return { points, pointString }
+      if (i > dataArray.length) return res;
+      const xVal = scale(getValue(dataArray[i - 1])) * Math.sin(i * step);
+      const yVal = scale(getValue(dataArray[i - 1])) * Math.cos(i * step);
+      points[i - 1] = { x: xVal, y: yVal };
+      res += `${xVal},${yVal} `;
+      return res;
+    });
+  return { points, pointString };
 }
 
-const defaultMargin = { top: 40, left: 40, right: 40, bottom: 40 }
+const defaultMargin = { top: 40, left: 40, right: 40, bottom: 40 };
 
 /*
  * Radar exists as an example of setting up a custom visualization type.
@@ -110,30 +110,30 @@ export const Radar = ({
   data,
   config,
 }: RadarProps) => {
-  const theme = useTheme()
-  const [_, dataMax] = getDataRange({ config, data, fields })
-  const { series = {}, y_axis = [] } = config
+  const theme = useTheme();
+  const [_, dataMax] = getDataRange({ config, data, fields });
+  const { series = {}, y_axis = [] } = config;
 
-  const layoutMax = Math.max(width, height)
+  const layoutMax = Math.max(width, height);
 
-  const xMax = layoutMax - margin.left - margin.right
-  const yMax = layoutMax - margin.top - margin.bottom
-  const radius = Math.min(xMax, yMax) / 2
+  const xMax = layoutMax - margin.left - margin.right;
+  const yMax = layoutMax - margin.top - margin.bottom;
+  const radius = Math.min(xMax, yMax) / 2;
 
   const radialScale = scaleLinear<number>({
     range: [0, Math.PI * 2],
     domain: [DEGREES, 0],
-  })
+  });
 
-  const yScaleMax = y_axis?.[0]?.range?.[1] || 'auto'
+  const yScaleMax = y_axis?.[0]?.range?.[1] || 'auto';
 
   const yScale = scaleLinear<number>({
     range: [0, radius],
     domain: [0, yScaleMax === 'auto' ? dataMax : yScaleMax],
-  })
+  });
 
-  const webs = genAngles(data.length)
-  const points = genPoints(data.length, radius)
+  const webs = genAngles(data.length);
+  const points = genPoints(data.length, radius);
 
   const polygonPoints = fields.measures.map(m =>
     genPolygonPoints(
@@ -141,9 +141,9 @@ export const Radar = ({
       d => yScale(d) ?? 0,
       d => d[m.name]
     )
-  )
+  );
 
-  const zeroPoint = new Point({ x: 0, y: 0 })
+  const zeroPoint = new Point({ x: 0, y: 0 });
 
   return layoutMax < 10 ? null : (
     <svg width={layoutMax} height={layoutMax}>
@@ -174,10 +174,10 @@ export const Radar = ({
         {fields.measures.map((m, i) => {
           const { color, visible } = Array.isArray(series)
             ? series[i]
-            : series[m.name]
+            : series[m.name];
 
           if (!visible) {
-            return null
+            return null;
           }
 
           return (
@@ -199,9 +199,9 @@ export const Radar = ({
                 />
               ))}
             </>
-          )
+          );
         })}
       </Group>
     </svg>
-  )
-}
+  );
+};

@@ -24,78 +24,78 @@
 
  */
 
-import type { Ref, ReactNode } from 'react'
-import React, { forwardRef, useRef } from 'react'
-import { styleDefenderCSS } from '@looker/components-providers'
-import { createPortal } from 'react-dom'
-import styled from 'styled-components'
-import { useSafeLayoutEffect } from '../utils'
+import type { Ref, ReactNode } from 'react';
+import React, { forwardRef, useRef } from 'react';
+import { styleDefenderCSS } from '@looker/components-providers';
+import { createPortal } from 'react-dom';
+import styled from 'styled-components';
+import { useSafeLayoutEffect } from '../utils';
 
-const rootId = 'modal-root'
+const rootId = 'modal-root';
 
 export const getPortalRoot = () => {
-  const existing = document.getElementById(rootId)
+  const existing = document.getElementById(rootId);
 
   if (existing) {
-    return existing
+    return existing;
   } else {
-    const newElement = document.createElement('div')
-    newElement.id = 'modal-root'
-    document.body.appendChild(newElement)
+    const newElement = document.createElement('div');
+    newElement.id = 'modal-root';
+    document.body.appendChild(newElement);
 
-    return newElement
+    return newElement;
   }
-}
+};
 
 interface PortalPlacementProps {
   /**
    * How should content be positioned on screen horizontally
    * @default center
    */
-  horizontal?: 'center' | 'left' | 'right'
+  horizontal?: 'center' | 'left' | 'right';
 
   /**
    * How should content be positioned on screen horizontally
    * center
    */
-  vertical?: 'center' | 'top' | 'bottom'
+  vertical?: 'center' | 'top' | 'bottom';
 
   /**
    * Enables fixed positioning on the portal.
    * Setting to false will allow content to scroll with the rest of the page.
    * @default true
    */
-  fixed?: boolean
+  fixed?: boolean;
 }
 
 export interface PortalProps extends PortalPlacementProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export const Portal = forwardRef(
   (props: PortalProps, ref: Ref<HTMLDivElement>) => {
-    const el = useRef(document.createElement('div'))
-    el.current.className = 'portal-child'
+    const el = useRef(document.createElement('div'));
+    el.current.className = 'portal-child';
 
     useSafeLayoutEffect(() => {
-      const root = getPortalRoot()
-      if (!root) return
+      const root = getPortalRoot();
+      if (!root) return;
 
-      const elCurrent = el.current
-      root.appendChild(elCurrent)
+      const elCurrent = el.current;
+      root.appendChild(elCurrent);
 
       return () => {
-        root.removeChild(elCurrent)
-      }
-    }, [el])
+        root.removeChild(elCurrent);
+      };
+    }, [el]);
 
-    const content = <InvisiBox ref={ref} {...props} />
+    const content = <InvisiBox ref={ref} {...props} />;
 
-    return createPortal(content, el.current)
+    return createPortal(content, el.current);
   }
-)
+);
 
-Portal.displayName = 'Portal'
+Portal.displayName = 'Portal';
 
 /**
  * InvisiBox is mounted outside of StyleDefender / ComponentsProvider
@@ -105,23 +105,23 @@ Portal.displayName = 'Portal'
 
 const alignItems = ({ vertical }: PortalPlacementProps) => {
   if (vertical === 'top') {
-    return 'flex-start'
+    return 'flex-start';
   } else if (vertical === 'bottom') {
-    return 'flex-end'
+    return 'flex-end';
   } else {
-    return 'center'
+    return 'center';
   }
-}
+};
 
 const justifyContent = ({ horizontal }: PortalPlacementProps) => {
   if (horizontal === 'left') {
-    return 'flex-start'
+    return 'flex-start';
   } else if (horizontal === 'right') {
-    return 'flex-end'
+    return 'flex-end';
   } else {
-    return 'center'
+    return 'center';
   }
-}
+};
 
 const InvisiBox = styled.div.attrs(
   ({ className = 'looker-components-reset' }) => ({ className })
@@ -142,4 +142,4 @@ const InvisiBox = styled.div.attrs(
   > * {
     pointer-events: auto;
   }
-`
+`;

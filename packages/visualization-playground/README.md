@@ -34,7 +34,7 @@ import {
 
 const ExtensionWrapper = () => {
   // get an authenticated sdk object from ExtensionContext
-  const { core40SDK, extensionSDK } = useContext<ExtensionContextData>(
+  const { coreSDK, extensionSDK } = useContext<ExtensionContextData>(
     ExtensionContext
   )
 
@@ -54,7 +54,7 @@ const ExtensionWrapper = () => {
       }}
     >
       {/* Render the playground */}
-      <VisualizationPlayground sdk={core40SDK} />
+      <VisualizationPlayground sdk={coreSDK} />
     </AppContext.Provider>
   )
 }

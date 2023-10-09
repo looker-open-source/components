@@ -3,15 +3,15 @@
 // Definitions by: Tom Picton <https://github.com/tpict>, Jason Maurer <https://github.com/jsonmaur>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-type genericProp = any
-type genericShouldForwardProp = (prop: genericProp) => boolean
+type genericProp = any;
+type genericShouldForwardProp = (prop: genericProp) => boolean;
 
 declare module '@styled-system/should-forward-prop' {
-  export const props: string[]
+  export const props: string[];
   export function createShouldForwardProp(
     props: genericProp[]
-  ): genericShouldForwardProp
+  ): genericShouldForwardProp;
 
-  declare const shouldForwardProp: genericShouldForwardProp
-  export default shouldForwardProp
+  declare const shouldForwardProp: genericShouldForwardProp;
+  export default shouldForwardProp;
 }

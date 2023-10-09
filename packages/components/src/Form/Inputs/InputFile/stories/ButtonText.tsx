@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputFile } from '../'
-import type { InputFileProps } from '../'
+import React from 'react';
+import { InputFile } from '../';
+import type { InputFileProps } from '../';
 
 export default function ButtonText(props: InputFileProps) {
   const {
@@ -14,9 +14,9 @@ export default function ButtonText(props: InputFileProps) {
     },
     buttonText = 'Browse local files',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputFile handleFile={handleFile} buttonText={buttonText} {...restProps} />
-  )
+  );
 }

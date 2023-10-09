@@ -1,10 +1,10 @@
-import { DateFormat } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyDateObject from '!!raw-loader!./DateObject'
-import { DateFormatTable } from './DateFormatTable'
-import storyTimezone from '!!raw-loader!./Timezone'
+import { DateFormat } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyDateObject from './DateObject?raw';
+import { DateFormatTable } from './DateFormatTable';
+import storyTimezone from './Timezone?raw';
 
 <Meta component={DateFormat} title="Docs/DateFormat" />
 
@@ -40,27 +40,27 @@ For languages other than English, import the locale (e.g. `koKR`) and spread it 
 This will provide translated strings for components that use them, as well as the locale-specific date strings and formatting.
 
 ```js static
-import { ComponentsProvider, koKR } from '@looker/components'
-import { DateFormat } from '@looker/components'
+import { ComponentsProvider, koKR } from '@looker/components';
+import { DateFormat } from '@looker/components';
 
 export const App = () => {
   return (
     <ComponentsProvider {...koKR}>
       <DateFormat />
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```
 
 The locale from the [date-fns package](https://www.npmjs.com/package/date-fns) can also be passed directly to the `DateFormat` component.
 
 ```js static
-import { DateFormat } from '@looker/components'
-import ko from 'date-fns/locale/ko'
+import { DateFormat } from '@looker/components';
+import ko from 'date-fns/locale/ko';
 
 export const LocalizedDateFormat = () => {
-  return <DateFormat locale={ko} />
-}
+  return <DateFormat locale={ko} />;
+};
 ```
 
 ## Props

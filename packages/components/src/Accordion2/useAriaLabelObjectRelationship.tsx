@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useID } from '../utils'
+import { useID } from '../utils';
 
 /**
  * Generates a tuple with appropriate DOM props to create an ARIA label
@@ -17,9 +17,9 @@ import { useID } from '../utils'
  * @returns [ label, labeled ]
  */
 export const useAriaLabelObjectRelationship = (id?: string) => {
-  id = useID(id)
-  const labelID = `${id}-label`
-  const objectID = `${id}-object`
+  id = useID(id);
+  const labelID = `${id}-label`;
+  const objectID = `${id}-object`;
 
   return [
     {
@@ -30,5 +30,5 @@ export const useAriaLabelObjectRelationship = (id?: string) => {
       'aria-labelledby': labelID,
       id,
     },
-  ]
-}
+  ];
+};

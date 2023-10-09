@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { SpaceVertical } from '../../../Layout'
-import { Paragraph } from '../../../Text'
-import { ValidationMessage } from '../../ValidationMessage'
-import type { FieldBaseProps } from './types'
+import React from 'react';
+import styled from 'styled-components';
+import { SpaceVertical } from '../../../Layout';
+import { Paragraph } from '../../../Text';
+import { ValidationMessage } from '../../ValidationMessage';
+import type { FieldBaseProps } from './types';
 
 export const HelperText = styled(
   ({ className, description, id, validationMessage }: FieldBaseProps) => {
@@ -27,6 +27,6 @@ export const HelperText = styled(
         )}
         {validationMessage && <ValidationMessage {...validationMessage} />}
       </SpaceVertical>
-    )
+    );
   }
-)``
+)``;

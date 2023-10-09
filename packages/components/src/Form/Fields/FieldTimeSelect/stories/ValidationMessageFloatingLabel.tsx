@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import type { FieldTimeSelectProps } from '..'
-import { FieldTimeSelect } from '..'
+import React from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import type { FieldTimeSelectProps } from '..';
+import { FieldTimeSelect } from '..';
 
 export default function ValidationMessageFloatingLabel(
   props: FieldTimeSelectProps
@@ -19,7 +19,7 @@ export default function ValidationMessageFloatingLabel(
     required = true,
     validationMessage = { message: 'validation Message', type: 'error' },
     ...restProps
-  } = props
+  } = props;
 
   return (
     <ExtendComponentsThemeProvider
@@ -35,5 +35,5 @@ export default function ValidationMessageFloatingLabel(
         {...restProps}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

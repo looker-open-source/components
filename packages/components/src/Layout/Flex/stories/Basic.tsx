@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function Basic() {
   return (
@@ -12,5 +12,5 @@ export default function Basic() {
       <FlexItem>💪</FlexItem>
       <FlexItem>📦</FlexItem>
     </Flex>
-  )
+  );
 }

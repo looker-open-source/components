@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Button, FieldText, Form } from '../..'
-import type { FormProps } from '../..'
+import React from 'react';
+import { Button, FieldText, Form } from '../..';
+import type { FormProps } from '../..';
 
 export default function Basic(props: FormProps) {
   return (
@@ -21,5 +21,5 @@ export default function Basic(props: FormProps) {
       <FieldText label="Charlie" name="charlie" />
       <Button>Submit</Button>
     </Form>
-  )
+  );
 }

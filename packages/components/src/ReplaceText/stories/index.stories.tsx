@@ -3,19 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import {
-  defaultArgTypes as argTypes,
-  disableStoryshot,
-} from '@looker/storybook'
-import { ReplaceText } from '../ReplaceText'
-import CustomReplace from './CustomReplace'
-export { default as Basic } from './Basic'
-export { default as CustomReplace } from './CustomReplace'
+import { defaultArgTypes as argTypes } from '@looker/storybook';
+import { ReplaceText } from '../ReplaceText';
 
-disableStoryshot(CustomReplace)
-
+export { default as Basic } from './Basic';
+export { default as CustomReplace } from './CustomReplace';
 export default {
   argTypes,
   component: ReplaceText,
   title: 'Stories/ReplaceText',
-}
+};

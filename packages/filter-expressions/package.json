@@ -1,9 +1,9 @@
 {
   "name": "@looker/filter-expressions",
   "license": "MIT",
-  "version": "1.0.2",
-  "main": "lib/main/index.js",
-  "module": "lib/module/index.js",
+  "version": "1.0.4",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "src": "src/index.ts",
   "sideEffects": false,
@@ -15,8 +15,12 @@
     "url": "looker-open-source/components",
     "directory": "packages/filter-expressions"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "buildLocales": "lk buildLocales",
+    "lint-i18n": "lk lintLocales",
+    "postprepare": "lk updateLocales",
     "prepublishOnly": "lk prepublishOnly",
     "test": "lk test",
     "coverage": "lk coverage"
@@ -24,11 +28,11 @@
   "dependencies": {
     "@looker/i18n": "1.0.0",
     "@looker/sdk": "^22.4.2",
-    "lodash": "*",
+    "lodash": "4.17.21",
     "pegjs": "0.10.0"
   },
   "devDependencies": {
-    "@babel/cli": "*",
+    "@babel/cli": "7.17.6",
     "@looker/babel-preset-prebuild-locales": "*",
     "@looker/babel-preset-react": "*",
     "@looker/babel-preset-typescript": "*",

@@ -24,24 +24,24 @@
 
  */
 
-import type { MouseEvent } from 'react'
-import React, { useCallback, useMemo, useState } from 'react'
-import type { UsePopperProps } from '../utils'
+import type { MouseEvent } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
+import type { UsePopperProps } from '../utils';
 import {
   useAnimationState,
   useCallbackRef,
   useID,
   usePopper,
   useForkedRef,
-} from '../utils'
-import { Portal } from '../Portal'
-import { DialogContext } from '../Dialog'
-import { TooltipContent } from './TooltipContent'
-import { TooltipSurface } from './TooltipSurface'
-import type { UseTooltipProps } from './types'
+} from '../utils';
+import { Portal } from '../Portal';
+import { DialogContext } from '../Dialog';
+import { TooltipContent } from './TooltipContent';
+import { TooltipSurface } from './TooltipSurface';
+import type { UseTooltipProps } from './types';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {}
+const noop = () => {};
 
 export const useTooltip = ({
   canClose,
@@ -59,51 +59,51 @@ export const useTooltip = ({
   delay = 'intricate',
   ariaDescribedById,
 }: UseTooltipProps) => {
-  const [isOpen, setIsOpen] = useState(initializeOpen)
+  const [isOpen, setIsOpen] = useState(initializeOpen);
   const { busy, className, renderDOM } = useAnimationState({
     enter: delay,
     exit: 'none',
     isOpen,
-  })
+  });
 
-  const [surfaceElement, surfaceCallbackRef] = useCallbackRef()
+  const [surfaceElement, surfaceCallbackRef] = useCallbackRef();
   const [newTriggerElement, setTriggerElement] = useState<HTMLElement | null>(
     null
-  )
+  );
   // If the triggerElement is passed in props, use that instead of the new element
-  const element = triggerElement ?? newTriggerElement
+  const element = triggerElement ?? newTriggerElement;
 
   const handleClose = useCallback(() => {
-    if (canClose && !canClose()) return
-    setIsOpen(false)
-  }, [canClose])
+    if (canClose && !canClose()) return;
+    setIsOpen(false);
+  }, [canClose]);
 
   const handleMouseOut = useCallback(
     (event: MouseEvent<HTMLElement>) => {
-      if (!isOpen) return
+      if (!isOpen) return;
 
-      const related = event.relatedTarget
+      const related = event.relatedTarget;
 
       if (
         element &&
         (element === related || element.contains(related as Node))
       ) {
-        return
+        return;
       }
 
       if (
         surfaceElement &&
         (surfaceElement === related || surfaceElement.contains(related as Node))
       ) {
-        return
+        return;
       }
 
       window.requestAnimationFrame(() => {
-        handleClose()
-      })
+        handleClose();
+      });
     },
     [element, surfaceElement, isOpen, handleClose]
-  )
+  );
 
   const usePopperProps: UsePopperProps = useMemo(
     () => ({
@@ -122,14 +122,14 @@ export const useTooltip = ({
       },
     }),
     [element, propsPlacement]
-  )
+  );
 
   const { placement, popperInstanceRef, style, targetRef } =
-    usePopper(usePopperProps)
+    usePopper(usePopperProps);
 
-  const ref = useForkedRef(targetRef, surfaceCallbackRef)
+  const ref = useForkedRef(targetRef, surfaceCallbackRef);
 
-  const guaranteedId = useID(id)
+  const guaranteedId = useID(id);
 
   // Memo all the things!
   return useMemo(() => {
@@ -164,22 +164,22 @@ export const useTooltip = ({
             </TooltipSurface>
           </Portal>
         </DialogContext.Provider>
-      ) : null
+      ) : null;
 
     const handleOpen = (e: { currentTarget: HTMLElement }) => {
-      setTriggerElement(e.currentTarget)
+      setTriggerElement(e.currentTarget);
 
-      const currentElement = triggerElement ?? e.currentTarget
-      const shouldOpen = canOpen ? canOpen(currentElement) : true
+      const currentElement = triggerElement ?? e.currentTarget;
+      const shouldOpen = canOpen ? canOpen(currentElement) : true;
 
       if (
         shouldOpen &&
         !disabled &&
         (!currentElement || !currentElement.dataset.notooltip)
       ) {
-        setIsOpen(true)
+        setIsOpen(true);
       }
-    }
+    };
 
     const enabledDomProps = disabled
       ? {}
@@ -189,7 +189,7 @@ export const useTooltip = ({
               ? ariaDescribedById || guaranteedId
               : undefined,
           className: renderDOM ? 'hover' : undefined,
-        }
+        };
 
     return {
       domProps: {
@@ -202,7 +202,7 @@ export const useTooltip = ({
       },
       popperInstanceRef,
       tooltip: popper,
-    }
+    };
   }, [
     busy,
     className,
@@ -224,5 +224,5 @@ export const useTooltip = ({
     triggerElement,
     width,
     ariaDescribedById,
-  ])
-}
+  ]);
+};

@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Button, ButtonToggle, Popover } from '../../..'
+import React, { useState } from 'react';
+import { Button, ButtonToggle, Popover } from '../../..';
 
 export default function Options() {
-  const [toggle, setToggle] = useState('Gouda')
+  const [toggle, setToggle] = useState('Gouda');
   return (
     <Popover
       content={
@@ -24,5 +24,5 @@ export default function Options() {
     >
       <Button>Open Popover</Button>
     </Popover>
-  )
+  );
 }

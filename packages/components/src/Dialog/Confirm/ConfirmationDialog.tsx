@@ -24,16 +24,16 @@
 
  */
 
-import type { ReactElement } from 'react'
-import React, { useCallback } from 'react'
-import type { StatefulColor } from '@looker/design-tokens'
-import { Button, ButtonTransparent } from '../../Button'
-import { useTranslation } from '../../utils'
-import type { DialogProps } from '../Dialog'
-import { Dialog } from '../Dialog'
-import { ConfirmLayout } from './ConfirmLayout'
+import type { ReactElement } from 'react';
+import React, { useCallback } from 'react';
+import type { StatefulColor } from '@looker/design-tokens';
+import { Button, ButtonTransparent } from '../../Button';
+import { useTranslation } from '../../utils';
+import type { DialogProps } from '../Dialog';
+import { Dialog } from '../Dialog';
+import { ConfirmLayout } from './ConfirmLayout';
 
-export type ConfirmationCallback = (close: () => void) => void
+export type ConfirmationCallback = (close: () => void) => void;
 
 export interface ConfirmationProps extends DialogProps {
   /**
@@ -41,61 +41,61 @@ export interface ConfirmationProps extends DialogProps {
    * I18n recommended: content that is user visible should be treated for i18n
    * @default Cancel
    */
-  cancelLabel?: string
+  cancelLabel?: string;
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
    * @default key
    */
-  buttonColor?: StatefulColor
+  buttonColor?: StatefulColor;
   /**
    * Defines the color of the confirm button. Can be the string name of a color listed in the color theme, or a color object.
    * @default neutral
    */
-  cancelColor?: StatefulColor
+  cancelColor?: StatefulColor;
   /**
    * Confirmation button text
    *
    * I18n recommended: content that is user visible should be treated for i18n
    * @default Confirm
    */
-  confirmLabel?: string
+  confirmLabel?: string;
   /**
    * Additional information about the action requiring confirmation
    *
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  message: ReactElement | string
+  message: ReactElement | string;
   /**
    * Callback if user clicks Cancel button or closes the dialog
    */
-  onCancel?: ConfirmationCallback
+  onCancel?: ConfirmationCallback;
   /**
    * Function called when user clicks to confirm
    * close function is passed as an argument to control when to close the dialog
    */
-  onConfirm: ConfirmationCallback
+  onConfirm: ConfirmationCallback;
   /**
    * Dialog title text
    *
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  title: string
+  title: string;
 }
 
 export interface ConfirmationDialogProps extends ConfirmationProps {
   /**
    * For triggering close from within the dialog
    */
-  close: () => void
+  close: () => void;
   /**
    * Toggling this after mounting will trigger the animation
    * @default false
    */
-  isOpen?: boolean
+  isOpen?: boolean;
 }
 
 export const ConfirmationDialog = (props: ConfirmationDialogProps) => {
-  const { t } = useTranslation('ConfirmationDialog')
+  const { t } = useTranslation('ConfirmationDialog');
   const {
     cancelLabel = t('Cancel'),
     close,
@@ -108,19 +108,19 @@ export const ConfirmationDialog = (props: ConfirmationDialogProps) => {
     onConfirm,
     title,
     ...rest
-  } = props
+  } = props;
 
   const confirm = useCallback(() => {
-    onConfirm(close)
-  }, [close, onConfirm])
+    onConfirm(close);
+  }, [close, onConfirm]);
 
   const cancel = useCallback(() => {
     if (onCancel) {
-      onCancel(close)
+      onCancel(close);
     } else {
-      close()
+      close();
     }
-  }, [close, onCancel])
+  }, [close, onCancel]);
 
   return (
     <Dialog isOpen={isOpen} onClose={cancel} {...rest}>
@@ -139,5 +139,5 @@ export const ConfirmationDialog = (props: ConfirmationDialogProps) => {
         }
       />
     </Dialog>
-  )
-}
+  );
+};

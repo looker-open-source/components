@@ -3,27 +3,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled, { css, useTheme } from 'styled-components'
-import { ComponentsProvider } from '@looker/components'
-import type { CommonCartesianProperties, LegendPositions } from '../types'
+import type { ReactNode, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled, { css, useTheme } from 'styled-components';
+import { ComponentsProvider } from '@looker/components';
+import type { CommonCartesianProperties, LegendPositions } from '../types';
 
 export type VisWrapperProps = {
-  children?: ReactNode
-  legend?: CommonCartesianProperties['legend']
-}
+  children?: ReactNode;
+  legend?: CommonCartesianProperties['legend'];
+};
 
 export type VisWrapperInternalProps = VisWrapperProps & {
-  className?: string
-}
+  className?: string;
+};
 
 const VisWrapperInternal = forwardRef(
   (
     { legend, ...props }: VisWrapperInternalProps,
     ref?: Ref<HTMLDivElement>
   ) => {
-    const theme = useTheme()
+    const theme = useTheme();
 
     if (!theme) {
       // Recursively wrap VisWrapper in ComponentsProvider to ensure that
@@ -33,14 +33,14 @@ const VisWrapperInternal = forwardRef(
         <ComponentsProvider>
           <VisWrapperInternal {...props} ref={ref} />
         </ComponentsProvider>
-      )
+      );
     }
 
-    return <div {...props} ref={ref} />
+    return <div {...props} ref={ref} />;
   }
-)
+);
 
-VisWrapperInternal.displayName = `VisWrapperInternal`
+VisWrapperInternal.displayName = `VisWrapperInternal`;
 
 const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
   const POSITION_MAP: Record<LegendPositions, string> = {
@@ -48,15 +48,15 @@ const flexDirection = ({ legend }: Pick<VisWrapperProps, 'legend'>) => {
     right: 'row',
     left: 'row-reverse',
     bottom: 'column',
-  }
+  };
 
-  const POSITION = legend ? legend.position : 'bottom'
+  const POSITION = legend ? legend.position : 'bottom';
 
   return css`
     flex-direction: ${POSITION_MAP[POSITION]};
     justify-content: ${POSITION === 'left' ? `flex-end` : `flex-start`};
-  `
-}
+  `;
+};
 
 export const VisWrapper = styled(VisWrapperInternal)`
   /*
@@ -74,4 +74,4 @@ export const VisWrapper = styled(VisWrapperInternal)`
   & > div > svg {
     overflow: visible;
   }
-`
+`;

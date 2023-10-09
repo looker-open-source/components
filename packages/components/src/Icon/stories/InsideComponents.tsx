@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Space, SpaceVertical, Button, IconButton } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Space, SpaceVertical, Button, IconButton } from '../..';
 
 export default function InsideComponents() {
   return (
@@ -62,5 +62,5 @@ export default function InsideComponents() {
         />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

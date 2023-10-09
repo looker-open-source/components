@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Fieldset } from '../'
-import { FieldCheckbox } from '../../'
+import React from 'react';
+import { Fieldset } from '../';
+import { FieldCheckbox } from '../../';
 
 export default function AccordionControlled() {
   return (
@@ -19,5 +19,5 @@ export default function AccordionControlled() {
       <FieldCheckbox name="box2" label="here too" />
       <FieldCheckbox name="box3" label="also here" />
     </Fieldset>
-  )
+  );
 }

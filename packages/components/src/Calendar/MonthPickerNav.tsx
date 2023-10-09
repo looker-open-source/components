@@ -24,27 +24,27 @@
 
  */
 
-import { addYears, getYear, setMonth, setYear } from 'date-fns'
-import React, { useCallback, useEffect, useState } from 'react'
-import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft/ChevronLeft'
-import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight/ChevronRight'
-import { Close } from '@styled-icons/material/Close'
-import { Divider } from '../Divider'
-import { IconButton } from '../Button'
-import { InlineInputText } from '../Form'
-import { Space } from '../Layout'
-import { useTranslation } from '../utils'
-import { formatDateString } from './utils'
-import type { CalendarNavProps } from './CalendarNav'
-import { YearList } from './YearList'
+import { addYears, getYear, setMonth, setYear } from 'date-fns';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ChevronLeft } from '@styled-icons/material-rounded/ChevronLeft/ChevronLeft';
+import { ChevronRight } from '@styled-icons/material-rounded/ChevronRight/ChevronRight';
+import { Close } from '@styled-icons/material/Close';
+import { Divider } from '../Divider';
+import { IconButton } from '../Button';
+import { InlineInputText } from '../Form';
+import { Space } from '../Layout';
+import { useTranslation } from '../utils';
+import { formatDateString } from './utils';
+import type { CalendarNavProps } from './CalendarNav';
+import { YearList } from './YearList';
 
 export type MonthPickerNavProps = Pick<
   CalendarNavProps,
   'locale' | 'onMonthChange'
 > & {
-  date: Date
-  onClose: () => void
-}
+  date: Date;
+  onClose: () => void;
+};
 
 export const MonthPickerNav = ({
   date,
@@ -52,55 +52,55 @@ export const MonthPickerNav = ({
   onClose,
   onMonthChange,
 }: MonthPickerNavProps) => {
-  const { t } = useTranslation('MonthPickerNav')
-  const [trackYear, setTrackYear] = useState(date)
+  const { t } = useTranslation('MonthPickerNav');
+  const [trackYear, setTrackYear] = useState(date);
   const [inputText, setInputText] = useState(
     formatDateString(trackYear, 'yyyy', locale)
-  )
+  );
   // The base for the scrolling list of years
   // to be updated when user scrolls all the way to the top or bottom
-  const [baseMonth, setBaseMonth] = useState(date)
+  const [baseMonth, setBaseMonth] = useState(date);
 
   const handleInputChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) =>
       setInputText(event.target.value),
     [setInputText]
-  )
+  );
 
   useEffect(() => {
-    setInputText(getYear(trackYear).toString())
-  }, [trackYear])
+    setInputText(getYear(trackYear).toString());
+  }, [trackYear]);
 
   const handleInputBlur = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
       if (event.target.value.length === 4) {
-        const newYear = setYear(trackYear, Number(event.target.value))
-        setTrackYear(newYear)
-        setBaseMonth(newYear)
+        const newYear = setYear(trackYear, Number(event.target.value));
+        setTrackYear(newYear);
+        setBaseMonth(newYear);
       }
     },
     [trackYear]
-  )
+  );
 
   const handleNextYear = useCallback(() => {
-    const newYear = addYears(trackYear, 1)
-    setTrackYear(newYear)
-    setBaseMonth(newYear)
-  }, [setTrackYear, trackYear])
+    const newYear = addYears(trackYear, 1);
+    setTrackYear(newYear);
+    setBaseMonth(newYear);
+  }, [setTrackYear, trackYear]);
 
   const handlePreviousYear = useCallback(() => {
-    const newYear = addYears(trackYear, -1)
-    setTrackYear(newYear)
-    setBaseMonth(newYear)
-  }, [setTrackYear, trackYear])
+    const newYear = addYears(trackYear, -1);
+    setTrackYear(newYear);
+    setBaseMonth(newYear);
+  }, [setTrackYear, trackYear]);
 
   const handleMonthClick = useCallback(
     (month: number) => {
-      onMonthChange(setMonth(trackYear, month))
-      onClose()
+      onMonthChange(setMonth(trackYear, month));
+      onClose();
     },
     [trackYear, onMonthChange, onClose]
-  )
+  );
 
   return (
     <>
@@ -144,5 +144,5 @@ export const MonthPickerNav = ({
         setBaseMonth={setBaseMonth}
       />
     </>
-  )
-}
+  );
+};

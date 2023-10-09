@@ -23,28 +23,28 @@
  SOFTWARE.
 
  */
-import type { FormEvent } from 'react'
-import React, { useEffect, useRef, useContext } from 'react'
-import { Grid, InputText, FieldRadio, Link, Space } from '@looker/components'
-import type { ExtensionContextData } from '@looker/extension-sdk-react'
-import { ExtensionContext } from '@looker/extension-sdk-react'
-import debounce from 'lodash/debounce'
-import styled from 'styled-components'
-import { useLocalStorage } from '../utils'
-import { ShareLink } from '../ShareLink'
+import type { ChangeEvent } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
+import { Grid, InputText, FieldRadio, Link, Space } from '@looker/components';
+import type { ExtensionContextData } from '@looker/extension-sdk-react';
+import { ExtensionContext } from '@looker/extension-sdk-react';
+import debounce from 'lodash/debounce';
+import styled from 'styled-components';
+import { useLocalStorage } from '../utils';
+import { ShareLink } from '../ShareLink';
 
-export type InputTypes = 'dashboard' | 'query'
-export type OnQueryInputArgs = { type: InputTypes; value?: string | number }
+export type InputTypes = 'dashboard' | 'query';
+export type OnQueryInputArgs = { type: InputTypes; value?: string | number };
 
 type QueryInputProps = {
-  onChange: (queryInput: OnQueryInputArgs) => void
-  dashboardId?: number
-  queryId?: string | number
-  fetchBy?: InputTypes
-  setFetchBy: (input: InputTypes) => void
-}
+  onChange: (queryInput: OnQueryInputArgs) => void;
+  dashboardId?: number;
+  queryId?: string | number;
+  fetchBy?: InputTypes;
+  setFetchBy: (input: InputTypes) => void;
+};
 
-type InputValues = string | number | undefined
+type InputValues = string | number | undefined;
 
 export const QueryInput = ({
   onChange,
@@ -53,67 +53,67 @@ export const QueryInput = ({
   fetchBy,
   setFetchBy,
 }: QueryInputProps) => {
-  const { extensionSDK } = useContext<ExtensionContextData>(ExtensionContext)
+  const { extensionSDK } = useContext<ExtensionContextData>(ExtensionContext);
 
   const [storedInputType, setStoredInputType] = useLocalStorage<InputTypes>(
     'visComponentInputType',
     fetchBy
-  )
+  );
 
   const [storedQueryIdentifier, setStoredQueryIdentifier] = useLocalStorage(
     'visComponentQueryIdentifier',
     queryId
-  )
+  );
 
   const [storedDashboardId, setStoredDashboardId] = useLocalStorage(
     'visComponentDashboardId',
     dashboardId
-  )
+  );
 
   const debouncedOnChange = useRef(
     debounce((nextType: InputTypes, nextValue: InputValues) => {
       onChange({
         type: nextType,
         value: nextValue,
-      })
+      });
     }, 500)
-  ).current
+  ).current;
 
-  const handleInputTypeChange = (e: FormEvent<HTMLInputElement>) => {
-    const { value: type } = e.target as HTMLInputElement
-    setFetchBy(type as InputTypes)
-    setStoredInputType(type as InputTypes)
+  const handleInputTypeChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value: type } = e.target as HTMLInputElement;
+    setFetchBy(type as InputTypes);
+    setStoredInputType(type as InputTypes);
     const inputValue =
-      type === 'query' ? storedQueryIdentifier : storedDashboardId
-    onChange({ type: type as InputTypes, value: inputValue })
-  }
+      type === 'query' ? storedQueryIdentifier : storedDashboardId;
+    onChange({ type: type as InputTypes, value: inputValue });
+  };
 
-  const handleQueryIdChange = (e: FormEvent<HTMLInputElement>) => {
-    const { value } = e.target as HTMLInputElement
+  const handleQueryIdChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target as HTMLInputElement;
     if (storedInputType) {
-      debouncedOnChange(storedInputType, value)
+      debouncedOnChange(storedInputType, value);
     }
-    setStoredQueryIdentifier(value)
-  }
+    setStoredQueryIdentifier(value);
+  };
 
-  const handleDashboardIdChange = (e: FormEvent<HTMLInputElement>) => {
-    const { value } = e.target as HTMLInputElement
+  const handleDashboardIdChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target as HTMLInputElement;
     if (storedInputType) {
-      debouncedOnChange(storedInputType, value)
+      debouncedOnChange(storedInputType, value);
     }
-    setStoredDashboardId(Number(value))
-  }
+    setStoredDashboardId(Number(value));
+  };
 
   /* Persist prop values when they are changed externally */
   useEffect(() => {
     if (fetchBy) {
-      setStoredInputType(fetchBy)
+      setStoredInputType(fetchBy);
     }
     if (dashboardId) {
-      setStoredDashboardId(dashboardId)
+      setStoredDashboardId(dashboardId);
     }
     if (queryId) {
-      setStoredQueryIdentifier(queryId)
+      setStoredQueryIdentifier(queryId);
     }
   }, [
     dashboardId,
@@ -122,18 +122,18 @@ export const QueryInput = ({
     setStoredDashboardId,
     setStoredInputType,
     setStoredQueryIdentifier,
-  ])
+  ]);
 
   /* Restore localStorage state on load */
   useEffect(() => {
     const inputValue =
-      storedInputType === 'query' ? storedQueryIdentifier : storedDashboardId
+      storedInputType === 'query' ? storedQueryIdentifier : storedDashboardId;
     if (!fetchBy && storedInputType && inputValue) {
-      setFetchBy(storedInputType)
+      setFetchBy(storedInputType);
       onChange({
         type: storedInputType,
         value: inputValue,
-      })
+      });
     }
   }, [
     storedInputType,
@@ -142,7 +142,7 @@ export const QueryInput = ({
     fetchBy,
     onChange,
     setFetchBy,
-  ])
+  ]);
 
   return (
     <Grid>
@@ -188,7 +188,7 @@ export const QueryInput = ({
                 extensionSDK.openBrowserWindow(
                   `/dashboards/${dashboardId}`,
                   '_blank'
-                )
+                );
               }}
               fontSize="small"
             >
@@ -200,12 +200,12 @@ export const QueryInput = ({
         ) : null}
       </div>
     </Grid>
-  )
-}
+  );
+};
 
 const Middot = styled.div`
   background: ${({ theme }) => theme.colors.text};
   border-radius: 2px;
   height: 2px;
   width: 2px;
-`
+`;

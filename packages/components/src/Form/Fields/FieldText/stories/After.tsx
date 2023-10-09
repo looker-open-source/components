@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function After(props: FieldTextProps) {
   const {
@@ -13,7 +13,7 @@ export default function After(props: FieldTextProps) {
     label = 'First Name',
     after = '%',
     ...restProps
-  } = props
+  } = props;
 
-  return <FieldText name={name} label={label} after={after} {...restProps} />
+  return <FieldText name={name} label={label} after={after} {...restProps} />;
 }

@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { jaJP as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { jaJP as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
     Config: '構成',
-    Dimensions: 'Dimension',
+    Dimensions: 'ディメンション',
     Error: 'エラー',
-    Measures: 'Measure',
+    Measures: 'measure',
     Result: '結果',
     error: 'エラー',
     ok: 'OK',
@@ -19,16 +19,15 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': '問題が発生しました',
   },
-  translation: {
-    'Row Total': '行の合計',
+  KeyValueList: {
     false: 'false',
     null: 'null',
     true: 'true',
-    undefined: 'undefined',
+    undefined: '未定義',
   },
   useNormalizedPivotLabels: {
-    'Row Total': '行の合計',
+    'Row Total': '行全体',
   },
-}
+};
 
-export const jaJP = mergeLocaleObjects([componentsLocale], 'ja-JP', resources)
+export const jaJP = mergeLocaleObjects([componentsLocale], 'ja-JP', resources);

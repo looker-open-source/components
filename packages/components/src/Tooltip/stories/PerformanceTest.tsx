@@ -2,22 +2,22 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useEffect, useRef, useState } from 'react'
-import type { FormEvent } from 'react'
-import { Tooltip } from '../Tooltip'
+import React, { useEffect, useRef, useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { Tooltip } from '../Tooltip';
 
 export default function PerformanceTest() {
-  const [value, setValue] = useState('')
-  const handleChange = (e: FormEvent<HTMLInputElement>) =>
-    setValue(e.currentTarget.value)
-  const lastRenderRef = useRef(Date.now())
+  const [value, setValue] = useState('');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
+  const lastRenderRef = useRef(Date.now());
   useEffect(() => {
-    const now = Date.now()
-    const diff = now - lastRenderRef.current
+    const now = Date.now();
+    const diff = now - lastRenderRef.current;
     // eslint-disable-next-line no-console
-    console.log(diff)
-    lastRenderRef.current = now
-  })
+    console.log(diff);
+    lastRenderRef.current = now;
+  });
   return (
     <div>
       <p>Type fast then hold down delete:</p>
@@ -31,5 +31,5 @@ export default function PerformanceTest() {
         ))}
       </div>
     </div>
-  )
+  );
 }

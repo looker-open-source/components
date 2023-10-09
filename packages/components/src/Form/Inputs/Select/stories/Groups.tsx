@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
+import React from 'react';
+import { Select } from '..';
 
 export default function Groups() {
   return (
@@ -35,5 +35,5 @@ export default function Groups() {
         },
       ]}
     />
-  )
+  );
 }

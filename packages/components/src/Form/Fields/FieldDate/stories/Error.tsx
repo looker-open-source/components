@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import { FieldDate } from '..'
+import React from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import { FieldDate } from '..';
 
 export default function Error(externalLabel = true) {
   return (
@@ -18,5 +18,5 @@ export default function Error(externalLabel = true) {
         validationMessage={{ message: 'Error Message', type: 'error' }}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

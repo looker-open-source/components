@@ -6,16 +6,16 @@
     "value": "{{value}} 포함"
   },
   "does not contain value": {
-    "value": "{{value}} 포함 안 함"
+    "value": "{{value}} 포함하지 않음"
   },
   "does not end with value": {
-    "value": "{{value}}(으)로 종료 안 함"
+    "value": "{{value}}(으)로 끝나지 않음"
   },
   "does not start with value": {
-    "value": "{{value}}(으)로 시작 안 함"
+    "value": "{{value}}(으)로 시작되지 않음"
   },
   "ends with value": {
-    "value": "{{value}}(으)로 종료"
+    "value": "{{value}}(으)로 끝남"
   },
   "starts with value": {
     "value": "{{value}}(으)로 시작"

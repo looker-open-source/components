@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { textBlends, uiBlends } from '../blendPoints'
-import type { BlendColors, SpecifiableColors } from '../types'
-import { mixColors } from './mixColors'
-import { tintOrShadeUiColor } from './tintOrShadeUiColor'
+import { textBlends, uiBlends } from '../blendPoints';
+import type { BlendColors, SpecifiableColors } from '../types';
+import { mixColors } from './mixColors';
+import { tintOrShadeUiColor } from './tintOrShadeUiColor';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const generateBlendColors = ({
@@ -24,4 +24,4 @@ export const generateBlendColors = ({
   text3: mixColors(textBlends[2], text, background),
   text4: mixColors(textBlends[3], text, background),
   text5: mixColors(textBlends[4], text, background),
-})
+});

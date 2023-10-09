@@ -24,30 +24,27 @@
 
  */
 
-import React from 'react'
-import { composeStories } from '@storybook/testing-react'
-import { fireEvent, screen, waitFor } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import en from 'date-fns/locale/en-US'
-import ital from 'date-fns/locale/it'
-import ko from 'date-fns/locale/ko'
-import { InputDateRange } from './InputDateRange'
-import * as stories from './stories/index.stories'
+import React from 'react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import en from 'date-fns/locale/en-US';
+import ital from 'date-fns/locale/it';
+import ko from 'date-fns/locale/ko';
+import { InputDateRange } from './InputDateRange';
+import { ExternalUpdates } from './stories/index.stories';
 
-const { ExternalUpdates } = composeStories(stories)
-
-const realDateNow = Date.now.bind(global.Date)
+const realDateNow = Date.now.bind(global.Date);
 
 beforeEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = jest.fn(() => 1580567580000)
-})
+  global.Date.now = jest.fn(() => 1580567580000);
+});
 
 afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = realDateNow
-  jest.clearAllMocks()
-})
+  global.Date.now = realDateNow;
+  jest.clearAllMocks();
+});
 
 const mockProps = {
   onChange: jest.fn(),
@@ -56,95 +53,95 @@ const mockProps = {
     from: new Date('June 3, 2019'),
     to: new Date('June 9, 2019'),
   },
-}
+};
 
 test('value can be updated externally', () => {
-  renderWithTheme(<ExternalUpdates />)
+  renderWithTheme(<ExternalUpdates />);
 
-  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument()
-  expect(screen.getByDisplayValue('06/09/2019')).toBeInTheDocument()
+  expect(screen.getByDisplayValue('06/03/2019')).toBeInTheDocument();
+  expect(screen.getByDisplayValue('06/09/2019')).toBeInTheDocument();
 
-  fireEvent.click(screen.getByText('January 1 - February 15, 2012')) // helper isDateRangeInView returns false
-  expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument()
+  fireEvent.click(screen.getByText('January 1 - February 15, 2012')); // helper isDateRangeInView returns false
+  expect(screen.getByDisplayValue('01/01/2012')).toBeInTheDocument();
 
-  fireEvent.click(screen.getByText('From: February 9, 2021')) // helper isDateRangeInView returns false
-  expect(screen.getByDisplayValue('02/09/2021')).toBeInTheDocument()
-})
+  fireEvent.click(screen.getByText('From: February 9, 2021')); // helper isDateRangeInView returns false
+  expect(screen.getByDisplayValue('02/09/2021')).toBeInTheDocument();
+});
 
 test('user can change the selected date via text input field', () => {
-  renderWithTheme(<ExternalUpdates />)
-  fireEvent.click(screen.getByText('Open calendar'))
+  renderWithTheme(<ExternalUpdates />);
+  fireEvent.click(screen.getByText('Open calendar'));
 
-  expect(screen.getAllByText('Jun 2019')).toHaveLength(2)
+  expect(screen.getAllByText('Jun 2019')).toHaveLength(2);
 
-  const fromTextInput = screen.getByDisplayValue('06/03/2019')
-  fireEvent.change(fromTextInput, { target: { value: '01/01/2012' } })
-  fireEvent.blur(fromTextInput) // update value on blur
+  const fromTextInput = screen.getByDisplayValue('06/03/2019');
+  fireEvent.change(fromTextInput, { target: { value: '01/01/2012' } });
+  fireEvent.blur(fromTextInput); // update value on blur
 
-  expect(screen.getAllByText('Jan 2012')).toHaveLength(2)
+  expect(screen.getAllByText('Jan 2012')).toHaveLength(2);
   // close the popover
-  fireEvent.click(document)
-})
+  fireEvent.click(document);
+});
 
 test('gracefully accepts partial date range objects', async () => {
-  renderWithTheme(<ExternalUpdates />)
-  fireEvent.click(screen.getByText('From: February 9, 2021')) // helper isDateRangeInView returns false
-  fireEvent.click(screen.getByText('Open calendar'))
+  renderWithTheme(<ExternalUpdates />);
+  fireEvent.click(screen.getByText('From: February 9, 2021')); // helper isDateRangeInView returns false
+  fireEvent.click(screen.getByText('Open calendar'));
 
   await waitFor(() => {
     // Month picker button and month title
-    expect(screen.getAllByText('Feb 2021')).toHaveLength(2)
-  })
-})
+    expect(screen.getAllByText('Feb 2021')).toHaveLength(2);
+  });
+});
 
 test('calls onChange prop when a day is clicked', async () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
-  const openCalendar = screen.getByText('Open calendar')
+  const openCalendar = screen.getByText('Open calendar');
 
-  fireEvent.click(openCalendar)
+  fireEvent.click(openCalendar);
 
   await waitFor(() => {
-    expect(screen.getAllByText('4')[1]).toBeInTheDocument()
-  })
+    expect(screen.getAllByText('4')[1]).toBeInTheDocument();
+  });
 
-  expect(mockProps.onChange).not.toHaveBeenCalled()
+  expect(mockProps.onChange).not.toHaveBeenCalled();
 
-  fireEvent.click(screen.getAllByText('4')[1]) // the 4th day of the month
-  fireEvent.click(screen.getAllByText('21')[1]) // the 21st day of the month
+  fireEvent.click(screen.getAllByText('4')[1]); // the 4th day of the month
+  fireEvent.click(screen.getAllByText('21')[1]); // the 21st day of the month
 
-  expect(mockProps.onChange).toHaveBeenCalled()
-})
+  expect(mockProps.onChange).toHaveBeenCalled();
+});
 
 test('selects a single day when clicking on one of the date endpoints', async () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
-  expect(mockProps.onChange).not.toHaveBeenCalled()
+  renderWithTheme(<InputDateRange {...mockProps} />);
+  expect(mockProps.onChange).not.toHaveBeenCalled();
 
-  const openCalendar = screen.getByText('Open calendar')
+  const openCalendar = screen.getByText('Open calendar');
 
-  fireEvent.click(openCalendar)
+  fireEvent.click(openCalendar);
   await waitFor(() => {
-    expect(screen.getAllByText('3')[1]).toBeInTheDocument()
-  })
+    expect(screen.getAllByText('3')[1]).toBeInTheDocument();
+  });
 
-  const date = screen.getAllByText('3')[1]
-  fireEvent.click(date)
+  const date = screen.getAllByText('3')[1];
+  fireEvent.click(date);
 
-  expect(mockProps.onChange).toHaveBeenCalled()
-})
+  expect(mockProps.onChange).toHaveBeenCalled();
+});
 
 test('user can clear the selected date by deleting text input content', () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
-  const fromTextInput = screen.getByTestId('date-from-text-input')
+  const fromTextInput = screen.getByTestId('date-from-text-input');
 
-  fireEvent.change(fromTextInput, { target: { value: '' } })
-  fireEvent.blur(fromTextInput) // update value on blur
+  fireEvent.change(fromTextInput, { target: { value: '' } });
+  fireEvent.blur(fromTextInput); // update value on blur
 
-  const toTextInput = screen.getByTestId('date-to-text-input')
+  const toTextInput = screen.getByTestId('date-to-text-input');
 
-  fireEvent.change(toTextInput, { target: { value: '' } })
-  fireEvent.blur(toTextInput) // update value on blur
+  fireEvent.change(toTextInput, { target: { value: '' } });
+  fireEvent.blur(toTextInput); // update value on blur
 
   // Since InputDateRange must be externally controlled, each call
   // will clear one endpoint but not both (since the value prop isn't changinge)
@@ -161,27 +158,27 @@ test('user can clear the selected date by deleting text input content', () => {
         },
       ],
     ]
-  `)
-})
+  `);
+});
 
 test('starts new range with from when exsting value has both from and', async () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
   const fromInput = screen.getByTestId(
     'date-from-text-input'
-  ) as HTMLInputElement
-  expect(fromInput).toHaveValue('06/03/2019')
+  ) as HTMLInputElement;
+  expect(fromInput).toHaveValue('06/03/2019');
 
-  const openCalendar = screen.getByText('Open calendar')
+  const openCalendar = screen.getByText('Open calendar');
 
-  fireEvent.click(openCalendar)
+  fireEvent.click(openCalendar);
 
   await waitFor(() => {
-    expect(screen.getAllByText('4')[1]).toBeInTheDocument()
-  })
-  const newDate = screen.getAllByText('1')[1] // the 1st day of the month in "from"
+    expect(screen.getAllByText('4')[1]).toBeInTheDocument();
+  });
+  const newDate = screen.getAllByText('1')[1]; // the 1st day of the month in "from"
 
-  fireEvent.click(newDate)
+  fireEvent.click(newDate);
 
   expect(mockProps.onChange.mock.calls).toMatchInlineSnapshot(`
     Array [
@@ -192,23 +189,23 @@ test('starts new range with from when exsting value has both from and', async ()
         },
       ],
     ]
-  `)
-})
+  `);
+});
 
 test('calls onChange prop when a TextInput is modified', () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
-  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement;
   const fromInput = screen.getByTestId(
     'date-from-text-input'
-  ) as HTMLInputElement
+  ) as HTMLInputElement;
 
-  expect(mockProps.onChange).not.toHaveBeenCalled()
-  fireEvent.change(fromInput, { target: { value: '6/15/2019' } })
-  fireEvent.blur(fromInput)
+  expect(mockProps.onChange).not.toHaveBeenCalled();
+  fireEvent.change(fromInput, { target: { value: '6/15/2019' } });
+  fireEvent.blur(fromInput);
 
-  fireEvent.change(toInput, { target: { value: '6/25/2019' } })
-  fireEvent.blur(toInput)
+  fireEvent.change(toInput, { target: { value: '6/25/2019' } });
+  fireEvent.blur(toInput);
 
   expect(mockProps.onChange.mock.calls).toMatchInlineSnapshot(`
     Array [
@@ -225,7 +222,7 @@ test('calls onChange prop when a TextInput is modified', () => {
         },
       ],
     ]
-  `)
+  `);
   // First change triggers an invalid range because
   // the from input is after the to input
   expect(mockProps.onValidationFail.mock.calls).toMatchInlineSnapshot(`
@@ -234,8 +231,8 @@ test('calls onChange prop when a TextInput is modified', () => {
         "Invalid range",
       ],
     ]
-  `)
-})
+  `);
+});
 
 test('selects the to when clicking a date after the from', async () => {
   renderWithTheme(
@@ -245,23 +242,23 @@ test('selects the to when clicking a date after the from', async () => {
         from: new Date('June 3, 2019'),
       }}
     />
-  )
+  );
 
   const fromInput = screen.getByTestId(
     'date-from-text-input'
-  ) as HTMLInputElement
-  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
-  const openCalendar = screen.getByText('Open calendar')
+  ) as HTMLInputElement;
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement;
+  const openCalendar = screen.getByText('Open calendar');
 
-  expect(fromInput).toHaveValue('06/03/2019')
-  expect(toInput).toHaveValue('')
+  expect(fromInput).toHaveValue('06/03/2019');
+  expect(toInput).toHaveValue('');
 
-  fireEvent.click(openCalendar)
+  fireEvent.click(openCalendar);
 
   await waitFor(() => {
-    expect(screen.getAllByText('15')[1]).toBeInTheDocument()
-  })
-  fireEvent.click(screen.getAllByText('15')[1])
+    expect(screen.getAllByText('15')[1]).toBeInTheDocument();
+  });
+  fireEvent.click(screen.getAllByText('15')[1]);
 
   expect(mockProps.onChange.mock.calls).toMatchInlineSnapshot(`
     Array [
@@ -271,84 +268,84 @@ test('selects the to when clicking a date after the from', async () => {
         },
       ],
     ]
-  `)
-})
+  `);
+});
 
 test('value prop fills TextInputs with correct dates', () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
   const fromInput = screen.getByTestId(
     'date-from-text-input'
-  ) as HTMLInputElement
-  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
+  ) as HTMLInputElement;
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement;
 
-  expect(fromInput).toHaveValue('06/03/2019')
-  expect(toInput).toHaveValue('06/09/2019')
-})
+  expect(fromInput).toHaveValue('06/03/2019');
+  expect(toInput).toHaveValue('06/09/2019');
+});
 
 // getByLabelText doesn't return aria-label value not sure how to select the specific date
 test('value highlights the correct dates in the Calendar', async () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
 
-  const openCalendar = screen.getByText('Open calendar')
+  const openCalendar = screen.getByText('Open calendar');
 
-  fireEvent.click(openCalendar)
+  fireEvent.click(openCalendar);
 
   await waitFor(() => {
-    expect(screen.getAllByText('3')[1]).toBeInTheDocument()
-  })
+    expect(screen.getAllByText('3')[1]).toBeInTheDocument();
+  });
 
-  const startDate = screen.getAllByText('3')[1]
-  const endDate = screen.getAllByText('9')[1]
-  const dayBefore = screen.getAllByText('2')[1]
-  const dayAfter = screen.getAllByText('10')[1]
+  const startDate = screen.getAllByText('3')[1];
+  const endDate = screen.getAllByText('9')[1];
+  const dayBefore = screen.getAllByText('2')[1];
+  const dayAfter = screen.getAllByText('10')[1];
 
-  expect(startDate).toHaveAttribute('aria-selected', 'true')
-  expect(endDate).toHaveAttribute('aria-selected', 'true')
+  expect(startDate).toHaveAttribute('aria-selected', 'true');
+  expect(endDate).toHaveAttribute('aria-selected', 'true');
 
-  expect(dayBefore).toHaveAttribute('aria-selected', 'false')
-  expect(dayAfter).toHaveAttribute('aria-selected', 'false')
-})
+  expect(dayBefore).toHaveAttribute('aria-selected', 'false');
+  expect(dayAfter).toHaveAttribute('aria-selected', 'false');
+});
 
 test('validates FROM text input to match localized date format', () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
+  renderWithTheme(<InputDateRange {...mockProps} />);
   const fromInput = screen.getByTestId(
     'date-from-text-input'
-  ) as HTMLInputElement
+  ) as HTMLInputElement;
 
-  fireEvent.change(fromInput, { target: { value: '6/3/2019' } })
-  fireEvent.blur(fromInput) // validate on blur
+  fireEvent.change(fromInput, { target: { value: '6/3/2019' } });
+  fireEvent.blur(fromInput); // validate on blur
 
-  expect(mockProps.onValidationFail).not.toHaveBeenCalled()
+  expect(mockProps.onValidationFail).not.toHaveBeenCalled();
 
-  fireEvent.change(fromInput, { target: { value: 'not-a-valid-date' } })
-  fireEvent.blur(fromInput) // validate on blur
+  fireEvent.change(fromInput, { target: { value: 'not-a-valid-date' } });
+  fireEvent.blur(fromInput); // validate on blur
 
-  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
-})
+  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1);
+});
 
 test('validates TO text input to match localized date format', () => {
-  renderWithTheme(<InputDateRange {...mockProps} />)
-  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement
+  renderWithTheme(<InputDateRange {...mockProps} />);
+  const toInput = screen.getByTestId('date-to-text-input') as HTMLInputElement;
 
-  fireEvent.change(toInput, { target: { value: '6/15/2019' } })
-  fireEvent.blur(toInput) // validate on blur
-  expect(mockProps.onValidationFail).not.toHaveBeenCalled()
+  fireEvent.change(toInput, { target: { value: '6/15/2019' } });
+  fireEvent.blur(toInput); // validate on blur
+  expect(mockProps.onValidationFail).not.toHaveBeenCalled();
 
-  fireEvent.change(toInput, { target: { value: 'nope-not-valid' } })
-  fireEvent.blur(toInput) // validate on blur
+  fireEvent.change(toInput, { target: { value: 'nope-not-valid' } });
+  fireEvent.blur(toInput); // validate on blur
 
-  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1)
-})
+  expect(mockProps.onValidationFail).toHaveBeenCalledTimes(1);
+});
 
 test('localizes calendar', () => {
   renderWithTheme(
     <InputDateRange dateStringFormat="MMMM-dd" locale={ital} {...mockProps} />
-  )
+  );
 
-  expect(screen.getByText('giugno-03')).toBeInTheDocument()
-  expect(screen.getByText('giugno-09')).toBeInTheDocument()
-})
+  expect(screen.getByText('giugno-03')).toBeInTheDocument();
+  expect(screen.getByText('giugno-09')).toBeInTheDocument();
+});
 
 describe('localizes text input', () => {
   test('Korean', () => {
@@ -361,9 +358,9 @@ describe('localizes text input', () => {
         }}
         onChange={jest.fn()}
       />
-    )
-    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByDisplayValue('2020.02.01')).toBeInTheDocument();
+  });
   test('Italian', () => {
     renderWithTheme(
       <InputDateRange
@@ -374,9 +371,9 @@ describe('localizes text input', () => {
         }}
         onChange={jest.fn()}
       />
-    )
-    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByDisplayValue('01/02/2020')).toBeInTheDocument();
+  });
   test('English', () => {
     renderWithTheme(
       <InputDateRange
@@ -387,7 +384,7 @@ describe('localizes text input', () => {
         }}
         onChange={jest.fn()}
       />
-    )
-    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.getByDisplayValue('02/01/2020')).toBeInTheDocument();
+  });
+});

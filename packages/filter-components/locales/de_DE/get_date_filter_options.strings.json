@@ -6,22 +6,22 @@
     "value": "ist jederzeit"
   },
   "is before": {
-    "value": "ist vor dem"
+    "value": "ist vor"
   },
   "is in range": {
-    "value": "befindet sich im Bereich"
+    "value": "ist im Bereich"
   },
   "is in the last": {
-    "value": "ist in den letzten"
+    "value": "ist in der/im letzten"
   },
   "is in the month": {
     "value": "ist im Monat"
   },
   "is in the year": {
-    "value": "befindet sich im Jahr"
+    "value": "ist im Jahr"
   },
   "is next": {
-    "value": "ist nächste/r/s"
+    "value": "ist nächste(s/n)"
   },
   "is not null": {
     "value": "ist nicht null"
@@ -30,15 +30,15 @@
     "value": "ist null"
   },
   "is on or after": {
-    "value": "ist am oder nach dem"
+    "value": "ist am oder nach"
   },
   "is on the day": {
     "value": "ist am Tag"
   },
   "is previous": {
-    "value": "ist vorherige/r/s"
+    "value": "ist vorherige(s/n)"
   },
   "is this": {
-    "value": "ist diese/r/s"
+    "value": "ist diese(s/n)"
   }
 }

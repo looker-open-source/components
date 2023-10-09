@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ruRU as componentsLocale } from '@looker/components'
-import { ruRU as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ruRU as componentsLocale } from '@looker/components';
+import { ruRU as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Сортировка по убыванию',
     Totals: 'Сумма',
   },
-}
+};
 
 export const ruRU = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'ru-RU',
   resources
-)
+);

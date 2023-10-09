@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/de'
+import dateLocale from 'date-fns/locale/de';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -40,20 +40,20 @@ const resources = {
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'Alle {{pageCount}} angezeigten Artikel ausgewählt',
-    AllTotalCountSelected: 'Alle {{totalCount}} Artikel ausgewählt',
-    'Bulk Actions': 'Massenaktionen',
-    'Clear Selection': 'Auswahl aufheben',
-    SelectAllCountResults: 'Alle {{totalCount}} Ergebnisse auswählen',
+      'Alle {{pageCount}} angezeigten Elemente ausgewählt',
+    AllTotalCountSelected: 'Alle {{totalCount}} Elemente ausgewählt',
+    'Bulk Actions': 'Bulk-Aktionen',
+    'Clear Selection': 'Auswahl löschen',
+    SelectAllCountResults: 'Alle {{totalCount}} Ergebnisse auswählen',
     SelectedCountOfTotalDisplayed:
-      '{{selectedItemCount}} von {{pageCount}} angezeigten Artikeln ausgewählt',
+      '{{selectedItemCount}} von {{pageCount}} angezeigten Elementen ausgewählt',
   },
   CalendarNav: {
     'next month': 'nächster Monat',
     'previous month': 'vorheriger Monat',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'Gemischte Häkchen',
+    'Check Mark Mixed': 'Häkchen gemischt',
   },
   Chip: {
     Delete: 'Löschen',
@@ -62,7 +62,7 @@ const resources = {
     Apply: 'Anwenden',
     Cancel: 'Abbrechen',
     'Select All': 'Alle auswählen',
-    'Select None': 'Keine auswählen',
+    'Select None': 'Nichts auswählen',
     'Select columns to display': 'Anzuzeigende Spalten auswählen',
   },
   ConfirmationDialog: {
@@ -80,11 +80,11 @@ const resources = {
     Options: 'Optionen',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': 'Bitte Format „HH:MM“ verwenden',
+    'Please use format HHMM': 'Verwenden Sie das Format HH:MM',
   },
   GetIntentLabel: {
     Error: 'Fehler',
-    Inform: 'Information',
+    Inform: 'Informieren',
     Success: 'Erfolg',
     Warning: 'Warnung',
   },
@@ -97,14 +97,13 @@ const resources = {
   },
   InputFilters: {
     'Clear Filters': 'Filter löschen',
-    'Filter List': 'Filterliste',
-    'bottom-start': 'bottom-start',
+    'Filter List': 'Liste filtern',
   },
   InputTimeSelect: {
     'Select time': 'Uhrzeit auswählen',
   },
   MessageBar: {
-    DismissIntent: '{{intent}} verwerfen',
+    DismissIntent: '{{intent}} schließen',
   },
   ModalHeaderCloseButton: {
     Close: 'Schließen',
@@ -115,7 +114,7 @@ const resources = {
     'previous year': 'vorheriges Jahr',
   },
   PageSize: {
-    Display: 'Anzeigen',
+    Display: 'Anzeige',
     of: 'von',
   },
   Pagination: {
@@ -145,12 +144,12 @@ const resources = {
     required: 'erforderlich',
   },
   SelectOptions: {
-    Loading: 'Ladevorgang',
+    Loading: 'Wird geladen',
     'No options': 'Keine Optionen',
   },
   TabList: {
     Tabs: 'Registerkarten',
   },
-}
+};
 
-export const deDE = mergeLocaleObjects([], 'de-DE', resources, dateLocale)
+export const deDE = mergeLocaleObjects([], 'de-DE', resources, dateLocale);

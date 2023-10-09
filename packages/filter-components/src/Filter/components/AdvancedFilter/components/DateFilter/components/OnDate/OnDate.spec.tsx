@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '@looker/filter-expressions'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { OnDate } from './OnDate'
+import type { FilterModel } from '@looker/filter-expressions';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { OnDate } from './OnDate';
 
 describe('OnDate', () => {
   const mockItem = {
@@ -37,29 +37,29 @@ describe('OnDate', () => {
       month: 1,
       day: 1,
     },
-  } as FilterModel
-  const onChangeMock = jest.fn()
+  } as FilterModel;
+  const onChangeMock = jest.fn();
 
   it('should render the passed in date', () => {
-    renderWithTheme(<OnDate item={mockItem} onChange={onChangeMock} />)
-    expect(screen.getByText('2018/01/01')).toBeVisible()
-  })
+    renderWithTheme(<OnDate item={mockItem} onChange={onChangeMock} />);
+    expect(screen.getByText('2018/01/01')).toBeVisible();
+  });
 
   it('should render now when no date is passed in', () => {
-    jest.spyOn(Date, 'now').mockImplementation(() => 1516046400000)
+    jest.spyOn(Date, 'now').mockImplementation(() => 1516046400000);
     renderWithTheme(
       <OnDate item={{ id: '1' } as FilterModel} onChange={onChangeMock} />
-    )
-    expect(screen.getByText('2018/01/15')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('2018/01/15')).toBeVisible();
+  });
 
   it('should fire onChange with the new date when changed', () => {
-    renderWithTheme(<OnDate item={mockItem} onChange={onChangeMock} />)
+    renderWithTheme(<OnDate item={mockItem} onChange={onChangeMock} />);
 
-    fireEvent.click(screen.getByText('2018/01/01'))
-    fireEvent.click(screen.getByText('Open calendar'))
-    fireEvent.click(screen.getByText('next month'))
-    fireEvent.click(screen.getByTitle('Thu Feb 15, 2018'))
+    fireEvent.click(screen.getByText('2018/01/01'));
+    fireEvent.click(screen.getByText('Open calendar'));
+    fireEvent.click(screen.getByText('next month'));
+    fireEvent.click(screen.getByTitle('Thu Feb 15, 2018'));
 
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
@@ -74,28 +74,28 @@ describe('OnDate', () => {
           },
         ],
       ]
-    `)
+    `);
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   it('should fire onChange with the new date without time (DX-5280)', () => {
-    const time = { hour: 1, minute: 2, second: 3 }
+    const time = { hour: 1, minute: 2, second: 3 };
     const itemWithTime = {
       ...mockItem,
       date: { ...mockItem.date, ...time },
-    } as FilterModel
-    onChangeMock.mockReset()
-    renderWithTheme(<OnDate item={itemWithTime} onChange={onChangeMock} />)
+    } as FilterModel;
+    onChangeMock.mockReset();
+    renderWithTheme(<OnDate item={itemWithTime} onChange={onChangeMock} />);
 
-    fireEvent.click(screen.getByText('2018/01/01'))
-    fireEvent.click(screen.getByText('Open calendar'))
-    fireEvent.click(screen.getByTitle('Mon Jan 15, 2018'))
+    fireEvent.click(screen.getByText('2018/01/01'));
+    fireEvent.click(screen.getByText('Open calendar'));
+    fireEvent.click(screen.getByTitle('Mon Jan 15, 2018'));
 
     expect(onChangeMock).toHaveBeenCalledWith('1', {
       date: { year: 2018, month: 1, day: 15 },
-    })
+    });
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+});

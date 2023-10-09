@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InlineTextArea } from '../'
+import React from 'react';
+import { InlineTextArea } from '../';
 
 export default function Underline() {
   return (
@@ -12,5 +12,5 @@ export default function Underline() {
       underlineOnlyOnHover
       value="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..."
     />
-  )
+  );
 }

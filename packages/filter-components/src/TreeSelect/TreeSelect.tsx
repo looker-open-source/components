@@ -2,7 +2,7 @@
 
  MIT License
 
- Copyright (c) 2022 Looker Data Sciences, Inc.
+ Copyright (c) 2023 Google LLC
 
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -23,124 +23,142 @@
  SOFTWARE.
 
  */
-import { Box, inputHeight, SpaceVertical, useID } from '@looker/components'
-import React from 'react'
-import { TreeResults } from './TreeResults'
-import type { TreeResultsProps } from './TreeResults'
-import { FieldSearch } from './FieldSearch'
-import { TreeSelectPopup } from './TreeSelectPopup'
+import { Combobox, ComboboxList, Space } from '@looker/components';
+import type { ComboboxOptionObject } from '@looker/components';
+import React, { useEffect, useMemo, useState } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
+import { TreeResults } from './TreeResults';
+import { FieldSearch } from './FieldSearch';
+import { TreeSelectContext } from './TreeSelectContext';
+import type { CombinedTreeProps, NodeToToggle, TreeModel } from './types';
+import { findFieldInTree } from './utils/find_field_in_tree';
+import { getOption } from './utils/get_option';
 
-export type TreeSelectProps = TreeResultsProps & {
-  disabled?: boolean
-  disabledText?: React.ReactNode
-  placeholder?: string
-  label?: string
-  withDropdown?: boolean
-  treeHeight?: string | number
-  selectedSection?: string
-  showSelectedSection?: boolean
-}
+export type TreeSelectProps = CombinedTreeProps & {
+  /**
+   * Content rendered to the right of the search input
+   */
+  children?: ReactNode;
+  disabled?: boolean;
+  /* Shows instead of the placeholder when disabled */
+  disabledText?: ReactNode;
+  placeholder?: string;
+  label?: string;
+  id?: string;
+  withDropdown?: boolean;
+  /**
+   * If true, the spinner will not render with tree is undefined
+   */
+  hideLoading?: boolean;
+  /**
+   * Set this when withDropdown is false
+   */
+  treeHeight?: string | number;
+  /**
+   * Use the [view].[name] field name rather than the label
+   */
+  selectedField?: string;
+  /**
+   * View label, or [model label] • [view label] in certain contexts
+   */
+  selectedSection?: string;
+  onSelectedFieldChange: (fieldData: TreeModel['payload']) => void;
+};
 
 export const TreeSelect = ({
+  children,
   disabled,
   disabledText,
   placeholder,
   label,
+  id,
   tree,
   shortcutTree,
   withDropdown = true,
+  hideLoading,
   treeHeight,
-  searchInputValue: valueFromProps,
+  selectedField,
   selectedSection,
-  showSelectedSection = false,
   onSelectedFieldChange,
-  ...flexProps
 }: TreeSelectProps) => {
-  const [inputElement, setInputElement] = React.useState<HTMLDivElement | null>(
-    null
-  )
-  const isInputting = React.useRef(false)
+  const [nodeToToggle, setNodeToToggle] = useState<NodeToToggle>();
 
-  const [isOpen, setOpen] = React.useState(false)
-  const [inputValue, setInputValue] = React.useState(valueFromProps || '')
+  const combinedTrees = useMemo(() => {
+    if (tree && shortcutTree) return [...shortcutTree, ...tree];
+    if (tree) return tree;
+    return undefined;
+  }, [tree, shortcutTree]);
 
-  const fieldSearchInputId = useID()
+  const selectedNode = findFieldInTree(combinedTrees, selectedField);
+  const value = selectedNode ? getOption(selectedNode) : undefined;
 
-  React.useEffect(() => {
-    if (!isInputting.current) {
-      if (showSelectedSection && !isOpen) {
-        setInputValue(
-          valueFromProps && selectedSection
-            ? `${selectedSection} • ${valueFromProps}`
-            : ''
-        )
-      } else {
-        setInputValue(valueFromProps || '')
-      }
+  const inputValueFromOption = value?.label || '';
+  const [inputValue, setInputValue] = useState(inputValueFromOption);
+
+  useEffect(() => {
+    setInputValue(inputValueFromOption);
+  }, [inputValueFromOption]);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.currentTarget.value);
+  };
+
+  const handleChange = (option?: ComboboxOptionObject) => {
+    if (option?.payload) {
+      onSelectedFieldChange(option.payload);
     }
-  }, [showSelectedSection, isOpen, valueFromProps, selectedSection])
+  };
 
-  const setOpenTrue = () => setOpen(true)
-  const handleClick = () => {
-    if (!isOpen && !disabled) {
-      setOpenTrue()
-      if (valueFromProps) setInputValue(valueFromProps)
+  const handleClose = () => {
+    setNodeToToggle(undefined);
+    if (value?.label) {
+      setInputValue(value.label);
+    } else {
+      setInputValue('');
     }
-  }
+  };
 
-  const handleFieldClick = (payload?: any) => {
-    if (onSelectedFieldChange) {
-      onSelectedFieldChange(payload)
-    }
-    setOpen(false)
-  }
-
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    isInputting.current = true
-    setInputValue(event.currentTarget.value)
-    setOpenTrue()
-    window.requestAnimationFrame(() => (isInputting.current = false))
-  }
-  const innerTree = (
-    <TreeResults
-      shortcutTree={shortcutTree}
-      tree={tree}
-      onSelectedFieldChange={handleFieldClick}
-      searchInputValue={inputValue}
-    />
-  )
+  const hideResultsLoading = hideLoading && !tree;
+  const innerTree = hideResultsLoading ? null : (
+    <TreeResults tree={combinedTrees} searchInputValue={inputValue} />
+  );
 
   return (
-    <SpaceVertical align="stretch">
-      <FieldSearch
-        disabled={disabled}
-        disabledText={disabledText}
-        fieldSearchInputId={fieldSearchInputId}
-        height={inputHeight}
-        label={label}
-        onChange={onChange}
-        onClick={handleClick}
-        placeholder={placeholder}
-        ref={setInputElement}
-        value={inputValue}
+    <TreeSelectContext.Provider
+      value={{ nodeToToggle, setNodeToToggle, withDropdown }}
+    >
+      <Combobox
+        id={id}
+        value={value}
+        onChange={handleChange}
+        onClose={handleClose}
+        shouldRenderListInline={!withDropdown}
         width="100%"
-        isOpen={isOpen}
-        withDropdown={withDropdown}
-        showSelectedSection={showSelectedSection}
-      />
-      {withDropdown ? (
-        <TreeSelectPopup
-          anchorElement={inputElement}
-          isOpen={isOpen}
-          setOpen={setOpen}
+        maxHeight="100%"
+        overflow="hidden"
+        openOnFocus
+      >
+        <Space align="end">
+          <FieldSearch
+            disabled={disabled}
+            disabledText={disabledText}
+            label={label}
+            onChange={handleInputChange}
+            placeholder={placeholder}
+            value={inputValue}
+            selectedSection={selectedSection}
+          />
+          {children}
+        </Space>
+        <ComboboxList
+          height={withDropdown ? undefined : treeHeight}
+          width={withDropdown ? undefined : 'auto'}
+          minWidth={withDropdown ? undefined : 'auto'}
+          persistSelection
+          windowing
         >
           {innerTree}
-        </TreeSelectPopup>
-      ) : (
-        <Box overflow="auto" height={treeHeight}>
-          {innerTree}
-        </Box>
-      )}
-    </SpaceVertical>
-  )
-}
+        </ComboboxList>
+      </Combobox>
+    </TreeSelectContext.Provider>
+  );
+};

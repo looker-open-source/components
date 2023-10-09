@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import type { RangeModifier } from '../../../../Calendar'
-import { FieldDateRange } from '../FieldDateRange'
+import React, { useState } from 'react';
+import type { RangeModifier } from '../../../../Calendar';
+import { FieldDateRange } from '../FieldDateRange';
 
 export default function Value(value: RangeModifier) {
   return (
@@ -16,5 +16,5 @@ export default function Value(value: RangeModifier) {
       onChange={useState<RangeModifier>(value)[1]}
       label={'Pick a Date'}
     />
-  )
+  );
 }

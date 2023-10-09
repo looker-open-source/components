@@ -24,41 +24,41 @@
 
  */
 
-import type { Transitions } from '@looker/design-tokens'
-import { transitions } from '@looker/design-tokens'
-import { useEffect, useRef, useState } from 'react'
+import type { Transitions } from '@looker/design-tokens';
+import { transitions } from '@looker/design-tokens';
+import { useEffect, useRef, useState } from 'react';
 
-type Entering = 'entering'
-type Entered = 'entered'
-type Exiting = 'exiting'
-type Exited = 'exited'
+type Entering = 'entering';
+type Entered = 'entered';
+type Exiting = 'exiting';
+type Exited = 'exited';
 
-type AnimationStates = Entering | Entered | Exiting | Exited
+type AnimationStates = Entering | Entered | Exiting | Exited;
 
-const busyStates = ['entering', 'exiting']
+const busyStates = ['entering', 'exiting'];
 
 interface UseAnimationStateReturn {
   /**
    * className will transition from 'entering` => `entered` => `exiting` => `exited`
    */
-  className: AnimationStates
+  className: AnimationStates;
   /**
    * renderDOM indicates whether or not the DOM elements to be associated should
    * be rendered.
    */
-  renderDOM: boolean
+  renderDOM: boolean;
   /**
    * Animation is actively running (use to trigger `aria-busy` application)
    */
-  busy: boolean
+  busy: boolean;
 }
 
 export interface AnimationStateProps {
-  enter?: Transitions | undefined
-  exit?: Transitions | undefined
-  isOpen?: boolean
-  onAfterExited?: () => void
-  onAfterEntered?: () => void
+  enter?: Transitions | undefined;
+  exit?: Transitions | undefined;
+  isOpen?: boolean;
+  onAfterExited?: () => void;
+  onAfterEntered?: () => void;
 }
 
 /**
@@ -79,51 +79,51 @@ export const useAnimationState = ({
   onAfterEntered,
   onAfterExited,
 }: AnimationStateProps): UseAnimationStateReturn => {
-  const [state, setState] = useState<AnimationStates>('exited')
-  const timingEnter = transitions[enter]
-  const timingExit = transitions[exit]
+  const [state, setState] = useState<AnimationStates>('exited');
+  const timingEnter = transitions[enter];
+  const timingExit = transitions[exit];
 
   useEffect(() => {
     /* Short-circuit state changes that don't matter */
-    if (!isOpen && state === 'exited') return
-    if (isOpen && state === 'entered') return
+    if (!isOpen && state === 'exited') return;
+    if (isOpen && state === 'entered') return;
 
-    let t: ReturnType<typeof setTimeout>
+    let t: ReturnType<typeof setTimeout>;
 
     if (isOpen) {
       if (!timingEnter) {
-        setState('entered')
+        setState('entered');
       } else {
-        setState('entering')
-        t = setTimeout(() => setState('entered'), timingEnter)
+        setState('entering');
+        t = setTimeout(() => setState('entered'), timingEnter);
       }
     } else {
       if (!timingExit) {
-        setState('exited')
+        setState('exited');
       } else {
-        setState('exiting')
-        t = setTimeout(() => setState('exited'), timingExit)
+        setState('exiting');
+        t = setTimeout(() => setState('exited'), timingExit);
       }
     }
     return () => {
-      t && clearTimeout(t)
-    }
-  }, [isOpen, timingEnter, timingExit, state])
+      t && clearTimeout(t);
+    };
+  }, [isOpen, timingEnter, timingExit, state]);
 
-  const previousStateRef = useRef(state)
+  const previousStateRef = useRef(state);
   useEffect(() => {
     if (state === 'entered' && previousStateRef.current !== 'entered') {
-      onAfterEntered?.()
+      onAfterEntered?.();
     }
     if (state === 'exited' && previousStateRef.current !== 'exited') {
-      onAfterExited?.()
+      onAfterExited?.();
     }
-    previousStateRef.current = state
-  }, [state, onAfterExited, onAfterEntered])
+    previousStateRef.current = state;
+  }, [state, onAfterExited, onAfterEntered]);
 
   return {
     busy: busyStates.includes(state),
     className: state,
     renderDOM: state !== 'exited',
-  }
-}
+  };
+};

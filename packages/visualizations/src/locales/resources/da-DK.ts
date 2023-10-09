@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { daDK as componentsLocale } from '@looker/components'
-import { daDK as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { daDK as visualizationstableLocale } from '@looker/visualizations-table'
-import { daDK as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { daDK as componentsLocale } from '@looker/components';
+import { daDK as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { daDK as visualizationstableLocale } from '@looker/visualizations-table';
+import { daDK as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Der blev ikke fundet noget diagram for typen "{{type}}"',
   },
-}
+};
 
 export const daDK = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const daDK = mergeLocaleObjects(
   ],
   'da-DK',
   resources
-)
+);

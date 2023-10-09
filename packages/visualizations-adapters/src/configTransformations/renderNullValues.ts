@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CLine } from '../adapters'
-import type { ConfigHelper } from '../types'
+import type { CLine } from '../adapters';
+import type { ConfigHelper } from '../types';
 
 /**
  * Sets default render_null_values value to false
@@ -15,7 +15,7 @@ export const renderNullValues: ConfigHelper<CLine> = ({
   data,
   fields,
 }) => {
-  const { render_null_values = false, ...restConfig } = config
+  const { render_null_values = false, ...restConfig } = config;
   return {
     config: {
       render_null_values,
@@ -23,5 +23,5 @@ export const renderNullValues: ConfigHelper<CLine> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

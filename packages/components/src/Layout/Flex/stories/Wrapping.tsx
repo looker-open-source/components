@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function Wrapping() {
   return (
@@ -42,5 +42,5 @@ export default function Wrapping() {
         </FlexItem>
       </Flex>
     </>
-  )
+  );
 }

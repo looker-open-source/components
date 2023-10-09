@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { sortByDateTime } from './sortByDateTime'
-import { mockFields } from '../fixtures'
+import { sortByDateTime } from './sortByDateTime';
+import { mockFields } from '../fixtures';
 
 describe('sortByDateTime', () => {
   const mockData = [
@@ -12,8 +12,8 @@ describe('sortByDateTime', () => {
     { 'orders.created_month': '2018-10', 'orders.count': 20 },
     { 'orders.created_month': '2014-07', 'orders.count': 300 },
     { 'orders.created_month': '2017-09', 'orders.count': 4000 },
-  ]
-  const { measures, dimensions } = mockFields
+  ];
+  const { measures, dimensions } = mockFields;
 
   it('sorts data in chronological order', () => {
     const sortedData = sortByDateTime({
@@ -24,7 +24,7 @@ describe('sortByDateTime', () => {
         pivots: [],
       },
       config: { type: 'line' },
-    })
+    });
 
     expect(sortedData.data).toMatchInlineSnapshot(`
       Array [
@@ -45,6 +45,6 @@ describe('sortByDateTime', () => {
           "orders.created_month": "2019-11",
         },
       ]
-    `)
-  })
-})
+    `);
+  });
+});

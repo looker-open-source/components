@@ -3,14 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useStore } from '../useStore'
+import { useStore } from '../useStore';
 
 /**
+ * @deprecated Use createSliceHooks and useSlice instead.
+ *
  * Adds sagas to the nearest store.
  *
  * @param sagas The sagas to register on the nearest store.
  */
 export const useSagas = (sagas: any[]) => {
-  const store = useStore()
-  sagas.forEach(saga => store.addSaga(saga))
-}
+  const store = useStore();
+  sagas.forEach(saga => store.addSaga(saga));
+};

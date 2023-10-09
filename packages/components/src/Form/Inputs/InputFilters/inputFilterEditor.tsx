@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { CheckboxGroup, RadioGroup } from '../'
-import type { InputFilterEditorRenderProp } from './types'
+import React from 'react';
+import { CheckboxGroup, RadioGroup } from '../';
+import type { InputFilterEditorRenderProp } from './types';
 
 export const inputFilterEditor: InputFilterEditorRenderProp = ({
   closeEditor,
@@ -13,19 +13,19 @@ export const inputFilterEditor: InputFilterEditorRenderProp = ({
   onChange,
   value,
 }) => {
-  const { multiple = false } = filterOptions
+  const { multiple = false } = filterOptions;
 
   const options = filterOptions.options
     ? filterOptions.options.map(value => ({ label: value, value }))
-    : []
+    : [];
 
   const handleChangeCheckbox = (newValues: string[]) =>
-    onChange(newValues.sort().join(','))
+    onChange(newValues.sort().join(','));
 
   const handleChangeRadio = (newValue: string) => {
-    onChange(newValue)
-    closeEditor()
-  }
+    onChange(newValue);
+    closeEditor();
+  };
 
   return multiple ? (
     <CheckboxGroup
@@ -35,5 +35,5 @@ export const inputFilterEditor: InputFilterEditorRenderProp = ({
     />
   ) : (
     <RadioGroup value={value} options={options} onChange={handleChangeRadio} />
-  )
-}
+  );
+};

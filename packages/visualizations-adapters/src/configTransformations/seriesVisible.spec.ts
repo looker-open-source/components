@@ -24,31 +24,31 @@
 
  */
 
-import { seriesVisible } from './seriesVisible'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { CLineSeries } from '../adapters'
+import { seriesVisible } from './seriesVisible';
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { CLineSeries } from '../adapters';
 
 describe('seriesVisible', () => {
-  const hidden_fields = ['orders.count']
+  const hidden_fields = ['orders.count'];
 
   test('series as array', () => {
     const series: CLineSeries[] = [
       { color: 'blue' },
       { color: 'red', visible: false },
-    ]
+    ];
 
     const transformedConfig = seriesVisible({
       config: { ...mockLineConfig, hidden_fields, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     // If series is an array, we expect config.hidden_fields to be ignored
     expect(transformedConfig.config.series).toEqual([
       { ...series[0], visible: true },
       series[1],
-    ])
-  })
+    ]);
+  });
 
   test('series as object', () => {
     const series: { [key: string]: CLineSeries } = {
@@ -57,13 +57,13 @@ describe('seriesVisible', () => {
         color: 'red',
         visible: false,
       },
-    }
+    };
 
     const transformedConfig = seriesVisible({
       config: { ...mockLineConfig, hidden_fields, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     // Expect orders.count to have visible set to false because it's included in config.hidden_fields
     expect(transformedConfig.config.series).toEqual({
@@ -71,8 +71,8 @@ describe('seriesVisible', () => {
       'orders.average_total_amount_of_order_usd': {
         ...series['orders.average_total_amount_of_order_usd'],
       },
-    })
-  })
+    });
+  });
 
   test('scatterplot: hide series referenced in size_by_field by default', () => {
     const series: { [key: string]: CLineSeries } = {
@@ -80,7 +80,7 @@ describe('seriesVisible', () => {
       'orders.average_total_amount_of_order_usd': {
         color: 'red',
       },
-    }
+    };
 
     const transformedConfig = seriesVisible({
       config: {
@@ -91,7 +91,7 @@ describe('seriesVisible', () => {
       },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     // Expect orders.count to have visible set to false because it's included in config.hidden_fields
     expect(transformedConfig.config.series).toEqual({
@@ -100,6 +100,6 @@ describe('seriesVisible', () => {
         color: 'red',
         visible: false, // size_by_field
       },
-    })
-  })
-})
+    });
+  });
+});

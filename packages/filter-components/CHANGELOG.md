@@ -1,3 +1,16 @@
+# 1.2.1 (2023-09-20)
+
+### Bug Fixes
+
+- **createExploresTree:** performance enhancement
+- **Filter:** component missing user attributes on initial render b/290052356
+- Use correct event types on input/field components b/297352388
+- **UserAttributes:** Localize placeholder b/275628381
+
+### Features
+
+- **TreeSelect:** New component
+
 ## 1.0.3 (2023-03-28)
 
 ### Bug Fixes

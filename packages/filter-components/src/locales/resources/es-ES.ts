@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/es'
-import { esES as componentsLocale } from '@looker/components'
-import { esES as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/es';
+import { esES as componentsLocale } from '@looker/components';
+import { esES as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Se requiere un valor.',
   },
-}
+  UserAttributes: {
+    placeholder: 'Seleccionar…',
+  },
+};
 
 export const esES = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'es-ES',
   resources,
   dateLocale
-)
+);

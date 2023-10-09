@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './HoverDisclosure'
-export * from './HoverDisclosureContext'
+export * from './HoverDisclosure';
+export * from './HoverDisclosureContext';

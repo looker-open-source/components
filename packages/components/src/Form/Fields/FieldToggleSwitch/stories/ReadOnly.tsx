@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldToggleSwitchProps } from '..'
-import { FieldToggleSwitch } from '..'
+import React from 'react';
+import type { FieldToggleSwitchProps } from '..';
+import { FieldToggleSwitch } from '..';
 
 export default function ReadOnly(props: FieldToggleSwitchProps) {
   const {
@@ -14,7 +14,7 @@ export default function ReadOnly(props: FieldToggleSwitchProps) {
     id = 'id',
     readOnly = true,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldToggleSwitch
@@ -24,5 +24,5 @@ export default function ReadOnly(props: FieldToggleSwitchProps) {
       readOnly={readOnly}
       {...restProps}
     />
-  )
+  );
 }

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { IError } from '@looker/sdk'
-import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
+import type { IError } from '@looker/sdk';
+import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl';
 
 /**
  * Asserts that SDKResponse is a Success Response
@@ -16,5 +16,5 @@ import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl'
 export const isSuccessResponse = (
   response?: SDKResponse<any, IError> | void
 ): response is ISDKSuccessResponse<any> => {
-  return response?.ok === true && 'value' in response
-}
+  return response?.ok === true && 'value' in response;
+};

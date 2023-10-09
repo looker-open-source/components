@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { RuleTester } = require('eslint')
-const rule = require('.').rules['publish-config']
+const { RuleTester } = require('eslint');
+const rule = require('.').rules['publish-config'];
 
 jest.mock('read-pkg-up', () => ({
   sync: jest.fn(() => ({
@@ -12,7 +12,7 @@ jest.mock('read-pkg-up', () => ({
       private: false,
     },
   })),
-}))
+}));
 
 new RuleTester({
   parser: require.resolve('jsonc-eslint-parser'),
@@ -50,4 +50,4 @@ new RuleTester({
 }`,
     },
   ],
-})
+});

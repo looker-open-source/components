@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Dialog } from '../..'
+import React from 'react';
+import { Dialog } from '../..';
 
 export default function ClickOutside() {
   return (
@@ -29,5 +29,5 @@ export default function ClickOutside() {
         <button>Open Dialog</button>
       </Dialog>
     </>
-  )
+  );
 }

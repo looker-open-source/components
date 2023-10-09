@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DialogHeader } from '../../..'
+import React from 'react';
+import { DialogHeader } from '../../..';
 
 export default function Basic() {
-  return <DialogHeader>Heading</DialogHeader>
+  return <DialogHeader>Heading</DialogHeader>;
 }

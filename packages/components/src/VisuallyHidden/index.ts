@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './VisuallyHidden'
+export * from './VisuallyHidden';

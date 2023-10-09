@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './i18n'
-export * from './useTranslation'
+export * from './i18n';
+export * from './useTranslation';

@@ -24,8 +24,8 @@
 
  */
 
-import { legendValue } from './legendValue'
-import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures'
+import { legendValue } from './legendValue';
+import { mockPieConfig, mockFields, mockSdkDataResponse } from '../fixtures';
 
 describe('legendValue', () => {
   test('default value', () => {
@@ -33,14 +33,14 @@ describe('legendValue', () => {
       config: { ...mockPieConfig },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(config.legend).toEqual({
       position: 'bottom',
       type: 'legend',
       value: 'label',
-    })
-  })
+    });
+  });
 
   describe('config.label_type ===', () => {
     test('lab', () => {
@@ -48,157 +48,160 @@ describe('legendValue', () => {
         ...mockPieConfig,
         label_type: 'lab' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label')
+        expect(transformedConfig.legend.value).toEqual('label');
       }
-    })
+    });
 
     test('labVal', () => {
       const config = {
         ...mockPieConfig,
         label_type: 'labVal' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label_value')
+        expect(transformedConfig.legend.value).toEqual('label_value');
       }
-    })
+    });
 
     test('val', () => {
       const config = {
         ...mockPieConfig,
         label_type: 'val' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('value')
+        expect(transformedConfig.legend.value).toEqual('value');
       }
-    })
+    });
 
     test('per', () => {
       const config = {
         ...mockPieConfig,
         label_type: 'per' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('percent')
+        expect(transformedConfig.legend.value).toEqual('percent');
       }
-    })
+    });
 
     test('labPer', () => {
       const config = {
         ...mockPieConfig,
         label_type: 'labPer' as const,
         legend: undefined,
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label_percent')
+        expect(transformedConfig.legend.value).toEqual('label_percent');
       }
-    })
-  })
+    });
+  });
 
   describe('config.legend.value ===', () => {
     test('"label"', () => {
-      const config = { ...mockPieConfig, legend: { value: 'label' as const } }
+      const config = { ...mockPieConfig, legend: { value: 'label' as const } };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label')
+        expect(transformedConfig.legend.value).toEqual('label');
       }
-    })
+    });
 
     test('"value"', () => {
-      const config = { ...mockPieConfig, legend: { value: 'value' as const } }
+      const config = { ...mockPieConfig, legend: { value: 'value' as const } };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('value')
+        expect(transformedConfig.legend.value).toEqual('value');
       }
-    })
+    });
 
     test('"percent"', () => {
-      const config = { ...mockPieConfig, legend: { value: 'percent' as const } }
+      const config = {
+        ...mockPieConfig,
+        legend: { value: 'percent' as const },
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('percent')
+        expect(transformedConfig.legend.value).toEqual('percent');
       }
-    })
+    });
 
     test('"label_value"', () => {
       const config = {
         ...mockPieConfig,
         legend: { value: 'label_value' as const },
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label_value')
+        expect(transformedConfig.legend.value).toEqual('label_value');
       }
-    })
+    });
 
     test('"label_percent"', () => {
       const config = {
         ...mockPieConfig,
         legend: { value: 'label_percent' as const },
-      }
+      };
       const { config: transformedConfig } = legendValue({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
+      });
       if (transformedConfig.legend) {
-        expect(transformedConfig.legend.value).toEqual('label_percent')
+        expect(transformedConfig.legend.value).toEqual('label_percent');
       }
-    })
-  })
+    });
+  });
 
   test('config.legend === false', () => {
-    const config = { ...mockPieConfig, legend: false }
+    const config = { ...mockPieConfig, legend: false };
     const { config: transformedConfig } = legendValue({
       config,
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
-    expect(transformedConfig.legend).toEqual(false)
-  })
-})
+    });
+    expect(transformedConfig.legend).toEqual(false);
+  });
+});

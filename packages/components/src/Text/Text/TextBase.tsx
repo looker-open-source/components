@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 import type {
   SpaceProps,
   TextDecorationProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   fontFamily,
   fontSize,
@@ -23,19 +23,19 @@ import {
   textAlign,
   textColor,
   textDecoration,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 
 export interface TextBaseProps
   extends SpaceProps,
     TextDecorationProps,
     TypographyProps {
-  color?: string
+  color?: string;
 
   /**
    * Should browser insert line breaks within words to prevent text from overflowing its content box
    * @default: false
    */
-  breakword?: boolean
+  breakword?: boolean;
 }
 
 export const TextBase = styled.span.withConfig({
@@ -53,4 +53,4 @@ export const TextBase = styled.span.withConfig({
   ${textColor}
   ${textDecoration}
   ${({ breakword }) => breakword && 'overflow-wrap: break-word;'}
-`
+`;

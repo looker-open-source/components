@@ -24,29 +24,29 @@
 
  */
 
-import pick from 'lodash/pick'
-import some from 'lodash/some'
-import isFunction from 'lodash/isFunction'
-import styled from 'styled-components'
-import { reset, space } from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import { Icon } from '../Icon'
+import pick from 'lodash/pick';
+import some from 'lodash/some';
+import isFunction from 'lodash/isFunction';
+import styled from 'styled-components';
+import { reset, space } from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import { Icon } from '../Icon';
 import {
   rippleHandlerKeys,
   rippleStyle,
   SQUARE_RIPPLE,
   useRipple,
   useRippleHandlers,
-} from '../Ripple'
-import { useTooltip } from '../Tooltip'
-import { mergeClassNames, useWrapEvent } from '../utils'
-import { VisuallyHidden } from '../VisuallyHidden'
-import { ButtonOuter } from './ButtonBase'
-import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor'
-import { iconButtonOutline } from './iconButtonOutline'
-import { iconButtonIconSizeMap, buttonSizeMap } from './size'
-import type { IconButtonProps } from './iconButtonTypes'
+} from '../Ripple';
+import { useTooltip } from '../Tooltip';
+import { mergeClassNames, useWrapEvent } from '../utils';
+import { VisuallyHidden } from '../VisuallyHidden';
+import { ButtonOuter } from './ButtonBase';
+import { iconButtonColor, ICON_BUTTON_DEFAULT_COLOR } from './iconButtonColor';
+import { iconButtonOutline } from './iconButtonOutline';
+import { iconButtonIconSizeMap, buttonSizeMap } from './size';
+import type { IconButtonProps } from './iconButtonTypes';
 
 /**
  * Appears as just an `Icon` but with proper HTML semantics to produce a `button`
@@ -76,7 +76,7 @@ export const IconButton = styled(
       style,
       shape,
       ...rest
-    } = props
+    } = props;
 
     const {
       callbacks,
@@ -87,13 +87,13 @@ export const IconButton = styled(
       color: toggle ? toggleColor : undefined,
       size: shape === 'square' ? SQUARE_RIPPLE : 1,
       style,
-    })
+    });
 
     // any of the hover/focus handlers being present disables built-in tooltip
     const hasOuterTooltip = some(
       [propsOnFocus, propsOnBlur, propsOnMouseOver, propsOnMouseOut],
       isFunction
-    )
+    );
 
     const {
       domProps: {
@@ -113,7 +113,7 @@ export const IconButton = styled(
       placement: tooltipPlacement,
       textAlign: tooltipTextAlign,
       width: tooltipWidth,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
@@ -123,12 +123,12 @@ export const IconButton = styled(
         ...pick(rest, rippleHandlerKeys),
       },
       rest.disabled
-    )
+    );
 
     const otherHandlers = {
       onMouseOut: useWrapEvent(onMouseOut, propsOnMouseOut),
       onMouseOver: useWrapEvent(onMouseOver, propsOnMouseOver),
-    }
+    };
 
     return (
       <ButtonOuter
@@ -154,7 +154,7 @@ export const IconButton = styled(
         {children}
         {tooltip}
       </ButtonOuter>
-    )
+    );
   })
 ).attrs(({ type = 'button', toggleColor = ICON_BUTTON_DEFAULT_COLOR }) => ({
   toggleColor,
@@ -174,4 +174,4 @@ export const IconButton = styled(
   padding: 0;
 
   ${({ outline }) => outline && iconButtonOutline}
-`
+`;

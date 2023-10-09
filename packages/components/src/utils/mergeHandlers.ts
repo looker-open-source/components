@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SyntheticEvent } from 'react'
+import type { SyntheticEvent } from 'react';
 
 /**
  * Merges 2 optional event handlers
@@ -16,8 +16,8 @@ export const mergeHandlers =
     existingHandler?: (e: E) => void
   ) =>
   (event: E) => {
-    existingHandler?.(event)
+    existingHandler?.(event);
     if (!event.defaultPrevented) {
-      newHandler?.(event)
+      newHandler?.(event);
     }
-  }
+  };

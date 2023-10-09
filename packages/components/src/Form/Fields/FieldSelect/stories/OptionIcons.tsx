@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { FieldSelect } from '../../FieldSelect'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { FieldSelect } from '../../FieldSelect';
 
 export default function OptionIcons() {
   return (
@@ -19,5 +19,5 @@ export default function OptionIcons() {
         { icon: <MaterialIcons.Add />, label: 'Swiss', value: 'swiss' },
       ]}
     />
-  )
+  );
 }

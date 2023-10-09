@@ -2,16 +2,16 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Box2 } from '@looker/components'
-import React from 'react'
-import type { ReactNode } from 'react'
-import type { FilterItemLayoutProps } from '../../../../types/filter_item_layout_props'
-import { AddRemoveButtons } from '../AddRemoveButtons'
-import { OperatorLabel } from '../OperatorLabel'
+import { Box2 } from '@looker/components';
+import React from 'react';
+import type { ReactNode } from 'react';
+import type { FilterItemLayoutProps } from '../../../../types/filter_item_layout_props';
+import { AddRemoveButtons } from '../AddRemoveButtons';
+import { OperatorLabel } from '../OperatorLabel';
 
 type ItemLayoutProps = FilterItemLayoutProps & {
-  children?: ReactNode
-}
+  children?: ReactNode;
+};
 
 /**
  * Handles the layout of an AdvancedFilter item
@@ -25,8 +25,8 @@ export const ItemLayout = ({
   showAdd,
   showRemove,
 }: ItemLayoutProps) => {
-  const handleAdd = () => onAdd(item)
-  const handleRemove = () => onRemove(item.id)
+  const handleAdd = () => onAdd(item);
+  const handleRemove = () => onRemove(item.id);
   return (
     <Box2 role="group" display="flex" alignItems="center">
       {showOperator && (
@@ -42,5 +42,5 @@ export const ItemLayout = ({
         onRemove={handleRemove}
       />
     </Box2>
-  )
-}
+  );
+};

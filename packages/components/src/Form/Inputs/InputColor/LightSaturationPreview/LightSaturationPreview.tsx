@@ -24,13 +24,13 @@
 
  */
 
-import type { MouseEvent } from 'react'
-import React, { useEffect, useRef } from 'react'
-import styled from 'styled-components'
-import { useMouseDragPosition, usePreviousValue } from '../../../../utils'
-import type { ColorPickerProps } from '../types'
-import { simpleHsvToHex } from '../utils'
-import { Handle2d } from '../Handle'
+import type { MouseEvent } from 'react';
+import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import { useMouseDragPosition, usePreviousValue } from '../../../../utils';
+import type { ColorPickerProps } from '../types';
+import { simpleHsvToHex } from '../utils';
+import { Handle2d } from '../Handle';
 
 const LightSaturationPreviewLayout = ({
   className,
@@ -38,48 +38,48 @@ const LightSaturationPreviewLayout = ({
   setHsv,
   width: previewWidth,
 }: ColorPickerProps) => {
-  const previewHeight = previewWidth * 0.75
+  const previewHeight = previewWidth * 0.75;
 
-  const handleX = hsv.s * previewWidth
-  const handleY = previewHeight - hsv.v * previewHeight
+  const handleX = hsv.s * previewWidth;
+  const handleY = previewHeight - hsv.v * previewHeight;
 
-  const previewRef = useRef<HTMLDivElement>(null)
-  const previewLeft = previewRef.current?.getBoundingClientRect().left || 0
-  const previewTop = previewRef.current?.getBoundingClientRect().top || 0
+  const previewRef = useRef<HTMLDivElement>(null);
+  const previewLeft = previewRef.current?.getBoundingClientRect().left || 0;
+  const previewTop = previewRef.current?.getBoundingClientRect().top || 0;
 
   const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
-    const clickEventX = event.clientX
-    const clickEventY = event.clientY
+    const clickEventX = event.clientX;
+    const clickEventY = event.clientY;
 
-    const newSaturation = (clickEventX - previewLeft) / previewWidth
+    const newSaturation = (clickEventX - previewLeft) / previewWidth;
     const newValue =
-      (previewHeight - (clickEventY - previewTop)) / previewHeight
+      (previewHeight - (clickEventY - previewTop)) / previewHeight;
 
-    setHsv({ ...hsv, s: newSaturation, v: newValue })
-  }
+    setHsv({ ...hsv, s: newSaturation, v: newValue });
+  };
 
-  const { isMouseDown, mousePos } = useMouseDragPosition(previewRef.current)
-  const previousIsMouseDown = usePreviousValue(isMouseDown)
+  const { isMouseDown, mousePos } = useMouseDragPosition(previewRef.current);
+  const previousIsMouseDown = usePreviousValue(isMouseDown);
 
   const handleHandleDrag = () => {
-    let newSaturation = (mousePos.x - previewLeft) / previewWidth
+    let newSaturation = (mousePos.x - previewLeft) / previewWidth;
 
     if (newSaturation > 1) {
-      newSaturation = 1
+      newSaturation = 1;
     } else if (newSaturation < 0) {
-      newSaturation = 0
+      newSaturation = 0;
     }
 
-    let newValue = (previewHeight - (mousePos.y - previewTop)) / previewHeight
+    let newValue = (previewHeight - (mousePos.y - previewTop)) / previewHeight;
 
     if (newValue > 1) {
-      newValue = 1
+      newValue = 1;
     } else if (newValue < 0) {
-      newValue = 0
+      newValue = 0;
     }
 
-    setHsv({ ...hsv, s: newSaturation, v: newValue })
-  }
+    setHsv({ ...hsv, s: newSaturation, v: newValue });
+  };
 
   /*
    * Only fire mouse drag event when mouse moves AFTER initial click
@@ -87,23 +87,23 @@ const LightSaturationPreviewLayout = ({
   useEffect(
     () => {
       if (isMouseDown && previousIsMouseDown) {
-        handleHandleDrag()
+        handleHandleDrag();
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [mousePos]
-  )
+  );
 
   // Used to generate the preview's backgroudn gradient
   const backgroundColor = simpleHsvToHex({
     h: hsv.h,
     s: 1,
     v: 1,
-  })
+  });
 
   const color = simpleHsvToHex({
     ...hsv,
-  })
+  });
 
   return (
     <LightSaturationPreviewContainer
@@ -123,14 +123,14 @@ const LightSaturationPreviewLayout = ({
         y={handleY}
       />
     </LightSaturationPreviewContainer>
-  )
-}
+  );
+};
 
 interface LightSaturationPreviewContainerProps
   extends Pick<ColorPickerProps, 'width'> {
-  backgroundColor: string
-  isMouseDown: boolean
-  height: number
+  backgroundColor: string;
+  isMouseDown: boolean;
+  height: number;
 }
 
 const LightSaturationPreviewContainer = styled.div.attrs<LightSaturationPreviewContainerProps>(
@@ -142,6 +142,6 @@ const LightSaturationPreviewContainer = styled.div.attrs<LightSaturationPreviewC
   cursor: ${({ isMouseDown }) => (isMouseDown ? 'grabbing' : 'default')};
   height: ${({ height }) => height}px;
   width: ${({ width }) => width}px;
-`
+`;
 
-export const LightSaturationPreview = styled(LightSaturationPreviewLayout)``
+export const LightSaturationPreview = styled(LightSaturationPreviewLayout)``;

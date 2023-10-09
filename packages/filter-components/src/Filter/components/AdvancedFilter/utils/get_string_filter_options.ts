@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useTranslation } from '../../../../utils'
-import { useUserAttributeOption } from './get_user_attribute_option'
+import { useTranslation } from '../../../../utils';
+import { useUserAttributeOption } from './get_user_attribute_option';
 
 export const useStringFilterOptions = (isParameter?: boolean) => {
-  const { t } = useTranslation('get_string_filter_options')
-  const userAttributeOption = useUserAttributeOption()
+  const { t } = useTranslation('get_string_filter_options');
+  const userAttributeOption = useUserAttributeOption();
   if (isParameter) {
-    return [{ value: 'match', label: t('is') }, userAttributeOption]
+    return [{ value: 'match', label: t('is') }, userAttributeOption];
   }
   return [
     { value: 'match', label: t('is') },
@@ -25,5 +25,5 @@ export const useStringFilterOptions = (isParameter?: boolean) => {
     { value: '!blank', label: t('is not blank') },
     { value: '!null', label: t('is not null') },
     userAttributeOption,
-  ]
-}
+  ];
+};

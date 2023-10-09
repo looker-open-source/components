@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import union from 'lodash/union'
-import type { FilterASTNode } from '../../types'
+import union from 'lodash/union';
+import type { FilterASTNode } from '../../types';
 
 /**
  * Merges the value array of two nodes, removing duplicates
@@ -37,7 +37,7 @@ const mergeNodes = (
   type: left.type,
   value: union(left.value, right.value),
   is: left.is && right.is,
-})
+});
 
 /**
  * checks if the left && right.left children of this node are of the same type and can be merged
@@ -52,7 +52,7 @@ const canMergeLeftNodes = (
   right.left &&
   left.type === right.left.type &&
   left.type === compareType &&
-  (left.is === right.left.is || allowDifferentIsValue)
+  (left.is === right.left.is || allowDifferentIsValue);
 
 /**
  * checks if left && right children of node are of the same type and can be merged
@@ -66,7 +66,7 @@ const canMergeEndNodes = (
   right &&
   left.type === right.type &&
   left.type === compareType &&
-  (left.is === right.is || allowDifferentIsValue)
+  (left.is === right.is || allowDifferentIsValue);
 
 /**
  * Traverses AST and merges nodes of the same multi value type
@@ -76,20 +76,20 @@ const mergeNodesWithSameType = (
   compareType: string,
   allowDifferentIsValue = false
 ): FilterASTNode => {
-  let node: FilterASTNode = root
+  let node: FilterASTNode = root;
 
   while (canMergeLeftNodes(node, compareType, allowDifferentIsValue)) {
-    const { left, right, ...rest } = node
-    const newLeft = mergeNodes(left, right?.left)
-    const newRight = right?.right
-    node = { ...rest, left: newLeft, right: newRight }
+    const { left, right, ...rest } = node;
+    const newLeft = mergeNodes(left, right?.left);
+    const newRight = right?.right;
+    node = { ...rest, left: newLeft, right: newRight };
   }
 
   if (canMergeEndNodes(node, compareType, allowDifferentIsValue)) {
-    node = mergeNodes(node.left, node.right)
+    node = mergeNodes(node.left, node.right);
   }
-  return node
-}
+  return node;
+};
 
 /**
  * Transforms the AST by
@@ -101,15 +101,15 @@ export const mergeMultiValueNodes = (
   type: string,
   mergeDifferentIsValue = false
 ): FilterASTNode => {
-  const workingRoot = mergeNodesWithSameType(root, type, mergeDifferentIsValue)
-  let pointer = workingRoot
+  const workingRoot = mergeNodesWithSameType(root, type, mergeDifferentIsValue);
+  let pointer = workingRoot;
   while (pointer.right) {
     pointer.right = mergeNodesWithSameType(
       pointer.right,
       type,
       mergeDifferentIsValue
-    )
-    pointer = pointer.right
+    );
+    pointer = pointer.right;
   }
-  return workingRoot
-}
+  return workingRoot;
+};

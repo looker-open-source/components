@@ -1,44 +1,44 @@
 {
   "is": {
-    "value": "が次である"
+    "value": "次に一致"
   },
   "is any time": {
-    "value": "の時間を問わずすべて"
+    "value": "随時"
   },
   "is before": {
-    "value": "が指定の日以前"
+    "value": "が指定日より前"
   },
   "is in range": {
-    "value": "が指定の範囲内"
+    "value": "次の範囲内"
   },
   "is in the last": {
-    "value": "が直近である"
+    "value": "直近"
   },
   "is in the month": {
-    "value": "が次の月である"
+    "value": "月"
   },
   "is in the year": {
-    "value": "が指定の年である"
+    "value": "次の年"
   },
   "is next": {
-    "value": "が次である"
+    "value": "次の"
   },
   "is not null": {
-    "value": "が Null でない"
+    "value": "null ではない"
   },
   "is null": {
-    "value": "が Null である"
+    "value": "null である"
   },
   "is on or after": {
-    "value": "が指定の日以降"
+    "value": "次の日付以降"
   },
   "is on the day": {
-    "value": "が指定の日である"
+    "value": "当日"
   },
   "is previous": {
-    "value": "が前である"
+    "value": "前の"
   },
   "is this": {
-    "value": "がこれである"
+    "value": "この"
   }
 }

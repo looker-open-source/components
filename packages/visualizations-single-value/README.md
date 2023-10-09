@@ -17,7 +17,7 @@ You'll also need to satisfy a few peer dependencies - Looker/components, React, 
 ## Getting Started
 
 ```jsx
-import { SingleValue } from '@looker/visualizations-single-value'
+import { SingleValue } from '@looker/visualizations-single-value';
 ```
 
 Please see the documentation for [@looker/visualizations](https://github.com/looker-open-source/components/tree/main/packages/visualizations) for instructions on getting started with Looker Visualization Components. After that, be sure to check out the [Looker Developer Portal](https://developers.looker.com/components/visualization-components) to see the supported configuration options, or view the [extension framework documentation](https://cloud.google.com/looker/docs/data-modeling/extension-framework/vis-components) for more advanced usage.

@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTimeProps } from '..'
-import { FieldTime } from '..'
+import React from 'react';
+import type { FieldTimeProps } from '..';
+import { FieldTime } from '..';
 
 export default function ValidationMessage(props: FieldTimeProps) {
   const {
     label = 'Label',
     validationMessage = { message: 'validation Message', type: 'error' },
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTime
@@ -20,5 +20,5 @@ export default function ValidationMessage(props: FieldTimeProps) {
       validationMessage={validationMessage}
       {...restProps}
     />
-  )
+  );
 }

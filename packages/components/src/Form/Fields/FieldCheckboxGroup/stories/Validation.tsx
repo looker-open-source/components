@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { FieldCheckboxGroup } from '../../FieldCheckboxGroup'
+import React from 'react';
+import { FieldCheckboxGroup } from '../../FieldCheckboxGroup';
 
 export default function Disabled() {
   const options = [
@@ -23,7 +23,7 @@ export default function Disabled() {
       label: 'Roquefort',
       value: 'roquefort',
     },
-  ]
+  ];
 
   return (
     <FieldCheckboxGroup
@@ -36,5 +36,5 @@ export default function Disabled() {
         type: 'error',
       }}
     />
-  )
+  );
 }

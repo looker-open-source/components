@@ -28,36 +28,36 @@ import type {
   FilterExpressionType,
   FilterModel,
   UserAttributeWithValue,
-} from '@looker/filter-expressions'
-import { parseFilterExpression } from '@looker/filter-expressions'
-import { getControlFilterInfo } from '.'
-import noop from 'lodash/noop'
-import type { FilterUIConfig } from '../types/filter_ui_config'
-import { FilterUIDisplay, FilterUIType } from '../types/filter_ui_config'
-import type { ILookmlModelExploreField } from '@looker/sdk'
-import type { Option } from '../types/option'
-import { isValidFilterType } from './filter_token_type_map'
+} from '@looker/filter-expressions';
+import { parseFilterExpression } from '@looker/filter-expressions';
+import { getControlFilterInfo } from '.';
+import noop from 'lodash/noop';
+import type { FilterUIConfig } from '../types/filter_ui_config';
+import { FilterUIDisplay, FilterUIType } from '../types/filter_ui_config';
+import type { ILookmlModelExploreField } from '@looker/sdk';
+import type { Option } from '../types/option';
+import { isValidFilterType } from './filter_token_type_map';
 
 interface RenderFilterCommonProps {
-  config?: FilterUIConfig
-  field?: ILookmlModelExploreField | null
-  suggestions?: string[]
-  enumerations?: Option[] | null
-  skipFilterConfigCheck?: boolean
+  config?: FilterUIConfig;
+  field?: ILookmlModelExploreField | null;
+  suggestions?: string[];
+  enumerations?: Option[] | null;
+  skipFilterConfigCheck?: boolean;
 }
 interface RenderFilterASTProps extends RenderFilterCommonProps {
-  ast: FilterASTNode
+  ast: FilterASTNode;
 }
 
 interface RenderFilterExpressionProps extends RenderFilterCommonProps {
-  expression: string
-  expressionType: FilterExpressionType
-  userAttributes?: UserAttributeWithValue[]
+  expression: string;
+  expressionType: FilterExpressionType;
+  userAttributes?: UserAttributeWithValue[];
 }
 
 export type RenderFilterProps =
   | RenderFilterASTProps
-  | RenderFilterExpressionProps
+  | RenderFilterExpressionProps;
 
 /**
  * Tests if a filter can be rendered for its uiConfig type
@@ -72,19 +72,19 @@ export const canRenderFilter = ({
   ...filterProps
 }: RenderFilterProps) => {
   // advanced filters can always be rendered
-  if (config?.type === FilterUIType.Advanced) return true
+  if (config?.type === FilterUIType.Advanced) return true;
 
-  if (!isValidFilterType(config?.type)) return false
+  if (!isValidFilterType(config?.type)) return false;
 
-  let ast: FilterASTNode
+  let ast: FilterASTNode;
   if ('ast' in filterProps) {
-    ast = filterProps.ast
+    ast = filterProps.ast;
   } else {
     ast = parseFilterExpression(
       filterProps.expressionType,
       filterProps.expression,
       filterProps.userAttributes
-    )
+    );
   }
 
   const item = {
@@ -92,7 +92,7 @@ export const canRenderFilter = ({
     is: true,
     left: null,
     right: null,
-  }
+  };
 
   // get the props for the Control Filter
   const { props } = getControlFilterInfo(item, {
@@ -103,11 +103,11 @@ export const canRenderFilter = ({
     changeFilter: noop,
     allowMultipleValues: true,
     name: '',
-  })
+  });
 
   // if props exists it can be rendered
-  return Boolean(props)
-}
+  return Boolean(props);
+};
 
 /**
  * Returns a fallback Filter config for scenarios when
@@ -123,4 +123,4 @@ export const getFallbackFilterConfig = (config?: FilterUIConfig) =>
         display: FilterUIDisplay.POPOVER,
         type: FilterUIType.Advanced,
       }
-    : { ...config, type: FilterUIType.Advanced }
+    : { ...config, type: FilterUIType.Advanced };

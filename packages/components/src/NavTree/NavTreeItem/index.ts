@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './NavTreeItem'
-export * from './NavTreeItemContent'
+export * from './NavTreeItem';
+export * from './NavTreeItemContent';

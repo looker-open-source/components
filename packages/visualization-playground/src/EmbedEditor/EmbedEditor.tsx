@@ -23,42 +23,45 @@
  SOFTWARE.
 
  */
-import type { FormEvent, SetStateAction, Dispatch } from 'react'
-import React from 'react'
+import type { ChangeEvent, SetStateAction, Dispatch } from 'react';
+import React from 'react';
 import {
   FieldText,
   FieldSelect,
   Heading,
   Fieldset,
   Grid,
-} from '@looker/components'
-import { FieldInfo } from '../FieldInfo'
-import type { CAll, SupportedChartTypes } from '@looker/visualizations-adapters'
-import { SUPPORTED_CHART_TYPES } from '@looker/visualizations-adapters'
+} from '@looker/components';
+import { FieldInfo } from '../FieldInfo';
+import type {
+  CAll,
+  SupportedChartTypes,
+} from '@looker/visualizations-adapters';
+import { SUPPORTED_CHART_TYPES } from '@looker/visualizations-adapters';
 import {
   useVisConfig,
   useQueryId,
   useQueryIdFromDashboard,
-} from '@looker/components-data'
-import { Legend } from '../Legend'
-import { RenderNullValues } from '../RenderNullValues'
-import { Tooltips } from '../Tooltips'
-import { Positioning } from '../Positioning'
-import { TruncateText } from '../TruncateText'
-import { TruncateHeader } from '../TruncateHeader'
-import { StyledCard } from '../StyledCard'
-import { ShowTotals } from '../ShowTotals'
-import { ShowRowTotals } from '../ShowRowTotals'
+} from '@looker/components-data';
+import { Legend } from '../Legend';
+import { RenderNullValues } from '../RenderNullValues';
+import { Tooltips } from '../Tooltips';
+import { Positioning } from '../Positioning';
+import { TruncateText } from '../TruncateText';
+import { TruncateHeader } from '../TruncateHeader';
+import { StyledCard } from '../StyledCard';
+import { ShowTotals } from '../ShowTotals';
+import { ShowRowTotals } from '../ShowRowTotals';
 
 interface EmbedEditorProps {
-  width?: string
-  setWidth: Dispatch<SetStateAction<string | undefined>>
-  height?: string
-  setHeight: Dispatch<SetStateAction<string | undefined>>
-  config: Partial<CAll>
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-  query?: string | number
-  dashboard?: number
+  width?: string;
+  setWidth: Dispatch<SetStateAction<string | undefined>>;
+  height?: string;
+  setHeight: Dispatch<SetStateAction<string | undefined>>;
+  config: Partial<CAll>;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+  query?: string | number;
+  dashboard?: number;
 }
 
 /** EmbedEditor is used to modify settings unrelated to vis config  */
@@ -73,18 +76,18 @@ export const EmbedEditor = ({
   query,
   dashboard,
 }: EmbedEditorProps) => {
-  const handleWidthChange = (e: FormEvent) => {
-    const value = (e.target as HTMLInputElement).value
-    setWidth(value)
-  }
-  const handleHeightChange = (e: FormEvent) => {
-    const value = (e.target as HTMLInputElement).value
-    setHeight(value)
-  }
+  const handleWidthChange = (e: ChangeEvent) => {
+    const value = (e.target as HTMLInputElement).value;
+    setWidth(value);
+  };
+  const handleHeightChange = (e: ChangeEvent) => {
+    const value = (e.target as HTMLInputElement).value;
+    setHeight(value);
+  };
 
-  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard)
-  const { queryId } = useQueryId(query || dashboardQueryId)
-  const { visConfig } = useVisConfig(queryId, configOverrides)
+  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard);
+  const { queryId } = useQueryId(query || dashboardQueryId);
+  const { visConfig } = useVisConfig(queryId, configOverrides);
 
   return (
     <StyledCard>
@@ -94,7 +97,7 @@ export const EmbedEditor = ({
         name="type"
         label="Chart Type"
         onChange={t => {
-          onConfigChange({ type: t as keyof SupportedChartTypes })
+          onConfigChange({ type: t as keyof SupportedChartTypes });
         }}
         value={visConfig.type}
         options={[
@@ -145,5 +148,5 @@ export const EmbedEditor = ({
         </Grid>
       </Fieldset>
     </StyledCard>
-  )
-}
+  );
+};

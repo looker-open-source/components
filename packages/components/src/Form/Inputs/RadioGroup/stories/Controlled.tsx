@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { RadioGroup } from '../'
-import type { RadioGroupProps } from '../'
-import { Paragraph, Space, Heading } from '../../../../'
+import React, { useState } from 'react';
+import { RadioGroup } from '../';
+import type { RadioGroupProps } from '../';
+import { Paragraph, Space, Heading } from '../../../../';
 
 const mockOptions = [
   {
@@ -17,16 +17,16 @@ const mockOptions = [
     label: 'Gouda',
     value: 'gouda',
   },
-]
+];
 
 export default function Controlled(props: RadioGroupProps) {
   const {
     value: valueProp = 'cheddar',
     options = mockOptions,
     ...restProps
-  } = props
+  } = props;
 
-  const [value, setValue] = useState(valueProp)
+  const [value, setValue] = useState(valueProp);
 
   return (
     <Space align="start">
@@ -42,5 +42,5 @@ export default function Controlled(props: RadioGroupProps) {
         <Paragraph>{value}</Paragraph>
       </div>
     </Space>
-  )
+  );
 }

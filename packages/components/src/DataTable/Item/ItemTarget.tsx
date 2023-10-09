@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { densityTarget } from '@looker/design-tokens'
-import styled from 'styled-components'
+import { densityTarget } from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface ItemTargetProps {
-  disabled?: boolean
-  size?: string
+  disabled?: boolean;
+  size?: string;
 }
 
 /**
@@ -23,10 +23,10 @@ export const ItemTarget = styled.div<ItemTargetProps>`
   min-height: ${({ size }) => size || densityTarget};
   min-width: ${({ size }) => size || densityTarget};
   width: ${({ size }) => size || densityTarget};
-`
+`;
 
 export const ItemTargetGroup = styled.div`
   display: flex;
   margin-left: auto;
   width: fit-content;
-`
+`;

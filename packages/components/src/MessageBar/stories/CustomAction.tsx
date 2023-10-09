@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { MessageBar } from '../..'
+import React from 'react';
+import { MessageBar } from '../..';
 
 export default function CustomAction() {
   return (
@@ -16,5 +16,5 @@ export default function CustomAction() {
     >
       Render some custom action labels and actions!
     </MessageBar>
-  )
+  );
 }

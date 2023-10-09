@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Table } from './Table'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { Table } from './Table';
 
 describe('DataTable/Table', () => {
   test('loading', () => {
@@ -14,9 +14,9 @@ describe('DataTable/Table', () => {
       <Table caption="" columnsVisible={[]} columns={[]} state="loading">
         Stuff
       </Table>
-    )
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+  });
 
   test('noResultsDisplay', () => {
     renderWithTheme(
@@ -29,9 +29,9 @@ describe('DataTable/Table', () => {
       >
         Stuff
       </Table>
-    )
-    expect(screen.getByText('Nope, nothing to see here')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('Nope, nothing to see here')).toBeInTheDocument();
+  });
 
   test('noResultsDisplay non-string', () => {
     renderWithTheme(
@@ -44,7 +44,7 @@ describe('DataTable/Table', () => {
       >
         Stuff
       </Table>
-    )
-    expect(screen.getByText('Nope, nothing to see here')).toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.getByText('Nope, nothing to see here')).toBeInTheDocument();
+  });
+});

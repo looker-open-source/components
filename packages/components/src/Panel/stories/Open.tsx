@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { List } from '../../List'
-import { ListItem } from '../../ListItem'
-import { Aside, Page, Section } from '../../Layout'
-import { Panel, Panels } from '..'
+import React from 'react';
+import { List } from '../../List';
+import { ListItem } from '../../ListItem';
+import { Aside, Page, Section } from '../../Layout';
+import { Panel, Panels } from '..';
 
 export default function Open() {
   return (
@@ -29,5 +29,5 @@ export default function Open() {
       </Aside>
       <Section>Main stuff here...</Section>
     </Page>
-  )
+  );
 }

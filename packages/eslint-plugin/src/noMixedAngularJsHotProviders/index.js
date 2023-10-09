@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-const traverse = require('eslint-traverse')
+const traverse = require('eslint-traverse');
 
 // https://docs.angularjs.org/api/ng/type/angular.Module
 const angularModuleMethods = {
@@ -41,49 +41,49 @@ const angularModuleMethods = {
   run: false,
   service: false,
   value: false,
-}
+};
 
-const ngModuleExpressions = new WeakMap()
+const ngModuleExpressions = new WeakMap();
 function isNgModuleExpression(node) {
-  if (ngModuleExpressions.has(node)) return ngModuleExpressions.get(node)
-  if (node.type !== 'CallExpression') return false
+  if (ngModuleExpressions.has(node)) return ngModuleExpressions.get(node);
+  if (node.type !== 'CallExpression') return false;
 
-  const callee = node.callee
-  if (callee.type !== 'MemberExpression') return false
-  if (callee.computed) return false
+  const callee = node.callee;
+  if (callee.type !== 'MemberExpression') return false;
+  if (callee.computed) return false;
 
   // identifier or expression
-  const object = callee.object
-  const methodName = callee.property.name
+  const object = callee.object;
+  const methodName = callee.property.name;
 
   if (methodName === 'module' && object.name === 'angular') {
-    ngModuleExpressions.set(node, true)
-    return true
+    ngModuleExpressions.set(node, true);
+    return true;
   } else {
     // tail call
-    return methodName in angularModuleMethods && isNgModuleExpression(object)
+    return methodName in angularModuleMethods && isNgModuleExpression(object);
   }
 }
 
 module.exports = {
   'no-mixed-angularjs-hot-providers': {
     create(context) {
-      let ngProviderNodes
+      let ngProviderNodes;
       return {
         Identifier(node) {
-          const providerName = node.name
-          if (!(providerName in angularModuleMethods)) return
+          const providerName = node.name;
+          if (!(providerName in angularModuleMethods)) return;
 
-          const parent = node.parent
-          if (parent.type !== 'MemberExpression') return
-          if (!isNgModuleExpression(parent.object)) return
+          const parent = node.parent;
+          if (parent.type !== 'MemberExpression') return;
+          if (!isNgModuleExpression(parent.object)) return;
 
           const wrongProviderNodes = ngProviderNodes.filter(
             providerNode =>
               angularModuleMethods[providerNode.name] !==
               angularModuleMethods[providerName]
-          )
-          if (!wrongProviderNodes.length) return
+          );
+          if (!wrongProviderNodes.length) return;
 
           if (angularModuleMethods[providerName]) {
             for (const wrongProviderNode of wrongProviderNodes) {
@@ -96,25 +96,25 @@ module.exports = {
                 },
                 messageId: 'hotWithCold',
                 node,
-              })
+              });
             }
           }
         },
         Program(programNode) {
-          ngProviderNodes = []
+          ngProviderNodes = [];
           traverse(context, programNode, ({ node }) => {
-            if (node.type !== 'Identifier') return
-            const providerName = node.name
-            if (!(providerName in angularModuleMethods)) return
+            if (node.type !== 'Identifier') return;
+            const providerName = node.name;
+            if (!(providerName in angularModuleMethods)) return;
 
-            const parent = node.parent
-            if (parent.type !== 'MemberExpression') return
-            if (!isNgModuleExpression(parent.object)) return
+            const parent = node.parent;
+            if (parent.type !== 'MemberExpression') return;
+            if (!isNgModuleExpression(parent.object)) return;
 
-            ngProviderNodes.push(node)
-          })
+            ngProviderNodes.push(node);
+          });
         },
-      }
+      };
     },
     meta: {
       docs: {
@@ -141,4 +141,4 @@ module.exports = {
       type: 'problem',
     },
   },
-}
+};

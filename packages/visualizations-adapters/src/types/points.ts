@@ -8,6 +8,6 @@ export type PointShapes =
   | 'diamond'
   | 'square'
   | 'triangle'
-  | 'triangle-down'
+  | 'triangle-down';
 
-export type PointStyles = 'none' | 'filled' | 'outline'
+export type PointStyles = 'none' | 'filled' | 'outline';

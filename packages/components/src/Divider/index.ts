@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Divider'
-export * from './DividerVertical'
+export * from './Divider';
+export * from './DividerVertical';

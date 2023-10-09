@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { Unsupported } from './Unsupported'
+import { Unsupported } from './Unsupported';
 
-export * from './Unsupported'
+export * from './Unsupported';
 
-export default Unsupported
+export default Unsupported;

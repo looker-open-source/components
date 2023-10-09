@@ -24,22 +24,22 @@
 
  */
 
-import styled from 'styled-components'
-import React, { useMemo, useState, useRef } from 'react'
-import { Close } from '@styled-icons/material/Close'
-import { FilterList } from '@styled-icons/material/FilterList'
-import type { SelectOptionObject } from '../Select'
-import { Select } from '../Select'
-import { InputText, inputTextFocus, inputCSS } from '../InputText'
-import { Icon } from '../../../Icon'
-import { IconButton } from '../../../Button'
-import { Chip } from '../../../Chip'
-import { Text } from '../../../Text'
-import { Popover, PopoverContent } from '../../../Popover'
-import { useTranslation } from '../../../utils'
-import { InputFiltersChip } from './InputFiltersChip'
-import { inputFilterEditor } from './inputFilterEditor'
-import type { InputFiltersProps } from './types'
+import styled from 'styled-components';
+import React, { useMemo, useState, useRef } from 'react';
+import { Close } from '@styled-icons/material/Close';
+import { FilterList } from '@styled-icons/material/FilterList';
+import type { SelectOptionObject } from '../Select';
+import { Select } from '../Select';
+import { InputText, inputTextFocus, inputCSS } from '../InputText';
+import { Icon } from '../../../Icon';
+import { IconButton } from '../../../Button';
+import { Chip } from '../../../Chip';
+import { Text } from '../../../Text';
+import { Popover, PopoverContent } from '../../../Popover';
+import { useTranslation } from '../../../utils';
+import { InputFiltersChip } from './InputFiltersChip';
+import { inputFilterEditor } from './inputFilterEditor';
+import type { InputFiltersProps } from './types';
 
 const InputFiltersLayout = ({
   className,
@@ -48,30 +48,30 @@ const InputFiltersLayout = ({
   onChange,
   ...props
 }: InputFiltersProps) => {
-  const { t } = useTranslation('InputFilters')
-  const placeholder = props.placeholder || t('Filter List')
+  const { t } = useTranslation('InputFilters');
+  const placeholder = props.placeholder || t('Filter List');
   const [fieldEditing, setFieldEditing] = useState<undefined | string>(
     undefined
-  )
+  );
 
   const assignedFilters = filters
     .filter(filter => filter.value || filter.field === fieldEditing)
     .sort((a, b) => {
       if (a.value === undefined) {
-        return 1
+        return 1;
       } else if (b.value === undefined) {
-        return -1
+        return -1;
       } else {
-        return 0
+        return 0;
       }
-    })
+    });
 
   const unassignedFilters = filters.filter(
     filter =>
       !assignedFilters.map(assigned => assigned.field).includes(filter.field)
-  )
+  );
 
-  const [filterTerm, setFilterTerm] = useState('')
+  const [filterTerm, setFilterTerm] = useState('');
 
   const options = useMemo(
     () =>
@@ -79,37 +79,38 @@ const InputFiltersLayout = ({
         const option = {
           label: filter.label || filter.field,
           value: filter.field,
-        }
+        };
         const optionMatchesFilter = Object.values(option).some(
           (value: string) =>
             value.toLocaleLowerCase().indexOf(filterTerm.toLocaleLowerCase()) >
             -1
-        )
+        );
         if (optionMatchesFilter) {
-          acc = [...acc, option]
+          acc = [...acc, option];
         }
-        return acc
+        return acc;
       }, []),
     [filterTerm, unassignedFilters]
-  )
+  );
 
-  const inputRef = useRef<null | HTMLInputElement>(null)
-  const isClearable = assignedFilters.length > 0
+  const inputRef = useRef<null | HTMLInputElement>(null);
+  const isClearable = assignedFilters.length > 0;
 
   const clearFilters = () => {
-    onChange(filters.map(({ value, ...rest }) => rest))
-  }
+    onChange(filters.map(({ value, ...rest }) => rest));
+  };
 
-  const focusInput = () => inputRef.current && inputRef.current.focus()
+  const focusInput = () => inputRef.current && inputRef.current.focus();
 
   const handleFilterLookupChange = (field: string) => {
-    const filter = filters.find(option => option.field === field)
+    const filter = filters.find(option => option.field === field);
     if (filter) {
-      setFieldEditing(filter.field)
+      setFieldEditing(filter.field);
     }
-  }
+  };
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
     <div className={className} onClick={focusInput}>
       {!hideFilterIcon && (
         <Icon
@@ -122,34 +123,34 @@ const InputFiltersLayout = ({
       )}
       <ChipWrapper>
         {assignedFilters.map((filter, i) => {
-          const { editor, field, value } = filter
+          const { editor, field, value } = filter;
 
-          const editFilter = () => setFieldEditing(field)
+          const editFilter = () => setFieldEditing(field);
 
           const handleDelete = () =>
             onChange(
               filters.map(currentFilter => {
                 if (currentFilter.field !== field) {
-                  return currentFilter
+                  return currentFilter;
                 }
-                const { value: _value, ...rest } = currentFilter
-                return rest
+                const { value: _value, ...rest } = currentFilter;
+                return rest;
               })
-            )
+            );
 
           const setFieldEditingValue = (value?: string) => {
             const filterIndex = assignedFilters.findIndex(
               f => f.field === fieldEditing
-            )
+            );
 
-            const newFilters = [...assignedFilters, ...unassignedFilters]
-            const updateFilter = { ...newFilters[filterIndex], value }
-            newFilters[filterIndex] = updateFilter
+            const newFilters = [...assignedFilters, ...unassignedFilters];
+            const updateFilter = { ...newFilters[filterIndex], value };
+            newFilters[filterIndex] = updateFilter;
 
-            onChange(newFilters)
-          }
+            onChange(newFilters);
+          };
 
-          const closeEditor = () => setFieldEditing(undefined)
+          const closeEditor = () => setFieldEditing(undefined);
 
           const filterToken = value ? (
             <InputFiltersChip
@@ -162,7 +163,7 @@ const InputFiltersLayout = ({
             <Text fontSize="small" lineHeight="xlarge">
               {filter?.label || filter.field}:
             </Text>
-          )
+          );
           return filter.field === fieldEditing ? (
             <Popover
               content={
@@ -191,7 +192,7 @@ const InputFiltersLayout = ({
             </Popover>
           ) : (
             filterToken
-          )
+          );
         })}
         {!fieldEditing && (
           <Select
@@ -219,8 +220,8 @@ const InputFiltersLayout = ({
         />
       )}
     </div>
-  )
-}
+  );
+};
 
 const ChipWrapper = styled.div`
   display: inline-flex;
@@ -233,7 +234,7 @@ const ChipWrapper = styled.div`
       margin: 0;
     }
   }
-`
+`;
 
 export const InputFilters = styled(InputFiltersLayout)`
   ${inputCSS}
@@ -268,4 +269,4 @@ export const InputFilters = styled(InputFiltersLayout)`
       padding: 0;
     }
   }
-`
+`;

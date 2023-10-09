@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { FontFaceLoader } from './FontFaceLoader'
+export { FontFaceLoader } from './FontFaceLoader';

@@ -2,26 +2,26 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { Dispatch, SetStateAction } from 'react'
-import React from 'react'
-import { DEFAULT_EMPTY_FIELDS } from '@looker/visualizations-adapters'
-import type { CAll } from '@looker/visualizations-adapters'
-import type { QueryProps } from '@looker/visualizations'
+import type { Dispatch, SetStateAction } from 'react';
+import React from 'react';
+import { DEFAULT_EMPTY_FIELDS } from '@looker/visualizations-adapters';
+import type { CAll } from '@looker/visualizations-adapters';
+import type { QueryProps } from '@looker/visualizations';
 import {
   useVisConfig,
   useQueryId,
   useQueryData,
   useQueryIdFromDashboard,
-} from '@looker/components-data'
-import { Series } from '../Series'
-import { XAxis, YAxis } from '../axes'
-import { Heading, Tabs2, Tab2 } from '@looker/components'
-import { StyledCard } from '../StyledCard'
+} from '@looker/components-data';
+import { Series } from '../Series';
+import { XAxis, YAxis } from '../axes';
+import { Heading, Tabs2, Tab2 } from '@looker/components';
+import { StyledCard } from '../StyledCard';
 
 type ConfigEditorProps = {
-  config: Partial<CAll>
-  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>
-} & Pick<QueryProps, 'dashboard' | 'query'>
+  config: Partial<CAll>;
+  onConfigChange: Dispatch<SetStateAction<Partial<CAll>>>;
+} & Pick<QueryProps, 'dashboard' | 'query'>;
 
 export const ConfigEditor = ({
   config: configOverrides,
@@ -29,11 +29,11 @@ export const ConfigEditor = ({
   query,
   dashboard,
 }: ConfigEditorProps) => {
-  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard)
-  const { queryId } = useQueryId(query || dashboardQueryId)
-  const { visConfig } = useVisConfig(queryId, configOverrides)
+  const { queryId: dashboardQueryId } = useQueryIdFromDashboard(dashboard);
+  const { queryId } = useQueryId(query || dashboardQueryId);
+  const { visConfig } = useVisConfig(queryId, configOverrides);
 
-  const { fields = DEFAULT_EMPTY_FIELDS } = useQueryData(queryId)
+  const { fields = DEFAULT_EMPTY_FIELDS } = useQueryData(queryId);
 
   return (
     <StyledCard>
@@ -52,5 +52,5 @@ export const ConfigEditor = ({
         </Tab2>
       </Tabs2>
     </StyledCard>
-  )
-}
+  );
+};

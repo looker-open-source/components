@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nbNO as componentsLocale } from '@looker/components'
-import { nbNO as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { nbNO as visualizationstableLocale } from '@looker/visualizations-table'
-import { nbNO as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { nbNO as componentsLocale } from '@looker/components';
+import { nbNO as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { nbNO as visualizationstableLocale } from '@looker/visualizations-table';
+import { nbNO as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Ingen diagrammer funnet for type «{{type}}»',
   },
-}
+};
 
 export const nbNO = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const nbNO = mergeLocaleObjects(
   ],
   'nb-NO',
   resources
-)
+);

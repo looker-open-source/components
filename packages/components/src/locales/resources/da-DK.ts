@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/da'
+import dateLocale from 'date-fns/locale/da';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Faner',
   },
-}
+};
 
-export const daDK = mergeLocaleObjects([], 'da-DK', resources, dateLocale)
+export const daDK = mergeLocaleObjects([], 'da-DK', resources, dateLocale);

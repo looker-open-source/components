@@ -1,10 +1,11 @@
-import { Popover } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyRenderProps from '!!raw-loader!./RenderProps'
-import storyPopoverWithLayout from '!!raw-loader!./PopoverWithLayout'
-import storyPlacement from '!!raw-loader!./Placement'
-import storyHover from '!!raw-loader!./Hover'
+import { Popover } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyRenderProps from './RenderProps?raw';
+import storyPopoverWithLayout from './PopoverWithLayout?raw';
+import storyPlacement from './Placement?raw';
+import storyArrow from './Arrow?raw';
+import storyHover from './Hover?raw';
 
 <Meta component={Popover} title="Docs/Popover" />
 
@@ -23,6 +24,12 @@ Popovers are assembled of two pieces: an overlay and a surface. Unlike [Dialogs]
 Placement can be adjusted with the `placement` prop. Valid positions are `top`, `left`, `right` and `bottom`, each can be augmented with -`start` or `-end` which places the edge of the popover at the start or end of the target.
 
 <Editor code={storyPlacement} />
+
+## Arrow
+
+Show the arrow pointing toward trigger element by setting this prop to true, or pass an object .
+
+<Editor code={storyArrow} />
 
 ## Disclosing the Trigger on Hover
 

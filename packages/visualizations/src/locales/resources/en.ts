@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { en as componentsLocale } from '@looker/components'
-import { en as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { en as visualizationstableLocale } from '@looker/visualizations-table'
-import { en as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { en as componentsLocale } from '@looker/components';
+import { en as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { en as visualizationstableLocale } from '@looker/visualizations-table';
+import { en as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -24,7 +24,7 @@ const resources = {
       "Measures of type 'date' are currently not supported",
     'No chart found for type "{{type}}"': 'No chart found for type "{{type}}"',
   },
-}
+};
 
 export const en = mergeLocaleObjects(
   [
@@ -35,4 +35,4 @@ export const en = mergeLocaleObjects(
   ],
   'en',
   resources
-)
+);

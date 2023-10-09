@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import merge from 'lodash/merge'
-import pick from 'lodash/pick'
-import type { CArea, CLine, CLineSeries } from '../adapters'
-import type { ConfigHelper } from '../types'
-import { getMeasureNames } from '../utils'
+import merge from 'lodash/merge';
+import pick from 'lodash/pick';
+import type { CArea, CLine, CLineSeries } from '../adapters';
+import type { ConfigHelper } from '../types';
+import { getMeasureNames } from '../utils';
 
 /**
  * Populate series point shapes from series_point_styles response.
@@ -18,28 +18,28 @@ export const seriesPointShape: ConfigHelper<CLine | CArea> = ({
   data,
   fields,
 }) => {
-  const { series_point_styles, series = {}, ...restConfig } = config
-  const measures = getMeasureNames(fields)
+  const { series_point_styles, series = {}, ...restConfig } = config;
+  const measures = getMeasureNames(fields);
 
   const buildArraySeries = (s: CLineSeries[] = []) => {
-    const arraySeries = [...s]
+    const arraySeries = [...s];
     for (let i = 0; i < measures.length; i++) {
-      arraySeries[i] = merge({ shape: 'circle' }, arraySeries[i] || {})
+      arraySeries[i] = merge({ shape: 'circle' }, arraySeries[i] || {});
     }
-    return arraySeries
-  }
+    return arraySeries;
+  };
 
   const buildNamedSeries = (s: { [k: string]: CLineSeries }) => {
     const namedSeries = measures.reduce((seriesConfig, field) => {
-      const shape = series_point_styles?.[field]
-      const currentFieldSettings = pick(s, field)
+      const shape = series_point_styles?.[field];
+      const currentFieldSettings = pick(s, field);
       const DEFAULT_SERIES_SHAPE = {
         [field]: { shape: !shape || shape === 'automatic' ? 'circle' : shape },
-      }
-      return merge(seriesConfig, DEFAULT_SERIES_SHAPE, currentFieldSettings)
-    }, {} as { [key: string]: CLineSeries })
-    return namedSeries
-  }
+      };
+      return merge(seriesConfig, DEFAULT_SERIES_SHAPE, currentFieldSettings);
+    }, {} as { [key: string]: CLineSeries });
+    return namedSeries;
+  };
 
   return {
     config: {
@@ -50,5 +50,5 @@ export const seriesPointShape: ConfigHelper<CLine | CArea> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

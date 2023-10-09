@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState, useMemo } from 'react'
-import { FieldSelect } from '../../FieldSelect'
-import { options } from '../../../Inputs/Select/stories/options'
+import React, { useState, useMemo } from 'react';
+import { FieldSelect } from '../../FieldSelect';
+import { options } from '../../../Inputs/Select/stories/options';
 
 export default function CreateOption() {
-  const [filterTerm, setFilterTerm] = useState('')
+  const [filterTerm, setFilterTerm] = useState('');
   const newOptions = useMemo(() => {
     return options.filter(
       option =>
         option.label.toLowerCase().indexOf(filterTerm.toLowerCase()) > -1
-    )
-  }, [filterTerm])
+    );
+  }, [filterTerm]);
   const formatCreateLabel = (inputValue: string) => {
-    return `Create a fruit: ${inputValue}`
-  }
+    return `Create a fruit: ${inputValue}`;
+  };
 
   return (
     <FieldSelect
@@ -29,5 +29,5 @@ export default function CreateOption() {
       formatCreateLabel={formatCreateLabel}
       width={300}
     />
-  )
+  );
 }

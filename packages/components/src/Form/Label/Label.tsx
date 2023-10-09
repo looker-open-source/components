@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import type {
   CompatibleHTMLProps,
   TextColorProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   reset,
   shouldForwardProp,
   textColor,
   typography,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 
 export interface LabelProps
   extends TextColorProps,
@@ -35,4 +35,4 @@ export const Label = styled.label
   ${reset}
   ${textColor}
   ${typography}
-`
+`;

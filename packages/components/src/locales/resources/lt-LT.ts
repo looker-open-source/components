@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/lt'
+import dateLocale from 'date-fns/locale/lt';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Skirtukai',
   },
-}
+};
 
-export const ltLT = mergeLocaleObjects([], 'lt-LT', resources, dateLocale)
+export const ltLT = mergeLocaleObjects([], 'lt-LT', resources, dateLocale);

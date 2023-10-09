@@ -24,26 +24,26 @@
 
  */
 
-import type { Ref, ReactNode } from 'react'
-import React, { forwardRef, useEffect, useRef } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space, SpaceVertical } from '../../Layout'
-import { Paragraph } from '../../Text'
-import { Truncate } from '../../Truncate'
-import { useFocusVisible, useForkedRef } from '../../utils'
-import type { DataTableColumnSize } from './columnSize'
-import { columnSize } from './columnSize'
-import { FocusableCell } from './FocusableCell'
+import type { Ref, ReactNode } from 'react';
+import React, { forwardRef, useEffect, useRef } from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { Space, SpaceVertical } from '../../Layout';
+import { Paragraph } from '../../Text';
+import { Truncate } from '../../Truncate';
+import { useFocusVisible, useForkedRef } from '../../utils';
+import type { DataTableColumnSize } from './columnSize';
+import { columnSize } from './columnSize';
+import { FocusableCell } from './FocusableCell';
 
 export interface DataTableCellProps
   extends CompatibleHTMLProps<HTMLTableDataCellElement> {
   /**
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  description?: ReactNode
-  indicator?: ReactNode
-  size?: DataTableColumnSize
+  description?: ReactNode;
+  indicator?: ReactNode;
+  size?: DataTableColumnSize;
 }
 
 const DataTableCellLayout = forwardRef(
@@ -59,22 +59,22 @@ const DataTableCellLayout = forwardRef(
     }: DataTableCellProps,
     forwardedRef: Ref<HTMLElement>
   ) => {
-    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp })
+    const focusVisibleProps = useFocusVisible({ onBlur, onKeyUp });
 
     let content =
-      size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children
+      size && size !== 'nowrap' ? <Truncate>{children}</Truncate> : children;
 
-    const ref = useRef<HTMLTableDataCellElement>(null)
-    const forkedRef = useForkedRef(ref, forwardedRef)
+    const ref = useRef<HTMLTableDataCellElement>(null);
+    const forkedRef = useForkedRef(ref, forwardedRef);
 
     useEffect(() => {
-      const element = ref?.current?.querySelectorAll('a, button, input')
+      const element = ref?.current?.querySelectorAll('a, button, input');
       if (element) {
         element.forEach(activeElement =>
           activeElement.setAttribute('tabIndex', '-1')
-        )
+        );
       }
-    })
+    });
 
     if (description) {
       content = (
@@ -86,7 +86,7 @@ const DataTableCellLayout = forwardRef(
             </Paragraph>
           )}
         </SpaceVertical>
-      )
+      );
 
       if (indicator) {
         content = (
@@ -94,7 +94,7 @@ const DataTableCellLayout = forwardRef(
             {indicator}
             {content}
           </Space>
-        )
+        );
       }
     } else if (indicator) {
       content = (
@@ -102,18 +102,18 @@ const DataTableCellLayout = forwardRef(
           {indicator}
           <Truncate>{content}</Truncate>
         </Space>
-      )
+      );
     }
     return (
       <FocusableCell ref={forkedRef} {...focusVisibleProps} {...props}>
         {content}
       </FocusableCell>
-    )
+    );
   }
-)
+);
 
-DataTableCellLayout.displayName = 'DataTableCellLayout'
+DataTableCellLayout.displayName = 'DataTableCellLayout';
 
 export const DataTableCell = styled(DataTableCellLayout)`
   ${columnSize}
-`
+`;

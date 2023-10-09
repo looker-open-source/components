@@ -24,11 +24,11 @@
 
  */
 
-import styled, { css } from 'styled-components'
-import type { FlexboxProps, SpacingSizes } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
-import type { CommonLayoutProps } from '../../utils/common'
-import { commonLayoutCSS } from '../../utils/common'
+import styled, { css } from 'styled-components';
+import type { FlexboxProps, SpacingSizes } from '@looker/design-tokens';
+import { flexbox, shouldForwardProp } from '@looker/design-tokens';
+import type { CommonLayoutProps } from '../../utils/common';
+import { commonLayoutCSS } from '../../utils/common';
 
 export interface SpaceHelperProps
   extends CommonLayoutProps,
@@ -40,7 +40,7 @@ export interface SpaceHelperProps
    * Amount of space between grid cells
    * @default medium
    */
-  gap?: SpacingSizes
+  gap?: SpacingSizes;
 
   /**
    * The spacing between each pair of adjacent items is the same. The empty space before the
@@ -48,7 +48,7 @@ export interface SpaceHelperProps
    * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
    * @default false
    */
-  around?: boolean
+  around?: boolean;
 
   /**
    * The spacing between each pair of adjacent items is the same. The first item is flush with
@@ -56,7 +56,7 @@ export interface SpaceHelperProps
    * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
    * @default false
    */
-  between?: boolean
+  between?: boolean;
 
   /**
    * The spacing between each pair of adjacent items, the main-start edge and the first item,
@@ -64,18 +64,18 @@ export interface SpaceHelperProps
    * (citation: https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
    * @default false
    */
-  evenly?: boolean
+  evenly?: boolean;
 
   /**
    * reverse direction of content
    * @default false
    */
-  reverse?: boolean
+  reverse?: boolean;
   /**
    * Align items vertically within `Space`
    * @default center
    */
-  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
 
   /**
    * Justify items horizontally within `Space`
@@ -83,30 +83,30 @@ export interface SpaceHelperProps
    * NOTE: Justification is based on flex-direction so if `reverse=true` this will be "backwards".
    * @default start
    */
-  justify?: 'start' | 'center' | 'end'
+  justify?: 'start' | 'center' | 'end';
 }
 
-export const defaultGap = 'u4'
+export const defaultGap = 'u4';
 
 const getFlexValue = (value: SpaceHelperProps['align' | 'justify']) =>
-  value && ['end', 'start'].includes(value) ? `flex-${value}` : value
+  value && ['end', 'start'].includes(value) ? `flex-${value}` : value;
 
 const getSpaceValue = ({ around, between, evenly }: SpaceHelperProps) => {
-  if (around) return 'space-around'
-  if (between) return 'space-between'
-  if (evenly) return 'space-evenly'
-  return false
-}
+  if (around) return 'space-around';
+  if (between) return 'space-between';
+  if (evenly) return 'space-evenly';
+  return false;
+};
 
 const justifyContent = ({ align, justify, ...rest }: SpaceHelperProps) => {
-  const spaceValue = getSpaceValue(rest)
+  const spaceValue = getSpaceValue(rest);
   if (spaceValue || (justify && align !== 'stretch')) {
     return css`
       justify-content: ${spaceValue || getFlexValue(justify)};
-    `
+    `;
   }
-  return false
-}
+  return false;
+};
 
 export const spaceCSS = css<SpaceHelperProps>`
   ${commonLayoutCSS}
@@ -116,7 +116,7 @@ export const spaceCSS = css<SpaceHelperProps>`
 
   ${({ align }) => align && `align-items: ${getFlexValue(align)};`}
   ${justifyContent}
-`
+`;
 
 export const Space = styled.div
   .withConfig({ shouldForwardProp })
@@ -127,6 +127,8 @@ export const Space = styled.div
   ${spaceCSS}
   flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
   /* gap throws off spacing for around & evenly */
-  ${({ around, evenly, gap = defaultGap, theme: { space } }) =>
-    !around && !evenly && `gap: 0 ${space[gap]};`}
-`
+  ${({ around, evenly, gap = defaultGap, theme: { space }, flexWrap }) =>
+    !around &&
+    !evenly &&
+    `gap:${flexWrap === 'wrap' ? space[gap] : 0} ${space[gap]};`}
+`;

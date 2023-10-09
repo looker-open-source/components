@@ -24,15 +24,15 @@
 
  */
 
-import type { Context, ReactNode } from 'react'
-import React, { useRef, useMemo } from 'react'
-import type { Trap, TrapStackContextProps, TrapMap } from './types'
-import { getActiveTrap } from './utils'
+import type { Context, ReactNode } from 'react';
+import React, { useRef, useMemo } from 'react';
+import type { Trap, TrapStackContextProps, TrapMap } from './types';
+import { getActiveTrap } from './utils';
 
 export interface TrapStackProviderProps<O = unknown> {
-  activate: (trap: Trap<O>) => () => void
-  children?: ReactNode
-  context: Context<TrapStackContextProps<O>>
+  activate: (trap: Trap<O>) => () => void;
+  children?: ReactNode;
+  context: Context<TrapStackContextProps<O>>;
 }
 
 /**
@@ -46,55 +46,55 @@ export const TrapStackProvider = <O,>({
 }: TrapStackProviderProps<O>) => {
   // Stores all available trap elements
   // (map of ids to elements that have traps)
-  const registeredTrapsRef = useRef<TrapMap<O>>({})
+  const registeredTrapsRef = useRef<TrapMap<O>>({});
   // Stores the current trap (element) where scrolling is allowed
   // undefined if no trap is active
-  const activeTrapRef = useRef<HTMLElement>()
+  const activeTrapRef = useRef<HTMLElement>();
   // Stores the callback to remove the trap behavior
-  const deactivateRef = useRef<() => void>()
+  const deactivateRef = useRef<() => void>();
 
   // Create the context value
   const value = useMemo(() => {
     const getTrap = (id?: string): Trap<O> | undefined => {
-      const registeredTraps = registeredTrapsRef.current
-      return id ? registeredTraps[id] : getActiveTrap(registeredTraps)
-    }
+      const registeredTraps = registeredTrapsRef.current;
+      return id ? registeredTraps[id] : getActiveTrap(registeredTraps);
+    };
 
     const enableCurrentTrap = () => {
-      const newTrap = getTrap()
+      const newTrap = getTrap();
       if (newTrap?.element !== activeTrapRef.current) {
         // Disable the existing trap and update the activeTrapRef
         // (whether there's a new trap or not)
-        activeTrapRef.current = newTrap?.element
-        deactivateRef.current?.()
-        deactivateRef.current = undefined
+        activeTrapRef.current = newTrap?.element;
+        deactivateRef.current?.();
+        deactivateRef.current = undefined;
         // If there's a new trap, activate it and
         // save the deactivate function that is returned
         if (newTrap) {
-          deactivateRef.current = activate(newTrap)
+          deactivateRef.current = activate(newTrap);
         }
       }
-    }
+    };
 
     const disableCurrentTrap = () => {
-      deactivateRef.current?.()
-      deactivateRef.current = undefined
-      activeTrapRef.current = undefined
-    }
+      deactivateRef.current?.();
+      deactivateRef.current = undefined;
+      activeTrapRef.current = undefined;
+    };
 
     const addTrap = (id: string, trap: Trap<O>) => {
-      registeredTrapsRef.current[id] = trap
-      enableCurrentTrap()
-    }
+      registeredTrapsRef.current[id] = trap;
+      enableCurrentTrap();
+    };
 
     const removeTrap = (id: string) => {
-      const existingTrap = getTrap(id)
+      const existingTrap = getTrap(id);
       if (existingTrap) {
-        const registeredTraps = registeredTrapsRef.current
-        delete registeredTraps[id]
-        enableCurrentTrap()
+        const registeredTraps = registeredTrapsRef.current;
+        delete registeredTraps[id];
+        enableCurrentTrap();
       }
-    }
+    };
 
     return {
       activeTrapRef,
@@ -103,8 +103,8 @@ export const TrapStackProvider = <O,>({
       enableCurrentTrap,
       getTrap,
       removeTrap,
-    }
-  }, [activate])
+    };
+  }, [activate]);
 
-  return <context.Provider value={value}>{children}</context.Provider>
-}
+  return <context.Provider value={value}>{children}</context.Provider>;
+};

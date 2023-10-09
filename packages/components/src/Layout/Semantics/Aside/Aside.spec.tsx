@@ -24,128 +24,128 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Aside } from './Aside'
+import 'jest-styled-components';
+import React from 'react';
+import { screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Aside } from './Aside';
 
 describe('Aside', () => {
   test('default', () => {
-    renderWithTheme(<Aside>Aside content</Aside>)
-    expect(screen.getByText('Aside content')).toBeInTheDocument()
-  })
+    renderWithTheme(<Aside>Aside content</Aside>);
+    expect(screen.getByText('Aside content')).toBeInTheDocument();
+  });
 
   test('Can use specific string to size its width.', () => {
-    renderWithTheme(<Aside width="rail">Aside content</Aside>)
-    expect(screen.getByText('Aside content')).toHaveStyleRule('width: 3.5rem;')
-  })
+    renderWithTheme(<Aside width="rail">Aside content</Aside>);
+    expect(screen.getByText('Aside content')).toHaveStyleRule('width: 3.5rem;');
+  });
 
   test('Collapse prop will not render the component.', () => {
-    renderWithTheme(<Aside collapse>Aside content</Aside>)
-    expect(screen.queryByText('Aside content')).not.toBeInTheDocument()
-  })
+    renderWithTheme(<Aside collapse>Aside content</Aside>);
+    expect(screen.queryByText('Aside content')).not.toBeInTheDocument();
+  });
 
   test('does not have a box shadow if content does not overflow', () => {
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
       configurable: true,
       value: 0,
-    })
+    });
     Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
       configurable: true,
       value: 500,
-    })
-    renderWithTheme(<Aside>Aside content</Aside>)
+    });
+    renderWithTheme(<Aside>Aside content</Aside>);
 
     expect(
       getComputedStyle(screen.getByText('Aside content')).getPropertyValue(
         'box-shadow'
       )
-    ).toEqual('')
-  })
+    ).toEqual('');
+  });
 
   test('has a box shadow when content overflows', () => {
     Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
       configurable: true,
       value: 500,
-    })
+    });
 
     Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
       configurable: true,
       value: 0,
-    })
+    });
 
-    renderWithTheme(<Aside>Aside content</Aside>)
+    renderWithTheme(<Aside>Aside content</Aside>);
 
     expect(
       getComputedStyle(screen.getByText('Aside content')).getPropertyValue(
         'box-shadow'
       )
-    ).toEqual('inset 0 -4px 4px -4px #DEE1E5')
-  })
+    ).toEqual('inset 0 -4px 4px -4px #DEE1E5');
+  });
 
   test('render border properly', () => {
-    renderWithTheme(<Aside border>Aside content</Aside>)
+    renderWithTheme(<Aside border>Aside content</Aside>);
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border: 1px solid #DEE1E5;'
-    )
-  })
+    );
+  });
 
   test('render borderBottom properly', () => {
-    renderWithTheme(<Aside borderBottom>Aside content</Aside>)
+    renderWithTheme(<Aside borderBottom>Aside content</Aside>);
 
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border-bottom: 1px solid #DEE1E5;'
-    )
-  })
+    );
+  });
 
   test('render borderLeft properly', () => {
-    renderWithTheme(<Aside borderLeft>Aside content</Aside>)
+    renderWithTheme(<Aside borderLeft>Aside content</Aside>);
 
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border-left: 1px solid #DEE1E5;'
-    )
-  })
+    );
+  });
 
   test('render borderRight properly', () => {
-    renderWithTheme(<Aside borderRight>Aside content</Aside>)
+    renderWithTheme(<Aside borderRight>Aside content</Aside>);
 
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border-right: 1px solid #DEE1E5;'
-    )
-  })
+    );
+  });
 
   test('render borderTop properly', () => {
-    renderWithTheme(<Aside borderTop>Aside content</Aside>)
+    renderWithTheme(<Aside borderTop>Aside content</Aside>);
 
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border-top: 1px solid #DEE1E5;'
-    )
-  })
+    );
+  });
 
   test('render borderX properly', () => {
-    renderWithTheme(<Aside borderX>Aside content</Aside>)
+    renderWithTheme(<Aside borderX>Aside content</Aside>);
 
-    const aside = screen.getByText('Aside content')
+    const aside = screen.getByText('Aside content');
 
-    expect(aside).toHaveStyle('border-left: 1px solid #DEE1E5;')
-    expect(aside).toHaveStyle('border-right: 1px solid #DEE1E5;')
-  })
+    expect(aside).toHaveStyle('border-left: 1px solid #DEE1E5;');
+    expect(aside).toHaveStyle('border-right: 1px solid #DEE1E5;');
+  });
 
   test('render borderY properly', () => {
-    renderWithTheme(<Aside borderY>Aside content</Aside>)
+    renderWithTheme(<Aside borderY>Aside content</Aside>);
 
-    const aside = screen.getByText('Aside content')
+    const aside = screen.getByText('Aside content');
 
-    expect(aside).toHaveStyle('border-bottom: 1px solid #DEE1E5;')
-    expect(aside).toHaveStyle('border-top: 1px solid #DEE1E5;')
-  })
+    expect(aside).toHaveStyle('border-bottom: 1px solid #DEE1E5;');
+    expect(aside).toHaveStyle('border-top: 1px solid #DEE1E5;');
+  });
 
   test('render border color if passed', () => {
-    renderWithTheme(<Aside border="key">Aside content</Aside>)
+    renderWithTheme(<Aside border="key">Aside content</Aside>);
 
     expect(screen.getByText('Aside content')).toHaveStyle(
       'border: 1px solid #6C43E0;'
-    )
-  })
-})
+    );
+  });
+});

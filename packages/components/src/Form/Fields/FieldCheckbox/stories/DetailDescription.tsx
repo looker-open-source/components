@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldCheckbox } from '../../FieldCheckbox'
-import type { FieldCheckboxProps } from '../../FieldCheckbox'
+import React from 'react';
+import { FieldCheckbox } from '../../FieldCheckbox';
+import type { FieldCheckboxProps } from '../../FieldCheckbox';
 export default function DetailDescription(props: FieldCheckboxProps) {
   return (
     <FieldCheckbox
@@ -16,5 +16,5 @@ export default function DetailDescription(props: FieldCheckboxProps) {
       name="thumbsUp"
       {...props}
     />
-  )
+  );
 }

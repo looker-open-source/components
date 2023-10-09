@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { FormEvent } from 'react'
+import React from 'react';
+import type { ChangeEvent } from 'react';
 import type {
   CArea,
   CBar,
@@ -13,9 +13,9 @@ import type {
   CTable,
   CSeriesBasic,
   CSingleValue,
-} from '@looker/visualizations-adapters'
-import { FieldText } from '@looker/components'
-import has from 'lodash/has'
+} from '@looker/visualizations-adapters';
+import { FieldText } from '@looker/components';
+import has from 'lodash/has';
 
 /**
  * A list of relevant charts that access this configuration
@@ -27,7 +27,7 @@ export type CLabelSupported =
   | CLine
   | CScatter
   | CTable
-  | CSingleValue
+  | CSingleValue;
 
 const renderFor: Array<CLabelSupported['type']> = [
   'area',
@@ -37,28 +37,28 @@ const renderFor: Array<CLabelSupported['type']> = [
   'scatter',
   'table',
   'single_value',
-]
+];
 
 export type SeriesLabelProps = {
-  chartType: CLabelSupported['type']
-  series: CSeriesBasic
-  onSeriesChange: (series: CSeriesBasic) => void
-}
+  chartType: CLabelSupported['type'];
+  series: CSeriesBasic;
+  onSeriesChange: (series: CSeriesBasic) => void;
+};
 
 export const SeriesLabel = (props: SeriesLabelProps) => {
-  const { chartType, series, onSeriesChange } = props
+  const { chartType, series, onSeriesChange } = props;
 
   if (!renderFor.includes(chartType) && !has(series, 'label')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
-    const draft = { ...series, label: (e.target as HTMLInputElement).value }
-    onSeriesChange(draft)
-  }
+  const handleChange = (e: ChangeEvent) => {
+    const draft = { ...series, label: (e.target as HTMLInputElement).value };
+    onSeriesChange(draft);
+  };
 
   return (
     <FieldText label="Label" onChange={handleChange} value={series.label} />
-  )
-}
+  );
+};

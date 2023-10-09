@@ -23,14 +23,14 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '@looker/filter-expressions'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { MultiStringInput } from './MultiStringInput'
+import type { FilterModel } from '@looker/filter-expressions';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { MultiStringInput } from './MultiStringInput';
 
 describe('MultiStringInput tests', () => {
-  jest.useFakeTimers()
+  jest.useFakeTimers();
   const getMockedComponent = ({ ...props }) => (
     <MultiStringInput
       onChange={jest.fn()}
@@ -39,64 +39,64 @@ describe('MultiStringInput tests', () => {
       suggestions={['Foo']}
       {...props}
     />
-  )
+  );
 
   describe('showDropDownMenu', () => {
     it('defaults true, show options', () => {
-      renderWithTheme(getMockedComponent({ suggestions: ['Foo'] }))
+      renderWithTheme(getMockedComponent({ suggestions: ['Foo'] }));
 
-      const input = screen.getByPlaceholderText('any value')
-      fireEvent.click(input)
+      const input = screen.getByPlaceholderText('any value');
+      fireEvent.click(input);
 
-      expect(screen.getByRole('listbox')).toBeInTheDocument()
-      expect(screen.getByText('Foo')).toBeInTheDocument()
+      expect(screen.getByRole('listbox')).toBeInTheDocument();
+      expect(screen.getByText('Foo')).toBeInTheDocument();
 
       // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
+      fireEvent.click(document);
+    });
 
     it('no menu when false', () => {
       renderWithTheme(
         getMockedComponent({ showDropDownMenu: false, suggestions: ['Foo'] })
-      )
+      );
 
-      const input = screen.getByPlaceholderText('any value')
-      fireEvent.click(input)
+      const input = screen.getByPlaceholderText('any value');
+      fireEvent.click(input);
 
-      expect(screen.queryByRole('listbox')).not.toBeInTheDocument()
-      expect(screen.queryByText('Foo')).not.toBeInTheDocument()
-    })
-  })
+      expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+      expect(screen.queryByText('Foo')).not.toBeInTheDocument();
+    });
+  });
 
   describe('disableCreate', () => {
     it('defaults false, allow free input', () => {
-      const onChangeMock = jest.fn()
-      renderWithTheme(getMockedComponent({ onChange: onChangeMock }))
+      const onChangeMock = jest.fn();
+      renderWithTheme(getMockedComponent({ onChange: onChangeMock }));
 
-      const input = screen.getByPlaceholderText('any value')
-      fireEvent.change(input, { target: { value: 'bar,' } })
+      const input = screen.getByPlaceholderText('any value');
+      fireEvent.change(input, { target: { value: 'bar,' } });
 
-      expect(input).toHaveValue('')
-      expect(onChangeMock).toHaveBeenCalledWith('1', { value: ['bar'] })
+      expect(input).toHaveValue('');
+      expect(onChangeMock).toHaveBeenCalledWith('1', { value: ['bar'] });
 
       // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
+      fireEvent.click(document);
+    });
 
     it('no free input when true', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       renderWithTheme(
         getMockedComponent({ disableCreate: true, onChange: onChangeMock })
-      )
+      );
 
-      const input = screen.getByPlaceholderText('any value')
-      fireEvent.change(input, { target: { value: 'bar,' } })
+      const input = screen.getByPlaceholderText('any value');
+      fireEvent.change(input, { target: { value: 'bar,' } });
 
-      expect(input).toHaveValue('bar,')
-      expect(onChangeMock).not.toHaveBeenCalled()
+      expect(input).toHaveValue('bar,');
+      expect(onChangeMock).not.toHaveBeenCalled();
 
       // Close popover to silence act() warning
-      fireEvent.click(document)
-    })
-  })
-})
+      fireEvent.click(document);
+    });
+  });
+});

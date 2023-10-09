@@ -1294,4 +1294,4 @@ export const mockSDKModelExploreResponse = {
       },
     ],
   },
-}
+};

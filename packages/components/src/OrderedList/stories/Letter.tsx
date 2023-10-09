@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { OrderedList } from '../OrderedList'
+import React from 'react';
+import { OrderedList } from '../OrderedList';
 
 export default function Letter() {
   return (
@@ -12,5 +12,5 @@ export default function Letter() {
       <li>Swiss</li>
       <li>Pepper Jack</li>
     </OrderedList>
-  )
+  );
 }

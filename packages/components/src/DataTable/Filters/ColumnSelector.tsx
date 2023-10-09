@@ -24,20 +24,20 @@
 
  */
 
-import React, { useState } from 'react'
-import { ViewColumn } from '@styled-icons/material/ViewColumn'
-import { useTranslation } from '../../utils'
-import { usePopover, PopoverContent } from '../../Popover'
-import { IconButton } from '../../Button/IconButton'
-import { CheckboxGroup } from '../../Form/Inputs'
-import { ButtonTransparent } from '../../Button/ButtonTransparent'
-import { Space, SpaceVertical } from '../../Layout'
-import type { DataTableColumns } from '../Column'
+import React, { useState } from 'react';
+import { ViewColumn } from '@styled-icons/material/ViewColumn';
+import { useTranslation } from '../../utils';
+import { usePopover, PopoverContent } from '../../Popover';
+import { IconButton } from '../../Button/IconButton';
+import { CheckboxGroup } from '../../Form/Inputs';
+import { ButtonTransparent } from '../../Button/ButtonTransparent';
+import { Space, SpaceVertical } from '../../Layout';
+import type { DataTableColumns } from '../Column';
 
 export interface ColumnSelectorProps {
-  columns: DataTableColumns
-  columnsVisible: string[]
-  onColumnVisibilityChange: (value: string[]) => void
+  columns: DataTableColumns;
+  columnsVisible: string[];
+  onColumnVisibilityChange: (value: string[]) => void;
 }
 
 export const ColumnSelector = ({
@@ -45,30 +45,30 @@ export const ColumnSelector = ({
   columnsVisible: defaultColumnsVisible,
   onColumnVisibilityChange,
 }: ColumnSelectorProps) => {
-  const { t } = useTranslation('ColumnSelector')
-  const [isOpen, setOpen] = useState(false)
+  const { t } = useTranslation('ColumnSelector');
+  const [isOpen, setOpen] = useState(false);
 
-  const selectableColumns = columns.filter(c => c.hide !== undefined)
-  const [columnsVisible, setColumnsVisible] = useState(defaultColumnsVisible)
+  const selectableColumns = columns.filter(c => c.hide !== undefined);
+  const [columnsVisible, setColumnsVisible] = useState(defaultColumnsVisible);
 
   const options = selectableColumns.map(column => ({
     label: column.title,
     value: column.id,
-  }))
+  }));
 
   const apply = () => {
-    onColumnVisibilityChange(columnsVisible)
-    setOpen(false)
-  }
+    onColumnVisibilityChange(columnsVisible);
+    setOpen(false);
+  };
 
-  const cancel = () => setOpen(false)
+  const cancel = () => setOpen(false);
 
   const all = () => {
-    const resetColumn = columns.map(column => column.id)
-    setColumnsVisible(resetColumn)
-  }
+    const resetColumn = columns.map(column => column.id);
+    setColumnsVisible(resetColumn);
+  };
 
-  const none = () => setColumnsVisible([])
+  const none = () => setColumnsVisible([]);
 
   const content = (
     <PopoverContent width="12rem" overflow="hidden">
@@ -94,9 +94,9 @@ export const ColumnSelector = ({
         </Space>
       </SpaceVertical>
     </PopoverContent>
-  )
+  );
 
-  const { popover, domProps } = usePopover({ content, isOpen, setOpen })
+  const { popover, domProps } = usePopover({ content, isOpen, setOpen });
 
   return (
     <>
@@ -107,5 +107,5 @@ export const ColumnSelector = ({
         {...domProps}
       />
     </>
-  )
-}
+  );
+};

@@ -24,31 +24,31 @@
 
  */
 
-import { legendPosition } from './legendPosition'
-import { mockBarConfig, mockSdkDataResponse, mockFields } from '../fixtures'
+import { legendPosition } from './legendPosition';
+import { mockBarConfig, mockSdkDataResponse, mockFields } from '../fixtures';
 
 describe('legendPosition', () => {
   describe('config.hide_legend ===', () => {
     test('true', () => {
-      const config = { ...mockBarConfig, hide_legend: true }
+      const config = { ...mockBarConfig, hide_legend: true };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual(false)
-    })
+      });
+      expect(transformedConfig.legend).toEqual(false);
+    });
 
     test('false', () => {
-      const config = { ...mockBarConfig, hide_legend: false }
+      const config = { ...mockBarConfig, hide_legend: false };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'bottom' })
-    })
-  })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'bottom' });
+    });
+  });
 
   describe('config.legend_position ===', () => {
     test('bottom', () => {
@@ -56,71 +56,71 @@ describe('legendPosition', () => {
         ...mockBarConfig,
         legend: undefined,
         legend_position: 'bottom' as const,
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'bottom' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'bottom' });
+    });
 
     test('center', () => {
       const config = {
         ...mockBarConfig,
         legend: undefined,
         legend_position: 'center' as const,
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'bottom' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'bottom' });
+    });
 
     test('left', () => {
       const config = {
         ...mockBarConfig,
         legend: undefined,
         legend_position: 'left' as const,
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'left' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'left' });
+    });
 
     test('right', () => {
       const config = {
         ...mockBarConfig,
         legend: undefined,
         legend_position: 'right' as const,
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'right' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'right' });
+    });
 
     test('top', () => {
       const config = {
         ...mockBarConfig,
         legend: undefined,
         legend_position: 'top' as const,
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'top' })
-    })
-  })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'top' });
+    });
+  });
 
   describe('config.legend.position ===', () => {
     test('bottom', () => {
@@ -129,14 +129,14 @@ describe('legendPosition', () => {
         legend: {
           position: 'bottom' as const,
         },
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'bottom' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'bottom' });
+    });
 
     test('left', () => {
       const config = {
@@ -144,14 +144,14 @@ describe('legendPosition', () => {
         legend: {
           position: 'left' as const,
         },
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'left' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'left' });
+    });
 
     test('right', () => {
       const config = {
@@ -159,14 +159,14 @@ describe('legendPosition', () => {
         legend: {
           position: 'right' as const,
         },
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'right' })
-    })
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'right' });
+    });
 
     test('top', () => {
       const config = {
@@ -174,13 +174,13 @@ describe('legendPosition', () => {
         legend: {
           position: 'top' as const,
         },
-      }
+      };
       const { config: transformedConfig } = legendPosition({
         config,
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.legend).toEqual({ position: 'top' })
-    })
-  })
-})
+      });
+      expect(transformedConfig.legend).toEqual({ position: 'top' });
+    });
+  });
+});

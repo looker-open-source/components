@@ -2,15 +2,15 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import styled from 'styled-components'
-import { Box2, Heading, Code } from '../../../src'
+import React from 'react';
+import styled from 'styled-components';
+import { Box2, Heading, Code } from '../../../src';
 
 export interface BorderType {
-  color: string
-  label: string
-  textColor: string
-  examples: string[]
+  color: string;
+  label: string;
+  textColor: string;
+  examples: string[];
 }
 
 const borderData: BorderType[] = [
@@ -38,15 +38,15 @@ const borderData: BorderType[] = [
     label: 'Border on Dark',
     textColor: 'inverseOn',
   },
-]
+];
 
 export const BorderRender = () =>
-  borderData.map(border => <Example border={border} key={border.color} />)
+  borderData.map(border => <Example border={border} key={border.color} />);
 
 const Example = ({
   border: { color, examples, label, textColor },
 }: {
-  border: BorderType
+  border: BorderType;
 }) => (
   <Box2 mb="xlarge">
     <Heading as="h3" fontWeight="semiBold" mb="small">
@@ -59,7 +59,7 @@ const Example = ({
       </BorderExample>
     ))}
   </Box2>
-)
+);
 
 const BorderExample = styled(Box2)`
   align-items: center;
@@ -70,9 +70,9 @@ const BorderExample = styled(Box2)`
   &:not(:last-child) {
     border-bottom: none;
   }
-`
+`;
 
 const BorderDividerExample = styled(Box2)`
   height: 1px;
   width: 70%;
-`
+`;

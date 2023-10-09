@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import { FieldDate } from '..'
+import React from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import { FieldDate } from '..';
 
 export default function Basic(externalLabel = true) {
   return (
@@ -14,5 +14,5 @@ export default function Basic(externalLabel = true) {
     >
       <FieldDate defaultValue={new Date('July 25, 2020')} label={'Example'} />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

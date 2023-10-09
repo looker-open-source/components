@@ -30,17 +30,17 @@ import type {
   XAxisConfig,
   RawApiConfigResponse,
   FieldMetadata,
-} from '../types'
-import omitBy from 'lodash/omitBy'
-import isNull from 'lodash/isNull'
+} from '../types';
+import omitBy from 'lodash/omitBy';
+import isNull from 'lodash/isNull';
 
 type XAxisRaw = {
-  x_axis_reversed: RawApiConfigResponse['x_axis_reversed']
-  x_axis_gridlines: RawApiConfigResponse['x_axis_gridlines']
-  show_x_axis_ticks: RawApiConfigResponse['show_x_axis_ticks']
-  show_x_axis_label: RawApiConfigResponse['show_x_axis_label']
-  x_axis_label: RawApiConfigResponse['x_axis_label']
-}
+  x_axis_reversed: RawApiConfigResponse['x_axis_reversed'];
+  x_axis_gridlines: RawApiConfigResponse['x_axis_gridlines'];
+  show_x_axis_ticks: RawApiConfigResponse['show_x_axis_ticks'];
+  show_x_axis_label: RawApiConfigResponse['show_x_axis_label'];
+  x_axis_label: RawApiConfigResponse['x_axis_label'];
+};
 
 /**
  * Helper function sets default values for each y-axis config object.
@@ -57,7 +57,7 @@ const deriveDefaults = (
   measure: FieldMetadata
 ): XAxisConfig => {
   // Get default label value
-  const { label: measureLabel, view_label: measureViewLabel } = measure
+  const { label: measureLabel, view_label: measureViewLabel } = measure;
 
   // raw sdk attributes
   const {
@@ -66,7 +66,7 @@ const deriveDefaults = (
     show_x_axis_ticks,
     show_x_axis_label,
     x_axis_label = measureLabel || measureViewLabel,
-  } = axisRaw as XAxisRaw
+  } = axisRaw as XAxisRaw;
 
   // officially supported config values, falling back to raw sdk attributes
   const {
@@ -74,15 +74,15 @@ const deriveDefaults = (
     label = show_x_axis_label === false ? false : x_axis_label,
     reversed = x_axis_reversed,
     values = show_x_axis_ticks,
-  } = axisOfficial as XAxisConfig
+  } = axisOfficial as XAxisConfig;
 
   return {
     gridlines: typeof gridlines === 'undefined' ? true : gridlines,
     label: label === null ? false : label,
     reversed: !!reversed,
     values: typeof values === 'undefined' ? true : values,
-  }
-}
+  };
+};
 
 /**
  * Merge all x-axis related properties into a single x_axis object
@@ -96,7 +96,7 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
     x_axis_label,
     x_axis = [{}] as XAxisConfig[], // officially supported config
     ...restConfig
-  } = config
+  } = config;
 
   // bundle disparate x-axis properties coming from sdk into a single list
   const xAxisRaw: XAxisRaw[] = [
@@ -107,21 +107,21 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
       show_x_axis_label,
       x_axis_label,
     },
-  ]
+  ];
 
-  const longestListLength = Math.max(xAxisRaw.length, x_axis.length)
-  const xAxisWithDefaults: XAxisConfig[] = []
+  const longestListLength = Math.max(xAxisRaw.length, x_axis.length);
+  const xAxisWithDefaults: XAxisConfig[] = [];
 
   for (let i = 0; i < longestListLength; i++) {
-    const rawAxisAtPosition = omitBy(xAxisRaw[i] || {}, isNull)
-    const officialAxisAtPosition = x_axis[i] || {}
-    const measureAtPosition = fields?.dimensions?.[i] || {}
+    const rawAxisAtPosition = omitBy(xAxisRaw[i] || {}, isNull);
+    const officialAxisAtPosition = x_axis[i] || {};
+    const measureAtPosition = fields?.dimensions?.[i] || {};
 
     xAxisWithDefaults[i] = deriveDefaults(
       rawAxisAtPosition,
       officialAxisAtPosition,
       measureAtPosition
-    )
+    );
   }
 
   return {
@@ -131,5 +131,5 @@ export const xAxis: ConfigHelper<CCartesian> = ({ config, data, fields }) => {
     },
     data,
     fields,
-  }
-}
+  };
+};

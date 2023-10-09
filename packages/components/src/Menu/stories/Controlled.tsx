@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Menu, MenuItem, Space, Text, Button } from '../../..'
+import React, { useState } from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Menu, MenuItem, Space, Text, Button } from '../../..';
 
 export default function Controlled() {
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(false);
 
   return (
     <Space>
@@ -25,5 +25,5 @@ export default function Controlled() {
       </Menu>
       <Text>{isOpen ? 'Menu Open' : 'Menu Closed'}</Text>
     </Space>
-  )
+  );
 }

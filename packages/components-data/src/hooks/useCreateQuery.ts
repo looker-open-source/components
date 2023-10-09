@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useEffect } from 'react'
-import type { IWriteQuery, IQuery } from '@looker/sdk'
-import type { ISDKSuccessResponse } from '@looker/sdk-rtl'
-import useSWR from 'swr'
-import { getErrorResponse, isSuccessResponse } from '../utils'
-import { useSDK } from './useSDK'
-import { DataState } from './useDataState'
+import { useEffect } from 'react';
+import type { IWriteQuery, IQuery } from '@looker/sdk';
+import type { ISDKSuccessResponse } from '@looker/sdk-rtl';
+import useSWR from 'swr';
+import { getErrorResponse, isSuccessResponse } from '../utils';
+import { useSDK } from './useSDK';
+import { DataState } from './useDataState';
 
 /**
  * useCreateQuery creates a new query derived from the `newQuery` configuration.
@@ -20,37 +20,37 @@ import { DataState } from './useDataState'
  */
 
 export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
-  const sdk = useSDK()
-  const { setById } = DataState.useContainer()
+  const sdk = useSDK();
+  const { setById } = DataState.useContainer();
 
   const fetcher = async () => {
     if (newQuery) {
-      return await sdk.create_query(newQuery)
+      return await sdk.create_query(newQuery);
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR(
     JSON.stringify(newQuery),
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   const { id: draftId, ...draftMetadata } =
-    (SWRData as ISDKSuccessResponse<IQuery>)?.value || {}
+    (SWRData as ISDKSuccessResponse<IQuery>)?.value || {};
 
   useEffect(() => {
     setById(Number(draftId), {
       metadata: draftMetadata,
-    })
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [draftId])
+  }, [draftId]);
 
   return {
     isOK: isSuccessResponse(SWRData) || typeof newQuery === 'undefined',
     isPending: isValidating,
     queryId: draftId ? Number(draftId) : undefined,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

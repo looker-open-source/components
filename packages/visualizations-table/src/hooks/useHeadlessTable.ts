@@ -23,28 +23,28 @@
  SOFTWARE.
 
  */
-import { useState, useCallback } from 'react'
-import type { MouseEvent } from 'react'
-import type { SDKRecord, TableProps } from '@looker/visualizations-adapters'
-import type { SortingState, Header } from '@tanstack/table-core'
+import { useState, useCallback } from 'react';
+import type { MouseEvent } from 'react';
+import type { SDKRecord, TableProps } from '@looker/visualizations-adapters';
+import type { SortingState, Header } from '@tanstack/table-core';
 import {
   getCoreRowModel,
   useReactTable,
   getSortedRowModel,
-} from '@tanstack/react-table'
-import noop from 'lodash/noop'
-import { buildFlatColumns, buildGroupedColumns } from '../utils'
+} from '@tanstack/react-table';
+import noop from 'lodash/noop';
+import { buildFlatColumns, buildGroupedColumns } from '../utils';
 
 type UseHeadlessTableProps = Pick<
   TableProps,
   'data' | 'config' | 'fields' | 'pivots'
->
+>;
 
 const isPivotedQuery = (
   props: UseHeadlessTableProps
 ): props is Required<UseHeadlessTableProps> => {
-  return !!props.fields.pivots?.length && !!props.pivots?.length
-}
+  return !!props.fields.pivots?.length && !!props.pivots?.length;
+};
 
 /**
  * useHeadlessTable configures our headless table dependency. Handles
@@ -52,75 +52,75 @@ const isPivotedQuery = (
  */
 
 export const useHeadlessTable = (props: UseHeadlessTableProps) => {
-  const { data, config, fields } = props
+  const { data, config, fields } = props;
 
-  const { column_order, show_row_totals = true, series = {} } = config
+  const { column_order, show_row_totals = true, series = {} } = config;
 
-  const flatFields = [...fields.dimensions, ...fields.measures]
+  const flatFields = [...fields.dimensions, ...fields.measures];
 
   const columns = isPivotedQuery(props)
     ? buildGroupedColumns(props)
-    : buildFlatColumns(props)
+    : buildFlatColumns(props);
 
   const [sorting, setSorting] = useState<SortingState>(
     flatFields
       .sort((field1, field2) => {
-        const sortIndex1 = field1.sorted?.sort_index || -1
-        const sortIndex2 = field2.sorted?.sort_index || -1
-        return sortIndex1 - sortIndex2
+        const sortIndex1 = field1.sorted?.sort_index || -1;
+        const sortIndex2 = field2.sorted?.sort_index || -1;
+        return sortIndex1 - sortIndex2;
       })
       .map(field => {
         if (field.sorted) {
-          return { id: field.name, desc: field.sorted.desc }
+          return { id: field.name, desc: field.sorted.desc };
         }
-        return undefined
+        return undefined;
       })
       .filter(Boolean) as SortingState
-  )
+  );
 
   const handleTableSort = useCallback(
     (header: Header<SDKRecord, unknown>, e: MouseEvent<Element>) => {
       if (header?.column?.getCanSort()) {
         const currentSortingIndex = sorting.findIndex(
           column => column.id === header.id
-        )
+        );
 
-        const currentDesc = !!sorting[currentSortingIndex]?.desc
+        const currentDesc = !!sorting[currentSortingIndex]?.desc;
 
-        const draftColumnConfig = { id: header.id, desc: !currentDesc }
+        const draftColumnConfig = { id: header.id, desc: !currentDesc };
 
         if (e.shiftKey) {
           // sort multiple columns when shift key is pressed
-          const draftSorting = [...sorting]
+          const draftSorting = [...sorting];
           if (currentSortingIndex >= 0) {
             // update element at index
-            draftSorting[currentSortingIndex] = draftColumnConfig
+            draftSorting[currentSortingIndex] = draftColumnConfig;
           } else {
             // append new sort element to list
-            draftSorting.push(draftColumnConfig)
+            draftSorting.push(draftColumnConfig);
           }
-          setSorting(draftSorting)
+          setSorting(draftSorting);
         } else {
-          setSorting([draftColumnConfig])
+          setSorting([draftColumnConfig]);
         }
       }
     },
     [sorting]
-  )
+  );
 
   const columnVisibility = fields.measures.reduce<Record<string, boolean>>(
     (acc, { name }, i) => {
-      const seriesConfig = Array.isArray(series) ? series[i] : series[name]
+      const seriesConfig = Array.isArray(series) ? series[i] : series[name];
       if (name.includes('$$$_row_total_$$$')) {
-        acc[name] = show_row_totals
-        return acc
+        acc[name] = show_row_totals;
+        return acc;
       } else {
-        acc[name] = seriesConfig?.visible ?? true
-        return acc
+        acc[name] = seriesConfig?.visible ?? true;
+        return acc;
       }
     },
     {}
-  )
+  );
 
   const table = useReactTable({
     data,
@@ -135,7 +135,7 @@ export const useHeadlessTable = (props: UseHeadlessTableProps) => {
     },
     onStateChange: noop,
     renderFallbackValue: null,
-  })
+  });
 
-  return { table, sorting, handleTableSort }
-}
+  return { table, sorting, handleTableSort };
+};

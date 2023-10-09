@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useEffect, useContext, useState, useCallback } from 'react'
-import { AppContext } from '../AppContext'
+import { useEffect, useContext, useState, useCallback } from 'react';
+import { AppContext } from '../AppContext';
 
 /*
  * Get and Set localstorage value to the provided key.
@@ -14,37 +14,37 @@ export const useLocalStorage = <T>(
   key: string,
   value?: T
 ): [T | undefined, (newValue?: T) => void] => {
-  const { localStorageSetItem, localStorageGetItem } = useContext(AppContext)
+  const { localStorageSetItem, localStorageGetItem } = useContext(AppContext);
 
-  const [stateValue, setStateValue] = useState<T | undefined>(value)
+  const [stateValue, setStateValue] = useState<T | undefined>(value);
 
   useEffect(() => {
     const getValue = async () => {
       try {
         if (localStorageGetItem) {
-          const localStorageValue = await localStorageGetItem(key)
+          const localStorageValue = await localStorageGetItem(key);
           if (localStorageValue) {
-            setStateValue(JSON.parse(localStorageValue))
+            setStateValue(JSON.parse(localStorageValue));
           }
         }
       } catch (error) {
         // eslint-disable-next-line no-console
-        console.error(error)
+        console.error(error);
       }
-    }
+    };
 
-    getValue()
-  }, [key, localStorageGetItem])
+    getValue();
+  }, [key, localStorageGetItem]);
 
   const setValue = useCallback(
     (newValue?: T) => {
       if (localStorageSetItem) {
-        localStorageSetItem(key, JSON.stringify(newValue))
+        localStorageSetItem(key, JSON.stringify(newValue));
       }
-      setStateValue(newValue)
+      setStateValue(newValue);
     },
     [key, localStorageSetItem]
-  )
+  );
 
-  return [stateValue, setValue]
-}
+  return [stateValue, setValue];
+};

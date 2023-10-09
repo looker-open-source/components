@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { Layout } from './Layout'
+import styled from 'styled-components';
+import { Layout } from './Layout';
 
 export const Page = styled(Layout)`
   background: ${({ theme }) => theme.colors.pageBackground};
@@ -12,4 +12,4 @@ export const Page = styled(Layout)`
 
   ${({ fixed }) => fixed && `height: 100vh;`}
   width: 100%;
-`
+`;

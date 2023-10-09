@@ -30,23 +30,22 @@ import type {
   FontSizes,
   LineHeights,
   SpacingSizes,
-} from '@looker/design-tokens'
-import type { ReactNode } from 'react'
-import type { IconSize, IconType } from '../Icon'
-import type { ListColor } from '../List'
-import type { TruncateConfigProp } from '../Truncate'
-import type { HoverDisclosureProps } from '../utils/HoverDisclosure'
+} from '@looker/design-tokens';
+import type { ReactNode } from 'react';
+import type { IconSize, IconType } from '../Icon';
+import type { TruncateConfigProp } from '../Truncate';
+import type { HoverDisclosureProps } from '../utils/HoverDisclosure';
 
 export interface ListItemDimensions {
-  descriptionFontSize: FontSizes
-  descriptionLineHeight: LineHeights
-  height: number
-  px: SpacingSizes
-  py: SpacingSizes | '0.375rem'
-  gap: SpacingSizes
-  iconSize: IconSize
-  labelFontSize: FontSizes
-  labelLineHeight: LineHeights
+  descriptionFontSize: FontSizes;
+  descriptionLineHeight: LineHeights;
+  height: number;
+  px: SpacingSizes;
+  py: SpacingSizes | '0.375rem';
+  gap: SpacingSizes;
+  iconSize: IconSize;
+  labelFontSize: FontSizes;
+  labelLineHeight: LineHeights;
 }
 
 export const listItemDimensionKeys = [
@@ -60,17 +59,18 @@ export const listItemDimensionKeys = [
   'labelFontSize',
   'labelLineHeight',
   'detailFontSize',
-]
+];
 
-export const listItemColorAppliesToLabel = ['calculation', 'measure']
+export const listItemColorAppliesToLabel = ['calculation', 'measure'];
 export const listItemColorOptions = [
   'key',
   'calculation',
   'dimension',
   'measure',
-]
+] as const;
 
-export type ListItemColor = ListColor | string
+export type ListColor = (typeof listItemColorOptions)[number];
+
 export type ListItemColorProp = {
   /**
    * Replace the normal uiN(1-5) color, when ListItem is selected, with color label passed.
@@ -84,18 +84,28 @@ export type ListItemColorProp = {
    *
    * The color is used a background color (using the `subtle` variant) when the item
    * is `selected` or `current`. Items with `calculation` & `measure` will have a text
-   * color applied at all times unless they are `disabled`
+   * color applied at all times unless they are `disabled`.
+   *
+   * Note: A color other than the ones listed above may be used, but it will not be applied to
+   * background styles.
    */
-  color?: ListItemColor
-}
+  color?: string;
+  /**
+   * Apply the value specified in the color prop in the hover/focus background style
+   * regardless of selected/current status
+   */
+  colorOnHover?: boolean;
+};
 
 export type ListItemStatefulProps = {
   /**
    * If true, the ListItem will have a "disabled" presentation.
    * @default false
    */
-  disabled?: boolean
+  disabled?: boolean;
   /**
+   * TODO consider removing since image snapshot functionality has been removed.
+   *
    * Present ListItem in it's hovered state. Only for use in testing / image-snapshots.
    *
    * NOTE: This will only change the _initial_ hover state. If a hover event triggers a change
@@ -104,17 +114,17 @@ export type ListItemStatefulProps = {
    * @private Test use only. May be deprecated and removed without notice.
    * @default false
    */
-  hovered?: boolean
+  hovered?: boolean;
   /**
    * If true, the ListItem will have a darker background color
    * @default false
    */
-  selected?: boolean
-}
+  selected?: boolean;
+};
 
 export type ListItemDetailConfig =
   | ReactNode
-  | { content: ReactNode; options: ListItemDetailOptions }
+  | { content: ReactNode; options: ListItemDetailOptions };
 export interface ListItemDetailOptions
   extends Pick<HoverDisclosureProps, 'width'> {
   /**
@@ -122,15 +132,15 @@ export interface ListItemDetailOptions
    * In addition, if true, events originating from the detail will not bubble to the item's handlers
    * @default false
    */
-  accessory?: boolean
+  accessory?: boolean;
   /**
    * If true, the detail will only appear on hover
    * @default false
    */
-  hoverDisclosure?: boolean
+  hoverDisclosure?: boolean;
 }
 
-export type ListItemRole = 'button' | 'link' | 'none'
+export type ListItemRole = 'button' | 'link' | 'none';
 
 export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
   ListItemColorProp &
@@ -142,12 +152,12 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      * - If you choose to use this prop on a ListItem directly, it must be consistent across all items for windowing purposes.
      * @private
      */
-    density?: DensityRamp
+    density?: DensityRamp;
     /**
      * optional extra description
      * I18n recommended: content that is user visible should be treated for i18n
      */
-    description?: ReactNode
+    description?: ReactNode;
     /**
      * Detail element placed right of the item children. Prop value can take one of two forms:
      * 1. ReactNode
@@ -155,11 +165,11 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      *
      * I18n recommended: content that is user visible should be treated for i18n
      */
-    detail?: ListItemDetailConfig
+    detail?: ListItemDetailConfig;
     /**
      * Optional icon placed left of the item children
      */
-    icon?: IconType
+    icon?: IconType;
     /**
      * Sets the correct accessible role for the ListItem:
      * - Use **'link'** for items that navigation to another page
@@ -170,17 +180,17 @@ export type ListItemProps = CompatibleHTMLProps<HTMLElement> &
      *     - If supporting keyboard navigation, make sure to add key handlers to items
      * @default button
      */
-    itemRole?: ListItemRole
+    itemRole?: ListItemRole;
     /**
      * The ripple animation
      * @default true
      */
-    ripple?: boolean
+    ripple?: boolean;
     /**
      * If true, text children and description will be truncated if text overflows
      * Specifying `description` will cause the truncation tooltip for label to _always_ be presented
      *
      * Text specified in `description` property will be displayed below `label` in the tooltip
      */
-    truncate?: TruncateConfigProp
-  }
+    truncate?: TruncateConfigProp;
+  };

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 /* Enable this in near-future */
 /* color: ${({ theme }) => theme.colors.background}; */
@@ -23,7 +23,7 @@ export const styleDefenderCSS = css`
   * {
     box-sizing: border-box;
   }
-`
+`;
 
 export const StyleDefender = styled.div.attrs(
   ({ className = 'looker-components-reset' }) => ({ className })
@@ -31,4 +31,4 @@ export const StyleDefender = styled.div.attrs(
   background: ${({ theme }) => theme.colors.background};
 
   ${styleDefenderCSS}
-`
+`;

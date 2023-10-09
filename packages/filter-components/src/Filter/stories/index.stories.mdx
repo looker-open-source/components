@@ -1,10 +1,10 @@
-import { Filter } from '@looker/filter-components'
-import { ImportMessage, Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyExpressionTypeOrField from '!!raw-loader!./ExpressionTypeOrField'
-import storyExpressionOnChange from '!!raw-loader!./ExpressionOnChange'
-import storySuggestions from '!!raw-loader!./Suggestions'
-import storyConfig from '!!raw-loader!./Config'
+import { Filter } from '@looker/filter-components';
+import { ImportMessage, Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyExpressionTypeOrField from './ExpressionTypeOrField?raw';
+import storyExpressionOnChange from './ExpressionOnChange?raw';
+import storySuggestions from './Suggestions?raw';
+import storyConfig from './Config?raw';
 
 <Meta component={Filter} title="Filters/Docs/Filter" />
 
@@ -48,7 +48,7 @@ const FilterItem = ({ filter, sdk }) => {
   const { errorMessage, suggestableProps } = useSuggestable({
     filter,
     sdk,
-  })
+  });
 
   return (
     <Filter
@@ -57,8 +57,8 @@ const FilterItem = ({ filter, sdk }) => {
       expression="pending"
       {...suggestableProps}
     />
-  )
-}
+  );
+};
 ```
 
 ## Config

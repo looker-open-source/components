@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { render } from '@testing-library/react'
-import i18next from 'i18next'
-import React from 'react'
-import type { ReactNode } from 'react'
-import type { UseI18nProps } from './useI18n'
-import { useI18n } from './useI18n'
+import { render } from '@testing-library/react';
+import i18next from 'i18next';
+import React from 'react';
+import type { ReactNode } from 'react';
+import type { UseI18nProps } from './useI18n';
+import { useI18n } from './useI18n';
 
 const i18nMockResources = {
   en: {
@@ -21,45 +21,45 @@ const i18nMockResources = {
       World: 'World',
     },
   },
-}
+};
 type TestComponentProps = UseI18nProps & {
-  children?: ReactNode
-}
+  children?: ReactNode;
+};
 
 const TestComponent = ({ children, ...props }: TestComponentProps) => {
-  useI18n(props)
-  return <>{children}</>
-}
+  useI18n(props);
+  return <>{children}</>;
+};
 
 describe('useI18n', () => {
   test('initializes i18next', () => {
-    const spy = jest.spyOn(i18next, 'init')
-    render(<TestComponent />)
+    const spy = jest.spyOn(i18next, 'init');
+    render(<TestComponent />);
 
-    expect(i18next.init).toHaveBeenCalledTimes(1)
-    spy.mockRestore()
-    i18next.isInitialized = false
-  })
+    expect(i18next.init).toHaveBeenCalledTimes(1);
+    spy.mockRestore();
+    i18next.isInitialized = false;
+  });
 
   test('updates with new props', () => {
-    const spy = jest.spyOn(i18next, 'addResourceBundle')
-    i18next.isInitialized = true
-    render(<TestComponent resources={i18nMockResources} />)
-    expect(spy).toHaveBeenCalledTimes(Object.keys(i18nMockResources.en).length)
-    spy.mockRestore()
-  })
+    const spy = jest.spyOn(i18next, 'addResourceBundle');
+    i18next.isInitialized = true;
+    render(<TestComponent resources={i18nMockResources} />);
+    expect(spy).toHaveBeenCalledTimes(Object.keys(i18nMockResources.en).length);
+    spy.mockRestore();
+  });
 
   test('updates with new locale', () => {
-    const spy = jest.spyOn(i18next, 'changeLanguage')
-    i18next.isInitialized = true
-    render(<TestComponent locale="de-DE" />)
+    const spy = jest.spyOn(i18next, 'changeLanguage');
+    i18next.isInitialized = true;
+    render(<TestComponent locale="de-DE" />);
     expect(spy.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
           "de-DE",
         ],
       ]
-    `)
-    spy.mockRestore()
-  })
-})
+    `);
+    spy.mockRestore();
+  });
+});

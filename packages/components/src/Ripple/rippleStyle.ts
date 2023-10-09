@@ -24,8 +24,8 @@
 
  */
 
-import type { Keyframes } from 'styled-components'
-import { css, keyframes } from 'styled-components'
+import type { Keyframes } from 'styled-components';
+import { css, keyframes } from 'styled-components';
 
 const rippleRadiusIn: Keyframes = keyframes`
 from {
@@ -36,7 +36,7 @@ to {
   transform: translate(var(--ripple-translate, 0))
     scale(var(--ripple-scale-end, 1));
 }
-`
+`;
 
 const rippleOpacityIn: Keyframes = keyframes`
 from {
@@ -46,7 +46,7 @@ from {
 to {
   opacity: .12;
 }
-`
+`;
 
 const rippleOpacityOut: Keyframes = keyframes`
 from {
@@ -56,7 +56,7 @@ from {
 to {
   opacity: 0;
 }
-`
+`;
 
 /**
  * Uses :before as fade-in overlay "background" and :after as rippling overlay
@@ -112,4 +112,4 @@ export const rippleStyle = css`
     transform: translate(var(--ripple-translate, 0))
       scale(var(--ripple-scale-end, 1));
   }
-`
+`;

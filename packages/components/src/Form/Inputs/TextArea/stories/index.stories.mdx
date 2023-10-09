@@ -1,11 +1,11 @@
-import { TextArea } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyResize from '!!raw-loader!./Resize'
-import storyDisabled from '!!raw-loader!./Disabled'
-import storyError from '!!raw-loader!./Error'
-import storyDefaultValue from '!!raw-loader!./DefaultValue'
+import { TextArea } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyResize from './Resize?raw';
+import storyDisabled from './Disabled?raw';
+import storyError from './Error?raw';
+import storyDefaultValue from './DefaultValue?raw';
 
 <Meta component={TextArea} title="Docs/TextArea" />
 
@@ -22,12 +22,15 @@ import storyDefaultValue from '!!raw-loader!./DefaultValue'
 ## Allowing TextArea to be resized
 
 `true` and `vertical` will allow the `TextArea` height to be resized. Alternatively, `none` and `false` will not allow resizing.
+
 <Editor code={storyResize} />
 
 ## Disabled
+
 <Editor code={storyDisabled} />
 
 ## Error Message
+
 <Editor code={storyError} />
 
 ## Props

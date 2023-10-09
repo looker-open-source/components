@@ -23,16 +23,16 @@
  SOFTWARE.
 
  */
-import React, { useState, useEffect, useCallback } from 'react'
-import type { QueryProps } from '@looker/visualizations'
-import type { CAll } from '@looker/visualizations-adapters'
-import { Query, Visualization } from '@looker/visualizations'
+import React, { useState, useEffect, useCallback } from 'react';
+import type { QueryProps } from '@looker/visualizations';
+import type { CAll } from '@looker/visualizations-adapters';
+import { Query, Visualization } from '@looker/visualizations';
 import {
   isNumeric,
   mockSDK,
   ErrorBoundary,
-} from '@looker/visualizations-adapters'
-import { DataProvider } from '@looker/components-data'
+} from '@looker/visualizations-adapters';
+import { DataProvider } from '@looker/components-data';
 import {
   Box,
   Tab2,
@@ -42,36 +42,36 @@ import {
   ExtendComponentsThemeProvider,
   Page,
   theme,
-} from '@looker/components'
-import styled, { useTheme } from 'styled-components'
-import type { Looker40SDK } from '@looker/sdk'
-import { Radar } from '../Radar'
-import { TurtleTable } from '../TurtleTable'
-import { useLocalStorage } from '../utils'
-import { EmbedEditor } from '../EmbedEditor'
-import { ConfigEditor } from '../ConfigEditor'
-import type { OnQueryInputArgs, InputTypes } from '../QueryInput'
-import { QueryInput } from '../QueryInput'
-import { Filtering } from '../Filtering'
-import { CodeEditor } from '../CodeEditor'
-import { CodeToggle } from '../CodeToggle'
+} from '@looker/components';
+import styled, { useTheme } from 'styled-components';
+import type { Looker40SDK } from '@looker/sdk';
+import { Radar } from '../Radar';
+import { TurtleTable } from '../TurtleTable';
+import { useLocalStorage } from '../utils';
+import { EmbedEditor } from '../EmbedEditor';
+import { ConfigEditor } from '../ConfigEditor';
+import type { OnQueryInputArgs, InputTypes } from '../QueryInput';
+import { QueryInput } from '../QueryInput';
+import { Filtering } from '../Filtering';
+import { CodeEditor } from '../CodeEditor';
+import { CodeToggle } from '../CodeToggle';
 
-type TabIDs = 'live' | 'mock'
+type TabIDs = 'live' | 'mock';
 
 export type VisualizationPlaygroundProps = {
-  sdk?: Looker40SDK
-}
+  sdk?: Looker40SDK;
+};
 
 type QueryPropArgs = {
   /* Fetch either query or dashboard response */
-  fetchBy?: InputTypes
+  fetchBy?: InputTypes;
   /* string slug or numeric id */
-  queryIdentifier?: string | number
+  queryIdentifier?: string | number;
   /* numeric dashboard id */
-  dashboardId?: number
+  dashboardId?: number;
   /* Live or Mock sdk views */
-  tabId?: TabIDs
-}
+  tabId?: TabIDs;
+};
 
 /*
  * A small utility function to control whether we will fetch
@@ -87,11 +87,11 @@ export const setQueryProps = ({
   if (tabId === 'live') {
     return fetchBy === 'dashboard'
       ? { dashboard: dashboardId }
-      : { query: queryIdentifier }
+      : { query: queryIdentifier };
   } else {
-    return { query: 'mock-query-slug' }
+    return { query: 'mock-query-slug' };
   }
-}
+};
 
 export const VisualizationPlayground = ({
   sdk,
@@ -99,42 +99,42 @@ export const VisualizationPlayground = ({
   const [storedTabId, setStoredTabId] = useLocalStorage<TabIDs>(
     'sdkTabId',
     sdk ? 'live' : 'mock'
-  )
+  );
   const [queryIdentifier, setQueryIdentifier] = useState<
     string | number | undefined
-  >('')
-  const [dashboardId, setDashboardId] = useState<number>()
-  const [fetchBy, setFetchBy] = useState<InputTypes>()
-  const [configOverrides, setConfigOverrides] = useState<Partial<CAll>>({})
-  const [width, setWidth] = useState<string | undefined>()
-  const [height, setHeight] = useState<string | undefined>()
-  const [codeToggled, setCodeToggled] = useState<boolean>(false)
+  >('');
+  const [dashboardId, setDashboardId] = useState<number>();
+  const [fetchBy, setFetchBy] = useState<InputTypes>();
+  const [configOverrides, setConfigOverrides] = useState<Partial<CAll>>({});
+  const [width, setWidth] = useState<string | undefined>();
+  const [height, setHeight] = useState<string | undefined>();
+  const [codeToggled, setCodeToggled] = useState<boolean>(false);
 
   const handleQueryInputChange = useCallback(
     ({ type, value }: OnQueryInputArgs) => {
-      setFetchBy(type)
+      setFetchBy(type);
       if (type === 'query') {
-        setQueryIdentifier(value)
+        setQueryIdentifier(value);
       } else if (type === 'dashboard') {
-        setDashboardId(isNumeric(value) ? Number(value) : undefined)
+        setDashboardId(isNumeric(value) ? Number(value) : undefined);
       }
     },
     []
-  )
+  );
 
   useEffect(() => {
     // clear config overrides when changing query inputs
-    setConfigOverrides({})
-  }, [storedTabId, fetchBy, dashboardId, queryIdentifier])
+    setConfigOverrides({});
+  }, [storedTabId, fetchBy, dashboardId, queryIdentifier]);
 
-  const { colors } = useTheme()
+  const { colors } = useTheme();
 
   const queryProps: Partial<QueryProps> = setQueryProps({
     fetchBy,
     queryIdentifier,
     dashboardId,
     tabId: storedTabId,
-  })
+  });
 
   return (
     <DataProvider
@@ -263,9 +263,9 @@ export const VisualizationPlayground = ({
         </PageLayout>
       </ExtendComponentsThemeProvider>
     </DataProvider>
-  )
-}
+  );
+};
 
 const PageLayout = styled(Page)`
   gap: ${theme.space.medium};
-`
+`;

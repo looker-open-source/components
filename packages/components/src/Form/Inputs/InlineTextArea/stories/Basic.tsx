@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SpaceVertical } from '../../../../'
-import { InlineTextArea } from '../'
+import React from 'react';
+import { SpaceVertical } from '../../../../';
+import { InlineTextArea } from '../';
 
 export default function Basic() {
   return (
@@ -13,5 +13,5 @@ export default function Basic() {
       <InlineTextArea placeholder="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..." />
       <InlineTextArea value="Type here and keep typing to see multiple lines effect of this component it will wrap to a next line..." />
     </SpaceVertical>
-  )
+  );
 }

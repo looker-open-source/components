@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { SpaceHelperProps } from '../Space'
-import { defaultGap } from '../Space'
-import { commonLayoutCSS } from '../utils/common'
+import { shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { SpaceHelperProps } from '../Space';
+import { defaultGap } from '../Space';
+import { commonLayoutCSS } from '../utils/common';
 
 export interface GridProps extends SpaceHelperProps {
   /**
    * Number of columns to display
    * @default 2
    */
-  columns?: number
+  columns?: number;
 }
 
 /**
@@ -31,4 +31,4 @@ export const Grid = styled.div
   grid-gap: ${({ gap, theme }) => theme.space[gap || defaultGap]};
   grid-template-columns:
     repeat(${({ columns }) => columns || 2}, minmax(0, 1fr));
-`
+`;

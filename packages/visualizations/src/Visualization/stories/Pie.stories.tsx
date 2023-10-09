@@ -24,19 +24,19 @@
 
  */
 
-import type { Story } from '@storybook/react'
-import React from 'react'
-import { Visualization } from '../Visualization'
 import type {
   Fields,
   PieProps,
   SDKRecord,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
+import type { Story } from '@storybook/react';
+import React from 'react';
+import { Visualization } from '../Visualization';
 import {
   mockSdkDataResponse,
   tabularResponse,
   buildChartConfig,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 const defaultPieData: SDKRecord[] = [
   {
@@ -52,7 +52,7 @@ const defaultPieData: SDKRecord[] = [
     'orders.count': 1234,
     'users.state': 'Oregon',
   },
-]
+];
 
 const defaultPieFields: Fields = {
   measures: [
@@ -85,12 +85,12 @@ const defaultPieFields: Fields = {
     },
   ],
   pivots: [],
-}
+};
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/Pie',
-}
+};
 
 const Template: Story<Partial<PieProps>> = ({
   config: configProp,
@@ -109,18 +109,18 @@ const Template: Story<Partial<PieProps>> = ({
       fields={fields}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export const Pie = Template.bind({})
-Pie.args = {}
+export const Pie = Template.bind({});
+Pie.args = {};
 
-export const ColorOverrides = Template.bind({})
+export const ColorOverrides = Template.bind({});
 ColorOverrides.args = {
   config: { type: 'pie', series: [{ color: '#fa8072' }, { color: '#74BDCB' }] },
-}
+};
 
-export const MaxDataRender = Template.bind({})
+export const MaxDataRender = Template.bind({});
 MaxDataRender.args = {
   data: tabularResponse(mockSdkDataResponse),
   fields: {
@@ -129,21 +129,18 @@ MaxDataRender.args = {
       { ...defaultPieFields.dimensions[0], name: 'orders.created_date' },
     ],
   },
-}
+};
 
-export const LegendBottom = Template.bind({})
+export const LegendBottom = Template.bind({});
 LegendBottom.args = {
   config: {
     legend: { position: 'bottom', value: 'label' },
     series: {},
     type: 'pie',
   },
-}
-LegendBottom.parameters = {
-  storyshots: { disable: true },
-}
+};
 
-export const LegendBottomMaxDataRender = Template.bind({})
+export const LegendBottomMaxDataRender = Template.bind({});
 LegendBottomMaxDataRender.args = {
   data: tabularResponse(mockSdkDataResponse),
   fields: {
@@ -157,21 +154,18 @@ LegendBottomMaxDataRender.args = {
     series: {},
     type: 'pie',
   },
-}
+};
 
-export const NoLegend = Template.bind({})
+export const NoLegend = Template.bind({});
 NoLegend.args = {
   config: { type: 'pie', legend: false, series: {} },
-}
-NoLegend.parameters = {
-  storyshots: { disable: true },
-}
+};
 
-export const Labels = Template.bind({})
+export const Labels = Template.bind({});
 Labels.args = {
   config: {
     legend: { type: 'labels', value: 'label_value' },
     series: {},
     type: 'pie',
   },
-}
+};

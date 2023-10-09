@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DensityRamp } from '@looker/design-tokens'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import React from 'react'
-import type { AccordionIndicatorIcons } from './types'
+import type { DensityRamp } from '@looker/design-tokens';
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown';
+import { ArrowRight } from '@styled-icons/material/ArrowRight';
+import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess';
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore';
+import React from 'react';
+import type { AccordionIndicatorIcons } from './types';
 
 export type AccordionDefaultProps = {
-  density: DensityRamp
-  indicatorIcons: AccordionIndicatorIcons
-  indicatorPosition: 'left' | 'right'
-}
+  density: DensityRamp;
+  indicatorIcons: AccordionIndicatorIcons;
+  indicatorPosition: 'left' | 'right';
+};
 
 export const accordionDefaults: AccordionDefaultProps = {
   density: 0,
@@ -24,7 +24,7 @@ export const accordionDefaults: AccordionDefaultProps = {
     open: <ExpandLess />,
   },
   indicatorPosition: 'right',
-}
+};
 
 export const accordionLeftDefaults: AccordionDefaultProps = {
   ...accordionDefaults,
@@ -33,4 +33,4 @@ export const accordionLeftDefaults: AccordionDefaultProps = {
     open: <ArrowDropDown />,
   },
   indicatorPosition: 'left',
-}
+};

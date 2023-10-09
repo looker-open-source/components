@@ -23,30 +23,30 @@
  SOFTWARE.
 
  */
-import { Flex } from '@looker/components'
-import type { ExactLocationFilterItem } from '@looker/filter-expressions'
-import type { ChangeEvent } from 'react'
-import React from 'react'
-import styled from 'styled-components'
+import { Flex } from '@looker/components';
+import type { ExactLocationFilterItem } from '@looker/filter-expressions';
+import type { ChangeEvent } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import {
   MAX_LATITUDE,
   MAX_LONGITUDE,
   MIN_LATITUDE,
   MIN_LONGITUDE,
-} from '../../../../../../constants'
-import { GroupInput } from '../../../GroupInput'
+} from '../../../../../../constants';
+import { GroupInput } from '../../../GroupInput';
 
 interface LocationExactProps {
-  item: ExactLocationFilterItem
-  onChange: (id: string, value: any) => void
+  item: ExactLocationFilterItem;
+  onChange: (id: string, value: any) => void;
 
-  latString?: string
-  lonString?: string
+  latString?: string;
+  lonString?: string;
 
-  lat?: string
-  lon?: string
+  lat?: string;
+  lon?: string;
 
-  placement?: 'middle' | 'right'
+  placement?: 'middle' | 'right';
 }
 
 export const LocationExact = ({
@@ -64,9 +64,9 @@ export const LocationExact = ({
       Number(event.currentTarget.value) <= MAX_LATITUDE &&
       Number(event.currentTarget.value) >= MIN_LATITUDE
     ) {
-      onChange(item.id, { [lat]: event.currentTarget.value })
+      onChange(item.id, { [lat]: event.currentTarget.value });
     }
-  }
+  };
 
   const lonChange = (event: ChangeEvent<HTMLInputElement>) => {
     // Longitude range: [-180, 180]
@@ -74,9 +74,9 @@ export const LocationExact = ({
       Number(event.currentTarget.value) <= MAX_LONGITUDE &&
       Number(event.currentTarget.value) >= MIN_LONGITUDE
     ) {
-      onChange(item.id, { [lon]: event.currentTarget.value })
+      onChange(item.id, { [lon]: event.currentTarget.value });
     }
-  }
+  };
 
   return (
     <Flex flexDirection="row">
@@ -97,11 +97,11 @@ export const LocationExact = ({
         minWidth={`${lonString.length / 2 + 5.5}em`}
       />
     </Flex>
-  )
-}
+  );
+};
 
 const Prefix = styled.span`
   color: ${({ theme: { colors } }) => colors.text1};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.xsmall};
   white-space: nowrap;
-`
+`;

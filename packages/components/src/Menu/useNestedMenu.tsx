@@ -24,22 +24,22 @@
 
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { transitions } from '@looker/design-tokens'
-import type { Placement } from '@popperjs/core'
-import type { KeyboardEvent, MouseEvent, ReactNode } from 'react'
-import React, { useContext, useEffect, useRef } from 'react'
-import { DialogContext } from '../Dialog'
-import { usePopover } from '../Popover'
-import { useWrapEvent } from '../utils'
-import { ListItemContext } from '../ListItem'
-import { NestedMenuContext } from './NestedMenuProvider'
-import { NestedMenuSurface } from './NestedMenuSurface'
-import { MenuList } from './'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { transitions } from '@looker/design-tokens';
+import type { Placement } from '@popperjs/core';
+import type { KeyboardEvent, MouseEvent, ReactNode } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import { DialogContext } from '../Dialog';
+import { usePopover } from '../Popover';
+import { useWrapEvent } from '../utils';
+import { ListItemContext } from '../ListItem';
+import { NestedMenuContext } from './NestedMenuProvider';
+import { NestedMenuSurface } from './NestedMenuSurface';
+import { MenuList } from './';
 
 interface MousePosition {
-  x: number
-  y: number
+  x: number;
+  y: number;
 }
 
 const movingTowardPlacement = (
@@ -47,26 +47,26 @@ const movingTowardPlacement = (
   prevPos?: MousePosition,
   placement?: Placement
 ) => {
-  if (!prevPos || !placement) return false
+  if (!prevPos || !placement) return false;
   switch (placement) {
     case 'right-start':
       // Moving right & down
-      return newPos.x > prevPos.x && newPos.y > prevPos.y
+      return newPos.x > prevPos.x && newPos.y > prevPos.y;
     case 'right-end':
       // Moving right & up
-      return newPos.x > prevPos.x && newPos.y < prevPos.y
+      return newPos.x > prevPos.x && newPos.y < prevPos.y;
     case 'left-start':
       // Moving left & down
-      return newPos.x < prevPos.x && newPos.y > prevPos.y
+      return newPos.x < prevPos.x && newPos.y > prevPos.y;
     case 'left-end':
       // Moving left & up
-      return newPos.x < prevPos.x && newPos.y < prevPos.y
+      return newPos.x < prevPos.x && newPos.y < prevPos.y;
     default:
       // Return the same result as 'right-start' for testing
       // when placement is inexplicably 'bottom' with jsdom
-      return newPos.x > prevPos.x && newPos.y > prevPos.y
+      return newPos.x > prevPos.x && newPos.y > prevPos.y;
   }
-}
+};
 
 export interface UseNestedMenuProps
   // Pick the events that need to be wrapped with various handlers from MenuItem's props.
@@ -74,15 +74,15 @@ export interface UseNestedMenuProps
     CompatibleHTMLProps<HTMLLIElement>,
     'onClick' | 'onKeyDown' | 'onMouseEnter' | 'onMouseLeave'
   > {
-  id: string
+  id: string;
   /**
    * A list of menu items that will open to the right when the user hovers
    * or hits the right arrow key. Only supports one level of nesting.
    */
-  nestedMenu?: ReactNode
+  nestedMenu?: ReactNode;
 }
 
-const noop = () => undefined
+const noop = () => undefined;
 
 export const useNestedMenu = ({
   id,
@@ -92,35 +92,35 @@ export const useNestedMenu = ({
   onMouseLeave,
   nestedMenu,
 }: UseNestedMenuProps) => {
-  const mousePosition = useRef<MousePosition>()
-  const focusRef = useRef<Element | null>(null)
+  const mousePosition = useRef<MousePosition>();
+  const focusRef = useRef<Element | null>(null);
   const { value, change, delayChange, waitChange } =
-    useContext(NestedMenuContext)
+    useContext(NestedMenuContext);
 
-  const { closeModal } = useContext(DialogContext)
-  const { density } = useContext(ListItemContext)
+  const { closeModal } = useContext(DialogContext);
+  const { density } = useContext(ListItemContext);
 
   // Show the nestedMenu by updating the context with the id for this one
   // Hide it by updating the context to an empty string
-  const isOpen = value === id
-  const openNestedMenu = () => change(id)
-  const closeNestedMenu = () => change('')
+  const isOpen = value === id;
+  const openNestedMenu = () => change(id);
+  const closeNestedMenu = () => change('');
 
   const itemHandlers = {
     onClick: useWrapEvent((e: MouseEvent<HTMLLIElement>) => {
       // If there's an onClick in MenuItem props, that wins
       // Otherwise preventDefault to keep the parent Menu open
       if (nestedMenu && !onClick) {
-        openNestedMenu()
-        e.preventDefault()
+        openNestedMenu();
+        e.preventDefault();
       }
     }, onClick),
     onKeyDown: useWrapEvent(
       nestedMenu
         ? (e: KeyboardEvent<HTMLLIElement>) => {
             if (e.key === 'ArrowRight') {
-              openNestedMenu()
-              e.preventDefault()
+              openNestedMenu();
+              e.preventDefault();
             }
           }
         : noop,
@@ -131,11 +131,11 @@ export const useNestedMenu = ({
         ? (e: MouseEvent<HTMLLIElement>) => {
             // Use waitChange since there may be a delay on the close of the previous nestedMenu
             if (value === '') {
-              delayChange(id, 100)
+              delayChange(id, 100);
             } else {
-              waitChange(id)
+              waitChange(id);
             }
-            focusRef.current = e.currentTarget
+            focusRef.current = e.currentTarget;
           }
         : noop,
       onMouseEnter
@@ -153,38 +153,38 @@ export const useNestedMenu = ({
                   popperInstanceRef.current?.state.placement
                 )
               ) {
-                delayChange('', transitions.complex)
+                delayChange('', transitions.complex);
               } else {
-                change('')
+                change('');
               }
-              mousePosition.current = undefined
+              mousePosition.current = undefined;
             } else {
-              change('')
+              change('');
             }
           }
         : noop,
       onMouseLeave
     ),
     onMouseMove: (e: MouseEvent<HTMLElement>) => {
-      mousePosition.current = { x: e.screenX, y: e.screenY }
+      mousePosition.current = { x: e.screenX, y: e.screenY };
     },
-  }
+  };
   const listHandlers = nestedMenu
     ? {
         onKeyDown: (e: KeyboardEvent<HTMLUListElement>) => {
           switch (e.key) {
             case 'ArrowLeft':
-              closeNestedMenu()
-              e.preventDefault()
-              break
+              closeNestedMenu();
+              e.preventDefault();
+              break;
             case 'Escape':
-              closeModal()
-              break
+              closeModal();
+              break;
           }
         },
         onMouseEnter: openNestedMenu,
       }
-    : {}
+    : {};
   const {
     popover,
     popperInstanceRef,
@@ -213,25 +213,25 @@ export const useNestedMenu = ({
     surface: NestedMenuSurface,
     // Clicking on the MenuItem again should not close the nestedMenu
     triggerToggle: false,
-  })
+  });
 
   useEffect(() => {
     if (isOpen && focusRef.current) {
       // Focus the menu item so that when the nestedMenu closes, focus trap will
       // return focus here instead of the first item in the list
-      const button = focusRef.current.querySelector('a,button') as HTMLElement
-      button?.focus()
+      const button = focusRef.current.querySelector('a,button') as HTMLElement;
+      button?.focus();
     }
-  }, [isOpen])
+  }, [isOpen]);
 
   const combinedDomProps = {
     ...itemHandlers,
     // No need for Popover's aria props without nestedMenu
     ...(nestedMenu ? restDomProps : {}),
-  }
+  };
 
   return {
     domProps: combinedDomProps,
     popover,
-  }
-}
+  };
+};

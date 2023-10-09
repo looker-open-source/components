@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ConfigHelper, CommonCartesianProperties } from '../types'
+import type { ConfigHelper, CommonCartesianProperties } from '../types';
 
 /**
  * Data transformation reverses order when config.x_axis[0].reversed is true
@@ -15,9 +15,9 @@ export const xAxisReversed: ConfigHelper<CommonCartesianProperties> = ({
   config,
 }) => {
   const xAxisReversed = (config as CommonCartesianProperties)?.x_axis?.[0]
-    .reversed
+    .reversed;
 
-  const dataCopy = xAxisReversed ? data.slice().reverse() : data
+  const dataCopy = xAxisReversed ? data.slice().reverse() : data;
 
-  return { data: dataCopy, fields, config }
-}
+  return { data: dataCopy, fields, config };
+};

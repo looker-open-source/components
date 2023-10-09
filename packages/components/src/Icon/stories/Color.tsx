@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Icon, Space } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Icon, Space } from '../..';
 
 export default function Color() {
   return (
@@ -15,5 +15,5 @@ export default function Color() {
         Text color is red so the Icon is as well
       </Space>
     </Space>
-  )
+  );
 }

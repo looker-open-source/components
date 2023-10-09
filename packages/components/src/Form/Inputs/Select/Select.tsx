@@ -24,27 +24,27 @@
 
  */
 
-import type { LayoutProps } from '@looker/design-tokens'
-import type { Ref, FormEvent } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import type { LayoutProps } from '@looker/design-tokens';
+import type { Ref, ChangeEvent } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../ariaProps'
+} from '../ariaProps';
 import type {
   ComboboxInputProps,
   ComboboxOptionIndicatorProps,
   ComboboxProps,
-} from '../Combobox'
-import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
-import type { SelectOptionsBaseProps } from './SelectOptions'
-import { SelectOptions } from './SelectOptions'
-import { SelectInputIcon } from './SelectInputIcon'
-import { getOption, getFirstOption } from './utils/options'
-import { useFlatOptions } from './utils/useFlatOptions'
-import { useShouldWindowOptions } from './utils/useWindowedOptions'
-import type { SelectOptionObject, SelectOptionProps } from './types'
+} from '../Combobox';
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox';
+import type { SelectOptionsBaseProps } from './SelectOptions';
+import { SelectOptions } from './SelectOptions';
+import { SelectInputIcon } from './SelectInputIcon';
+import { getOption, getFirstOption } from './utils/options';
+import { useFlatOptions } from './utils/useFlatOptions';
+import { useShouldWindowOptions } from './utils/useWindowedOptions';
+import type { SelectOptionObject, SelectOptionProps } from './types';
 
 export interface SelectBaseProps
   extends SelectOptionsBaseProps,
@@ -53,27 +53,27 @@ export interface SelectBaseProps
   /**
    * Options may be flat or grouped, label is optional – without it the value is used
    */
-  options?: SelectOptionProps[]
+  options?: SelectOptionProps[];
   /**
    * The user can clear the current value by clicking an x icon button
    */
-  isClearable?: boolean
+  isClearable?: boolean;
   /**
    * Handle when the user types in the field,
    * or the menu opens with a pre-populated value
    */
-  onFilter?: (term: string) => void
+  onFilter?: (term: string) => void;
 
   /**
    * Control the dimensions of the list
    * (use this to untether the list width from the input width)
    */
-  listLayout?: LayoutProps
+  listLayout?: LayoutProps;
   /**
    * Render only the options visible in the scroll window
    * defaults to false for <100 options, true for >=100 options
    */
-  windowing?: boolean
+  windowing?: boolean;
 }
 
 export interface SelectProps
@@ -83,23 +83,23 @@ export interface SelectProps
    * Allows the select width to resize with the current value or placeholder
    * Container will default to `display: inline-flex` and container & list will default to `width: auto`
    */
-  autoResize?: boolean
+  autoResize?: boolean;
   /**
    * Value of the current selected option (controlled)
    */
-  value?: string
+  value?: string;
   /**
    * Value of the initial option
    */
-  defaultValue?: string
+  defaultValue?: string;
   /**
    * Handle an option being selected
    */
-  onChange?: (value: string) => void
+  onChange?: (value: string) => void;
   /**
    * The optional a11y aria label for combobox Wrapper element that has popup
    */
-  wrapperAriaLabel?: string
+  wrapperAriaLabel?: string;
 }
 
 const SelectComponent = forwardRef(
@@ -129,32 +129,32 @@ const SelectComponent = forwardRef(
     }: SelectProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const optionValue = getOption(value, navigationOptions)
-    const nullDefault = (isClearable || placeholder) && !defaultValue
+    const { flatOptions, navigationOptions } = useFlatOptions(options);
+    const optionValue = getOption(value, navigationOptions);
+    const nullDefault = (isClearable || placeholder) && !defaultValue;
     const defaultOptionValue = nullDefault
       ? undefined
       : getOption(defaultValue, navigationOptions) ||
-        (options && getFirstOption(options))
+        (options && getFirstOption(options));
 
     function handleChange(option?: SelectOptionObject) {
-      const newValue = option ? option.value : ''
-      onChange && onChange(newValue)
-      onFilter && onFilter('')
+      const newValue = option ? option.value : '';
+      onChange && onChange(newValue);
+      onFilter && onFilter('');
     }
 
-    function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      onFilter && onFilter(e.currentTarget.value)
+    function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+      onFilter && onFilter(e.target.value);
     }
 
     function handleClose() {
       // when the list closes, the input's value reverts to the current option
-      onFilter && onFilter('')
+      onFilter && onFilter('');
     }
 
-    const ariaProps = pickAriaAndValidationProps(props)
+    const ariaProps = pickAriaAndValidationProps(props);
 
-    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp);
 
     return (
       <Combobox
@@ -209,10 +209,10 @@ const SelectComponent = forwardRef(
           </ComboboxList>
         )}
       </Combobox>
-    )
+    );
   }
-)
+);
 
-SelectComponent.displayName = 'SelectComponent'
+SelectComponent.displayName = 'SelectComponent';
 
-export const Select = styled(SelectComponent)``
+export const Select = styled(SelectComponent)``;

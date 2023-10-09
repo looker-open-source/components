@@ -24,86 +24,86 @@
 
  */
 
-export type NavCB = (date: Date) => void
+export type NavCB = (date: Date) => void;
 
 export type RangeModifier = {
-  from?: Date
-  to?: Date
-}
+  from?: Date;
+  to?: Date;
+};
 
-export type RangeType = 'draft' | 'selected' | 'none'
+export type RangeType = 'draft' | 'selected' | 'none';
 export type RangeProps = {
-  rangeType: RangeType
-  rangePosition?: 'start' | 'middle' | 'end'
-}
+  rangeType: RangeType;
+  rangePosition?: 'start' | 'middle' | 'end';
+};
 
 export type DateSelectionProps = {
-  onSelect: (date: Date) => void
-  onDraftSelect: (date: Date) => void
-}
+  onSelect: (date: Date) => void;
+  onDraftSelect: (date: Date) => void;
+};
 
 export type DateStateProps = {
-  datesSelected: Date[]
-  draftTo?: Date
-}
+  datesSelected: Date[];
+  draftTo?: Date;
+};
 
 export type CalendarLocaleProps = {
   /**
    * The day to use as first day of the week, starting from 0 (Sunday) to 6 (Saturday).
    * Uses the locale default (0 for en-US)
    */
-  firstDayOfWeek: number
+  firstDayOfWeek: number;
   /**
    * Locale object from date-fns
    * @default date-fns/locale/en-US
    * @example
    * import ko from 'date-fns/locale/ko'
    */
-  locale: Locale
-}
+  locale: Locale;
+};
 
 export type MonthBaseProps = DateSelectionProps &
   CalendarLocaleProps &
   DateStateProps & {
-    className?: string
-    datesSelected: Date[]
-    draftTo?: Date
-  }
+    className?: string;
+    datesSelected: Date[];
+    draftTo?: Date;
+  };
 
 export type YearBaseProps = {
-  selectedMonth?: Date
-  onMonthClick: (month: number) => void
-  locale: Locale
-}
+  selectedMonth?: Date;
+  onMonthClick: (month: number) => void;
+  locale: Locale;
+};
 
 /**
  * Used for the scrollable list of months/years
  */
 export type ScrollableDateListBaseProps = {
-  currentDate: Date
-  onMonthChange: NavCB
-  baseMonth: Date
-  setBaseMonth: (month: Date) => void
-}
+  currentDate: Date;
+  onMonthChange: NavCB;
+  baseMonth: Date;
+  setBaseMonth: (month: Date) => void;
+};
 
 /**
  * Used for the items in the scrollable list of months/years
  */
 export type ScrollableDateListItemProps = {
-  date: Date
-  index: number
-  setItemPosition: (index: number, element: HTMLElement) => void
-  fullRender: boolean
-}
+  date: Date;
+  index: number;
+  setItemPosition: (index: number, element: HTMLElement) => void;
+  fullRender: boolean;
+};
 
-export type MonthListProps = MonthBaseProps & ScrollableDateListBaseProps
+export type MonthListProps = MonthBaseProps & ScrollableDateListBaseProps;
 export type MonthListItemProps = Omit<
   MonthListProps,
   'currentDate' | 'baseMonth' | 'setBaseMonth' | 'onMonthChange'
->
+>;
 
-export type YearListProps = ScrollableDateListBaseProps & YearBaseProps
+export type YearListProps = ScrollableDateListBaseProps & YearBaseProps;
 export type YearListItemProps = Omit<
   YearListProps,
   'currentDate' | 'baseMonth' | 'setBaseMonth' | 'onMonthChange'
->
+>;

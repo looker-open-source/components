@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SelectMulti } from '..'
+import React from 'react';
+import { SelectMulti } from '..';
 
 export default function CloseOnSelect() {
   return (
@@ -23,5 +23,5 @@ export default function CloseOnSelect() {
       defaultValues={['Swiss', 'Brie']}
       closeOnSelect
     />
-  )
+  );
 }

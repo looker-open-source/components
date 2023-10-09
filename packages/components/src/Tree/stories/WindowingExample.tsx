@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Button } from '../../Button'
-import { SpaceVertical } from '../../Layout'
-import { useToggle } from '../../utils'
-import { Tree, TreeItem, WindowedTreeCollection } from '..'
+import React from 'react';
+import { Button } from '../../Button';
+import { SpaceVertical } from '../../Layout';
+import { useToggle } from '../../utils';
+import { Tree, TreeItem, WindowedTreeCollection } from '..';
 
 export default function WindowingExample() {
-  const { value, toggle } = useToggle()
+  const { value, toggle } = useToggle();
 
   const trees = React.useMemo(
     () =>
@@ -29,7 +29,7 @@ export default function WindowingExample() {
                   </TreeItem>
                 ),
               })),
-            }
+            };
           }
           return {
             content: (
@@ -37,15 +37,15 @@ export default function WindowingExample() {
                 TreeItem {treeIndex}-{itemIndex}
               </TreeItem>
             ),
-          }
+          };
         }),
       })),
     [value]
-  )
+  );
   return (
     <SpaceVertical>
       <Button onClick={toggle}>Toggle all {value ? 'closed' : 'open'}</Button>
       <WindowedTreeCollection height={300} width={500} trees={trees} />
     </SpaceVertical>
-  )
+  );
 }

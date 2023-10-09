@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputSearch } from '../'
-import type { InputSearchProps } from '../'
+import React from 'react';
+import { InputSearch } from '../';
+import type { InputSearchProps } from '../';
 
 export default function IsClearable(props: InputSearchProps) {
   const {
@@ -13,7 +13,7 @@ export default function IsClearable(props: InputSearchProps) {
     defaultValue = 'test search 1',
     isClearable = false,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputSearch
@@ -22,5 +22,5 @@ export default function IsClearable(props: InputSearchProps) {
       isClearable={isClearable}
       {...restProps}
     />
-  )
+  );
 }

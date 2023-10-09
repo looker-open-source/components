@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './DashboardGauge'
+export * from './DashboardGauge';

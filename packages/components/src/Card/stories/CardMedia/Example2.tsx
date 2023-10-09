@@ -23,12 +23,12 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { Card } from '../../Card'
-import { CardContent } from '../../CardContent'
-import { CardMedia } from '../../CardMedia'
-import { Grid } from '../../../Layout'
-import { Paragraph, Heading, Span } from '../../../Text'
+import React from 'react';
+import { Card } from '../../Card';
+import { CardContent } from '../../CardContent';
+import { CardMedia } from '../../CardMedia';
+import { Grid } from '../../../Layout';
+import { Paragraph, Heading, Span } from '../../../Text';
 
 export default () => {
   return (
@@ -101,5 +101,5 @@ export default () => {
         </CardContent>
       </Card>
     </Grid>
-  )
-}
+  );
+};

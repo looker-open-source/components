@@ -3,7 +3,7 @@
     "value": "jours auparavant"
   },
   "days from now": {
-    "value": "journées à partir de maintenant"
+    "value": "jours à compter de maintenant"
   },
   "fiscal quarter from now": {
     "value": "trimestre fiscal à partir de maintenant"
@@ -15,25 +15,25 @@
     "value": "années fiscales auparavant"
   },
   "fiscal years from now": {
-    "value": "années fiscales à partir de maintenant"
+    "value": "années fiscales à compter de maintenant"
   },
   "hours ago": {
     "value": "heures auparavant"
   },
   "hours from now": {
-    "value": "heures à partir de maintenant"
+    "value": "heures à compter de maintenant"
   },
   "minutes ago": {
     "value": "minutes auparavant"
   },
   "minutes from now": {
-    "value": "minutes à partir de maintenant"
+    "value": "minutes à compter de maintenant"
   },
   "months ago": {
     "value": "mois auparavant"
   },
   "months from now": {
-    "value": "mois à partir de maintenant"
+    "value": "mois à compter de maintenant"
   },
   "now": {
     "value": "maintenant"
@@ -42,24 +42,24 @@
     "value": "trimestres auparavant"
   },
   "quarters from now": {
-    "value": "trimestres à partir de maintenant"
+    "value": "trimestres à compter de maintenant"
   },
   "seconds ago": {
     "value": "secondes auparavant"
   },
   "seconds from now": {
-    "value": "secondes à partir de maintenant"
+    "value": "secondes à compter de maintenant"
   },
   "weeks ago": {
     "value": "semaines auparavant"
   },
   "weeks from now": {
-    "value": "semaines à partir de maintenant"
+    "value": "semaines à compter de maintenant"
   },
   "years ago": {
     "value": "années auparavant"
   },
   "years from now": {
-    "value": "années à partir de maintenant"
+    "value": "années à compter de maintenant"
   }
 }

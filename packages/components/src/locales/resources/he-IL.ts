@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/he'
+import dateLocale from 'date-fns/locale/he';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -150,6 +150,6 @@ const resources = {
   TabList: {
     Tabs: 'כרטיסיות',
   },
-}
+};
 
-export const heIL = mergeLocaleObjects([], 'he-IL', resources, dateLocale)
+export const heIL = mergeLocaleObjects([], 'he-IL', resources, dateLocale);

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
+import type { VisWrapperProps } from '../VisWrapper';
 import type {
   SDKRecord,
   Fields,
@@ -12,24 +12,24 @@ import type {
   SupportedChartTypes,
   ChartLayoutProps,
   CommonCartesianProperties,
-} from '../types'
+} from '../types';
 
 export type CSparklineSeries = Pick<CSeriesBasic, 'color' | 'visible'> &
-  CSeriesLine
+  CSeriesLine;
 
 export type CSparkline = {
   // Color Scheme
-  series?: CSparklineSeries[] | { [key: string]: CSparklineSeries }
+  series?: CSparklineSeries[] | { [key: string]: CSparklineSeries };
   /**
    * Either render a gap where data is null, or treat it as a value 0
    */
-  render_null_values?: boolean
-  type?: SupportedChartTypes['sparkline']
-} & Pick<CommonCartesianProperties, 'y_axis'>
+  render_null_values?: boolean;
+  type?: SupportedChartTypes['sparkline'];
+} & Pick<CommonCartesianProperties, 'y_axis'>;
 
 export type SparklineProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    fields: Fields
-    config?: CSparkline
-  }
+    data: SDKRecord[];
+    fields: Fields;
+    config?: CSparkline;
+  };

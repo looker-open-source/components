@@ -1,8 +1,7 @@
-
-import { FieldColor } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
+import { FieldColor } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
 
 <Meta component={FieldColor} title="Docs/FieldColor" />
 
@@ -11,4 +10,5 @@ import storyBasic from '!!raw-loader!./Basic'
 <Editor code={storyBasic} />
 
 ## Props
+
 <ArgsTable of={FieldColor} exclude={excludedProps} />

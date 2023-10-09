@@ -24,108 +24,108 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React, { useState } from 'react'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React, { useState } from 'react';
 
-import { ButtonItem } from './ButtonItem'
-import { ButtonToggle } from './ButtonToggle'
+import { ButtonItem } from './ButtonItem';
+import { ButtonToggle } from './ButtonToggle';
 
 describe('ButtonToggle', () => {
   test('controlled', () => {
     function TestComponent() {
-      const [value, setValue] = useState('Bananas')
+      const [value, setValue] = useState('Bananas');
       return (
         <ButtonToggle value={value} onChange={setValue}>
           <ButtonItem>Apples</ButtonItem>
           <ButtonItem>Oranges</ButtonItem>
           <ButtonItem>Bananas</ButtonItem>
         </ButtonToggle>
-      )
+      );
     }
 
-    renderWithTheme(<TestComponent />)
+    renderWithTheme(<TestComponent />);
 
-    const apples = screen.getByText('Apples')
-    const bananas = screen.getByText('Bananas')
-    const oranges = screen.getByText('Oranges')
+    const apples = screen.getByText('Apples');
+    const bananas = screen.getByText('Bananas');
+    const oranges = screen.getByText('Oranges');
 
-    expect(apples).toHaveAttribute('aria-pressed', 'false')
-    expect(bananas).toHaveAttribute('aria-pressed', 'true')
-    expect(oranges).toHaveAttribute('aria-pressed', 'false')
+    expect(apples).toHaveAttribute('aria-pressed', 'false');
+    expect(bananas).toHaveAttribute('aria-pressed', 'true');
+    expect(oranges).toHaveAttribute('aria-pressed', 'false');
 
-    fireEvent.click(apples)
-    expect(apples).toHaveAttribute('aria-pressed', 'true')
-    expect(bananas).toHaveAttribute('aria-pressed', 'false')
-    expect(oranges).toHaveAttribute('aria-pressed', 'false')
+    fireEvent.click(apples);
+    expect(apples).toHaveAttribute('aria-pressed', 'true');
+    expect(bananas).toHaveAttribute('aria-pressed', 'false');
+    expect(oranges).toHaveAttribute('aria-pressed', 'false');
 
-    fireEvent.click(bananas)
-    expect(apples).toHaveAttribute('aria-pressed', 'false')
-    expect(bananas).toHaveAttribute('aria-pressed', 'true')
-    expect(oranges).toHaveAttribute('aria-pressed', 'false')
+    fireEvent.click(bananas);
+    expect(apples).toHaveAttribute('aria-pressed', 'false');
+    expect(bananas).toHaveAttribute('aria-pressed', 'true');
+    expect(oranges).toHaveAttribute('aria-pressed', 'false');
 
-    fireEvent.click(oranges)
-    expect(apples).toHaveAttribute('aria-pressed', 'false')
-    expect(bananas).toHaveAttribute('aria-pressed', 'false')
-    expect(oranges).toHaveAttribute('aria-pressed', 'true')
-  })
+    fireEvent.click(oranges);
+    expect(apples).toHaveAttribute('aria-pressed', 'false');
+    expect(bananas).toHaveAttribute('aria-pressed', 'false');
+    expect(oranges).toHaveAttribute('aria-pressed', 'true');
+  });
 
   test('options', () => {
     const options = [
       { label: 'Smoked Gouda', value: 'Gouda' },
       { value: 'Cheddar' },
       { disabled: true, value: 'Swiss' },
-    ]
-    const onChangeMock = jest.fn()
+    ];
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <ButtonToggle options={options} value="Cheddar" onChange={onChangeMock} />
-    )
-    const goudaButton = screen.getByText('Smoked Gouda')
-    const cheddarButton = screen.getByText('Cheddar')
-    const swissButton = screen.getByText('Swiss')
+    );
+    const goudaButton = screen.getByText('Smoked Gouda');
+    const cheddarButton = screen.getByText('Cheddar');
+    const swissButton = screen.getByText('Swiss');
 
-    expect(goudaButton).toHaveAttribute('aria-pressed', 'false')
-    expect(cheddarButton).toHaveAttribute('aria-pressed', 'true')
-    expect(swissButton).toHaveAttribute('aria-pressed', 'false')
-    expect(swissButton).toBeDisabled()
+    expect(goudaButton).toHaveAttribute('aria-pressed', 'false');
+    expect(cheddarButton).toHaveAttribute('aria-pressed', 'true');
+    expect(swissButton).toHaveAttribute('aria-pressed', 'false');
+    expect(swissButton).toBeDisabled();
 
-    fireEvent.click(goudaButton)
-    expect(onChangeMock).toBeCalledWith('Gouda')
-    onChangeMock.mockClear()
-    fireEvent.click(cheddarButton)
+    fireEvent.click(goudaButton);
+    expect(onChangeMock).toBeCalledWith('Gouda');
+    onChangeMock.mockClear();
+    fireEvent.click(cheddarButton);
     // Not nullable, clicking current selected button
-    expect(onChangeMock).not.toHaveBeenCalled()
-    onChangeMock.mockClear()
+    expect(onChangeMock).not.toHaveBeenCalled();
+    onChangeMock.mockClear();
     // Disabled
-    fireEvent.click(swissButton)
-    expect(onChangeMock).not.toHaveBeenCalled()
-  })
+    fireEvent.click(swissButton);
+    expect(onChangeMock).not.toHaveBeenCalled();
+  });
 
   test('disabled', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <ButtonToggle disabled onChange={onChangeMock}>
         <ButtonItem>Apples</ButtonItem>
       </ButtonToggle>
-    )
-    const applesButton = screen.getByText('Apples')
-    fireEvent.click(applesButton)
-    expect(onChangeMock).not.toHaveBeenCalled()
-  })
+    );
+    const applesButton = screen.getByText('Apples');
+    fireEvent.click(applesButton);
+    expect(onChangeMock).not.toHaveBeenCalled();
+  });
 
   test('nullable', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <ButtonToggle nullable onChange={onChangeMock} value="Oranges">
         <ButtonItem>Apples</ButtonItem>
         <ButtonItem>Oranges</ButtonItem>
         <ButtonItem>Bananas</ButtonItem>
       </ButtonToggle>
-    )
-    const orangesButton = screen.getByText('Oranges')
-    expect(orangesButton).toHaveAttribute('aria-pressed', 'true')
+    );
+    const orangesButton = screen.getByText('Oranges');
+    expect(orangesButton).toHaveAttribute('aria-pressed', 'true');
 
-    fireEvent.click(orangesButton)
-    expect(onChangeMock).toHaveBeenCalledWith('')
-  })
-})
+    fireEvent.click(orangesButton);
+    expect(onChangeMock).toHaveBeenCalledWith('');
+  });
+});

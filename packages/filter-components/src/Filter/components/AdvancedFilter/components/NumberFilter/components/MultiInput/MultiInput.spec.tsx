@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import { Portal } from '@looker/components'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React, { useState } from 'react'
-import { MultiInput } from './MultiInput'
+import { Portal } from '@looker/components';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React, { useState } from 'react';
+import { MultiInput } from './MultiInput';
 
 describe('MultiInput', () => {
   const item = {
@@ -35,26 +35,26 @@ describe('MultiInput', () => {
     type: '=',
     is: true,
     value: [],
-  }
+  };
 
   it('calls onChange with numbers', () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
     renderWithTheme(
       <MultiInput item={item} onChange={onChange} placeholder="any value" />
-    )
+    );
 
-    const input = screen.getByPlaceholderText('any value')
-    fireEvent.change(input, { target: { value: '123,456,' } })
+    const input = screen.getByPlaceholderText('any value');
+    fireEvent.change(input, { target: { value: '123,456,' } });
 
-    expect(input).toHaveValue('')
-    expect(onChange).toHaveBeenCalledWith('1', { value: [123, 456] })
-  })
+    expect(input).toHaveValue('');
+    expect(onChange).toHaveBeenCalledWith('1', { value: [123, 456] });
+  });
 
   it('calls onChange with valid inputValue when closed', async () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
     const ClosingComponent = () => {
-      const [isOpen, setIsOpen] = useState(true)
-      const handleClick = () => setIsOpen(false)
+      const [isOpen, setIsOpen] = useState(true);
+      const handleClick = () => setIsOpen(false);
       return (
         <>
           {isOpen ? (
@@ -70,42 +70,42 @@ describe('MultiInput', () => {
           )}
           <button onClick={handleClick}>Close</button>
         </>
-      )
-    }
-    renderWithTheme(<ClosingComponent />)
+      );
+    };
+    renderWithTheme(<ClosingComponent />);
 
-    const input = screen.getByPlaceholderText('any value')
-    fireEvent.change(input, { target: { value: '123' } })
-    expect(onChange).not.toHaveBeenCalled()
+    const input = screen.getByPlaceholderText('any value');
+    fireEvent.change(input, { target: { value: '123' } });
+    expect(onChange).not.toHaveBeenCalled();
 
-    const button = screen.getByText('Close')
-    fireEvent.click(button)
-    const closed = await screen.findByText('Closed')
-    expect(closed).toBeInTheDocument()
-    expect(onChange).toHaveBeenCalledWith('1', { value: [123] })
-  })
+    const button = screen.getByText('Close');
+    fireEvent.click(button);
+    const closed = await screen.findByText('Closed');
+    expect(closed).toBeInTheDocument();
+    expect(onChange).toHaveBeenCalledWith('1', { value: [123] });
+  });
 
   it('does not call onChange if a non-number is entered', () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
     renderWithTheme(
       <MultiInput item={item} onChange={onChange} placeholder="any value" />
-    )
+    );
 
-    const input = screen.getByPlaceholderText('any value')
-    fireEvent.change(input, { target: { value: '100k,' } })
+    const input = screen.getByPlaceholderText('any value');
+    fireEvent.change(input, { target: { value: '100k,' } });
 
-    expect(input).toHaveValue('100k')
-    expect(onChange).not.toHaveBeenCalled()
-  })
+    expect(input).toHaveValue('100k');
+    expect(onChange).not.toHaveBeenCalled();
+  });
 
   it('calls onChange with a big integer', () => {
-    const onChange = jest.fn()
+    const onChange = jest.fn();
     renderWithTheme(
       <MultiInput item={item} onChange={onChange} placeholder="any value" />
-    )
+    );
 
-    const input = screen.getByPlaceholderText('any value')
-    fireEvent.change(input, { target: { value: '12345678901234567890,' } })
+    const input = screen.getByPlaceholderText('any value');
+    fireEvent.change(input, { target: { value: '12345678901234567890,' } });
 
     expect(onChange.mock.calls).toMatchInlineSnapshot(`
       Array [
@@ -118,6 +118,6 @@ describe('MultiInput', () => {
           },
         ],
       ]
-    `)
-  })
-})
+    `);
+  });
+});

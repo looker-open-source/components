@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Grid, Box } from '../../..'
+import React from 'react';
+import { Grid, Box } from '../../..';
 
 export default function GapU15() {
   return (
@@ -13,5 +13,5 @@ export default function GapU15() {
       </Box>
       <Box border>B</Box>
     </Grid>
-  )
+  );
 }

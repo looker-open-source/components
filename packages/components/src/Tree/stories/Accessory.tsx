@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TreeItem, Tree, TreeCollection } from '..'
-import { Button } from '../../Button'
+import React from 'react';
+import { TreeItem, Tree, TreeCollection } from '..';
+import { Button } from '../../Button';
 
 export default function Accessory() {
   return (
@@ -35,5 +35,5 @@ export default function Accessory() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

@@ -31,39 +31,39 @@ import type {
   SizeSmall,
   SizeMedium,
   SizeLarge,
-} from '@looker/design-tokens'
-import { color, omitStyledProps } from '@looker/design-tokens'
-import type { StyledIconProps } from '@styled-icons/styled-icon'
-import type { ReactElement, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import type { SimpleLayoutProps } from '../Layout/utils/simple'
-import { simpleLayoutCSS } from '../Layout/utils/simple'
+} from '@looker/design-tokens';
+import { color, omitStyledProps } from '@looker/design-tokens';
+import type { StyledIconProps } from '@styled-icons/styled-icon';
+import type { ReactElement, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import type { SimpleLayoutProps } from '../Layout/utils/simple';
+import { simpleLayoutCSS } from '../Layout/utils/simple';
 
 export type IconSize =
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
-export type IconType = ReactElement<StyledIconProps>
+export type IconType = ReactElement<StyledIconProps>;
 
 export interface IconProps
   extends Omit<CompatibleHTMLProps<HTMLDivElement>, 'onClick'>,
     SimpleLayoutProps {
-  color?: string
+  color?: string;
   /**
    * Specify the JSX.Element (often SVG) to place.
    */
-  icon: IconType
+  icon: IconType;
   /**
    * Explicitly specify a title for the SVG rendered by the icon.
    * NOTE: If title is not specified `aria-hidden="true"` will be applied to hide the SVG from
    * screen-readers
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  title?: string
+  title?: string;
 }
 
 const IconLayout = forwardRef(
@@ -79,7 +79,7 @@ const IconLayout = forwardRef(
       {icon}
     </div>
   )
-)
+);
 
 export const Icon = styled(IconLayout).attrs<IconProps>(
   ({ size = 'medium' }) => ({
@@ -100,4 +100,4 @@ export const Icon = styled(IconLayout).attrs<IconProps>(
     vertical-align: initial;
     width: 100%;
   }
-`
+`;

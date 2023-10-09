@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Box2, AvatarIcon } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Box2, AvatarIcon } from '../..';
 
 export default function Icon() {
   return (
@@ -13,5 +13,5 @@ export default function Icon() {
       <AvatarIcon />
       <AvatarIcon icon={<MaterialIcons.Code />} />
     </Box2>
-  )
+  );
 }

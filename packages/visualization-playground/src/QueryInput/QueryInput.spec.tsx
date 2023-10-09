@@ -23,40 +23,40 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { screen, fireEvent, waitFor } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { ExtensionSDK } from '@looker/extension-sdk'
-import type { ExtensionContextData } from '@looker/extension-sdk-react'
-import type { Looker40SDK } from '@looker/sdk'
-import { ExtensionContext } from '@looker/extension-sdk-react'
-import { DataProvider } from '@looker/components-data'
-import { mockSDK } from '@looker/visualizations-adapters'
-import { AppContext } from '../AppContext'
-import { QueryInput } from './'
+import React from 'react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { ExtensionSDK } from '@looker/extension-sdk';
+import type { ExtensionContextData } from '@looker/extension-sdk-react';
+import type { Looker40SDK } from '@looker/sdk';
+import { ExtensionContext } from '@looker/extension-sdk-react';
+import { DataProvider } from '@looker/components-data';
+import { mockSDK } from '@looker/visualizations-adapters';
+import { AppContext } from '../AppContext';
+import { QueryInput } from './';
 
-const handleInputChange = jest.fn()
-const handleSetFetchBy = jest.fn()
+const handleInputChange = jest.fn();
+const handleSetFetchBy = jest.fn();
 
 const mockLocalStorage: Record<string, string> = {
   visComponentInputType: '"query"',
   visComponentQueryIdentifier: '"abc123"',
   visComponentDashboardId: '123',
-}
+};
 
 const localStorageGetItem = jest
   .fn()
-  .mockImplementation((key: string) => Promise.resolve(mockLocalStorage[key]))
+  .mockImplementation((key: string) => Promise.resolve(mockLocalStorage[key]));
 
 const localStorageSetItem = jest
   .fn()
   .mockImplementation((key: string, val: string) => {
-    mockLocalStorage[key] = val
-  })
+    mockLocalStorage[key] = val;
+  });
 
 afterEach(() => {
-  jest.clearAllMocks()
-})
+  jest.clearAllMocks();
+});
 
 const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
   return (
@@ -66,7 +66,7 @@ const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
           extensionSDK: {
             openBrowserWindow: jest.fn(),
           } as unknown as ExtensionSDK,
-          core40SDK: mockSDK as Looker40SDK,
+          coreSDK: mockSDK as Looker40SDK,
         } as unknown as ExtensionContextData
       }
     >
@@ -74,8 +74,8 @@ const MockContextWrapper = ({ children }: React.PropsWithChildren<unknown>) => {
         <DataProvider sdk={mockSDK}>{children}</DataProvider>
       </AppContext.Provider>
     </ExtensionContext.Provider>
-  )
-}
+  );
+};
 
 describe('QueryInput', () => {
   it('allows dashboard id input', async () => {
@@ -89,17 +89,17 @@ describe('QueryInput', () => {
           queryId="abc123"
         />
       </MockContextWrapper>
-    )
+    );
 
-    fireEvent.click(screen.getByText('Dashboard (Numeric ID)'))
+    fireEvent.click(screen.getByText('Dashboard (Numeric ID)'));
 
     await waitFor(() => {
       expect(handleInputChange).toHaveBeenLastCalledWith({
         type: 'dashboard',
         value: 5,
-      })
-    })
-  })
+      });
+    });
+  });
 
   it('allows query id input', async () => {
     renderWithTheme(
@@ -112,17 +112,17 @@ describe('QueryInput', () => {
           queryId="abc123"
         />
       </MockContextWrapper>
-    )
+    );
 
-    fireEvent.click(screen.getByText('Query (Numeric ID or Slug)'))
+    fireEvent.click(screen.getByText('Query (Numeric ID or Slug)'));
 
     await waitFor(() => {
       expect(handleInputChange).toHaveBeenLastCalledWith({
         type: 'query',
         value: 'abc123',
-      })
-    })
-  })
+      });
+    });
+  });
 
   it('restores dashboard and query id from localstorage on load', async () => {
     renderWithTheme(
@@ -135,24 +135,24 @@ describe('QueryInput', () => {
           fetchBy="query"
         />
       </MockContextWrapper>
-    )
+    );
 
     await waitFor(() => {
       expect(
         screen.getByDisplayValue(
           JSON.parse(mockLocalStorage.visComponentQueryIdentifier)
         )
-      ).toBeInTheDocument()
-    })
+      ).toBeInTheDocument();
+    });
 
     await waitFor(() => {
       expect(
         screen.getByDisplayValue(
           JSON.parse(mockLocalStorage.visComponentDashboardId)
         )
-      ).toBeInTheDocument()
-    })
-  })
+      ).toBeInTheDocument();
+    });
+  });
 
   it('updates localstorage when you input dashboard or query id', async () => {
     renderWithTheme(
@@ -165,17 +165,17 @@ describe('QueryInput', () => {
           fetchBy="query"
         />
       </MockContextWrapper>
-    )
+    );
 
-    const queryIdInput = screen.getByPlaceholderText('CmBbGK2\u2026')
+    const queryIdInput = screen.getByPlaceholderText('CmBbGK2\u2026');
 
-    fireEvent.change(queryIdInput, { target: { value: 'new-query-id' } })
+    fireEvent.change(queryIdInput, { target: { value: 'new-query-id' } });
 
     await waitFor(() => {
       expect(localStorageSetItem).toHaveBeenLastCalledWith(
         'visComponentQueryIdentifier',
         '"new-query-id"'
-      )
-    })
-  })
-})
+      );
+    });
+  });
+});

@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
+import React from 'react';
 export const CheckMark = () => (
   <svg
     role="presentation"
@@ -18,4 +18,4 @@ export const CheckMark = () => (
       fill="currentColor"
     />
   </svg>
-)
+);

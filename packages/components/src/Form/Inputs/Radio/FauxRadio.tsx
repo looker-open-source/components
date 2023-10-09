@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { reset } from '@looker/design-tokens'
-import { checkboxRadioHeight } from '../height'
+import styled from 'styled-components';
+import { reset } from '@looker/design-tokens';
+import { checkboxRadioHeight } from '../height';
 
 export const FauxRadio = styled.div`
   ${reset}
@@ -28,4 +28,4 @@ export const FauxRadio = styled.div`
     height: 100%;
     width: 100%;
   }
-`
+`;

@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const RowIndexStyles = css`
   border-right: 1px solid ${({ theme }) => theme.colors.ui4};
@@ -10,7 +10,7 @@ export const RowIndexStyles = css`
   position: sticky;
   left: 0;
   z-index: 1;
-`
+`;
 
 export const TableCellStyles = css`
   border-right: 1px solid ${({ theme }) => theme.colors.ui2};
@@ -23,9 +23,9 @@ export const TableCellStyles = css`
   &:last-child {
     border-right: none;
   }
-`
+`;
 
 export const TableCell = styled.td<{ stickyLeft?: boolean }>`
   ${TableCellStyles}
   ${({ stickyLeft }) => (stickyLeft ? RowIndexStyles : null)}
-`
+`;

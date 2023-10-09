@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { SyntheticEvent, Dispatch, SetStateAction } from 'react'
-import { FieldSlider } from '../../FieldSlider'
+import React, { useState } from 'react';
+import type { SyntheticEvent, Dispatch, SetStateAction } from 'react';
+import { FieldSlider } from '../../FieldSlider';
 
 const handleEvent = (cb: Dispatch<SetStateAction<number>>) => {
   return (event: SyntheticEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement
-    cb(parseInt(target.value, 10))
-  }
-}
+    const target = event.target as HTMLInputElement;
+    cb(parseInt(target.value, 10));
+  };
+};
 
 export default function Controlled() {
-  const [value, setValue] = useState(8)
-  const onChange = handleEvent(setValue)
+  const [value, setValue] = useState(8);
+  const onChange = handleEvent(setValue);
 
   return (
     <FieldSlider
@@ -27,5 +27,5 @@ export default function Controlled() {
       value={value}
       onChange={onChange}
     />
-  )
+  );
 }

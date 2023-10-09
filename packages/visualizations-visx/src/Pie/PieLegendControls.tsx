@@ -24,27 +24,27 @@
 
  */
 
-import React from 'react'
+import React from 'react';
 import {
   KeyboardArrowUp,
   KeyboardArrowDown,
   KeyboardArrowRight,
   KeyboardArrowLeft,
-} from '@styled-icons/material'
-import { IconButton } from '@looker/components'
-import styled, { css } from 'styled-components'
-import type { LegendOrientations } from './types'
-import { useTranslation } from '../utils'
+} from '@styled-icons/material';
+import { IconButton } from '@looker/components';
+import styled, { css } from 'styled-components';
+import type { LegendOrientations } from './types';
+import { useTranslation } from '../utils';
 
 type PieLegendControlsProps = {
-  contentRect: { width: number; height: number }
-  containerRect: { width: number; height: number }
-  orientation: LegendOrientations
-  page: number
-  totalPages: number
-  handleNextClick: () => void
-  handlePrevClick: () => void
-}
+  contentRect: { width: number; height: number };
+  containerRect: { width: number; height: number };
+  orientation: LegendOrientations;
+  page: number;
+  totalPages: number;
+  handleNextClick: () => void;
+  handlePrevClick: () => void;
+};
 
 export const PieLegendControls = ({
   orientation,
@@ -55,7 +55,7 @@ export const PieLegendControls = ({
   handleNextClick,
   handlePrevClick,
 }: PieLegendControlsProps) => {
-  const { t } = useTranslation('PieLegendControls')
+  const { t } = useTranslation('PieLegendControls');
   return (
     <>
       {/* Vertical layout */}
@@ -114,8 +114,8 @@ export const PieLegendControls = ({
           </LegendControls>
         )}
     </>
-  )
-}
+  );
+};
 
 const LegendControls = styled.div<{ orientation: LegendOrientations }>`
   align-items: center;
@@ -128,18 +128,18 @@ const LegendControls = styled.div<{ orientation: LegendOrientations }>`
         border-left: 1px solid ${theme.colors.ui2};
         grid-template-rows: auto auto auto;
         padding-left: ${theme.space.xxsmall};
-      `
+      `;
     } else {
       return css`
         border-top: 1px solid ${theme.colors.ui2};
         grid-template-columns: auto auto auto 1fr;
         padding-top: ${theme.space.xxsmall};
-      `
+      `;
     }
   }}
-`
+`;
 
 const CondensedIconButton = styled(IconButton)`
   height: auto;
   padding: 0;
-`
+`;

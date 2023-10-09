@@ -24,20 +24,20 @@
 
  */
 
-import React from 'react'
-import { ComponentsProvider } from '@looker/components'
-import { renderHook } from '@testing-library/react-hooks'
-import type { FilterProps } from '../Filter/types/filter_props'
-import { useFiltersErrors } from './use_filters_errors'
-import type { ValidationMessageProps } from '@looker/components'
-import type { UserAttributeWithValue } from '@looker/filter-expressions'
-import { getUserAttributeMatchingTypeAndExpression } from '@looker/filter-expressions'
-import { ERROR_TYPE } from '../constants'
+import React from 'react';
+import { ComponentsProvider } from '@looker/components';
+import { renderHook } from '@testing-library/react-hooks';
+import type { FilterProps } from '../Filter/types/filter_props';
+import { useFiltersErrors } from './use_filters_errors';
+import type { ValidationMessageProps } from '@looker/components';
+import type { UserAttributeWithValue } from '@looker/filter-expressions';
+import { getUserAttributeMatchingTypeAndExpression } from '@looker/filter-expressions';
+import { ERROR_TYPE } from '../constants';
 
 jest.mock('@looker/filter-expressions', () => ({
   ...jest.requireActual('@looker/filter-expressions'),
   getUserAttributeMatchingTypeAndExpression: jest.fn(),
-}))
+}));
 
 describe('FilterErrorMessage utils tests', () => {
   const getFilter = (overrideFilter: Partial<FilterProps> = {}) => {
@@ -46,89 +46,89 @@ describe('FilterErrorMessage utils tests', () => {
       expressionType: 'string',
       isRequired: true,
       name: 'testfilter',
-    }
-    return { ...defaultFilter, ...overrideFilter }
-  }
+    };
+    return { ...defaultFilter, ...overrideFilter };
+  };
   const wrapper = ({ children }: { children: React.ReactElement }) => (
     <ComponentsProvider>{children}</ComponentsProvider>
-  )
+  );
 
   describe('useFiltersErrors', () => {
     const requiredValidationMessage: ValidationMessageProps = {
       type: ERROR_TYPE,
       message: 'Selection required',
-    }
+    };
 
     const invalidValueMessage: ValidationMessageProps = {
       type: ERROR_TYPE,
       message: 'Invalid value',
-    }
+    };
 
     const invalidValueLongMessage: ValidationMessageProps = {
       type: ERROR_TYPE,
       message: 'No value is set for your user attribute',
-    }
+    };
 
     describe('without user attributes', () => {
       it('should return a validationMessage for a required filter error', () => {
-        const filters = [getFilter()]
+        const filters = [getFilter()];
         const {
           result: { current },
-        } = renderHook(() => useFiltersErrors(filters), { wrapper })
-        expect(current).toEqual(requiredValidationMessage)
-      })
+        } = renderHook(() => useFiltersErrors(filters), { wrapper });
+        expect(current).toEqual(requiredValidationMessage);
+      });
 
       it('should return a validationMessage for a required filter error if any have an error', () => {
-        const filters = [getFilter({ isRequired: false }), getFilter()]
+        const filters = [getFilter({ isRequired: false }), getFilter()];
         const {
           result: { current },
-        } = renderHook(() => useFiltersErrors(filters), { wrapper })
-        expect(current).toEqual(requiredValidationMessage)
-      })
+        } = renderHook(() => useFiltersErrors(filters), { wrapper });
+        expect(current).toEqual(requiredValidationMessage);
+      });
 
       it('should not return a validationMessage for a required filter error if there is no error', () => {
-        const filters = [getFilter({ expression: 'value' })]
+        const filters = [getFilter({ expression: 'value' })];
         const {
           result: { current },
-        } = renderHook(() => useFiltersErrors(filters), { wrapper })
-        expect(current).toEqual({})
-      })
-    })
+        } = renderHook(() => useFiltersErrors(filters), { wrapper });
+        expect(current).toEqual({});
+      });
+    });
 
     describe('with user attributes', () => {
-      const notRequiredFilter = getFilter({ isRequired: false })
+      const notRequiredFilter = getFilter({ isRequired: false });
 
       beforeEach(() => {
-        ;(
+        (
           getUserAttributeMatchingTypeAndExpression as jest.Mock<any>
-        ).mockReset()
-      })
+        ).mockReset();
+      });
 
       describe('when filter is not linked to any user attributes', () => {
         beforeEach(() => {
-          ;(
+          (
             getUserAttributeMatchingTypeAndExpression as jest.Mock<any>
-          ).mockReturnValue(null)
-        })
+          ).mockReturnValue(null);
+        });
 
         it('should not return any error', () => {
           const {
             result: { current },
-          } = renderHook(() => useFiltersErrors([notRequiredFilter]))
-          expect(current).toEqual({})
-        })
-      })
+          } = renderHook(() => useFiltersErrors([notRequiredFilter]));
+          expect(current).toEqual({});
+        });
+      });
 
       describe('when filter is linked to a user attribute that does not have a value', () => {
         beforeEach(() => {
           const userAttribute = {
             name: 'some-ua-name',
             value: null,
-          } as any as UserAttributeWithValue
-          ;(
+          } as any as UserAttributeWithValue;
+          (
             getUserAttributeMatchingTypeAndExpression as jest.Mock<any>
-          ).mockReturnValue(userAttribute)
-        })
+          ).mockReturnValue(userAttribute);
+        });
 
         describe('and we want the short form message', () => {
           it('should return an error', () => {
@@ -140,10 +140,10 @@ describe('FilterErrorMessage utils tests', () => {
                   useLongMessageForm: false,
                 }),
               { wrapper }
-            )
-            expect(current).toEqual(invalidValueMessage)
-          })
-        })
+            );
+            expect(current).toEqual(invalidValueMessage);
+          });
+        });
 
         describe('and we want the long form message', () => {
           it('should return an error', () => {
@@ -153,32 +153,32 @@ describe('FilterErrorMessage utils tests', () => {
               useFiltersErrors([notRequiredFilter], {
                 useLongMessageForm: true,
               })
-            )
-            expect(current).toEqual(invalidValueLongMessage)
-          })
-        })
-      })
+            );
+            expect(current).toEqual(invalidValueLongMessage);
+          });
+        });
+      });
 
       describe('when filter is linked to a user attribute that has a value', () => {
         beforeEach(() => {
           const userAttribute = {
             name: 'some-ua-name',
             value: 'some value!',
-          } as any as UserAttributeWithValue
-          ;(
+          } as any as UserAttributeWithValue;
+          (
             getUserAttributeMatchingTypeAndExpression as jest.Mock<any>
-          ).mockReturnValue(userAttribute)
-        })
+          ).mockReturnValue(userAttribute);
+        });
 
         it('should not return any error', () => {
           const {
             result: { current },
           } = renderHook(() => useFiltersErrors([notRequiredFilter]), {
             wrapper,
-          })
-          expect(current).toEqual({})
-        })
-      })
-    })
-  })
-})
+          });
+          expect(current).toEqual({});
+        });
+      });
+    });
+  });
+});

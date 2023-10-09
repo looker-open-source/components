@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { default as Basic } from './Basic'
-export { default as Disabled } from './Disabled'
-export { default as Focused } from './Focused'
-export { default as InitialValues } from './InitialValues'
-export { default as Options } from './Options'
-export { default as Wrapping } from './Wrapping'
+export { default as Basic } from './Basic';
+export { default as Disabled } from './Disabled';
+export { default as Focused } from './Focused';
+export { default as InitialValues } from './InitialValues';
+export { default as Options } from './Options';
+export { default as Wrapping } from './Wrapping';
 
 export default {
   parameters: {
@@ -19,4 +19,4 @@ export default {
     },
   },
   title: 'Stories/ButtonGroup',
-}
+};

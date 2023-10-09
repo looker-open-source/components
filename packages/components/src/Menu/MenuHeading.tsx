@@ -24,25 +24,25 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React, { useContext } from 'react'
-import styled, { useTheme } from 'styled-components'
+import type { ReactNode } from 'react';
+import React, { useContext } from 'react';
+import styled, { useTheme } from 'styled-components';
 import type {
   TextColorProps,
   TypographyProps,
   PaddingProps,
-} from '@looker/design-tokens'
-import { pickStyledProps } from '@looker/design-tokens'
-import { Heading } from '../Text/Heading'
-import { ListItemContext, listItemDimensions } from '../ListItem'
-import { useElementVisibility } from './MenuHeading.hooks'
+} from '@looker/design-tokens';
+import { pickStyledProps } from '@looker/design-tokens';
+import { Heading } from '../Text/Heading';
+import { ListItemContext, listItemDimensions } from '../ListItem';
+import { useElementVisibility } from './MenuHeading.hooks';
 
 interface MenuHeadingProps
   extends TextColorProps,
     TypographyProps,
     PaddingProps {
-  children: ReactNode
-  className?: string
+  children: ReactNode;
+  className?: string;
 }
 
 const MenuHeadingInternal = ({
@@ -50,11 +50,11 @@ const MenuHeadingInternal = ({
   className,
   ...restProps
 }: MenuHeadingProps) => {
-  const theme = useTheme()
-  const [isLabelShimVisible, ref] = useElementVisibility()
+  const theme = useTheme();
+  const [isLabelShimVisible, ref] = useElementVisibility();
 
-  const { density } = useContext(ListItemContext)
-  const { px } = listItemDimensions(density || theme.defaults.density)
+  const { density } = useContext(ListItemContext);
+  const { px } = listItemDimensions(density || theme.defaults.density);
 
   return (
     <MenuHeadingWrapper
@@ -82,13 +82,13 @@ const MenuHeadingInternal = ({
         {children}
       </Heading>
     </MenuHeadingWrapper>
-  )
-}
+  );
+};
 
-export const MenuHeading = styled(MenuHeadingInternal)``
+export const MenuHeading = styled(MenuHeadingInternal)``;
 
 interface MenuHeadingWrapperProps {
-  renderBoxShadow: boolean
+  renderBoxShadow: boolean;
 }
 
 const MenuHeadingWrapper = styled.li<MenuHeadingWrapperProps>`
@@ -97,4 +97,4 @@ const MenuHeadingWrapper = styled.li<MenuHeadingWrapperProps>`
     renderBoxShadow ? `0 4px 8px -2px ${colors.ui2}` : 'none'};
   position: sticky;
   top: -1px;
-`
+`;

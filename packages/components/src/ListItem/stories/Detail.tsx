@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { ListItem } from '..'
-import { List, IconButton } from '../../'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { ListItem } from '..';
+import { List, IconButton } from '../../';
 
 export default function Detail() {
   return (
@@ -45,5 +45,5 @@ export default function Detail() {
         ListItem (Options Enabled)
       </ListItem>
     </List>
-  )
+  );
 }

@@ -23,10 +23,10 @@
  SOFTWARE.
 
  */
-import { initializer } from './common/initializer'
-import { numbers } from './common/numbers'
-import { whitespace } from './common/whitespace'
-import { userAttribute } from './user_attribute_grammar'
+import { initializer } from './common/initializer';
+import { numbers } from './common/numbers';
+import { whitespace } from './common/whitespace';
+import { userAttribute } from './user_attribute_grammar';
 
 const base = `
 
@@ -316,7 +316,7 @@ YYYY = value:([0-9][0-9][0-9][0-9]) {return value.join('')}
 
 hh = value:([0][0-9]/[1][0-9]/[2][0-3]) {return value.join('')}
 mm = value:([0][0-9]/[1][0-9]/[2][0-9]/[3][0-9]/[4][0-9]/[5][0-9]) {return value.join('')}
-`
+`;
 
 export const dateGrammar = [
   initializer,
@@ -324,4 +324,4 @@ export const dateGrammar = [
   numbers,
   whitespace,
   userAttribute,
-].join('')
+].join('');

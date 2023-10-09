@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { default as Basic } from './Basic'
-export { default as Overflow } from './Overflow'
+export { default as Basic } from './Basic';
+export { default as Overflow } from './Overflow';
 export default {
   parameters: {
     previewTabs: {
@@ -12,7 +12,6 @@ export default {
         hidden: true,
       },
     },
-    storyshots: { disable: true },
   },
   title: 'Stories/Layout/DialogContent',
-}
+};

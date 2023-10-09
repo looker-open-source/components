@@ -24,13 +24,13 @@
 
  */
 
-import type { DefaultTheme } from 'styled-components'
-import type { Colors } from '../color'
-import { colors } from '../color'
-import type { Elevations } from '../elevation'
-import { elevations } from '../elevation'
-import type { SpaceRamp } from '../space'
-import { space } from '../space'
+import type { DefaultTheme } from 'styled-components';
+import type { Colors } from '../color';
+import { colors } from '../color';
+import type { Elevations } from '../elevation';
+import { elevations } from '../elevation';
+import type { SpaceRamp } from '../space';
+import { space } from '../space';
 import type {
   Easings,
   FontFamilyChoices,
@@ -42,9 +42,9 @@ import type {
   Shadows,
   TransitionRamp,
   FontSources,
-} from '../system'
-import { componentSettingsDefaults } from '../defaults'
-import type { ComponentSettingsDefaults } from '../defaults'
+} from '../system';
+import { componentSettingsDefaults } from '../defaults';
+import type { ComponentSettingsDefaults } from '../defaults';
 /**
  * Theme attributes shouldn't be exported as they should be consumed via `theme` rather than via
  * direct import.
@@ -60,34 +60,34 @@ import {
   sizes,
   shadows,
   transitions,
-} from '../tokens'
-import type { DashboardAppearance } from './dashboardAppearance'
-import { generateDashboardAppearance } from './utils/generateDashboardAppearance'
+} from '../tokens';
+import type { DashboardAppearance } from './dashboardAppearance';
+import { generateDashboardAppearance } from './utils/generateDashboardAppearance';
 
 export interface Theme {
-  breakpoints: string[]
-  colors: Colors
+  breakpoints: string[];
+  colors: Colors;
   /**
    * Temporary addition, do not use as this is likely to be removed very soon.
    *
    * @deprecated
    * @private
    */
-  dashboardAppearance: DashboardAppearance
-  defaults: ComponentSettingsDefaults
-  easings: Easings
-  elevations: Elevations
-  fontSizes: FontSizeRamp
-  fonts: FontFamilyChoices
-  fontSources?: FontSources
-  fontWeights: FontWeightRamp
-  lineHeights: LineHeightRamp
-  radii: Radii
-  sizes: SizeRamp
-  shadows: Shadows
-  space: SpaceRamp
-  transitions: TransitionRamp
-  zIndexFloor: number
+  dashboardAppearance: DashboardAppearance;
+  defaults: ComponentSettingsDefaults;
+  easings: Easings;
+  elevations: Elevations;
+  fontSizes: FontSizeRamp;
+  fonts: FontFamilyChoices;
+  fontSources?: FontSources;
+  fontWeights: FontWeightRamp;
+  lineHeights: LineHeightRamp;
+  radii: Radii;
+  sizes: SizeRamp;
+  shadows: Shadows;
+  space: SpaceRamp;
+  transitions: TransitionRamp;
+  zIndexFloor: number;
 }
 
 export const theme: DefaultTheme = {
@@ -107,7 +107,7 @@ export const theme: DefaultTheme = {
   space,
   transitions,
   zIndexFloor: 1,
-}
+};
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

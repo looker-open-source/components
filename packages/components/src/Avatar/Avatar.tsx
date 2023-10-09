@@ -32,36 +32,42 @@ import type {
   SizeSmall,
   SizeXSmall,
   SizeXXSmall,
-} from '@looker/design-tokens'
-import { color, reset, space, typography, variant } from '@looker/design-tokens'
-import { css } from 'styled-components'
+} from '@looker/design-tokens';
+import {
+  color,
+  reset,
+  space,
+  typography,
+  variant,
+} from '@looker/design-tokens';
+import { css } from 'styled-components';
 
 export type AvatarSizes =
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
 export interface AvatarProps
   extends SpaceProps,
     CompatibleHTMLProps<HTMLElement> {
-  className?: string
+  className?: string;
   /**
    *  @default key
    **/
-  color?: string
+  color?: string;
   /**
    * Defines the size of the Avatar
    * @default small
    */
-  size?: AvatarSizes | string
+  size?: AvatarSizes | string;
 
   /**
    * Render as a button instead of a div
    * @default div
    */
-  role?: 'button' | 'div'
+  role?: 'button' | 'div';
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -94,14 +100,14 @@ const size = variant({
       width: '60px',
     },
   },
-})
+});
 
 export const avatarButtonOverrides = css`
   /* Need this in case Avatar is rendered as a <button /> */
   background: transparent;
   border: none;
   padding: 0;
-`
+`;
 
 export const avatarCSS = css`
   ${reset}
@@ -123,4 +129,4 @@ export const avatarCSS = css`
   &:focus {
     outline: none;
   }
-`
+`;

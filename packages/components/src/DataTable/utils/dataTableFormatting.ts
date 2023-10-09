@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
-import { SpaceVertical } from '../../Layout/Space'
-import type { DataTableColumns } from '..'
-import { DataTableCell } from '..'
+import { css } from 'styled-components';
+import { SpaceVertical } from '../../Layout/Space';
+import type { DataTableColumns } from '..';
+import { DataTableCell } from '..';
 
 function filterUndefined<T>(t: T | undefined): t is T {
-  return t !== undefined
+  return t !== undefined;
 }
 
 export const getNumericColumnIndices = (
@@ -19,7 +19,7 @@ export const getNumericColumnIndices = (
   columns
     .filter(c => visibleColumns.includes(c.id) || c.hide === undefined)
     .map((c, index) => (c.type === 'number' ? index + 1 : undefined))
-    .filter(filterUndefined)
+    .filter(filterUndefined);
 
 export const numericColumnCSS = (columnIndices: number[]) =>
   css`
@@ -34,4 +34,4 @@ export const numericColumnCSS = (columnIndices: number[]) =>
           }
         `
     )}
-  `
+  `;

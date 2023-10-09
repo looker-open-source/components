@@ -24,49 +24,49 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { theme } from '@looker/design-tokens'
-import { screen } from '@testing-library/react'
-import { Link } from './Link'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { theme } from '@looker/design-tokens';
+import { screen } from '@testing-library/react';
+import { Link } from './Link';
 
 describe('Link', () => {
   test('UnderlineTrue', () => {
-    renderWithTheme(<Link underline={true}>My link</Link>)
-    const link = screen.getByText('My link')
-    expect(link).toHaveStyleRule('text-decoration: underline')
-  })
+    renderWithTheme(<Link underline={true}>My link</Link>);
+    const link = screen.getByText('My link');
+    expect(link).toHaveStyleRule('text-decoration: underline');
+  });
 
   test('UnderlineFalse', () => {
-    renderWithTheme(<Link underline={false}>My link</Link>)
-    const link = screen.getByText('My link')
-    expect(link).toHaveStyleRule('text-decoration: none')
-  })
+    renderWithTheme(<Link underline={false}>My link</Link>);
+    const link = screen.getByText('My link');
+    expect(link).toHaveStyleRule('text-decoration: none');
+  });
 
   test('color', () => {
-    renderWithTheme(<Link>My link</Link>)
-    const link = screen.getByText('My link')
-    expect(link).toHaveStyleRule(`color: ${theme.colors.link}`)
-  })
+    renderWithTheme(<Link>My link</Link>);
+    const link = screen.getByText('My link');
+    expect(link).toHaveStyleRule(`color: ${theme.colors.link}`);
+  });
 
   test('keyColor', () => {
-    renderWithTheme(<Link keyColor>My link</Link>)
-    const link = screen.getByText('My link')
-    expect(link).toHaveStyleRule(`color: ${theme.colors.key}`)
-  })
+    renderWithTheme(<Link keyColor>My link</Link>);
+    const link = screen.getByText('My link');
+    expect(link).toHaveStyleRule(`color: ${theme.colors.key}`);
+  });
 
   test('ID passes through to DOM', () => {
     renderWithTheme(
       <Link href="https://looker.com" id="link-id">
         🥑
       </Link>
-    )
+    );
 
-    const link = screen.getByText('🥑')
-    expect(link).toHaveAttribute('id')
-    expect(link).toHaveAttribute('id', 'link-id')
-  })
+    const link = screen.getByText('🥑');
+    expect(link).toHaveAttribute('id');
+    expect(link).toHaveAttribute('id', 'link-id');
+  });
 
   test('target="_blank"', () => {
     renderWithTheme(
@@ -81,35 +81,38 @@ describe('Link', () => {
           🍕🥑
         </Link>
       </>
-    )
+    );
 
-    expect(screen.getByText('🍕')).toHaveAttribute('rel', 'pizza')
-    expect(screen.getByText('🥑')).toHaveAttribute('rel', 'noopener noreferrer')
+    expect(screen.getByText('🍕')).toHaveAttribute('rel', 'pizza');
+    expect(screen.getByText('🥑')).toHaveAttribute(
+      'rel',
+      'noopener noreferrer'
+    );
     expect(screen.getByText('🍕🥑')).toHaveAttribute(
       'rel',
       'pizza noopener noreferrer'
-    )
-  })
+    );
+  });
 
   test('dangerouslyDisableRel', () => {
     renderWithTheme(
       <Link href="/otherPage" dangerouslyDisableRel target="_blank">
         Local Link
       </Link>
-    )
+    );
 
-    const link = screen.getByText('Local Link')
-    expect(link).not.toHaveAttribute('rel')
-  })
+    const link = screen.getByText('Local Link');
+    expect(link).not.toHaveAttribute('rel');
+  });
 
   test('External', () => {
     renderWithTheme(
       <Link href="https://looker.com" isExternal>
         External Link
       </Link>
-    )
+    );
 
-    const link = screen.getByText('External Link')
-    expect(link).toHaveAttribute('rel', 'external noreferrer')
-  })
-})
+    const link = screen.getByText('External Link');
+    expect(link).toHaveAttribute('rel', 'external noreferrer');
+  });
+});

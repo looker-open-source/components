@@ -42,17 +42,17 @@ const ours = [
   'overflowVerticalPadding',
   'placement',
   'shape',
-]
+];
 const aria = [
   'aria-autocomplete',
   'aria-haspopup',
   'aria-hidden',
   'aria-live',
   'aria-orientation',
-]
-const react = ['data-autofocus', 'data-testid', 'htmlFor', 'style']
-const styledComponents = ['as']
-const htmlXml = ['autoComplete', 'fill', 'role', 'type', 'xmlns']
+];
+const react = ['data-autofocus', 'data-testid', 'htmlFor', 'style'];
+const styledComponents = ['as'];
+const htmlXml = ['autoComplete', 'fill', 'role', 'type', 'xmlns'];
 
 const styledSystem = [
   'alignContent',
@@ -177,7 +177,7 @@ const styledSystem = [
   'verticalAnchor',
   'width',
   'zIndex',
-]
+];
 
 module.exports = {
   overrides: [
@@ -239,4 +239,4 @@ module.exports = {
       },
     },
   ],
-}
+};

@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useContext } from 'react'
-import type { ReactNode } from 'react'
-import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..'
+import React, { useContext } from 'react';
+import type { ReactNode } from 'react';
+import { DialogContext, DialogLayout, Button, ButtonTransparent } from '..';
 
 export const DialogExampleLayout = ({
   header,
   children,
 }: {
-  header: string
-  children?: ReactNode
+  header: string;
+  children?: ReactNode;
 }) => {
-  const { closeModal } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext);
 
   return (
     <DialogLayout
@@ -30,5 +30,5 @@ export const DialogExampleLayout = ({
     >
       {children}
     </DialogLayout>
-  )
-}
+  );
+};

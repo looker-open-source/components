@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
+import React from 'react';
 import {
   Dialog,
   DialogLayout,
   SpaceVertical,
   CopyToClipboard,
   Button,
-} from '../..'
+} from '../..';
 
 export default function MultiFunctionButton() {
   return (
@@ -27,5 +27,5 @@ export default function MultiFunctionButton() {
     >
       <Button>Open Dialog</Button>
     </Dialog>
-  )
+  );
 }

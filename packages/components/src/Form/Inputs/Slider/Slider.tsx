@@ -24,30 +24,30 @@
 
  */
 
-import type { Ref, SyntheticEvent } from 'react'
-import React, { forwardRef, useState } from 'react'
-import isFunction from 'lodash/isFunction'
-import styled, { css } from 'styled-components'
+import type { Ref, SyntheticEvent } from 'react';
+import React, { forwardRef, useState } from 'react';
+import isFunction from 'lodash/isFunction';
+import styled, { css } from 'styled-components';
 import type {
   SpaceProps,
   TypographyProps,
   WidthProps,
-} from '@looker/design-tokens'
-import { reset, space, typography, width } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { reset, space, typography, width } from '@looker/design-tokens';
 
-import type { InputProps } from '../InputProps'
+import type { InputProps } from '../InputProps';
 
 export interface SliderProps
   extends SpaceProps,
     WidthProps,
     Omit<InputProps, 'type'>,
     TypographyProps {
-  'aria-labelledby'?: string
-  'aria-describedby'?: string
-  max?: number
-  min?: number
-  step?: number
-  value?: number | string
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
+  max?: number;
+  min?: number;
+  step?: number;
+  value?: number | string;
 }
 
 const getValueAsNumber = (
@@ -55,18 +55,18 @@ const getValueAsNumber = (
   defaultValue: number
 ): number => {
   if (typeof value === 'number') {
-    return value
+    return value;
   }
 
-  const numericValue = parseFloat(value)
+  const numericValue = parseFloat(value);
   if (isNaN(numericValue)) {
     // This is for developers which is why the string has not been i18n
     // eslint-disable-next-line no-console
-    console.error('value prop in Slider is not numeric')
-    return defaultValue
+    console.error('value prop in Slider is not numeric');
+    return defaultValue;
   }
-  return numericValue
-}
+  return numericValue;
+};
 
 const SliderInternal = forwardRef(
   (
@@ -85,41 +85,43 @@ const SliderInternal = forwardRef(
     }: SliderProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const numericValue = getValueAsNumber(value, min)
-    const [isFocused, setIsFocused] = useState(false)
-    const [internalValue, setInternalValue] = useState(numericValue)
+    const numericValue = getValueAsNumber(value, min);
+    const [isFocused, setIsFocused] = useState(false);
+    const [internalValue, setInternalValue] = useState(numericValue);
 
     if (min > max) {
       // Props don't make sense. ABORT!!
       // eslint-disable-next-line no-console
       console.warn(
         `Unable to render <Slider /> because the 'min' prop was set greater than 'max' value. MIN: ${min}, MAX: ${max}`
-      )
-      return null
+      );
+      return null;
     }
 
-    const boundSliderValue = (v: number) => Math.min(Math.max(v, min), max) // enforce that value stays between min and max
+    const boundSliderValue = (v: number) => Math.min(Math.max(v, min), max); // enforce that value stays between min and max
 
     const displayValue = isFunction(onChange)
       ? boundSliderValue(numericValue)
-      : boundSliderValue(internalValue)
+      : boundSliderValue(internalValue);
 
-    const fillPercent = Math.round(((displayValue - min) / (max - min)) * 100)
+    const fillPercent = Math.round(((displayValue - min) / (max - min)) * 100);
 
     const handleFocus = () => {
-      setIsFocused(true)
-    }
+      setIsFocused(true);
+    };
 
     const handleUnfocus = () => {
-      setIsFocused(false)
-    }
+      setIsFocused(false);
+    };
 
     const internalChangeHandler = (event: SyntheticEvent<HTMLInputElement>) => {
-      const evtValue = (event.target as HTMLInputElement).value
-      setInternalValue(parseFloat(evtValue))
-    }
+      const evtValue = (event.target as HTMLInputElement).value;
+      setInternalValue(parseFloat(evtValue));
+    };
 
-    const handleChange = isFunction(onChange) ? onChange : internalChangeHandler
+    const handleChange = isFunction(onChange)
+      ? onChange
+      : internalChangeHandler;
     return (
       <div className={className} data-testid="container">
         <SliderValueWrapper>
@@ -158,21 +160,21 @@ const SliderInternal = forwardRef(
           onFocus={handleFocus}
         />
       </div>
-    )
+    );
   }
-)
+);
 
 interface SliderInputProps {
-  isFocused?: boolean
-  disabled?: boolean
-  offsetPercent: number
+  isFocused?: boolean;
+  disabled?: boolean;
+  offsetPercent: number;
 }
 
 const sliderThumbCss = css`
   height: 16px;
   visibility: hidden;
   width: 16px;
-`
+`;
 
 const SliderThumb = styled.div<SliderInputProps>`
   border-radius: 100%;
@@ -190,7 +192,7 @@ const SliderThumb = styled.div<SliderInputProps>`
     ${isFocused && 'border-width: 5px;'}
     ${disabled && `border-color: ${colors.neutral};`}
   `}
-`
+`;
 
 const SliderInput = styled.input.attrs(() => ({
   type: 'range',
@@ -232,7 +234,7 @@ const SliderInput = styled.input.attrs(() => ({
   &:focus {
     outline: none;
   }
-`
+`;
 
 const SliderTrack = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
@@ -243,11 +245,11 @@ const SliderTrack = styled.div`
   position: absolute;
   top: 50%;
   width: calc(100% - 32px);
-`
+`;
 
 interface ControlProps {
-  offsetPercent: number
-  disabled?: boolean
+  offsetPercent: number;
+  disabled?: boolean;
 }
 
 const SliderFill = styled.div<ControlProps>`
@@ -256,12 +258,12 @@ const SliderFill = styled.div<ControlProps>`
   border-radius: ${({ theme }) => theme.radii.small};
   height: 100%;
   width: ${({ offsetPercent }) => offsetPercent}%;
-`
+`;
 
 interface SliderValueProps extends SliderInputProps {
-  disabled?: boolean
-  isFocused: boolean
-  offsetPercent: number
+  disabled?: boolean;
+  isFocused: boolean;
+  offsetPercent: number;
 }
 
 const SliderValue = styled.div<SliderValueProps>`
@@ -275,13 +277,13 @@ const SliderValue = styled.div<SliderValueProps>`
   text-align: center;
   transform: translateX(-50%) translateY(-0.9rem);
   user-select: none;
-`
+`;
 
 const SliderValueWrapper = styled.div`
   margin: 0 auto;
   position: relative;
   width: calc(100% - 30px);
-`
+`;
 
 export const Slider = styled(SliderInternal).attrs(
   ({
@@ -301,6 +303,6 @@ export const Slider = styled(SliderInternal).attrs(
   ${width}
   ${typography}
   position: relative;
-`
+`;
 
-SliderInternal.displayName = 'Slider'
+SliderInternal.displayName = 'Slider';

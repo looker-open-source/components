@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ComboboxMultiProps } from '../..'
-import { ComboboxMultiInput } from '../../ComboboxMultiInput'
-import { ComboboxMultiOption } from '../../ComboboxMultiOption'
-import { ComboboxMultiList } from '../../ComboboxList'
-import { ComboboxMulti } from '..'
+import React from 'react';
+import type { ComboboxMultiProps } from '../..';
+import { ComboboxMultiInput } from '../../ComboboxMultiInput';
+import { ComboboxMultiOption } from '../../ComboboxMultiOption';
+import { ComboboxMultiList } from '../../ComboboxList';
+import { ComboboxMulti } from '..';
 
 export default function NoIndicator(props: ComboboxMultiProps) {
-  const { width = 300, ...restProps } = props
+  const { width = 300, ...restProps } = props;
 
   return (
     <ComboboxMulti width={width} {...restProps}>
@@ -27,5 +27,5 @@ export default function NoIndicator(props: ComboboxMultiProps) {
         <ComboboxMultiOption value="Pineapples" />
       </ComboboxMultiList>
     </ComboboxMulti>
-  )
+  );
 }

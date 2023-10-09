@@ -24,11 +24,11 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Space } from './Space'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { Space } from './Space';
 
 const content = (
   <>
@@ -37,7 +37,7 @@ const content = (
     <div>three</div>
     <div>four</div>
   </>
-)
+);
 
 describe('Space', () => {
   test('reversed', () => {
@@ -45,74 +45,74 @@ describe('Space', () => {
       <Space reverse data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'flex-direction',
       'row-reverse'
-    )
-  })
+    );
+  });
 
   test('around + gap (all you get is around)', () => {
     renderWithTheme(
       <Space around gap="u10" data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'justify-content',
       'space-around'
-    )
-  })
+    );
+  });
 
   test('around', () => {
     renderWithTheme(
       <Space around data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'justify-content',
       'space-around'
-    )
-  })
+    );
+  });
 
   test('between', () => {
     renderWithTheme(
       <Space between data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'justify-content',
       'space-between'
-    )
-  })
+    );
+  });
 
   test('evenly', () => {
     renderWithTheme(
       <Space evenly data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'justify-content',
       'space-evenly'
-    )
-  })
+    );
+  });
 
   test('align="stretch" overrides justify', () => {
     renderWithTheme(
       <Space justify="end" align="stretch" data-testid="space">
         {content}
       </Space>
-    )
+    );
     expect(screen.getByTestId('space')).toHaveStyleRule(
       'align-items',
       'stretch'
-    )
+    );
     expect(screen.getByTestId('space')).not.toHaveStyleRule(
       'justify-content',
       'flex-end'
-    )
-  })
-})
+    );
+  });
+});

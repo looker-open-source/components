@@ -2,18 +2,18 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Icon, Space, Span } from '@looker/components'
-import type { UserAttributeWithValue } from '@looker/filter-expressions'
-import { Error } from '@styled-icons/material-outlined/Error'
-import React from 'react'
-import type { FilterProps } from '../Filter/types/filter_props'
-import { useFiltersErrors } from './use_filters_errors'
-import { ERROR_TYPE } from '../constants'
+import { Icon, Space, Span } from '@looker/components';
+import type { UserAttributeWithValue } from '@looker/filter-expressions';
+import { Error } from '@styled-icons/material-outlined/Error';
+import React from 'react';
+import type { FilterProps } from '../Filter/types/filter_props';
+import { useFiltersErrors } from './use_filters_errors';
+import { ERROR_TYPE } from '../constants';
 
 export interface FilterErrorMessageProps {
-  filters: FilterProps[]
-  userAttributes?: UserAttributeWithValue[]
-  useLongMessageForm?: boolean
+  filters: FilterProps[];
+  userAttributes?: UserAttributeWithValue[];
+  useLongMessageForm?: boolean;
 }
 
 /*
@@ -28,8 +28,8 @@ export const FilterErrorMessage = ({
   const options = {
     userAttributes,
     useLongMessageForm,
-  }
-  const filterErrors = useFiltersErrors(filters, options)
+  };
+  const filterErrors = useFiltersErrors(filters, options);
   return filterErrors.type === ERROR_TYPE ? (
     <Space gap="u2" mt="xsmall">
       <Icon icon={<Error />} color="critical" size="xsmall" />
@@ -37,5 +37,5 @@ export const FilterErrorMessage = ({
         {filterErrors.message}
       </Span>
     </Space>
-  ) : null
-}
+  ) : null;
+};

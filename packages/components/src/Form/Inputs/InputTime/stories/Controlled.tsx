@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputTime } from '..'
-import type { InputTimeProps } from '..'
-import { Button, Space, Paragraph } from '../../../..'
+import React, { useState } from 'react';
+import { InputTime } from '..';
+import type { InputTimeProps } from '..';
+import { Button, Space, Paragraph } from '../../../..';
 
 export default function Controlled(props: InputTimeProps) {
-  const { value: valueProp = '14:34', ...restProps } = props
+  const { value: valueProp = '14:34', ...restProps } = props;
 
-  const [value, setValue] = useState(valueProp)
-  const handle1400Click = () => setValue('14:00')
-  const handle1515Click = () => setValue('15:15')
-  const handle1632Click = () => setValue('16:32')
+  const [value, setValue] = useState(valueProp);
+  const handle1400Click = () => setValue('14:00');
+  const handle1515Click = () => setValue('15:15');
+  const handle1632Click = () => setValue('16:32');
 
   return (
     <Space>
@@ -24,5 +24,5 @@ export default function Controlled(props: InputTimeProps) {
       <InputTime value={value} {...restProps} />
       <Paragraph>Selected: {value}</Paragraph>
     </Space>
-  )
+  );
 }

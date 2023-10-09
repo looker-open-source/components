@@ -3,32 +3,32 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { IconType } from '../../Icon'
-import type { DataTableColumnSize } from './columnSize'
+import type { IconType } from '../../Icon';
+import type { DataTableColumnSize } from './columnSize';
 
-export type DataTableColumnType = 'string' | 'number' | 'date'
-export type DataTableColumnSortDirection = 'asc' | 'desc'
+export type DataTableColumnType = 'string' | 'number' | 'date';
+export type DataTableColumnSortDirection = 'asc' | 'desc';
 export interface DataTableColumn {
   /**
    * Title for the column
    */
-  title: string
+  title: string;
   /**
    * Display an `Icon` instead of the title text in the header row.
    * NOTE: `title` will still be used in columnSelector and will be added as
    * a tooltip to the icon displayed in the header row.
    */
-  titleIcon?: IconType
+  titleIcon?: IconType;
   /**
    * A unique identifier for a given column
    * Note: A column object's id should match a key in your data object template
    */
-  id: string
+  id: string;
   /**
    * In some locales, we may change horizontal alignment of 'number'
    * @default string
    */
-  type?: DataTableColumnType
+  type?: DataTableColumnType;
   /**
    * Specify a size to have the column consume a fixed width.
    *
@@ -47,25 +47,25 @@ export interface DataTableColumn {
    *
    * @default auto
    */
-  size?: DataTableColumnSize
+  size?: DataTableColumnSize;
   /**
    * Determines whether a column is sortable (i.e. whether a column's header can be clicked to perform a sort)
    * Note: You must provide a onSort callback to the parent <DataTable/> component
    * @default false
    */
-  canSort?: boolean
+  canSort?: boolean;
 
   /**
    * Determines if the column is visible when the DataTable is initially displayed.
    * If `undefined` the column will not be selectable (always visible)
    * @default undefined
    */
-  hide?: boolean
+  hide?: boolean;
 
   /**
    * @private
    */
-  sortDirection?: DataTableColumnSortDirection
+  sortDirection?: DataTableColumnSortDirection;
 }
 
-export type DataTableColumns = DataTableColumn[]
+export type DataTableColumns = DataTableColumn[];

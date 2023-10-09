@@ -2,13 +2,13 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState, useEffect } from 'react'
-import { FieldCheckbox } from '@looker/components'
+import React, { useState, useEffect } from 'react';
+import { FieldCheckbox } from '@looker/components';
 
 interface CheckboxProps {
-  label?: string
-  onChange?: (isChecked: boolean) => void
-  checked?: boolean
+  label?: string;
+  onChange?: (isChecked: boolean) => void;
+  checked?: boolean;
 }
 
 /**
@@ -18,19 +18,19 @@ interface CheckboxProps {
  */
 
 export const Checkbox = ({ onChange, label, checked }: CheckboxProps) => {
-  const [isChecked, setIsChecked] = useState(Boolean(checked))
+  const [isChecked, setIsChecked] = useState(Boolean(checked));
   useEffect(() => {
     if (checked !== isChecked) {
-      onChange?.(isChecked)
+      onChange?.(isChecked);
     }
-  }, [isChecked, onChange, checked])
+  }, [isChecked, onChange, checked]);
   return (
     <FieldCheckbox
       label={label}
       checked={isChecked}
       onChange={() => {
-        setIsChecked(!isChecked)
+        setIsChecked(!isChecked);
       }}
     />
-  )
-}
+  );
+};

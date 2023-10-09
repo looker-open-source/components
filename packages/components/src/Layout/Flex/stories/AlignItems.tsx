@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function AlignItems() {
   return (
@@ -100,5 +100,5 @@ export default function AlignItems() {
         </FlexItem>
       </Flex>
     </>
-  )
+  );
 }

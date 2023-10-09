@@ -24,21 +24,21 @@
 
  */
 
-import type { Ref, FormEvent } from 'react'
-import React, { forwardRef, useState } from 'react'
-import styled from 'styled-components'
-import { Search } from '@styled-icons/material-outlined/Search'
-import { useControlWarn } from '../../../utils'
-import { Combobox, ComboboxInput, ComboboxList } from '../Combobox'
-import type { SelectProps, SelectOptionObject } from '../Select'
-import { SelectOptions } from '../Select'
+import type { Ref, ChangeEvent } from 'react';
+import React, { forwardRef, useState } from 'react';
+import styled from 'styled-components';
+import { Search } from '@styled-icons/material-outlined/Search';
+import { useControlWarn } from '../../../utils';
+import { Combobox, ComboboxInput, ComboboxList } from '../Combobox';
+import type { SelectProps, SelectOptionObject } from '../Select';
+import { SelectOptions } from '../Select';
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../ariaProps'
-import { getMatchingOption } from '../Select/utils/options'
-import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions'
-import { useFlatOptions } from '../Select/utils/useFlatOptions'
+} from '../ariaProps';
+import { getMatchingOption } from '../Select/utils/options';
+import { useShouldWindowOptions } from '../Select/utils/useWindowedOptions';
+import { useFlatOptions } from '../Select/utils/useFlatOptions';
 
 export interface InputSearchProps
   extends Omit<
@@ -55,43 +55,43 @@ export interface InputSearchProps
    * @default true
    * @experimental
    */
-  changeOnSelect?: boolean
+  changeOnSelect?: boolean;
   /**
    * Clear the input value when the option list closes
    * Defaults to the inverse of changeOnSelect
    * @default false
    * @experimental
    */
-  clearOnClose?: boolean
+  clearOnClose?: boolean;
 
   /**
    * customize the tooltip on the clear icon
    */
-  clearIconLabel?: string
+  clearIconLabel?: string;
 
-  hideSearchIcon?: boolean
+  hideSearchIcon?: boolean;
   /**
    * @default true
    */
-  isClearable?: SelectProps['isClearable']
+  isClearable?: SelectProps['isClearable'];
   /**
    * If defined, the popup will render with this text when there are no options.
    * @experimental
    */
-  noOptionsLabel?: string
+  noOptionsLabel?: string;
   /**
    * Called when the user selects one of the options
    * onChange will also be called with the option's value unless changeOnSelect is set to false
    * @experimental
    */
-  onSelectOption?: (option?: SelectOptionObject) => void
+  onSelectOption?: (option?: SelectOptionObject) => void;
   /**
    * If true, the popover opens when the text box is clicked.
    * @default false
    * @experimental
    */
-  openOnClick?: boolean
-  readOnly?: boolean
+  openOnClick?: boolean;
+  readOnly?: boolean;
 }
 
 const InputSearchLayout = forwardRef(
@@ -127,44 +127,44 @@ const InputSearchLayout = forwardRef(
       controllingProps: ['value'],
       isControlledCheck: () => controlledValue !== undefined,
       name: 'InputSearch',
-    })
-    const [value, setValue] = useState(defaultValue || '')
-    const valueToUse = isControlled ? controlledValue : value
+    });
+    const [value, setValue] = useState(defaultValue || '');
+    const valueToUse = isControlled ? controlledValue : value;
 
-    const { flatOptions, navigationOptions } = useFlatOptions(options)
-    const matchingOption = getMatchingOption(valueToUse, navigationOptions)
-    const optionValue = matchingOption || { value: '' }
+    const { flatOptions, navigationOptions } = useFlatOptions(options);
+    const matchingOption = getMatchingOption(valueToUse, navigationOptions);
+    const optionValue = matchingOption || { value: '' };
 
     function updateValue(newValue: string) {
       if (onChange) {
-        onChange(newValue)
+        onChange(newValue);
       }
       if (!isControlled) {
-        setValue(newValue)
+        setValue(newValue);
       }
     }
 
     function handleChange(option?: SelectOptionObject) {
-      onSelectOption && onSelectOption(option)
+      onSelectOption && onSelectOption(option);
       if (changeOnSelect) {
-        updateValue(option?.value || '')
+        updateValue(option?.value || '');
       }
     }
 
-    function handleInputChange(e: FormEvent<HTMLInputElement>) {
-      updateValue(e.currentTarget.value)
+    function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
+      updateValue(e.target.value);
     }
 
     function handleClose() {
       if (clearOnClose) {
         // when the list closes, the input's value reverts to the current option
-        updateValue('')
+        updateValue('');
       }
     }
 
-    const ariaProps = pickAriaAndValidationProps(props)
+    const ariaProps = pickAriaAndValidationProps(props);
 
-    const windowing = useShouldWindowOptions(flatOptions, windowingProp)
+    const windowing = useShouldWindowOptions(flatOptions, windowingProp);
 
     return (
       <Combobox
@@ -221,10 +221,10 @@ const InputSearchLayout = forwardRef(
           </ComboboxList>
         )}
       </Combobox>
-    )
+    );
   }
-)
+);
 
-InputSearchLayout.displayName = 'InputSearch'
+InputSearchLayout.displayName = 'InputSearch';
 
-export const InputSearch = styled(InputSearchLayout)``
+export const InputSearch = styled(InputSearchLayout)``;

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
 
 export default function Description() {
   return (
@@ -20,5 +20,5 @@ export default function Description() {
       placeholder="Search fruits"
       isFilterable={true}
     />
-  )
+  );
 }

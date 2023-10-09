@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/it'
-import { itIT as componentsLocale } from '@looker/components'
-import { itIT as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/it';
+import { itIT as componentsLocale } from '@looker/components';
+import { itIT as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -36,26 +36,26 @@ const resources = {
   },
   before_after_units: {
     'days ago': 'giorni fa',
-    'days from now': 'giorni da ora',
-    'fiscal quarter from now': 'trimestre fiscale da ora',
+    'days from now': 'giorni da adesso',
+    'fiscal quarter from now': 'trimestre fiscale da adesso',
     'fiscal quarters ago': 'trimestri fiscali fa',
     'fiscal years ago': 'anni fiscali fa',
-    'fiscal years from now': 'anni fiscali da ora',
+    'fiscal years from now': 'anni fiscali da adesso',
     'hours ago': 'ore fa',
-    'hours from now': 'ore da ora',
+    'hours from now': 'ore da adesso',
     'minutes ago': 'minuti fa',
-    'minutes from now': 'minuti da ora',
+    'minutes from now': 'minuti da adesso',
     'months ago': 'mesi fa',
-    'months from now': 'mesi da ora',
-    now: 'ora',
+    'months from now': 'mesi da adesso',
+    now: 'adesso',
     'quarters ago': 'trimestri fa',
-    'quarters from now': 'trimestri da ora',
+    'quarters from now': 'trimestri da adesso',
     'seconds ago': 'secondi fa',
-    'seconds from now': 'secondi da ora',
+    'seconds from now': 'secondi da adesso',
     'weeks ago': 'settimane fa',
-    'weeks from now': 'settimane da ora',
+    'weeks from now': 'settimane da adesso',
     'years ago': 'anni fa',
-    'years from now': 'anni da ora',
+    'years from now': 'anni da adesso',
   },
   BeforeAfter: {
     absolute: '(assoluto)',
@@ -87,42 +87,42 @@ const resources = {
     years: 'anni',
   },
   DateRange: {
-    'until (before)': 'fino a (non compreso)',
+    'until (before)': 'fino al giorno (prima)',
   },
   get_date_filter_options: {
     is: 'è',
     'is any time': 'è in qualsiasi momento',
-    'is before': 'è prima di',
+    'is before': 'è precedente a',
     'is in range': "è compreso nell'intervallo",
-    'is in the last': 'è nell’ultimo',
-    'is in the month': 'è nel mese',
+    'is in the last': "è nell'ultimo",
+    'is in the month': 'è nel mese di',
     'is in the year': "è nell'anno",
-    'is next': 'è il prossimo',
-    'is not null': 'non è zero',
-    'is null': 'è zero',
-    'is on or after': 'è il o dopo il',
-    'is on the day': 'è nel giorno',
-    'is previous': 'è il precedente',
+    'is next': 'è successivo',
+    'is not null': 'non è null',
+    'is null': 'è null',
+    'is on or after': 'è in questa data o dopo',
+    'is on the day': 'è il giorno',
+    'is previous': 'è precedente',
     'is this': 'è questo',
   },
   get_filter_options: {
-    'matches advanced': 'corrisponde a (avanzato)',
+    'matches advanced': 'corrispondente (impostazione avanzata)',
   },
   get_location_filter_options: {
     Box: 'Riquadro',
     Circle: 'Cerchio',
-    Location: 'Posizione',
+    Location: 'Località',
     feet: 'piedi',
     'is anywhere': 'è ovunque',
-    'is not null': 'non è zero',
-    'is null': 'è zero',
+    'is not null': 'non è null',
+    'is null': 'è null',
     kilometers: 'chilometri',
     meters: 'metri',
     miles: 'miglia',
   },
   get_number_filter_options: {
-    exclusive: '(escluso)',
-    inclusive: '[incluso]',
+    exclusive: '(esclusivo)',
+    inclusive: '[inclusivo]',
     is: 'è',
     'is between': 'è compreso tra',
     'is greater': 'è >',
@@ -131,10 +131,10 @@ const resources = {
     'is less equal': 'è <=',
     'is not': 'non è',
     'is not between': 'non è compreso tra',
-    'is not null': 'non è zero',
-    'is null': 'è zero',
-    'left exclusive': '(escluso a sinistra)',
-    'right exclusive': '[escluso a destra]',
+    'is not null': 'non è null',
+    'is null': 'è null',
+    'left exclusive': '(esclusivo a sinistra]',
+    'right exclusive': '[esclusivo a destra)',
   },
   get_relative_timeframe_presets: {
     'Last 14 Days': 'Ultimi 14 giorni',
@@ -148,12 +148,12 @@ const resources = {
     'Previous Quarter': 'Trimestre precedente',
     'Previous Week': 'Settimana precedente',
     'Previous Year': 'Anno precedente',
-    'This Month': 'Mese corrente',
-    'This Quarter': 'Trimestre corrente',
-    'This Week': 'Settimana corrente',
-    'This Year': 'Anno corrente',
+    'This Month': 'Questo mese',
+    'This Quarter': 'Questo trimestre',
+    'This Week': 'Questa settimana',
+    'This Year': "Quest'anno",
     Today: 'Oggi',
-    'Year To Date': 'Da inizio anno',
+    'Year To Date': 'Da inizio anno a oggi',
     Yesterday: 'Ieri',
   },
   get_string_filter_options: {
@@ -166,8 +166,8 @@ const resources = {
     'is blank': 'è vuoto',
     'is not': 'non è',
     'is not blank': 'non è vuoto',
-    'is not null': 'non è zero',
-    'is null': 'è zero',
+    'is not null': 'non è null',
+    'is null': 'è null',
     'starts with': 'inizia con',
   },
   get_tier_filter_options: {
@@ -186,7 +186,7 @@ const resources = {
   NoMatchingFields: {
     'No Matching Fields': 'Nessun campo corrispondente',
     'Try Something Else':
-      'Prova con un’altra ricerca o ricomincia da capo ed espandi qualsiasi Explore per esaminare i campi disponibili.',
+      'Prova con un altro termine di ricerca o ricomincia da capo ed espandi le esplorazioni per sfogliare i campi disponibili.',
   },
   NumberFilter: {
     'any value': 'qualsiasi valore',
@@ -217,10 +217,10 @@ const resources = {
   },
   Relative: {
     ago: 'fa',
-    'from now': 'da ora',
+    'from now': 'da adesso',
   },
   RelativeTimeframe: {
-    'Choose a Timeframe': 'Scegli un valore temporale',
+    'Choose a Timeframe': 'Scegli un periodo di tempo',
   },
   RelativeTimeframePopoverContent: {
     Custom: 'Personalizzato',
@@ -232,7 +232,7 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Valore non valido',
     'No value is set for your user attribute':
-      'Nessun valore è impostato per l’attributo utente',
+      'Nessun valore impostato per il tuo attributo utente',
     'Selection required': 'Selezione obbligatoria',
   },
   use_option_filtering: {
@@ -244,16 +244,19 @@ const resources = {
   },
   use_suggestable: {
     'Error loading suggestions':
-      'Errore in fase di caricamento dei suggerimenti',
+      'Errore durante il caricamento dei suggerimenti',
   },
   use_validation_message: {
     'Value required': 'Valore obbligatorio',
   },
-}
+  UserAttributes: {
+    placeholder: 'Seleziona…',
+  },
+};
 
 export const itIT = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'it-IT',
   resources,
   dateLocale
-)
+);

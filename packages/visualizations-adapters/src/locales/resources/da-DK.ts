@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { daDK as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { daDK as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Der gik noget galt',
   },
-  translation: {
-    'Row Total': 'Rækketotal',
+  KeyValueList: {
     false: 'falsk',
     null: 'null',
     true: 'sand',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Rækketotal',
   },
-}
+};
 
-export const daDK = mergeLocaleObjects([componentsLocale], 'da-DK', resources)
+export const daDK = mergeLocaleObjects([componentsLocale], 'da-DK', resources);

@@ -1,8 +1,8 @@
 {
   "is not value": {
-    "value": "が次の値でない（{{value}}）"
+    "value": "{{value}} ではない"
   },
   "is value": {
-    "value": "が次の値である（{{value}}）"
+    "value": "{{value}} である"
   }
 }

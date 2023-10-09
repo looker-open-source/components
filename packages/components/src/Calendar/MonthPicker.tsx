@@ -24,25 +24,25 @@
 
  */
 
-import React, { useCallback } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import pick from 'lodash/pick'
+import React, { useCallback } from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import pick from 'lodash/pick';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../Ripple'
-import type { YearBaseProps } from './types'
-import { isThisMonth } from './utils/dateConfirmations'
+} from '../Ripple';
+import type { YearBaseProps } from './types';
+import { isThisMonth } from './utils/dateConfirmations';
 
 type MonthPickerProps = YearBaseProps &
   Omit<CompatibleHTMLProps<HTMLButtonElement>, 'onSelect' | 'type'> & {
-    date: Date
-    monthNumber: number
-    isTodaysMonth?: boolean
-  }
+    date: Date;
+    monthNumber: number;
+    isTodaysMonth?: boolean;
+  };
 
 export const MonthPicker = styled(
   ({
@@ -61,19 +61,20 @@ export const MonthPicker = styled(
       className,
       color: 'neutral',
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(restProps, rippleHandlerKeys),
       restProps.disabled
-    )
+    );
     const isMonth =
-      selectedMonth && isThisMonth(selectedMonth, monthNumber, date)
+      selectedMonth && isThisMonth(selectedMonth, monthNumber, date);
 
-    isTodaysMonth = isTodaysMonth && isThisMonth(new Date(), monthNumber, date)
+    isTodaysMonth = isTodaysMonth && isThisMonth(new Date(), monthNumber, date);
 
     return (
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <button
         aria-current={isTodaysMonth}
         aria-selected={isMonth}
@@ -88,7 +89,7 @@ export const MonthPicker = styled(
       >
         {locale.localize?.month(monthNumber, { width: 'abbreviated' })}
       </button>
-    )
+    );
   }
 )`
   ${rippleStyle}
@@ -108,4 +109,4 @@ export const MonthPicker = styled(
     background: ${({ theme }) => theme.colors.key};
     color: ${({ theme }) => theme.colors.keyText};
   }
-`
+`;

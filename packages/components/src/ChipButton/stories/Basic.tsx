@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ChipButton } from '../..'
+import React from 'react';
+import { ChipButton } from '../..';
 
 export default function Basic() {
-  return <ChipButton>Basic</ChipButton>
+  return <ChipButton>Basic</ChipButton>;
 }

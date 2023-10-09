@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/da'
-import { daDK as componentsLocale } from '@looker/components'
-import { daDK as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/da';
+import { daDK as componentsLocale } from '@looker/components';
+import { daDK as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Værdi kræves',
   },
-}
+  UserAttributes: {
+    placeholder: 'Vælg...',
+  },
+};
 
 export const daDK = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'da-DK',
   resources,
   dateLocale
-)
+);

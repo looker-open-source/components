@@ -6,4 +6,4 @@
 // This is how an ESLint plugin can consume itself.
 module.exports = {
   overrides: require('./src').configs.recommended.overrides,
-}
+};

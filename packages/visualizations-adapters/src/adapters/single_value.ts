@@ -3,25 +3,25 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
+import type { VisWrapperProps } from '../VisWrapper';
 import type {
   CSeriesBasic,
   SupportedChartTypes,
   SDKRecord,
   Fields,
   ChartLayoutProps,
-} from '../types'
+} from '../types';
 
-export type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>
+export type CSingleValueSeries = Omit<CSeriesBasic, 'visible'>;
 
 export type CSingleValue = {
-  type?: SupportedChartTypes['single_value']
-  series?: CSingleValueSeries[] | { [key: string]: CSingleValueSeries }
-}
+  type?: SupportedChartTypes['single_value'];
+  series?: CSingleValueSeries[] | { [key: string]: CSingleValueSeries };
+};
 
 export type SingleValueProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    config: CSingleValue
-    fields: Fields
-  }
+    data: SDKRecord[];
+    config: CSingleValue;
+    fields: Fields;
+  };

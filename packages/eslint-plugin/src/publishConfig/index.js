@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-const path = require('path')
-const readPkgUp = require('read-pkg-up')
+const path = require('path');
+const readPkgUp = require('read-pkg-up');
 
 const defaultPublishConfigJSON = `
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  },`
+  },`;
 
 module.exports = {
   overrides: [
@@ -39,26 +39,26 @@ module.exports = {
       create(context) {
         const { packageJson } = readPkgUp.sync({
           cwd: path.dirname(context.getFilename()),
-        })
+        });
 
-        const sourceCode = context.getSourceCode()
+        const sourceCode = context.getSourceCode();
 
         return {
           Program: node => {
             if (packageJson.private) {
-              return
+              return;
             }
 
-            const tokens = sourceCode.getTokens(node)
+            const tokens = sourceCode.getTokens(node);
 
             const jsonKeys = tokens
               .filter((token, i) => {
-                return token.type === 'String' && tokens[i + 1]?.value === ':'
+                return token.type === 'String' && tokens[i + 1]?.value === ':';
               })
-              .map(token => token.value)
+              .map(token => token.value);
 
             if (!jsonKeys.includes('"publishConfig"')) {
-              const firstToken = sourceCode.getFirstToken(node)
+              const firstToken = sourceCode.getFirstToken(node);
               context.report({
                 node,
                 messageId: 'missingConfig',
@@ -66,13 +66,13 @@ module.exports = {
                   return fixer.insertTextAfter(
                     firstToken,
                     defaultPublishConfigJSON
-                  )
+                  );
                 },
-              })
+              });
             }
           },
-        }
+        };
       },
     },
   },
-}
+};

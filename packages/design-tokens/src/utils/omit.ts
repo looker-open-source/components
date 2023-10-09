@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { omit } from '@styled-system/props'
+import { omit } from '@styled-system/props';
 
-export const omitStyledProps = omit
+export const omitStyledProps = omit;

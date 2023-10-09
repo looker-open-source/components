@@ -3,28 +3,28 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { OptionIndicatorProps, ComboboxMultiProps } from '../..'
-import { ComboboxMultiInput } from '../../ComboboxMultiInput'
-import { ComboboxMultiOption } from '../../ComboboxMultiOption'
-import { ComboboxMultiList } from '../../ComboboxList'
-import { ComboboxMulti } from '..'
+import React from 'react';
+import type { OptionIndicatorProps, ComboboxMultiProps } from '../..';
+import { ComboboxMultiInput } from '../../ComboboxMultiInput';
+import { ComboboxMultiOption } from '../../ComboboxMultiOption';
+import { ComboboxMultiList } from '../../ComboboxList';
+import { ComboboxMulti } from '..';
 
 const Indicator = ({ isActive, isSelected }: OptionIndicatorProps) => {
-  let indicator
+  let indicator;
 
   if (isSelected) {
-    indicator = '>>'
+    indicator = '>>';
   } else if (isActive) {
-    indicator = '>'
+    indicator = '>';
   } else {
-    indicator = ''
+    indicator = '';
   }
-  return <>{indicator}</>
-}
+  return <>{indicator}</>;
+};
 
 export default function CustomIndicator(props: ComboboxMultiProps) {
-  const { width = 300, ...restProps } = props
+  const { width = 300, ...restProps } = props;
 
   return (
     <ComboboxMulti width={width} {...restProps}>
@@ -40,5 +40,5 @@ export default function CustomIndicator(props: ComboboxMultiProps) {
         <ComboboxMultiOption value="Pineapples" />
       </ComboboxMultiList>
     </ComboboxMulti>
-  )
+  );
 }

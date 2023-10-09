@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { theme } from '../../theme'
-import { pickSpecifiableColors } from './pickSpecifiableColors'
+import { theme } from '../../theme';
+import { pickSpecifiableColors } from './pickSpecifiableColors';
 
 describe('pickSpecifiableColors', () => {
   test('theme', () => {
@@ -26,6 +26,6 @@ describe('pickSpecifiableColors', () => {
         "warn": "#FFA800",
       }
     `
-    )
-  })
-})
+    );
+  });
+});

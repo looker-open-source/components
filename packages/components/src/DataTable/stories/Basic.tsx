@@ -2,9 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { DataTableAction, DataTableItem, DataTableCell, DataTable } from '../..'
-import type { DataTableColumns } from '../../'
+import React from 'react';
+import {
+  DataTableAction,
+  DataTableItem,
+  DataTableCell,
+  DataTable,
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function Basic() {
   const data = [
@@ -20,7 +25,7 @@ export default function Basic() {
       id: 3,
       name: `Blue`,
     },
-  ]
+  ];
 
   const columns: DataTableColumns = [
     {
@@ -33,7 +38,7 @@ export default function Basic() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
   const items = data.map(({ id, name }) => {
     const actions = (
@@ -42,7 +47,7 @@ export default function Basic() {
           Select Cheese
         </DataTableAction>
       </>
-    )
+    );
 
     return (
       <DataTableItem
@@ -54,12 +59,12 @@ export default function Basic() {
         <DataTableCell>{id}</DataTableCell>
         <DataTableCell>{name}</DataTableCell>
       </DataTableItem>
-    )
-  })
+    );
+  });
 
   return (
     <DataTable caption="Cheeses example" columns={columns}>
       {items}
     </DataTable>
-  )
+  );
 }

@@ -27,21 +27,21 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import cloneDeep from 'lodash/cloneDeep'
-import concat from 'lodash/concat'
-import merge from 'lodash/merge'
-import type { CSSProperties } from 'react'
-import { useEffect, useMemo, useRef, useState } from 'react'
-import type { Instance, Options, State } from '@popperjs/core'
-import { createPopper } from '@popperjs/core'
-import type { ElementOrRef } from './getCurrentNode'
-import { getCurrentNode } from './getCurrentNode'
-import { useCallbackRef } from './useCallbackRef'
+import cloneDeep from 'lodash/cloneDeep';
+import concat from 'lodash/concat';
+import merge from 'lodash/merge';
+import type { CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import type { Instance, Options, State } from '@popperjs/core';
+import { createPopper } from '@popperjs/core';
+import type { ElementOrRef } from './getCurrentNode';
+import { getCurrentNode } from './getCurrentNode';
+import { useCallbackRef } from './useCallbackRef';
 
 export interface UsePopperProps {
-  anchor: ElementOrRef
-  target?: ElementOrRef
-  options: Partial<Options> & { placement: Options['placement'] }
+  anchor: ElementOrRef;
+  target?: ElementOrRef;
+  options: Partial<Options> & { placement: Options['placement'] };
 }
 
 export function usePopper({ anchor, target, options }: UsePopperProps) {
@@ -53,10 +53,10 @@ export function usePopper({ anchor, target, options }: UsePopperProps) {
       // Initially render off the screen while PopperJS calculates position
       top: '-9999px',
     },
-  })
-  const [truePlacement, setTruePlacement] = useState(options.placement)
-  const popperInstanceRef = useRef<Instance>()
-  const [targetElement, targetRef] = useCallbackRef<HTMLElement>()
+  });
+  const [truePlacement, setTruePlacement] = useState(options.placement);
+  const popperInstanceRef = useRef<Instance>();
+  const [targetElement, targetRef] = useCallbackRef<HTMLElement>();
 
   const mergedOptions = useMemo(
     () =>
@@ -96,27 +96,28 @@ export function usePopper({ anchor, target, options }: UsePopperProps) {
         strategy: 'fixed',
       }),
     [options]
-  )
+  );
 
   useEffect(() => {
-    const anchorNode = getCurrentNode(anchor)
-    const targetNode = target ? getCurrentNode(target) : targetElement
+    const anchorNode = getCurrentNode(anchor);
+    const targetNode = target ? getCurrentNode(target) : targetElement;
     if (anchorNode && targetNode) {
       popperInstanceRef.current = createPopper(
         anchorNode,
         targetNode,
         mergedOptions
-      )
+      );
     }
     return () => {
-      popperInstanceRef.current && popperInstanceRef.current.destroy()
-    }
-  }, [anchor, target, targetElement, mergedOptions])
+      popperInstanceRef.current && popperInstanceRef.current.destroy();
+    };
+  }, [anchor, target, targetElement, mergedOptions]);
 
   return {
     placement: truePlacement,
     popperInstanceRef,
     style: styles.popper as CSSProperties,
+    styleArrow: styles.arrow as CSSProperties,
     targetRef,
-  }
+  };
 }

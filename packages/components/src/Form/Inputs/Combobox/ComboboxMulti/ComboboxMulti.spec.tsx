@@ -24,22 +24,22 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import { cleanup, fireEvent, screen } from '@testing-library/react'
-import React from 'react'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
+import React from 'react';
 
 import {
   ComboboxMulti,
   ComboboxMultiInput,
   ComboboxMultiList,
   ComboboxMultiOption,
-} from '..'
+} from '..';
 
-afterEach(cleanup)
+afterEach(cleanup);
 
 describe('<ComboboxMulti/> with values', () => {
-  const handleChange = jest.fn()
-  const handleClick = jest.fn()
+  const handleChange = jest.fn();
+  const handleClick = jest.fn();
   const renderComboboxMulti = () =>
     renderWithTheme(
       <ComboboxMulti
@@ -57,79 +57,79 @@ describe('<ComboboxMulti/> with values', () => {
           <ComboboxMultiOption label="Qux" value="104" onClick={handleClick} />
         </ComboboxMultiList>
       </ComboboxMulti>
-    )
+    );
 
   afterEach(() => {
-    handleChange.mockClear()
-    handleClick.mockClear()
-  })
+    handleChange.mockClear();
+    handleClick.mockClear();
+  });
 
   test('Adds new values to existing', () => {
-    renderComboboxMulti()
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.mouseDown(input)
+    renderComboboxMulti();
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.mouseDown(input);
 
-    const foo = screen.getByText('Foo')
-    expect(foo).toBeInTheDocument()
-    expect(screen.getByText('Baz')).toBeInTheDocument()
+    const foo = screen.getByText('Foo');
+    expect(foo).toBeInTheDocument();
+    expect(screen.getByText('Baz')).toBeInTheDocument();
     // Current values will be a chip in the input
-    expect(screen.getAllByText('Bar')).toHaveLength(2)
-    expect(screen.getAllByText('Qux')).toHaveLength(2)
-    expect(handleClick).toHaveBeenCalledTimes(0)
-    expect(handleChange).toHaveBeenCalledTimes(0)
+    expect(screen.getAllByText('Bar')).toHaveLength(2);
+    expect(screen.getAllByText('Qux')).toHaveLength(2);
+    expect(handleClick).toHaveBeenCalledTimes(0);
+    expect(handleChange).toHaveBeenCalledTimes(0);
 
-    fireEvent.click(foo)
+    fireEvent.click(foo);
 
-    expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledTimes(1);
     expect(handleChange).toHaveBeenCalledWith([
       { label: 'Bar', value: '102' },
       { label: 'Qux', value: '104' },
       { label: 'Foo', value: '101' },
-    ])
+    ]);
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('Removes existing values via option click or enter key', () => {
-    renderComboboxMulti()
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.keyDown(input, { key: 'ArrowDown' })
-    fireEvent.keyDown(input, { key: 'ArrowDown' })
-    fireEvent.keyDown(input, { key: 'ArrowDown' })
-    fireEvent.keyDown(input, { key: 'Enter' })
+    renderComboboxMulti();
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    fireEvent.keyDown(input, { key: 'Enter' });
 
-    expect(handleChange).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledWith([{ label: 'Qux', value: '104' }])
+    expect(handleChange).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledWith([{ label: 'Qux', value: '104' }]);
 
-    fireEvent.mouseDown(input)
-    const qux = screen.getAllByText('Qux')[0]
-    fireEvent.click(qux)
+    fireEvent.mouseDown(input);
+    const qux = screen.getAllByText('Qux')[0];
+    fireEvent.click(qux);
 
-    expect(handleClick).toHaveBeenCalledTimes(1)
-    expect(handleChange).toHaveBeenCalledTimes(2)
+    expect(handleClick).toHaveBeenCalledTimes(1);
+    expect(handleChange).toHaveBeenCalledTimes(2);
     expect(handleChange).toHaveBeenNthCalledWith(2, [
       { label: 'Bar', value: '102' },
-    ])
+    ]);
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('Removes existing values via chip delete', () => {
-    renderComboboxMulti()
+    renderComboboxMulti();
 
-    const removeChip = screen.getAllByRole('button')[1]
-    fireEvent.click(removeChip)
-    expect(handleChange).toHaveBeenCalledWith([{ label: 'Bar', value: '102' }])
+    const removeChip = screen.getAllByRole('button')[1];
+    fireEvent.click(removeChip);
+    expect(handleChange).toHaveBeenCalledWith([{ label: 'Bar', value: '102' }]);
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
+    fireEvent.click(document);
+  });
 
   test('freeInput allows values to be added', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <ComboboxMulti
         onChange={onChangeMock}
@@ -143,18 +143,18 @@ describe('<ComboboxMulti/> with values', () => {
           <ComboboxMultiOption value="Qux" onClick={handleClick} />
         </ComboboxMultiList>
       </ComboboxMulti>
-    )
-    const input = screen.getByPlaceholderText('Type here')
-    fireEvent.change(input, { target: { value: 'apples,bananas,' } })
+    );
+    const input = screen.getByPlaceholderText('Type here');
+    fireEvent.change(input, { target: { value: 'apples,bananas,' } });
 
     expect(onChangeMock).toHaveBeenCalledWith([
       { value: 'Bar' },
       { value: 'Qux' },
       { value: 'apples' },
       { value: 'bananas' },
-    ])
+    ]);
 
     // Close popover to silence act() warning
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+});

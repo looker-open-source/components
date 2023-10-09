@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadio } from '../'
+import React from 'react';
+import { FieldRadio } from '../';
 
 export default function Basic() {
   return (
     <FieldRadio id="fieldRadioId" label="Field Radio Example" name="thumbsUp" />
-  )
+  );
 }

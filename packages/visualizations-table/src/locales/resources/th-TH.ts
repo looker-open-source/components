@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { thTH as componentsLocale } from '@looker/components'
-import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { thTH as componentsLocale } from '@looker/components';
+import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'จัดเรียงจากมากไปน้อย',
     Totals: 'ยอดรวม',
   },
-}
+};
 
 export const thTH = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'th-TH',
   resources
-)
+);

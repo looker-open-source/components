@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Checkbox } from '../Checkbox'
+import React from 'react';
+import { Checkbox } from '../Checkbox';
 
 export default function Disabled() {
-  return <Checkbox disabled />
+  return <Checkbox disabled />;
 }

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { Breakpoint } from './Breakpoint'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { Breakpoint } from './Breakpoint';
 
 /**
  * IMPORTANT NOTE:
@@ -17,59 +17,59 @@ import { Breakpoint } from './Breakpoint'
  */
 
 describe('Breakpoint', () => {
-  let widthSpy: jest.SpyInstance<number, []>
-  let heightSpy: jest.SpyInstance<number, []>
+  let widthSpy: jest.SpyInstance<number, []>;
+  let heightSpy: jest.SpyInstance<number, []>;
 
   beforeEach(() => {
     widthSpy = jest
       .spyOn(document.body, 'clientWidth', 'get')
-      .mockImplementation(() => 800)
+      .mockImplementation(() => 800);
     heightSpy = jest
       .spyOn(document.body, 'clientHeight', 'get')
-      .mockImplementation(() => 600)
-  })
+      .mockImplementation(() => 600);
+  });
   afterEach(() => {
-    widthSpy.mockRestore()
-    heightSpy.mockRestore()
-  })
+    widthSpy.mockRestore();
+    heightSpy.mockRestore();
+  });
 
   test('all', () => {
     renderWithTheme(
       <Breakpoint show={['mobile', 'xl']}>
         <p>This is a thing</p>
       </Breakpoint>
-    )
-    const element = screen.queryByText('This is a thing')
-    expect(element).toBeInTheDocument()
-  })
+    );
+    const element = screen.queryByText('This is a thing');
+    expect(element).toBeInTheDocument();
+  });
 
   test('mobile', () => {
     renderWithTheme(
       <Breakpoint show="mobile">
         <p>This is a thing</p>
       </Breakpoint>
-    )
-    const element = screen.queryByText('This is a thing')
-    expect(element).not.toBeInTheDocument()
-  })
+    );
+    const element = screen.queryByText('This is a thing');
+    expect(element).not.toBeInTheDocument();
+  });
 
   test('tablet up', () => {
     renderWithTheme(
       <Breakpoint show={['tablet', undefined]}>
         <p>This is a thing</p>
       </Breakpoint>
-    )
-    const element = screen.queryByText('This is a thing')
-    expect(element).toBeInTheDocument()
-  })
+    );
+    const element = screen.queryByText('This is a thing');
+    expect(element).toBeInTheDocument();
+  });
 
   test('up to tablet', () => {
     renderWithTheme(
       <Breakpoint show={[undefined, 'tablet']}>
         <p>This is a thing</p>
       </Breakpoint>
-    )
-    const element = screen.queryByText('This is a thing')
-    expect(element).not.toBeInTheDocument()
-  })
-})
+    );
+    const element = screen.queryByText('This is a thing');
+    expect(element).not.toBeInTheDocument();
+  });
+});

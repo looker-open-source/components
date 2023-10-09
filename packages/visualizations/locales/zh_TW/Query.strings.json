@@ -1,4 +1,4 @@
 {
-  "No children passed to Query component": "沒有傳遞至查詢元件的子項目",
-  "Query component received both dashboard and query props": "Dashboard 和查詢屬性接收到的查詢元件"
+  "No children passed to Query component": "沒有任何子項傳送至查詢元件",
+  "Query component received both dashboard and query props": "查詢元件同時收到了資訊主頁和查詢屬性"
 }

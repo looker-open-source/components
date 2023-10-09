@@ -24,27 +24,26 @@
 
  */
 
-import type { ReactChild, Ref } from 'react'
-import React, { Children, forwardRef, isValidElement, useMemo } from 'react'
+import type { ReactChild, Ref } from 'react';
+import React, { Children, forwardRef, isValidElement, useMemo } from 'react';
 import type {
   CompatibleHTMLProps,
   DensityProp,
   FontFamilies,
   HeightProps,
   WidthProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   fontFamily,
   height,
   shouldForwardProp,
   width,
-} from '@looker/design-tokens'
-import styled, { useTheme } from 'styled-components'
-import { useArrowKeyNav, useWindow } from '../utils'
-import { ListItemContext, listItemDimensions } from '../ListItem'
-import { getNextItemFocus } from './utils'
-
-export type ListColor = 'key' | 'calculation' | 'dimension' | 'measure'
+} from '@looker/design-tokens';
+import styled, { useTheme } from 'styled-components';
+import { useArrowKeyNav, useWindow } from '../utils';
+import { ListItemContext, listItemDimensions } from '../ListItem';
+import type { ListColor } from '../ListItem';
+import { getNextItemFocus } from './utils';
 
 export type ListProps = HeightProps &
   WidthProps &
@@ -64,40 +63,40 @@ export type ListProps = HeightProps &
      * is `selected` or `current`. Items with `calculation` & `measure` will have a text
      * color applied at all times unless they are `disabled`
      */
-    color?: ListColor
+    color?: ListColor;
 
     /**
      * Disables the nested List's keyboard nav capabilities
      * @private
      */
-    disableKeyboardNav?: boolean
+    disableKeyboardNav?: boolean;
 
     /**
      * If true, all ListItem children without an icon will reserve space for an icon
      * for alignment purposes.
      */
-    iconGutter?: boolean
+    iconGutter?: boolean;
 
     /**
      * Specify font-family. Can be specified as `brand`, `code` or `body` to explicitly
      * specify theme-controlled font-family.
      * @default inherit
      */
-    fontFamily?: FontFamilies
+    fontFamily?: FontFamilies;
 
     /**
      * Use windowing for long lists (strongly recommended to also define a width on List or its container)
      * Defaults to false with children <= 100 and true for > 100
      */
-    windowing?: boolean
-  }
+    windowing?: boolean;
+  };
 
 const getListItemHeight = (child: ReactChild, height: number) => {
   if (isValidElement(child) && child.props.description) {
-    return height + 16
+    return height + 16;
   }
-  return height
-}
+  return height;
+};
 
 export const ListInternal = forwardRef(
   (
@@ -118,17 +117,19 @@ export const ListInternal = forwardRef(
     }: ListProps,
     forwardedRef: Ref<HTMLUListElement>
   ) => {
-    const childArray = useMemo(() => Children.toArray(children), [children])
-    const theme = useTheme()
-    const itemDimensions = listItemDimensions(density || theme.defaults.density)
+    const childArray = useMemo(() => Children.toArray(children), [children]);
+    const theme = useTheme();
+    const itemDimensions = listItemDimensions(
+      density || theme.defaults.density
+    );
 
     if (windowing === undefined) {
-      windowing = childArray.length > 100
+      windowing = childArray.length > 100;
     }
 
     if (height === undefined && windowing) {
       // Need a height for windowing to work
-      height = '100%'
+      height = '100%';
     }
 
     const { after, before, end, start, ref } = useWindow({
@@ -139,7 +140,7 @@ export const ListInternal = forwardRef(
         : 0,
       ref: forwardedRef,
       spacerTag: 'li',
-    })
+    });
     const content = windowing ? (
       <>
         {before}
@@ -148,7 +149,7 @@ export const ListInternal = forwardRef(
       </>
     ) : (
       childArray
-    )
+    );
 
     const navProps = useArrowKeyNav({
       axis: 'both',
@@ -158,13 +159,13 @@ export const ListInternal = forwardRef(
       onFocus,
       onKeyDown,
       ref,
-    })
+    });
 
     const context = {
       color,
       density,
       iconGutter,
-    }
+    };
 
     return (
       <ListItemContext.Provider value={context}>
@@ -178,9 +179,9 @@ export const ListInternal = forwardRef(
           {content}
         </ListStyle>
       </ListItemContext.Provider>
-    )
+    );
   }
-)
+);
 
 const ListStyle = styled.ul
   .withConfig({ shouldForwardProp })
@@ -195,6 +196,6 @@ const ListStyle = styled.ul
   margin: 0;
   ${({ windowing }) => windowing && 'overflow: auto;'}
   padding: 0;
-`
+`;
 
-export const List = styled(ListInternal)<ListProps>``
+export const List = styled(ListInternal)<ListProps>``;

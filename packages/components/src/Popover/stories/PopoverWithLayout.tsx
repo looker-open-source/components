@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Button } from '@looker/components'
-import React from 'react'
-import { Popover, PopoverLayout } from '..'
+import { Button } from '@looker/components';
+import React from 'react';
+import { Popover, PopoverLayout } from '..';
 
 export default function PopoverWithLayout() {
   return (
@@ -18,5 +18,5 @@ export default function PopoverWithLayout() {
     >
       <Button>Open</Button>
     </Popover>
-  )
+  );
 }

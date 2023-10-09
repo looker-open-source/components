@@ -1,24 +1,24 @@
 {
   "Last 14 Days": {
-    "value": "過去 14 日間"
+    "value": "直近 14 日間"
   },
   "Last 180 Days": {
-    "value": "過去 180 日間"
+    "value": "直近 180 日間"
   },
   "Last 28 Days": {
-    "value": "過去 28 日間"
+    "value": "直近 28 日間"
   },
   "Last 30 Days": {
-    "value": "過去 30 日間"
+    "value": "直近 30 日間"
   },
   "Last 365 Days": {
-    "value": "過去 365 日間"
+    "value": "直近 365 日間"
   },
   "Last 7 Days": {
-    "value": "過去 7 日間"
+    "value": "直近 7 日間"
   },
   "Last 90 Days": {
-    "value": "過去 90 日間"
+    "value": "直近 90 日間"
   },
   "Previous Month": {
     "value": "前月"
@@ -36,7 +36,7 @@
     "value": "今月"
   },
   "This Quarter": {
-    "value": "今四半期"
+    "value": "現在の四半期"
   },
   "This Week": {
     "value": "今週"

@@ -24,21 +24,37 @@
 
  */
 
-import type { CompatibleHTMLProps, MaxWidthProps } from '@looker/design-tokens'
-import { fadeIn, maxWidth, reset } from '@looker/design-tokens'
-import type { Placement } from '@popperjs/core'
-import type { DOMAttributes, Ref } from 'react'
-import React, { forwardRef, useContext, useRef } from 'react'
-import styled from 'styled-components'
-import { useGlobalHotkeys, useForkedRef, partitionAriaProps } from '../utils'
-import { DialogContext } from '../Dialog'
+import type {
+  CompatibleHTMLProps,
+  MaxWidthProps,
+  MinWidthProps,
+} from '@looker/design-tokens';
+import { fadeIn, maxWidth, minWidth, reset } from '@looker/design-tokens';
+import type { Placement } from '@popperjs/core';
+import type { CSSProperties, DOMAttributes, Ref } from 'react';
+import React, { forwardRef, useContext, useRef } from 'react';
+import styled from 'styled-components';
+import merge from 'lodash/merge';
+import { useGlobalHotkeys, useForkedRef, partitionAriaProps } from '../utils';
+import { DialogContext } from '../Dialog';
+import { OverlayArrow } from './OverlayArrow';
+import type { OverlayArrowProps } from './OverlayArrow';
 
 export interface OverlaySurfaceProps
   extends CompatibleHTMLProps<HTMLElement>,
-    MaxWidthProps {
-  eventHandlers?: DOMAttributes<HTMLElement>
-  placement: Placement
-  zIndex?: number
+    MaxWidthProps,
+    MinWidthProps {
+  eventHandlers?: DOMAttributes<HTMLElement>;
+  placement: Placement;
+  zIndex?: number;
+  /**
+   * Displays an arrow pointing toward the trigger
+   */
+  arrow?: boolean | Partial<OverlayArrowProps>;
+  /**
+   * PopperJS styles for arrow positioning
+   */
+  styleArrow?: CSSProperties;
 }
 
 const OverlaySurfaceLayout = forwardRef(
@@ -50,15 +66,23 @@ const OverlaySurfaceLayout = forwardRef(
       placement,
       style,
       role,
+      arrow,
+      styleArrow,
       ...otherProps
-    } = props
-    const { closeModal } = useContext(DialogContext)
+    } = props;
+    const { closeModal } = useContext(DialogContext);
 
-    const [ariaProps] = partitionAriaProps(otherProps)
-    const innerRef = useRef<null | HTMLElement>(null)
-    const ref = useForkedRef(forwardedRef, innerRef)
+    const [ariaProps] = partitionAriaProps(otherProps);
+    const innerRef = useRef<null | HTMLElement>(null);
+    const ref = useForkedRef(forwardedRef, innerRef);
 
-    useGlobalHotkeys('Escape', closeModal, innerRef)
+    useGlobalHotkeys('Escape', closeModal, innerRef);
+    const arrowBaseProps = { 'data-placement': placement, style: styleArrow };
+    // merge in case there are also styles in arrow
+    const arrowProps =
+      typeof arrow === 'boolean'
+        ? arrowBaseProps
+        : merge(arrowBaseProps, arrow);
 
     return (
       <div
@@ -71,15 +95,16 @@ const OverlaySurfaceLayout = forwardRef(
         tabIndex={-1}
         data-placement={placement}
       >
+        {arrow && <OverlayArrow {...arrowProps} />}
         <OverlaySurfaceContentArea tabIndex={-1} data-overlay-surface={true}>
           {children}
         </OverlaySurfaceContentArea>
       </div>
-    )
+    );
   }
-)
+);
 
-OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout'
+OverlaySurfaceLayout.displayName = 'OverlaySurfaceLayout';
 
 export const OverlaySurface = styled(OverlaySurfaceLayout)`
   ${reset}
@@ -87,6 +112,7 @@ export const OverlaySurface = styled(OverlaySurfaceLayout)`
   animation: ${fadeIn} ease-in;
   animation-duration: ${({ theme }) => `${theme.transitions.quick}ms`};
   ${maxWidth}
+  ${minWidth}
   overflow: visible;
   z-index: ${({ theme: { zIndexFloor } }) => zIndexFloor || undefined};
 
@@ -109,7 +135,7 @@ export const OverlaySurface = styled(OverlaySurfaceLayout)`
   &:focus {
     outline: none;
   }
-`
+`;
 
 export const OverlaySurfaceContentArea = styled.div`
   background: ${({ theme }) => theme.colors.background};
@@ -120,4 +146,4 @@ export const OverlaySurfaceContentArea = styled.div`
   &:focus {
     outline: none;
   }
-`
+`;

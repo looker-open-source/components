@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/ja'
-import { jaJP as componentsLocale } from '@looker/components'
-import { jaJP as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/ja';
+import { jaJP as componentsLocale } from '@looker/components';
+import { jaJP as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -47,7 +47,7 @@ const resources = {
     'minutes from now': '分後',
     'months ago': 'か月前',
     'months from now': 'か月後',
-    now: '現在',
+    now: '今',
     'quarters ago': '四半期前',
     'quarters from now': '四半期後',
     'seconds ago': '秒前',
@@ -58,11 +58,11 @@ const resources = {
     'years from now': '年後',
   },
   BeforeAfter: {
-    absolute: '（絶対指定）',
-    relative: '（相対指定）',
+    absolute: '（絶対）',
+    relative: '（相対）',
   },
   Between: {
-    AND: 'AND',
+    AND: 'および',
   },
   date_units: {
     day: '日',
@@ -75,8 +75,8 @@ const resources = {
     hours: '時間',
     minute: '分',
     minutes: '分',
-    month: 'か月',
-    months: 'か月',
+    month: '月',
+    months: '月',
     quarter: '四半期',
     quarters: '四半期',
     second: '秒',
@@ -87,69 +87,69 @@ const resources = {
     years: '年',
   },
   DateRange: {
-    'until (before)': '次まで（指定時より前）',
+    'until (before)': 'から次（指定日より前）まで',
   },
   get_date_filter_options: {
-    is: 'が次である',
-    'is any time': 'の時間を問わずすべて',
-    'is before': 'が指定の日以前',
-    'is in range': 'が指定の範囲内',
-    'is in the last': 'が直近である',
-    'is in the month': 'が次の月である',
-    'is in the year': 'が指定の年である',
-    'is next': 'が次である',
-    'is not null': 'が Null でない',
-    'is null': 'が Null である',
-    'is on or after': 'が指定の日以降',
-    'is on the day': 'が指定の日である',
-    'is previous': 'が前である',
-    'is this': 'がこれである',
+    is: '次に一致',
+    'is any time': '随時',
+    'is before': 'が指定日より前',
+    'is in range': '次の範囲内',
+    'is in the last': '直近',
+    'is in the month': '月',
+    'is in the year': '次の年',
+    'is next': '次の',
+    'is not null': 'null ではない',
+    'is null': 'null である',
+    'is on or after': '次の日付以降',
+    'is on the day': '当日',
+    'is previous': '前の',
+    'is this': 'この',
   },
   get_filter_options: {
-    'matches advanced': 'が次に一致する（高度フィルタ）',
+    'matches advanced': '次に一致する（高度）',
   },
   get_location_filter_options: {
     Box: 'ボックス',
     Circle: '円',
     Location: '場所',
-    feet: 'feet',
-    'is anywhere': 'がいずれかの場所にある',
-    'is not null': 'が Null でない',
-    'is null': 'が Null である',
+    feet: 'フィート',
+    'is anywhere': '任意の場所',
+    'is not null': 'null ではない',
+    'is null': 'null である',
     kilometers: 'キロメートル',
     meters: 'メートル',
     miles: 'マイル',
   },
   get_number_filter_options: {
-    exclusive: '（除く）',
+    exclusive: '（排他）',
     inclusive: '[含む]',
-    is: 'が次である',
-    'is between': 'が指定の範囲内',
-    'is greater': 'が次の値より大きい（>）',
-    'is greater equal': 'が次の値以上である（>=）',
-    'is less': 'が次の値より小さい（<）',
-    'is less equal': 'が次の値以下である（<=）',
-    'is not': 'が次でない',
-    'is not between': 'が次の範囲外',
-    'is not null': 'が Null でない',
-    'is null': 'が Null である',
+    is: '次に一致',
+    'is between': '次の範囲内',
+    'is greater': '>',
+    'is greater equal': '>=',
+    'is less': '<',
+    'is less equal': '<=',
+    'is not': '等しくない',
+    'is not between': '次の範囲外',
+    'is not null': 'null ではない',
+    'is null': 'null である',
     'left exclusive': '（左側を除く]',
-    'right exclusive': '[右側を除く)',
+    'right exclusive': '[右側を除く）',
   },
   get_relative_timeframe_presets: {
-    'Last 14 Days': '過去 14 日間',
-    'Last 180 Days': '過去 180 日間',
-    'Last 28 Days': '過去 28 日間',
-    'Last 30 Days': '過去 30 日間',
-    'Last 365 Days': '過去 365 日間',
-    'Last 7 Days': '過去 7 日間',
-    'Last 90 Days': '過去 90 日間',
+    'Last 14 Days': '直近 14 日間',
+    'Last 180 Days': '直近 180 日間',
+    'Last 28 Days': '直近 28 日間',
+    'Last 30 Days': '直近 30 日間',
+    'Last 365 Days': '直近 365 日間',
+    'Last 7 Days': '直近 7 日間',
+    'Last 90 Days': '直近 90 日間',
     'Previous Month': '前月',
     'Previous Quarter': '前四半期',
     'Previous Week': '前週',
     'Previous Year': '前年',
     'This Month': '今月',
-    'This Quarter': '今四半期',
+    'This Quarter': '現在の四半期',
     'This Week': '今週',
     'This Year': '今年',
     Today: '今日',
@@ -157,26 +157,26 @@ const resources = {
     Yesterday: '昨日',
   },
   get_string_filter_options: {
-    contains: 'が次の値を含む',
-    'doesnt contain': 'が次の値を含まない',
-    'doesnt end with': 'が次の値で終わらない',
-    'doesnt start with': 'が次の値で始まらない',
-    'ends with': 'が次の値で終わる',
-    is: 'が次である',
-    'is blank': 'が空欄である',
-    'is not': 'が次でない',
-    'is not blank': 'が空欄でない',
-    'is not null': 'が Null でない',
-    'is null': 'が Null である',
-    'starts with': 'が次の値で始まる',
+    contains: '次を含む',
+    'doesnt contain': '次を含まない',
+    'doesnt end with': '次で終わらない',
+    'doesnt start with': '次で始まらない',
+    'ends with': '次で終わる',
+    is: '次に一致',
+    'is blank': '空白である',
+    'is not': '等しくない',
+    'is not blank': '空白ではない',
+    'is not null': 'null ではない',
+    'is null': 'null である',
+    'starts with': '次で始まる',
   },
   get_tier_filter_options: {
-    is: 'が次である',
-    'is any value': 'の値を問わずすべて',
-    'is not': 'が次でない',
+    is: '次に一致',
+    'is any value': '任意の値',
+    'is not': '等しくない',
   },
   get_user_attribute_option: {
-    'matches a user attribute': 'が次のユーザー属性と一致する',
+    'matches a user attribute': '次のユーザー属性と一致する',
   },
   MultiInput: {
     'Clear all': '',
@@ -186,32 +186,32 @@ const resources = {
   NoMatchingFields: {
     'No Matching Fields': '一致するフィールドがありません',
     'Try Something Else':
-      '別の検索語句を試すか、最初からもう一度 Explore を展開し、利用可能なフィールドを確認してください。',
+      '別の検索キーワードを試してください。または、最初からやり直し、任意の Explore を開いて、使用可能なフィールドを参照してください。',
   },
   NumberFilter: {
     'any value': '任意の値',
   },
   OperatorLabel: {
-    AND: 'AND',
-    OR: 'OR',
+    AND: 'および',
+    OR: 'または',
   },
   past_units: {
-    'complete days': '終了した日',
-    'complete fiscal quarters': '終了した会計四半期',
-    'complete fiscal years': '終了した会計年度',
-    'complete hours': '終了した時間',
-    'complete minutes': '終了した分',
-    'complete months': '終了した月',
-    'complete quarters': '終了した四半期',
-    'complete seconds': '終了した秒',
-    'complete weeks': '終了した週',
-    'complete years': '終了した年',
+    'complete days': '全日',
+    'complete fiscal quarters': '全会計四半期',
+    'complete fiscal years': '全会計年度',
+    'complete hours': '全時間',
+    'complete minutes': '全分',
+    'complete months': '全月',
+    'complete quarters': '全四半期',
+    'complete seconds': '全秒',
+    'complete weeks': '全週',
+    'complete years': '全年',
   },
   RadioGroup: {
     'any value': '任意の値',
   },
   ReactSelectCustomIcons: {
-    'Clear all': 'すべてクリア',
+    'Clear all': 'すべてをクリア',
     Remove: '削除',
     Toggle: '切り替え',
   },
@@ -220,7 +220,7 @@ const resources = {
     'from now': '後',
   },
   RelativeTimeframe: {
-    'Choose a Timeframe': 'タイムフレームを選択',
+    'Choose a Timeframe': '期間の選択',
   },
   RelativeTimeframePopoverContent: {
     Custom: 'カスタム',
@@ -230,29 +230,32 @@ const resources = {
     More: '詳細',
   },
   use_filters_errors: {
-    'Invalid value': '値が無効です',
+    'Invalid value': '無効な値です',
     'No value is set for your user attribute':
       'ユーザー属性に値が設定されていません',
-    'Selection required': '選択が必要です',
+    'Selection required': '選択は必須です',
   },
   use_option_filtering: {
     'No values': '値なし',
-    'No values match': '一致する値なし',
+    'No values match': '一致する値はありません',
   },
   use_placeholder: {
     'any value': '任意の値',
   },
   use_suggestable: {
-    'Error loading suggestions': '提案値の読み込みエラー',
+    'Error loading suggestions': '候補の読み込み中にエラーが発生しました',
   },
   use_validation_message: {
-    'Value required': '値が必須',
+    'Value required': '値は必須です',
   },
-}
+  UserAttributes: {
+    placeholder: '選択...',
+  },
+};
 
 export const jaJP = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'ja-JP',
   resources,
   dateLocale
-)
+);

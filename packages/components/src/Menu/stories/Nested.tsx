@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Menu, MenuItem, Button } from '../..'
+import React from 'react';
+import { Menu, MenuItem, Button } from '../..';
 
 export default function Nested() {
   return (
@@ -35,5 +35,5 @@ export default function Nested() {
     >
       <Button>Cheese</Button>
     </Menu>
-  )
+  );
 }

@@ -24,32 +24,32 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { FieldText } from './FieldText'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { FieldText } from './FieldText';
 
 describe('FieldText', () => {
   test('default label', () => {
-    renderWithTheme(<FieldText id="FieldTextID" label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeInTheDocument()
-  })
+    renderWithTheme(<FieldText id="FieldTextID" label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeInTheDocument();
+  });
 
   test('label inline', () => {
-    renderWithTheme(<FieldText id="FieldTextID" inline label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeInTheDocument()
-  })
+    renderWithTheme(<FieldText id="FieldTextID" inline label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeInTheDocument();
+  });
 
   test('A FieldText required', () => {
-    renderWithTheme(<FieldText id="FieldTextID" label="👍" required />)
-    expect(screen.getByLabelText('👍 required')).toBeRequired()
-  })
+    renderWithTheme(<FieldText id="FieldTextID" label="👍" required />);
+    expect(screen.getByLabelText('👍 required')).toBeRequired();
+  });
 
   test('A FieldText disabled', () => {
-    renderWithTheme(<FieldText disabled id="FieldTextID" label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeDisabled()
-  })
+    renderWithTheme(<FieldText disabled id="FieldTextID" label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeDisabled();
+  });
 
   test('description', () => {
     renderWithTheme(
@@ -59,9 +59,9 @@ describe('FieldText', () => {
         label="Text Input"
         placeholder="placeholder"
       />
-    )
-    expect(screen.getByText('no vegetables allowed')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('no vegetables allowed')).toBeInTheDocument();
+  });
 
   test('detail', () => {
     renderWithTheme(
@@ -71,28 +71,28 @@ describe('FieldText', () => {
         label="hello"
         placeholder="placeholder"
       />
-    )
-    expect(screen.getByText('5/50')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('5/50')).toBeInTheDocument();
+  });
 
   test('description has proper aria setup', () => {
-    const description = 'This is a description'
+    const description = 'This is a description';
 
     renderWithTheme(
       <FieldText id="test" defaultValue="example" description={description} />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const descriptionDom = screen.getByText(description)
-    expect(descriptionDom.parentElement).toBeInTheDocument()
-    expect(descriptionDom.parentElement?.id).toEqual(id)
-  })
+    const descriptionDom = screen.getByText(description);
+    expect(descriptionDom.parentElement).toBeInTheDocument();
+    expect(descriptionDom.parentElement?.id).toEqual(id);
+  });
 
   test('error has proper aria setup', () => {
-    const errorMessage = 'This is an error'
+    const errorMessage = 'This is an error';
 
     renderWithTheme(
       <FieldText
@@ -100,21 +100,21 @@ describe('FieldText', () => {
         defaultValue="example"
         validationMessage={{ message: errorMessage, type: 'error' }}
       />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const errorMessageDom = screen.getByText(errorMessage)
-    expect(errorMessageDom.parentElement).toBeInTheDocument()
-    expect(errorMessageDom.parentElement?.id).toEqual(id)
-  })
+    const errorMessageDom = screen.getByText(errorMessage);
+    expect(errorMessageDom.parentElement).toBeInTheDocument();
+    expect(errorMessageDom.parentElement?.id).toEqual(id);
+  });
 
   test('onChange handler', () => {
-    const onChange = jest.fn()
-    renderWithTheme(<FieldText id="FieldTextID" onChange={onChange} />)
-    userEvent.type(screen.getByRole('textbox'), 'Hello world')
-    expect(onChange).toHaveBeenCalledTimes(11)
-  })
-})
+    const onChange = jest.fn();
+    renderWithTheme(<FieldText id="FieldTextID" onChange={onChange} />);
+    userEvent.type(screen.getByRole('textbox'), 'Hello world');
+    expect(onChange).toHaveBeenCalledTimes(11);
+  });
+});

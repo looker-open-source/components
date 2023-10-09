@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CTable } from '../adapters'
-import type { ConfigHelper } from '../types'
+import type { CTable } from '../adapters';
+import type { ConfigHelper } from '../types';
 
 /**
  * Sets default truncate_text value to true
@@ -14,7 +14,7 @@ export const truncateText: ConfigHelper<CTable> = ({
   data,
   fields,
 }) => {
-  const { truncate_text = true, ...restConfig } = config
+  const { truncate_text = true, ...restConfig } = config;
   return {
     config: {
       truncate_text,
@@ -22,5 +22,5 @@ export const truncateText: ConfigHelper<CTable> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

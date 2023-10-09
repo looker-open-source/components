@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import type { SpanProps } from '../../../Text'
-import { Span } from '../../../Text'
+import styled from 'styled-components';
+import type { SpanProps } from '../../../Text';
+import { Span } from '../../../Text';
 
 export const FieldDetail = styled(Span).attrs<SpanProps>(
   ({ color = 'inherit' }) => ({
@@ -15,4 +15,4 @@ export const FieldDetail = styled(Span).attrs<SpanProps>(
   })
 )`
   white-space: nowrap;
-`
+`;

@@ -1,18 +1,18 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} 至 {{coords2}}"
+    "value": "{{coords1}}至{{coords2}}"
   },
   "distance unit from lat, lon": {
-    "value": "距离 {{lat}} {{distance}} {{unit}} ({{lon}})"
+    "value": "距{{lat}}，{{lon}} {{distance}} {{unit}}"
   },
   "is anywhere": {
-    "value": "在任何地方"
+    "value": "不限位置"
   },
   "is not null": {
-    "value": "不为空值"
+    "value": "不是 null"
   },
   "is null": {
-    "value": "为空值"
+    "value": "是 null"
   },
   "lat degrees north": {
     "value": "{{lat}}°N"

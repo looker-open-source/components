@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ComponentsProvider } from '@looker/components'
-import { renderHook } from '@testing-library/react-hooks'
-import { AllPresetTimeframes } from '../types/relative_timeframe_types'
-import { useRelativeTimeframeToString } from './relative_timeframe_to_string'
+import React from 'react';
+import { ComponentsProvider } from '@looker/components';
+import { renderHook } from '@testing-library/react-hooks';
+import { AllPresetTimeframes } from '../types/relative_timeframe_types';
+import { useRelativeTimeframeToString } from './relative_timeframe_to_string';
 
 describe('Relative Timeframe to String', () => {
   const wrapper = ({ children }: { children: React.ReactElement }) => (
     <ComponentsProvider>{children}</ComponentsProvider>
-  )
+  );
 
   it('should return the preset name for presets', () => {
     const {
@@ -22,9 +22,9 @@ describe('Relative Timeframe to String', () => {
       {
         wrapper,
       }
-    )
-    expect(current).toEqual('This Month')
-  })
+    );
+    expect(current).toEqual('This Month');
+  });
 
   it('should return a formatted range for custom timeframes', () => {
     const {
@@ -38,7 +38,7 @@ describe('Relative Timeframe to String', () => {
       {
         wrapper,
       }
-    )
-    expect(current).toEqual('2019/01/01 - 2019/03/01')
-  })
-})
+    );
+    expect(current).toEqual('2019/01/01 - 2019/03/01');
+  });
+});

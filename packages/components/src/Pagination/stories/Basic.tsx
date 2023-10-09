@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Pagination } from '../..'
-import type { PaginationProps } from '../Pagination'
+import React, { useState } from 'react';
+import { Pagination } from '../..';
+import type { PaginationProps } from '../Pagination';
 
 export default function Basic(props: PaginationProps) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const totalPages = 10
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 10;
 
   return (
     <Pagination
@@ -18,5 +18,5 @@ export default function Basic(props: PaginationProps) {
       pages={totalPages}
       onChange={setCurrentPage}
     />
-  )
+  );
 }

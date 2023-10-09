@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 export interface DayRange {
-  from: Date
-  to: Date
+  from: Date;
+  to: Date;
 }

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { FormEvent } from 'react'
-import type { FieldToggleSwitchProps } from '..'
-import { FieldToggleSwitch } from '..'
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import type { FieldToggleSwitchProps } from '..';
+import { FieldToggleSwitch } from '..';
 
 export default function Controlled(props: FieldToggleSwitchProps) {
   const {
@@ -14,12 +14,12 @@ export default function Controlled(props: FieldToggleSwitchProps) {
     onChange: _onChange,
     label = 'Development Mode',
     ...restProps
-  } = props
+  } = props;
 
-  const [on, setOn] = useState(false)
-  const onChange = (e: FormEvent<HTMLInputElement>) => {
-    setOn((e.target as HTMLInputElement).checked)
-  }
+  const [on, setOn] = useState(false);
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setOn(e.target.checked);
+  };
   return (
     <FieldToggleSwitch
       label={label}
@@ -27,5 +27,5 @@ export default function Controlled(props: FieldToggleSwitchProps) {
       on={on}
       {...restProps}
     />
-  )
+  );
 }

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import { FieldDate } from '..'
+import React from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import { FieldDate } from '..';
 
 export default function FloatingLabelNoDefaultValue(externalLabel: boolean) {
   return (
@@ -14,5 +14,5 @@ export default function FloatingLabelNoDefaultValue(externalLabel: boolean) {
     >
       <FieldDate label={'Example'} externalLabel={false} />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

@@ -9,5 +9,5 @@ export {
   getComboboxOptions,
   getComboboxOptionText,
   openCombobox,
-} from './comboboxHelpers'
-export * from './firePasteEvent'
+} from './comboboxHelpers';
+export * from './firePasteEvent';

@@ -2,22 +2,22 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useCallback, useRef, useState } from 'react'
-import { Aside, Box, Page, Section } from '../../Layout'
-import { Panel, Panels } from '..'
-import { Button } from '../../Button'
-import { FieldText } from '../../Form'
-import { Paragraph } from '../../Text'
+import React, { useCallback, useRef, useState } from 'react';
+import { Aside, Box, Page, Section } from '../../Layout';
+import { Panel, Panels } from '..';
+import { Button } from '../../Button';
+import { FieldText } from '../../Form';
+import { Paragraph } from '../../Text';
 
 export default function AnimationCallbacks() {
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
   const focusInput = useCallback(() => {
-    inputRef.current?.focus()
-  }, [])
-  const [message, setMessage] = useState('')
+    inputRef.current?.focus();
+  }, []);
+  const [message, setMessage] = useState('');
   const showMessage = () => {
-    setMessage('Panel closed')
-  }
+    setMessage('Panel closed');
+  };
   return (
     <Page hasAside>
       <Aside width="20rem">
@@ -43,5 +43,5 @@ export default function AnimationCallbacks() {
         <Paragraph>{message}</Paragraph>
       </Section>
     </Page>
-  )
+  );
 }

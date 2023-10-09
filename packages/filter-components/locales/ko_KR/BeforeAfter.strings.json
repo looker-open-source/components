@@ -1,8 +1,8 @@
 {
   "absolute": {
-    "value": "(절대)"
+    "value": "(절댓값)"
   },
   "relative": {
-    "value": "(상대)"
+    "value": "(상댓값)"
   }
 }

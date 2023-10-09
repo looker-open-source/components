@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Tree, TreeItem } from '..'
-import { FieldToggleSwitch } from '../../Form'
-import { useToggle } from '../../utils'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Tree, TreeItem } from '..';
+import { FieldToggleSwitch } from '../../Form';
+import { useToggle } from '../../utils';
 
 export default function Controlled() {
-  const { value, change, toggle } = useToggle(true)
+  const { value, change, toggle } = useToggle(true);
   return (
     <>
       <FieldToggleSwitch on={value} onChange={toggle} label="Toggle" />
@@ -21,5 +21,5 @@ export default function Controlled() {
         <TreeItem icon={<MaterialIcons.Check />}>Oui ou Non</TreeItem>
       </Tree>
     </>
-  )
+  );
 }

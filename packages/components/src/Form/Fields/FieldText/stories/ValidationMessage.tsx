@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function ValidationMessage(props: FieldTextProps) {
   const {
@@ -14,7 +14,7 @@ export default function ValidationMessage(props: FieldTextProps) {
     label = 'First Name',
     validationMessage = { message: 'This is an error', type: 'error' },
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldText
@@ -24,5 +24,5 @@ export default function ValidationMessage(props: FieldTextProps) {
       validationMessage={validationMessage}
       {...restProps}
     />
-  )
+  );
 }

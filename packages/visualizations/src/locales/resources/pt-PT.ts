@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ptPT as componentsLocale } from '@looker/components'
-import { ptPT as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { ptPT as visualizationstableLocale } from '@looker/visualizations-table'
-import { ptPT as visualizationsvisxLocale } from '@looker/visualizations-visx'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ptPT as componentsLocale } from '@looker/components';
+import { ptPT as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { ptPT as visualizationstableLocale } from '@looker/visualizations-table';
+import { ptPT as visualizationsvisxLocale } from '@looker/visualizations-visx';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Query: {
@@ -25,7 +25,7 @@ const resources = {
     'No chart found for type "{{type}}"':
       'Não foram encontrados gráficos para o tipo “{{type}}”',
   },
-}
+};
 
 export const ptPT = mergeLocaleObjects(
   [
@@ -36,4 +36,4 @@ export const ptPT = mergeLocaleObjects(
   ],
   'pt-PT',
   resources
-)
+);

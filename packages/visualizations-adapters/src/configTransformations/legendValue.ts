@@ -3,15 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CPie } from '../adapters'
-import type { ConfigHelper, LegendValues, RawApiConfigResponse } from '../types'
+import type { CPie } from '../adapters';
+import type {
+  ConfigHelper,
+  LegendValues,
+  RawApiConfigResponse,
+} from '../types';
 
 /**
  * Set the value that you want to appear in the legend.
  * Sets 'label' by default.
  */
 export const legendValue: ConfigHelper<CPie> = ({ config, data, fields }) => {
-  type AllKeys = RawApiConfigResponse['label_type'] & LegendValues & ''
+  type AllKeys = RawApiConfigResponse['label_type'] & LegendValues & '';
 
   const LEGEND_VALUE: Record<AllKeys, LegendValues> = {
     '': 'label_percent',
@@ -25,12 +29,12 @@ export const legendValue: ConfigHelper<CPie> = ({ config, data, fields }) => {
     percent: 'percent',
     val: 'value',
     value: 'value',
-  }
+  };
 
-  const { label_type, legend, ...restConfig } = config
+  const { label_type, legend, ...restConfig } = config;
 
   const legendValue =
-    LEGEND_VALUE[((legend && legend.value) || label_type || '') as AllKeys]
+    LEGEND_VALUE[((legend && legend.value) || label_type || '') as AllKeys];
 
   return {
     config: {
@@ -45,5 +49,5 @@ export const legendValue: ConfigHelper<CPie> = ({ config, data, fields }) => {
     },
     data,
     fields,
-  }
-}
+  };
+};

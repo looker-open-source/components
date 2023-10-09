@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { UserAttributeWithValue } from '@looker/filter-expressions'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { UserAttributes } from './UserAttributes'
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { UserAttributeWithValue } from '@looker/filter-expressions';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { UserAttributes } from './UserAttributes';
 
 describe('User Attribute', () => {
   const testUserAttributes = {
@@ -21,14 +21,14 @@ describe('User Attribute', () => {
     source: 'source',
     hidden_value_domain_whitelist: 'hidden value domain whitelist',
     can: { edit: true },
-  } as UserAttributeWithValue
+  } as UserAttributeWithValue;
 
   const testItem = {
     id: '4',
     type: 'anywhere',
     is: true,
     attributeName: 'testAttributeName',
-  }
+  };
   const filterParamProps = () =>
     ({
       item: testItem,
@@ -37,26 +37,26 @@ describe('User Attribute', () => {
         { name: 'testAttributeName2', value: 'value2', label: 'label2' },
       ],
       onChange: jest.fn(),
-    } as any)
+    } as any);
 
   it('should render a User Attribute', () => {
-    renderWithTheme(<UserAttributes {...filterParamProps()} />)
-    expect(screen.getByRole('textbox')).toHaveValue('label (value)')
-  })
+    renderWithTheme(<UserAttributes {...filterParamProps()} />);
+    expect(screen.getByRole('textbox')).toHaveValue('label (value)');
+  });
 
   it('should call userAttributeChange on change', () => {
-    const props = filterParamProps()
-    renderWithTheme(<UserAttributes {...props} />)
+    const props = filterParamProps();
+    renderWithTheme(<UserAttributes {...props} />);
 
-    const selectInput = screen.getByDisplayValue('label (value)')
-    fireEvent.click(selectInput)
+    const selectInput = screen.getByDisplayValue('label (value)');
+    fireEvent.click(selectInput);
 
-    const attribute = screen.getByText('label2 (value2)')
-    fireEvent.click(attribute)
+    const attribute = screen.getByText('label2 (value2)');
+    fireEvent.click(attribute);
 
     expect(props.onChange).toHaveBeenCalledWith('4', {
       attributeName: 'testAttributeName2',
       attributeValue: 'value2',
-    })
-  })
-})
+    });
+  });
+});

@@ -15,6 +15,6 @@ export const buildPivotMeasureName = ({
   measureName,
   pivotValue,
 }: {
-  measureName: string
-  pivotValue: string
-}) => `${pivotValue} - ${measureName}`
+  measureName: string;
+  pivotValue: string;
+}) => `${pivotValue} - ${measureName}`;

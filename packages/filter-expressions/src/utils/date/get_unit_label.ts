@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import i18next from 'i18next'
+import i18next from 'i18next';
 
 const getPlural = (unit: string) => {
-  const t = i18next.t.bind(i18next)
+  const t = i18next.t.bind(i18next);
   // prettier-ignore
   const pluralUnits: { [key: string]: string } = {
     'fiscal year'            : t('fiscal years'            , { ns: 'get_unit_label' }),
@@ -29,11 +29,11 @@ const getPlural = (unit: string) => {
     'complete minute'        : t('complete minutes'        , { ns: 'get_unit_label' }),
     'complete second'        : t('complete seconds'        , { ns: 'get_unit_label' }),
   }
-  return pluralUnits[unit] || unit
-}
+  return pluralUnits[unit] || unit;
+};
 
 const getSingular = (unit: string) => {
-  const t = i18next.t.bind(i18next)
+  const t = i18next.t.bind(i18next);
   // prettier-ignore
   const pluralUnits: { [key: string]: string } = {
     'fiscal year'            : t('fiscal year'            , { ns: 'get_unit_label' }),
@@ -57,8 +57,8 @@ const getSingular = (unit: string) => {
     'complete minute'        : t('complete minute'        , { ns: 'get_unit_label' }),
     'complete second'        : t('complete second'        , { ns: 'get_unit_label' }),
   }
-  return pluralUnits[unit] || unit
-}
+  return pluralUnits[unit] || unit;
+};
 
 export const getUnitLabel = (unit: string, value = 1) =>
-  value !== 1 ? getPlural(unit) : getSingular(unit)
+  value !== 1 ? getPlural(unit) : getSingular(unit);

@@ -3,23 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { reset, omitStyledProps } from '@looker/design-tokens'
-import React, { useContext, useRef } from 'react'
-import styled, { css } from 'styled-components'
-import { useGlobalHotkeys } from '../utils'
-import { DialogContext } from './DialogContext'
+import { reset, omitStyledProps } from '@looker/design-tokens';
+import React, { useContext, useRef } from 'react';
+import styled, { css } from 'styled-components';
+import { useGlobalHotkeys } from '../utils';
+import { DialogContext } from './DialogContext';
 
 type SurfaceLayoutProps = {
-  className?: string
-  id?: string
-}
+  className?: string;
+  id?: string;
+};
 
 const SurfaceLayout = (props: SurfaceLayoutProps) => {
-  const { closeModal } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext);
 
-  const ref = useRef<null | HTMLDivElement>(null)
+  const ref = useRef<null | HTMLDivElement>(null);
 
-  useGlobalHotkeys('Escape', closeModal, ref)
+  useGlobalHotkeys('Escape', closeModal, ref);
 
   return (
     <div
@@ -28,12 +28,12 @@ const SurfaceLayout = (props: SurfaceLayoutProps) => {
       tabIndex={-1}
       {...omitStyledProps(props)}
     />
-  )
-}
+  );
+};
 
 export const surfaceTransition = () => css`
   ${({ theme }) => `${theme.transitions.moderate}ms ${theme.easings.ease}`}
-`
+`;
 
 export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   'aria-modal': true,
@@ -50,4 +50,4 @@ export const SurfaceBase = styled(SurfaceLayout).attrs(() => ({
   &:focus {
     outline: none;
   }
-`
+`;

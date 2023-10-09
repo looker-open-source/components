@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import * as MaterialIcons from '@styled-icons/material'
-import React from 'react'
-import { Button } from '../../../../Button'
-import { Icon } from '../../../../Icon'
-import { Space, SpaceVertical } from '../../../../Layout'
-import { Text } from '../../../../Text'
-import { Tooltip } from '../../../../Tooltip'
-import { useToggle } from '../../../../utils'
-import { FieldText } from '../..'
+import * as MaterialIcons from '@styled-icons/material';
+import React from 'react';
+import { Button } from '../../../../Button';
+import { Icon } from '../../../../Icon';
+import { Space, SpaceVertical } from '../../../../Layout';
+import { Text } from '../../../../Text';
+import { Tooltip } from '../../../../Tooltip';
+import { useToggle } from '../../../../utils';
+import { FieldText } from '../..';
 
 export default function BeforeAfterValidation() {
-  const { value, toggle } = useToggle(true)
+  const { value, toggle } = useToggle(true);
   const validation = value
     ? { validationMessage: { message: 'Oops!', type: 'error' as const } }
-    : {}
+    : {};
   return (
     <SpaceVertical align="start">
       <Button onClick={toggle}>Toggle error state</Button>
@@ -54,5 +54,5 @@ export default function BeforeAfterValidation() {
         />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

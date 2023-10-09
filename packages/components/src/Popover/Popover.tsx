@@ -24,17 +24,17 @@
 
  */
 
-import type { ReactNode, Ref, RefObject } from 'react'
-import React, { forwardRef, isValidElement, cloneElement } from 'react'
-import { mergeHandlers, useForkedRef, useHovered } from '../utils'
-import type { UsePopoverProps, UsePopoverResponseDom } from './usePopover'
-import { usePopover } from './usePopover'
+import type { ReactNode, Ref, RefObject } from 'react';
+import React, { forwardRef, isValidElement, cloneElement } from 'react';
+import { mergeHandlers, useForkedRef, useHovered } from '../utils';
+import type { UsePopoverProps, UsePopoverResponseDom } from './usePopover';
+import { usePopover } from './usePopover';
 
-export type PopoverRenderProp = (props: UsePopoverResponseDom) => ReactNode
+export type PopoverRenderProp = (props: UsePopoverResponseDom) => ReactNode;
 
 const isRenderProp = (
   children: ReactNode | PopoverRenderProp
-): children is PopoverRenderProp => typeof children === 'function'
+): children is PopoverRenderProp => typeof children === 'function';
 
 export interface PopoverProps extends UsePopoverProps {
   /**
@@ -42,12 +42,12 @@ export interface PopoverProps extends UsePopoverProps {
    * component, maintain the state of isOpen accordingly, and pass that state into
    * the Popover renderProp.
    */
-  children: ReactNode | PopoverRenderProp
+  children: ReactNode | PopoverRenderProp;
 
   /**
    * The element which hovering on/off of will show/hide the triggering element
    */
-  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>
+  hoverDisclosureRef?: HTMLElement | null | RefObject<HTMLElement>;
 }
 
 export const popoverPropKeys: Array<keyof PopoverProps> = [
@@ -69,7 +69,7 @@ export const popoverPropKeys: Array<keyof PopoverProps> = [
   'cancelClickOutside',
   'hoverDisclosureRef',
   'ariaLabel',
-]
+];
 
 export const Popover = forwardRef(
   (
@@ -77,35 +77,35 @@ export const Popover = forwardRef(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     forwardedRef: Ref<any>
   ) => {
-    const { domProps, isOpen, popover } = usePopover(props)
+    const { domProps, isOpen, popover } = usePopover(props);
 
-    const { onClick, ref: popoverRef, ...restDomProps } = domProps
+    const { onClick, ref: popoverRef, ...restDomProps } = domProps;
 
-    const ref = useForkedRef(popoverRef, forwardedRef)
+    const ref = useForkedRef(popoverRef, forwardedRef);
 
     if (isValidElement(children)) {
       children = cloneElement(children, {
         ...restDomProps,
         onClick: mergeHandlers(onClick, children.props.onClick),
         ref,
-      })
+      });
     } else if (isRenderProp(children)) {
-      children = children(domProps)
+      children = children(domProps);
     } else {
       // eslint-disable-next-line no-console
       console.warn(
         `Element "${typeof children}" can't be used as target for Popover`
-      )
+      );
     }
 
-    const [isHovered] = useHovered(hoverDisclosureRef)
-    const triggerShown = isHovered || isOpen
+    const [isHovered] = useHovered(hoverDisclosureRef);
+    const triggerShown = isHovered || isOpen;
 
     return (
       <>
         {popover}
         {triggerShown && children}
       </>
-    )
+    );
   }
-)
+);

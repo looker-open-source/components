@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useTranslation } from '../../../../../../../../utils'
-import type { AllPresetTimeframes } from '../../../types/relative_timeframe_types'
+import { useTranslation } from '../../../../../../../../utils';
+import type { AllPresetTimeframes } from '../../../types/relative_timeframe_types';
 
 export const useRelativeTimeframePresets = (): {
-  [key in AllPresetTimeframes]: string
+  [key in AllPresetTimeframes]: string;
 } => {
-  const { t } = useTranslation('get_relative_timeframe_presets')
+  const { t } = useTranslation('get_relative_timeframe_presets');
   return {
     Today: t('Today'),
     Yesterday: t('Yesterday'),
@@ -32,5 +32,5 @@ export const useRelativeTimeframePresets = (): {
     'Previous Month': t('Previous Month'),
     'Previous Quarter': t('Previous Quarter'),
     'Previous Year': t('Previous Year'),
-  }
-}
+  };
+};

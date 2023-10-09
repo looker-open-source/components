@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useTheme } from 'styled-components'
-import type { CCartesian } from '@looker/visualizations-adapters'
-import isArray from 'lodash/isArray'
-import compact from 'lodash/compact'
-import { buildChartTheme } from '@visx/xychart'
+import { useTheme } from 'styled-components';
+import type { CCartesian } from '@looker/visualizations-adapters';
+import isArray from 'lodash/isArray';
+import compact from 'lodash/compact';
+import { buildChartTheme } from '@visx/xychart';
 
 export const useChartTheme = (series?: CCartesian['series']) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const seriesList =
-    series && isArray(series) ? series : Object.values(series || {})
+    series && isArray(series) ? series : Object.values(series || {});
 
-  const scheme = compact(seriesList.map(s => s.visible && s.color))
+  const scheme = compact(seriesList.map(s => s.visible && s.color));
 
   const chartTheme = buildChartTheme({
     backgroundColor: theme.colors.background,
@@ -25,7 +25,7 @@ export const useChartTheme = (series?: CCartesian['series']) => {
     svgLabelBig: { fill: theme.colors.text5 },
     svgLabelSmall: { fill: theme.colors.text5 },
     tickLength: 8,
-  })
+  });
 
-  return chartTheme
-}
+  return chartTheme;
+};

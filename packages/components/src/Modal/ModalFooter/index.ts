@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './ModalFooter'
+export * from './ModalFooter';

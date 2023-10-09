@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { List } from '../'
-import { ListItem, Space } from '../../'
+import React, { useState } from 'react';
+import { List } from '../';
+import { ListItem, Space } from '../../';
 
 export default function ExpandingList() {
-  const [showMore, setShowMore] = useState(false)
-  const [showMore2, setShowMore2] = useState(false)
+  const [showMore, setShowMore] = useState(false);
+  const [showMore2, setShowMore2] = useState(false);
   return (
     <Space align="start">
       <List>
@@ -66,5 +66,5 @@ export default function ExpandingList() {
         )}
       </List>
     </Space>
-  )
+  );
 }

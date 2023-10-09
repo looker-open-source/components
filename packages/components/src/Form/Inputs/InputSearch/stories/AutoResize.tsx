@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputSearch } from '../'
-import type { InputSearchProps } from '../'
+import React from 'react';
+import { InputSearch } from '../';
+import type { InputSearchProps } from '../';
 
 export default function AutoResize(props: InputSearchProps) {
   const {
     autoResize = true,
     placeholder = 'Start typing to resize',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <InputSearch
@@ -20,5 +20,5 @@ export default function AutoResize(props: InputSearchProps) {
       placeholder={placeholder}
       {...restProps}
     />
-  )
+  );
 }

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const TabIndicator = styled.span<{
-  selected?: boolean
+  selected?: boolean;
 }>`
   background-color: ${({ selected, theme }) =>
     selected ? theme.colors.key : 'transparent'};
@@ -16,4 +16,4 @@ export const TabIndicator = styled.span<{
   left: ${({ theme }) => theme.space.u4};
   position: absolute;
   right: ${({ theme }) => theme.space.u4};
-`
+`;

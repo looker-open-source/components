@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { FormEvent } from 'react'
+import React from 'react';
+import type { ChangeEvent } from 'react';
 import type {
   CArea,
   CBar,
@@ -14,9 +14,9 @@ import type {
   CSeriesBasic,
   CSingleValue,
   CPie,
-} from '@looker/visualizations-adapters'
-import has from 'lodash/has'
-import { FieldColor } from '@looker/components'
+} from '@looker/visualizations-adapters';
+import has from 'lodash/has';
+import { FieldColor } from '@looker/components';
 
 /**
  * A list of relevant charts that access this configuration
@@ -29,7 +29,7 @@ export type CColorSupported =
   | CPie
   | CScatter
   | CSparkline
-  | CSingleValue
+  | CSingleValue;
 
 const renderFor: Array<CColorSupported['type']> = [
   'area',
@@ -40,27 +40,27 @@ const renderFor: Array<CColorSupported['type']> = [
   'scatter',
   'sparkline',
   'single_value',
-]
+];
 
 export type SeriesColorProps = {
-  chartType: CColorSupported['type']
-  series: CSeriesBasic
-  onSeriesChange: (series: CSeriesBasic) => void
-  disabled: boolean
-}
+  chartType: CColorSupported['type'];
+  series: CSeriesBasic;
+  onSeriesChange: (series: CSeriesBasic) => void;
+  disabled: boolean;
+};
 
 export const SeriesColor = (props: SeriesColorProps) => {
-  const { chartType, series, onSeriesChange, ...restProps } = props
+  const { chartType, series, onSeriesChange, ...restProps } = props;
 
   if (!renderFor.includes(chartType) && !has(series, 'color')) {
     // Early return! Only render for supported charts
-    return null
+    return null;
   }
 
-  const handleChange = (e: FormEvent) => {
-    const draft = { ...series, color: (e.target as HTMLInputElement).value }
-    onSeriesChange(draft)
-  }
+  const handleChange = (e: ChangeEvent) => {
+    const draft = { ...series, color: (e.target as HTMLInputElement).value };
+    onSeriesChange(draft);
+  };
 
   return (
     <FieldColor
@@ -69,5 +69,5 @@ export const SeriesColor = (props: SeriesColorProps) => {
       value={series.color}
       {...restProps}
     />
-  )
-}
+  );
+};

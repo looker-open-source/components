@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { default as CopyToClipboard } from './CopyToClipboard'
+export { default as CopyToClipboard } from './CopyToClipboard';
 
 export default {
   parameters: {
@@ -14,4 +14,4 @@ export default {
     },
   },
   title: 'Stories/MultiFunctionButton',
-}
+};

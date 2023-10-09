@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function SpacingResponsively() {
   return (
@@ -20,5 +20,5 @@ export default function SpacingResponsively() {
         My padding on the left changes with breakpoints
       </Box>
     </Space>
-  )
+  );
 }

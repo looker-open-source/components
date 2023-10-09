@@ -24,25 +24,25 @@
 
  */
 
-import React, { useState } from 'react'
-import { hsv } from 'd3-hsv'
-import type { Arc } from 'd3-shape'
-import { localPoint } from '@visx/event'
-import type { SDKRecord } from '@looker/visualizations-adapters'
-import { useTheme } from 'styled-components'
-import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie'
-import type { Point } from '@visx/point'
-import { PIE_SLICE_ZOOM } from './pieConstants'
+import React, { useState } from 'react';
+import { hsv } from 'd3-hsv';
+import type { Arc } from 'd3-shape';
+import { localPoint } from '@visx/event';
+import type { SDKRecord } from '@looker/visualizations-adapters';
+import { useTheme } from 'styled-components';
+import type { PieArcDatum } from '@visx/shape/lib/shapes/Pie';
+import type { Point } from '@visx/point';
+import { PIE_SLICE_ZOOM } from './pieConstants';
 
 type PieArcProps = {
-  arc: PieArcDatum<SDKRecord>
+  arc: PieArcDatum<SDKRecord>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  path: Arc<any, PieArcDatum<SDKRecord>>
-  onMouseOut: () => void
-  onMouseOver: (arc: PieArcDatum<SDKRecord>, point: Point | null) => void
-  renderTooltip: boolean
-  datumColor: string
-}
+  path: Arc<any, PieArcDatum<SDKRecord>>;
+  onMouseOut: () => void;
+  onMouseOver: (arc: PieArcDatum<SDKRecord>, point: Point | null) => void;
+  renderTooltip: boolean;
+  datumColor: string;
+};
 
 export const PieArc = ({
   arc,
@@ -52,12 +52,12 @@ export const PieArc = ({
   onMouseOut,
   renderTooltip,
 }: PieArcProps) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
-  const theme = useTheme()
+  const theme = useTheme();
 
-  const { h, s, v } = hsv(datumColor)
-  const hoverColor = hsv(h, s, Math.min(v + 0.2, 1)).hex()
+  const { h, s, v } = hsv(datumColor);
+  const hoverColor = hsv(h, s, Math.min(v + 0.2, 1)).hex();
 
   return (
     <g>
@@ -84,19 +84,19 @@ export const PieArc = ({
           const coords = localPoint(
             (e.target as SVGElement).ownerSVGElement as Element,
             e
-          )
-          onMouseOver(arc, coords)
+          );
+          onMouseOver(arc, coords);
           if (renderTooltip) {
-            setIsHovered(true)
+            setIsHovered(true);
           }
         }}
         onMouseLeave={() => {
-          onMouseOut()
-          setIsHovered(false)
+          onMouseOut();
+          setIsHovered(false);
         }}
         stroke={theme.colors.background}
         strokeWidth={1}
       />
     </g>
-  )
-}
+  );
+};

@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { NavList } from './NavList'
+export { NavList } from './NavList';

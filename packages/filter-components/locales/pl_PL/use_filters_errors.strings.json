@@ -3,9 +3,9 @@
     "value": "Nieprawidłowa wartość"
   },
   "No value is set for your user attribute": {
-    "value": "Nie ustawiono wartości dla atrybutu użytkownika"
+    "value": "Nie ustawiono wartości atrybutu użytkownika"
   },
   "Selection required": {
-    "value": "Wymagany wybór"
+    "value": "Musisz coś wybrać"
   }
 }

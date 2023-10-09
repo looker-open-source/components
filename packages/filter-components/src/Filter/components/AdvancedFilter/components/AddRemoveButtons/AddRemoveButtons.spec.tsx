@@ -2,19 +2,19 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { AddRemoveButtons } from './AddRemoveButtons'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { AddRemoveButtons } from './AddRemoveButtons';
 
 describe('AddRemoveButtons', () => {
-  const mockOnAdd = jest.fn()
-  const mockOnRemove = jest.fn()
+  const mockOnAdd = jest.fn();
+  const mockOnRemove = jest.fn();
 
   beforeEach(() => {
-    mockOnAdd.mockReset()
-    mockOnRemove.mockReset()
-  })
+    mockOnAdd.mockReset();
+    mockOnRemove.mockReset();
+  });
 
   it('should render an add button when showAdd is true', () => {
     renderWithTheme(
@@ -24,10 +24,10 @@ describe('AddRemoveButtons', () => {
         showAdd={true}
         showRemove={false}
       />
-    )
-    const addButton = screen.getByText('Add')
-    expect(addButton).toBeVisible()
-  })
+    );
+    const addButton = screen.getByText('Add');
+    expect(addButton).toBeVisible();
+  });
 
   it('should render a remove button when showRemove is true', () => {
     renderWithTheme(
@@ -37,10 +37,10 @@ describe('AddRemoveButtons', () => {
         showAdd={false}
         showRemove={true}
       />
-    )
-    const removeButton = screen.getByText('Remove')
-    expect(removeButton).toBeVisible()
-  })
+    );
+    const removeButton = screen.getByText('Remove');
+    expect(removeButton).toBeVisible();
+  });
 
   it('should call the onAdd handler when the add button is clicked', () => {
     renderWithTheme(
@@ -50,11 +50,11 @@ describe('AddRemoveButtons', () => {
         showAdd={true}
         showRemove={true}
       />
-    )
-    const addButton = screen.getByText('Add')
-    fireEvent.click(addButton)
-    expect(mockOnAdd).toHaveBeenCalled()
-  })
+    );
+    const addButton = screen.getByText('Add');
+    fireEvent.click(addButton);
+    expect(mockOnAdd).toHaveBeenCalled();
+  });
 
   it('should call the onRemove handler when the remove button is clicked', () => {
     renderWithTheme(
@@ -64,9 +64,9 @@ describe('AddRemoveButtons', () => {
         showAdd={true}
         showRemove={true}
       />
-    )
-    const removeButton = screen.getByText('Remove')
-    fireEvent.click(removeButton)
-    expect(mockOnRemove).toHaveBeenCalled()
-  })
-})
+    );
+    const removeButton = screen.getByText('Remove');
+    fireEvent.click(removeButton);
+    expect(mockOnRemove).toHaveBeenCalled();
+  });
+});

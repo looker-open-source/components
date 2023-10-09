@@ -24,7 +24,7 @@
 
  */
 
-import type { SpecifiableTextColors } from '../color/types'
+import type { SpecifiableTextColors } from '../color/types';
 
 export enum TileTitleAlignment {
   left = 'left',
@@ -42,50 +42,62 @@ export interface DashboardAppearance {
    * Toggles the dashboard header
    * @default true
    */
-  show_dashboard_header: boolean
+  show_dashboard_header: boolean;
   /**
    * Toggles the dashboard title
    * @default true
    */
-  title: boolean
+  title: boolean;
   /**
    * Toggles the filters section
    * @default true
    */
-  filters: boolean
+  filters: boolean;
   /**
    * Toggles the filters icon/toggle
    * @default true
    */
-  show_filters_toggle: boolean
+  show_filters_toggle: boolean;
   /**
    * Toggles the dashboard last updated indicator
    * @default true
    */
-  show_last_updated_indicator: boolean
+  show_last_updated_indicator: boolean;
   /**
    * Toggles the reload data icon/button
    * @default true
    */
-  show_reload_data_icon: boolean
+  show_reload_data_icon: boolean;
   /**
    * Toggles the dashboard actions menu
    * @default true
    */
-  show_dashboard_menu: boolean
+  show_dashboard_menu: boolean;
   /**
    * Centers the dashboard title
    * @default false
    */
-  center_dashboard_title: boolean
+  center_dashboard_title: boolean;
   /**
    * Font size of the dashboard title
    */
-  dashboard_title_font_size?: string
+  dashboard_title_font_size?: string;
   /**
    * Default appearance for non-text tiles displayed within this DashboardAppearance
    */
-  tiles: TileAppearance
+  tiles: TileAppearance;
+  /**
+   * Dashboard page margin top
+   */
+  page_margin_top?: string;
+  /**
+   * Dashboard page margin bottom
+   */
+  page_margin_bottom?: string;
+  /**
+   * Dashboard page margin left and right
+   */
+  page_margin_sides?: string;
 }
 
 export interface TileAppearance extends TileAppearanceColors {
@@ -93,11 +105,27 @@ export interface TileAppearance extends TileAppearanceColors {
    * The text alignment of tile titles
    * @default 'center'
    */
-  title_alignment: TileTitleAlignment
+  title_alignment: TileTitleAlignment;
   /**
-   * The box shadow of tiles.
+   * The box shadow of tiles
    */
-  box_shadow?: string
+  box_shadow?: string;
+  /**
+   * The font size of tiles
+   */
+  font_size?: string;
+  /**
+   * The veritcal size of the gap/gutter between tiles
+   */
+  column_gap_size?: string;
+  /**
+   * The horizontal size of the gap/gutter between tiles
+   */
+  row_gap_size?: string;
+  /**
+   * The border radius of tiles
+   */
+  border_radius?: string;
 }
 
 export interface TileAppearanceColors extends SpecifiableTextColors {
@@ -105,17 +133,17 @@ export interface TileAppearanceColors extends SpecifiableTextColors {
    * The text color
    * @default theme.colors.background
    */
-  text?: string
+  text?: string;
 
   /**
    * The background color for tile surface
    * @default theme.colors.background
    */
-  background: string
+  background: string;
 
   /**
    * The background color for text tile surface
    * @default theme.colors.pageBackground
    */
-  text_tile_background_color: string
+  text_tile_background_color: string;
 }

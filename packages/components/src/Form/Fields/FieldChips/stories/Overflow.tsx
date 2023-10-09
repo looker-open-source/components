@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function Overflow() {
   const [values, setValues] = useState<string[]>([
@@ -16,7 +16,7 @@ export default function Overflow() {
     'Missouri',
     'New York',
     'New Jersey',
-  ])
+  ]);
 
   return (
     <FieldChips
@@ -26,5 +26,5 @@ export default function Overflow() {
       width={200}
       maxHeight={145}
     />
-  )
+  );
 }

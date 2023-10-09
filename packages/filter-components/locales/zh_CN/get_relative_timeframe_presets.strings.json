@@ -1,24 +1,24 @@
 {
   "Last 14 Days": {
-    "value": "最近 14 天"
+    "value": "过去 14 天"
   },
   "Last 180 Days": {
-    "value": "最近 180 天"
+    "value": "过去 180 天"
   },
   "Last 28 Days": {
-    "value": "最近 28 天"
+    "value": "过去 28 天"
   },
   "Last 30 Days": {
-    "value": "最近 30 天"
+    "value": "过去 30 天"
   },
   "Last 365 Days": {
-    "value": "最近 365 天"
+    "value": "过去 365 天"
   },
   "Last 7 Days": {
-    "value": "最近 7 天"
+    "value": "过去 7 天"
   },
   "Last 90 Days": {
-    "value": "最近 90 天"
+    "value": "过去 90 天"
   },
   "Previous Month": {
     "value": "上个月"
@@ -45,7 +45,7 @@
     "value": "今年"
   },
   "Today": {
-    "value": "今日"
+    "value": "今天"
   },
   "Year To Date": {
     "value": "年初至今"

@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { ReactNode } from 'react'
-import React from 'react'
-import type { IconType } from '../../Icon'
-import { MenuItem } from '../../Menu'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { ReactNode } from 'react';
+import React from 'react';
+import type { IconType } from '../../Icon';
+import { MenuItem } from '../../Menu';
 
 export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
   /**
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  detail?: ReactNode
-  icon?: IconType
+  detail?: ReactNode;
+  icon?: IconType;
   /**
    * Determines if the DataTableAction is an <a/> or <button/> element
    * Note: The value passed into this prop is passed into the underlying MenuItem's itemRole prop
    * @default button
    */
-  itemRole?: 'link' | 'button'
+  itemRole?: 'link' | 'button';
 }
 
 /**
@@ -29,4 +29,4 @@ export interface DataTableActionProps extends CompatibleHTMLProps<HTMLElement> {
  * */
 export const DataTableAction = (props: DataTableActionProps) => (
   <MenuItem {...props} />
-)
+);

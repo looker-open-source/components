@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ComponentSettingsDefaults } from './types'
+import type { ComponentSettingsDefaults } from './types';
 
 export const generateDefaults = (
   theme: ComponentSettingsDefaults,
@@ -11,4 +11,4 @@ export const generateDefaults = (
 ) => ({
   ...theme,
   ...custom,
-})
+});

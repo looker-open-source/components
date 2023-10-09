@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Paragraph, Breakpoint, Box2 } from '../..'
+import React from 'react';
+import { Paragraph, Breakpoint, Box2 } from '../..';
 export default function DesktopXL() {
   return (
     <Box2>
@@ -14,5 +14,5 @@ export default function DesktopXL() {
         </Box2>
       </Breakpoint>
     </Box2>
-  )
+  );
 }

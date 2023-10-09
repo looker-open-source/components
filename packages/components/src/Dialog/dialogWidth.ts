@@ -10,18 +10,18 @@ import type {
   SizeMedium,
   SizeLarge,
   ResponsiveValue,
-} from '@looker/design-tokens'
-import { system } from '@looker/design-tokens'
+} from '@looker/design-tokens';
+import { system } from '@looker/design-tokens';
 
 export type DialogSizes =
   | SizeXXSmall
   | SizeXSmall
   | SizeSmall
   | SizeMedium
-  | SizeLarge
+  | SizeLarge;
 
-export type DialogSizeRamp = Record<DialogSizes, string>
-export type DialogWidth = ResponsiveValue<DialogSizeRamp | string>
+export type DialogSizeRamp = Record<DialogSizes, string>;
+export type DialogWidth = ResponsiveValue<DialogSizeRamp | string>;
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const dialogSizes: DialogSizeRamp = {
@@ -30,7 +30,7 @@ export const dialogSizes: DialogSizeRamp = {
   small: '28rem',
   medium: '40rem',
   large: '50rem',
-}
+};
 
 export const dialogWidth = system({
   width: {
@@ -38,4 +38,4 @@ export const dialogWidth = system({
     scale: 'dialogSizes',
     defaultScale: dialogSizes,
   },
-})
+});

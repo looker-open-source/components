@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useTranslation } from '../../../../utils'
-import { useUserAttributeOption } from './get_user_attribute_option'
+import { useTranslation } from '../../../../utils';
+import { useUserAttributeOption } from './get_user_attribute_option';
 
 export const useDateFilterOptions = (isParameter: boolean) => {
-  const { t } = useTranslation('get_date_filter_options')
-  const userAttributeOption = useUserAttributeOption()
+  const { t } = useTranslation('get_date_filter_options');
+  const userAttributeOption = useUserAttributeOption();
   if (isParameter) {
     return [
       {
@@ -15,7 +15,7 @@ export const useDateFilterOptions = (isParameter: boolean) => {
         label: t('is on the day'),
       },
       userAttributeOption,
-    ]
+    ];
   }
   return [
     {
@@ -63,5 +63,5 @@ export const useDateFilterOptions = (isParameter: boolean) => {
       label: t('is not null'),
     },
     userAttributeOption,
-  ]
-}
+  ];
+};

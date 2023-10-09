@@ -24,7 +24,7 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
@@ -156,6 +156,6 @@ const resources = {
   summary: {
     'Value required': 'Värde krävs',
   },
-}
+};
 
-export const svSE = mergeLocaleObjects([], 'sv-SE', resources)
+export const svSE = mergeLocaleObjects([], 'sv-SE', resources);

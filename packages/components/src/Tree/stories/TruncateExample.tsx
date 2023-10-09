@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { TreeItem, Tree, TreeCollection } from '..'
-import { Heading } from '../../Text'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { TreeItem, Tree, TreeCollection } from '..';
+import { Heading } from '../../Text';
 
 export default function TruncateExample() {
   return (
@@ -47,5 +47,5 @@ export default function TruncateExample() {
         </Tree>
       </TreeCollection>
     </>
-  )
+  );
 }

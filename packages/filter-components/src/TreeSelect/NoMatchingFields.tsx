@@ -3,14 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { SpaceVertical, Heading, Paragraph } from '@looker/components'
-import React from 'react'
-import { useTranslation } from '../utils'
+import { SpaceVertical, Heading, Paragraph } from '@looker/components';
+import React, { useContext } from 'react';
+import { useTranslation } from '../utils';
+import { TreeSelectContext } from './TreeSelectContext';
 
-export const NoMatchingFields = ({ px }: { px?: string }) => {
-  const { t } = useTranslation('NoMatchingFields')
+export const NoMatchingFields = () => {
+  // Rendering inside the dropdown determines horizontal & vertical padding
+  const { withDropdown } = useContext(TreeSelectContext);
+  const { t } = useTranslation('NoMatchingFields');
   return (
-    <SpaceVertical px={px} gap="u1">
+    <SpaceVertical
+      px={withDropdown ? 'u2' : 'none'}
+      py={withDropdown ? 'none' : 'u2'}
+      gap="u1"
+    >
       <Heading as="h5" color="text1" fontWeight="bold">
         {t('No Matching Fields')}
       </Heading>
@@ -18,5 +25,5 @@ export const NoMatchingFields = ({ px }: { px?: string }) => {
         {t('Try Something Else')}
       </Paragraph>
     </SpaceVertical>
-  )
-}
+  );
+};

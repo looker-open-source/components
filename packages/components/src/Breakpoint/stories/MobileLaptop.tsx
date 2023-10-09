@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Paragraph, Breakpoint, Box2 } from '../..'
+import React from 'react';
+import { Paragraph, Breakpoint, Box2 } from '../..';
 export default function MobileLaptop() {
   return (
     <Box2>
@@ -15,5 +15,5 @@ export default function MobileLaptop() {
         </Box2>
       </Breakpoint>
     </Box2>
-  )
+  );
 }

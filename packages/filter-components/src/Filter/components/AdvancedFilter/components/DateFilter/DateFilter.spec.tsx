@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { DateFilterType, FilterModel } from '@looker/filter-expressions'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { DateFilter } from './DateFilter'
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { DateFilterType, FilterModel } from '@looker/filter-expressions';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { DateFilter } from './DateFilter';
 
 describe('Date filter test', () => {
   it('should render a DateFilter', () => {
     const item = {
       id: '1',
       type: 'anyvalue',
-    } as any as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>;
     renderWithTheme(
       <DateFilter
         item={item}
@@ -48,16 +48,16 @@ describe('Date filter test', () => {
         onAdd={jest.fn()}
         onRemove={jest.fn()}
       />
-    )
-    expect(screen.getByRole('textbox')).toHaveValue('is any time')
-  })
+    );
+    expect(screen.getByRole('textbox')).toHaveValue('is any time');
+  });
 
   it('should render a DateFilter with type day', () => {
     const item = {
       id: '1',
       type: 'day',
       day: 'yesterday',
-    } as any as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>;
     renderWithTheme(
       <DateFilter
         item={item}
@@ -71,17 +71,17 @@ describe('Date filter test', () => {
         onAdd={jest.fn()}
         onRemove={jest.fn()}
       />
-    )
+    );
 
-    expect(screen.getByDisplayValue('yesterday')).toBeVisible()
-    expect(screen.getByDisplayValue('matches (advanced)')).toBeVisible()
-  })
+    expect(screen.getByDisplayValue('yesterday')).toBeVisible();
+    expect(screen.getByDisplayValue('matches (advanced)')).toBeVisible();
+  });
 
   it('should render a DateFilter with time dropdown(s)', () => {
     const item = {
       id: '1',
       type: 'range',
-    } as any as FilterModel<DateFilterType>
+    } as any as FilterModel<DateFilterType>;
     renderWithTheme(
       <DateFilter
         item={item}
@@ -95,10 +95,10 @@ describe('Date filter test', () => {
         onAdd={jest.fn()}
         onRemove={jest.fn()}
       />
-    )
+    );
 
-    expect(screen.getAllByPlaceholderText('Select time')).toHaveLength(2)
-  })
+    expect(screen.getAllByPlaceholderText('Select time')).toHaveLength(2);
+  });
 
   it('New row should default to 1 month', () => {
     const item = {
@@ -107,8 +107,8 @@ describe('Date filter test', () => {
       type: 'past' as const,
       value: [3],
       unit: 'week',
-    }
-    const onAddMock = jest.fn()
+    };
+    const onAddMock = jest.fn();
 
     renderWithTheme(
       <DateFilter
@@ -123,9 +123,9 @@ describe('Date filter test', () => {
         onAdd={onAddMock}
         onRemove={jest.fn()}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByRole('button'))
+    fireEvent.click(screen.getByRole('button'));
     expect(onAddMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
@@ -139,6 +139,6 @@ describe('Date filter test', () => {
           true,
         ],
       ]
-    `)
-  })
-})
+    `);
+  });
+});

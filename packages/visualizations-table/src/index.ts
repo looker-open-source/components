@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Table'
-export * from './locales'
+export * from './Table';
+export * from './locales';

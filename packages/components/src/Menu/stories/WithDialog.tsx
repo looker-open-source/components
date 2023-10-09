@@ -2,17 +2,17 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { MouseEvent } from 'react'
-import React from 'react'
-import { Menu, MenuItem, Button, Dialog, DialogLayout } from '../..'
-import { useToggle } from '../../utils'
+import type { MouseEvent } from 'react';
+import React from 'react';
+import { Menu, MenuItem, Button, Dialog, DialogLayout } from '../..';
+import { useToggle } from '../../utils';
 
 export default function WithDialog() {
-  const { value, setOn, setOff } = useToggle()
+  const { value, setOn, setOff } = useToggle();
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
-    e.preventDefault()
-    setOn()
-  }
+    e.preventDefault();
+    setOn();
+  };
 
   return (
     <>
@@ -37,5 +37,5 @@ export default function WithDialog() {
         </DialogLayout>
       </Dialog>
     </>
-  )
+  );
 }

@@ -4,9 +4,9 @@
  */
 
 export interface Easings {
-  ease: string
-  easeIn: string
-  easeInBack: string
-  easeOut: string
-  easeOutBack: string
+  ease: string;
+  easeIn: string;
+  easeInBack: string;
+  easeOut: string;
+  easeOutBack: string;
 }

@@ -1,0 +1,14 @@
+/**
+ * Copyright (c) 2023 Google LLC
+ * SPDX-License-Identifier: MIT
+ */
+/// <reference types="react" />
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { ListColor } from './types';
+export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
+    color: ListColor;
+}
+export declare const ListItemWrapper: import("styled-components").StyledComponent<"li", import("styled-components").DefaultTheme, {
+    color: string;
+    role: import("react").AriaRole;
+}, "color" | "role">;

@@ -24,14 +24,14 @@
 
  */
 
-import type { Context } from 'react'
-import { useContext, useEffect } from 'react'
-import { useCallbackRef } from '../../../../utils'
+import type { Context } from 'react';
+import { useContext, useEffect } from 'react';
+import { useCallbackRef } from '../../../../utils';
 import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
-} from '../ComboboxContext'
-import { ComboboxActionType } from './state'
+} from '../ComboboxContext';
+import { ComboboxActionType } from './state';
 
 // calculate an element's visibility relative to the menu scroll position
 // returns `visible`, `above`, or `below`
@@ -40,22 +40,22 @@ const relativeElementVisibility = (
   containerScrollPosition: number,
   containerHeight = 0
 ) => {
-  const { offsetTop } = listElement
-  const isAbove = offsetTop < containerScrollPosition
-  const isBelow = offsetTop >= containerScrollPosition + containerHeight
-  return (isAbove && 'above') || (isBelow && 'below') || 'visible'
-}
+  const { offsetTop } = listElement;
+  const isAbove = offsetTop < containerScrollPosition;
+  const isBelow = offsetTop >= containerScrollPosition + containerHeight;
+  return (isAbove && 'above') || (isBelow && 'below') || 'visible';
+};
 
 export const isScrollable = (el: HTMLElement | null): boolean => {
   if (el) {
     if (el.scrollHeight > el.clientHeight) {
-      return true
+      return true;
     } else {
-      return isScrollable(el.parentElement)
+      return isScrollable(el.parentElement);
     }
   }
-  return false
-}
+  return false;
+};
 
 export function useOptionScroll<
   CProps extends ComboboxContextProps | ComboboxMultiContextProps
@@ -70,25 +70,25 @@ export function useOptionScroll<
     transition,
     listScrollPosition = 0,
     listClientRect = { height: 0 },
-  } = useContext(context)
+  } = useContext(context);
   /* scroll menu list to specified element on mount */
-  const [newTriggerElement, callbackRef] = useCallbackRef()
+  const [newTriggerElement, callbackRef] = useCallbackRef();
   useEffect(() => {
     if (scrollIntoView) {
       if (newTriggerElement) {
         if (isScrollable(newTriggerElement)) {
-          newTriggerElement.scrollIntoView()
+          newTriggerElement.scrollIntoView();
         }
       }
       if (!isActive) {
         transition &&
           transition(ComboboxActionType.NAVIGATE, {
             option: { label, value },
-          })
+          });
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newTriggerElement, scrollIntoView])
+  }, [newTriggerElement, scrollIntoView]);
 
   /* scroll menu while keyboard navigating */
   useEffect(() => {
@@ -97,16 +97,16 @@ export function useOptionScroll<
         newTriggerElement,
         listScrollPosition,
         listClientRect.height
-      )
+      );
       if (visibility !== 'visible') {
-        const attachToTop = visibility === 'above'
+        const attachToTop = visibility === 'above';
         if (isScrollable(newTriggerElement)) {
-          newTriggerElement.scrollIntoView(attachToTop) // false scrolls to bottom, true scrolls to top
+          newTriggerElement.scrollIntoView(attachToTop); // false scrolls to bottom, true scrolls to top
         }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newTriggerElement, isActive])
+  }, [newTriggerElement, isActive]);
 
-  return callbackRef
+  return callbackRef;
 }

@@ -24,11 +24,11 @@
 
  */
 
-import React from 'react'
-import { Box } from '../../Layout'
+import React from 'react';
+import { Box } from '../../Layout';
 
-import { ContentOverflow } from './ContentOverflow'
-import { EdgeOverflow } from './EdgeOverflow'
+import { ContentOverflow } from './ContentOverflow';
+import { EdgeOverflow } from './EdgeOverflow';
 
 export default function OverflowExamples() {
   return (
@@ -96,5 +96,5 @@ export default function OverflowExamples() {
       <p>....</p>
       <p>....</p>
     </Box>
-  )
+  );
 }

@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import map from 'lodash/map'
-import get from 'lodash/get'
-import { DEFAULT_EMPTY_FIELDS } from '.'
-import type { SDKRecord, CAll, Fields } from '../types'
+import map from 'lodash/map';
+import get from 'lodash/get';
+import { DEFAULT_EMPTY_FIELDS } from '.';
+import type { SDKRecord, CAll, Fields } from '../types';
 
-const ENDASH = '\u2013'
+const ENDASH = '\u2013';
 
 export type Legend = {
-  dimension: string
-  measure: string
-}
+  dimension: string;
+  measure: string;
+};
 
 export const generateLegend = (
   fields: Fields = DEFAULT_EMPTY_FIELDS,
@@ -22,14 +22,14 @@ export const generateLegend = (
   const defaultDimensionLabel = map(
     fields.dimensions,
     (d: SDKRecord) => d.label
-  ).join(` ${ENDASH} `)
+  ).join(` ${ENDASH} `);
   const defaultMeasureLabel = map(
     fields.measures,
     (m: SDKRecord) => m.label
-  ).join(` ${ENDASH} `)
+  ).join(` ${ENDASH} `);
 
   return {
     dimension: get(config, 'x_axis_label', defaultDimensionLabel) as string,
     measure: get(config, 'y_axes[0].label', defaultMeasureLabel) as string,
-  }
-}
+  };
+};

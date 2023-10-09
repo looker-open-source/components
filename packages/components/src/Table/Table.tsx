@@ -8,15 +8,15 @@ import type {
   SpaceProps,
   BorderProps,
   LayoutProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   reset,
   space,
   border,
   layout,
   shouldForwardProp,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface TableProps
   extends SpaceProps,
@@ -35,4 +35,4 @@ export const Table = styled.table
   ${border}
   border-collapse: collapse;
   color: ${({ theme: { colors } }) => colors.text5};
-`
+`;

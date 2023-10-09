@@ -24,7 +24,7 @@
 
  */
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   Pagination,
   DataTable,
@@ -33,12 +33,12 @@ import {
   DataTableCell,
   Flex,
   Box,
-} from '../..'
-import type { DataTableColumns } from '../../'
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function WithDataTable() {
-  const [currentPage, setCurrentPage] = useState(1)
-  const cheesePerPage = 1
+  const [currentPage, setCurrentPage] = useState(1);
+  const cheesePerPage = 1;
   const data = [
     {
       id: 1,
@@ -56,8 +56,8 @@ export default function WithDataTable() {
       id: 4,
       name: `Cheddar`,
     },
-  ]
-  const totalPages = data.length / cheesePerPage
+  ];
+  const totalPages = data.length / cheesePerPage;
 
   const columns: DataTableColumns = [
     {
@@ -70,7 +70,7 @@ export default function WithDataTable() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
   const items = data.map(({ id, name }, index) => {
     return (
@@ -89,8 +89,8 @@ export default function WithDataTable() {
           <DataTableCell>{name}</DataTableCell>
         </DataTableItem>
       )
-    )
-  })
+    );
+  });
 
   return (
     <Flex flexDirection="column" alignItems="center">
@@ -105,5 +105,5 @@ export default function WithDataTable() {
         onChange={setCurrentPage}
       />
     </Flex>
-  )
+  );
 }

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function FloatingLabelDefaultValue(props: FieldTextProps) {
   const {
@@ -19,7 +19,7 @@ export default function FloatingLabelDefaultValue(props: FieldTextProps) {
     iconBefore = <MaterialIcons.VerifiedUser />,
     validationMessage = { message: 'Error Message', type: 'error' },
     ...restProps
-  } = props
+  } = props;
   return (
     <ExtendComponentsThemeProvider
       themeCustomizations={{ defaults: { externalLabel: false } }}
@@ -35,5 +35,5 @@ export default function FloatingLabelDefaultValue(props: FieldTextProps) {
         {...restProps}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

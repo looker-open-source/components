@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DialogFooter } from '../../..'
+import React from 'react';
+import { DialogFooter } from '../../..';
 
 export default function Basic() {
-  return <DialogFooter>Footer Text</DialogFooter>
+  return <DialogFooter>Footer Text</DialogFooter>;
 }

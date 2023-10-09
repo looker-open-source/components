@@ -1,17 +1,19 @@
-import { Button } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyCritical from '!!raw-loader!./Critical'
-import storyDisabled from '!!raw-loader!./Disabled'
-import storyIconAfter from '!!raw-loader!./IconAfter'
-import storyIconBefore from '!!raw-loader!./IconBefore'
-import storyFullWidth from '!!raw-loader!./FullWidth'
-import storyLarge from '!!raw-loader!./Large'
-import storyNeutral from '!!raw-loader!./Neutral'
-import storyMedium from '!!raw-loader!./Medium'
-import storySmall from '!!raw-loader!./Small'
-import storyXSmall from '!!raw-loader!./XSmall'
+import { Button } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyCritical from './Critical?raw';
+import storyDisabled from './Disabled?raw';
+import storyAriaDisabled from './AriaDisabled?raw';
+import storyIconAfter from './IconAfter?raw';
+import storyIconBefore from './IconBefore?raw';
+import storyFullWidth from './FullWidth?raw';
+import storyLarge from './Large?raw';
+import storyNeutral from './Neutral?raw';
+import storyPositive from './Positive?raw';
+import storyMedium from './Medium?raw';
+import storySmall from './Small?raw';
+import storyXSmall from './XSmall?raw';
 
 <Meta component={Button} title="Docs/Button" />
 
@@ -32,6 +34,10 @@ Use a default button for the most frequently used action or most important actio
 
 <Editor code={storyNeutral} />
 
+`Positive` variants should be used sparingly, but can be integrated into a successful state update.
+
+<Editor code={storyPositive} />
+
 ## Size
 
 Use the size property on a `<Button />` to modify the size the button rendered. You can combine it with the `mode` property to get the correct style and size of button you need.
@@ -50,6 +56,13 @@ Use the `fullWidth` property on a `<Button />` and it will set its width to 100%
 ## Disabled
 
 Use a disabled button to indicate to the user what action will be possible on a page once a prerequisite action is taken. Disabled buttons do not respond to user interaction.
+
+<Editor code={storyDisabled} />
+
+## Aria Disabled
+
+Use aria disabled to capture the disabled styles but still have interaction events to work. This is ideal for when you want the button to appear as disabled but still trigger rendering of a Tooltip.
+**Note:** if you don't want the `onClick` to function run, you'll need to account for that in your code.
 
 <Editor code={storyDisabled} />
 

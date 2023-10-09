@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function Borders() {
   return (
@@ -19,5 +19,5 @@ export default function Borders() {
         I've got borders.
       </Box>
     </Space>
-  )
+  );
 }

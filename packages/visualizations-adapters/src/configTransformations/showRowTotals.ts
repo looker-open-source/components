@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CTable } from '../adapters'
-import type { ConfigHelper } from '../types'
+import type { CTable } from '../adapters';
+import type { ConfigHelper } from '../types';
 
 /**
  * Sets default show_row_totals value to true
@@ -14,8 +14,8 @@ export const showRowTotals: ConfigHelper<CTable> = ({
   data,
   fields,
 }) => {
-  const { hide_row_totals = false, ...restConfig } = config
-  const show_row_totals = !hide_row_totals
+  const { hide_row_totals = false, ...restConfig } = config;
+  const show_row_totals = !hide_row_totals;
   return {
     config: {
       show_row_totals,
@@ -23,5 +23,5 @@ export const showRowTotals: ConfigHelper<CTable> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Select } from '../../Select'
-import { Space } from '../../../../Layout'
-import { Text } from '../../../../Text'
-import { InputColor } from '../InputColor'
+import React, { useState } from 'react';
+import { Select } from '../../Select';
+import { Space } from '../../../../Layout';
+import { Text } from '../../../../Text';
+import { InputColor } from '../InputColor';
 
 export default function ControlledColor() {
-  const [color, setColor] = useState('red')
+  const [color, setColor] = useState('red');
 
   function handleChange(value: string) {
-    setColor(value)
+    setColor(value);
   }
 
-  function handleColorChange(e: React.FormEvent<HTMLInputElement>) {
-    setColor(e.currentTarget.value)
+  function handleColorChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setColor(e.target.value);
   }
   return (
     <Space>
@@ -30,5 +30,5 @@ export default function ControlledColor() {
       <InputColor value={color} onChange={handleColorChange} />
       <Text>{color}</Text>
     </Space>
-  )
+  );
 }

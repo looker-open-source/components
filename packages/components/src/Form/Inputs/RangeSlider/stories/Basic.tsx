@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { RangeSlider } from '..'
-import type { RangeSliderProps } from '../'
+import React from 'react';
+import { RangeSlider } from '..';
+import type { RangeSliderProps } from '../';
 
 export default function Basic(props: RangeSliderProps) {
-  return <RangeSlider {...props} />
+  return <RangeSlider {...props} />;
 }

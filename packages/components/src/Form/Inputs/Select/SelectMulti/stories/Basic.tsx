@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SelectMulti } from '..'
-import type { SelectMultiProps } from '../'
+import React from 'react';
+import { SelectMulti } from '..';
+import type { SelectMultiProps } from '../';
 
 export default function Basic(props: SelectMultiProps) {
   return (
@@ -25,5 +25,5 @@ export default function Basic(props: SelectMultiProps) {
       flex={1}
       {...props}
     />
-  )
+  );
 }

@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Card, theme } from '@looker/components'
-import styled from 'styled-components'
+import { Card, theme } from '@looker/components';
+import styled from 'styled-components';
 
 export const StyledCard = styled(Card)`
   background: ${theme.colors.text4};
@@ -14,4 +14,4 @@ export const StyledCard = styled(Card)`
   height: auto;
   margin-bottom: 1rem;
   padding: 1rem;
-`
+`;

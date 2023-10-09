@@ -6,28 +6,28 @@ import type {
   FilterASTNode,
   FilterItemToStringMapType,
   FilterModel,
-} from '../../types'
-import { treeToString } from '../tree/tree_to_string'
-import { userAttributeToString } from '../user_attribute/user_attribute_to_string'
+} from '../../types';
+import { treeToString } from '../tree/tree_to_string';
+import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
 
 const locationExactToString = ({ lat, lon }: FilterModel): string =>
-  lat && lon ? `${lat}, ${lon}` : ''
+  lat && lon ? `${lat}, ${lon}` : '';
 
 const circleToString = ({ distance, unit, lat, lon }: FilterModel): string =>
   distance && unit && lat && lon
     ? `${distance} ${unit} from ${lat}, ${lon}`
-    : ''
+    : '';
 
 const boxToString = ({ lon, lat, lon1, lat1 }: FilterModel): string =>
   lon && lat && lon1 && lat1
     ? `inside box from ${lat}, ${lon} to ${lat1}, ${lon1}`
-    : ''
+    : '';
 
-const anyvalue = () => ''
+const anyvalue = () => '';
 
-const nullToString = () => 'null'
+const nullToString = () => 'null';
 
-const notNullToString = () => '-null'
+const notNullToString = () => '-null';
 
 const filterToStringMap: FilterItemToStringMapType = {
   location: locationExactToString,
@@ -37,12 +37,12 @@ const filterToStringMap: FilterItemToStringMapType = {
   null: nullToString,
   notnull: notNullToString,
   user_attribute: userAttributeToString,
-}
+};
 
 const locationToExpression = (item: FilterModel): string => {
-  const toStringFunction = filterToStringMap[item.type]
-  return toStringFunction?.(item) || ''
-}
+  const toStringFunction = filterToStringMap[item.type];
+  return toStringFunction?.(item) || '';
+};
 
 export const locationToString = (root: FilterASTNode) =>
-  treeToString(root, locationToExpression)
+  treeToString(root, locationToExpression);

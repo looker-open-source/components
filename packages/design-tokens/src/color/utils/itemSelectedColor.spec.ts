@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { itemSelectedColor } from './itemSelectedColor'
+import { itemSelectedColor } from './itemSelectedColor';
 
 test('itemSelectedColor', () => {
-  expect(itemSelectedColor('#cc0000')).toEqual('#e00000')
-})
+  expect(itemSelectedColor('#cc0000')).toEqual('#e00000');
+});

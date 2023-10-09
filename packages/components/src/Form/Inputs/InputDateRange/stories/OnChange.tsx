@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { RangeModifier } from '../../../../Calendar'
-import { Space, SpaceVertical } from '../../../../Layout'
-import { DateFormat } from '../../DateFormat'
-import { InputDateRange } from '../InputDateRange'
+import React, { useState } from 'react';
+import type { RangeModifier } from '../../../../Calendar';
+import { Space, SpaceVertical } from '../../../../Layout';
+import { DateFormat } from '../../DateFormat';
+import { InputDateRange } from '../InputDateRange';
 
 export default function OnChange() {
   const [selectedDate, setSelectedDate] = useState<RangeModifier>({
     from: new Date(),
     to: new Date(),
-  })
+  });
   const handleChange = (dateRange: RangeModifier) => {
-    setSelectedDate(dateRange)
-  }
+    setSelectedDate(dateRange);
+  };
   return (
     <SpaceVertical>
       <Space gap="xsmall">
@@ -27,5 +27,5 @@ export default function OnChange() {
       </Space>
       <InputDateRange onChange={handleChange} value={selectedDate} />
     </SpaceVertical>
-  )
+  );
 }

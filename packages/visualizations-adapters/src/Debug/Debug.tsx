@@ -3,27 +3,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Accordion2 } from '@looker/components'
-import type { SDKRecord, Fields, CAll } from '../types'
-import type { IError } from '@looker/sdk'
-import { StaticTable } from '../StaticTable'
-import isEmpty from 'lodash/isEmpty'
-import { useTranslation } from '../utils'
-import { KeyValueList } from '../KeyValueList'
+import React from 'react';
+import { Accordion2 } from '@looker/components';
+import type { SDKRecord, Fields, CAll } from '../types';
+import type { IError } from '@looker/sdk';
+import { StaticTable } from '../StaticTable';
+import isEmpty from 'lodash/isEmpty';
+import { useTranslation } from '../utils';
+import { KeyValueList } from '../KeyValueList';
 
 type DebugProps = {
-  ok?: boolean
-  data?: SDKRecord[]
-  error?: IError
-  config?: Partial<CAll>
-  fields?: Fields
-}
+  ok?: boolean;
+  data?: SDKRecord[];
+  error?: IError;
+  config?: Partial<CAll>;
+  fields?: Fields;
+};
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 export const Debug = ({ ok, data, error, config = {}, fields }: DebugProps) => {
-  const { t } = useTranslation('Debug')
+  const { t } = useTranslation('Debug');
 
   return (
     <>
@@ -54,5 +54,5 @@ export const Debug = ({ ok, data, error, config = {}, fields }: DebugProps) => {
         </Accordion2>
       )}
     </>
-  )
-}
+  );
+};

@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import { Box2, ButtonGroup, ButtonItem, Paragraph } from '../../..'
+import React, { useState } from 'react';
+import { Box2, ButtonGroup, ButtonItem, Paragraph } from '../../..';
 
 export default function Basic() {
-  const [value, setValue] = useState<string[]>([])
+  const [value, setValue] = useState<string[]>([]);
   return (
     <Box2>
       <ButtonGroup value={value} onChange={setValue}>
@@ -20,5 +20,5 @@ export default function Basic() {
         ''
       )}
     </Box2>
-  )
+  );
 }

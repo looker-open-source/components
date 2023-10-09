@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { MessageBar, Space } from '../..'
+import React from 'react';
+import { MessageBar, Space } from '../..';
 
 export default function Intent() {
   return (
@@ -14,5 +14,5 @@ export default function Intent() {
       <MessageBar intent="positive">Inform</MessageBar>
       <MessageBar intent="warn">Neutral</MessageBar>
     </Space>
-  )
+  );
 }

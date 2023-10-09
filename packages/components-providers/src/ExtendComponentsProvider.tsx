@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ThemeCustomizations } from '@looker/design-tokens'
-import { generateTheme } from '@looker/design-tokens'
-import { ThemeProvider, useTheme } from 'styled-components'
-import React, { useMemo } from 'react'
-import type { ReactNode } from 'react'
+import type { ThemeCustomizations } from '@looker/design-tokens';
+import { generateTheme } from '@looker/design-tokens';
+import { ThemeProvider, useTheme } from 'styled-components';
+import React, { useMemo } from 'react';
+import type { ReactNode } from 'react';
 
 export interface ExtendComponentsTheme {
-  themeCustomizations?: ThemeCustomizations
-  children?: ReactNode
+  themeCustomizations?: ThemeCustomizations;
+  children?: ReactNode;
 }
 
 /**
@@ -26,11 +26,11 @@ export const ExtendComponentsThemeProvider = ({
   children,
   themeCustomizations,
 }: ExtendComponentsTheme) => {
-  const parentTheme = useTheme()
+  const parentTheme = useTheme();
 
   const theme = useMemo(() => {
-    return generateTheme(parentTheme, themeCustomizations)
-  }, [parentTheme, themeCustomizations])
+    return generateTheme(parentTheme, themeCustomizations);
+  }, [parentTheme, themeCustomizations]);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
-}
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+};

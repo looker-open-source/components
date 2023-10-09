@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react';
 
 export function usePrevious<T>(value: T) {
-  const ref = useRef<T>()
+  const ref = useRef<T>();
 
   // Store current value in ref
   useEffect(() => {
-    ref.current = value
-  }, [value])
+    ref.current = value;
+  }, [value]);
 
   // Return previous value (happens before update in useEffect above)
-  return ref.current
+  return ref.current;
 }

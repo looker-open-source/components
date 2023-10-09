@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { GrammarTestItem } from './grammar_test_utils'
+import type { GrammarTestItem } from './grammar_test_utils';
 
 // prettier-ignore
 export const dateExpressionTestItems: GrammarTestItem = [

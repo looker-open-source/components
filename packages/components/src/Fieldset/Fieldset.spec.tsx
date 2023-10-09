@@ -24,12 +24,12 @@
 
  */
 
-import 'jest-styled-components'
-import React, { useState } from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { FieldText } from '../Form'
-import { Fieldset } from './Fieldset'
+import 'jest-styled-components';
+import React, { useState } from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { FieldText } from '../Form';
+import { Fieldset } from './Fieldset';
 
 const fieldTexts = (
   <>
@@ -37,58 +37,58 @@ const fieldTexts = (
     <FieldText label="two" name="name2" id="text-2" />
     <FieldText label="three" name="nam3" id="text-3" />
   </>
-)
+);
 
-const globalConsole = global.console
-const warnMock = jest.fn()
+const globalConsole = global.console;
+const warnMock = jest.fn();
 
 beforeEach(() => {
-  jest.useFakeTimers()
+  jest.useFakeTimers();
   global.console = {
     warn: warnMock,
-  } as unknown as Console
-})
+  } as unknown as Console;
+});
 
 afterEach(() => {
-  global.console = globalConsole
-})
+  global.console = globalConsole;
+});
 
 describe('Fieldset', () => {
   test('Basic', () => {
-    renderWithTheme(<Fieldset>{fieldTexts}</Fieldset>)
-    expect(screen.getByText('three')).toBeInTheDocument()
-  })
+    renderWithTheme(<Fieldset>{fieldTexts}</Fieldset>);
+    expect(screen.getByText('three')).toBeInTheDocument();
+  });
 
   test('Accordion w/o Legend warning', () => {
-    renderWithTheme(<Fieldset accordion>{fieldTexts}</Fieldset>)
+    renderWithTheme(<Fieldset accordion>{fieldTexts}</Fieldset>);
     expect(warnMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
           "Please provide a value for the \\"legend\\" prop if using accordion mode",
         ],
       ]
-    `)
-  })
+    `);
+  });
 
   test('Inline', () => {
-    renderWithTheme(<Fieldset inline>{fieldTexts}</Fieldset>)
-    expect(screen.getByText('three')).toBeInTheDocument()
-  })
+    renderWithTheme(<Fieldset inline>{fieldTexts}</Fieldset>);
+    expect(screen.getByText('three')).toBeInTheDocument();
+  });
 
   test('Legend', () => {
-    renderWithTheme(<Fieldset legend="Legend">{fieldTexts}</Fieldset>)
-    expect(screen.getByText('Legend')).toBeInTheDocument()
-  })
+    renderWithTheme(<Fieldset legend="Legend">{fieldTexts}</Fieldset>);
+    expect(screen.getByText('Legend')).toBeInTheDocument();
+  });
 
   test('Special Legend', () => {
-    renderWithTheme(<Fieldset legend={<>Legend</>}>{fieldTexts}</Fieldset>)
-    expect(screen.getByText('Legend')).toBeInTheDocument()
-  })
+    renderWithTheme(<Fieldset legend={<>Legend</>}>{fieldTexts}</Fieldset>);
+    expect(screen.getByText('Legend')).toBeInTheDocument();
+  });
 
   test('Wrap', () => {
-    renderWithTheme(<Fieldset wrap>{fieldTexts}</Fieldset>)
-    expect(screen.getByText('three')).toBeInTheDocument()
-  })
+    renderWithTheme(<Fieldset wrap>{fieldTexts}</Fieldset>);
+    expect(screen.getByText('three')).toBeInTheDocument();
+  });
 
   describe('Accordion mode', () => {
     test('Renders legend and children (on legend click)', () => {
@@ -96,49 +96,49 @@ describe('Fieldset', () => {
         <Fieldset legend="Legend" accordion>
           {fieldTexts}
         </Fieldset>
-      )
+      );
 
-      expect(screen.queryByText('one')).not.toBeInTheDocument()
-      expect(screen.queryByText('two')).not.toBeInTheDocument()
-      expect(screen.queryByText('three')).not.toBeInTheDocument()
-      fireEvent.click(screen.getByText('Legend'))
-      screen.getByText('one')
-      screen.getByText('two')
-      screen.getByText('three')
-    })
+      expect(screen.queryByText('one')).not.toBeInTheDocument();
+      expect(screen.queryByText('two')).not.toBeInTheDocument();
+      expect(screen.queryByText('three')).not.toBeInTheDocument();
+      fireEvent.click(screen.getByText('Legend'));
+      screen.getByText('one');
+      screen.getByText('two');
+      screen.getByText('three');
+    });
 
     test('Renders children by default when defaultOpen === true', () => {
       renderWithTheme(
         <Fieldset legend="Legend" accordion defaultOpen>
           {fieldTexts}
         </Fieldset>
-      )
+      );
 
-      screen.getByText('one')
-      screen.getByText('two')
-      screen.getByText('three')
-    })
+      screen.getByText('one');
+      screen.getByText('two');
+      screen.getByText('three');
+    });
 
     test('Triggers onClose and onOpen callbacks on legend click', () => {
-      const onClose = jest.fn()
-      const onOpen = jest.fn()
+      const onClose = jest.fn();
+      const onOpen = jest.fn();
 
       renderWithTheme(
         <Fieldset legend="Legend" accordion onClose={onClose} onOpen={onOpen}>
           {fieldTexts}
         </Fieldset>
-      )
+      );
 
-      const disclosure = screen.getByText('Legend')
-      fireEvent.click(disclosure)
-      expect(onOpen).toHaveBeenCalled()
-      fireEvent.click(disclosure)
-      expect(onClose).toHaveBeenCalled()
-    })
+      const disclosure = screen.getByText('Legend');
+      fireEvent.click(disclosure);
+      expect(onOpen).toHaveBeenCalled();
+      fireEvent.click(disclosure);
+      expect(onClose).toHaveBeenCalled();
+    });
 
     test('Shows and hides children on legend click with provided isOpen and toggleOpen props', () => {
       const Wrapper = () => {
-        const [isOpen, setIsOpen] = useState(false)
+        const [isOpen, setIsOpen] = useState(false);
         return (
           <Fieldset
             legend="Legend"
@@ -148,18 +148,18 @@ describe('Fieldset', () => {
           >
             {fieldTexts}
           </Fieldset>
-        )
-      }
+        );
+      };
 
-      renderWithTheme(<Wrapper />)
+      renderWithTheme(<Wrapper />);
 
-      expect(screen.queryByText('one')).not.toBeInTheDocument()
-      expect(screen.queryByText('two')).not.toBeInTheDocument()
-      expect(screen.queryByText('three')).not.toBeInTheDocument()
-      fireEvent.click(screen.getByText('Legend'))
-      screen.getByText('one')
-      screen.getByText('two')
-      screen.getByText('three')
-    })
-  })
-})
+      expect(screen.queryByText('one')).not.toBeInTheDocument();
+      expect(screen.queryByText('two')).not.toBeInTheDocument();
+      expect(screen.queryByText('three')).not.toBeInTheDocument();
+      fireEvent.click(screen.getByText('Legend'));
+      screen.getByText('one');
+      screen.getByText('two');
+      screen.getByText('three');
+    });
+  });
+});

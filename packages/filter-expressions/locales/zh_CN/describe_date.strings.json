@@ -6,61 +6,61 @@
     "value": "{{prefix}} {{dateTime}}"
   },
   "ago": {
-    "value": "以前"
+    "value": "前"
   },
   "from now": {
-    "value": "从现在起"
+    "value": "后"
   },
   "is any time": {
-    "value": "任意时间"
+    "value": "在任意时间"
   },
   "is before": {
     "value": "早于"
   },
   "is day": {
-    "value": "在 {{day}} 这一天"
+    "value": "是{{day}}"
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "从 {{dateTimeStart}} 到 {{dateTimeEnd}}"
+    "value": "从 {{dateTimeStart}}到 {{dateTimeEnd}}"
   },
   "is in month year": {
-    "value": "在 {{year}} 年 {{month}} 之内"
+    "value": "在 {{year}} {{month}}"
   },
   "is in the last": {
-    "value": "在过去 {{describeInterval}} 之内"
+    "value": "在上一个{{describeInterval}}"
   },
   "is in the year year": {
-    "value": "在 {{year}} 年之内"
+    "value": "在 {{year}} 年"
   },
   "is interval ago": {
-    "value": "在 {{interval}} 之前"
+    "value": "{{interval}}前"
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "{{intervalType}} 在 {{intervalStart}} 到 {{intervalEnd}} 期间"
+    "value": "为 {{intervalStart}} {{intervalType}}，为期 {{intervalEnd}}"
   },
   "is not null": {
-    "value": "不为空值"
+    "value": "不是 null"
   },
   "is on dateTime": {
-    "value": "在 {{dateTime}} 这一时间"
+    "value": "在 {{dateTime}}"
   },
   "is on or after": {
-    "value": "等于或晚于"
+    "value": "不早于"
   },
   "is previous unitLabel": {
-    "value": "上一 {{unitLabel}}"
+    "value": "上个{{unitLabel}}"
   },
   "is type unitLabel": {
-    "value": "为 {{type}} {{unitLabel}}"
+    "value": "是{{type}} {{unitLabel}}"
   },
   "next": {
-    "value": "下一步"
+    "value": "下一个"
   },
   "prefix interval timePassed": {
     "value": "{{prefix}} {{interval}} {{timePassed}}"
   },
   "prefix now": {
-    "value": "{{prefix}} 现在"
+    "value": "{{prefix}}现在"
   },
   "this": {
     "value": "此"

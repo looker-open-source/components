@@ -39,9 +39,9 @@ import {
   TableChart,
   Toc,
   WaterfallChart,
-} from '@styled-icons/material'
+} from '@styled-icons/material';
 
-import React from 'react'
+import React from 'react';
 
 export const options = [
   { label: 'Apples', value: '1' },
@@ -49,35 +49,35 @@ export const options = [
   { label: 'Oranges', value: '3' },
   { label: 'Pineapples', value: '4' },
   { label: 'Kiwis', value: '5' },
-]
+];
 export const options2 = [
   { label: 'Apples2', value: '12' },
   { label: 'Bananas2', value: '22' },
   { label: 'Oranges2', value: '32' },
   { label: 'Pineapples2', value: '42' },
   { label: 'Kiwis2', value: '52' },
-]
+];
 export const options3 = [
   { label: 'Apples3', value: '13' },
   { label: 'Bananas3', value: '23' },
   { label: 'Oranges3', value: '33' },
   { label: 'Pineapples3', value: '43' },
   { label: 'Kiwis3', value: '53' },
-]
+];
 export const options4 = [
   { label: 'Apples4', value: '14' },
   { label: 'Bananas4', value: '24' },
   { label: 'Oranges4', value: '34' },
   { label: 'Pineapples4', value: '44' },
   { label: 'Kiwis4', value: '54' },
-]
+];
 export const options5 = [
   { label: 'Apples5', value: '15' },
   { label: 'Bananas5', value: '25' },
   { label: 'Oranges5', value: '35' },
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
-]
+];
 
 export const optionGroup = {
   label: 'CARS',
@@ -85,7 +85,7 @@ export const optionGroup = {
     { description: 'Great resale value', label: 'Honda', value: 'honda' },
     { description: 'Most popular make', label: 'Toyota', value: 'toyota' },
   ],
-}
+};
 
 export const optionsWithGroups = [
   { options },
@@ -94,13 +94,13 @@ export const optionsWithGroups = [
   { options: options3 },
   { options: options4 },
   { options: options5 },
-]
+];
 
 export const cheeseOptions = [
   { label: 'Cheddar', value: 'cheddar' },
   { label: 'Gouda', value: 'gouda' },
   { label: 'Swiss', value: 'swiss' },
-]
+];
 
 export const iconOptions = [
   { icon: <AutoGraph />, label: 'Area', value: 'area' },
@@ -121,4 +121,4 @@ export const iconOptions = [
   { icon: <AutoGraph />, label: 'Timeline', value: 'timeline' },
   { icon: <WaterfallChart />, label: 'Waterfall', value: 'waterfall' },
   { icon: <LineStyle />, label: 'Word Cloud', value: 'wordcloud' },
-]
+];

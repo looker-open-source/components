@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ReactNode } from 'react'
-import { Span } from '../Text/Span'
-import { useTooltip } from '../Tooltip'
-import { isOverflowing } from '../utils'
+import React from 'react';
+import type { ReactNode } from 'react';
+import { Span } from '../Text/Span';
+import { useTooltip } from '../Tooltip';
+import { isOverflowing } from '../utils';
 
 export type UseTruncateTooltipProps = {
-  children: ReactNode
-  description?: string
-  element?: HTMLElement | null
-}
+  children: ReactNode;
+  description?: string;
+  element?: HTMLElement | null;
+};
 
 export const useTruncateTooltip = ({
   children,
@@ -39,5 +39,5 @@ export const useTruncateTooltip = ({
     placement: 'top-start',
     textAlign: 'left',
     width: 'auto',
-  })
-}
+  });
+};

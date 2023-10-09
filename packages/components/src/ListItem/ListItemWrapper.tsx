@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { ListColor } from '../List'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { ListColor } from './types';
 
 export interface ListItemWrapperProps extends CompatibleHTMLProps<HTMLElement> {
-  color: ListColor
+  color: ListColor;
 }
 
 export const ListItemWrapper = styled.li.attrs(
@@ -31,4 +31,4 @@ export const ListItemWrapper = styled.li.attrs(
       color: ${({ theme: { colors } }) => colors.text1};
     }
   }
-`
+`;

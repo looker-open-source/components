@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ButtonTransparent } from '@looker/components'
-import { PopoverLayout } from '../..'
+import React from 'react';
+import { ButtonTransparent } from '@looker/components';
+import { PopoverLayout } from '../..';
 
 export default function Full() {
   return (
@@ -19,5 +19,5 @@ export default function Full() {
     >
       We the People of the United States
     </PopoverLayout>
-  )
+  );
 }

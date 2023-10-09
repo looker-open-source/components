@@ -12,16 +12,16 @@
     "value": "liegt zwischen"
   },
   "is greater": {
-    "value": "ist >"
+    "value": "ist >"
   },
   "is greater equal": {
-    "value": "ist >="
+    "value": "ist >="
   },
   "is less": {
-    "value": "ist <"
+    "value": "ist <"
   },
   "is less equal": {
-    "value": "ist <="
+    "value": "ist <="
   },
   "is not": {
     "value": "ist nicht"
@@ -36,9 +36,9 @@
     "value": "ist null"
   },
   "left exclusive": {
-    "value": "(ausschließlich links]"
+    "value": "(links ausschließlich]"
   },
   "right exclusive": {
-    "value": "[ausschließlich rechts]"
+    "value": "[rechts ausschließlich)"
   }
 }

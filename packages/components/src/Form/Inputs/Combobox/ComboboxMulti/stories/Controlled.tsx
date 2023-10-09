@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { ComboboxMultiProps, ComboboxOptionObject } from '../..'
-import { ComboboxMultiInput } from '../../ComboboxMultiInput'
-import { ComboboxMultiOption } from '../../ComboboxMultiOption'
-import { ComboboxMultiList } from '../../ComboboxList'
-import { ComboboxMulti } from '..'
+import React, { useState } from 'react';
+import type { ComboboxMultiProps, ComboboxOptionObject } from '../..';
+import { ComboboxMultiInput } from '../../ComboboxMultiInput';
+import { ComboboxMultiOption } from '../../ComboboxMultiOption';
+import { ComboboxMultiList } from '../../ComboboxList';
+import { ComboboxMulti } from '..';
 
 export default function Controlled(props: ComboboxMultiProps) {
   const {
@@ -16,12 +16,12 @@ export default function Controlled(props: ComboboxMultiProps) {
     values: valuesProp = [{ value: 'Bananas' }],
     onChange: _onChange,
     ...restProps
-  } = props
+  } = props;
 
-  const [options, setOptions] = useState<ComboboxOptionObject[]>(valuesProp)
+  const [options, setOptions] = useState<ComboboxOptionObject[]>(valuesProp);
   const handleMultiChange = (newOptions: ComboboxOptionObject[]) => {
-    setOptions(newOptions)
-  }
+    setOptions(newOptions);
+  };
 
   return (
     <ComboboxMulti
@@ -39,5 +39,5 @@ export default function Controlled(props: ComboboxMultiProps) {
         <ComboboxMultiOption value="Pineapples" />
       </ComboboxMultiList>
     </ComboboxMulti>
-  )
+  );
 }

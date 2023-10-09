@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Density, List, ListItem } from '../..'
+import React from 'react';
+import { Density, List, ListItem } from '../..';
 
 export default function Basic() {
   return (
@@ -15,5 +15,5 @@ export default function Basic() {
         <ListItem>Swiss</ListItem>
       </List>
     </Density>
-  )
+  );
 }

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import type { AccordionIndicatorProps } from '../../Accordion2/types'
+import React from 'react';
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown';
+import { ArrowRight } from '@styled-icons/material/ArrowRight';
+import type { AccordionIndicatorProps } from '../../Accordion2/types';
 
 export const indicatorDefaults: Required<
   Pick<AccordionIndicatorProps, 'indicatorIcons' | 'indicatorPosition'>
@@ -16,4 +16,4 @@ export const indicatorDefaults: Required<
     open: <ArrowDropDown />,
   },
   indicatorPosition: 'left',
-}
+};

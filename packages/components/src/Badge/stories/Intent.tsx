@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Badge, Space } from '../..'
-import type { BadgeProps } from '../Badge'
+import React from 'react';
+import { Badge, Space } from '../..';
+import type { BadgeProps } from '../Badge';
 
 export default function Intent(props: BadgeProps) {
   return (
@@ -29,5 +29,5 @@ export default function Intent(props: BadgeProps) {
         Critical
       </Badge>
     </Space>
-  )
+  );
 }

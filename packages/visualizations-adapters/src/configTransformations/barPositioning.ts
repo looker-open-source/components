@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CBar, CColumn } from '../adapters'
-import type { ConfigHelper, RawApiConfigResponse } from '../types'
+import type { CBar, CColumn } from '../adapters';
+import type { ConfigHelper, RawApiConfigResponse } from '../types';
 
-type AllKeys = RawApiConfigResponse['stacking'] | 'default'
+type AllKeys = RawApiConfigResponse['stacking'] | 'default';
 
 const GROUP_MODES: Record<AllKeys, CBar['positioning']> = {
   default: 'grouped',
@@ -15,7 +15,7 @@ const GROUP_MODES: Record<AllKeys, CBar['positioning']> = {
   overlay: 'grouped',
   percent: 'percent',
   stacked: 'stacked',
-}
+};
 
 /**
  * Convert 'stacking' prop to 'positioning' and set Bar chart default value
@@ -25,9 +25,9 @@ export const barPositioning: ConfigHelper<CBar | CColumn> = ({
   data,
   fields,
 }) => {
-  const { positioning, stacking, ...restConfig } = config
+  const { positioning, stacking, ...restConfig } = config;
 
-  const currentPositioning = positioning || stacking || ''
+  const currentPositioning = positioning || stacking || '';
 
   return {
     config: {
@@ -37,5 +37,5 @@ export const barPositioning: ConfigHelper<CBar | CColumn> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

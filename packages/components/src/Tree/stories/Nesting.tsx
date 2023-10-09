@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { TreeItem, Tree, TreeCollection } from '..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { TreeItem, Tree, TreeCollection } from '..';
 
 export default function Nesting() {
   return (
@@ -19,5 +19,5 @@ export default function Nesting() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

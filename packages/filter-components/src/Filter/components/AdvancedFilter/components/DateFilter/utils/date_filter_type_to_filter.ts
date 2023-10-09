@@ -2,21 +2,21 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { ElementType } from 'react'
-import type { DateFilterType, FilterTypeMap } from '@looker/filter-expressions'
-import defaultTo from 'lodash/defaultTo'
-import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttributes } from '../../UserAttributes'
-import { BeforeAfter } from '../components/BeforeAfter'
-import { DateRange } from '../components/DateRange'
-import { OnDate } from '../components/OnDate'
-import { Past } from '../components/Past'
-import { Relative } from '../components/Relative'
-import { ThisNextLast } from '../components/ThisNextLast'
-import { Year } from '../components/Year'
-import { YearMonth } from '../components/YearMonth'
+import type { ElementType } from 'react';
+import type { DateFilterType, FilterTypeMap } from '@looker/filter-expressions';
+import defaultTo from 'lodash/defaultTo';
+import { MatchesAdvanced } from '../../MatchesAdvanced';
+import { UserAttributes } from '../../UserAttributes';
+import { BeforeAfter } from '../components/BeforeAfter';
+import { DateRange } from '../components/DateRange';
+import { OnDate } from '../components/OnDate';
+import { Past } from '../components/Past';
+import { Relative } from '../components/Relative';
+import { ThisNextLast } from '../components/ThisNextLast';
+import { Year } from '../components/Year';
+import { YearMonth } from '../components/YearMonth';
 
-const Blank = () => ''
+const Blank = () => '';
 
 const filterTypeToDateMap: FilterTypeMap<DateFilterType> = {
   null: Blank,
@@ -37,7 +37,7 @@ const filterTypeToDateMap: FilterTypeMap<DateFilterType> = {
   on: OnDate,
   relative: Relative,
   user_attribute: UserAttributes,
-}
+};
 
 export const dateFilterTypeToFilter = (type: DateFilterType): ElementType =>
-  defaultTo(filterTypeToDateMap[type], MatchesAdvanced)
+  defaultTo(filterTypeToDateMap[type], MatchesAdvanced);

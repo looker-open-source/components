@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextAreaProps } from '../'
-import { FieldTextArea } from '../..'
+import React from 'react';
+import type { FieldTextAreaProps } from '../';
+import { FieldTextArea } from '../..';
 
 export default function Required(props: FieldTextAreaProps) {
   const {
@@ -13,7 +13,7 @@ export default function Required(props: FieldTextAreaProps) {
     name = 'firstName',
     label = 'First Name',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTextArea
@@ -22,5 +22,5 @@ export default function Required(props: FieldTextAreaProps) {
       required={required}
       {...restProps}
     />
-  )
+  );
 }

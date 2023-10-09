@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem, Box } from '../../..'
+import React from 'react';
+import { Flex, FlexItem, Box } from '../../..';
 
 export default function FlexShrink() {
   return (
@@ -26,5 +26,5 @@ export default function FlexShrink() {
         </FlexItem>
       </Flex>
     </>
-  )
+  );
 }

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Tree, TreeCollection, TreeItem } from '..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Tree, TreeCollection, TreeItem } from '..';
 
 export default function Example1() {
   return (
@@ -38,5 +38,5 @@ export default function Example1() {
         </Tree>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

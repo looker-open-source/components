@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled, { css } from 'styled-components'
+import styled, { css } from 'styled-components';
 
 export const InputArea = styled.div<{
-  autoResize?: boolean
+  autoResize?: boolean;
 }>`
   align-items: center;
   ${({ autoResize }) =>
@@ -18,4 +18,4 @@ export const InputArea = styled.div<{
     `}
   /* Workaround for Chip's truncate styling breaking flexbox layout in FieldChips */
   min-width: 0;
-`
+`;

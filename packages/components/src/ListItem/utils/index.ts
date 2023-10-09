@@ -3,10 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './getDetailOptions'
-export * from './listItemBackgroundColor'
-export * from './listItemColor'
-export * from './listItemDimensions'
-export * from './listItemPaddingX'
-export * from './listItemPaddingY'
-export * from './createListItemPartitions'
+export * from './getDetailOptions';
+export * from './isListColor';
+export * from './listItemBackgroundColor';
+export * from './listItemColor';
+export * from './listItemDimensions';
+export * from './listItemPaddingX';
+export * from './listItemPaddingY';
+export * from './createListItemPartitions';

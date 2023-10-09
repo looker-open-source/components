@@ -27,25 +27,25 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import isMatch from 'lodash/isMatch'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../../utils'
-import { useFocusManagement } from '../utils/useFocusManagement'
+import isMatch from 'lodash/isMatch';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../../utils';
+import { useFocusManagement } from '../utils/useFocusManagement';
 import type {
   ComboboxCallback,
   ComboboxMultiCallback,
   ComboboxOptionObject,
-} from '../types'
-import { reducer, useReducerMachine, ComboboxActionType } from '../utils/state'
-import { ComboboxContext, defaultData } from '../ComboboxContext'
-import { getComboboxText } from '../utils/getComboboxText'
-import { useComboboxRefs } from '../utils/useComboboxRefs'
-import { useComboboxToggle } from '../utils/useComboboxToggle'
-import { useScrollState } from '../utils/useScrollState'
-import type { ComboboxWrapperProps } from '../ComboboxWrapper'
-import { ComboboxWrapper } from '../ComboboxWrapper'
+} from '../types';
+import { reducer, useReducerMachine, ComboboxActionType } from '../utils/state';
+import { ComboboxContext, defaultData } from '../ComboboxContext';
+import { getComboboxText } from '../utils/getComboboxText';
+import { useComboboxRefs } from '../utils/useComboboxRefs';
+import { useComboboxToggle } from '../utils/useComboboxToggle';
+import { useScrollState } from '../utils/useScrollState';
+import type { ComboboxWrapperProps } from '../ComboboxWrapper';
+import { ComboboxWrapper } from '../ComboboxWrapper';
 
 export interface ComboboxCommonProps<
   TCallback extends ComboboxCallback | ComboboxMultiCallback = ComboboxCallback
@@ -53,24 +53,28 @@ export interface ComboboxCommonProps<
   /**
    * If true, the popover opens when focus is on the text box.
    */
-  openOnFocus?: boolean
+  openOnFocus?: boolean;
   /**
    * If true, the popover opens when the text box is clicked.
    * @default true
    */
-  openOnClick?: boolean
+  openOnClick?: boolean;
   /**
    * Called when an option is selected (not when user types – use ComboboxInput.onChange for that)
    */
-  onChange?: TCallback
+  onChange?: TCallback;
   /**
    * Called when the suggestion list closes, whether via blur, escape or selection
    */
-  onClose?: TCallback
+  onClose?: TCallback;
   /**
    * Called when the suggestion list opens, whether via typing, click, or focus
    */
-  onOpen?: TCallback
+  onOpen?: TCallback;
+  /**
+   * ComboboxList will not render inside a popover when true
+   */
+  shouldRenderListInline?: boolean;
 }
 
 export interface ComboboxProps
@@ -79,11 +83,11 @@ export interface ComboboxProps
   /**
    * The current option (controlled)
    */
-  value?: ComboboxOptionObject
+  value?: ComboboxOptionObject;
   /**
    * The initial option (uncontrolled)
    */
-  defaultValue?: ComboboxOptionObject
+  defaultValue?: ComboboxOptionObject;
 }
 
 export const ComboboxInternal = forwardRef(
@@ -101,15 +105,16 @@ export const ComboboxInternal = forwardRef(
       onClose,
       onOpen,
       id: propsID,
+      shouldRenderListInline,
 
       ...rest
     }: ComboboxProps,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    const initialValue = value || defaultValue
+    const initialValue = value || defaultValue;
     const initialData = initialValue
       ? { inputValue: getComboboxText(initialValue), option: initialValue }
-      : {}
+      : {};
 
     const [state, data, transition] = useReducerMachine(
       reducer,
@@ -117,26 +122,27 @@ export const ComboboxInternal = forwardRef(
         ...defaultData,
         ...initialData,
       },
-      {}
-    )
-    const { lastActionType, option } = data
+      {},
+      shouldRenderListInline
+    );
+    const { lastActionType, option } = data;
 
     if (value !== undefined && (!option || !isMatch(option, value))) {
       transition &&
         transition(ComboboxActionType.SELECT_SILENT, {
           option: value,
-        })
+        });
     }
 
-    const focusManagement = useFocusManagement(lastActionType)
+    const focusManagement = useFocusManagement(lastActionType);
 
-    const id = useID(propsID)
+    const id = useID(propsID);
 
-    const isVisible = useComboboxToggle(state, option, onOpen, onClose)
+    const isVisible = useComboboxToggle(state, option, onOpen, onClose);
 
-    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef)
+    const { ref, ...commonRefs } = useComboboxRefs(forwardedRef);
 
-    const scrollState = useScrollState()
+    const scrollState = useScrollState();
 
     const context = {
       ...commonRefs,
@@ -148,9 +154,10 @@ export const ComboboxInternal = forwardRef(
       onChange,
       openOnClick,
       openOnFocus,
+      shouldRenderListInline,
       state,
       transition,
-    }
+    };
 
     return (
       <ComboboxContext.Provider value={context}>
@@ -162,10 +169,13 @@ export const ComboboxInternal = forwardRef(
           role={rest.role}
         />
       </ComboboxContext.Provider>
-    )
+    );
   }
-)
+);
 
 export const Combobox = styled(ComboboxInternal).attrs(
-  ({ display = 'flex' }) => ({ display })
-)``
+  ({ display = 'flex', flexDirection, shouldRenderListInline }) => ({
+    display,
+    flexDirection: flexDirection || (shouldRenderListInline && 'column'),
+  })
+)``;

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Density1, List, ListItem } from '../..'
+import React from 'react';
+import { Density1, List, ListItem } from '../..';
 
 export default function Density1Example() {
   return (
@@ -15,5 +15,5 @@ export default function Density1Example() {
         <ListItem>Swiss</ListItem>
       </List>
     </Density1>
-  )
+  );
 }

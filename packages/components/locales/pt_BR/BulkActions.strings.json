@@ -1,6 +1,6 @@
 {
-  "AllPageCountDisplayedSelected": "Todos os {{pageCount}} itens exibidos selecionados",
-  "AllTotalCountSelected": "Todos os {{totalCount}} itens selecionados",
+  "AllPageCountDisplayedSelected": "Todos os {{pageCount}} itens exibidos foram selecionados",
+  "AllTotalCountSelected": "Todos os {{totalCount}} itens foram selecionados",
   "Bulk Actions": "Ações em massa",
   "Clear Selection": "Limpar seleção",
   "SelectAllCountResults": "Selecionar todos os {{totalCount}} resultados",

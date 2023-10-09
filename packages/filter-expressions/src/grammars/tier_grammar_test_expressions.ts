@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { GrammarTestItem } from '.'
+import type { GrammarTestItem } from '.';
 
 const parameterField = {
   has_allowed_values: true,
@@ -17,7 +17,7 @@ const parameterField = {
       value: 'sub^_region',
     },
   ],
-}
+};
 
 export const tierGrammarTestItems: GrammarTestItem = [
   {
@@ -36,4 +36,4 @@ export const tierGrammarTestItems: GrammarTestItem = [
     // add parameter field to match value with enumeration options
     field: parameterField,
   },
-]
+];

@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputDateRange } from '../InputDateRange'
+import React from 'react';
+import { InputDateRange } from '../InputDateRange';
 
-const noop = () => undefined
+const noop = () => undefined;
 
 export default function Error() {
-  return <InputDateRange value={{}} onChange={noop} validationType="error" />
+  return <InputDateRange value={{}} onChange={noop} validationType="error" />;
 }

@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { frFR as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { frFR as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
-    Config: 'Config.',
+    Config: 'Configuration',
     Dimensions: 'Dimensions',
     Error: 'Erreur',
     Measures: 'Mesures',
@@ -19,16 +19,15 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Un problème est survenu',
   },
-  translation: {
-    'Row Total': 'Total des lignes',
-    false: 'false',
+  KeyValueList: {
+    false: 'faux',
     null: 'nul',
-    true: 'true',
-    undefined: 'undefined',
+    true: 'vrai',
+    undefined: 'non défini',
   },
   useNormalizedPivotLabels: {
-    'Row Total': 'Total des lignes',
+    'Row Total': 'Total de ligne',
   },
-}
+};
 
-export const frFR = mergeLocaleObjects([componentsLocale], 'fr-FR', resources)
+export const frFR = mergeLocaleObjects([componentsLocale], 'fr-FR', resources);

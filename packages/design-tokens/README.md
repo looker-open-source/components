@@ -11,17 +11,17 @@ If you choose to import values directly from this package, you will most likely 
 Once you've created your own theme object modeled after the values in this repo, you can override in production by wrapping components the `ComponentsProvider` (a Styled Components `ThemeProvider` is used under the hood).
 
 ```jsx
-import { ComponentsProvider } from '@looker/components'
+import { ComponentsProvider } from '@looker/components';
 
 const myTheme = {
   ///... theme values here
-}
+};
 
 const MyApp = () => {
   return (
     <ComponentsProvider theme={myTheme}>
       {/*... Looker UI Components here */}
     </ComponentsProvider>
-  )
-}
+  );
+};
 ```

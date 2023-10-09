@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { ButtonBase } from './ButtonBase'
+import styled from 'styled-components';
+import { ButtonBase } from './ButtonBase';
 
 export const Button = styled(ButtonBase).attrs(() => ({
   rippleBackgroundColor: 'background',
@@ -19,4 +19,4 @@ export const Button = styled(ButtonBase).attrs(() => ({
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Pressed`]};
   }
-`
+`;

@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SpecifiableColors } from '../types'
-import { defaultCoreColors, defaultIntentColors } from '../defaults'
-import { generateBlendColors } from './generateBlendColors'
+import type { SpecifiableColors } from '../types';
+import { defaultCoreColors, defaultIntentColors } from '../defaults';
+import { generateBlendColors } from './generateBlendColors';
 
 const specifiableColors: SpecifiableColors = {
   ...defaultCoreColors,
   ...defaultIntentColors,
-}
+};
 
 describe('generateBlendColors', () => {
   test('default', () => {
@@ -30,8 +30,8 @@ describe('generateBlendColors', () => {
         "ui5": "#262626",
       }
     `
-    )
-  })
+    );
+  });
 
   test('dark mode', () => {
     expect(
@@ -56,6 +56,6 @@ describe('generateBlendColors', () => {
         "ui5": "#fff",
       }
     `
-    )
-  })
-})
+    );
+  });
+});

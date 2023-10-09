@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Filter } from '../Filter'
+import React from 'react';
+import { Filter } from '../Filter';
 
 export default function MultiConditionNumber() {
   return (
@@ -14,5 +14,5 @@ export default function MultiConditionNumber() {
       expressionType="number"
       expression="[0,20],>30"
     />
-  )
+  );
 }

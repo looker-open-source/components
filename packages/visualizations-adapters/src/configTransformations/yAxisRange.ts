@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ConfigHelper, YAxisConfig, YAxisRaw } from '../types'
-import type { CSparkline } from '../adapters'
-import omitBy from 'lodash/omitBy'
-import isNull from 'lodash/isNull'
+import type { ConfigHelper, YAxisConfig, YAxisRaw } from '../types';
+import type { CSparkline } from '../adapters';
+import omitBy from 'lodash/omitBy';
+import isNull from 'lodash/isNull';
 
 /**
  * Transformation sets ONLY the range values for y-axis config object.
@@ -22,17 +22,17 @@ export const yAxisRange: ConfigHelper<CSparkline> = ({
     y_axes: y_axis_raw = [{}] as YAxisRaw[], // default object from SDK
     y_axis = [{}] as YAxisConfig[], // officially supported config
     ...restConfig
-  } = config
+  } = config;
 
-  const longestListLength = Math.max(y_axis_raw.length, y_axis.length)
-  const yAxisWithDefaults: YAxisConfig[] = []
+  const longestListLength = Math.max(y_axis_raw.length, y_axis.length);
+  const yAxisWithDefaults: YAxisConfig[] = [];
 
   for (let i = 0; i < longestListLength; i++) {
-    const rawAxisAtPosition = omitBy(y_axis_raw[i] || {}, isNull)
-    const officialAxisAtPosition = y_axis[i] || {}
+    const rawAxisAtPosition = omitBy(y_axis_raw[i] || {}, isNull);
+    const officialAxisAtPosition = y_axis[i] || {};
 
     // raw sdk attributes
-    const { minValue, maxValue } = rawAxisAtPosition
+    const { minValue, maxValue } = rawAxisAtPosition;
 
     // officially supported config values, falling back to raw sdk attributes
     const {
@@ -40,9 +40,9 @@ export const yAxisRange: ConfigHelper<CSparkline> = ({
         minValue === undefined ? 'auto' : minValue,
         maxValue === undefined ? 'auto' : maxValue,
       ],
-    } = officialAxisAtPosition
+    } = officialAxisAtPosition;
 
-    yAxisWithDefaults[i] = { ...officialAxisAtPosition, range }
+    yAxisWithDefaults[i] = { ...officialAxisAtPosition, range };
   }
 
   return {
@@ -52,5 +52,5 @@ export const yAxisRange: ConfigHelper<CSparkline> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

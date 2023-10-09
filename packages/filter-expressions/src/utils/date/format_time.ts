@@ -23,38 +23,38 @@
  SOFTWARE.
 
  */
-import { convertToNumber } from './convert_to_number'
-import { zeroPad2 } from './zero_pad'
+import { convertToNumber } from './convert_to_number';
+import { zeroPad2 } from './zero_pad';
 
 export interface TimeFormatProps {
-  hour: number
-  minute?: number
-  meridiem?: string
+  hour: number;
+  minute?: number;
+  meridiem?: string;
 }
 
-const meridiemChange = 12
-const hourCeil = 24
-const minuteCeil = 60
-const defaultMinuteValue = 0
+const meridiemChange = 12;
+const hourCeil = 24;
+const minuteCeil = 60;
+const defaultMinuteValue = 0;
 
-const meridiemAm = 'AM'
-const meridiemPm = 'PM'
+const meridiemAm = 'AM';
+const meridiemPm = 'PM';
 
-export const allowedTimeInputValues = /\d|[a|p|m]|\s|^$/gi
+export const allowedTimeInputValues = /\d|[a|p|m]|\s|^$/gi;
 
-const exactTimeMatch = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):([0-5][0-9])\s(am|pm)$/gi
+const exactTimeMatch = /^(0[0-9]|1[0-9]|2[0-3]|[0-9]):([0-5][0-9])\s(am|pm)$/gi;
 
 /**
  * Given any hour value this will ensure that the houra never get higher than 23
  */
 const maxHourValue = (hour: number) =>
-  hour <= 0 || hour >= hourCeil ? 0 : hour
+  hour <= 0 || hour >= hourCeil ? 0 : hour;
 
 /**
  * Given any minute value this will ensure that the minutes never get higher than 59
  */
 const maxMinuteValue = (minute: number) =>
-  !minute || minute < 0 || minute >= minuteCeil ? 0 : minute
+  !minute || minute < 0 || minute >= minuteCeil ? 0 : minute;
 
 /**
  * Given a time segmented object this will use the provided hour
@@ -66,10 +66,10 @@ const getAccurateMeridiem = ({
   hour,
   meridiem = meridiemAm,
 }: TimeFormatProps) =>
-  hour > meridiemChange ? meridiemPm : meridiem.toUpperCase()
+  hour > meridiemChange ? meridiemPm : meridiem.toUpperCase();
 
 export const meridiemFrom24HourTime = (hour: number) =>
-  hour >= meridiemChange && hour < hourCeil ? meridiemPm : meridiemAm
+  hour >= meridiemChange && hour < hourCeil ? meridiemPm : meridiemAm;
 /**
  * Given any number input this will return an appropriate 12 hour time value
  * If the number is larger than an acceptable input value within a 24 hour range
@@ -79,15 +79,15 @@ export const meridiemFrom24HourTime = (hour: number) =>
  */
 const get12HourTimeValue = (hour: number) => {
   if (hour > meridiemChange) {
-    hour = hour - meridiemChange
+    hour = hour - meridiemChange;
   }
 
   if (hour === 0) {
-    hour = meridiemChange
+    hour = meridiemChange;
   }
 
-  return hour
-}
+  return hour;
+};
 
 /**
  * Takes an object of time segments and returns a formatted
@@ -97,7 +97,7 @@ export const displayTimeAsIs = ({
   hour,
   minute = defaultMinuteValue,
   meridiem = '',
-}: TimeFormatProps) => `${hour}:${zeroPad2(minute)} ${meridiem}`.trim()
+}: TimeFormatProps) => `${hour}:${zeroPad2(minute)} ${meridiem}`.trim();
 
 /**
  * Given an TimeFormatProps object it will convert to a 12 hour format.
@@ -115,7 +115,7 @@ export const formatAndDisplayTime = ({
       hour: maxHourValue(hour),
       meridiem,
     }),
-  })
+  });
 
 /**
  * Given an TimeFormatProps object it will convert to a 24 hour format.
@@ -126,28 +126,28 @@ export const get24HourTime = ({
   minute = 0,
   meridiem = '',
 }: TimeFormatProps) => {
-  hour = maxHourValue(hour)
+  hour = maxHourValue(hour);
   if (meridiem.toUpperCase() === meridiemPm && hour < meridiemChange) {
-    hour = meridiemChange + hour
+    hour = meridiemChange + hour;
   }
 
   return {
     hour,
     minute: maxMinuteValue(minute),
     meridiem: hour < meridiemChange ? meridiemAm : meridiemPm,
-  }
-}
+  };
+};
 
 export const parseTimeInput = (inputValue: string): TimeFormatProps => {
   const [hour, minute, meridiem] = inputValue
     .split(exactTimeMatch)
-    .filter(Boolean)
+    .filter(Boolean);
   return {
     hour: convertToNumber(hour),
     minute: convertToNumber(minute),
     meridiem,
-  }
-}
+  };
+};
 
 /**
  * Tests if the time value is correctly formatted. The only acceptable format is as follows
@@ -155,4 +155,4 @@ export const parseTimeInput = (inputValue: string): TimeFormatProps => {
  * @param input : string
  */
 export const isTimeAndFormatAccurate = (input: string): boolean =>
-  !!input.match(exactTimeMatch)
+  !!input.match(exactTimeMatch);

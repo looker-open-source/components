@@ -3,32 +3,31 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { deDE as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { deDE as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
-    Config: 'Konfig',
+    Config: 'Konfiguration',
     Dimensions: 'Dimensionen',
     Error: 'Fehler',
-    Measures: 'Messwerte',
+    Measures: 'Messungen',
     Result: 'Ergebnis',
     error: 'Fehler',
-    ok: 'OK',
+    ok: 'Ok',
   },
   ErrorBoundary: {
     'Something went wrong': 'Ein Fehler ist aufgetreten',
   },
-  translation: {
-    'Row Total': 'Zeilensumme',
+  KeyValueList: {
     false: 'falsch',
     null: 'null',
     true: 'wahr',
     undefined: 'nicht definiert',
   },
   useNormalizedPivotLabels: {
-    'Row Total': 'Zeilensumme',
+    'Row Total': 'Zeile insgesamt',
   },
-}
+};
 
-export const deDE = mergeLocaleObjects([componentsLocale], 'de-DE', resources)
+export const deDE = mergeLocaleObjects([componentsLocale], 'de-DE', resources);

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DimensionMetadata } from '@looker/visualizations-adapters'
-import { nestPivotedFields } from '.'
+import type { DimensionMetadata } from '@looker/visualizations-adapters';
+import { nestPivotedFields } from '.';
 
 it('Nests pivots inside columns arrays', () => {
   const result = nestPivotedFields({
@@ -23,7 +23,7 @@ it('Nests pivots inside columns arrays', () => {
       { id: 'users.count', header: 'Users Count' },
     ],
     pivotIndex: 0,
-  })
+  });
 
   expect(result).toEqual({
     id: 'users.gender',
@@ -38,15 +38,15 @@ it('Nests pivots inside columns arrays', () => {
         ],
       },
     ],
-  })
-})
+  });
+});
 
 it('Nests column array inside a column array when pivotList array is empty', () => {
   const result = nestPivotedFields({
     pivotList: [], // testing for empty pivotList edge case
     nestedPivots: [{ id: 'column1', header: 'Column One' }],
     pivotIndex: 0,
-  })
+  });
 
   expect(result).toEqual({
     columns: [
@@ -56,5 +56,5 @@ it('Nests column array inside a column array when pivotList array is empty', () 
       },
     ],
     id: 'pivot-field-0',
-  })
-})
+  });
+});

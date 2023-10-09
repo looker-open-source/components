@@ -7,6 +7,6 @@
  * Converts the 'is' value to string filter expression
  * 'is' is a prefix for the expression value, blank for true and 'not ' for false
  */
-const isItemToString = (is = true, yes = '', no = 'not ') => `${is ? yes : no}`
+const isItemToString = (is = true, yes = '', no = 'not ') => `${is ? yes : no}`;
 
-export default isItemToString
+export default isItemToString;

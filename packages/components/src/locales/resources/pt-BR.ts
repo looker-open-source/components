@@ -24,24 +24,24 @@
 
  */
 
-import dateLocale from 'date-fns/locale/pt-BR'
+import dateLocale from 'date-fns/locale/pt-BR';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
     'Clear Field': 'Limpar campo',
   },
   AvatarButton: {
-    'Profile Picture': 'Foto de perfil',
+    'Profile Picture': 'Foto do perfil',
   },
   AvatarUser: {
     Avatar: 'Avatar',
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'Todos os {{pageCount}} itens exibidos selecionados',
-    AllTotalCountSelected: 'Todos os {{totalCount}} itens selecionados',
+      'Todos os {{pageCount}} itens exibidos foram selecionados',
+    AllTotalCountSelected: 'Todos os {{totalCount}} itens foram selecionados',
     'Bulk Actions': 'Ações em massa',
     'Clear Selection': 'Limpar seleção',
     SelectAllCountResults: 'Selecionar todos os {{totalCount}} resultados',
@@ -53,7 +53,7 @@ const resources = {
     'previous month': 'mês anterior',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'Marca de verificação mista',
+    'Check Mark Mixed': 'Marca de seleção "Misto"',
   },
   Chip: {
     Delete: 'Excluir',
@@ -62,8 +62,8 @@ const resources = {
     Apply: 'Aplicar',
     Cancel: 'Cancelar',
     'Select All': 'Selecionar tudo',
-    'Select None': 'Selecionar nenhuma',
-    'Select columns to display': 'Selecionar colunas para exibição',
+    'Select None': 'Cancelar seleção',
+    'Select columns to display': 'Selecione as colunas a serem exibidas',
   },
   ConfirmationDialog: {
     Cancel: 'Cancelar',
@@ -74,7 +74,7 @@ const resources = {
     'Copy to Clipboard': 'Copiar para a área de transferência',
   },
   DataTable: {
-    'No Results': 'Sem resultados',
+    'No Results': 'Nenhum resultado',
   },
   DataTableItem: {
     Options: 'Opções',
@@ -85,11 +85,11 @@ const resources = {
   GetIntentLabel: {
     Error: 'Erro',
     Inform: 'Informar',
-    Success: 'Sucesso',
-    Warning: 'Aviso',
+    Success: 'Concluído',
+    Warning: 'Alerta',
   },
   InputDate: {
-    'Open calendar': 'Abrir calendário',
+    'Open calendar': 'Abrir agenda',
   },
   InputDateRange: {
     'End date': 'Data de término',
@@ -98,10 +98,9 @@ const resources = {
   InputFilters: {
     'Clear Filters': 'Limpar filtros',
     'Filter List': 'Lista de filtros',
-    'bottom-start': 'bottom-start',
   },
   InputTimeSelect: {
-    'Select time': 'Selecionar horário',
+    'Select time': 'Selecionar hora',
   },
   MessageBar: {
     DismissIntent: 'Dispensar {{intent}}',
@@ -115,7 +114,7 @@ const resources = {
     'previous year': 'ano anterior',
   },
   PageSize: {
-    Display: 'Exibir',
+    Display: 'Exibição',
     of: 'de',
   },
   Pagination: {
@@ -136,9 +135,9 @@ const resources = {
     Save: 'Salvar',
   },
   RangeSlider: {
-    'Maximum Name': '{{name}} máximo',
+    'Maximum Name': '{{name}} no máximo',
     'Maximum Value': 'Valor máximo',
-    'Minimum Name': '{{name}} mínimo',
+    'Minimum Name': '{{name}} no mínimo',
     'Minimum Value': 'Valor mínimo',
   },
   RequiredStar: {
@@ -146,11 +145,11 @@ const resources = {
   },
   SelectOptions: {
     Loading: 'Carregando',
-    'No options': 'Sem opções',
+    'No options': 'Nenhuma opção',
   },
   TabList: {
     Tabs: 'Guias',
   },
-}
+};
 
-export const ptBR = mergeLocaleObjects([], 'pt-BR', resources, dateLocale)
+export const ptBR = mergeLocaleObjects([], 'pt-BR', resources, dateLocale);

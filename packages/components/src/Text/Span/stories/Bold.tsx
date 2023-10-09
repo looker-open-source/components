@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Span } from '../Span'
+import React from 'react';
+import { Span } from '../Span';
 
 export default function Bold() {
-  return <Span fontWeight="bold">Span Text</Span>
+  return <Span fontWeight="bold">Span Text</Span>;
 }

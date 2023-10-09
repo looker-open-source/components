@@ -24,189 +24,189 @@
 
  */
 
-import { normalizeChartTypes } from './normalizeChartTypes'
-import { mockFields, mockSdkDataResponse } from '../fixtures'
+import { normalizeChartTypes } from './normalizeChartTypes';
+import { mockFields, mockSdkDataResponse } from '../fixtures';
 
 describe('normalizeChartTypes', () => {
   describe('config.type ===', () => {
     test('default', () => {
-      const config = { type: 'default' as const }
+      const config = { type: 'default' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('default')
-    })
+      });
+      expect(transformedConfig.type).toEqual('default');
+    });
 
     test('area', () => {
-      const config = { type: 'area' as const }
+      const config = { type: 'area' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('area')
-    })
+      });
+      expect(transformedConfig.type).toEqual('area');
+    });
 
     test('bar', () => {
-      const config = { type: 'bar' as const }
+      const config = { type: 'bar' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('bar')
-    })
+      });
+      expect(transformedConfig.type).toEqual('bar');
+    });
 
     test('column', () => {
-      const config = { type: 'column' as const }
+      const config = { type: 'column' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('column')
-    })
+      });
+      expect(transformedConfig.type).toEqual('column');
+    });
 
     test('line', () => {
-      const config = { type: 'line' as const }
+      const config = { type: 'line' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('line')
-    })
+      });
+      expect(transformedConfig.type).toEqual('line');
+    });
 
     test('pie', () => {
-      const config = { type: 'pie' as const }
+      const config = { type: 'pie' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('pie')
-    })
+      });
+      expect(transformedConfig.type).toEqual('pie');
+    });
 
     test('scatter', () => {
-      const config = { type: 'scatter' as const }
+      const config = { type: 'scatter' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('scatter')
-    })
+      });
+      expect(transformedConfig.type).toEqual('scatter');
+    });
 
     test('sparkline', () => {
-      const config = { type: 'sparkline' as const }
+      const config = { type: 'sparkline' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('sparkline')
-    })
+      });
+      expect(transformedConfig.type).toEqual('sparkline');
+    });
 
     test('table', () => {
-      const config = { type: 'table' as const }
+      const config = { type: 'table' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('table')
-    })
+      });
+      expect(transformedConfig.type).toEqual('table');
+    });
 
     test('looker_area', () => {
-      const config = { type: 'looker_area' as const }
+      const config = { type: 'looker_area' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('area')
-    })
+      });
+      expect(transformedConfig.type).toEqual('area');
+    });
 
     test('looker_bar', () => {
-      const config = { type: 'looker_bar' as const }
+      const config = { type: 'looker_bar' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('bar')
-    })
+      });
+      expect(transformedConfig.type).toEqual('bar');
+    });
 
     test('looker_column', () => {
-      const config = { type: 'looker_column' as const }
+      const config = { type: 'looker_column' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('column')
-    })
+      });
+      expect(transformedConfig.type).toEqual('column');
+    });
 
     test('looker_line', () => {
-      const config = { type: 'looker_line' as const }
+      const config = { type: 'looker_line' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('line')
-    })
+      });
+      expect(transformedConfig.type).toEqual('line');
+    });
 
     test('looker_pie', () => {
-      const config = { type: 'looker_pie' as const }
+      const config = { type: 'looker_pie' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('pie')
-    })
+      });
+      expect(transformedConfig.type).toEqual('pie');
+    });
 
     test('looker_scatter', () => {
-      const config = { type: 'looker_scatter' as const }
+      const config = { type: 'looker_scatter' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('scatter')
-    })
+      });
+      expect(transformedConfig.type).toEqual('scatter');
+    });
 
     test('looker_grid', () => {
-      const config = { type: 'looker_grid' as const }
+      const config = { type: 'looker_grid' as const };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('table')
-    })
+      });
+      expect(transformedConfig.type).toEqual('table');
+    });
 
     test('undefined', () => {
-      const config = { type: undefined as unknown as 'default' }
+      const config = { type: undefined as unknown as 'default' };
       const { config: transformedConfig } = normalizeChartTypes({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.type).toEqual('default')
-    })
-  })
+      });
+      expect(transformedConfig.type).toEqual('default');
+    });
+  });
 
   test('config.type is an unknown type', () => {
-    const config = { type: 'gouda-cheese-chart' as 'default' }
+    const config = { type: 'gouda-cheese-chart' as 'default' };
     const { config: transformedConfig } = normalizeChartTypes({
       config,
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
-    expect(transformedConfig.type).toEqual('gouda-cheese-chart')
-  })
-})
+    });
+    expect(transformedConfig.type).toEqual('gouda-cheese-chart');
+  });
+});

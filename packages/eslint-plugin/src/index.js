@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-const noPrivateDependencies = require('./noPrivateDependencies')
-const noLiteralString = require('./noLiteralString')
-const licenseHeader = require('./licenseHeader')
-const publishConfig = require('./publishConfig')
-const noMixedAngularJsHotProviders = require('./noMixedAngularJsHotProviders')
+const noPrivateDependencies = require('./noPrivateDependencies');
+const noLiteralString = require('./noLiteralString');
+const licenseHeader = require('./licenseHeader');
+const publishConfig = require('./publishConfig');
+const noMixedAngularJsHotProviders = require('./noMixedAngularJsHotProviders');
 
 module.exports = {
   configs: {
@@ -57,4 +57,4 @@ module.exports = {
     ...publishConfig.rules,
     ...noMixedAngularJsHotProviders,
   },
-}
+};

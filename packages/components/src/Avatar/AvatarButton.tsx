@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useTranslation } from '../utils'
-import { IconButton } from '../Button'
-import type { IconButtonProps } from '../Button'
+import { AccountCircle } from '@styled-icons/material-outlined/AccountCircle';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useTranslation } from '../utils';
+import { IconButton } from '../Button';
+import type { IconButtonProps } from '../Button';
 
 export type AvatarButtonProps = Omit<IconButtonProps, 'icon'> & {
   /**
@@ -17,8 +17,8 @@ export type AvatarButtonProps = Omit<IconButtonProps, 'icon'> & {
    * gravatar actually specified. Gravatar responds with transparent image if the user doesn't have a gravatar specified
    * in which case the underlying `Account` icon is visible.
    */
-  imageUrl?: string | null
-}
+  imageUrl?: string | null;
+};
 
 export const AvatarButton = styled(
   // eslint-disable-next-line react/display-name
@@ -27,7 +27,7 @@ export const AvatarButton = styled(
       { imageUrl, label, size = 'large', ...rest }: AvatarButtonProps,
       forwardedRef: Ref<HTMLButtonElement>
     ) => {
-      const { t } = useTranslation('AvatarButton')
+      const { t } = useTranslation('AvatarButton');
 
       return (
         <IconButton
@@ -46,7 +46,7 @@ export const AvatarButton = styled(
             />
           )}
         </IconButton>
-      )
+      );
     }
   )
 )`
@@ -58,4 +58,4 @@ export const AvatarButton = styled(
     position: absolute;
     width: ${({ theme }) => theme.sizes.medium};
   }
-`
+`;

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputFilters } from '../'
-import type { InputFiltersProps } from '../'
+import React, { useState } from 'react';
+import { InputFilters } from '../';
+import type { InputFiltersProps } from '../';
 
 const mockFilters = [
   { field: 'role', options: ['admin', 'group-admin', 'user', 'pizza'] },
@@ -25,16 +25,16 @@ const mockFilters = [
     label: 'Last Build Time',
     options: ['01-22-20', '02-13-20', '05-28-20'],
   },
-]
+];
 
 export default function Basic(props: InputFiltersProps) {
   const {
     filters: filtersProp = mockFilters,
     onChange: _onChange,
     ...restProps
-  } = props
+  } = props;
 
-  const [controlledFilters, setControlledFilters] = useState(filtersProp)
+  const [controlledFilters, setControlledFilters] = useState(filtersProp);
 
   return (
     <InputFilters
@@ -42,5 +42,5 @@ export default function Basic(props: InputFiltersProps) {
       filters={controlledFilters}
       {...restProps}
     />
-  )
+  );
 }

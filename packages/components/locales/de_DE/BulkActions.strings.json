@@ -1,8 +1,8 @@
 {
-  "AllPageCountDisplayedSelected": "Alle {{pageCount}} angezeigten Artikel ausgewählt",
-  "AllTotalCountSelected": "Alle {{totalCount}} Artikel ausgewählt",
-  "Bulk Actions": "Massenaktionen",
-  "Clear Selection": "Auswahl aufheben",
-  "SelectAllCountResults": "Alle {{totalCount}} Ergebnisse auswählen",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} von {{pageCount}} angezeigten Artikeln ausgewählt"
+  "AllPageCountDisplayedSelected": "Alle {{pageCount}} angezeigten Elemente ausgewählt",
+  "AllTotalCountSelected": "Alle {{totalCount}} Elemente ausgewählt",
+  "Bulk Actions": "Bulk-Aktionen",
+  "Clear Selection": "Auswahl löschen",
+  "SelectAllCountResults": "Alle {{totalCount}} Ergebnisse auswählen",
+  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} von {{pageCount}} angezeigten Elementen ausgewählt"
 }

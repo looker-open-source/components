@@ -23,10 +23,10 @@
  SOFTWARE.
 
  */
-import { initializer } from './common/initializer'
-import { numbers } from './common/numbers'
-import { whitespace } from './common/whitespace'
-import { userAttribute } from './user_attribute_grammar'
+import { initializer } from './common/initializer';
+import { numbers } from './common/numbers';
+import { whitespace } from './common/whitespace';
+import { userAttribute } from './user_attribute_grammar';
 
 // Numeric Filter Grammar
 // ==========================
@@ -207,7 +207,7 @@ GT = ">"
 COMP_L = (LTE / LT)
 LTE = "<="
 LT = "<"
-`
+`;
 
 export const numberGrammar = [
   initializer,
@@ -215,4 +215,4 @@ export const numberGrammar = [
   userAttribute,
   numbers,
   whitespace,
-].join('')
+].join('');

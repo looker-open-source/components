@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { SDKRecord, Fields } from '@looker/visualizations-adapters'
+import type { SDKRecord, Fields } from '@looker/visualizations-adapters';
 
 /**
  * A simple utility function that validates whether there is sufficient data to render
@@ -12,5 +12,5 @@ import type { SDKRecord, Fields } from '@looker/visualizations-adapters'
  */
 
 export const isValidChartData = (data?: SDKRecord[], fields?: Fields) => {
-  return data?.length && fields?.measures.length
-}
+  return data?.length && fields?.measures.length;
+};

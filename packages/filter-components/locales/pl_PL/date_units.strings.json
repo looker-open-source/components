@@ -9,54 +9,54 @@
     "value": "kwartał fiskalny"
   },
   "fiscal quarters": {
-    "value": "kw. fiskalne"
+    "value": "kwartały podatkowe"
   },
   "fiscal year": {
     "value": "rok fiskalny"
   },
   "fiscal years": {
-    "value": "lata fiskalne/lat fiskalnych"
+    "value": "lata podatkowe"
   },
   "hour": {
     "value": "godzina"
   },
   "hours": {
-    "value": "godz."
+    "value": "godziny"
   },
   "minute": {
     "value": "minuta"
   },
   "minutes": {
-    "value": "min"
+    "value": "minuty"
   },
   "month": {
     "value": "miesiąc"
   },
   "months": {
-    "value": "mies."
+    "value": "miesiące"
   },
   "quarter": {
     "value": "kwartał"
   },
   "quarters": {
-    "value": "kw."
+    "value": "kwartały"
   },
   "second": {
     "value": "sekunda"
   },
   "seconds": {
-    "value": "sek."
+    "value": "sekundy"
   },
   "week": {
     "value": "tydzień"
   },
   "weeks": {
-    "value": "tyg."
+    "value": "tygodnie"
   },
   "year": {
     "value": "rok"
   },
   "years": {
-    "value": "lat/lata"
+    "value": "lata"
   }
 }

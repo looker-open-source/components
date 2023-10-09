@@ -24,18 +24,18 @@
 
  */
 
-import type { FontSizes } from '@looker/design-tokens'
-import React from 'react'
-import styled from 'styled-components'
-import { Heading } from '../Text/Heading'
-import { Paragraph } from '../Text/Paragraph'
+import type { FontSizes } from '@looker/design-tokens';
+import React from 'react';
+import styled from 'styled-components';
+import { Heading } from '../Text/Heading';
+import { Paragraph } from '../Text/Paragraph';
 
 export const constitutionShort =
-  'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.'
+  'We the People of the United States, in Order to form a more perfect Union, establish Justice, insure domestic Tranquility, provide for the common defense, promote the general Welfare, and secure the Blessings of Liberty to ourselves and our Posterity, do ordain and establish this Constitution for the United States of America.';
 
 export const ConstitutionShort = ({ fontSize }: { fontSize?: FontSizes }) => (
   <Paragraph fontSize={fontSize}>{constitutionShort}</Paragraph>
-)
+);
 
 export const Constitution = () => (
   <Format>
@@ -86,7 +86,7 @@ export const Constitution = () => (
       and shall have the sole Power of Impeachment.
     </Paragraph>
   </Format>
-)
+);
 
 const Format = styled.article`
   ${Heading} {
@@ -97,4 +97,4 @@ const Format = styled.article`
   ${Paragraph} {
     margin: ${({ theme }) => theme.space.u3} 0;
   }
-`
+`;

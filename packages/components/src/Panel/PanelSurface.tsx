@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Keyframes } from 'styled-components'
-import styled, { keyframes } from 'styled-components'
-import type { PanelSurfaceProps } from './types'
+import type { Keyframes } from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import type { PanelSurfaceProps } from './types';
 
 // We have to use animation/keyframes here instead of transition
 // transition starts after the class changes from entering to entered
@@ -13,11 +13,11 @@ import type { PanelSurfaceProps } from './types'
 const slideIn: Keyframes = keyframes`
   0% {transform: translate(var(--direction-translate, 0), 0);}
   100% {transform: translate(0);}
-`
+`;
 const slideOut: Keyframes = keyframes`
   0% {transform: translate(0);}
   100% {transform: translate(var(--direction-translate, 0), 0);}
-`
+`;
 
 /**
  * Produces the interior "surface" of an active `Panel`
@@ -49,4 +49,4 @@ export const PanelSurface = styled.div.attrs<PanelSurfaceProps>(
   &.exiting {
     animation-name: ${slideOut};
   }
-`
+`;

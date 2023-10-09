@@ -3,20 +3,20 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useEffect, useState } from 'react'
-import { FieldRangeSlider } from '../'
-import { ButtonGroup, ButtonItem } from '../../../../'
+import React, { useEffect, useState } from 'react';
+import { FieldRangeSlider } from '../';
+import { ButtonGroup, ButtonItem } from '../../../../';
 
 export default function DashboardFilters() {
-  const [renderSiblings, setRenderSiblings] = useState(false)
-  const [buttonValue, setButtonValue] = useState(['CA'])
+  const [renderSiblings, setRenderSiblings] = useState(false);
+  const [buttonValue, setButtonValue] = useState(['CA']);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setRenderSiblings(true), 1000)
+    const timeout = setTimeout(() => setRenderSiblings(true), 1000);
     return () => {
-      clearTimeout(timeout)
-    }
-  }, [])
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <>
@@ -29,5 +29,5 @@ export default function DashboardFilters() {
       )}
       <FieldRangeSlider />
     </>
-  )
+  );
 }

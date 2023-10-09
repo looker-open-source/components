@@ -24,33 +24,33 @@
 
  */
 
-import React from 'react'
-import styled, { css, useTheme } from 'styled-components'
+import React from 'react';
+import styled, { css, useTheme } from 'styled-components';
 import {
   getSeriesMax,
   getSeriesMin,
   pickSeriesByName,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import type {
   ChartData,
   CCartesian,
   LineProps,
   CSeriesSize,
   SDKRecord,
-} from '@looker/visualizations-adapters'
-import { Tooltip as VisxTooltip } from '@visx/xychart'
-import type { TooltipData } from '@visx/xychart'
-import { SpaceVertical, TooltipContent } from '@looker/components'
-import get from 'lodash/get'
-import { Glyph } from '../Glyph'
+} from '@looker/visualizations-adapters';
+import { Tooltip as VisxTooltip } from '@visx/xychart';
+import type { TooltipData } from '@visx/xychart';
+import { SpaceVertical, TooltipContent } from '@looker/components';
+import get from 'lodash/get';
+import { Glyph } from '../Glyph';
 import {
   seriesLabelFormatter,
   getRelativeGlyphSize,
   getDefaultGlyphSize,
   useTranslation,
-} from '../utils'
-import { DLGroup } from '../DLGroup'
-import numeral from 'numeral'
+} from '../utils';
+import { DLGroup } from '../DLGroup';
+import numeral from 'numeral';
 
 export const tooltipStyles = css`
   background-color: ${({ theme }) => theme.colors.inverse};
@@ -60,15 +60,15 @@ export const tooltipStyles = css`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   padding: ${({ theme }) => theme.space.u3};
   pointer-events: none; /* Prevents mouse from falling onto tooltip and interrupting horizontal hover flow on charts */
-`
+`;
 
 export type TooltipProps = Pick<LineProps, 'fields'> & {
-  className?: string
-  config: CCartesian
-  data: ChartData
-  showDatumGlyph?: boolean
-  snapToDatum?: boolean
-}
+  className?: string;
+  config: CCartesian;
+  data: ChartData;
+  showDatumGlyph?: boolean;
+  snapToDatum?: boolean;
+};
 
 /**
  * XYTooltip component for charts that leverage visx's XYChart component like Line
@@ -90,42 +90,42 @@ export const XYTooltip = styled(
     snapToDatum = true,
     showDatumGlyph = true,
   }: TooltipProps) => {
-    const { t } = useTranslation('XYTooltip')
-    const theme = useTheme()
-    const { tooltips, series } = config
+    const { t } = useTranslation('XYTooltip');
+    const theme = useTheme();
+    const { tooltips, series } = config;
     if (!tooltips) {
-      return <></>
+      return <></>;
     }
 
     const renderTooltip = ({
       tooltipData,
     }: {
-      tooltipData?: TooltipData<SDKRecord>
+      tooltipData?: TooltipData<SDKRecord>;
     }) => {
-      const nearestDatumMeasureName = tooltipData?.nearestDatum?.key || ''
-      const nearestDatumIndex = tooltipData?.nearestDatum?.index || 0
-      const datum = data[nearestDatumIndex]
+      const nearestDatumMeasureName = tooltipData?.nearestDatum?.key || '';
+      const nearestDatumIndex = tooltipData?.nearestDatum?.index || 0;
+      const datum = data[nearestDatumIndex];
 
       const nearestSeries = pickSeriesByName(
         fields,
         config,
         nearestDatumMeasureName
-      )
+      );
       /**
        * In the event there is more than 1 dimension, we'll hide the label
        * and instead just display the concatenation of all dimension values
        */
       const dimensionLabel =
-        fields.dimensions.length === 1 ? fields.dimensions[0].label_short : ''
+        fields.dimensions.length === 1 ? fields.dimensions[0].label_short : '';
 
       const valueFormatted = numeral(datum[nearestDatumMeasureName]).format(
         nearestSeries.value_format
-      )
-      const { size_by } = nearestSeries
-      const sizeBySeries = size_by ? get(series, size_by) : {}
+      );
+      const { size_by } = nearestSeries;
+      const sizeBySeries = size_by ? get(series, size_by) : {};
       const sizeByValueFormatted = numeral(
         datum[nearestSeries.size_by || '']
-      ).format(sizeBySeries.value_format)
+      ).format(sizeBySeries.value_format);
 
       return (
         <TooltipContent>
@@ -154,31 +154,31 @@ export const XYTooltip = styled(
             </SpaceVertical>
           </StyledDL>
         </TooltipContent>
-      )
-    }
+      );
+    };
 
     const glyphSize = (
       sizeByData = 0,
       line_width = 3,
       size_by: CSeriesSize['size_by']
     ) => {
-      const defaultSize = getDefaultGlyphSize(line_width) + 20 + line_width * 4
+      const defaultSize = getDefaultGlyphSize(line_width) + 20 + line_width * 4;
 
       if (size_by) {
-        const sizeByMin = getSeriesMin(size_by, data)
-        const sizeByMax = getSeriesMax(size_by, data)
+        const sizeByMin = getSeriesMin(size_by, data);
+        const sizeByMax = getSeriesMax(size_by, data);
         return sizeByMin !== sizeByMax
           ? getRelativeGlyphSize(sizeByData, sizeByMin, sizeByMax)
-          : defaultSize
+          : defaultSize;
       }
 
-      return defaultSize
-    }
+      return defaultSize;
+    };
 
     const styleObj = (size: number, size_by: CSeriesSize['size_by']) => {
       // A decreasing linear function defines the scaleValue, so that
       // when size is ~80 scaleValue = 1.1, but when size is ~8000 scaleValue = 1.01
-      const scaleValue = Math.round(-0.001 * size + 20) / 100 + 0.9
+      const scaleValue = Math.round(-0.001 * size + 20) / 100 + 0.9;
       return {
         stroke: theme.colors.background,
         transform: `scale(${scaleValue}, ${scaleValue})`,
@@ -188,8 +188,8 @@ export const XYTooltip = styled(
               filter: `drop-shadow(1px 1px 3px rgb(0 0 0 / 0.5))`,
             }
           : {}),
-      }
-    }
+      };
+    };
 
     return (
       <VisxTooltip
@@ -202,15 +202,15 @@ export const XYTooltip = styled(
         unstyled
         applyPositionStyle
         renderGlyph={({ color, key, datum }) => {
-          const nearestSeries = pickSeriesByName(fields, config, key)
-          const { line_width = 1, size_by } = nearestSeries
+          const nearestSeries = pickSeriesByName(fields, config, key);
+          const { line_width = 1, size_by } = nearestSeries;
           const size = glyphSize(
             get(datum, size_by || '') as number,
             line_width,
             size_by
-          )
+          );
 
-          const style = styleObj(size, size_by)
+          const style = styleObj(size, size_by);
           return (
             <Glyph
               series={{ ...nearestSeries, line_width: 3 }}
@@ -220,15 +220,15 @@ export const XYTooltip = styled(
               fill={color}
               styleObj={style}
             />
-          )
+          );
         }}
       />
-    )
+    );
   }
 )`
   ${tooltipStyles}
-`
+`;
 
 const StyledDL = styled.dl`
   margin: 0;
-`
+`;

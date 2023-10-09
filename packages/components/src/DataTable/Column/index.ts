@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './column'
-export * from './DataTableCell'
+export * from './column';
+export * from './DataTableCell';

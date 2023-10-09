@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { SpaceVertical, Space } from '../../../../Layout'
-import { Tooltip } from '../../../../Tooltip'
-import { Span } from '../../../../Text'
-import { InputText } from '../InputText'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { SpaceVertical, Space } from '../../../../Layout';
+import { Tooltip } from '../../../../Tooltip';
+import { Span } from '../../../../Text';
+import { InputText } from '../InputText';
 
 export default function BeforeAfter() {
   return (
@@ -30,5 +30,5 @@ export default function BeforeAfter() {
         />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

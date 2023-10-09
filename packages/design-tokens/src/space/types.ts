@@ -36,7 +36,7 @@ import type {
   SizeXXLarge,
   SizeXXXLarge,
   SizeXXXXLarge,
-} from '../system/size'
+} from '../system/size';
 import type {
   Unit0,
   Unit05,
@@ -56,7 +56,7 @@ import type {
   Unit7,
   Unit8,
   Unit9,
-} from './units'
+} from './units';
 
 /**
  * @deprecated - Use `UnitSizes` instead
@@ -72,7 +72,7 @@ export type LegacySpacingSizes =
   | SizeXLarge
   | SizeXXLarge
   | SizeXXXLarge
-  | SizeXXXXLarge
+  | SizeXXXXLarge;
 
 export type UnitSizes =
   | Unit0
@@ -92,13 +92,13 @@ export type UnitSizes =
   | Unit13
   | Unit14
   | Unit15
-  | Unit16
+  | Unit16;
 
-export type SpacingSizes = LegacySpacingSizes | UnitSizes
+export type SpacingSizes = LegacySpacingSizes | UnitSizes;
 
 /**
  * @deprecated Use `spacing` instead
  */
-export type LegacySpaceRamp = Record<LegacySpacingSizes, string>
-export type UnitRamp = Record<UnitSizes, string>
-export type SpaceRamp = Record<SpacingSizes, string>
+export type LegacySpaceRamp = Record<LegacySpacingSizes, string>;
+export type UnitRamp = Record<UnitSizes, string>;
+export type SpaceRamp = Record<SpacingSizes, string>;

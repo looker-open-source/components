@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Icon'
-export * from './IconPlaceholder'
+export * from './Icon';
+export * from './IconPlaceholder';

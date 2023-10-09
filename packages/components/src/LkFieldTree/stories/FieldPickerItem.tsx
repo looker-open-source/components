@@ -24,30 +24,30 @@
 
  */
 
-import React, { createContext, useContext, useState } from 'react'
-import type { ReactNode } from 'react'
+import React, { createContext, useContext, useState } from 'react';
+import type { ReactNode } from 'react';
 import {
   FilterList,
   MoreVert,
   SubdirectoryArrowLeft,
-} from '@styled-icons/material'
-import { Info } from '@styled-icons/material-outlined'
-import type { ToggleColor } from '../..'
-import { IconButton, Menu, MenuItem, Tooltip, Flex, Truncate } from '../..'
-import { LkFieldItem } from '..'
-import { HoverDisclosure } from '../../utils'
-import { listItemDimensions } from '../../ListItem'
-import { ReplaceText } from '../../ReplaceText'
+} from '@styled-icons/material';
+import { Info } from '@styled-icons/material-outlined';
+import type { ToggleColor } from '../..';
+import { IconButton, Menu, MenuItem, Tooltip, Flex, Truncate } from '../..';
+import { LkFieldItem } from '..';
+import { HoverDisclosure } from '../../utils';
+import { listItemDimensions } from '../../ListItem';
+import { ReplaceText } from '../../ReplaceText';
 
-export const HighlightContext = createContext({ term: '' })
+export const HighlightContext = createContext({ term: '' });
 
 type FieldPickerItemProps = {
-  color?: ToggleColor
-  filter?: boolean
-  pivot?: boolean
-  selected?: boolean
-  children?: ReactNode
-}
+  color?: ToggleColor;
+  filter?: boolean;
+  pivot?: boolean;
+  selected?: boolean;
+  children?: ReactNode;
+};
 
 export const FieldPickerItem = ({
   children = 'Cost',
@@ -56,15 +56,15 @@ export const FieldPickerItem = ({
   pivot = false,
   selected = false,
 }: FieldPickerItemProps) => {
-  const [isFieldMenuOpen, setIsFieldMenuOpen] = useState<boolean>(false)
-  const { term } = useContext(HighlightContext)
+  const [isFieldMenuOpen, setIsFieldMenuOpen] = useState<boolean>(false);
+  const { term } = useContext(HighlightContext);
 
-  const [isFilter, setIsFilter] = useState(filter)
-  const [isPivot, setIsPivot] = useState(pivot)
-  const [isSelected, setIsSelected] = useState(selected)
+  const [isFilter, setIsFilter] = useState(filter);
+  const [isPivot, setIsPivot] = useState(pivot);
+  const [isSelected, setIsSelected] = useState(selected);
 
   const toggleMenu = () =>
-    isFieldMenuOpen ? setIsFieldMenuOpen(false) : setIsFieldMenuOpen(true)
+    isFieldMenuOpen ? setIsFieldMenuOpen(false) : setIsFieldMenuOpen(true);
 
   const detailContent = (
     <>
@@ -91,11 +91,11 @@ export const FieldPickerItem = ({
         />
       </Menu>
     </>
-  )
+  );
 
-  const toggleField = () => setIsSelected(!isSelected)
+  const toggleField = () => setIsSelected(!isSelected);
 
-  const { height } = listItemDimensions(-3)
+  const { height } = listItemDimensions(-3);
 
   return (
     <LkFieldItem
@@ -111,12 +111,12 @@ export const FieldPickerItem = ({
       }}
       onKeyDown={event => {
         if (event.key === 'Enter' && event.metaKey) {
-          alert(`CMD + Enter'ed on ${children}!`)
+          alert(`CMD + Enter'ed on ${children}!`);
         } else if (
           event.key === 'Enter' &&
           event.currentTarget === event.target
         ) {
-          toggleField()
+          toggleField();
         }
       }}
     >
@@ -158,5 +158,5 @@ export const FieldPickerItem = ({
         </HoverDisclosure>
       </Flex>
     </LkFieldItem>
-  )
-}
+  );
+};

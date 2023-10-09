@@ -24,123 +24,123 @@
 
  */
 
-import { barPositioning } from './barPositioning'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
+import { barPositioning } from './barPositioning';
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures';
 
 describe('barPositioning', () => {
   test('default', () => {
-    const config = { ...mockBarConfig }
-    delete config.positioning
+    const config = { ...mockBarConfig };
+    delete config.positioning;
 
     expect(
       barPositioning({ config, data: mockSdkDataResponse, fields: mockFields })
         .config.positioning
-    ).toEqual('grouped')
-  })
+    ).toEqual('grouped');
+  });
 
   describe('config.positioning ===', () => {
     test('grouped', () => {
-      const config = { ...mockBarConfig, positioning: 'grouped' as const }
+      const config = { ...mockBarConfig, positioning: 'grouped' as const };
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('grouped')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('grouped');
+    });
 
     test('percent', () => {
-      const config = { ...mockBarConfig, positioning: 'percent' as const }
+      const config = { ...mockBarConfig, positioning: 'percent' as const };
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('percent')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('percent');
+    });
 
     test('stacked', () => {
-      const config = { ...mockBarConfig, positioning: 'stacked' as const }
+      const config = { ...mockBarConfig, positioning: 'stacked' as const };
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
-  })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
+  });
 
   describe('config.stacking ===', () => {
     test('grouped', () => {
-      const config = { ...mockBarConfig, stacking: 'grouped' as const }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: 'grouped' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('grouped')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('grouped');
+    });
 
     test('stacked', () => {
-      const config = { ...mockBarConfig, stacking: 'stacked' as const }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: 'stacked' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
 
     test('percent', () => {
-      const config = { ...mockBarConfig, stacking: 'percent' as const }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: 'percent' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('percent')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('percent');
+    });
 
     test('overlay', () => {
-      const config = { ...mockBarConfig, stacking: 'overlay' as const }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: 'overlay' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('grouped')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('grouped');
+    });
 
     test('normal', () => {
-      const config = { ...mockBarConfig, stacking: 'normal' as const }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: 'normal' as const };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('stacked')
-    })
+      });
+      expect(transformedConfig.positioning).toEqual('stacked');
+    });
 
     test("''", () => {
-      const config = { ...mockBarConfig, stacking: '' as 'grouped' }
-      delete config.positioning
+      const config = { ...mockBarConfig, stacking: '' as 'grouped' };
+      delete config.positioning;
 
       const { config: transformedConfig } = barPositioning({
         config,
         data: mockSdkDataResponse,
         fields: mockFields,
-      })
-      expect(transformedConfig.positioning).toEqual('grouped')
-    })
-  })
-})
+      });
+      expect(transformedConfig.positioning).toEqual('grouped');
+    });
+  });
+});

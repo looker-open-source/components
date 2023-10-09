@@ -23,91 +23,91 @@
  SOFTWARE.
 
  */
-import { parseFilterExpression } from '../parse_filter_expression'
-import type { FilterModel } from '../../types'
-import { sanitizeDate } from './sanitize_date'
+import { parseFilterExpression } from '../parse_filter_expression';
+import type { FilterModel } from '../../types';
+import { sanitizeDate } from './sanitize_date';
 
-const type = 'date'
+const type = 'date';
 
-const parse = (expression: string) => parseFilterExpression(type, expression)
+const parse = (expression: string) => parseFilterExpression(type, expression);
 
 describe('Sanitize Date Test', () => {
-  const expression = '2018/01/01'
+  const expression = '2018/01/01';
 
   it('works when switching to year ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'year' } as FilterModel)
-    expect(item.type).toBe('year')
-    expect(item.year).not.toBeNull()
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'year' } as FilterModel);
+    expect(item.type).toBe('year');
+    expect(item.year).not.toBeNull();
+  });
 
   it('works when switching to this ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'this' } as FilterModel)
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'this' } as FilterModel);
 
-    expect(item.year).not.toBeNull()
-    expect(item.type).toBe('this')
-  })
+    expect(item.year).not.toBeNull();
+    expect(item.type).toBe('this');
+  });
   it('works when switching to past ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'past' } as FilterModel)
-    expect(item.type).toBe('past')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'past' } as FilterModel);
+    expect(item.type).toBe('past');
+  });
   it('works when switching to before ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'before' } as FilterModel)
-    expect(item.type).toBe('before')
-    expect(item.range).toBe('relative')
-    expect(item.unit).toBe('month')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'before' } as FilterModel);
+    expect(item.type).toBe('before');
+    expect(item.range).toBe('relative');
+    expect(item.unit).toBe('month');
+  });
   it('works when switching to range ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'range' } as FilterModel)
-    expect(item.type).toBe('range')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'range' } as FilterModel);
+    expect(item.type).toBe('range');
+  });
   it('works when switching to null ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'null' } as FilterModel)
-    expect(item.type).toBe('null')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'null' } as FilterModel);
+    expect(item.type).toBe('null');
+  });
   it('works when switching to anytime ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'anytime' } as FilterModel)
-    expect(item.type).toBe('anytime')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'anytime' } as FilterModel);
+    expect(item.type).toBe('anytime');
+  });
   it('works when switching to month ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'month' } as FilterModel)
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'month' } as FilterModel);
 
-    expect(item.year).not.toBeNull()
+    expect(item.year).not.toBeNull();
 
-    expect(item.month).not.toBeNull()
-    expect(item.type).toBe('month')
-  })
+    expect(item.month).not.toBeNull();
+    expect(item.type).toBe('month');
+  });
   it('works when switching to on ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'on' } as FilterModel)
-    expect(item.type).toBe('on')
-    expect(item.date).not.toBeNull()
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'on' } as FilterModel);
+    expect(item.type).toBe('on');
+    expect(item.date).not.toBeNull();
+  });
   it('works when switching to relative ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'relative' } as FilterModel)
-    expect(item.type).toBe('relative')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'relative' } as FilterModel);
+    expect(item.type).toBe('relative');
+  });
 
   it('works when switching to thisRange ' + expression, () => {
-    const ast = parse(expression)
-    const item = sanitizeDate({ ...ast, type: 'thisRange' } as FilterModel)
-    expect(item.type).toBe('thisRange')
-  })
+    const ast = parse(expression);
+    const item = sanitizeDate({ ...ast, type: 'thisRange' } as FilterModel);
+    expect(item.type).toBe('thisRange');
+  });
 
   it('works when switching to matchesAdvanced ' + expression, () => {
-    const ast = parse(expression)
+    const ast = parse(expression);
     const item = sanitizeDate({
       ...ast,
       type: 'matchesAdvanced',
-    } as FilterModel)
-    expect(item.type).toBe('matchesAdvanced')
-  })
-})
+    } as FilterModel);
+    expect(item.type).toBe('matchesAdvanced');
+  });
+});

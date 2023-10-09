@@ -2,5 +2,5 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-export * from './YAxis'
-export * from './XAxis'
+export * from './YAxis';
+export * from './XAxis';

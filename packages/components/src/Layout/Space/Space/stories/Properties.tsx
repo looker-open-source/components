@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import type { SpaceHelperProps } from '../Space'
-import { Space, SpaceVertical, Button } from '../../../..'
+import React from 'react';
+import type { SpaceHelperProps } from '../Space';
+import { Space, SpaceVertical, Button } from '../../../..';
 
 export default function Properties(props: SpaceHelperProps) {
   return (
@@ -25,5 +25,5 @@ export default function Properties(props: SpaceHelperProps) {
         <Button size="large">Button C</Button>
       </SpaceVertical>
     </Space>
-  )
+  );
 }

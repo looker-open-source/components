@@ -24,7 +24,7 @@
 
  */
 
-import type { Ref, KeyboardEvent } from 'react'
+import type { Ref, KeyboardEvent } from 'react';
 import React, {
   forwardRef,
   useState,
@@ -32,20 +32,20 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-} from 'react'
+} from 'react';
 import type {
   SpaceProps,
   TypographyProps,
   WidthProps,
-} from '@looker/design-tokens'
-import { reset, space, typography } from '@looker/design-tokens'
-import styled from 'styled-components'
-import sortBy from 'lodash/sortBy'
-import indexOf from 'lodash/indexOf'
-import startsWith from 'lodash/startsWith'
-import partial from 'lodash/partial'
-import map from 'lodash/map'
-import isEqual from 'lodash/isEqual'
+} from '@looker/design-tokens';
+import { reset, space, typography } from '@looker/design-tokens';
+import styled from 'styled-components';
+import sortBy from 'lodash/sortBy';
+import indexOf from 'lodash/indexOf';
+import startsWith from 'lodash/startsWith';
+import partial from 'lodash/partial';
+import map from 'lodash/map';
+import isEqual from 'lodash/isEqual';
 
 import {
   useMeasuredElement,
@@ -53,33 +53,33 @@ import {
   useReadOnlyWarn,
   usePreviousValue,
   useTranslation,
-} from '../../../utils'
-import type { ValidationType } from '../../ValidationMessage'
-import { getPrecision, precisionRound } from './precisionUtils'
+} from '../../../utils';
+import type { ValidationType } from '../../ValidationMessage';
+import { getPrecision, precisionRound } from './precisionUtils';
 
 export interface RangeSliderProps
   extends SpaceProps,
     WidthProps,
     TypographyProps {
-  'aria-labelledby'?: string
-  'aria-describedby'?: string
-  name?: string
-  max?: number
-  min?: number
-  step?: number
-  onChange?: (value: number[]) => void
-  value?: number[]
-  defaultValue?: number[]
-  disabled?: boolean
-  id?: string
-  readOnly?: boolean
-  validationType?: ValidationType
-  className?: string
+  'aria-labelledby'?: string;
+  'aria-describedby'?: string;
+  name?: string;
+  max?: number;
+  min?: number;
+  step?: number;
+  onChange?: (value: number[]) => void;
+  value?: number[];
+  defaultValue?: number[];
+  disabled?: boolean;
+  id?: string;
+  readOnly?: boolean;
+  validationType?: ValidationType;
+  className?: string;
 }
 
-type ThumbIndices = 0 | 1 | undefined
+type ThumbIndices = 0 | 1 | undefined;
 
-const sort = (arr: number[]) => arr.sort((a, b) => a - b)
+const sort = (arr: number[]) => arr.sort((a, b) => a - b);
 
 /*
  *  Takes a new number (newPoint) and decides which min or max value should be replaced
@@ -91,10 +91,10 @@ const findClosestIndex = (value: number[], newPoint: number): number => {
       index: i,
     })),
     'distance'
-  )[0]
+  )[0];
 
-  return closestIndex
-}
+  return closestIndex;
+};
 
 /*
  * Immutably updates value array with newPoint
@@ -107,11 +107,11 @@ const createNewValue = (
   const indexToReplace =
     focusedIndex === undefined
       ? findClosestIndex(value, newPoint)
-      : focusedIndex
+      : focusedIndex;
 
-  const newValue = Object.assign([], value, { [indexToReplace]: newPoint })
-  return sort(newValue)
-}
+  const newValue = Object.assign([], value, { [indexToReplace]: newPoint });
+  return sort(newValue);
+};
 
 /*
  * Takes a number and rounds it to the nearest multiple of step above the `minBound` starting value
@@ -123,14 +123,14 @@ const roundToStep = (
   step: number,
   newPoint: number
 ) => {
-  const stepPrecision = getPrecision(step)
+  const stepPrecision = getPrecision(step);
 
   const roundedPoint = precisionRound(
     ((newPoint - min) / step) * step + min,
     stepPrecision
-  )
-  return Math.max(Math.min(roundedPoint, max), min)
-}
+  );
+  return Math.max(Math.min(roundedPoint, max), min);
+};
 
 /*
  * Returns a new point value based on mouse position relative to component wrapper.
@@ -144,29 +144,29 @@ const calculatePointValue = (
   step: number
 ): number => {
   // calculate point value based on where user clicked within container
-  const mousePosition = mouseX - containerRect.left
-  const possibleValueRange = max - min
+  const mousePosition = mouseX - containerRect.left;
+  const possibleValueRange = max - min;
   const newPoint =
-    (mousePosition / containerRect.width) * possibleValueRange + min
+    (mousePosition / containerRect.width) * possibleValueRange + min;
 
-  return roundToStep(min, max, step, newPoint)
-}
+  return roundToStep(min, max, step, newPoint);
+};
 
 /*
  *Prevent value from exceeding min—max range
  */
 const boundValueProp = (min: number, max: number, value?: number[]) => {
   return map(value || [min, max], (point: number) => {
-    const boundedPoint = Math.max(Math.min(point, max), min)
+    const boundedPoint = Math.max(Math.min(point, max), min);
     if (boundedPoint !== point) {
       // eslint-disable-next-line no-console
       console.warn(
         `<RangeSlider />: The value '${point}' falls outside the possible range (MIN: ${min}, MAX: ${max}). Please adjust min and max props accordingly.`
-      )
+      );
     }
-    return boundedPoint
-  })
-}
+    return boundedPoint;
+  });
+};
 
 export const InternalRangeSlider = forwardRef(
   (
@@ -187,18 +187,18 @@ export const InternalRangeSlider = forwardRef(
     }: RangeSliderProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    const { t } = useTranslation('RangeSlider')
+    const { t } = useTranslation('RangeSlider');
 
     // Create a more stable value prop
     // (an array may be "new" even if the numbers haven't changed)
-    const valuePropMin = valueFromProps?.[0]
-    const valuePropMax = valueFromProps?.[1]
+    const valuePropMin = valueFromProps?.[0];
+    const valuePropMax = valueFromProps?.[1];
     const valueProp = useMemo(() => {
       if (valuePropMin === undefined || valuePropMax === undefined) {
-        return undefined
+        return undefined;
       }
-      return [valuePropMin, valuePropMax]
-    }, [valuePropMin, valuePropMax])
+      return [valuePropMin, valuePropMax];
+    }, [valuePropMin, valuePropMax]);
 
     /*
      * Validate props and render any necessary warnings
@@ -208,8 +208,8 @@ export const InternalRangeSlider = forwardRef(
       'RangeSlider',
       valueProp,
       onChange
-    )
-    const readOnly = readOnlyProp || unintentionalReadOnly
+    );
+    const readOnly = readOnlyProp || unintentionalReadOnly;
 
     /*
      * Internal component state and refs
@@ -221,95 +221,95 @@ export const InternalRangeSlider = forwardRef(
         min,
         max,
         valueProp || defaultValueProp
-      )
-      return sort(boundedValue)
-    })
+      );
+      return sort(boundedValue);
+    });
 
     // Create a more stable value state
     // (an array may be "new" even if the numbers haven't changed)
-    const valueMin = valueState[0]
-    const valueMax = valueState[1]
+    const valueMin = valueState[0];
+    const valueMax = valueState[1];
     const value = useMemo(() => {
-      return [valueMin, valueMax]
-    }, [valueMin, valueMax])
+      return [valueMin, valueMax];
+    }, [valueMin, valueMax]);
 
-    const [containerRef, setContainerRef] = useState<HTMLElement | null>(null)
-    const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>()
+    const [containerRef, setContainerRef] = useState<HTMLElement | null>(null);
+    const [focusedThumb, setFocusedThumb] = useState<ThumbIndices>();
 
-    const [containerRect, refreshDomRect] = useMeasuredElement(containerRef)
+    const [containerRect, refreshDomRect] = useMeasuredElement(containerRef);
 
-    const { mousePos, isMouseDown } = useMouseDragPosition(containerRef)
-    const previousIsMouseDown = usePreviousValue(isMouseDown)
+    const { mousePos, isMouseDown } = useMouseDragPosition(containerRef);
+    const previousIsMouseDown = usePreviousValue(isMouseDown);
 
-    const minThumbRef = useRef<HTMLDivElement>(null)
-    const maxThumbRef = useRef<HTMLDivElement>(null)
+    const minThumbRef = useRef<HTMLDivElement>(null);
+    const maxThumbRef = useRef<HTMLDivElement>(null);
 
     // calculate thumb position based on set value
-    const [minValue, maxValue] = value
-    const minPos = ((minValue - min) / (max - min)) * containerRect.width
-    const maxPos = ((maxValue - min) / (max - min)) * containerRect.width
-    const fillWidth = maxPos - minPos
+    const [minValue, maxValue] = value;
+    const minPos = ((minValue - min) / (max - min)) * containerRect.width;
+    const maxPos = ((maxValue - min) / (max - min)) * containerRect.width;
+    const fillWidth = maxPos - minPos;
 
     /*
      * Behavioral callbacks
      * ------------------------------------------------------
      */
 
-    const roundSliderValue = partial(roundToStep, min, max, step)
+    const roundSliderValue = partial(roundToStep, min, max, step);
 
     const focusChangedPoint = useCallback(
       (newValue: number[], newPoint: number) => {
         // focus/highlight the thumb that moved on click
-        const indexToFocus = indexOf(newValue, newPoint) as 0 | 1
-        const thumbRefs = [minThumbRef, maxThumbRef]
-        const refToFocus = thumbRefs[indexToFocus]
-        setFocusedThumb(indexToFocus)
-        refToFocus.current && refToFocus.current.focus()
+        const indexToFocus = indexOf(newValue, newPoint) as 0 | 1;
+        const thumbRefs = [minThumbRef, maxThumbRef];
+        const refToFocus = thumbRefs[indexToFocus];
+        setFocusedThumb(indexToFocus);
+        refToFocus.current && refToFocus.current.focus();
       },
       []
-    )
+    );
 
     const incrementPoint = (point: number, stepMultiplier = 1) =>
-      point + step * stepMultiplier
+      point + step * stepMultiplier;
 
     const decrementPoint = (point: number, stepMultiplier = 1) =>
-      point - step * stepMultiplier
+      point - step * stepMultiplier;
 
     const handleKeyboardNav = (e: KeyboardEvent) => {
       if (!disabled && !readOnly) {
         if (startsWith(e.key, 'Arrow') && focusedThumb !== undefined) {
-          e.preventDefault() // prevent arrows from browser window
-          const unfocusedThumb = focusedThumb === 0 ? 1 : 0
+          e.preventDefault(); // prevent arrows from browser window
+          const unfocusedThumb = focusedThumb === 0 ? 1 : 0;
           const mutationFn =
             e.key === 'ArrowUp' || e.key === 'ArrowRight'
               ? incrementPoint
-              : decrementPoint
+              : decrementPoint;
           const newPoint = roundSliderValue(
             mutationFn(value[focusedThumb], e.shiftKey ? 10 : 1)
-          )
-          const newValue = sort([newPoint, value[unfocusedThumb]])
-          focusChangedPoint(newValue, newPoint)
-          setValue(newValue)
-          onChange?.(newValue)
+          );
+          const newValue = sort([newPoint, value[unfocusedThumb]]);
+          focusChangedPoint(newValue, newPoint);
+          setValue(newValue);
+          onChange?.(newValue);
         }
       }
-    }
+    };
 
     const focusMinThumb = () => {
       if (!disabled && !readOnly) {
-        setFocusedThumb(0)
+        setFocusedThumb(0);
       }
-    }
+    };
 
     const focusMaxThumb = () => {
       if (!disabled && !readOnly) {
-        setFocusedThumb(1)
+        setFocusedThumb(1);
       }
-    }
+    };
 
     const handleBlur = () => {
-      setFocusedThumb(undefined)
-    }
+      setFocusedThumb(undefined);
+    };
 
     const handleMouseEvent = useCallback(
       (maintainFocus: boolean) => {
@@ -320,17 +320,17 @@ export const InternalRangeSlider = forwardRef(
             min,
             max,
             step
-          )
+          );
           const newValue = createNewValue(
             value,
             newPoint,
             maintainFocus ? focusedThumb : undefined
-          )
+          );
 
-          focusChangedPoint(newValue, newPoint)
+          focusChangedPoint(newValue, newPoint);
           if (!isEqual(value, newValue)) {
-            setValue(newValue)
-            onChange?.(newValue)
+            setValue(newValue);
+            onChange?.(newValue);
           }
         }
       },
@@ -347,16 +347,16 @@ export const InternalRangeSlider = forwardRef(
         step,
         value,
       ]
-    )
+    );
 
     const handleMouseDown = useMemo(
       () => partial(handleMouseEvent, false),
       [handleMouseEvent]
-    )
+    );
     const handleMouseDrag = useMemo(
       () => partial(handleMouseEvent, true),
       [handleMouseEvent]
-    )
+    );
 
     /*
      * Mouse down event (and re-measure the client rectangle values before calculating value).
@@ -365,49 +365,49 @@ export const InternalRangeSlider = forwardRef(
      */
     useEffect(() => {
       if (isMouseDown) {
-        refreshDomRect() // re-measure rectangle when isMouseDown changes from false to true
+        refreshDomRect(); // re-measure rectangle when isMouseDown changes from false to true
       }
-    }, [isMouseDown, refreshDomRect])
+    }, [isMouseDown, refreshDomRect]);
 
     useEffect(() => {
       if (isMouseDown) {
-        handleMouseDown() // fire mouseDown event after containerRect measurements are refreshed
+        handleMouseDown(); // fire mouseDown event after containerRect measurements are refreshed
       }
-    }, [isMouseDown, handleMouseDown, containerRect])
+    }, [isMouseDown, handleMouseDown, containerRect]);
 
     /*
      * Only fire mouse drag event when mouse moves AFTER initial click
      */
     useEffect(() => {
       if (isMouseDown && previousIsMouseDown) {
-        handleMouseDrag()
+        handleMouseDrag();
       }
-    }, [isMouseDown, previousIsMouseDown, handleMouseDrag, mousePos])
+    }, [isMouseDown, previousIsMouseDown, handleMouseDrag, mousePos]);
 
     /*
      * Controlled Component: update value state when external value prop changes
      */
-    const previousValueProp = usePreviousValue(valueProp)
+    const previousValueProp = usePreviousValue(valueProp);
     useEffect(() => {
-      const boundedValueProp = boundValueProp(min, max, valueProp)
+      const boundedValueProp = boundValueProp(min, max, valueProp);
       if (
         valueProp &&
         !isEqual(value, boundedValueProp) &&
         !isEqual(valueProp, previousValueProp)
       ) {
-        setValue(sort(boundedValueProp))
+        setValue(sort(boundedValueProp));
       }
-    }, [valueProp, previousValueProp, value, min, max])
+    }, [valueProp, previousValueProp, value, min, max]);
 
     /*
      * Call onChange if min/max update and valueProp is not within them
      */
     useEffect(() => {
-      const boundedValueProp = boundValueProp(min, max, valueProp)
+      const boundedValueProp = boundValueProp(min, max, valueProp);
       if (valueProp && !isEqual(valueProp, boundedValueProp)) {
-        onChange?.(sort(boundedValueProp))
+        onChange?.(sort(boundedValueProp));
       }
-    }, [valueProp, onChange, min, max])
+    }, [valueProp, onChange, min, max]);
 
     /*
      * Render markup!
@@ -478,11 +478,11 @@ export const InternalRangeSlider = forwardRef(
           />
         </SliderTrack>
       </div>
-    )
+    );
   }
-)
+);
 
-InternalRangeSlider.displayName = 'InternalRangeSlider'
+InternalRangeSlider.displayName = 'InternalRangeSlider';
 
 export const RangeSlider = styled(InternalRangeSlider).attrs<RangeSliderProps>(
   ({ fontSize = 'small', lineHeight = 'xsmall' }) => ({
@@ -496,19 +496,19 @@ export const RangeSlider = styled(InternalRangeSlider).attrs<RangeSliderProps>(
   padding: 1.5rem 0 0.5rem;
   touch-action: none;
   user-select: none;
-`
+`;
 
 const SliderTrack = styled.div`
   background: ${({ theme }) => theme.colors.ui2};
   border-radius: 2px;
   height: 4px;
   position: relative;
-`
+`;
 
 interface ThumbLabelProps extends TypographyProps {
-  position: number
-  focus: boolean
-  disabled: boolean
+  position: number;
+  focus: boolean;
+  disabled: boolean;
 }
 
 const ThumbLabel = styled.div<ThumbLabelProps>`
@@ -524,12 +524,12 @@ const ThumbLabel = styled.div<ThumbLabelProps>`
     translateX(-50%);
   user-select: none;
   z-index: ${({ focus }) => (focus ? 1 : 0)};
-`
+`;
 
 interface ThumbProps {
-  position: number
-  tabIndex: string
-  disabled: boolean
+  position: number;
+  tabIndex: string;
+  disabled: boolean;
 }
 
 const Thumb = styled.div<ThumbProps>`
@@ -550,12 +550,12 @@ const Thumb = styled.div<ThumbProps>`
     outline: none;
     z-index: 1;
   }
-`
+`;
 
 interface SliderFillProps {
-  fillStart: number
-  fillWidth: number
-  disabled: boolean
+  fillStart: number;
+  fillWidth: number;
+  disabled: boolean;
 }
 
 const SliderFill = styled.div<SliderFillProps>`
@@ -565,4 +565,4 @@ const SliderFill = styled.div<SliderFillProps>`
   left: ${({ fillStart }) => fillStart}px;
   position: absolute;
   width: ${({ fillWidth }) => fillWidth}px;
-`
+`;

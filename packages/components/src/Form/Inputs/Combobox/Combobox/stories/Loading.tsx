@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Button, Space } from '../../../../../'
-import type { ComboboxProps } from '../..'
-import { Combobox, ComboboxOption, ComboboxList } from '../..'
-import { ComboboxInput } from '../../ComboboxInput'
+import React, { useState } from 'react';
+import { Button, Space } from '../../../../../';
+import type { ComboboxProps } from '../..';
+import { Combobox, ComboboxOption, ComboboxList } from '../..';
+import { ComboboxInput } from '../../ComboboxInput';
 
 export default function LoadingState(props: ComboboxProps) {
-  const { width = 300, ...restProps } = props
+  const { width = 300, ...restProps } = props;
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   const handleLoadingStart = () => {
-    setLoading(true)
-  }
+    setLoading(true);
+  };
 
   const handleLoadingComplete = () => {
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
     <Space>
@@ -48,5 +48,5 @@ export default function LoadingState(props: ComboboxProps) {
         </ComboboxList>
       </Combobox>
     </Space>
-  )
+  );
 }

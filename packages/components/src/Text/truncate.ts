@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export interface TruncateCSSProps {
   /** Truncate text */
-  truncate?: boolean
+  truncate?: boolean;
   /** Truncate at a specified number of lines (whole number) */
-  truncateLines?: number
+  truncateLines?: number;
 }
 
 const textTruncate = (props: TruncateCSSProps) => {
-  const { truncateLines } = props
+  const { truncateLines } = props;
 
   if (truncateLines && truncateLines > 1) {
     // Despite the vendor prefixes below, this works in all modern browsers
@@ -24,14 +24,14 @@ const textTruncate = (props: TruncateCSSProps) => {
       -webkit-line-clamp: ${truncateLines};
       overflow: hidden;
       /* stylelint-enable */
-    `
+    `;
   }
   return css`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-  `
-}
+  `;
+};
 
 /**
  * Helper function that allows external developers
@@ -41,4 +41,4 @@ const textTruncate = (props: TruncateCSSProps) => {
 export const truncateCSS = (props: TruncateCSSProps) =>
   css`
     ${props.truncate || props.truncateLines ? textTruncate : null}
-  `
+  `;

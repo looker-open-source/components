@@ -1,7 +1,7 @@
 {
   "complete day": "dia completo",
   "complete days": {
-    "value": "dias completos"
+    "value": "dias concluídos"
   },
   "complete fiscal quarter": "trimestre fiscal completo",
   "complete fiscal quarters": {
@@ -13,31 +13,31 @@
   },
   "complete hour": "hora completa",
   "complete hours": {
-    "value": "horas completas"
+    "value": "horas concluídas"
   },
   "complete minute": "minuto completo",
   "complete minutes": {
-    "value": "minutos completos"
+    "value": "minutos concluídos"
   },
   "complete month": "mês completo",
   "complete months": {
-    "value": "meses completos"
+    "value": "meses concluídos"
   },
   "complete quarter": "trimestre completo",
   "complete quarters": {
-    "value": "trimestres completos"
+    "value": "trimestres concluídos"
   },
   "complete second": "segundo completo",
   "complete seconds": {
-    "value": "segundos completos"
+    "value": "segundos concluídos"
   },
   "complete week": "semana completa",
   "complete weeks": {
-    "value": "semanas completas"
+    "value": "semanas concluídas"
   },
   "complete year": "ano completo",
   "complete years": {
-    "value": "anos completos"
+    "value": "anos concluídos"
   },
   "day": "dia",
   "days": {

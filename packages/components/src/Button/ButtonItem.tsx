@@ -24,25 +24,25 @@
 
  */
 
-import type { MouseEvent, Ref } from 'react'
-import React, { forwardRef, useContext } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens'
-import { space, omitStyledProps } from '@looker/design-tokens'
-import pick from 'lodash/pick'
+import type { MouseEvent, Ref } from 'react';
+import React, { forwardRef, useContext } from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps, SpaceProps } from '@looker/design-tokens';
+import { space, omitStyledProps } from '@looker/design-tokens';
+import pick from 'lodash/pick';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../Ripple'
-import { inputHeight } from '../Form/Inputs/height'
-import { ButtonSetContext } from './ButtonSetContext'
+} from '../Ripple';
+import { inputHeight } from '../Form/Inputs/height';
+import { ButtonSetContext } from './ButtonSetContext';
 
 export interface ButtonItemProps
   extends SpaceProps,
     Omit<CompatibleHTMLProps<HTMLButtonElement>, 'type' | 'aria-pressed'> {
-  value?: string
+  value?: string;
 }
 
 const ButtonLayout = forwardRef(
@@ -54,30 +54,30 @@ const ButtonLayout = forwardRef(
       disabled,
       value: contextValue,
       onItemClick,
-    } = useContext(ButtonSetContext)
+    } = useContext(ButtonSetContext);
 
     function handleClick(e: MouseEvent<HTMLButtonElement>) {
-      onClick && onClick(e)
+      onClick && onClick(e);
       if (!e.defaultPrevented) {
-        onItemClick && onItemClick(e)
+        onItemClick && onItemClick(e);
       }
     }
 
-    let itemValue = ''
+    let itemValue = '';
 
     if (value !== undefined) {
-      itemValue = value
+      itemValue = value;
     } else if (typeof children === 'string') {
-      itemValue = children
+      itemValue = children;
     }
 
-    let selected = false
+    let selected = false;
 
     if (contextValue) {
       if (typeof contextValue === 'string') {
-        selected = contextValue === itemValue
+        selected = contextValue === itemValue;
       } else {
-        selected = contextValue.includes(itemValue)
+        selected = contextValue.includes(itemValue);
       }
     }
 
@@ -86,12 +86,12 @@ const ButtonLayout = forwardRef(
       color: selected ? 'key' : 'neutral',
       ref: forwardedRef,
       style,
-    })
+    });
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(props, rippleHandlerKeys),
       disabled
-    )
+    );
 
     return (
       <button
@@ -106,11 +106,11 @@ const ButtonLayout = forwardRef(
       >
         {children}
       </button>
-    )
+    );
   }
-)
+);
 
-ButtonLayout.displayName = 'ButtonLayout'
+ButtonLayout.displayName = 'ButtonLayout';
 
 export const ButtonItem = styled(ButtonLayout)`
   ${rippleStyle}
@@ -163,4 +163,4 @@ export const ButtonItem = styled(ButtonLayout)`
       border: 1px solid ${({ theme }) => theme.colors.keyInteractive};
     }
   }
-`
+`;

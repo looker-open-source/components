@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { FormEvent } from 'react'
-import React, { useState } from 'react'
-import { InputFilters } from '..'
-import type { InputFiltersProps, FieldFilter } from '../'
-import { InputText } from '../../'
-import type { InputFilterEditorRenderProp } from '../types'
+import type { ChangeEvent } from 'react';
+import React, { useState } from 'react';
+import { InputFilters } from '..';
+import type { InputFiltersProps, FieldFilter } from '../';
+import { InputText } from '../../';
+import type { InputFilterEditorRenderProp } from '../types';
 
 const EditorComponent: InputFilterEditorRenderProp = ({
   closeEditor,
   onChange,
   value = '',
 }) => {
-  const handleChange = (event: FormEvent<HTMLInputElement>) => {
-    onChange(event.currentTarget.value)
-  }
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    onChange(event.target.value);
+  };
   return (
     <InputText
       data-autofocus="true"
@@ -25,8 +25,8 @@ const EditorComponent: InputFilterEditorRenderProp = ({
       onChange={handleChange}
       onBlur={closeEditor}
     />
-  )
-}
+  );
+};
 
 const customFilters: FieldFilter[] = [
   {
@@ -34,13 +34,13 @@ const customFilters: FieldFilter[] = [
     field: 'important',
     label: 'Important',
   },
-]
+];
 
 export default function CustomFilter({
   filters: filtersProp = customFilters,
   ...args
 }: InputFiltersProps) {
-  const [controlledFilters, setControlledFilters] = useState(filtersProp)
+  const [controlledFilters, setControlledFilters] = useState(filtersProp);
 
   return (
     <InputFilters
@@ -48,5 +48,5 @@ export default function CustomFilter({
       filters={controlledFilters}
       onChange={setControlledFilters}
     />
-  )
+  );
 }

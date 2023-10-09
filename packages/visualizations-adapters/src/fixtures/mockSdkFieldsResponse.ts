@@ -204,7 +204,7 @@ export const mockSdkFieldsResponse = {
   ],
   table_calculations: [],
   pivots: [],
-}
+};
 
 export const mockSdkPivotedFieldsResponse = {
   ...mockSdkFieldsResponse,
@@ -266,4 +266,4 @@ export const mockSdkPivotedFieldsResponse = {
       sorted: { sort_index: 1, desc: false },
     },
   ],
-}
+};

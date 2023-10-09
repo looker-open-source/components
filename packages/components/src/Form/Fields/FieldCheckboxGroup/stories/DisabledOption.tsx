@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { FieldCheckboxGroup } from '../../FieldCheckboxGroup'
+import React from 'react';
+import { FieldCheckboxGroup } from '../../FieldCheckboxGroup';
 
 export default function DisabledOption() {
   const options = [
@@ -24,7 +24,7 @@ export default function DisabledOption() {
       label: 'Roquefort',
       value: 'roquefort',
     },
-  ]
+  ];
 
   return (
     <FieldCheckboxGroup
@@ -33,5 +33,5 @@ export default function DisabledOption() {
       label="Cheeses"
       options={options}
     />
-  )
+  );
 }

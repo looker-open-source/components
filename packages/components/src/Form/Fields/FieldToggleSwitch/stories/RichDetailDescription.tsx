@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { IconButton } from '../../../../Button'
-import type { FieldToggleSwitchProps } from '..'
-import { FieldToggleSwitch } from '..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { IconButton } from '../../../../Button';
+import type { FieldToggleSwitchProps } from '..';
+import { FieldToggleSwitch } from '..';
 
 export default function RichDetailDescription(props: FieldToggleSwitchProps) {
   const {
@@ -21,7 +21,7 @@ export default function RichDetailDescription(props: FieldToggleSwitchProps) {
     ),
     detail = <IconButton icon={<MaterialIcons.Delete />} label="Hello world" />,
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldToggleSwitch
@@ -32,5 +32,5 @@ export default function RichDetailDescription(props: FieldToggleSwitchProps) {
       description={description}
       {...restProps}
     />
-  )
+  );
 }

@@ -3,27 +3,27 @@
     "value": "{{coords1}} 至 {{coords2}}"
   },
   "distance unit from lat, lon": {
-    "value": "從 {{lat}}，{{lon}} 的 {{distance}} {{unit}} "
+    "value": "距離 {{lon}}, {{lat}} 這個位置 {{distance}} {{unit}}"
   },
   "is anywhere": {
-    "value": "任意處"
+    "value": "為任何地方"
   },
   "is not null": {
-    "value": "不是 Null"
+    "value": "不是空值"
   },
   "is null": {
-    "value": "是 Null"
+    "value": "為空值"
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "北緯 {{lat}} 度"
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "南緯 {{lat}} 度"
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "東經 {{lon}} 度"
   },
   "lon degrees west": {
-    "value": "{{lon}}°W"
+    "value": "西經 {{lon}} 度"
   }
 }

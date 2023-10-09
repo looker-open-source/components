@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export const PIE_SLICE_ZOOM = 1.03
+export const PIE_SLICE_ZOOM = 1.03;

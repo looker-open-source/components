@@ -24,20 +24,21 @@
 
  */
 
-import React, { useContext } from 'react'
-import { Dialog, DialogContext, DialogLayout } from '../../Dialog'
-import { Button, ButtonTransparent, ButtonOutline } from '../../Button'
+import React, { useContext } from 'react';
+import { Dialog, DialogContext, DialogLayout } from '../../Dialog';
+import type { DialogProps } from '../../Dialog';
+import { Button, ButtonTransparent, ButtonOutline } from '../../Button';
 
-export default function LongContent() {
+export default function LongContent(props: DialogProps) {
   return (
-    <Dialog defaultOpen={true} content={<DialogExampleLayout />}>
+    <Dialog {...props} defaultOpen={true} content={<DialogExampleLayout />}>
       <ButtonOutline>Open Dialog</ButtonOutline>
     </Dialog>
-  )
+  );
 }
 
 const DialogExampleLayout = () => {
-  const { closeModal } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext);
 
   return (
     <DialogLayout
@@ -101,5 +102,5 @@ const DialogExampleLayout = () => {
       ornare quam viverra orci. Urna nec tincidunt praesent semper feugiat.
       Velit sed ullamcorper morbi tincidunt.{' '}
     </DialogLayout>
-  )
-}
+  );
+};

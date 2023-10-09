@@ -24,30 +24,30 @@
 
  */
 
-import { renderWithTheme } from '@looker/components-test-utils'
-import React from 'react'
-import { fireEvent, screen, act } from '@testing-library/react'
-import { Button } from './Button'
+import { renderWithTheme } from '@looker/components-test-utils';
+import React from 'react';
+import { fireEvent, screen, act } from '@testing-library/react';
+import { Button } from './Button';
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('Button', () => {
   test('accepts a className prop', () => {
     const { container } = renderWithTheme(
       <Button className="foo">button with class</Button>
-    )
-    expect(container.firstChild).toHaveClass('foo')
-  })
+    );
+    expect(container.firstChild).toHaveClass('foo');
+  });
 
   test('size', () => {
     renderWithTheme(
@@ -55,48 +55,57 @@ describe('Button', () => {
         <Button size="xxsmall">Xsmall Button</Button>
         <Button size="large">Large Button</Button>
       </>
-    )
+    );
 
-    expect(screen.getByText('Xsmall Button')).toBeInTheDocument()
-    expect(screen.getByText('Large Button')).toBeInTheDocument()
-  })
+    expect(screen.getByText('Xsmall Button')).toBeInTheDocument();
+    expect(screen.getByText('Large Button')).toBeInTheDocument();
+  });
 
   describe('ripple effect', () => {
     test('default', () => {
-      renderWithTheme(<Button>Test</Button>)
+      renderWithTheme(<Button>Test</Button>);
 
-      const button = screen.getByRole('button')
-      expect(button).not.toHaveClass('bg-on fg-in')
+      const button = screen.getByRole('button');
+      expect(button).not.toHaveClass('bg-on fg-in');
       expect(button).toHaveStyle({
         '--ripple-color': '#FFFFFF',
         '--ripple-scale-end': '1',
         '--ripple-scale-start': '0.1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
-      })
+      });
 
-      fireEvent.focus(button)
-      expect(button).toHaveClass('bg-on')
+      fireEvent.focus(button);
+      expect(button).toHaveClass('bg-on');
 
-      fireEvent.mouseDown(button)
-      expect(button).toHaveClass('bg-on fg-in')
+      fireEvent.mouseDown(button);
+      expect(button).toHaveClass('bg-on fg-in');
 
       // foreground is locked for a minimum time to animate the ripple
-      fireEvent.mouseUp(button)
-      runTimers()
-      expect(button).toHaveClass('bg-on fg-out')
-      runTimers()
-      expect(button).toHaveClass('bg-on')
+      fireEvent.mouseUp(button);
+      runTimers();
+      expect(button).toHaveClass('bg-on fg-out');
+      runTimers();
+      expect(button).toHaveClass('bg-on');
 
-      fireEvent.blur(button)
-      expect(button).not.toHaveClass('bg-on fg-in')
-    })
+      fireEvent.blur(button);
+      expect(button).not.toHaveClass('bg-on fg-in');
+    });
+
+    test('aria-disabled', () => {
+      renderWithTheme(<Button aria-disabled="true">Test</Button>);
+
+      const button = screen.getByRole('button');
+
+      fireEvent.focus(button);
+      expect(button).not.toHaveClass('bg-on');
+    });
 
     test('Color critical', () => {
-      renderWithTheme(<Button color="critical">Test</Button>)
+      renderWithTheme(<Button color="critical">Test</Button>);
 
-      const button = screen.getByRole('button')
-      expect(button).toHaveStyle({ '--ripple-color': '#FFFFFF' })
-    })
-  })
-})
+      const button = screen.getByRole('button');
+      expect(button).toHaveStyle({ '--ripple-color': '#FFFFFF' });
+    });
+  });
+});

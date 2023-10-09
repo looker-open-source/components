@@ -24,7 +24,7 @@
 
  */
 
-import { paddingDefaultsHelper } from './paddingDefaultsHelper'
+import { paddingDefaultsHelper } from './paddingDefaultsHelper';
 
 describe('paddingDefaultsHelper', () => {
   test('p', () => {
@@ -37,8 +37,8 @@ describe('paddingDefaultsHelper', () => {
         "p": "small",
       }
     `
-    )
-  })
+    );
+  });
 
   test('pl', () => {
     expect(
@@ -52,8 +52,8 @@ describe('paddingDefaultsHelper', () => {
         "py": "medium",
       }
     `
-    )
-  })
+    );
+  });
 
   test('py', () => {
     expect(
@@ -66,8 +66,8 @@ describe('paddingDefaultsHelper', () => {
         "py": "small",
       }
     `
-    )
-  })
+    );
+  });
 
   test('pl vs px', () => {
     expect(
@@ -80,8 +80,8 @@ describe('paddingDefaultsHelper', () => {
         "pr": "medium",
       }
     `
-    )
-  })
+    );
+  });
 
   test('none', () => {
     expect(paddingDefaultsHelper({}, { p: 'medium' })).toMatchInlineSnapshot(
@@ -91,8 +91,8 @@ describe('paddingDefaultsHelper', () => {
         "p": "medium",
       }
     `
-    )
-  })
+    );
+  });
 
   test('no defaults', () => {
     expect(
@@ -105,8 +105,8 @@ describe('paddingDefaultsHelper', () => {
         "pr": "small",
       }
     `
-    )
-  })
+    );
+  });
 
   test('compass points', () => {
     expect(
@@ -124,6 +124,6 @@ describe('paddingDefaultsHelper', () => {
         "pt": "large",
       }
     `
-    )
-  })
-})
+    );
+  });
+});

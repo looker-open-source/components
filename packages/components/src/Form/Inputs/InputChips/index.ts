@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './InputChips'
-export * from './InputChipsBase'
+export * from './InputChips';
+export * from './InputChipsBase';

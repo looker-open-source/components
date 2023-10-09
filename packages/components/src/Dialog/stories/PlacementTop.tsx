@@ -3,15 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useContext } from 'react'
-import { Dialog, DialogContext, DialogLayout } from '../../Dialog'
-import { Button, ButtonTransparent, ButtonOutline } from '../../Button'
+import React, { useContext } from 'react';
+import { Dialog, DialogContext, DialogLayout } from '../../Dialog';
+import type { DialogProps } from '../Dialog';
+import { Button, ButtonTransparent, ButtonOutline } from '../../Button';
 
-export default function PlacementTop() {
-  const { closeModal } = useContext(DialogContext)
+export default function PlacementTop(props: DialogProps) {
+  const { closeModal } = useContext(DialogContext);
 
   return (
     <Dialog
+      {...props}
       placement="top"
       content={
         <DialogLayout
@@ -34,5 +36,5 @@ export default function PlacementTop() {
     >
       <ButtonOutline>Open Dialog</ButtonOutline>
     </Dialog>
-  )
+  );
 }

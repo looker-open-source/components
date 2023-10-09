@@ -24,13 +24,13 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen, fireEvent } from '@testing-library/react'
-import { DataTableAction } from '../Item/DataTableAction'
-import type { DataTableColumns } from '../Column'
-import { Link } from '../../Link'
-import { useDataTableSortManager } from './useDataTableSortManager'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen, fireEvent } from '@testing-library/react';
+import { DataTableAction } from '../Item/DataTableAction';
+import type { DataTableColumns } from '../Column';
+import { Link } from '../../Link';
+import { useDataTableSortManager } from './useDataTableSortManager';
 
 describe('useDataTableSortManager', () => {
   const actions = () => (
@@ -43,7 +43,7 @@ describe('useDataTableSortManager', () => {
       </DataTableAction>
       <DataTableAction onClick={() => alert('Delete')}>Delete</DataTableAction>
     </>
-  )
+  );
 
   const columns: DataTableColumns = [
     {
@@ -70,7 +70,7 @@ describe('useDataTableSortManager', () => {
       title: 'Type',
       type: 'string',
     },
-  ]
+  ];
 
   const data = [
     {
@@ -113,53 +113,59 @@ describe('useDataTableSortManager', () => {
       ),
       type: 'semi-soft, processed',
     },
-  ]
+  ];
 
   test('returns a DataTable', () => {
     const Test = () =>
-      useDataTableSortManager('Caption...', data, columns, actions)
-    renderWithTheme(<Test />)
-    expect(screen.getByText('ID')).toBeInTheDocument()
-    expect(screen.getByText('Name')).toBeInTheDocument()
-    expect(screen.getByText('Type')).toBeInTheDocument()
+      useDataTableSortManager('Caption...', data, columns, actions);
+    renderWithTheme(<Test />);
+    expect(screen.getByText('ID')).toBeInTheDocument();
+    expect(screen.getByText('Name')).toBeInTheDocument();
+    expect(screen.getByText('Type')).toBeInTheDocument();
 
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.getByText('Cheddar')).toBeInTheDocument()
-    expect(screen.getByText('hard, artisan, processed')).toBeInTheDocument()
-  })
+    expect(screen.getByText('1')).toBeInTheDocument();
+    expect(screen.getByText('Cheddar')).toBeInTheDocument();
+    expect(screen.getByText('hard, artisan, processed')).toBeInTheDocument();
+  });
 
   test('returns a DataTable caption', () => {
     const Test = () =>
-      useDataTableSortManager('Caption...', data, columns, actions)
-    renderWithTheme(<Test />)
+      useDataTableSortManager('Caption...', data, columns, actions);
+    renderWithTheme(<Test />);
     // screen.debug()
     expect(screen.getByRole('table')).toHaveAttribute(
       'aria-label',
       'Caption...'
-    )
-  })
+    );
+  });
 
   test('onSort sorts elements', () => {
     const Test = () =>
-      useDataTableSortManager('Caption...', data, columns, actions)
-    renderWithTheme(<Test />)
-    const sort = screen.getByText('ID').closest('th')
-    expect(sort).not.toBeNull()
-    expect(sort).toHaveAttribute('aria-sort', 'none')
-    fireEvent.click(screen.getByText('ID'))
-    expect(sort).toHaveAttribute('aria-sort', 'ascending')
-    fireEvent.click(screen.getByText('ID'))
-    expect(sort).toHaveAttribute('aria-sort', 'descending')
-  })
+      useDataTableSortManager('Caption...', data, columns, actions);
+    renderWithTheme(<Test />);
+    const sort = screen.getByText('ID').closest('th');
+    expect(sort).not.toBeNull();
+    expect(sort).toHaveAttribute('aria-sort', 'none');
+    fireEvent.click(screen.getByText('ID'));
+    expect(sort).toHaveAttribute('aria-sort', 'ascending');
+    fireEvent.click(screen.getByText('ID'));
+    expect(sort).toHaveAttribute('aria-sort', 'descending');
+  });
 
   test('DataTableItem onClick behaves as expected', () => {
-    const onClickMock = jest.fn()
+    const onClickMock = jest.fn();
     const Test = () =>
-      useDataTableSortManager('Caption...', data, columns, actions, onClickMock)
-    renderWithTheme(<Test />)
-    const cheddarCell = screen.getByText('Cheddar')
-    expect(cheddarCell).toBeInTheDocument()
-    fireEvent.click(cheddarCell)
-    expect(onClickMock).toHaveBeenCalled()
-  })
-})
+      useDataTableSortManager(
+        'Caption...',
+        data,
+        columns,
+        actions,
+        onClickMock
+      );
+    renderWithTheme(<Test />);
+    const cheddarCell = screen.getByText('Cheddar');
+    expect(cheddarCell).toBeInTheDocument();
+    fireEvent.click(cheddarCell);
+    expect(onClickMock).toHaveBeenCalled();
+  });
+});

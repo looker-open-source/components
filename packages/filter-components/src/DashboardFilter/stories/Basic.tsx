@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DashboardFilter } from '../DashboardFilter'
-import type { DashboardFilterProps } from '../DashboardFilter'
+import React from 'react';
+import { DashboardFilter } from '../DashboardFilter';
+import type { DashboardFilterProps } from '../DashboardFilter';
 
 export default function Basic({
   filter = {
@@ -17,5 +17,5 @@ export default function Basic({
   },
   ...props
 }: DashboardFilterProps) {
-  return <DashboardFilter filter={filter} {...props} />
+  return <DashboardFilter filter={filter} {...props} />;
 }

@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/pt-BR'
-import { ptBR as componentsLocale } from '@looker/components'
-import { ptBR as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/pt-BR';
+import { ptBR as componentsLocale } from '@looker/components';
+import { ptBR as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -91,50 +91,50 @@ const resources = {
   },
   get_date_filter_options: {
     is: 'é',
-    'is any time': 'é qualquer momento',
-    'is before': 'está antes de',
-    'is in range': 'está no intervalo',
-    'is in the last': 'é no último',
-    'is in the month': 'é no mês',
-    'is in the year': 'está no ano',
-    'is next': 'é próximo',
+    'is any time': 'é em qualquer horário',
+    'is before': 'é anterior a',
+    'is in range': 'está dentro do intervalo',
+    'is in the last': 'ocorreu no último',
+    'is in the month': 'ocorreu no mês',
+    'is in the year': 'é no ano',
+    'is next': 'é o próximo',
     'is not null': 'não é nulo',
     'is null': 'é nulo',
-    'is on or after': 'está em ou depois de',
-    'is on the day': 'está no dia',
-    'is previous': 'é anterior',
-    'is this': 'é isso',
+    'is on or after': 'em ou após',
+    'is on the day': 'é no dia',
+    'is previous': 'é o anterior',
+    'is this': 'reconhece',
   },
   get_filter_options: {
-    'matches advanced': 'corresponde (avançado)',
+    'matches advanced': 'correspondências (avançado)',
   },
   get_location_filter_options: {
     Box: 'Caixa',
     Circle: 'Círculo',
-    Location: 'Localização',
+    Location: 'Local',
     feet: 'pés',
-    'is anywhere': 'tem qualquer valor',
+    'is anywhere': 'está em qualquer lugar',
     'is not null': 'não é nulo',
     'is null': 'é nulo',
     kilometers: 'quilômetros',
-    meters: 'metros',
+    meters: 'quadrados',
     miles: 'milhas',
   },
   get_number_filter_options: {
-    exclusive: '(aberto)',
-    inclusive: '[fechado]',
+    exclusive: '(exclusivo)',
+    inclusive: '[inclusivo]',
     is: 'é',
     'is between': 'está entre',
-    'is greater': 'é > que',
-    'is greater equal': 'é > ou igual a',
-    'is less': 'é < que',
-    'is less equal': 'é < ou igual a',
+    'is greater': 'é >',
+    'is greater equal': 'é >=',
+    'is less': 'é <',
+    'is less equal': 'é <=',
     'is not': 'não é',
     'is not between': 'não está entre',
     'is not null': 'não é nulo',
     'is null': 'é nulo',
-    'left exclusive': '(semiaberto]',
-    'right exclusive': '[semifechado)',
+    'left exclusive': '(exclui itens à esquerda)',
+    'right exclusive': '(exclui itens à direita)',
   },
   get_relative_timeframe_presets: {
     'Last 14 Days': 'Últimos 14 dias',
@@ -142,7 +142,7 @@ const resources = {
     'Last 28 Days': 'Últimos 28 dias',
     'Last 30 Days': 'Últimos 30 dias',
     'Last 365 Days': 'Últimos 365 dias',
-    'Last 7 Days': 'Últimos 7 dias',
+    'Last 7 Days': 'Últimos sete dias',
     'Last 90 Days': 'Últimos 90 dias',
     'Previous Month': 'Mês anterior',
     'Previous Quarter': 'Trimestre anterior',
@@ -153,7 +153,7 @@ const resources = {
     'This Week': 'Esta semana',
     'This Year': 'Este ano',
     Today: 'Hoje',
-    'Year To Date': 'Ano atual',
+    'Year To Date': 'Acumulado no ano',
     Yesterday: 'Ontem',
   },
   get_string_filter_options: {
@@ -176,7 +176,7 @@ const resources = {
     'is not': 'não é',
   },
   get_user_attribute_option: {
-    'matches a user attribute': 'corresponde a um atributo de usuário',
+    'matches a user attribute': 'correspondências de um atributo do usuário',
   },
   MultiInput: {
     'Clear all': '',
@@ -186,7 +186,7 @@ const resources = {
   NoMatchingFields: {
     'No Matching Fields': 'Nenhum campo correspondente',
     'Try Something Else':
-      'Tente outro termo de pesquisa ou comece novamente e expanda um Explore para procurar campos disponíveis.',
+      'Tente usar outro termo de pesquisa ou recomece e abra qualquer Explore para procurar campos disponíveis.',
   },
   NumberFilter: {
     'any value': 'qualquer valor',
@@ -196,34 +196,34 @@ const resources = {
     OR: 'OU',
   },
   past_units: {
-    'complete days': 'dias completos',
+    'complete days': 'dias concluídos',
     'complete fiscal quarters': 'trimestres fiscais completos',
     'complete fiscal years': 'anos fiscais completos',
-    'complete hours': 'horas completas',
-    'complete minutes': 'minutos completos',
-    'complete months': 'meses completos',
-    'complete quarters': 'trimestres completos',
-    'complete seconds': 'segundos completos',
-    'complete weeks': 'semanas completas',
-    'complete years': 'anos completos',
+    'complete hours': 'horas concluídas',
+    'complete minutes': 'minutos concluídos',
+    'complete months': 'meses concluídos',
+    'complete quarters': 'trimestres concluídos',
+    'complete seconds': 'segundos concluídos',
+    'complete weeks': 'semanas concluídas',
+    'complete years': 'anos concluídos',
   },
   RadioGroup: {
     'any value': 'qualquer valor',
   },
   ReactSelectCustomIcons: {
-    'Clear all': 'Limpar tudo',
+    'Clear all': 'Remover tudo',
     Remove: 'Remover',
-    Toggle: 'Ativar',
+    Toggle: 'Alternar',
   },
   Relative: {
     ago: 'atrás',
     'from now': 'a partir de agora',
   },
   RelativeTimeframe: {
-    'Choose a Timeframe': 'Escolha um período de tempo',
+    'Choose a Timeframe': 'Escolha um período',
   },
   RelativeTimeframePopoverContent: {
-    Custom: 'Personalização',
+    Custom: 'Personalizado',
     Presets: 'Predefinições',
   },
   RelativeTimeframePresets: {
@@ -232,12 +232,12 @@ const resources = {
   use_filters_errors: {
     'Invalid value': 'Valor inválido',
     'No value is set for your user attribute':
-      'Não há um valor definido para o seu atributo de usuário',
+      'Nenhum valor foi definido para o atributo do usuário',
     'Selection required': 'Seleção obrigatória',
   },
   use_option_filtering: {
     'No values': 'Nenhum valor',
-    'No values match': 'Nenhum valor correspondente',
+    'No values match': 'Nenhum valor corresponde',
   },
   use_placeholder: {
     'any value': 'qualquer valor',
@@ -246,13 +246,16 @@ const resources = {
     'Error loading suggestions': 'Erro ao carregar sugestões',
   },
   use_validation_message: {
-    'Value required': 'Valor necessário',
+    'Value required': 'Valor obrigatório',
   },
-}
+  UserAttributes: {
+    placeholder: 'Selecionar…',
+  },
+};
 
 export const ptBR = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'pt-BR',
   resources,
   dateLocale
-)
+);

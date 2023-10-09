@@ -2,23 +2,23 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { ReactNode } from 'react'
-import React, { Children, Fragment } from 'react'
-import escapeRegExp from 'lodash/escapeRegExp'
-import { Span } from '../Text'
+import type { ReactNode } from 'react';
+import React, { Children, Fragment } from 'react';
+import escapeRegExp from 'lodash/escapeRegExp';
+import { Span } from '../Text';
 
 export type ReplaceProps = {
   /**
    * The text that will be highlighted
    */
-  children: string
-}
+  children: string;
+};
 
-export type ReplaceComponent = (props: ReplaceProps) => ReactNode
+export type ReplaceComponent = (props: ReplaceProps) => ReactNode;
 
 const DefaultReplace: ReplaceComponent = (props: ReplaceProps) => (
   <Span fontWeight="semiBold" textDecoration="underline" {...props} />
-)
+);
 
 // Wraps matched substrings in the replace component
 const ReplaceString = ({
@@ -27,8 +27,8 @@ const ReplaceString = ({
   replace = DefaultReplace,
 }: Omit<ReplaceTextProps, 'children'> & ReplaceProps) => {
   // Convert match to capturing, case-insensitive, global RegExp
-  const matchRegExp = new RegExp(`(${escapeRegExp(match)})`, 'gi')
-  const stringArr = children.split(matchRegExp)
+  const matchRegExp = new RegExp(`(${escapeRegExp(match)})`, 'gi');
+  const stringArr = children.split(matchRegExp);
 
   // With capturing RegExp + split, captured elements are included in array
   return (
@@ -41,26 +41,26 @@ const ReplaceString = ({
         </Fragment>
       ))}
     </>
-  )
-}
+  );
+};
 
 export interface ReplaceTextProps {
   /**
    * Any non-text children will be passed along as-is
    */
-  children?: ReactNode | ReactNode[]
+  children?: ReactNode | ReactNode[];
   /**
    * A string to search for in the children (case-insensitive, global)
    */
-  match?: string
+  match?: string;
   /**
    * A component to wrap the matched text. Defaults to a span with semi-bold/underline style.
    */
-  replace?: ReplaceComponent
+  replace?: ReplaceComponent;
 }
 
 export const ReplaceText = ({ children, ...rest }: ReplaceTextProps) => {
-  if (!rest.match) return <>{children}</>
+  if (!rest.match) return <>{children}</>;
 
   return (
     <>
@@ -72,5 +72,5 @@ export const ReplaceText = ({ children, ...rest }: ReplaceTextProps) => {
         )
       )}
     </>
-  )
-}
+  );
+};

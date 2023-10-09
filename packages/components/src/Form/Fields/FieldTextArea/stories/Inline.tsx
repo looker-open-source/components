@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextAreaProps } from '../'
-import { FieldTextArea } from '../..'
+import React from 'react';
+import type { FieldTextAreaProps } from '../';
+import { FieldTextArea } from '../..';
 
 export default function Inline(props: FieldTextAreaProps) {
   const {
@@ -14,7 +14,7 @@ export default function Inline(props: FieldTextAreaProps) {
     label = 'First Name',
     detail = 'Your preferred salutation',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTextArea
@@ -24,5 +24,5 @@ export default function Inline(props: FieldTextAreaProps) {
       detail={detail}
       {...restProps}
     />
-  )
+  );
 }

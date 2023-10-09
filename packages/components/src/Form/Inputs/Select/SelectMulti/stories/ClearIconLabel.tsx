@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { SelectMulti } from '..'
-import { Space } from '../../../../../Layout'
+import React from 'react';
+import { SelectMulti } from '..';
+import { Space } from '../../../../../Layout';
 
 export default function ClearIconLabel() {
   return (
@@ -46,5 +46,5 @@ export default function ClearIconLabel() {
         ]}
       />
     </Space>
-  )
+  );
 }

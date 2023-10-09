@@ -1,23 +1,21 @@
-import { Accordion2, Code, MessageBar, Accordion } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyControlled from '!!raw-loader!./Controlled'
-import storyCustomizedIndicator from '!!raw-loader!./CustomizedIndicator'
-import storyDefaultOpen from '!!raw-loader!./DefaultOpen'
-import storyIndicatorIcons from '!!raw-loader!./IndicatorIcons'
-import storyLeft from '!!raw-loader!./Left'
+import { Accordion2, Code, MessageBar, Accordion } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyControlled from './Controlled?raw';
+import storyCustomizedIndicator from './CustomizedIndicator?raw';
+import storyDefaultOpen from './DefaultOpen?raw';
+import storyIndicatorIcons from './IndicatorIcons?raw';
+import storyLeft from './Left?raw';
 
 <Meta component={Accordion2} title="Docs/Accordion" />
 
 # Accordion
 
 <MessageBar noActions intent="inform">
-  Accordion has been deprecated and replaced with
-  <Code fontWeight="bold" fontSize="inherit">
-    Accordion2
-  </Code> please update any existing instances to use the new improved version. Deprecation
-  of `Accordion` is planned for @looker/components 3.0
+  Accordion has been deprecated and replaced with `Accordion2` please update any
+  existing instances to use the new improved version. Removal of `Accordion` is
+  planned for @looker/components 3.0.
 </MessageBar>
 
 `<Accordion2>` hides and shows `children` on click like a collapsible section.

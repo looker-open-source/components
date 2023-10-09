@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './useHeadlessTable'
-export * from './useVirtual'
+export * from './useHeadlessTable';
+export * from './useVirtual';

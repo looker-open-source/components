@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import dateLocale from 'date-fns/locale/de'
-import { deDE as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/de';
+import { deDE as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   PieLegend: {
     'Legend page {{page}} of {{totalPages}}':
-      'Legend Seite {{page}} von {{totalPages}}',
+      'Legendenseite {{page}} von {{totalPages}}',
   },
   PieLegendControls: {
     'Next page': 'Nächste Seite',
@@ -19,11 +19,11 @@ const resources = {
   XYTooltip: {
     'Points sized by': 'Punktgröße nach',
   },
-}
+};
 
 export const deDE = mergeLocaleObjects(
   [visualizationsadaptersLocale],
   'de-DE',
   resources,
   dateLocale
-)
+);

@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react';
 
 export function useMounted() {
-  const mounted = useRef(true)
+  const mounted = useRef(true);
 
   useEffect(() => {
-    mounted.current = true
+    mounted.current = true;
     return function cleanup() {
-      mounted.current = false
-    }
-  }, [])
+      mounted.current = false;
+    };
+  }, []);
 
-  return mounted
+  return mounted;
 }

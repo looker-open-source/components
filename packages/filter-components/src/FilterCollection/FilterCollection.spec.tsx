@@ -3,34 +3,34 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { IAPIMethods } from '@looker/sdk-rtl'
-import { fireEvent, screen } from '@testing-library/react'
-import { FilterCollection } from './FilterCollection'
-import { DashboardFilter } from '../DashboardFilter'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { IAPIMethods } from '@looker/sdk-rtl';
+import { fireEvent, screen } from '@testing-library/react';
+import { FilterCollection } from './FilterCollection';
+import { DashboardFilter } from '../DashboardFilter';
 
 jest.mock('@looker/sdk', () => ({
   ...jest.requireActual('@looker/sdk'),
   model_fieldname_suggestions: jest.fn((sdk: { get: () => any }) => sdk.get()),
-}))
+}));
 
 // eslint-disable-next-line import/first
-import { model_fieldname_suggestions } from '@looker/sdk'
+import { model_fieldname_suggestions } from '@looker/sdk';
 
 describe('FilterCollection', () => {
   it('shares state for linked filters', async () => {
-    const onChangeMock = jest.fn()
-    const sdkOkMock = jest.fn(value => Promise.resolve(value))
+    const onChangeMock = jest.fn();
+    const sdkOkMock = jest.fn(value => Promise.resolve(value));
 
     const sdkGetMock = jest.fn(() => ({
       suggestions: ['brand1', 'brand2', 'brand3'],
-    }))
+    }));
 
     const sdkMock = {
       ok: sdkOkMock,
       get: sdkGetMock,
-    } as unknown as IAPIMethods
+    } as unknown as IAPIMethods;
 
     renderWithTheme(
       <FilterCollection sdk={sdkMock}>
@@ -69,13 +69,13 @@ describe('FilterCollection', () => {
           onChange={onChangeMock}
         />
       </FilterCollection>
-    )
+    );
 
-    fireEvent.click(screen.getByText('Home + Garden'))
+    fireEvent.click(screen.getByText('Home + Garden'));
 
-    await screen.findByText('brand1')
+    await screen.findByText('brand1');
 
-    expect(model_fieldname_suggestions).toHaveBeenCalledTimes(2)
+    expect(model_fieldname_suggestions).toHaveBeenCalledTimes(2);
     expect(model_fieldname_suggestions).toHaveBeenLastCalledWith(
       { ok: sdkOkMock, get: sdkGetMock },
       {
@@ -87,6 +87,6 @@ describe('FilterCollection', () => {
         term: '',
         view_name: 'products',
       }
-    )
-  })
-})
+    );
+  });
+});

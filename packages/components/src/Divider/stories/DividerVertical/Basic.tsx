@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { AvatarIcon, DividerVertical, SpaceVertical, Span } from '../../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { AvatarIcon, DividerVertical, SpaceVertical, Span } from '../../..';
 
 export default function Basic() {
   return (
@@ -27,5 +27,5 @@ export default function Basic() {
         </Span>
       </SpaceVertical>
     </>
-  )
+  );
 }

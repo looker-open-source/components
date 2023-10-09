@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SizeSmall, SizeMedium, SizeLarge } from '@looker/design-tokens'
-import { variant } from '@looker/design-tokens'
-import { css } from 'styled-components'
+import type { SizeSmall, SizeMedium, SizeLarge } from '@looker/design-tokens';
+import { variant } from '@looker/design-tokens';
+import { css } from 'styled-components';
 
 export type DataTableColumnSize =
   | SizeSmall
@@ -13,10 +13,10 @@ export type DataTableColumnSize =
   | SizeLarge
   | 'auto'
   | 'nowrap'
-  | number
+  | number;
 
 export const sizeInfersTruncate = (size: DataTableColumnSize) =>
-  size && typeof size !== 'number' && !['auto', 'nowrap'].includes(size)
+  size && typeof size !== 'number' && !['auto', 'nowrap'].includes(size);
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 const columnSizeVariants = variant({
@@ -38,11 +38,11 @@ const columnSizeVariants = variant({
       whiteSpace: 'nowrap',
     },
   },
-})
+});
 
-const percentWidth = (width: number) => `width: ${width}%;`
+const percentWidth = (width: number) => `width: ${width}%;`;
 
 export const columnSize = css<{ size?: DataTableColumnSize }>`
   ${({ size }) =>
     size && typeof size === 'number' ? percentWidth(size) : columnSizeVariants}
-`
+`;

@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function Responsive() {
   return (
@@ -26,5 +26,5 @@ export default function Responsive() {
         </FlexItem>
       </Flex>
     </>
-  )
+  );
 }

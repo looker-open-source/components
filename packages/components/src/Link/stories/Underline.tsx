@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Link, Space } from '../..'
+import React from 'react';
+import { Link, Space } from '../..';
 
 export default function Underline() {
   return (
@@ -19,5 +19,5 @@ export default function Underline() {
         I never have an underline
       </Link>
     </Space>
-  )
+  );
 }

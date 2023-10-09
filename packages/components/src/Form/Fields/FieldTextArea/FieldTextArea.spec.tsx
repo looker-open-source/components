@@ -24,36 +24,36 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { FieldTextArea } from './FieldTextArea'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { FieldTextArea } from './FieldTextArea';
 
 describe('FieldTextArea', () => {
   test('default label', () => {
-    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeInTheDocument()
-  })
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeInTheDocument();
+  });
 
   test('label inline', () => {
-    renderWithTheme(<FieldTextArea id="FieldTextAreaID" inline label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeInTheDocument()
-  })
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" inline label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeInTheDocument();
+  });
 
   test('required', () => {
-    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" required />)
-    expect(screen.getByLabelText('👍 required')).toBeRequired()
-  })
+    renderWithTheme(<FieldTextArea id="FieldTextAreaID" label="👍" required />);
+    expect(screen.getByLabelText('👍 required')).toBeRequired();
+  });
 
   test('disabled', () => {
-    renderWithTheme(<FieldTextArea disabled id="FieldTextAreaID" label="👍" />)
-    expect(screen.getByLabelText('👍')).toBeDisabled()
-  })
+    renderWithTheme(<FieldTextArea disabled id="FieldTextAreaID" label="👍" />);
+    expect(screen.getByLabelText('👍')).toBeDisabled();
+  });
 
   test('description has proper aria setup', () => {
-    const description = 'This is a description'
+    const description = 'This is a description';
 
     renderWithTheme(
       <FieldTextArea
@@ -61,19 +61,19 @@ describe('FieldTextArea', () => {
         defaultValue="example"
         description={description}
       />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const descriptionDom = screen.getByText(description)
-    expect(descriptionDom.parentElement).toBeInTheDocument()
-    expect(descriptionDom.parentElement?.id).toEqual(id)
-  })
+    const descriptionDom = screen.getByText(description);
+    expect(descriptionDom.parentElement).toBeInTheDocument();
+    expect(descriptionDom.parentElement?.id).toEqual(id);
+  });
 
   test('error has proper aria setup', () => {
-    const errorMessage = 'This is an error'
+    const errorMessage = 'This is an error';
 
     renderWithTheme(
       <FieldTextArea
@@ -81,16 +81,16 @@ describe('FieldTextArea', () => {
         defaultValue="example"
         validationMessage={{ message: errorMessage, type: 'error' }}
       />
-    )
+    );
 
-    const input = screen.getByDisplayValue('example')
-    const id = input.getAttribute('aria-describedby')
-    expect(id).toBeDefined()
+    const input = screen.getByDisplayValue('example');
+    const id = input.getAttribute('aria-describedby');
+    expect(id).toBeDefined();
 
-    const errorMessageDom = screen.getByText(errorMessage)
-    expect(errorMessageDom.parentElement).toBeInTheDocument()
-    expect(errorMessageDom.parentElement?.id).toEqual(id)
-  })
+    const errorMessageDom = screen.getByText(errorMessage);
+    expect(errorMessageDom.parentElement).toBeInTheDocument();
+    expect(errorMessageDom.parentElement?.id).toEqual(id);
+  });
 
   test('detail', () => {
     renderWithTheme(
@@ -100,9 +100,9 @@ describe('FieldTextArea', () => {
         label="hello"
         placeholder="placeholder"
       />
-    )
-    expect(screen.getByText('5/50')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('5/50')).toBeInTheDocument();
+  });
 
   test('validationMessage', () => {
     renderWithTheme(
@@ -115,14 +115,14 @@ describe('FieldTextArea', () => {
         }}
         placeholder="placeholder"
       />
-    )
-    expect(screen.getByText('validation Message')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('validation Message')).toBeInTheDocument();
+  });
 
   test('onChange handler', () => {
-    const onChange = jest.fn()
-    renderWithTheme(<FieldTextArea id="FieldTextID" onChange={onChange} />)
-    userEvent.type(screen.getByRole('textbox'), 'Hello world')
-    expect(onChange).toHaveBeenCalledTimes(11)
-  })
-})
+    const onChange = jest.fn();
+    renderWithTheme(<FieldTextArea id="FieldTextID" onChange={onChange} />);
+    userEvent.type(screen.getByRole('textbox'), 'Hello world');
+    expect(onChange).toHaveBeenCalledTimes(11);
+  });
+});

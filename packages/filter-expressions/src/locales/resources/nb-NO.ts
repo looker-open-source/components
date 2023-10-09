@@ -24,7 +24,7 @@
 
  */
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   describe_date: {
@@ -155,6 +155,6 @@ const resources = {
   summary: {
     'Value required': 'Verdi må angis',
   },
-}
+};
 
-export const nbNO = mergeLocaleObjects([], 'nb-NO', resources)
+export const nbNO = mergeLocaleObjects([], 'nb-NO', resources);

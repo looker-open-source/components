@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem } from '../../..'
+import React from 'react';
+import { Flex, FlexItem } from '../../..';
 
 export default function ChangeDirectionOrder() {
   return (
@@ -29,5 +29,5 @@ export default function ChangeDirectionOrder() {
         <FlexItem>3️⃣</FlexItem>
       </Flex>
     </Flex>
-  )
+  );
 }

@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const LkFieldTreeAccordionContent = styled.div``
+export const LkFieldTreeAccordionContent = styled.div``;

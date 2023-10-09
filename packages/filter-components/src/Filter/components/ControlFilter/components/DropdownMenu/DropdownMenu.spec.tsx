@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { DropdownMenu } from './DropdownMenu'
+import React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { DropdownMenu } from './DropdownMenu';
 const options = [
   {
     label: 'label1',
@@ -19,12 +19,12 @@ const options = [
     label: 'label3',
     value: 'value3',
   },
-]
+];
 
 describe('DropdownMenu tests', () => {
   describe('anyOption', () => {
     it('true – able to clear the filter value', () => {
-      const onChange = jest.fn()
+      const onChange = jest.fn();
       renderWithTheme(
         <DropdownMenu
           value={'value1'}
@@ -32,21 +32,21 @@ describe('DropdownMenu tests', () => {
           onChange={onChange}
           anyOption
         />
-      )
+      );
 
-      const clearButton = screen.getByText('Clear Field')
-      fireEvent.click(clearButton)
+      const clearButton = screen.getByText('Clear Field');
+      fireEvent.click(clearButton);
 
-      expect(onChange).toHaveBeenCalledWith('')
-    })
+      expect(onChange).toHaveBeenCalledWith('');
+    });
 
     it('undefined – unable to clear the filter value', () => {
-      const onChange = jest.fn()
+      const onChange = jest.fn();
       renderWithTheme(
         <DropdownMenu value={'value1'} options={options} onChange={onChange} />
-      )
+      );
 
-      expect(screen.queryByText('Clear Field')).not.toBeInTheDocument()
-    })
-  })
-})
+      expect(screen.queryByText('Clear Field')).not.toBeInTheDocument();
+    });
+  });
+});

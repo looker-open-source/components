@@ -2,13 +2,13 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { List } from '../../List'
-import { ListItem } from '../../ListItem'
-import { Aside, Page, Section } from '../../Layout'
-import { Panel, Panels } from '..'
-import { Button } from '../../Button'
-import { Paragraph } from '../../Text'
+import React from 'react';
+import { List } from '../../List';
+import { ListItem } from '../../ListItem';
+import { Aside, Page, Section } from '../../Layout';
+import { Panel, Panels } from '..';
+import { Button } from '../../Button';
+import { Paragraph } from '../../Text';
 
 export default function Nested() {
   return (
@@ -38,5 +38,5 @@ export default function Nested() {
         <Button>After</Button>
       </Section>
     </Page>
-  )
+  );
 }

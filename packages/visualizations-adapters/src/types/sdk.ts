@@ -25,7 +25,7 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type SDKRecord = Record<string, any>
+export type SDKRecord = Record<string, any>;
 
 export type ChartData = (SDKRecord & {
   /**
@@ -33,37 +33,37 @@ export type ChartData = (SDKRecord & {
    * they should be condensed down to a single dimension string
    * (usually by concatenation).
    */
-  dimension: string
-})[]
+  dimension: string;
+})[];
 
 export type FieldMetadata = {
-  label?: string
-  is_numeric?: boolean
-  name: string
-  sortable?: boolean
-  sorted?: { desc: boolean; sort_index: number; pivot_index?: number }
-  view?: string
-  view_label?: string
-  label_short?: string
-  value_format?: string | null
-}
+  label?: string;
+  is_numeric?: boolean;
+  name: string;
+  sortable?: boolean;
+  sorted?: { desc: boolean; sort_index: number; pivot_index?: number };
+  view?: string;
+  view_label?: string;
+  label_short?: string;
+  value_format?: string | null;
+};
 
 export type MeasureMetadata = FieldMetadata & {
   /* when response is pivoted, store a string referencing the pivot metadata */
-  pivot_key?: string
+  pivot_key?: string;
   /**
    * An alternate label used when rendering a pivot query.
    * This pivoted_label should include the measure's associated
    * unique pivot value (i.e. "Orders Count: Complete").
    */
-  pivoted_label?: string
-  type?: string
-}
+  pivoted_label?: string;
+  type?: string;
+};
 
 export type DimensionMetadata = FieldMetadata & {
-  is_filter?: boolean
-  is_fiscal?: boolean
-  is_timeframe?: boolean
+  is_filter?: boolean;
+  is_fiscal?: boolean;
+  is_timeframe?: boolean;
   type?:
     | 'date_month'
     | 'date_date'
@@ -76,30 +76,30 @@ export type DimensionMetadata = FieldMetadata & {
     | 'count_distinct'
     | 'string'
     | 'zipcode'
-    | 'number'
-}
+    | 'number';
+};
 
 export type Fields = {
-  dimensions: DimensionMetadata[]
-  measures: MeasureMetadata[]
-  pivots?: DimensionMetadata[]
-}
+  dimensions: DimensionMetadata[];
+  measures: MeasureMetadata[];
+  pivots?: DimensionMetadata[];
+};
 
 export type PivotMetadata = {
-  data: Record<string, string | null>
-  key: string
-  is_total: boolean
-  labels: Record<string, string>
-  metadata?: Record<string, { value: string }>
-  sort_values?: Record<string, string>
+  data: Record<string, string | null>;
+  key: string;
+  is_total: boolean;
+  labels: Record<string, string>;
+  metadata?: Record<string, { value: string }>;
+  sort_values?: Record<string, string>;
   /**
    * `label` value is derived by our own helper functions, and not expected
    *  to be returned by sdk.
    */
-  label?: string
-}
+  label?: string;
+};
 
-export type Pivots = PivotMetadata[]
+export type Pivots = PivotMetadata[];
 
-export type TotalsValue = { value: number | null }
-export type Totals = Record<string, TotalsValue | Record<string, TotalsValue>>
+export type TotalsValue = { value: number | null };
+export type Totals = Record<string, TotalsValue | Record<string, TotalsValue>>;

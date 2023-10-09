@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DensityRamp } from '../system/density'
+import type { DensityRamp } from '../system/density';
 
 export type ComponentSettingsDefaults = {
   /**
@@ -12,7 +12,7 @@ export type ComponentSettingsDefaults = {
    * Future: Button*, Tab & ListItem
    * @default false
    */
-  brandAnimation: boolean
+  brandAnimation: boolean;
 
   /**
    * Default density to use for density-supporting components
@@ -20,12 +20,12 @@ export type ComponentSettingsDefaults = {
    * NOTE: This not implemented broadly yet. Altering this value is not recommended
    * at this time.
    */
-  density: DensityRamp
+  density: DensityRamp;
   /**
    * Disable the Material "floating label" layout and animation on components that support it.
    * Currently affects: FieldTextArea
    * Future: FieldText, FieldSelect, FieldSelectMulti, FieldDate, FieldDateRange, FieldDate, FieldTime, FieldTimeSelect
    * @default true
    */
-  externalLabel: boolean
-}
+  externalLabel: boolean;
+};

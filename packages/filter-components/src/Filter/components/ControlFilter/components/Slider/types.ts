@@ -2,28 +2,28 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-type Range = { min: number; max: number }
+type Range = { min: number; max: number };
 
 export interface RangeValue {
-  bounds: string
-  high: number
-  low: number
+  bounds: string;
+  high: number;
+  low: number;
 }
 
 export interface Options {
-  max?: number
-  min?: number
+  max?: number;
+  min?: number;
 }
 
 export interface SliderProps {
-  onChange: (value: number) => void
-  options?: Options
-  value: number
+  onChange: (value: number) => void;
+  options?: Options;
+  value: number;
 }
 
 export interface RangeSliderProps {
-  onChange: (value: Range) => void
-  options?: Options
-  value: Range
-  name?: string
+  onChange: (value: Range) => void;
+  options?: Options;
+  value: Range;
+  name?: string;
 }

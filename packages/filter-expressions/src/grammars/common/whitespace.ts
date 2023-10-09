@@ -8,4 +8,4 @@ _ "whitespace"
 
 SPACE "space"
   = [ \\t\\n\\r]+
-`
+`;

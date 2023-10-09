@@ -30,4 +30,4 @@ UA_WORD = chars:UA_CHARS+ {
 
 UA_CHARS = [A-Za-z0-9_]
 
-`
+`;

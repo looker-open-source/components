@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputFile } from '../'
-import type { InputFileProps } from '../'
+import React from 'react';
+import { InputFile } from '../';
+import type { InputFileProps } from '../';
 
 export default function Basic(props: InputFileProps) {
   const {
@@ -13,6 +13,6 @@ export default function Basic(props: InputFileProps) {
       // file handling logic here
     },
     ...restProps
-  } = props
-  return <InputFile handleFile={handleFile} {...restProps} />
+  } = props;
+  return <InputFile handleFile={handleFile} {...restProps} />;
 }

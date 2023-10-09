@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CBar, CLine, CPie, CScatter, CTable } from '../adapters'
+import type { CBar, CLine, CPie, CScatter, CTable } from '../adapters';
 
 export const mockBarConfig: CBar = {
   type: 'bar',
@@ -29,13 +29,13 @@ export const mockBarConfig: CBar = {
       range: ['auto', 'auto'],
     },
   ],
-}
+};
 
 export const mockPieConfig: CPie = {
   type: 'pie',
   legend: { position: 'bottom', value: 'label', type: 'legend' },
   series: [{ color: '#fa8072' }],
-}
+};
 
 export const mockLineConfig: CLine = {
   type: 'line',
@@ -49,12 +49,12 @@ export const mockLineConfig: CLine = {
       range: ['auto', 'auto'],
     },
   ],
-}
+};
 
 export const mockTableConfig: CTable = {
   type: 'table',
-}
+};
 
 export const mockScatterConfig: CScatter = {
   type: 'scatter',
-}
+};

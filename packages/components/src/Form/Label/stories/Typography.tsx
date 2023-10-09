@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Label } from '..'
-import type { LabelProps } from '..'
+import React from 'react';
+import { Label } from '..';
+import type { LabelProps } from '..';
 
 export default function Typography(props: LabelProps) {
   const {
@@ -14,7 +14,7 @@ export default function Typography(props: LabelProps) {
     fontSize = 'xlarge',
     fontWeight = 'normal',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <Label
@@ -25,5 +25,5 @@ export default function Typography(props: LabelProps) {
     >
       {children}
     </Label>
-  )
+  );
 }

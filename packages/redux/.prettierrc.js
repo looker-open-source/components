@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-module.exports = require('@looker/prettier-config')
+module.exports = require('@looker/prettier-config');

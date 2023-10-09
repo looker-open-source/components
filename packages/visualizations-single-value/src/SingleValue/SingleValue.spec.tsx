@@ -2,11 +2,11 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { mockFields, mockData } from '@looker/visualizations-adapters'
-import { screen } from '@testing-library/react'
-import { SingleValue } from './SingleValue'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { mockFields, mockData } from '@looker/visualizations-adapters';
+import { screen } from '@testing-library/react';
+import { SingleValue } from './SingleValue';
 
 describe('SingleValue', () => {
   it('renders a single value', () => {
@@ -21,8 +21,8 @@ describe('SingleValue', () => {
         data={mockData}
         fields={mockFields}
       />
-    )
-    expect(screen.getByText('87')).toBeVisible()
-    expect(screen.getByText('orders')).toBeVisible()
-  })
-})
+    );
+    expect(screen.getByText('87')).toBeVisible();
+    expect(screen.getByText('orders')).toBeVisible();
+  });
+});

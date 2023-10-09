@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 import type {
   CompatibleHTMLProps,
   SpaceProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   color,
   reset,
   space,
   shouldForwardProp,
   typography,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 
 export interface LegendProps
   extends SpaceProps,
@@ -42,7 +42,7 @@ export const Legend = styled.legend
   ${color}
   ${space}
   ${typography}
-`
+`;
 
 /**
  * `border: none;` override is a product-targeted fix

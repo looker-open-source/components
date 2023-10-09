@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextProps } from '../..'
-import { FieldText } from '../..'
+import React from 'react';
+import type { FieldTextProps } from '../..';
+import { FieldText } from '../..';
 
 export default function Required(props: FieldTextProps) {
   const {
@@ -13,9 +13,9 @@ export default function Required(props: FieldTextProps) {
     name = 'firstName',
     label = 'First Name',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldText name={name} label={label} required={required} {...restProps} />
-  )
+  );
 }

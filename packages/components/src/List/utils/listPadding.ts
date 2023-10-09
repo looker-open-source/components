@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
-import { Divider } from '../../Divider'
+import { css } from 'styled-components';
+import { Divider } from '../../Divider';
 
 /**
  * Produces a CSS interpolation for a styled collection component (e.g. Menu, Select)
@@ -28,4 +28,4 @@ export const listPadding = css`
       display: none;
     }
   }
-`
+`;

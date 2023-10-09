@@ -1,3 +1,10 @@
+## 1.5.34 (2023-09-20)
+
+### Bug Fixes
+
+- Dialogs not closing on esc key b/256648685
+- Focus Trap error b/267220332
+
 ## 1.5.30 (2023-01-26)
 
 ### Bug Fixes

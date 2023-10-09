@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTimeSelectProps } from '..'
-import { FieldTimeSelect } from '..'
+import React from 'react';
+import type { FieldTimeSelectProps } from '..';
+import { FieldTimeSelect } from '..';
 
 export default function ValidationMessage(props: FieldTimeSelectProps) {
   const {
@@ -16,7 +16,7 @@ export default function ValidationMessage(props: FieldTimeSelectProps) {
     required = true,
     validationMessage = { message: 'validation Message', type: 'error' },
     ...restProps
-  } = props
+  } = props;
 
   return (
     <FieldTimeSelect
@@ -28,5 +28,5 @@ export default function ValidationMessage(props: FieldTimeSelectProps) {
       validationMessage={validationMessage}
       {...restProps}
     />
-  )
+  );
 }

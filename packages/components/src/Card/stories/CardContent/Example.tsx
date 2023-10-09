@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Card } from '../../Card'
-import { CardContent } from '../../CardContent'
-import { Paragraph, Heading } from '../../../Text'
+import React from 'react';
+import { Card } from '../../Card';
+import { CardContent } from '../../CardContent';
+import { Paragraph, Heading } from '../../../Text';
 
 export default () => {
   return (
@@ -20,5 +20,5 @@ export default () => {
         </Paragraph>
       </CardContent>
     </Card>
-  )
-}
+  );
+};

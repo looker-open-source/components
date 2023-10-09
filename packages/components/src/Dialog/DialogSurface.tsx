@@ -24,24 +24,24 @@
 
  */
 
-import type { Keyframes } from 'styled-components'
-import styled, { css, keyframes } from 'styled-components'
-import type { ResponsiveValue } from '@looker/design-tokens'
-import { height, theme } from '@looker/design-tokens'
-import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase'
-import type { DialogDrawerWidth } from '../Drawer/DrawerSurface'
-import { dialogWidth } from './dialogWidth'
+import type { Keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
+import type { ResponsiveValue } from '@looker/design-tokens';
+import { height, theme } from '@looker/design-tokens';
+import { SurfaceBase, surfaceTransition } from '../Dialog/SurfaceBase';
+import type { DialogDrawerWidth } from '../Drawer/DrawerSurface';
+import { dialogWidth } from './dialogWidth';
 
-export type DialogPlacementCenter = 'center'
-export type DialogPlacementCover = 'cover'
-export type DialogPlacementTop = 'top'
+export type DialogPlacementCenter = 'center';
+export type DialogPlacementCover = 'cover';
+export type DialogPlacementTop = 'top';
 
 export type DialogPlacements =
   | DialogPlacementCenter
   | DialogPlacementCover
-  | DialogPlacementTop
+  | DialogPlacementTop;
 
-export const dialogPlacements = ['center', 'cover', 'top']
+export const dialogPlacements = ['center', 'cover', 'top'];
 
 export interface DialogSurfaceProps {
   /**
@@ -59,13 +59,13 @@ export interface DialogSurfaceProps {
    *    width: default `medium` above mobile breakpoint
    * @default center
    */
-  placement?: DialogPlacements
+  placement?: DialogPlacements;
 
   /**
    * Explicitly specifying a width will set the Surface to be the lesser of
    * the specified width or the viewport width.
    */
-  width?: DialogDrawerWidth
+  width?: DialogDrawerWidth;
 
   /**
    * Explicitly specifying a height will set the Surface to be the
@@ -73,7 +73,7 @@ export interface DialogSurfaceProps {
    * Default will cause the Surface to auto-size to its content, again
    * no larger than the viewport height.
    */
-  height?: ResponsiveValue<string>
+  height?: ResponsiveValue<string>;
 
   /**
    * Explicitly specifying top allows the Dialog to be positioned within
@@ -82,19 +82,21 @@ export interface DialogSurfaceProps {
    * and offsetTop of the containing IFRAME is known. Under normal circumstances
    * top should NEVER be set.
    */
-  top?: ResponsiveValue<string>
+  top?: ResponsiveValue<string>;
 }
 
-const { space, breakpoints } = theme
-const gapSpace = 'xxlarge'
-const coverDimension = `calc(100% - ${space[gapSpace]} * 2)`
+const { space, breakpoints } = theme;
+const gapSpace = 'xxlarge';
+const coverDimension = `calc(100% - ${space[gapSpace]} * 2)`;
 
+// Only adding the vertical gap(s) at screen heights over 400px mitigates
+// scrollable content being too short, e.g. in a short embed iframe b/290183379
+// TODO: Need design input on the ideal min-height value
 const placements = {
   center: css<DialogSurfaceProps>`
     align-self: flex-start;
-    max-height: 100%;
 
-    @media screen and (min-width: ${breakpoints[0]}) {
+    @media screen and (min-width: ${breakpoints[0]}) and (min-height: 400px) {
       align-self: center;
       max-height: ${coverDimension};
     }
@@ -102,12 +104,12 @@ const placements = {
   cover: css<DialogSurfaceProps>`
     height: 100%;
 
-    @media screen and (min-width: ${breakpoints[0]}) {
+    @media screen and (min-width: ${breakpoints[0]}) and (min-height: 400px) {
       height: ${coverDimension};
       width: ${coverDimension};
     }
 
-    @media screen and (min-width: ${breakpoints[1]}) {
+    @media screen and (min-width: ${breakpoints[1]}) and (min-height: 400px) {
       height: ${coverDimension};
       width: ${coverDimension};
     }
@@ -115,16 +117,15 @@ const placements = {
   top: css<DialogSurfaceProps>`
     align-self: flex-start;
     margin-top: 0;
-    max-height: 100%;
 
-    @media screen and (min-width: ${breakpoints[0]}) {
+    @media screen and (min-width: ${breakpoints[0]}) and (min-height: 400px) {
       margin-top: ${({ theme }) => theme.space[gapSpace]};
       max-height: ${coverDimension};
     }
   `,
-}
+};
 
-const defaultDialogSurfacePlacement = 'center'
+const defaultDialogSurfacePlacement = 'center';
 
 const dialogIn: Keyframes = keyframes`
 from {
@@ -135,7 +136,7 @@ to {
   opacity: 1;
   transform: translate(0);
 }
-`
+`;
 const dialogOut: Keyframes = keyframes`
 from {
   opacity: 1;
@@ -145,7 +146,7 @@ to {
   opacity: 0.01;
   transform: translateY(100%);
 }
-`
+`;
 
 export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
   ({
@@ -159,14 +160,15 @@ export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
   })
 )<DialogSurfaceProps>`
   box-shadow: ${({ theme }) => theme.elevations.plus3};
+  max-height: 100%;
   position: relative;
   top: ${({ top }) => top};
 
   ${dialogWidth}
   ${({ placement }) => placements[placement || defaultDialogSurfacePlacement]}
-    ${height}
+  ${height}
 
-    @media screen and (min-width: ${breakpoints[0]}) {
+  @media screen and (min-width: ${breakpoints[0]}) {
     border-radius: ${({ theme }) => theme.radii.medium};
   }
 
@@ -176,4 +178,4 @@ export const DialogSurface = styled(SurfaceBase).attrs<DialogSurfaceProps>(
   &.exiting {
     animation: ${dialogOut} ${surfaceTransition} forwards;
   }
-`
+`;

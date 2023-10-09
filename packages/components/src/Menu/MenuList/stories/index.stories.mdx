@@ -1,8 +1,8 @@
-import { MenuList } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyDensity from '!!raw-loader!./Density'
+import { MenuList } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyDensity from './Density?raw';
 
 <Meta component={MenuList} title="Docs/MenuList" />
 
@@ -21,6 +21,7 @@ When a `MenuList` is focused the `up` and `down` arrow keys will move focus thro
 Use the `density` prop to set the size and spacing of your `MenuList`. As `density` decreases, so does the height and spacing of child `MenuItem`s.
 
 `density` values range from -3 to 1.
+
 <Editor code={storyDensity} />
 
 ## Windowing
@@ -30,7 +31,6 @@ only the visible items for performance reasons. Windowing uses the item height t
 positioning for natural scrolling behavior.
 
 **Note:** A parent element of your `MenuList` should have an explicit height. If no explicit height is set, your `MenuList` will attempt to render all child items and not utilize the windowing logic.
-
 
 ## Props
 

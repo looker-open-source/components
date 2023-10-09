@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Checkbox } from '../Checkbox'
+import React, { useState } from 'react';
+import { Checkbox } from '../Checkbox';
 
 export default function OnChange() {
-  const [checked, setChecked] = useState(true)
-  const handleChange = () => setChecked(!checked)
-  return <Checkbox checked={checked} onChange={handleChange} />
+  const [checked, setChecked] = useState(true);
+  const handleChange = () => setChecked(!checked);
+  return <Checkbox checked={checked} onChange={handleChange} />;
 }

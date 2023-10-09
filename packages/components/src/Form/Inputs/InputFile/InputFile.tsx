@@ -24,38 +24,41 @@
 
  */
 
-import type { ChangeEvent, MouseEvent } from 'react'
-import React, { useRef, useState } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { Space } from '../../../Layout/Space'
-import { InputText } from '../InputText'
-import { ButtonOutline } from '../../../Button/ButtonOutline'
+import type { ChangeEvent, MouseEvent } from 'react';
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
+import type {
+  CompatibleHTMLProps,
+  CompatibleInputHTMLProps,
+} from '@looker/design-tokens';
+import { Space } from '../../../Layout/Space';
+import { InputText } from '../InputText';
+import { ButtonOutline } from '../../../Button/ButtonOutline';
 import {
   omitAriaAndValidationProps,
   pickAriaAndValidationProps,
-} from '../ariaProps'
+} from '../ariaProps';
 
 export type InputFileProps = Omit<
   CompatibleHTMLProps<HTMLButtonElement>,
   'onChange'
 > &
-  Pick<CompatibleHTMLProps<HTMLInputElement>, 'onChange'> & {
+  Pick<CompatibleInputHTMLProps<HTMLInputElement>, 'onChange'> & {
     /**
      * A string containing one or more unique file type specifiers i.e. '.pdf', each file type separated by a comma
      */
-    accept?: string
+    accept?: string;
 
     /**
      * Text for the button which uploads the file
      */
-    buttonText?: string
+    buttonText?: string;
 
     /**
      * A function that takes the uploaded file
      */
-    handleFile: (value: File) => void
-  }
+    handleFile: (value: File) => void;
+  };
 
 /**
  * Hidden input element that is clicked on <ButtonOutline> click
@@ -65,7 +68,7 @@ const HiddenFileInput = styled.input.attrs(() => ({
   type: 'file',
 }))`
   display: none;
-`
+`;
 
 export const InputFile = styled(
   ({
@@ -78,30 +81,30 @@ export const InputFile = styled(
     placeholder,
     ...restProps
   }: InputFileProps) => {
-    const [fileName, setFileName] = useState('')
-    const hiddenFileInput = useRef<HTMLInputElement>(null)
+    const [fileName, setFileName] = useState('');
+    const hiddenFileInput = useRef<HTMLInputElement>(null);
 
-    const ariaProps = pickAriaAndValidationProps(restProps)
-    const buttonOutlineProps = omitAriaAndValidationProps(restProps)
+    const ariaProps = pickAriaAndValidationProps(restProps);
+    const buttonOutlineProps = omitAriaAndValidationProps(restProps);
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-      onClick && onClick(event)
-      hiddenFileInput?.current?.click()
-    }
+      onClick && onClick(event);
+      hiddenFileInput?.current?.click();
+    };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-      onChange && onChange(event)
+      onChange?.(event);
 
       if (!event.target.files) {
         // eslint-disable-next-line no-console
-        console.warn('There was a problem uploading the file.')
-        return
+        console.warn('There was a problem uploading the file.');
+        return;
       }
 
-      const fileUploaded = event.target.files[0]
-      handleFile(fileUploaded)
-      setFileName(fileUploaded.name)
-    }
+      const fileUploaded = event.target.files[0];
+      handleFile(fileUploaded);
+      setFileName(fileUploaded.name);
+    };
 
     return (
       /**
@@ -128,6 +131,6 @@ export const InputFile = styled(
           accept={accept}
         />
       </Space>
-    )
+    );
   }
-)``
+)``;

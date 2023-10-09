@@ -24,26 +24,26 @@
 
  */
 
-import type { ChangeEvent, Ref } from 'react'
-import React, { forwardRef, useState } from 'react'
-import isFunction from 'lodash/isFunction'
-import styled from 'styled-components'
+import type { ChangeEvent, Ref } from 'react';
+import React, { forwardRef, useState } from 'react';
+import isFunction from 'lodash/isFunction';
+import styled from 'styled-components';
 import type {
   TypographyProps,
   SpaceProps,
   CompatibleHTMLProps,
   LayoutProps,
-} from '@looker/design-tokens'
-import { typography } from '@looker/design-tokens'
-import { pickInputProps } from '../InputProps'
+} from '@looker/design-tokens';
+import { typography } from '@looker/design-tokens';
+import { pickInputProps } from '../InputProps';
 
 export interface InlineTextAreaProps
   extends Omit<LayoutProps, 'size'>,
     SpaceProps,
     TypographyProps,
     CompatibleHTMLProps<HTMLTextAreaElement> {
-  underlineOnlyOnHover?: boolean
-  value?: string
+  underlineOnlyOnHover?: boolean;
+  value?: string;
 }
 
 export const InlineTextAreaLayout = forwardRef(
@@ -58,15 +58,15 @@ export const InlineTextAreaLayout = forwardRef(
     }: InlineTextAreaProps,
     ref: Ref<HTMLTextAreaElement>
   ) => {
-    const [value, setValueChange] = useState(valueProp)
+    const [value, setValueChange] = useState(valueProp);
 
-    const displayValue = isFunction(onChange) ? valueProp : value
+    const displayValue = isFunction(onChange) ? valueProp : value;
 
     const handleValueChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-      setValueChange(event.currentTarget.value)
-    }
+      setValueChange(event.currentTarget.value);
+    };
 
-    const handleChange = isFunction(onChange) ? onChange : handleValueChange
+    const handleChange = isFunction(onChange) ? onChange : handleValueChange;
 
     return (
       <div className={className} data-testid="inline-text-area">
@@ -79,11 +79,12 @@ export const InlineTextAreaLayout = forwardRef(
         />
         <VisibleText displayValue={displayValue}>
           {displayValue || placeholder}
+          {`\u00A0`}
         </VisibleText>
       </div>
-    )
+    );
   }
-)
+);
 
 const Input = styled.textarea<InlineTextAreaProps>`
   background: transparent;
@@ -97,6 +98,7 @@ const Input = styled.textarea<InlineTextAreaProps>`
   left: 0;
   margin: 0; /* override browser default(s) */
   outline: none;
+  overflow: hidden;
   padding: 0;
   position: absolute;
   resize: none;
@@ -105,20 +107,22 @@ const Input = styled.textarea<InlineTextAreaProps>`
   top: 0;
   vertical-align: top; /* textarea is inline-block so this removes 4px generated below */
   width: 100%;
-`
+`;
 
 interface VisibleTextProps {
-  displayValue?: string
+  displayValue?: string;
 }
 
 const VisibleText = styled.div<VisibleTextProps>`
   color: ${({ displayValue, theme }) =>
     displayValue ? 'inherit' : theme.colors.text1};
-`
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
 
 export const InlineTextArea = styled(InlineTextAreaLayout)`
   ${typography}
-
+  font: inherit;
   border: none;
   border-bottom: 1px dashed;
   border-bottom-color: ${({ theme, underlineOnlyOnHover, readOnly }) =>
@@ -153,4 +157,4 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   :hover {
     border-bottom-color: ${({ readOnly }) => readOnly && 'transparent'};
   }
-`
+`;

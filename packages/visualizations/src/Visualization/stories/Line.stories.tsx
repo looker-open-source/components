@@ -24,10 +24,10 @@
 
  */
 
-import type { Story } from '@storybook/react'
-import React from 'react'
-import { Visualization } from '../Visualization'
-import type { Fields, LineProps, CLine } from '@looker/visualizations-adapters'
+import type { Fields, LineProps, CLine } from '@looker/visualizations-adapters';
+import type { Story } from '@storybook/react';
+import React from 'react';
+import { Visualization } from '../Visualization';
 import {
   buildChartConfig,
   buildPivotFields,
@@ -39,22 +39,22 @@ import {
   mockSdkPivotDataResponse,
   tabularResponse,
   tabularPivotResponse,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/Line',
-}
+};
 
 type StoryTemplateProps = Omit<LineProps, 'config' | 'fields' | 'data'> & {
-  config: Omit<CLine, 'type'>
-}
+  config: Omit<CLine, 'type'>;
+};
 
 const Template: Story<StoryTemplateProps> = ({
   config: configProp,
   ...restProps
 }) => {
-  const data = tabularResponse([...mockSdkDataResponse])
+  const data = tabularResponse([...mockSdkDataResponse]);
 
   const config = buildChartConfig({
     config: {
@@ -64,7 +64,7 @@ const Template: Story<StoryTemplateProps> = ({
     },
     data,
     fields: mockSdkFieldsResponse as Fields,
-  })
+  });
 
   return (
     <Visualization
@@ -75,23 +75,23 @@ const Template: Story<StoryTemplateProps> = ({
       width={800}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export const Line = Template.bind({})
+export const Line = Template.bind({});
 Line.args = {
   config: { series: [{ visible: true }, { visible: true }] },
-}
+};
 
-export const PointStyleFilled = Template.bind({})
+export const PointStyleFilled = Template.bind({});
 PointStyleFilled.args = {
   config: { series: [{ style: 'filled' }, { style: 'filled' }] },
-}
+};
 
-export const PointStyleNone = Template.bind({})
+export const PointStyleNone = Template.bind({});
 PointStyleNone.args = {
   config: { series: [{ style: 'none' }, { style: 'none' }] },
-}
+};
 
 export const Pivot = () => {
   const mockPivotFields = buildPivotFields({
@@ -99,7 +99,7 @@ export const Pivot = () => {
       ...mockSdkFieldsResponse,
     } as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const mockPivotData = tabularPivotResponse({
     data: [...mockSdkPivotDataResponse],
@@ -107,13 +107,13 @@ export const Pivot = () => {
       ...mockSdkFieldsResponse,
     } as Fields,
     pivots: mockPivots,
-  })
+  });
 
   const config = buildChartConfig({
     config: { ...mockLineConfig, type: 'area' },
     data: mockPivotData,
     fields: mockPivotFields,
-  })
+  });
 
   return (
     <Visualization
@@ -123,27 +123,24 @@ export const Pivot = () => {
       height={600}
       width={800}
     />
-  )
-}
-Pivot.parameters = {
-  storyshots: { disable: true },
-}
+  );
+};
 
 export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
   const fields = {
     ...mockSdkFieldsResponse,
     measures: mockSdkFieldsResponse.measures.slice(0, 1), // removes the average measure field
-  } as Fields
+  } as Fields;
 
   const data = tabularResponse(
     [...mockSdkDataResponse].map(datum => {
       const {
         'orders.average_total_amount_of_order_usd': _ordersAverageEtc,
         ...rest
-      } = datum
-      return rest
+      } = datum;
+      return rest;
     })
-  )
+  );
 
   const config = buildChartConfig({
     config: {
@@ -153,7 +150,7 @@ export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
     },
     data,
     fields,
-  })
+  });
 
   return (
     <Visualization
@@ -163,5 +160,5 @@ export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
       height={600}
       width={800}
     />
-  )
-}
+  );
+};

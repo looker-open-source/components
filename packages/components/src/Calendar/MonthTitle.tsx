@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import styled from 'styled-components'
-import { Span } from '../Text'
-import type { CalendarLocaleProps, RangeProps } from './types'
-import { formatDateString, rangeTypeStyle } from './utils'
+import React from 'react';
+import styled from 'styled-components';
+import { Span } from '../Text';
+import type { CalendarLocaleProps, RangeProps } from './types';
+import { formatDateString, rangeTypeStyle } from './utils';
 
 export type MonthTitleProps = Pick<CalendarLocaleProps, 'locale'> &
   RangeProps & {
-    className?: string
-    month: Date
-    inline: boolean
-  }
+    className?: string;
+    month: Date;
+    inline: boolean;
+  };
 
 export const MonthTitle = styled(
   ({ className, locale, month }: MonthTitleProps) => {
@@ -29,7 +29,7 @@ export const MonthTitle = styled(
       >
         {formatDateString(month, 'MMM yyyy', locale)}
       </Span>
-    )
+    );
   }
 )`
   ${rangeTypeStyle}
@@ -42,4 +42,4 @@ export const MonthTitle = styled(
   position: relative;
   width: fit-content;
   z-index: ${({ theme }) => theme.zIndexFloor};
-`
+`;

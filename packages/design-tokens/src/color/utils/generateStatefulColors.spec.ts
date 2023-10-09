@@ -24,25 +24,25 @@
 
  */
 
-import { colors } from '../colors'
-import { defaultCoreColors, defaultIntentColors } from '../defaults'
-import { fallbackBlends } from '../fallbacks'
-import type { SpecifiableColors } from '../types'
-import { generateDerivativeColors } from './generateDerivativeColors'
+import { colors } from '../colors';
+import { defaultCoreColors, defaultIntentColors } from '../defaults';
+import { fallbackBlends } from '../fallbacks';
+import type { SpecifiableColors } from '../types';
+import { generateDerivativeColors } from './generateDerivativeColors';
 import {
   generateStatefulColor,
   generateStatefulColors,
-} from './generateStatefulColors'
+} from './generateStatefulColors';
 
-const { background, key } = colors
+const { background, key } = colors;
 const specifiableColors: SpecifiableColors = {
   ...defaultCoreColors,
   ...defaultIntentColors,
-}
+};
 const derivedColors = generateDerivativeColors(
   specifiableColors,
   fallbackBlends
-)
+);
 
 describe('generateStatefulColors', () => {
   describe('generateStatefulColor', () => {
@@ -60,9 +60,9 @@ describe('generateStatefulColors', () => {
           "text": "#FFFFFF",
         }
       `
-      )
-    })
-  })
+      );
+    });
+  });
 
   describe('enerateStatefulColors', () => {
     test('text1', () => {
@@ -114,9 +114,16 @@ describe('generateStatefulColors', () => {
           "neutralPressed": "#606467",
           "neutralSubtle": "#f0f1f1",
           "neutralText": "#FFFFFF",
+          "positiveAccent": "#dbf2e5",
+          "positiveBorder": "#24b25f",
+          "positiveFocus": "#7bd09f",
+          "positiveInteractive": "#27c368",
+          "positivePressed": "#1e944f",
+          "positiveSubtle": "#e9f7ef",
+          "positiveText": "#FFFFFF",
         }
       `
-      )
-    })
-  })
-})
+      );
+    });
+  });
+});

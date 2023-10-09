@@ -23,18 +23,18 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { screen, fireEvent } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { mockLineConfig } from '@looker/visualizations-adapters'
-import { XAxis } from './XAxis'
+import React from 'react';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { mockLineConfig } from '@looker/visualizations-adapters';
+import { XAxis } from './XAxis';
 
 afterEach(() => {
-  jest.resetAllMocks()
-})
+  jest.resetAllMocks();
+});
 
 describe('XAxis', () => {
-  const handleConfigChange = jest.fn()
+  const handleConfigChange = jest.fn();
 
   it('renders x-axis toggle when there are multiple config objects', () => {
     renderWithTheme(
@@ -45,11 +45,11 @@ describe('XAxis', () => {
         }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    expect(screen.getByText('1')).toBeInTheDocument() // button group value
-    expect(screen.getByText('2')).toBeInTheDocument() // button group value
-  })
+    expect(screen.getByText('1')).toBeInTheDocument(); // button group value
+    expect(screen.getByText('2')).toBeInTheDocument(); // button group value
+  });
 
   it('hidden when x-axis is unsupported', () => {
     const { container } = renderWithTheme(
@@ -57,10 +57,10 @@ describe('XAxis', () => {
         config={{ type: 'unsupported' as 'line' }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    expect(container).toBeEmptyDOMElement()
-  })
+    expect(container).toBeEmptyDOMElement();
+  });
 
   it('toggles XAxis reversed', () => {
     renderWithTheme(
@@ -68,16 +68,16 @@ describe('XAxis', () => {
         config={{ ...mockLineConfig, x_axis: [{ reversed: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Reverse'))
+    fireEvent.click(screen.getByLabelText('Reverse'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         x_axis: [{ reversed: true }],
       })
-    )
-  })
+    );
+  });
 
   it('toggles XAxis gridlines', () => {
     renderWithTheme(
@@ -85,16 +85,16 @@ describe('XAxis', () => {
         config={{ ...mockLineConfig, x_axis: [{ gridlines: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Render Gridlines'))
+    fireEvent.click(screen.getByLabelText('Render Gridlines'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         x_axis: [{ gridlines: true }],
       })
-    )
-  })
+    );
+  });
 
   it('updates XAxis label value', () => {
     renderWithTheme(
@@ -102,18 +102,18 @@ describe('XAxis', () => {
         config={{ ...mockLineConfig, x_axis: [{ label: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: 'New Label' },
-    })
+    });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         x_axis: [{ label: 'New Label' }],
       })
-    )
-  })
+    );
+  });
 
   it('sets XAxis label to false when text input is empty', () => {
     renderWithTheme(
@@ -121,18 +121,18 @@ describe('XAxis', () => {
         config={{ ...mockLineConfig, x_axis: [{ label: 'Default Label' }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
     fireEvent.change(screen.getByLabelText('Label'), {
       target: { value: '' },
-    })
+    });
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         x_axis: [{ label: false }],
       })
-    )
-  })
+    );
+  });
 
   it('toggles XAxis values', () => {
     renderWithTheme(
@@ -140,14 +140,14 @@ describe('XAxis', () => {
         config={{ ...mockLineConfig, x_axis: [{ values: false }] }}
         onConfigChange={handleConfigChange}
       />
-    )
+    );
 
-    fireEvent.click(screen.getByLabelText('Show Values'))
+    fireEvent.click(screen.getByLabelText('Show Values'));
 
     expect(handleConfigChange).toHaveBeenLastCalledWith(
       expect.objectContaining({
         x_axis: [{ values: true }],
       })
-    )
-  })
-})
+    );
+  });
+});

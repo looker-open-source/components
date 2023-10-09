@@ -24,17 +24,17 @@
 
  */
 
-import { useTheme } from 'styled-components'
-import { mergeClassNames } from '../utils'
-import type { UseRippleProps, UseRippleResponse } from './types'
-import { useRippleState } from './useRippleState'
-import { useRippleStateBG } from './useRippleStateBG'
+import { useTheme } from 'styled-components';
+import { mergeClassNames } from '../utils';
+import type { UseRippleProps, UseRippleResponse } from './types';
+import { useRippleState } from './useRippleState';
+import { useRippleStateBG } from './useRippleStateBG';
 
 const getMinMaxDimensions = (width: number, height: number) => {
-  const min = Math.min(width, height)
-  const max = Math.max(width, height)
-  return [min, max]
-}
+  const min = Math.min(width, height);
+  const max = Math.max(width, height);
+  return [min, max];
+};
 
 const getRippleScaleRange = (
   bounded: boolean,
@@ -44,38 +44,38 @@ const getRippleScaleRange = (
   noScale?: boolean
 ): [number, number] => {
   // For squares it looks best to start the ripple very small
-  const start = 0.1
+  const start = 0.1;
   if (bounded && min > 0 && max > 0) {
     // For rectangles it looks better to start at the size of the smaller dimension
     // which is 1 because of how size is calculated
-    const startBounded = min === max ? start : 1
+    const startBounded = min === max ? start : 1;
     // The ripple needs to spread past all corners, use hypotenuse as the
     // final diameter, and start at 1 to make the animation less jarring
-    const end = Math.hypot(min, max) / min
+    const end = Math.hypot(min, max) / min;
 
     if (noScale) {
-      return [end, end]
+      return [end, end];
     }
-    return [startBounded, end]
+    return [startBounded, end];
   }
 
   if (noScale) {
-    return [size, size]
+    return [size, size];
   }
   // Start small and expand to the full size
-  return [start, size]
-}
+  return [start, size];
+};
 
 const getRippleOffset = (min: number, max: number, bounded?: boolean) => {
   if (!bounded || min === max) {
-    return '0, 0'
+    return '0, 0';
   }
   // If the element is rectangular, adjust the center of the ripple
   // further along the larger dimension
   // NOTE: Currently only works for a horizontal rectangle like a Button
-  const offset = max / 2 - min / 2
-  return `${offset}px, 0`
-}
+  const offset = max / 2 - min / 2;
+  return `${offset}px, 0`;
+};
 
 /**
  * @returns callbacks should be mapped to DOM event handlers (see useRippleHandlers)
@@ -95,22 +95,22 @@ export const useRipple = ({
   const {
     colors,
     defaults: { brandAnimation },
-  } = useTheme()
+  } = useTheme();
 
   // Get values for animation – bounded uses dimensions, otherwise they're static
-  const [min, max] = getMinMaxDimensions(width, height)
+  const [min, max] = getMinMaxDimensions(width, height);
   const rippleScaleRange = getRippleScaleRange(
     bounded,
     min,
     max,
     size,
     !brandAnimation
-  )
-  const rippleOffset = getRippleOffset(min, max, bounded)
+  );
+  const rippleOffset = getRippleOffset(min, max, bounded);
 
   // Background (hover, focus) and foreground (press) ripple states
-  const { start: startBG, end: endBG, className: bgClass } = useRippleStateBG()
-  const { start: startFG, end: endFG, className: fgClass } = useRippleState()
+  const { start: startBG, end: endBG, className: bgClass } = useRippleStateBG();
+  const { start: startFG, end: endFG, className: fgClass } = useRippleState();
   // bounded needs an explicit size, otherwise just fill the whole area
 
   // Limitations of style/CSSProperties type
@@ -124,7 +124,7 @@ export const useRipple = ({
     '--ripple-scale-start': rippleScaleRange[0],
     '--ripple-size': bounded && min > 0 ? `${min}px` : '100%',
     '--ripple-translate': rippleOffset,
-  }
+  };
 
   return {
     // Functions to be called from event handlers
@@ -138,5 +138,5 @@ export const useRipple = ({
     // Props to be applied to the same element that gets rippleStyle
     className: mergeClassNames([className, `${bgClass} ${fgClass}`]),
     style: { ...style, ...rippleStyle },
-  }
-}
+  };
+};

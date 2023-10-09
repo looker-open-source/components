@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { plPL as componentsLocale } from '@looker/components'
-import { plPL as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { plPL as componentsLocale } from '@looker/components';
+import { plPL as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
     'Shift + Click to sort additional columns':
-      'Naciśnij klawisz Shift i kliknij, aby sortować dodatkowe kolumny',
-    'Sort ascending': 'Sortuj w kolejności rosnącej',
-    'Sort descending': 'Sortuj w kolejności malejącej',
+      'Naciśnij Shift i kliknij, aby posortować dodatkowe kolumny',
+    'Sort ascending': 'Sortuj rosnąco',
+    'Sort descending': 'Sortuj malejąco',
     Totals: 'Sumy',
   },
-}
+};
 
 export const plPL = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'pl-PL',
   resources
-)
+);

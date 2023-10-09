@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/ru'
+import dateLocale from 'date-fns/locale/ru';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -151,6 +151,6 @@ const resources = {
   TabList: {
     Tabs: 'Вкладки',
   },
-}
+};
 
-export const ruRU = mergeLocaleObjects([], 'ru-RU', resources, dateLocale)
+export const ruRU = mergeLocaleObjects([], 'ru-RU', resources, dateLocale);

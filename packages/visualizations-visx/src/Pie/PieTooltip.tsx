@@ -3,27 +3,27 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { TooltipWithBounds } from '@visx/tooltip'
-import { SpaceVertical } from '@looker/components'
-import styled from 'styled-components'
+import React from 'react';
+import { TooltipWithBounds } from '@visx/tooltip';
+import { SpaceVertical } from '@looker/components';
+import styled from 'styled-components';
 import type {
   FieldMetadata,
   DimensionMetadata,
   SDKRecord,
-} from '@looker/visualizations-adapters'
-import { tooltipStyles } from '../XYTooltip'
-import { DLGroup } from '../DLGroup'
+} from '@looker/visualizations-adapters';
+import { tooltipStyles } from '../XYTooltip';
+import { DLGroup } from '../DLGroup';
 
 type PieTooltipProps = {
-  className?: string
-  tooltipOpen: boolean
-  tooltipLeft?: number
-  tooltipTop?: number
-  tooltipData?: SDKRecord
-  measure: FieldMetadata
-  dimension: DimensionMetadata
-}
+  className?: string;
+  tooltipOpen: boolean;
+  tooltipLeft?: number;
+  tooltipTop?: number;
+  tooltipData?: SDKRecord;
+  measure: FieldMetadata;
+  dimension: DimensionMetadata;
+};
 
 export const PieTooltip = styled(
   ({
@@ -54,10 +54,10 @@ export const PieTooltip = styled(
             </SpaceVertical>
           </dl>
         </TooltipWithBounds>
-      )
+      );
     }
-    return null
+    return null;
   }
 )`
   ${tooltipStyles}
-`
+`;

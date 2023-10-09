@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-const licenseTextFull = require('./licenseTextFull')
-const licenseTextSPDX = require('./licenseTextSPDX')
+const licenseTextFull = require('./licenseTextFull');
+const licenseTextSPDX = require('./licenseTextSPDX');
 
 const regexCopyright =
-  /Copyright \(c\) [\d]{4} (Looker Data Sciences, Inc\.|Google LLC)/
-const regexSpdx = /SPDX-License-Identifier: MIT/
-const regexLicenseFullText = /Permission is hereby granted/
+  /Copyright \(c\) [\d]{4} (Looker Data Sciences, Inc\.|Google LLC)/;
+const regexSpdx = /SPDX-License-Identifier: MIT/;
+const regexLicenseFullText = /Permission is hereby granted/;
 
 // Use shortened SPDX License identifier when there are fewer than
 // 100 lines of code. Otherwise render full license text.
 // See guidelines at go/releasing/preparing#license-headers
-const LINE_COUNT_THRESHOLD = 100
+const LINE_COUNT_THRESHOLD = 100;
 
 /**
  * Select correct license text variant and detect appropriate error
@@ -29,30 +29,30 @@ const LINE_COUNT_THRESHOLD = 100
 function deriveLintErrorCode({ headerComments, sourceLineCount }) {
   const copyrightHeaderNode = headerComments.find((comment = { value: '' }) =>
     regexCopyright.test(comment.value)
-  )
+  );
 
   const licenseHeaderSpdxNode = headerComments.find((comment = { value: '' }) =>
     regexSpdx.test(comment.value)
-  )
+  );
 
   const licenseHeaderFullNode = headerComments.find((comment = { value: '' }) =>
     regexLicenseFullText.test(comment.value)
-  )
+  );
 
-  const lintErrors = []
+  const lintErrors = [];
 
   if (!copyrightHeaderNode) {
-    lintErrors.push('copyright')
+    lintErrors.push('copyright');
   }
 
   if (!licenseHeaderSpdxNode && !licenseHeaderFullNode) {
-    lintErrors.push('spdxOrLicense')
+    lintErrors.push('spdxOrLicense');
   }
 
   if (licenseHeaderSpdxNode && sourceLineCount > LINE_COUNT_THRESHOLD) {
-    lintErrors.push('longSrc')
+    lintErrors.push('longSrc');
   } else if (licenseHeaderFullNode && sourceLineCount <= LINE_COUNT_THRESHOLD) {
-    lintErrors.push('shortSrc')
+    lintErrors.push('shortSrc');
   }
 
   return {
@@ -63,7 +63,7 @@ function deriveLintErrorCode({ headerComments, sourceLineCount }) {
       sourceLineCount > LINE_COUNT_THRESHOLD
         ? licenseTextFull
         : licenseTextSPDX,
-  }
+  };
 }
 
-module.exports = deriveLintErrorCode
+module.exports = deriveLintErrorCode;

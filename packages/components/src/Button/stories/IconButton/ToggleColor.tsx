@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { IconButton } from '../..'
+import React, { useState } from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { IconButton } from '../..';
 
 export default function ToggleColor() {
-  const [isToggled, setIsToggled] = useState(false)
+  const [isToggled, setIsToggled] = useState(false);
 
   return (
     <IconButton
@@ -17,5 +17,5 @@ export default function ToggleColor() {
       onClick={() => setIsToggled(!isToggled)}
       toggleColor="calculation"
     />
-  )
+  );
 }

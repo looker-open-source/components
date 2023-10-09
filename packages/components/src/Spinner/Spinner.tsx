@@ -7,27 +7,27 @@ import type {
   CompatibleHTMLProps,
   PositionProps,
   SpaceProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   position,
   space,
   reset,
   shouldForwardProp,
-} from '@looker/design-tokens'
-import range from 'lodash/range'
-import React from 'react'
-import styled from 'styled-components'
-import { SpinnerMarker } from './SpinnerMarker'
+} from '@looker/design-tokens';
+import range from 'lodash/range';
+import React from 'react';
+import styled from 'styled-components';
+import { SpinnerMarker } from './SpinnerMarker';
 
 export interface SpinnerProps
   extends SpaceProps,
     PositionProps,
     CompatibleHTMLProps<HTMLElement> {
-  markers?: number
-  markerRadius?: number
-  speed?: number
-  size?: number
-  color?: string
+  markers?: number;
+  markerRadius?: number;
+  speed?: number;
+  size?: number;
+  color?: string;
 }
 
 const SpinnerFactory = (props: SpinnerProps) => {
@@ -37,7 +37,7 @@ const SpinnerFactory = (props: SpinnerProps) => {
     markerRadius,
     speed = 1000,
     ...rest
-  } = props
+  } = props;
   return (
     <Style data-testid="loading-spinner" {...rest}>
       {range(markers).map(i => (
@@ -51,8 +51,8 @@ const SpinnerFactory = (props: SpinnerProps) => {
         />
       ))}
     </Style>
-  )
-}
+  );
+};
 
 const Style = styled.div
   .withConfig({ shouldForwardProp })
@@ -66,6 +66,6 @@ const Style = styled.div
   height: ${({ size }) => size}px;
   position: relative;
   width: ${({ size }) => size}px;
-`
+`;
 
-export const Spinner = styled(SpinnerFactory)``
+export const Spinner = styled(SpinnerFactory)``;

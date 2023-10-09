@@ -24,39 +24,39 @@
 
  */
 
-import type { IDashboardFilter } from '@looker/sdk'
-import type { IAPIMethods } from '@looker/sdk-rtl'
-import type { ReactNode, Reducer } from 'react'
-import React, { createContext, useCallback, useReducer } from 'react'
+import type { IDashboardFilter } from '@looker/sdk';
+import type { IAPIMethods } from '@looker/sdk-rtl';
+import type { ReactNode, Reducer } from 'react';
+import React, { createContext, useCallback, useReducer } from 'react';
 
 type FilterWithExpression = {
-  filter: IDashboardFilter
-  expression?: string
-}
+  filter: IDashboardFilter;
+  expression?: string;
+};
 
 export interface FilterCollectionAction {
-  type: 'UPDATE_EXPRESSION' | 'REMOVE_FILTER'
-  payload: FilterWithExpression
+  type: 'UPDATE_EXPRESSION' | 'REMOVE_FILTER';
+  payload: FilterWithExpression;
 }
 
-export type FilterMap = { [key: string]: FilterWithExpression }
+export type FilterMap = { [key: string]: FilterWithExpression };
 
 export type FilterCollectionState = {
-  filterMap: FilterMap
-}
+  filterMap: FilterMap;
+};
 
 const getFilterMap = (filterMap: FilterMap, payload: FilterWithExpression) => {
-  const { filter, expression } = payload
+  const { filter, expression } = payload;
   if (expression) {
-    const newKeyValue = filter.title ? { [filter.title]: payload } : {}
-    return { ...filterMap, ...newKeyValue }
+    const newKeyValue = filter.title ? { [filter.title]: payload } : {};
+    return { ...filterMap, ...newKeyValue };
   }
   if (filter.title) {
-    const { [filter.title]: _filterToRemove, ...rest } = filterMap
-    return rest
+    const { [filter.title]: _filterToRemove, ...rest } = filterMap;
+    return rest;
   }
-  return filterMap
-}
+  return filterMap;
+};
 
 const reducer: Reducer<FilterCollectionState, FilterCollectionAction> = (
   state,
@@ -68,38 +68,38 @@ const reducer: Reducer<FilterCollectionState, FilterCollectionAction> = (
       return {
         ...state,
         filterMap: getFilterMap(state.filterMap, action.payload),
-      }
+      };
     default:
-      throw new Error()
+      throw new Error();
   }
-}
+};
 
 export type FilterContextProps = {
-  state: FilterCollectionState
-  updateExpression: (filter: IDashboardFilter, expression: string) => void
-  removeFilter: (filter: IDashboardFilter) => void
-  sdk?: IAPIMethods
-}
+  state: FilterCollectionState;
+  updateExpression: (filter: IDashboardFilter, expression: string) => void;
+  removeFilter: (filter: IDashboardFilter) => void;
+  sdk?: IAPIMethods;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {}
+const noop = () => {};
 
-const initialState: FilterCollectionState = { filterMap: {} }
+const initialState: FilterCollectionState = { filterMap: {} };
 
 const initialContext: FilterContextProps = {
   removeFilter: noop,
   state: initialState,
   updateExpression: noop,
-}
-export const FilterContext = createContext(initialContext)
+};
+export const FilterContext = createContext(initialContext);
 
 export type FilterCollectionProps = {
-  children: ReactNode | ReactNode[]
+  children: ReactNode | ReactNode[];
   /**
    * An initialized Looker SDK instance
    */
-  sdk?: IAPIMethods
-}
+  sdk?: IAPIMethods;
+};
 /**
  * FilterCollection's primary purpose is to manage a filter map
  * object, with filter metadata objects as keys and current
@@ -112,22 +112,22 @@ export type FilterCollectionProps = {
  * to be used for fetching suggestions.
  */
 export const FilterCollection = ({ children, sdk }: FilterCollectionProps) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const updateExpression = useCallback(
     (filter: IDashboardFilter, expression: string) => {
-      dispatch({ type: 'UPDATE_EXPRESSION', payload: { filter, expression } })
+      dispatch({ type: 'UPDATE_EXPRESSION', payload: { filter, expression } });
     },
     []
-  )
+  );
   const removeFilter = useCallback((filter: IDashboardFilter) => {
-    dispatch({ type: 'REMOVE_FILTER', payload: { filter } })
-  }, [])
+    dispatch({ type: 'REMOVE_FILTER', payload: { filter } });
+  }, []);
   return (
     <FilterContext.Provider
       value={{ removeFilter, state, sdk, updateExpression }}
     >
       {children}
     </FilterContext.Provider>
-  )
-}
+  );
+};

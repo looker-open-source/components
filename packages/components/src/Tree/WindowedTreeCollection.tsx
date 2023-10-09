@@ -7,15 +7,15 @@ import type {
   DensityProp,
   HeightProps,
   WidthProps,
-} from '@looker/design-tokens'
-import { height, omitStyledProps, width } from '@looker/design-tokens'
-import React from 'react'
-import styled from 'styled-components'
-import { useWindowedTree } from './utils/useWindowedTree'
-import type { WindowedTreeNodeProps } from './types'
-import { TreeCollectionContext } from './TreeCollectionContext'
-import type { TreeCollectionProps } from './TreeCollection'
-import { TreeCollection } from './TreeCollection'
+} from '@looker/design-tokens';
+import { height, omitStyledProps, width } from '@looker/design-tokens';
+import React from 'react';
+import styled from 'styled-components';
+import { useWindowedTree } from './utils/useWindowedTree';
+import type { WindowedTreeNodeProps } from './types';
+import { TreeCollectionContext } from './TreeCollectionContext';
+import type { TreeCollectionProps } from './TreeCollection';
+import { TreeCollection } from './TreeCollection';
 
 export type WindowedTreeCollectionProps = Omit<
   TreeCollectionProps,
@@ -28,8 +28,8 @@ export type WindowedTreeCollectionProps = Omit<
      * Use this array of objects representing the tree(s) instead of children
      * in order to support windowing of long trees
      */
-    trees: WindowedTreeNodeProps[]
-  }
+    trees: WindowedTreeNodeProps[];
+  };
 
 const WindowedTreeCollectionInternal = ({
   density,
@@ -39,7 +39,7 @@ const WindowedTreeCollectionInternal = ({
   const { content, contextValue, ref } = useWindowedTree({
     density,
     trees,
-  })
+  });
 
   return (
     <TreeCollectionContext.Provider value={contextValue}>
@@ -47,8 +47,8 @@ const WindowedTreeCollectionInternal = ({
         {content}
       </TreeCollection>
     </TreeCollectionContext.Provider>
-  )
-}
+  );
+};
 
 export const WindowedTreeCollection = styled(
   WindowedTreeCollectionInternal
@@ -56,4 +56,4 @@ export const WindowedTreeCollection = styled(
   ${height}
   ${width}
   overflow: auto;
-`
+`;

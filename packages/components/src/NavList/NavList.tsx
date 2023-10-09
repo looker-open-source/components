@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { TextBase } from '../Text'
-import { Truncate } from '../Truncate'
-import { List } from '../List'
+import styled from 'styled-components';
+import { TextBase } from '../Text';
+import { Truncate } from '../Truncate';
+import { List } from '../List';
 import {
   ListItem,
   ListItemContent,
   ListItemDetail,
   ListItemIcon,
-} from '../ListItem'
-import { NavTreeDisclosure } from '../NavTree/NavTreeDisclosure'
-import { INDICATOR_SPACER } from '../NavTree'
+} from '../ListItem';
+import { NavTreeDisclosure } from '../NavTree/NavTreeDisclosure';
+import { INDICATOR_SPACER } from '../NavTree';
 
 /**
  * `NavList` is a variation of `List` that expects to wrap around a composition of `ListItem`s, `NavTree`s and `NavTreeItem`s
@@ -49,9 +49,9 @@ export const NavList = styled(List).attrs(({ color = 'key' }) => ({ color }))`
   & > ${ListItem} {
     ${ListItemContent} {
       padding-left: ${({ theme }) => {
-        const iconGutterSize = theme.sizes.medium
-        return `calc(${iconGutterSize} + ${INDICATOR_SPACER})`
+        const iconGutterSize = theme.sizes.medium;
+        return `calc(${iconGutterSize} + ${INDICATOR_SPACER})`;
       }};
     }
   }
-`
+`;

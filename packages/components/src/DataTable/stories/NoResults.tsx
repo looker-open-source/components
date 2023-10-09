@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { DataTableItem, DataTableCell, DataTable } from '../..'
-import type { DataTableColumns } from '../../'
+import React from 'react';
+import { DataTableItem, DataTableCell, DataTable } from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function State() {
   const columns: DataTableColumns = [
@@ -13,7 +13,7 @@ export default function State() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
   // Change state to "noResults" to render the noResultsDisplay
   return (
@@ -22,5 +22,5 @@ export default function State() {
         <DataTableCell>Cheddar</DataTableCell>
       </DataTableItem>
     </DataTable>
-  )
+  );
 }

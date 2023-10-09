@@ -24,15 +24,15 @@
 
  */
 
-import type { CAll, KnownChartTypes } from '@looker/visualizations-adapters'
-import merge from 'lodash/merge'
+import type { CAll, KnownChartTypes } from '@looker/visualizations-adapters';
+import merge from 'lodash/merge';
 import {
   buildChartConfig,
   buildTrackingTag,
   CHART_TYPE_MAP,
-} from '@looker/visualizations-adapters'
-import { useColorPalette } from './useColorPalette'
-import { useQueryData, useQueryMetadata } from '.'
+} from '@looker/visualizations-adapters';
+import { useColorPalette } from './useColorPalette';
+import { useQueryData, useQueryMetadata } from '.';
 
 /**
  * A shared hook for querying vis config data from the SDK, merging with user overrides,
@@ -54,7 +54,7 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
     isOK: isMetadataOK,
     error,
     isPending,
-  } = useQueryMetadata(id)
+  } = useQueryMetadata(id);
 
   /**
    * Used for internal tracking purposes
@@ -62,18 +62,18 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
   const { type = CHART_TYPE_MAP.default } = {
     ...vis_config,
     ...configOverrides,
-  }
+  };
 
   const { data, fields } = useQueryData(
     id,
     buildTrackingTag(CHART_TYPE_MAP[type as KnownChartTypes] || type)
-  )
+  );
 
   const {
     colorPalette,
     isPending: isColorPalettePending,
     isOK: isColorPaletteOK,
-  } = useColorPalette(vis_config?.color_application)
+  } = useColorPalette(vis_config?.color_application);
 
   /*
    * Transform and normalize config for use in visualizations
@@ -87,18 +87,18 @@ export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
       default_series_colors: colorPalette,
     },
     configOverrides
-  )
+  );
 
   const transformedConfig = buildChartConfig({
     config: configWithOverrides,
     data,
     fields,
-  })
+  });
 
   return {
     isOK: isMetadataOK && isColorPaletteOK,
     isPending: isPending || isColorPalettePending,
     visConfig: transformedConfig,
     ...(error ? { error } : {}),
-  }
-}
+  };
+};

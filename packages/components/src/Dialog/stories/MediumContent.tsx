@@ -3,20 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useContext } from 'react'
-import { Dialog, DialogContext, DialogLayout } from '../../Dialog'
-import { Button, ButtonTransparent, ButtonOutline } from '../../Button'
+import React, { useContext } from 'react';
+import { Dialog, DialogContext, DialogLayout } from '../../Dialog';
+import type { DialogProps } from '../Dialog';
+import { Button, ButtonTransparent, ButtonOutline } from '../../Button';
 
-export default function MediumContent() {
+export default function MediumContent(props: DialogProps) {
   return (
-    <Dialog content={<DialogExampleLayout />}>
+    <Dialog {...props} content={<DialogExampleLayout />}>
       <ButtonOutline>Open Dialog</ButtonOutline>
     </Dialog>
-  )
+  );
 }
 
 const DialogExampleLayout = () => {
-  const { closeModal } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext);
 
   return (
     <DialogLayout
@@ -35,5 +36,5 @@ const DialogExampleLayout = () => {
       1500s, when an unknown printer took a galley of type and scrambled it to
       make a type specimen book.
     </DialogLayout>
-  )
-}
+  );
+};

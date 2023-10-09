@@ -1229,4 +1229,4 @@ export const mockSdkDataResponse = [
       rendered: '$96.44',
     },
   },
-]
+];

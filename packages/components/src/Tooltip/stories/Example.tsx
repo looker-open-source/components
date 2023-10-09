@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Tooltip } from '../Tooltip'
-import { ButtonOutline } from '../../Button'
-import { Link } from '../../Link'
+import React from 'react';
+import { Tooltip } from '../Tooltip';
+import { ButtonOutline } from '../../Button';
+import { Link } from '../../Link';
 
 export default function Example() {
   return (
@@ -20,5 +20,5 @@ export default function Example() {
     >
       <ButtonOutline>Tooltip with lots of text</ButtonOutline>
     </Tooltip>
-  )
+  );
 }

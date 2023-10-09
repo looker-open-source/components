@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { shouldForwardProp } from '@looker/design-tokens'
-import styled from 'styled-components'
-import type { TableCellProps } from '../tableCell'
-import { tableCellCSS } from '../tableCell'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { shouldForwardProp } from '@looker/design-tokens';
+import styled from 'styled-components';
+import type { TableCellProps } from '../tableCell';
+import { tableCellCSS } from '../tableCell';
 
 export interface TableDataCellProps
   extends TableCellProps,
@@ -20,4 +20,4 @@ export const TableDataCell = styled.td
     borderTop,
   }))<TableDataCellProps>`
   ${tableCellCSS}
-`
+`;

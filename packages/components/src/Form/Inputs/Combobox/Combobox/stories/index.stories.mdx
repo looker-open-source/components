@@ -1,12 +1,13 @@
-import { Combobox } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import basicStory from '!!raw-loader!./Basic'
-import controlledStory from '!!raw-loader!./Controlled'
-import loadingStory from '!!raw-loader!./Loading'
-import customIndicatorStory from '!!raw-loader!./CustomIndicator'
-import noIndicatorStory from '!!raw-loader!./NoIndicator'
-import listLayout from '!!raw-loader!./ListLayout'
+import { Combobox } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import basicStory from './Basic?raw';
+import controlledStory from './Controlled?raw';
+import loadingStory from './Loading?raw';
+import customIndicatorStory from './CustomIndicator?raw';
+import noIndicatorStory from './NoIndicator?raw';
+import listLayout from './ListLayout?raw';
+import shouldRenderListInline from './ShouldRenderListInline?raw';
 
 <Meta component={Combobox} title="Docs/Combobox" />
 
@@ -40,9 +41,15 @@ You can disable the option indicator entirely by setting `indicator={false}` on 
 
 ## Customizing the list width
 
-You can set either `width`, `min-width`, or `max-width` on the ComboboxList to customize how much space the combox will take up when the list overlay is open.
+You can set either `width`, `min-width`, or `max-width` on the ComboboxList to customize how much space the combobox will take up when the list overlay is open.
 
 <Editor code={listLayout} />
+
+## Render List Inline
+
+You can set `shouldRenderListInline` to true and it will render directly above or below the input, depending on your compositional placement.
+
+<Editor code={shouldRenderListInline} />
 
 ## Props
 

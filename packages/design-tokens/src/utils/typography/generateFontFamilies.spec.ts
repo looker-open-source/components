@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { defaultFontFallbacks, defaultFonts } from '../../tokens'
-import { generateFontFamilies } from './generateFontFamilies'
+import { defaultFontFallbacks, defaultFonts } from '../../tokens';
+import { generateFontFamilies } from './generateFontFamilies';
 
 describe('generateFontFamilies', () => {
   test('basic', () =>
@@ -19,7 +19,7 @@ describe('generateFontFamilies', () => {
         "code": "'Roboto Mono', Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
       }
     `
-    ))
+    ));
 
   test('customFonts', () =>
     expect(
@@ -37,5 +37,5 @@ describe('generateFontFamilies', () => {
         "code": "fixed, Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
       }
     `
-    ))
-})
+    ));
+});

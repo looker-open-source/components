@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { SelectMulti } from '..'
-import { SpaceVertical } from '../../../../../Layout'
-import { Paragraph } from '../../../../../'
+import React, { useState } from 'react';
+import { SelectMulti } from '..';
+import { SpaceVertical } from '../../../../../Layout';
+import { Paragraph } from '../../../../../';
 
 export default function CloseOnSelect() {
   function validate(value: string) {
-    return value.charAt(0).toUpperCase() === value.charAt(0)
+    return value.charAt(0).toUpperCase() === value.charAt(0);
   }
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('');
   function handleValidationFail(values: string[]) {
-    setMessage(`Please capitalize: ${values.join(', ')}`)
+    setMessage(`Please capitalize: ${values.join(', ')}`);
   }
   function resetMessage() {
-    setMessage('')
+    setMessage('');
   }
   return (
     <SpaceVertical align="stretch">
@@ -42,5 +42,5 @@ export default function CloseOnSelect() {
       />
       <Paragraph>{message}</Paragraph>
     </SpaceVertical>
-  )
+  );
 }

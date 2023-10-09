@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { isTreeItemInnerPropKey } from '../types'
+import { isTreeItemInnerPropKey } from '../types';
 
 export const partitionTreeProps = (
   props: Readonly<Record<string, unknown>>
 ) => {
-  const treeItemInnerProps: Record<string, unknown> = {}
-  const accordionInnerProps: Record<string, unknown> = {}
+  const treeItemInnerProps: Record<string, unknown> = {};
+  const accordionInnerProps: Record<string, unknown> = {};
 
   Object.entries(props).forEach(prop => {
-    const [propKey, propValue] = prop
+    const [propKey, propValue] = prop;
     if (props && isTreeItemInnerPropKey(propKey)) {
-      treeItemInnerProps[propKey] = propValue
+      treeItemInnerProps[propKey] = propValue;
     } else {
-      accordionInnerProps[propKey] = propValue
+      accordionInnerProps[propKey] = propValue;
     }
-  })
+  });
 
-  return [treeItemInnerProps, accordionInnerProps]
-}
+  return [treeItemInnerProps, accordionInnerProps];
+};

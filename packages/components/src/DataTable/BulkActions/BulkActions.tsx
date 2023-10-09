@@ -24,24 +24,24 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React, { useContext } from 'react'
-import styled from 'styled-components'
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { Button, ButtonTransparent } from '../../Button'
-import { Space } from '../../Layout'
-import { Menu } from '../../Menu'
-import { Span } from '../../Text'
-import { useTranslation } from '../../utils'
-import { DataTableContext } from '../DataTableContext'
+import type { ReactNode } from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown';
+import { Button, ButtonTransparent } from '../../Button';
+import { Space } from '../../Layout';
+import { Menu } from '../../Menu';
+import { Span } from '../../Text';
+import { useTranslation } from '../../utils';
+import { DataTableContext } from '../DataTableContext';
 
 interface BulkActionsProps {
-  className?: string
-  actions: ReactNode
-  onTotalClearAll: () => void
-  onTotalSelectAll: () => void
-  pageCount: number
-  totalCount: number
+  className?: string;
+  actions: ReactNode;
+  onTotalClearAll: () => void;
+  onTotalSelectAll: () => void;
+  pageCount: number;
+  totalCount: number;
 }
 
 const BulkActionsLayout = ({
@@ -52,31 +52,31 @@ const BulkActionsLayout = ({
   pageCount,
   totalCount,
 }: BulkActionsProps) => {
-  const { t } = useTranslation('BulkActions')
-  const { select } = useContext(DataTableContext)
-  const selectedItemCount = select ? select.selectedItems.length : 0
+  const { t } = useTranslation('BulkActions');
+  const { select } = useContext(DataTableContext);
+  const selectedItemCount = select ? select.selectedItems.length : 0;
 
-  let message
+  let message;
   if (selectedItemCount < pageCount) {
     message = t('SelectedCountOfTotalDisplayed', {
       pageCount: Number(pageCount),
       selectedItemCount: Number(selectedItemCount),
-    })
+    });
   } else if (selectedItemCount === pageCount) {
     message = t('AllPageCountDisplayedSelected', {
       pageCount: Number(pageCount),
-    })
+    });
   } else if (totalCount && selectedItemCount === totalCount) {
     message = t('AllTotalCountSelected', {
       totalCount: Number(totalCount),
-    })
+    });
   }
 
   const selectedItemsText = (
     <Span color="text2" fontSize="xsmall">
       {message}
     </Span>
-  )
+  );
 
   const selectTotalResultsButton = (
     <ButtonTransparent
@@ -90,7 +90,7 @@ const BulkActionsLayout = ({
           : t('SelectAllCountResults', { totalCount: Number(totalCount) })}
       </Span>
     </ButtonTransparent>
-  )
+  );
 
   return (
     <div className={className}>
@@ -104,8 +104,8 @@ const BulkActionsLayout = ({
         {selectTotalResultsButton}
       </Space>
     </div>
-  )
-}
+  );
+};
 
 export const BulkActions = styled(BulkActionsLayout)`
   align-items: center;
@@ -120,4 +120,4 @@ export const BulkActions = styled(BulkActionsLayout)`
     left: ${({ theme }) => theme.space.u3};
     position: absolute;
   }
-`
+`;

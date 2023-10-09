@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DateFilterType, FilterModel } from '@looker/filter-expressions'
-import { sanitizeDate } from '@looker/filter-expressions'
+import type { DateFilterType, FilterModel } from '@looker/filter-expressions';
+import { sanitizeDate } from '@looker/filter-expressions';
 
 /**
  * Used when adding a new row to an advanced date filter
@@ -16,5 +16,5 @@ export const newDateItem = ({
   unit,
   ...restItem
 }: FilterModel<DateFilterType>) => {
-  return sanitizeDate(restItem)
-}
+  return sanitizeDate(restItem);
+};

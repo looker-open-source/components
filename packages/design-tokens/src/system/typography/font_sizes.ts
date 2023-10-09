@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ResponsiveValue } from 'styled-system'
+import type { ResponsiveValue } from 'styled-system';
 import type {
   SizeLarge,
   SizeMedium,
@@ -15,7 +15,7 @@ import type {
   SizeXXXLarge,
   SizeXXXXLarge,
   SizeXXXXXLarge,
-} from '../size'
+} from '../size';
 
 export type FontSizes =
   | SizeXXSmall
@@ -27,13 +27,13 @@ export type FontSizes =
   | SizeXXLarge
   | SizeXXXLarge
   | SizeXXXXLarge
-  | SizeXXXXXLarge
+  | SizeXXXXXLarge;
 
-export type FontSizeRamp = Record<FontSizes, string>
+export type FontSizeRamp = Record<FontSizes, string>;
 
 export interface FontSizeProps {
   /**
    * Use a @looker/components FontSizes to set font size
    */
-  fontSize?: ResponsiveValue<FontSizes>
+  fontSize?: ResponsiveValue<FontSizes>;
 }

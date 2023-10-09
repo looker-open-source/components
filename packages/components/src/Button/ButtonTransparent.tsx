@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import styled from 'styled-components'
-import { ButtonBase } from './ButtonBase'
+import styled from 'styled-components';
+import { ButtonBase } from './ButtonBase';
 
 export const ButtonTransparent = styled(ButtonBase)`
   background: transparent;
@@ -17,4 +17,4 @@ export const ButtonTransparent = styled(ButtonBase)`
     border-color: ${({ theme, color = 'key' }) =>
       theme.colors[`${color}Accent`]};
   }
-`
+`;

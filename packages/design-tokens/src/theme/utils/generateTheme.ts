@@ -3,22 +3,22 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { generateColors } from '../../color'
-import type { Theme } from '../theme'
-import { defaultFontFallbacks } from '../../tokens'
-import { generateDefaults } from '../../defaults'
-import type { ThemeCustomizations } from '../ThemeCustomizations'
-import { generateFontFamilies } from '../../utils/typography'
+import { generateColors } from '../../color';
+import type { Theme } from '../theme';
+import { defaultFontFallbacks } from '../../tokens';
+import { generateDefaults } from '../../defaults';
+import type { ThemeCustomizations } from '../ThemeCustomizations';
+import { generateFontFamilies } from '../../utils/typography';
 
 export const generateTheme = (
   theme: Theme,
   customizations?: ThemeCustomizations
 ): Theme => {
   if (!customizations) {
-    return theme
+    return theme;
   }
 
-  const { fontSources } = customizations
+  const { fontSources } = customizations;
 
   const fonts = customizations.fontFamilies
     ? generateFontFamilies(
@@ -26,15 +26,15 @@ export const generateTheme = (
         defaultFontFallbacks,
         customizations.fontFamilies
       )
-    : theme.fonts
+    : theme.fonts;
 
   const colors = customizations.colors
     ? generateColors(theme.colors, customizations.colors)
-    : theme.colors
+    : theme.colors;
 
   const defaults = customizations.defaults
     ? generateDefaults(theme.defaults, customizations.defaults)
-    : theme.defaults
+    : theme.defaults;
 
   return {
     ...theme,
@@ -42,5 +42,5 @@ export const generateTheme = (
     defaults,
     fontSources,
     fonts,
-  }
-}
+  };
+};

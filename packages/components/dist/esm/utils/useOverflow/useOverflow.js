@@ -1,0 +1,19 @@
+import { useCallback, useEffect, useState } from 'react';
+import { useResize } from '../useResize';
+import { useCallbackRef } from '../useCallbackRef';
+export const useOverflow = ref => {
+  const [element, callbackRef] = useCallbackRef(ref);
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const [height, setHeight] = useState(0);
+  const handleResize = useCallback(() => {
+    if (!element) return;
+    setHeight(element.offsetHeight);
+  }, [element]);
+  useResize(element, handleResize);
+  useEffect(() => {
+    if (!element) return;
+    setHasOverflow(element.offsetHeight < element.scrollHeight);
+  }, [height, element]);
+  return [hasOverflow, callbackRef];
+};
+//# sourceMappingURL=useOverflow.js.map

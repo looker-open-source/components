@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './FieldSelectMulti'
+export * from './FieldSelectMulti';

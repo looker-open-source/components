@@ -31,21 +31,21 @@ import type {
   LayoutProps,
   SpaceProps,
   TypographyProps,
-} from '@looker/design-tokens'
-import type { ReactNode } from 'react'
+} from '@looker/design-tokens';
+import type { ReactNode } from 'react';
 import type {
   InputChipsCommonProps,
   InputChipsInputControlProps,
   InputChipsValidationProps,
-} from '../InputChips'
-import type { InputTextProps } from '../InputText'
+} from '../InputChips';
+import type { InputTextProps } from '../InputText';
 
 export type OptionIndicatorProps = Partial<ComboboxOptionStatuses> &
-  ComboboxOptionObject
+  ComboboxOptionObject;
 
 export type ComboboxOptionIndicatorFunction = (
   indicatorProps: OptionIndicatorProps
-) => ReactNode
+) => ReactNode;
 
 export interface ComboboxOptionIndicatorProps
   extends Partial<ComboboxOptionStatuses>,
@@ -55,23 +55,27 @@ export interface ComboboxOptionIndicatorProps
    * renders a check mark for the selected option or a spacer
    * Use a ReactNode, function component or render-prop-style function, or false to remove
    */
-  indicator?: ReactNode | ComboboxOptionIndicatorFunction
-  isMulti?: boolean
+  indicator?: ReactNode | ComboboxOptionIndicatorFunction;
+  isMulti?: boolean;
 }
 
 export interface ComboboxOptionObject {
   /**
    * Additional data associated with the option, will be passed to onChange.
    */
-  label?: string
+  label?: string;
   /**
    * The value to match against when suggesting.
    */
-  value: string
+  value: string;
   /**
    * Highlight and Scroll to this option if it appears in a long list.
    */
-  scrollIntoView?: boolean
+  scrollIntoView?: boolean;
+  /**
+   * Additional information associated with the option
+   */
+  payload?: string | number | Record<string, unknown>;
 }
 
 export interface HighlightTextProps {
@@ -79,7 +83,7 @@ export interface HighlightTextProps {
    * Highlight the matching option text as the user types into the input
    * @default true
    */
-  highlightText?: boolean
+  highlightText?: boolean;
 }
 
 export interface ComboboxOptionProps
@@ -104,23 +108,23 @@ export interface ComboboxOptionProps
    *     🍎 <ComboboxOptionText />
    *   </ComboboxOption>
    */
-  children?: ReactNode
+  children?: ReactNode;
 }
 
-export type MaybeComboboxOptionObject = ComboboxOptionObject | undefined
+export type MaybeComboboxOptionObject = ComboboxOptionObject | undefined;
 export type ComboboxOptionType =
   | MaybeComboboxOptionObject
-  | ComboboxOptionObject[]
+  | ComboboxOptionObject[];
 
 export type ComboboxCallback<
   TOption extends ComboboxOptionType = MaybeComboboxOptionObject
-> = (option: TOption) => void
+> = (option: TOption) => void;
 
-export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>
+export type ComboboxMultiCallback = ComboboxCallback<ComboboxOptionObject[]>;
 
 export interface ComboboxOptionStatuses {
-  isActive: boolean
-  isSelected: boolean
+  isActive: boolean;
+  isSelected: boolean;
 }
 
 export interface ComboboxInputCommonProps {
@@ -133,7 +137,7 @@ export interface ComboboxInputCommonProps {
    * false, like a google search--the user is likely wanting to edit their
    * search, not replace it completely.
    */
-  selectOnClick?: boolean
+  selectOnClick?: boolean;
   /**
    * Determines if the value in the input changes or not as the user navigates
    * with the keyboard. If true, the value changes, if false the value doesn't
@@ -144,26 +148,26 @@ export interface ComboboxInputCommonProps {
    * But if your input is more like a normal `<input type="text"/>`, then leave
    * the `true` default.
    */
-  autoComplete?: boolean
+  autoComplete?: boolean;
   /**
    * customize the tooltip on the clear icon
    */
-  clearIconLabel?: string
-  isClearable?: boolean
+  clearIconLabel?: string;
+  isClearable?: boolean;
   /**
    * Makes the inputted value the source of truth, whether it matches an option or not
    * @default false
    */
-  freeInput?: boolean
-  inputReadOnly?: boolean
+  freeInput?: boolean;
+  inputReadOnly?: boolean;
 }
 
 export interface ComboboxInputProps
   extends Omit<InputTextProps, 'autoComplete' | 'value' | 'defaultValue'>,
     ComboboxInputCommonProps {
-  defaultValue?: string
-  summary?: string
-  value?: string
+  defaultValue?: string;
+  summary?: string;
+  value?: string;
 }
 
 export interface ComboboxMultiInputProps
@@ -171,11 +175,53 @@ export interface ComboboxMultiInputProps
     InputChipsValidationProps,
     ComboboxInputCommonProps,
     Partial<InputChipsInputControlProps> {
-  onClear?: () => void
+  onClear?: () => void;
   /**
    * Allows inputting of values (whether found in options or not) via typing or pasting
    * Use validate, onValidationFail, and onDuplicate for validation on typed or pasted values
    * @default false
    */
-  freeInput?: boolean
+  freeInput?: boolean;
+}
+
+export interface ComboboxListProps
+  extends Pick<ComboboxOptionIndicatorProps, 'indicator'>,
+    SpaceProps,
+    LayoutProps,
+    TypographyProps,
+    CompatibleHTMLProps<HTMLUListElement> {
+  /**
+   * When true and the list is opened, if an option's value
+   * matches the value in the input, it will automatically be highlighted and
+   * be the starting point for any keyboard navigation of the list.
+   *
+   * This allows you to treat a Combobox more like a `<select>` than an
+   * `<input/>`, but be mindful that the user is still able to put any
+   * arbitrary value into the input, so if the only valid values for the input
+   * are from the list, your app will need to do that validation on blur or
+   * submit of the form.
+   * @default false
+   */
+  persistSelection?: boolean;
+  /**
+   * Close after an option is selected
+   * @default true
+   */
+  closeOnSelect?: boolean;
+  /**
+   * Render only the options visible in the scroll window
+   * Requires manually updating ComboboxContext.optionsRef with complete
+   * list of options in order for keyboard navigation to work properly
+   * @default false
+   */
+  windowing?: boolean;
+  /**
+   * Whether to honor the first click outside the popover
+   * @default false
+   */
+  cancelClickOutside?: boolean;
+}
+
+export interface ComboboxListInternalProps extends ComboboxListProps {
+  isMulti?: boolean;
 }

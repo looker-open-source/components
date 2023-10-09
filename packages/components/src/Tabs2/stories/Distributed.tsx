@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Tabs2, Tab2 } from '../..'
+import React from 'react';
+import { Tabs2, Tab2 } from '../..';
 
 export default function Distributed() {
   return (
@@ -16,5 +16,5 @@ export default function Distributed() {
       </Tab2>
       <Tab2 label="Fish">Are kinda smelly</Tab2>
     </Tabs2>
-  )
+  );
 }

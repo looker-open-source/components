@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode } from 'react'
-import styled from 'styled-components'
-import type { TextBaseProps } from '../Text/TextBase'
-import { TextBase } from '../Text/TextBase'
+import type { ReactNode } from 'react';
+import styled from 'styled-components';
+import type { TextBaseProps } from '../Text/TextBase';
+import { TextBase } from '../Text/TextBase';
 
 export interface CodeProps extends TextBaseProps {
-  children?: ReactNode
+  children?: ReactNode;
 }
 
 export const Code = styled(TextBase).attrs<CodeProps>(
@@ -19,4 +19,4 @@ export const Code = styled(TextBase).attrs<CodeProps>(
     fontFamily,
     lineHeight: lineHeight || fontSize,
   })
-)<CodeProps>``
+)<CodeProps>``;

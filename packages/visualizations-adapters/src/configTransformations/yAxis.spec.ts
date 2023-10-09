@@ -24,9 +24,9 @@
 
  */
 
-import { yAxis } from './yAxis'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { YAxisConfig, YAxisRaw } from '../types'
+import { yAxis } from './yAxis';
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { YAxisConfig, YAxisRaw } from '../types';
 
 describe('yAxis', () => {
   test('config.y_axis is provided', () => {
@@ -37,23 +37,23 @@ describe('yAxis', () => {
         range: [0, 88],
         values: false,
       },
-    ]
+    ];
 
     const transformedConfig = yAxis({
       config: { ...mockBarConfig, y_axis },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
-    expect(transformedConfig.config.y_axis).toEqual(y_axis)
-  })
+    expect(transformedConfig.config.y_axis).toEqual(y_axis);
+  });
 
   test('merges user overrides with raw sdk response', () => {
     const overrides: YAxisConfig[] = [
       {
         range: [-100, 100],
       },
-    ]
+    ];
 
     // response from explore
     const rawAxisResponse = [
@@ -62,22 +62,22 @@ describe('yAxis', () => {
         maxValue: 50,
       },
       {},
-    ]
+    ];
 
     const { config: transformedConfig } = yAxis({
       config: { ...mockBarConfig, y_axes: rawAxisResponse, y_axis: overrides },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
-    expect(transformedConfig.y_axis?.length).toEqual(rawAxisResponse.length)
+    expect(transformedConfig.y_axis?.length).toEqual(rawAxisResponse.length);
     expect(transformedConfig.y_axis?.[0]).toEqual(
       expect.objectContaining({ range: [-100, 100] }) // user override
-    )
+    );
     expect(transformedConfig.y_axis?.[1]).toEqual(
       expect.objectContaining({ range: ['auto', 'auto'] }) // derived value from sdk response
-    )
-  })
+    );
+  });
 
   test('y axis customizations are provided, but config.y_axis is undefined', () => {
     const customizations = {
@@ -94,13 +94,13 @@ describe('yAxis', () => {
           maxValue: 4000,
         },
       ] as YAxisRaw[],
-    }
+    };
 
     const transformedConfig = yAxis({
       config: { ...mockBarConfig, y_axis: undefined, ...customizations },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.y_axis).toEqual([
       {
@@ -112,8 +112,8 @@ describe('yAxis', () => {
         ],
         values: customizations.y_axes[0].showValues,
       },
-    ])
-  })
+    ]);
+  });
 
   test('config.y_axis and y axis customizations are all undefined', () => {
     const transformedConfig = yAxis({
@@ -125,7 +125,7 @@ describe('yAxis', () => {
       },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.y_axis).toEqual([
       {
@@ -134,6 +134,6 @@ describe('yAxis', () => {
         range: ['auto', 'auto'],
         values: true,
       },
-    ])
-  })
-})
+    ]);
+  });
+});

@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
+import React from 'react';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
 
 export default function FloatingLabel() {
   return (
@@ -19,5 +19,5 @@ export default function FloatingLabel() {
       isFilterable={true}
       externalLabel={false}
     />
-  )
+  );
 }

@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useEffect } from 'react'
-import type { InternalFilterProps } from '../../types/filter_props'
-import { getControlFilterInfo, calculateSuggestOptions } from '../../utils'
-import { getFilterTokenItem } from '../../utils/get_filter_token_item'
+import React, { useEffect } from 'react';
+import type { InternalFilterProps } from '../../types/filter_props';
+import { getControlFilterInfo, calculateSuggestOptions } from '../../utils';
+import { getFilterTokenItem } from '../../utils/get_filter_token_item';
 
 /**
  * Visual filters that can take the form of radio buttons, checkboxes, etc.
@@ -17,11 +17,11 @@ export const ControlFilter = ({
   dispatchConfigTypeChange = false,
   ...adapterProps
 }: InternalFilterProps) => {
-  const { config, field } = adapterProps
+  const { config, field } = adapterProps;
   const { Component, props: filterTokenProps } = getControlFilterInfo(
     getFilterTokenItem(ast || {}, expressionType, config.type),
     adapterProps
-  )
+  );
 
   /**
    * This effect is used by FilterEditorSettings in Edit Mode
@@ -32,23 +32,23 @@ export const ControlFilter = ({
     // When control type changes in Edit Mode, update value and default value of filter
     if (dispatchConfigTypeChange) {
       if (filterTokenProps?.date) {
-        filterTokenProps?.onChange(filterTokenProps?.date)
+        filterTokenProps?.onChange(filterTokenProps?.date);
       } else {
-        filterTokenProps?.onChange(filterTokenProps?.value)
+        filterTokenProps?.onChange(filterTokenProps?.value);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [config.type])
+  }, [config.type]);
 
   if (!filterTokenProps || !Component) {
     // props or Component not available - nothing to render
-    return null
+    return null;
   }
 
   const { onInputChange: filterTokenInputChange, ...restProps } =
-    filterTokenProps
+    filterTokenProps;
 
-  const toggleOptions = calculateSuggestOptions(filterTokenProps)
+  const toggleOptions = calculateSuggestOptions(filterTokenProps);
 
   return (
     <Component
@@ -59,5 +59,5 @@ export const ControlFilter = ({
       {...restProps}
       options={toggleOptions}
     />
-  )
-}
+  );
+};

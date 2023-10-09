@@ -24,16 +24,16 @@
 
  */
 
-import { fireEvent, render, screen } from '@testing-library/react'
-import React from 'react'
-import { useWindow, useToggle } from './'
+import { fireEvent, render, screen } from '@testing-library/react';
+import React from 'react';
+import { useWindow, useToggle } from './';
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
-jest.mock('lodash/throttle', () => (fn: any) => fn)
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
+jest.mock('lodash/throttle', () => (fn: any) => fn);
 
 beforeEach(() => {
-  jest.useFakeTimers()
+  jest.useFakeTimers();
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
   Element.prototype.getBoundingClientRect = jest.fn(() => {
     return {
@@ -46,28 +46,28 @@ beforeEach(() => {
       width: 260,
       x: 0,
       y: 0,
-    }
-  })
-})
+    };
+  });
+});
 
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-  jest.resetAllMocks()
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+  jest.resetAllMocks();
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-})
+  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect;
+});
 
-const arr3000 = Array.from(Array(3000), (_, i) => i)
+const arr3000 = Array.from(Array(3000), (_, i) => i);
 
 const WindowedComponent = ({ children }: { children: JSX.Element[] }) => {
-  const { value, toggle } = useToggle(true)
+  const { value, toggle } = useToggle(true);
   const { after, before, end, start, ref } = useWindow({
     enabled: value,
     itemCount: 3000,
     itemHeight: 87,
     spacerTag: 'li',
-  })
+  });
   return (
     <>
       <ul ref={ref} data-testid="list">
@@ -77,8 +77,8 @@ const WindowedComponent = ({ children }: { children: JSX.Element[] }) => {
       </ul>
       <button onClick={toggle}>toggle</button>
     </>
-  )
-}
+  );
+};
 
 describe('useWindow', () => {
   test('returns placeholders and children in "window"', () => {
@@ -88,14 +88,14 @@ describe('useWindow', () => {
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
-    )
-    expect(screen.getByText('0')).toBeVisible()
-    expect(screen.getByText('9')).toBeVisible()
-    expect(screen.queryByText('10')).not.toBeInTheDocument()
+    );
+    expect(screen.getByText('0')).toBeVisible();
+    expect(screen.getByText('9')).toBeVisible();
+    expect(screen.queryByText('10')).not.toBeInTheDocument();
 
-    expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-    expect(screen.getByTestId('after')).toHaveStyle('height: 260130px;')
-  })
+    expect(screen.queryByTestId('before')).not.toBeInTheDocument();
+    expect(screen.getByTestId('after')).toHaveStyle('height: 260130px;');
+  });
 
   test('updates window on scroll', () => {
     render(
@@ -104,22 +104,22 @@ describe('useWindow', () => {
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
-    )
-    const list = screen.getByTestId('list')
+    );
+    const list = screen.getByTestId('list');
     // fireEvent.scroll won't update the scrollTop value, need to change it manually
-    Object.defineProperty(list, 'scrollTop', { value: 1514, writable: true })
+    Object.defineProperty(list, 'scrollTop', { value: 1514, writable: true });
     // Needed do to throttle on scroll handler
-    jest.runAllTimers()
-    fireEvent.scroll(list)
+    jest.runAllTimers();
+    fireEvent.scroll(list);
 
-    expect(screen.queryByText('11')).not.toBeInTheDocument()
-    expect(screen.getByText('12')).toBeVisible()
-    expect(screen.getByText('27')).toBeVisible()
-    expect(screen.queryByText('28')).not.toBeInTheDocument()
+    expect(screen.queryByText('11')).not.toBeInTheDocument();
+    expect(screen.getByText('12')).toBeVisible();
+    expect(screen.getByText('27')).toBeVisible();
+    expect(screen.queryByText('28')).not.toBeInTheDocument();
 
-    expect(screen.getByTestId('before')).toHaveStyle('height: 1044px;')
-    expect(screen.getByTestId('after')).toHaveStyle('height: 258564px;')
-  })
+    expect(screen.getByTestId('before')).toHaveStyle('height: 1044px;');
+    expect(screen.getByTestId('after')).toHaveStyle('height: 258564px;');
+  });
 
   test('updates window on scroll (to end)', () => {
     render(
@@ -128,24 +128,24 @@ describe('useWindow', () => {
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
-    )
-    const list = screen.getByTestId('list')
+    );
+    const list = screen.getByTestId('list');
     // fireEvent.scroll won't update the scrollTop value, need to change it manually
     Object.defineProperty(list, 'scrollTop', {
       value: 260658,
       writable: true,
-    })
+    });
     // Needed do to throttle on scroll handler
-    jest.runAllTimers()
-    fireEvent.scroll(list)
+    jest.runAllTimers();
+    fireEvent.scroll(list);
 
-    expect(screen.queryByText('2990')).not.toBeInTheDocument()
-    expect(screen.getByText('2991')).toBeVisible()
-    expect(screen.getByText('2999')).toBeVisible()
+    expect(screen.queryByText('2990')).not.toBeInTheDocument();
+    expect(screen.getByText('2991')).toBeVisible();
+    expect(screen.getByText('2999')).toBeVisible();
 
-    expect(screen.getByTestId('before')).toHaveStyle('height: 260217px;')
-    expect(screen.queryByTestId('after')).not.toBeInTheDocument()
-  })
+    expect(screen.getByTestId('before')).toHaveStyle('height: 260217px;');
+    expect(screen.queryByTestId('after')).not.toBeInTheDocument();
+  });
 
   test('updates window on resize', () => {
     render(
@@ -154,7 +154,7 @@ describe('useWindow', () => {
           <li key={num}>{num}</li>
         ))}
       </WindowedComponent>
-    )
+    );
     /* eslint-disable-next-line @typescript-eslint/unbound-method */
     Element.prototype.getBoundingClientRect = jest.fn(() => {
       return {
@@ -167,15 +167,15 @@ describe('useWindow', () => {
         width: 260,
         x: 0,
         y: 0,
-      }
-    })
-    fireEvent(window, new Event('resize'))
+      };
+    });
+    fireEvent(window, new Event('resize'));
 
-    expect(screen.getByText('0')).toBeVisible()
-    expect(screen.getByText('16')).toBeVisible()
-    expect(screen.queryByText('17')).not.toBeInTheDocument()
+    expect(screen.getByText('0')).toBeVisible();
+    expect(screen.getByText('16')).toBeVisible();
+    expect(screen.queryByText('17')).not.toBeInTheDocument();
 
-    expect(screen.queryByTestId('before')).not.toBeInTheDocument()
-    expect(screen.getByTestId('after')).toHaveStyle('height: 259521px;')
-  })
-})
+    expect(screen.queryByTestId('before')).not.toBeInTheDocument();
+    expect(screen.getByTestId('after')).toHaveStyle('height: 259521px;');
+  });
+});

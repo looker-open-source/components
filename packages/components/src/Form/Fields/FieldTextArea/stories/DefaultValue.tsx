@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { FieldTextAreaProps } from '../'
-import { FieldTextArea } from '..'
+import React from 'react';
+import type { FieldTextAreaProps } from '../';
+import { FieldTextArea } from '..';
 
 export default function DefaultValue(props: FieldTextAreaProps) {
   const {
@@ -13,7 +13,7 @@ export default function DefaultValue(props: FieldTextAreaProps) {
     label = 'First Name',
     defaultValue = 'Default value',
     ...restProps
-  } = props
+  } = props;
   return (
     <FieldTextArea
       name={name}
@@ -21,5 +21,5 @@ export default function DefaultValue(props: FieldTextAreaProps) {
       defaultValue={defaultValue}
       {...restProps}
     />
-  )
+  );
 }

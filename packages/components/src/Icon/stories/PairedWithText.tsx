@@ -23,9 +23,9 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Space, SpaceVertical, Icon, Heading } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Space, SpaceVertical, Icon, Heading } from '../..';
 
 export default function PairedWithText() {
   return (
@@ -100,5 +100,5 @@ export default function PairedWithText() {
         <Icon size="large" icon={<MaterialIcons.Create />} />
       </Space>
     </SpaceVertical>
-  )
+  );
 }

@@ -3,38 +3,38 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode } from 'react'
-import React, { useContext } from 'react'
-import styled from 'styled-components'
-import { DialogContext } from '../../../Dialog/DialogContext'
-import { VisuallyHidden } from '../../../VisuallyHidden'
-import type { ModalHeaderProps } from '../../../Modal'
-import { ModalHeaderCloseButton, ModalHeader } from '../../../Modal'
+import type { ReactNode } from 'react';
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { DialogContext } from '../../../Dialog/DialogContext';
+import { VisuallyHidden } from '../../../VisuallyHidden';
+import type { ModalHeaderProps } from '../../../Modal';
+import { ModalHeaderCloseButton, ModalHeader } from '../../../Modal';
 
 type WithDetail = {
-  detail?: ModalHeaderProps['detail']
-  hideClose?: never
-}
+  detail?: ModalHeaderProps['detail'];
+  hideClose?: never;
+};
 
 type WithHideClose = {
-  detail?: never
+  detail?: never;
   /**
    * Don't include the "Close" option
    * @default false
    */
-  hideClose?: boolean
-}
+  hideClose?: boolean;
+};
 
-type DetailOptions = WithDetail | WithHideClose
+type DetailOptions = WithDetail | WithHideClose;
 
 export type PopoverHeaderProps = DetailOptions & {
-  children: ReactNode
+  children: ReactNode;
   /**
    * Make PopoverHeader visually hidden.
    * @default false
    */
-  hidden?: boolean
-}
+  hidden?: boolean;
+};
 
 const PopoverHeaderLayout = ({
   children,
@@ -43,8 +43,8 @@ const PopoverHeaderLayout = ({
   hidden = false,
   ...props
 }: PopoverHeaderProps) => {
-  const { id } = useContext(DialogContext)
-  const headingId = id ? `${id}-heading` : undefined
+  const { id } = useContext(DialogContext);
+  const headingId = id ? `${id}-heading` : undefined;
 
   return hidden ? (
     <VisuallyHidden id={headingId}>{children}</VisuallyHidden>
@@ -61,7 +61,7 @@ const PopoverHeaderLayout = ({
     >
       {children}
     </ModalHeader>
-  )
-}
+  );
+};
 
-export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``
+export const PopoverHeader = styled(PopoverHeaderLayout)<ModalHeaderProps>``;

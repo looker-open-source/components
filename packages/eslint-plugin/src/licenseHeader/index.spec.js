@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-const { RuleTester } = require('eslint')
-const rule = require('.').rules['license-header']
-const licenseTextSPDX = require('./licenseTextSPDX')
-const licenseTextFull = require('./licenseTextFull')
+const { RuleTester } = require('eslint');
+const rule = require('.').rules['license-header'];
+const licenseTextSPDX = require('./licenseTextSPDX');
+const licenseTextFull = require('./licenseTextFull');
 
 jest.mock('read-pkg-up', () => ({
   sync: jest.fn(() => ({
@@ -14,16 +14,16 @@ jest.mock('read-pkg-up', () => ({
       private: false,
     },
   })),
-}))
+}));
 
 const generateCodeLines = lineCount => {
   return Array.apply(null, Array(lineCount))
     .map((_, i) => `var value${i} = ${i};`)
-    .join('\n')
-}
+    .join('\n');
+};
 
-const longSourceCode = generateCodeLines(101)
-const shortSourceCode = generateCodeLines(10)
+const longSourceCode = generateCodeLines(101);
+const shortSourceCode = generateCodeLines(10);
 
 new RuleTester().run('license-header', rule, {
   valid: [
@@ -86,4 +86,4 @@ var testVal = 'hello';`,
       output: licenseTextSPDX + shortSourceCode,
     },
   ],
-})
+});

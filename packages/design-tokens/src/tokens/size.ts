@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SizeRamp } from '../system'
+import type { SizeRamp } from '../system';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 export const sizes: SizeRamp = {
@@ -13,4 +13,4 @@ export const sizes: SizeRamp = {
   small: '1.25rem',
   medium: '1.5rem',
   large: '2rem',
-}
+};

@@ -3,20 +3,23 @@
  * SPDX-License-Identifier: MIT
  */
 
-export { default as Basic } from './Basic'
-export { default as Critical } from './Critical'
-export { default as Disabled } from './Disabled'
-export { default as FullWidth } from './FullWidth'
-export { default as IconBefore } from './IconBefore'
-export { default as IconAfter } from './IconAfter'
-export { default as Large } from './Large'
-export { default as Medium } from './Medium'
-export { default as Neutral } from './Neutral'
-export { default as Small } from './Small'
-export { default as ShrinkingButton } from './ShrinkingButton'
-export { default as ShrinkingIcon } from './ShrinkingIcon'
-export { default as XSmall } from './XSmall'
+import Positive from './Positive';
 
+export { default as Basic } from './Basic';
+export { default as Critical } from './Critical';
+export { default as Disabled } from './Disabled';
+export { default as AriaDisabled } from './AriaDisabled';
+export { default as FullWidth } from './FullWidth';
+export { default as IconBefore } from './IconBefore';
+export { default as IconAfter } from './IconAfter';
+export { default as Large } from './Large';
+export { default as Medium } from './Medium';
+export { default as Neutral } from './Neutral';
+export { default as Small } from './Small';
+export { default as ShrinkingButton } from './ShrinkingButton';
+export { default as ShrinkingIcon } from './ShrinkingIcon';
+export { default as XSmall } from './XSmall';
+export { Positive };
 export default {
   parameters: {
     previewTabs: {
@@ -26,4 +29,4 @@ export default {
     },
   },
   title: 'Stories/Button',
-}
+};

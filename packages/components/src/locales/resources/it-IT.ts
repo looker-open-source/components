@@ -24,13 +24,13 @@
 
  */
 
-import dateLocale from 'date-fns/locale/it'
+import dateLocale from 'date-fns/locale/it';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
-    'Clear Field': 'Svuota campo',
+    'Clear Field': 'Cancella campo',
   },
   AvatarButton: {
     'Profile Picture': 'Immagine del profilo',
@@ -40,11 +40,11 @@ const resources = {
   },
   BulkActions: {
     AllPageCountDisplayedSelected:
-      'Tutti gli elementi visualizzati selezionati ({{pageCount}})',
-    AllTotalCountSelected: 'Tutti gli elementi selezionati ({{totalCount}})',
-    'Bulk Actions': 'Azioni in blocco',
-    'Clear Selection': 'Cancella selezione',
-    SelectAllCountResults: 'Seleziona tutti i risultati ({{totalCount}})',
+      'Tutti e {{pageCount}} gli elementi visualizzati selezionati',
+    AllTotalCountSelected: 'Tutti e {{totalCount}} gli elementi selezionati',
+    'Bulk Actions': 'Azioni collettive',
+    'Clear Selection': 'Annulla selezione',
+    SelectAllCountResults: 'Seleziona tutti e {{totalCount}} i risultati',
     SelectedCountOfTotalDisplayed:
       '{{selectedItemCount}} di {{pageCount}} elementi visualizzati selezionati',
   },
@@ -53,7 +53,7 @@ const resources = {
     'previous month': 'mese precedente',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': 'Segno di spunta misto',
+    'Check Mark Mixed': 'Segno di spunta Misto',
   },
   Chip: {
     Delete: 'Elimina',
@@ -61,17 +61,17 @@ const resources = {
   ColumnSelector: {
     Apply: 'Applica',
     Cancel: 'Annulla',
-    'Select All': 'Seleziona tutte',
-    'Select None': 'Seleziona nessuna',
-    'Select columns to display': 'Seleziona le colonne da visualizzare',
+    'Select All': 'Seleziona tutto',
+    'Select None': 'Deseleziona tutto',
+    'Select columns to display': 'Seleziona colonne da visualizzare',
   },
   ConfirmationDialog: {
     Cancel: 'Annulla',
     Confirm: 'Conferma',
   },
   CopyToClipboard: {
-    Copied: 'Copiato',
-    'Copy to Clipboard': 'Copia negli Appunti',
+    Copied: 'Elemento copiato',
+    'Copy to Clipboard': 'Copia negli appunti',
   },
   DataTable: {
     'No Results': 'Nessun risultato',
@@ -80,13 +80,13 @@ const resources = {
     Options: 'Opzioni',
   },
   FieldTimeSelect: {
-    'Please use format HHMM': 'Usa il formato OO:MM',
+    'Please use format HHMM': 'Utilizza il formato HH:MM',
   },
   GetIntentLabel: {
     Error: 'Errore',
     Inform: 'Informa',
-    Success: 'Operazione riuscita',
-    Warning: 'Attenzione!',
+    Success: 'Operazione completata',
+    Warning: 'Avviso',
   },
   InputDate: {
     'Open calendar': 'Apri calendario',
@@ -98,10 +98,9 @@ const resources = {
   InputFilters: {
     'Clear Filters': 'Cancella filtri',
     'Filter List': 'Elenco filtri',
-    'bottom-start': 'fine-inizio',
   },
   InputTimeSelect: {
-    'Select time': 'Seleziona orario',
+    'Select time': 'Seleziona ora',
   },
   MessageBar: {
     DismissIntent: 'Ignora {{intent}}',
@@ -119,38 +118,38 @@ const resources = {
     of: 'di',
   },
   Pagination: {
-    'First page of results': 'Prima pagina di risultati',
-    'Last page of results': 'Ultima pagina di risultati',
-    'Next page of results': 'Pagina di risultati successiva',
-    'Previous page of results': 'Pagina di risultati precedente',
+    'First page of results': 'Prima pagina dei risultati',
+    'Last page of results': 'Ultima pagina dei risultati',
+    'Next page of results': 'Pagina dei risultati successiva',
+    'Previous page of results': 'Pagina dei risultati precedente',
     of: 'di',
   },
   PanelHeader: {
     CloseTitle: 'Chiudi {{title}}',
   },
   PopoverFooter: {
-    Done: 'Completato',
+    Done: 'Fine',
   },
   PromptDialog: {
     Cancel: 'Annulla',
     Save: 'Salva',
   },
   RangeSlider: {
-    'Maximum Name': 'Valore massimo {{name}}',
+    'Maximum Name': '{{name}} (max)',
     'Maximum Value': 'Valore massimo',
-    'Minimum Name': 'Valore minimo {{name}}',
+    'Minimum Name': '{{name}} (min)',
     'Minimum Value': 'Valore minimo',
   },
   RequiredStar: {
     required: 'obbligatorio',
   },
   SelectOptions: {
-    Loading: 'Caricamento in corso',
+    Loading: 'Caricamento in corso…',
     'No options': 'Nessuna opzione',
   },
   TabList: {
     Tabs: 'Schede',
   },
-}
+};
 
-export const itIT = mergeLocaleObjects([], 'it-IT', resources, dateLocale)
+export const itIT = mergeLocaleObjects([], 'it-IT', resources, dateLocale);

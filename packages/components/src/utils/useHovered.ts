@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { RefObject } from 'react'
-import { useEffect, useState } from 'react'
-import { getCurrentNode } from './getCurrentNode'
-import { useCallbackRef } from './useCallbackRef'
+import type { RefObject } from 'react';
+import { useEffect, useState } from 'react';
+import { getCurrentNode } from './getCurrentNode';
+import { useCallbackRef } from './useCallbackRef';
 
 /**
  * Get the hover / focus state of an element over which the current component has no control
@@ -14,9 +14,9 @@ import { useCallbackRef } from './useCallbackRef'
 export function useHovered<E extends HTMLElement = HTMLElement>(
   hoverElement?: E | null | RefObject<E>
 ): [boolean, ((node: E | null) => void) | null] {
-  const [newElement, callbackRef] = useCallbackRef<E>()
+  const [newElement, callbackRef] = useCallbackRef<E>();
   const element =
-    typeof hoverElement === 'undefined' ? newElement : hoverElement
+    typeof hoverElement === 'undefined' ? newElement : hoverElement;
 
   // If the hoverElement is either null nor a dom node, isHovered defaults to false
 
@@ -27,46 +27,47 @@ export function useHovered<E extends HTMLElement = HTMLElement>(
 
   // If the hoverElement is undefined the hover "gate" is not being used so
   // isHovered defaults to true
-  const [isHovered, setIsHovered] = useState(hoverElement === undefined)
+  const [isHovered, setIsHovered] = useState(hoverElement === undefined);
 
   useEffect(() => {
     function handleMouseEnter() {
-      setIsHovered(true)
+      setIsHovered(true);
     }
     function handleMouseLeave() {
       window.requestAnimationFrame(() => {
-        const node = getCurrentNode(element)
+        const node = getCurrentNode(element);
 
         const relationship =
           document.activeElement && node
             ? node.compareDocumentPosition(document.activeElement)
-            : Node.DOCUMENT_POSITION_DISCONNECTED
+            : Node.DOCUMENT_POSITION_DISCONNECTED;
 
         // Don't set isHovered to false if a child of the element is currently focused
         const activeElementIsChildOfNode =
           relationship ===
-          Node.DOCUMENT_POSITION_FOLLOWING + Node.DOCUMENT_POSITION_CONTAINED_BY
+          Node.DOCUMENT_POSITION_FOLLOWING +
+            Node.DOCUMENT_POSITION_CONTAINED_BY;
 
-        if (!activeElementIsChildOfNode) setIsHovered(false)
-      })
+        if (!activeElementIsChildOfNode) setIsHovered(false);
+      });
     }
 
-    const node = getCurrentNode(element)
+    const node = getCurrentNode(element);
     if (node) {
-      node.addEventListener('mouseleave', handleMouseLeave)
-      node.addEventListener('mouseenter', handleMouseEnter)
-      node.addEventListener('focusout', handleMouseLeave)
-      node.addEventListener('focusin', handleMouseEnter)
+      node.addEventListener('mouseleave', handleMouseLeave);
+      node.addEventListener('mouseenter', handleMouseEnter);
+      node.addEventListener('focusout', handleMouseLeave);
+      node.addEventListener('focusin', handleMouseEnter);
     }
     return () => {
       if (node) {
-        node.removeEventListener('mouseleave', handleMouseLeave)
-        node.removeEventListener('mouseenter', handleMouseEnter)
-        node.removeEventListener('focusout', handleMouseLeave)
-        node.removeEventListener('focusin', handleMouseEnter)
+        node.removeEventListener('mouseleave', handleMouseLeave);
+        node.removeEventListener('mouseenter', handleMouseEnter);
+        node.removeEventListener('focusout', handleMouseLeave);
+        node.removeEventListener('focusin', handleMouseEnter);
       }
-    }
-  }, [element])
+    };
+  }, [element]);
 
-  return [isHovered, callbackRef]
+  return [isHovered, callbackRef];
 }

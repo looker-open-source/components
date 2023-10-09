@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect } from 'react';
 
 type UsePreviousValue =
   | boolean
@@ -11,12 +11,12 @@ type UsePreviousValue =
   | string
   | number
   | string[]
-  | undefined
+  | undefined;
 
 export const usePreviousValue = <T extends UsePreviousValue>(value: T) => {
-  const ref = useRef<T>()
+  const ref = useRef<T>();
   useEffect(() => {
-    ref.current = value
-  })
-  return ref.current
-}
+    ref.current = value;
+  });
+  return ref.current;
+};

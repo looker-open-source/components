@@ -2,26 +2,26 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useContext, useEffect, useState } from 'react'
-import { useControlWarn } from '@looker/components'
-import type { IDashboardFilter } from '@looker/sdk'
-import type { FilterChangeProps } from '../Filter/types/filter_props'
-import { FilterContext } from '../FilterCollection'
+import { useContext, useEffect, useState } from 'react';
+import { useControlWarn } from '@looker/components';
+import type { IDashboardFilter } from '@looker/sdk';
+import type { FilterChangeProps } from '../Filter/types/filter_props';
+import { FilterContext } from '../FilterCollection';
 
 export interface UseExpressionStateProps {
   /**
    * The current value of the filter.
    * See {@link https://cloud.google.com/looker/docs/reference/filter-expressions Looker Filter Expressions}.
    */
-  expression?: string
+  expression?: string;
   /**
    * A dashboard filter as defined in @looker/sdk
    */
-  filter: IDashboardFilter
+  filter: IDashboardFilter;
   /**
    * Called when the filter expression is changed
    */
-  onChange: (expression: string) => void
+  onChange: (expression: string) => void;
 }
 
 /**
@@ -32,32 +32,32 @@ export const useExpressionState = ({
   filter,
   onChange,
 }: UseExpressionStateProps) => {
-  const { updateExpression } = useContext(FilterContext)
+  const { updateExpression } = useContext(FilterContext);
 
   const isControlled = useControlWarn({
     controllingProps: ['expression'],
     isControlledCheck: () => propsExpression !== undefined,
     name: 'DashboardFilter',
-  })
+  });
   const [uncontrolledExpression, setExpression] = useState(
     propsExpression || filter.default_value || ''
-  )
+  );
 
   const handleChange = (value: FilterChangeProps) => {
-    setExpression(value.expression)
-    onChange(value.expression)
-  }
+    setExpression(value.expression);
+    onChange(value.expression);
+  };
 
   const expression = isControlled
     ? propsExpression || ''
-    : uncontrolledExpression
+    : uncontrolledExpression;
 
   useEffect(() => {
-    updateExpression(filter, expression)
-  }, [filter, expression, updateExpression])
+    updateExpression(filter, expression);
+  }, [filter, expression, updateExpression]);
 
   return {
     expression,
     onChange: handleChange,
-  }
-}
+  };
+};

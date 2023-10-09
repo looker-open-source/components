@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ltLT as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { ltLT as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Įvyko klaida',
   },
-  translation: {
-    'Row Total': 'Eilutės sumos',
+  KeyValueList: {
     false: 'neteisinga',
     null: 'negaliojantis',
     true: 'teisinga',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Eilutės sumos',
   },
-}
+};
 
-export const ltLT = mergeLocaleObjects([componentsLocale], 'lt-LT', resources)
+export const ltLT = mergeLocaleObjects([componentsLocale], 'lt-LT', resources);

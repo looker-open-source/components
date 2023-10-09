@@ -24,39 +24,39 @@
 
  */
 
-import type { FormEvent } from 'react'
-import React, { useMemo, useState } from 'react'
-import styled from 'styled-components'
-import { Button } from '../../Button'
-import { InputText } from '../../Form'
-import { Space, SpaceVertical } from '../../Layout'
-import { useToggle } from '../../utils'
-import type { WindowedTreeNodeProps } from '..'
-import { WindowedTreeCollection, Tree } from '..'
+import type { ChangeEvent } from 'react';
+import React, { useMemo, useState } from 'react';
+import styled from 'styled-components';
+import { Button } from '../../Button';
+import { InputText } from '../../Form';
+import { Space, SpaceVertical } from '../../Layout';
+import { useToggle } from '../../utils';
+import type { WindowedTreeNodeProps } from '..';
+import { WindowedTreeCollection, Tree } from '..';
 import {
   FieldPickerItem,
   HighlightContext,
-} from '../../LkFieldTree/stories/FieldPickerItem'
-import { generateBorderRadius } from '../utils/generateBorderRadius'
+} from '../../LkFieldTree/stories/FieldPickerItem';
+import { generateBorderRadius } from '../utils/generateBorderRadius';
 
 const BorderRadiusOverrideTree = styled(Tree)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
-`
+`;
 
-const getRandomInteger = (limit: number) => Math.floor(Math.random() * limit)
+const getRandomInteger = (limit: number) => Math.floor(Math.random() * limit);
 
 const preamble = `We the People of the United States, in Order to form a more perfect Union,
 establish Justice, insure domestic Tranquility, provide for the common
 defense, promote the general Welfare, and secure the Blessings of Liberty
 to ourselves and our Posterity, do ordain and establish this Constitution
-for the United States of America.`
+for the United States of America.`;
 
 const getString = (lengthLimit = 30) => {
-  const startLimit = preamble.length - 50
-  const length = getRandomInteger(lengthLimit)
-  const startIndex = getRandomInteger(startLimit)
-  return preamble.substr(startIndex, length)
-}
+  const startLimit = preamble.length - 50;
+  const length = getRandomInteger(lengthLimit);
+  const startIndex = getRandomInteger(startLimit);
+  return preamble.substr(startIndex, length);
+};
 
 const getItems = (
   prefix: string,
@@ -65,16 +65,16 @@ const getItems = (
 ): WindowedTreeNodeProps[] => {
   return Array.from(Array(10), (_, i) => {
     if (canNest && i % 3 === 2) {
-      const labelText = labelLength ? `: ${getString()}` : ''
+      const labelText = labelLength ? `: ${getString()}` : '';
       return {
         content: (
           <BorderRadiusOverrideTree label={`${prefix}-${i}${labelText}`} />
         ),
         isOpen: true,
         items: getItems(`${prefix}-${i}`, labelLength),
-      }
+      };
     }
-    const itemText = labelLength ? `: ${getString(labelLength)}` : ''
+    const itemText = labelLength ? `: ${getString(labelLength)}` : '';
     return {
       content: (
         <FieldPickerItem>
@@ -82,45 +82,45 @@ const getItems = (
           {itemText}
         </FieldPickerItem>
       ),
-    }
-  })
-}
+    };
+  });
+};
 
 const getTrees = (labelLength: number): WindowedTreeNodeProps[] =>
   Array.from(Array(100), (_, i) => {
-    const labelText = labelLength ? `: ${getString()}` : ''
+    const labelText = labelLength ? `: ${getString()}` : '';
     return {
       content: <BorderRadiusOverrideTree label={`${i}${labelText}`} />,
       isOpen: true,
       items: getItems(String(i), labelLength, true),
-    }
-  })
+    };
+  });
 
-const treesRandomText = getTrees(50)
-const treesNoText = getTrees(0)
+const treesRandomText = getTrees(50);
+const treesNoText = getTrees(0);
 
 const getUpdater =
   (isOpen: boolean) =>
   (tree: WindowedTreeNodeProps): WindowedTreeNodeProps => {
     if (tree.items) {
-      return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) }
+      return { ...tree, isOpen, items: tree.items.map(getUpdater(isOpen)) };
     }
-    return { ...tree, isOpen }
-  }
+    return { ...tree, isOpen };
+  };
 
 export default function Windowing({ noText }: { noText?: boolean }) {
-  const { value, toggle, setOn } = useToggle()
-  const [term, setTerm] = useState('')
-  const handleChange = (e: FormEvent<HTMLInputElement>) => {
-    setTerm(e.currentTarget.value)
-    if (term === '' && e.currentTarget.value !== '') {
-      setOn()
+  const { value, toggle, setOn } = useToggle();
+  const [term, setTerm] = useState('');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTerm(e.target.value);
+    if (term === '' && e.target.value !== '') {
+      setOn();
     }
-  }
+  };
   const treesUpdated = useMemo(() => {
-    const trees = noText ? treesNoText : treesRandomText
-    return trees.map(getUpdater(value))
-  }, [noText, value])
+    const trees = noText ? treesNoText : treesRandomText;
+    return trees.map(getUpdater(value));
+  }, [noText, value]);
 
   return (
     <SpaceVertical height="100vh">
@@ -137,5 +137,5 @@ export default function Windowing({ noText }: { noText?: boolean }) {
         />
       </HighlightContext.Provider>
     </SpaceVertical>
-  )
+  );
 }

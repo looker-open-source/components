@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { PopoverFooter } from '../..'
-import { ButtonTransparent } from '../../../../Button/ButtonTransparent'
+import React from 'react';
+import { PopoverFooter } from '../..';
+import { ButtonTransparent } from '../../../../Button/ButtonTransparent';
 
 export default function FooterWithChildren() {
   return (
@@ -14,5 +14,5 @@ export default function FooterWithChildren() {
         Cancel
       </ButtonTransparent>
     </PopoverFooter>
-  )
+  );
 }

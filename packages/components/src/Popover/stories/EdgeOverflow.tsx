@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { ReactNode } from 'react'
-import { ArrowDropDown } from '@styled-icons/material'
-import { ButtonOutline } from '../../Button'
-import { Box } from '../../Layout'
-import { Popover } from '../Popover'
-import { PopoverContent } from '../Layout/PopoverContent'
+import React from 'react';
+import type { ReactNode } from 'react';
+import { ArrowDropDown } from '@styled-icons/material';
+import { ButtonOutline } from '../../Button';
+import { Box } from '../../Layout';
+import { Popover } from '../Popover';
+import { PopoverContent } from '../Layout/PopoverContent';
 
 type EdgeOverflowProps = {
-  top?: number
-  left?: number
-  bottom?: number
-  right?: number
-  children?: ReactNode
-}
+  top?: number;
+  left?: number;
+  bottom?: number;
+  right?: number;
+  children?: ReactNode;
+};
 
 export const EdgeOverflow = ({
   children,
@@ -39,4 +39,4 @@ export const EdgeOverflow = ({
       </ButtonOutline>
     </Popover>
   </Box>
-)
+);

@@ -24,37 +24,37 @@
 
  */
 
-import { useEffect } from 'react'
-import type { IQuery, IError } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
+import { useEffect } from 'react';
+import type { IQuery, IError } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
 import {
   useNormalizedPivotLabels,
   buildPivotFields,
   tabularPivotResponse,
   tabularResponse,
   formatTotals,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import type {
   Fields,
   SDKRecord,
   Totals,
   Pivots,
-} from '@looker/visualizations-adapters'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import useSWR from 'swr'
-import { getErrorResponse } from '../utils'
-import { useSDK } from './useSDK'
-import { DataState } from './useDataState'
+} from '@looker/visualizations-adapters';
+import isEmpty from 'lodash/isEmpty';
+import isEqual from 'lodash/isEqual';
+import useSWR from 'swr';
+import { getErrorResponse } from '../utils';
+import { useSDK } from './useSDK';
+import { DataState } from './useDataState';
 
 type IQueryExtended = IQuery & {
-  data: SDKRecord[]
-  fields: Fields
-  pivots: Pivots
-  totals_data: Totals
-}
+  data: SDKRecord[];
+  fields: Fields;
+  pivots: Pivots;
+  totals_data: Totals;
+};
 
-type RunQueryReturnType = SDKResponse<IQueryExtended, IError>
+type RunQueryReturnType = SDKResponse<IQueryExtended, IError>;
 
 /**
  * useQueryData fetches the query response (data, fields, etc) from a numeric query id
@@ -64,18 +64,18 @@ type RunQueryReturnType = SDKResponse<IQueryExtended, IError>
  */
 
 export const useQueryData = (id: number, agentTag?: string) => {
-  const sdk = useSDK()
-  const { getById, setById } = DataState.useContainer()
+  const sdk = useSDK();
+  const { getById, setById } = DataState.useContainer();
 
   /*
    * Check for stored values
    * -----------------------------------------------------------
    */
 
-  const data = getById(id, 'data')
-  const fields = getById(id, 'fields')
-  const pivots = getById(id, 'pivots')
-  const totals = getById(id, 'totals')
+  const data = getById(id, 'data');
+  const fields = getById(id, 'fields');
+  const pivots = getById(id, 'pivots');
+  const totals = getById(id, 'totals');
 
   /*
    * Dispatch network request
@@ -90,17 +90,17 @@ export const useQueryData = (id: number, agentTag?: string) => {
           result_format: `json_detail`,
         },
         { agentTag }
-      )) as unknown as Promise<RunQueryReturnType>
+      )) as unknown as Promise<RunQueryReturnType>;
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR<void | RunQueryReturnType>(
     `useQueryData-${id}`, // caution: argument string must be unique to this instance
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   /*
    * Publish SWR response to central data store
@@ -113,7 +113,7 @@ export const useQueryData = (id: number, agentTag?: string) => {
       fields: rawFields,
       pivots: rawPivots,
       totals_data: rawTotals,
-    } = SWRData?.ok ? SWRData.value : ({} as IQueryExtended)
+    } = SWRData?.ok ? SWRData.value : ({} as IQueryExtended);
 
     if (id && !isEmpty(rawData) && !isEqual(rawData, data)) {
       setById(id, {
@@ -121,28 +121,28 @@ export const useQueryData = (id: number, agentTag?: string) => {
         ...(rawFields ? { fields: rawFields } : {}),
         ...(rawPivots ? { pivots: rawPivots } : {}),
         ...(rawTotals ? { totals: rawTotals } : {}),
-      })
+      });
     }
-  }, [id, SWRData, setById, data])
+  }, [id, SWRData, setById, data]);
 
   /*
    * Transform and normalize data for use in visualizations
    * -----------------------------------------------------------
    */
 
-  const normalizedPivots = useNormalizedPivotLabels(pivots)
+  const normalizedPivots = useNormalizedPivotLabels(pivots);
 
   const normalizedFields =
     normalizedPivots && fields
       ? buildPivotFields({ fields, pivots: normalizedPivots })
-      : fields
+      : fields;
 
   const normalizedData =
     pivots && data && fields
       ? tabularPivotResponse({ data, fields, pivots })
-      : tabularResponse(data || [])
+      : tabularResponse(data || []);
 
-  const normalizedTotals = totals ? formatTotals(totals) : undefined
+  const normalizedTotals = totals ? formatTotals(totals) : undefined;
 
   return {
     data: normalizedData,
@@ -152,5 +152,5 @@ export const useQueryData = (id: number, agentTag?: string) => {
     pivots,
     totals: normalizedTotals,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

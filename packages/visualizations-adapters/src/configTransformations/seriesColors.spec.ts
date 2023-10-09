@@ -24,48 +24,48 @@
 
  */
 
-import { seriesColors } from './seriesColors'
-import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { CSeriesBasic } from '../types'
+import { seriesColors } from './seriesColors';
+import { mockLineConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { CSeriesBasic } from '../types';
 
 describe('seriesColors', () => {
   const series_colors = {
     'orders.count': 'blue',
     'orders.average_total_amount_of_order_usd': 'green',
-  }
+  };
 
   test('series as array', () => {
-    const series: CSeriesBasic[] = [{}, { color: 'red' }]
+    const series: CSeriesBasic[] = [{}, { color: 'red' }];
 
     const transformedConfig = seriesColors({
       config: { ...mockLineConfig, series, series_colors },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual([
       { color: 'blue' },
       series[1],
-    ])
-  })
+    ]);
+  });
 
   test('series as object', () => {
     const series: { [k: string]: CSeriesBasic } = {
       'orders.count': {},
       'orders.average_total_amount_of_order_usd': { color: 'red' },
-    }
+    };
 
     const transformedConfig = seriesColors({
       config: { ...mockLineConfig, series, series_colors },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual({
       'orders.count': { color: 'blue' },
       'orders.average_total_amount_of_order_usd': { color: 'red' },
-    })
-  })
+    });
+  });
 
   test('pivoted series', () => {
     const { config } = seriesColors({
@@ -93,12 +93,12 @@ describe('seriesColors', () => {
           },
         ],
       },
-    })
+    });
 
     // merges series_colors into the series object
     expect(config.series).toEqual({
       'Yes - orders.count': { color: 'red' },
       '$$$_row_total_$$$ - orders.count': { color: 'blue' },
-    })
-  })
-})
+    });
+  });
+});

@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { SpaceVertical, Paragraph, Space, Button } from '@looker/components'
-import { Popover } from '..'
+import React from 'react';
+import { SpaceVertical, Paragraph, Space, Button } from '@looker/components';
+import { Popover } from '..';
 
 export default function MouseUp() {
   return (
@@ -33,5 +33,5 @@ export default function MouseUp() {
         <Button onMouseUp={() => alert('A simple onMouseUp')}>onMouseUp</Button>
       </Space>
     </SpaceVertical>
-  )
+  );
 }

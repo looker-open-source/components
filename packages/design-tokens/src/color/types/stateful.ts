@@ -24,22 +24,22 @@
 
  */
 
-export type StatefulColor = 'key' | 'critical' | 'neutral'
+export type StatefulColor = 'key' | 'critical' | 'neutral' | 'positive';
 
 export type ExtendedStatefulColor =
   | StatefulColor
   | 'calculation'
   | 'dimension'
-  | 'measure'
+  | 'measure';
 
 export interface StatefulColorChoices {
-  subtle: string
-  accent: string
-  focus: string
-  interactive: string
-  pressed: string
-  text: string
-  border: string
+  subtle: string;
+  accent: string;
+  focus: string;
+  interactive: string;
+  pressed: string;
+  text: string;
+  border: string;
 }
 
 export interface ExtendedStateColors
@@ -51,56 +51,66 @@ export interface StatefulColors
   extends CriticalStatefulColors,
     ExtendedStateColors,
     KeyStatefulColors,
-    NeutralStatefulColors {}
+    NeutralStatefulColors,
+    PositiveStatefulColors {}
 
 interface CriticalStatefulColors {
-  criticalSubtle: string
-  criticalAccent: string
-  criticalFocus: string
-  criticalInteractive: string
-  criticalPressed: string
-  criticalText: string
-  criticalBorder: string
+  criticalSubtle: string;
+  criticalAccent: string;
+  criticalFocus: string;
+  criticalInteractive: string;
+  criticalPressed: string;
+  criticalText: string;
+  criticalBorder: string;
+}
+interface PositiveStatefulColors {
+  positiveSubtle: string;
+  positiveAccent: string;
+  positiveFocus: string;
+  positiveInteractive: string;
+  positivePressed: string;
+  positiveText: string;
+  positiveBorder: string;
 }
 
 interface NeutralStatefulColors {
-  neutralSubtle: string
-  neutralAccent: string
-  neutralFocus: string
-  neutralInteractive: string
-  neutralPressed: string
-  neutralText: string
-  neutralBorder: string
+  neutralSubtle: string;
+  neutralAccent: string;
+  neutralFocus: string;
+  neutralInteractive: string;
+  neutralPressed: string;
+  neutralText: string;
+  neutralBorder: string;
 }
 
 interface CalculationStatefulColors {
-  calculationSubtle: string
-  calculationAccent: string
-  calculationFocus: string
-  calculationInteractive: string
-  calculationPressed: string
-  calculationText: string
-  calculationBorder: string
+  calculationSubtle: string;
+  calculationAccent: string;
+  calculationFocus: string;
+  calculationInteractive: string;
+  calculationPressed: string;
+  calculationText: string;
+  calculationBorder: string;
 }
 
 interface DimensionStatefulColors {
-  dimensionSubtle: string
-  dimensionAccent: string
-  dimensionFocus: string
-  dimensionInteractive: string
-  dimensionPressed: string
-  dimensionText: string
-  dimensionBorder: string
+  dimensionSubtle: string;
+  dimensionAccent: string;
+  dimensionFocus: string;
+  dimensionInteractive: string;
+  dimensionPressed: string;
+  dimensionText: string;
+  dimensionBorder: string;
 }
 
 interface MeasureStatefulColors {
-  measureSubtle: string
-  measureAccent: string
-  measureFocus: string
-  measureInteractive: string
-  measurePressed: string
-  measureText: string
-  measureBorder: string
+  measureSubtle: string;
+  measureAccent: string;
+  measureFocus: string;
+  measureInteractive: string;
+  measurePressed: string;
+  measureText: string;
+  measureBorder: string;
 }
 
 interface KeyStatefulColors {
@@ -109,41 +119,41 @@ interface KeyStatefulColors {
    * Used for TBD
    * @default purple000
    */
-  keySubtle: string
+  keySubtle: string;
   /**
    * TBD
    * Used for TBD
    * @default purple100
    */
-  keyAccent: string
+  keyAccent: string;
   /**
    * TBD
    * Used for focus states for interactive components
    * @default purple300
    */
-  keyFocus: string
+  keyFocus: string;
   /**
    * Interaction state color - often `:hover` & `:focus`
    * Used for TBD
    * @default purple500
    */
-  keyInteractive: string
+  keyInteractive: string;
   /**
    * Pressed state color - often `:active`
    * Used to TBD
    * @default purple600
    */
-  keyPressed: string
+  keyPressed: string;
   /**
    * TBD
    * Used for text on top of `key` color
    * @default white
    */
-  keyText: string
+  keyText: string;
   /**
    * TBD
    * TBD too
    * @default purple400
    */
-  keyBorder: string
+  keyBorder: string;
 }

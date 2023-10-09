@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState, useMemo } from 'react'
-import { Select } from '..'
+import React, { useState, useMemo } from 'react';
+import { Select } from '..';
 
 export default function ShowCreate() {
-  const [value, setValue] = useState<string>()
-  const [searchTerm, setSearchTerm] = useState('')
+  const [value, setValue] = useState<string>();
+  const [searchTerm, setSearchTerm] = useState('');
 
   const newOptions = useMemo(() => {
     const options = [
@@ -17,15 +17,15 @@ export default function ShowCreate() {
       { value: 'Oranges' },
       { value: 'Pineapples' },
       { value: 'Kiwis' },
-    ]
-    if (searchTerm === '') return options
+    ];
+    if (searchTerm === '') return options;
     return options.filter(option => {
-      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
-    })
-  }, [searchTerm])
+      return option.value.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+    });
+  }, [searchTerm]);
 
   function formatCreateLabel(inputValue: string) {
-    return `Add new fruit: ${inputValue}`
+    return `Add new fruit: ${inputValue}`;
   }
 
   return (
@@ -41,5 +41,5 @@ export default function ShowCreate() {
       showCreate
       formatCreateLabel={formatCreateLabel}
     />
-  )
+  );
 }

@@ -1,6 +1,6 @@
 {
   "blank": {
-    "value": "jest puste"
+    "value": "pusty"
   },
   "contains value": {
     "value": "zawiera {{value}}"
@@ -12,12 +12,12 @@
     "value": "nie kończy się na {{value}}"
   },
   "does not start with value": {
-    "value": "nie zaczyna się od {{value}}"
+    "value": "nie rozpoczyna się od {{value}}"
   },
   "ends with value": {
     "value": "kończy się na {{value}}"
   },
   "starts with value": {
-    "value": "zaczyna się na {{value}}"
+    "value": "rozpoczyna się od {{value}}"
   }
 }

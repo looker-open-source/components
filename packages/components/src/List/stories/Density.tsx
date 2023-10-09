@@ -2,14 +2,14 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React, { useState } from 'react'
-import type { DensityRamp } from '@looker/design-tokens'
-import * as MaterialIcons from '@styled-icons/material'
-import { List } from '../'
-import { ListItem, ButtonItem, ButtonToggle } from '../../'
+import React, { useState } from 'react';
+import type { DensityRamp } from '@looker/design-tokens';
+import * as MaterialIcons from '@styled-icons/material';
+import { List } from '../';
+import { ListItem, ButtonItem, ButtonToggle } from '../../';
 
 export default function Density() {
-  const [currentDensity, setCurrentDensity] = useState<DensityRamp>(0)
+  const [currentDensity, setCurrentDensity] = useState<DensityRamp>(0);
 
   return (
     <>
@@ -32,5 +32,5 @@ export default function Density() {
         <ListItem icon={<MaterialIcons.DateRange />}>Item 3</ListItem>
       </List>
     </>
-  )
+  );
 }

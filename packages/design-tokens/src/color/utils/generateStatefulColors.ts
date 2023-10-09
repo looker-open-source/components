@@ -24,23 +24,23 @@
 
  */
 
-import darken from 'polished/lib/color/darken'
-import lighten from 'polished/lib/color/lighten'
+import darken from 'polished/lib/color/darken';
+import lighten from 'polished/lib/color/lighten';
 import type {
   StatefulColors,
   StatefulColorChoices,
   SpecifiableColors,
   DerivativeColors,
-} from '../types'
-import type { ExtendedStateColors } from '../types/stateful'
-import { mixScaledColors } from './mixScaledColors'
+} from '../types';
+import type { ExtendedStateColors } from '../types/stateful';
+import { mixScaledColors } from './mixScaledColors';
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
 
-export const generateInteractive = (color: string) => lighten(0.04, color)
-export const generatePressed = (color: string) => darken(0.07, color)
+export const generateInteractive = (color: string) => lighten(0.04, color);
+export const generatePressed = (color: string) => darken(0.07, color);
 
-export const accentBlendScale = 16
+export const accentBlendScale = 16;
 
 export const generateStatefulColor = (
   background: string,
@@ -54,17 +54,17 @@ export const generateStatefulColor = (
     pressed: generatePressed(color),
     text: background,
     border: color,
-  }
-}
+  };
+};
 
 export const generateExtendedStatefulColors = (
   specifiable: SpecifiableColors
 ): ExtendedStateColors => {
-  const { background, calculation, dimension, measure } = specifiable
+  const { background, calculation, dimension, measure } = specifiable;
 
-  const calculationColors = generateStatefulColor(background, calculation)
-  const dimensionColors = generateStatefulColor(background, dimension)
-  const measureColors = generateStatefulColor(background, measure)
+  const calculationColors = generateStatefulColor(background, calculation);
+  const dimensionColors = generateStatefulColor(background, dimension);
+  const measureColors = generateStatefulColor(background, measure);
 
   return {
     calculationSubtle: calculationColors.subtle,
@@ -90,21 +90,22 @@ export const generateExtendedStatefulColors = (
     measurePressed: measureColors.pressed,
     measureText: measureColors.text,
     measureBorder: measureColors.border,
-  }
-}
+  };
+};
 
 export const generateStatefulColors = (
   specifiable: SpecifiableColors,
   derivatives: DerivativeColors
 ): StatefulColors => {
-  const { background, key, critical } = specifiable
-  const { neutral } = derivatives
+  const { background, key, critical, positive } = specifiable;
+  const { neutral } = derivatives;
 
-  const extendedStatefulColors = generateExtendedStatefulColors(specifiable)
+  const extendedStatefulColors = generateExtendedStatefulColors(specifiable);
 
-  const keyColors = generateStatefulColor(background, key)
-  const criticalColors = generateStatefulColor(background, critical)
-  const neutralColors = generateStatefulColor(background, neutral)
+  const keyColors = generateStatefulColor(background, key);
+  const criticalColors = generateStatefulColor(background, critical);
+  const neutralColors = generateStatefulColor(background, neutral);
+  const positiveColors = generateStatefulColor(background, positive);
 
   return {
     keySubtle: keyColors.subtle,
@@ -131,6 +132,14 @@ export const generateStatefulColors = (
     neutralText: neutralColors.text,
     neutralBorder: neutralColors.border,
 
+    positiveSubtle: positiveColors.subtle,
+    positiveAccent: positiveColors.accent,
+    positiveFocus: positiveColors.focus,
+    positiveInteractive: positiveColors.interactive,
+    positivePressed: positiveColors.pressed,
+    positiveText: positiveColors.text,
+    positiveBorder: positiveColors.border,
+
     ...extendedStatefulColors,
-  }
-}
+  };
+};

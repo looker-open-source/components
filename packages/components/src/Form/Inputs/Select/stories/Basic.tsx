@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
-import type { SelectProps } from '../'
+import React from 'react';
+import { Select } from '..';
+import type { SelectProps } from '../';
 
 export default function Basic(props: SelectProps) {
   return (
@@ -17,5 +17,5 @@ export default function Basic(props: SelectProps) {
         { label: 'Swiss', value: 'swiss' },
       ]}
     />
-  )
+  );
 }

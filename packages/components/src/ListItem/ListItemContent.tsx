@@ -24,40 +24,39 @@
 
  */
 
-import pick from 'lodash/pick'
-import type {
-  CompatibleHTMLProps,
-  DensityRamp,
-  ExtendedStatefulColor,
-} from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
+import pick from 'lodash/pick';
+import type { CompatibleHTMLProps, DensityRamp } from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
 import type {
   FlattenSimpleInterpolation,
   Interpolation,
-} from 'styled-components'
-import styled, { css } from 'styled-components'
+} from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   rippleHandlerKeys,
   rippleStyle,
   useBoundedRipple,
   useRippleHandlers,
-} from '../Ripple'
+} from '../Ripple';
 import type {
   ListItemColorProp,
   ListItemRole,
   ListItemStatefulProps,
-} from './types'
-import { listItemColorOptions } from './types'
-import { listItemBackgroundColor, listItemPaddingX } from './utils'
+} from './types';
+import {
+  isListColor,
+  listItemBackgroundColor,
+  listItemPaddingX,
+} from './utils';
 
 const Button = styled.button.attrs(({ type = 'button' }) => ({
   type,
 }))`
   font-family: inherit;
-`
-const Link = styled.a``
-const Div = styled.div``
+`;
+const Link = styled.a``;
+const Div = styled.div``;
 
 // Use listItemLabelCSS to target the internal button / link / div CSS of ListItem
 export const listItemContentCSS = (
@@ -66,28 +65,28 @@ export const listItemContentCSS = (
   > ${Button}, > ${Link}, > ${Div} {
     ${style}
   }
-`
+`;
 
 /**
  * @deprecated Use `listItemContentCSS` instead
  */
-export const listItemLabelCSS = listItemContentCSS
+export const listItemLabelCSS = listItemContentCSS;
 
 export type ListItemContentProps = CompatibleHTMLProps<HTMLElement> &
   ListItemStatefulProps &
   ListItemColorProp & {
-    cursorPointer?: boolean
-    density?: DensityRamp
-    disabled?: boolean
-    itemRole?: ListItemRole
+    cursorPointer?: boolean;
+    density?: DensityRamp;
+    disabled?: boolean;
+    itemRole?: ListItemRole;
     /**
      * Determines if ripple effect is enabled or disabled.
      * Used primarily when parent component should handle
      * ripple effect like with NavTree.
      * @default true
      */
-    ripple?: boolean
-  }
+    ripple?: boolean;
+  };
 
 export const ListItemContent = styled(
   forwardRef(
@@ -96,6 +95,7 @@ export const ListItemContent = styled(
         className,
         children,
         color,
+        colorOnHover,
         itemRole = 'button',
         ripple = true,
         selected,
@@ -107,26 +107,23 @@ export const ListItemContent = styled(
       const { callbacks, ...rippleRestProps } = useBoundedRipple({
         className,
         color:
-          selected &&
-          listItemColorOptions.includes(color as ExtendedStatefulColor)
-            ? (color as ExtendedStatefulColor)
-            : 'neutral',
+          (selected || colorOnHover) && isListColor(color) ? color : 'neutral',
         ref: forwardedRef,
         style,
-      })
+      });
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
         pick(props, rippleHandlerKeys),
         props.disabled
-      )
+      );
 
       const rippleProps = ripple
         ? {
             ...rippleRestProps,
             ...rippleHandlers,
           }
-        : { className, style }
+        : { className, style };
 
       if (!props.disabled && itemRole === 'link') {
         return (
@@ -137,7 +134,7 @@ export const ListItemContent = styled(
           >
             {children}
           </Link>
-        )
+        );
       } else if (itemRole === 'none') {
         return (
           <Div
@@ -147,7 +144,7 @@ export const ListItemContent = styled(
           >
             {children}
           </Div>
-        )
+        );
       }
 
       return (
@@ -159,7 +156,7 @@ export const ListItemContent = styled(
         >
           {children}
         </Button>
-      )
+      );
     }
   )
 )`
@@ -195,4 +192,4 @@ export const ListItemContent = styled(
     color: inherit;
     text-decoration: none;
   }
-`
+`;

@@ -40,7 +40,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@looker/recommended',
   ],
-  ignorePatterns: ['lib/', '*.d.ts', '!.storybook'],
+  ignorePatterns: ['/dist/**', '*.d.ts', '!.storybook', '/test/output/**'],
   overrides: [
     {
       extends: ['plugin:mdx/recommended'],
@@ -177,4 +177,4 @@ module.exports = {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
   },
-}
+};

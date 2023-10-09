@@ -24,29 +24,29 @@
 
  */
 
-import styled from 'styled-components'
-import React, { useContext } from 'react'
-import { useAccordion2 } from '../Accordion2'
-import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { HoverDisclosureContext, partitionAriaProps } from '../utils'
-import { List } from '../List'
-import type { ListItemProps } from '../ListItem'
-import { createListItemPartitions } from '../ListItem/utils'
-import { TreeContext } from '../Tree/TreeContext'
+import styled from 'styled-components';
+import React, { useContext } from 'react';
+import { useAccordion2 } from '../Accordion2';
+import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes';
+import { HoverDisclosureContext, partitionAriaProps } from '../utils';
+import { List } from '../List';
+import type { ListItemProps } from '../ListItem';
+import { createListItemPartitions } from '../ListItem/utils';
+import { TreeContext } from '../Tree/TreeContext';
 import {
   generateBorderRadius,
   indicatorDefaults,
   partitionTreeProps,
   useTreeHandlers,
-} from '../Tree/utils'
-import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import { lkFieldItemDensity } from './defaults'
-import { LkFieldItem } from './LkFieldItem'
-import { LkFieldItemContent } from './LkFieldItemContent'
-import { LkFieldItemLabel } from './LkFieldItemLabel'
-import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent'
-import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure'
-import type { LkFieldTreeProps } from './types'
+} from '../Tree/utils';
+import { WindowedTreeContext } from '../Tree/WindowedTreeNode';
+import { lkFieldItemDensity } from './defaults';
+import { LkFieldItem } from './LkFieldItem';
+import { LkFieldItemContent } from './LkFieldItemContent';
+import { LkFieldItemLabel } from './LkFieldItemLabel';
+import { LkFieldTreeAccordionContent } from './LkFieldTreeAccordionContent';
+import { LkFieldTreeAccordionDisclosure } from './LkFieldTreeAccordionDisclosure';
+import type { LkFieldTreeProps } from './types';
 
 const LkFieldTreeLayout = ({
   children,
@@ -62,21 +62,21 @@ const LkFieldTreeLayout = ({
   toggleOpen: propsToggleOpen,
   ...restProps
 }: LkFieldTreeProps) => {
-  const density = lkFieldItemDensity
+  const density = lkFieldItemDensity;
   const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
     restProps as Record<string, unknown>
-  )
+  );
 
   const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
     onFocus,
     onMouseEnter,
     onMouseLeave,
-  })
+  });
 
   const { color, disabled, icon, selected } =
-    treeItemInnerProps as Partial<ListItemProps>
-  const [ariaProps] = partitionAriaProps(restProps)
-  const treeContext = useContext(TreeContext)
+    treeItemInnerProps as Partial<ListItemProps>;
+  const [ariaProps] = partitionAriaProps(restProps);
+  const treeContext = useContext(TreeContext);
 
   // Context for supporting windowing
   // - opened / closed state must be managed at the collection level for accurate item count
@@ -85,15 +85,15 @@ const LkFieldTreeLayout = ({
     isOpen: contextIsOpen,
     toggleNode,
     partialRender,
-  } = useContext(WindowedTreeContext)
+  } = useContext(WindowedTreeContext);
 
-  const isOpen = contextIsOpen ?? propsIsOpen
-  const toggleOpen = toggleNode ?? propsToggleOpen
+  const isOpen = contextIsOpen ?? propsIsOpen;
+  const toggleOpen = toggleNode ?? propsToggleOpen;
 
-  const startingDepth = 0
-  const depth = treeContext.depth ? treeContext.depth : startingDepth
+  const startingDepth = 0;
+  const depth = treeContext.depth ? treeContext.depth : startingDepth;
 
-  const { indicatorIcons, indicatorPosition } = indicatorDefaults
+  const { indicatorIcons, indicatorPosition } = indicatorDefaults;
 
   const [inside, outside] = createListItemPartitions({
     ...treeItemInnerProps,
@@ -102,15 +102,15 @@ const LkFieldTreeLayout = ({
     density,
     icon,
     truncate: true,
-  })
+  });
   let accordionProps: ControlledOrUncontrolled = {
     defaultOpen,
     onClose,
     onOpen,
     ...accordionInnerProps,
-  }
+  };
   if (isOpen !== undefined && toggleOpen) {
-    accordionProps = { ...accordionProps, isOpen, toggleOpen }
+    accordionProps = { ...accordionProps, isOpen, toggleOpen };
   }
 
   const {
@@ -134,20 +134,20 @@ const LkFieldTreeLayout = ({
     role: 'treeitem',
     tabIndex: -1,
     ...accordionProps,
-  })
+  });
 
   const {
     indicator,
     children: disclosureLabel,
     ...disclosureDomProps
-  } = disclosureProps
+  } = disclosureProps;
 
   const statefulProps = {
     color,
     disabled,
     hovered,
     selected,
-  }
+  };
 
   const content = (
     <LkFieldItemContent
@@ -161,7 +161,7 @@ const LkFieldTreeLayout = ({
       {indicator}
       <LkFieldItemLabel {...statefulProps}>{disclosureLabel}</LkFieldItemLabel>
     </LkFieldItemContent>
-  )
+  );
 
   return (
     <HoverDisclosureContext.Provider value={{ visible: hovered }}>
@@ -184,8 +184,8 @@ const LkFieldTreeLayout = ({
         </div>
       </TreeContext.Provider>
     </HoverDisclosureContext.Provider>
-  )
-}
+  );
+};
 
 export const LkFieldTree = styled(LkFieldTreeLayout)`
   ${({ theme }) => generateBorderRadius('medium', theme)}
@@ -197,4 +197,4 @@ export const LkFieldTree = styled(LkFieldTreeLayout)`
   & & {
     margin-top: 1px;
   }
-`
+`;

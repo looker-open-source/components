@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
-import { Space } from '../../../../Layout'
+import React from 'react';
+import { Select } from '..';
+import { Space } from '../../../../Layout';
 
 export default function ListLayout() {
   return (
@@ -54,5 +54,5 @@ export default function ListLayout() {
         ]}
       />
     </Space>
-  )
+  );
 }

@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/es'
+import dateLocale from 'date-fns/locale/es';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -98,7 +98,6 @@ const resources = {
   InputFilters: {
     'Clear Filters': 'Borrar filtros',
     'Filter List': 'Lista de filtros',
-    'bottom-start': 'abajo-inicio',
   },
   InputTimeSelect: {
     'Select time': 'Seleccionar hora',
@@ -151,6 +150,6 @@ const resources = {
   TabList: {
     Tabs: 'Pestañas',
   },
-}
+};
 
-export const esES = mergeLocaleObjects([], 'es-ES', resources, dateLocale)
+export const esES = mergeLocaleObjects([], 'es-ES', resources, dateLocale);

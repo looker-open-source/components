@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './isValidColor'
-export * from './hsvToHex'
-export * from './simpleHsvToHex'
-export * from './stringToSimpleHsv'
+export * from './isValidColor';
+export * from './hsvToHex';
+export * from './simpleHsvToHex';
+export * from './stringToSimpleHsv';

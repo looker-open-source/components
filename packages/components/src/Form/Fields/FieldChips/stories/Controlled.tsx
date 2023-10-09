@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { FieldChips } from '../../FieldChips'
+import React, { useState } from 'react';
+import { FieldChips } from '../../FieldChips';
 
 export default function Controlled() {
-  const [values, setValues] = useState<string[]>(['bananas'])
-  const [inputValue, setInputValue] = useState('oranges')
-  const handleChange = (vals: string[]) => setValues(vals)
-  const handleInputChange = (value: string) => setInputValue(value)
+  const [values, setValues] = useState<string[]>(['bananas']);
+  const [inputValue, setInputValue] = useState('oranges');
+  const handleChange = (vals: string[]) => setValues(vals);
+  const handleInputChange = (value: string) => setInputValue(value);
 
   return (
     <FieldChips
@@ -20,5 +20,5 @@ export default function Controlled() {
       onInputChange={handleInputChange}
       summary="summary"
     />
-  )
+  );
 }

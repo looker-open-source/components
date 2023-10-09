@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Box, Space } from '../../..'
+import React from 'react';
+import { Box, Space } from '../../..';
 
 export default function HeightsWidths() {
   return (
@@ -32,5 +32,5 @@ export default function HeightsWidths() {
         I'm 50px tall.
       </Box>
     </Space>
-  )
+  );
 }

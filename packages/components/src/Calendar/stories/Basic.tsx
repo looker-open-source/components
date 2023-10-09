@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Calendar } from '../..'
-import type { CalendarProps } from '../Calendar'
+import React, { useState } from 'react';
+import { Calendar } from '../..';
+import type { CalendarProps } from '../Calendar';
 
 export default function Basic({
   onSelectDate,
@@ -13,12 +13,12 @@ export default function Basic({
   viewMonth: viewMonthProp = new Date('Jul 1, 2021'),
   ...args
 }: Partial<CalendarProps>) {
-  const [date, setDate] = useState(selectedDate)
+  const [date, setDate] = useState(selectedDate);
   const handleSelect = (newDate: Date) => {
-    onSelectDate?.(newDate)
-    setDate(newDate)
-  }
-  const [viewMonth, setViewMonth] = useState(viewMonthProp)
+    onSelectDate?.(newDate);
+    setDate(newDate);
+  };
+  const [viewMonth, setViewMonth] = useState(viewMonthProp);
   return (
     <Calendar
       {...args}
@@ -27,5 +27,5 @@ export default function Basic({
       viewMonth={viewMonth}
       onMonthChange={setViewMonth}
     />
-  )
+  );
 }

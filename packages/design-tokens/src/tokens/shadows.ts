@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Shadows } from '../system'
+import type { Shadows } from '../system';
 
 /**
  * @deprecated - Use `elevations` instead
@@ -15,4 +15,4 @@ export const shadows: Shadows = {
   4: '0 4px 20px rgba(0, 0, 0, 0.14), 0 1px 4px rgba(0, 0, 0, 0.04),  0 10px 8px 4px rgba(0, 0, 0, 0.01)',
   5: '0 2px 30px rgba(0, 0, 0,.16), 0 1px 4px rgba(0, 0, 0, 0.04),  0 14px 10px 8px rgba(0, 0, 0, 0.02)',
   6: '0 5px 42px 0px rgba(0, 0, 0,.18),  0 1px 4px rgba(0, 0, 0, 0.05), 0 16px 20px 10px rgba(0, 0, 0, 0.025)',
-}
+};

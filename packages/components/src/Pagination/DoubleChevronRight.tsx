@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { StyledIcon, StyledIconProps } from '@styled-icons/styled-icon'
-import { StyledIconBase } from '@styled-icons/styled-icon'
+import React from 'react';
+import type { StyledIcon, StyledIconProps } from '@styled-icons/styled-icon';
+import { StyledIconBase } from '@styled-icons/styled-icon';
 
 export const DoubleChevronRight: StyledIcon = React.forwardRef<
   SVGSVGElement,
@@ -14,7 +14,7 @@ export const DoubleChevronRight: StyledIcon = React.forwardRef<
   const attrs: React.SVGProps<SVGSVGElement> = {
     fill: 'currentColor',
     xmlns: 'http://www.w3.org/2000/svg',
-  }
+  };
 
   return (
     <StyledIconBase
@@ -28,9 +28,9 @@ export const DoubleChevronRight: StyledIcon = React.forwardRef<
 
       <path d="M11 16.59L15.58 12L11 7.41L12.41 6L18.41 12L12.41 18L11 16.59Z" />
     </StyledIconBase>
-  )
-})
+  );
+});
 
-DoubleChevronRight.displayName = 'DoubleChevronRight'
+DoubleChevronRight.displayName = 'DoubleChevronRight';
 
-export const DoubleChevronRightDimensions = { height: 24, width: 24 }
+export const DoubleChevronRightDimensions = { height: 24, width: 24 };

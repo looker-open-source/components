@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import set from 'lodash/set'
-import type { CArea, CLine, CLineSeries } from '../adapters'
-import type { ConfigHelper } from '../types'
-import { getMeasureNames } from '../utils'
+import set from 'lodash/set';
+import type { CArea, CLine, CLineSeries } from '../adapters';
+import type { ConfigHelper } from '../types';
+import { getMeasureNames } from '../utils';
 
 /**
  * Set default line width when not otherwise set.
@@ -17,26 +17,26 @@ export const seriesLineWidth: ConfigHelper<CLine | CArea> = ({
   data,
   fields,
 }) => {
-  const { series = {}, ...restConfig } = config
-  const measures = getMeasureNames(fields)
+  const { series = {}, ...restConfig } = config;
+  const measures = getMeasureNames(fields);
 
   const buildArraySeries = (s: CLineSeries[] = []) => {
-    const arraySeries = [...s]
+    const arraySeries = [...s];
     for (let i = 0; i < measures.length; i++) {
-      const { line_width = 3 } = arraySeries[i] || {}
-      set(arraySeries, [i, 'line_width'], line_width)
+      const { line_width = 3 } = arraySeries[i] || {};
+      set(arraySeries, [i, 'line_width'], line_width);
     }
-    return arraySeries
-  }
+    return arraySeries;
+  };
 
   const buildNamedSeries = (s: { [k: string]: CLineSeries }) => {
-    const namedSeries = { ...s }
+    const namedSeries = { ...s };
     for (const field of measures) {
-      const { line_width = 3 } = namedSeries[field] || {}
-      set(namedSeries, [field, 'line_width'], line_width)
+      const { line_width = 3 } = namedSeries[field] || {};
+      set(namedSeries, [field, 'line_width'], line_width);
     }
-    return namedSeries
-  }
+    return namedSeries;
+  };
 
   return {
     config: {
@@ -47,5 +47,5 @@ export const seriesLineWidth: ConfigHelper<CLine | CArea> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

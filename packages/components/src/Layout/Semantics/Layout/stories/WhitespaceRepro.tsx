@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Info } from '@styled-icons/material'
-import type { LayoutProps } from '../..'
-import { Page, Header, Layout, Aside, Section } from '../..'
-import { Constitution, ItemsFiller } from '../../../..'
-import { IconButton } from '../../../../Button'
-import { Heading } from '../../../../Text'
+import React from 'react';
+import { Info } from '@styled-icons/material';
+import type { LayoutProps } from '../..';
+import { Page, Header, Layout, Aside, Section } from '../..';
+import { Constitution, ItemsFiller } from '../../../..';
+import { IconButton } from '../../../../Button';
+import { Heading } from '../../../../Text';
 
 export default function WhitespaceRepro(props: LayoutProps) {
-  const { hasAside, ...rest } = props
+  const { hasAside, ...rest } = props;
   return (
     <Page fixed>
       <Header
@@ -37,5 +37,5 @@ export default function WhitespaceRepro(props: LayoutProps) {
         </Section>
       </Layout>
     </Page>
-  )
+  );
 }

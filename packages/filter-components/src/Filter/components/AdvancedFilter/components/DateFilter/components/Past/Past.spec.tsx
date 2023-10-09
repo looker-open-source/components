@@ -27,14 +27,14 @@ import {
   closeCombobox,
   getAllComboboxOptionText,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { Filter } from '../../../../../../Filter'
+} from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { Filter } from '../../../../../../Filter';
 import {
   testField,
   testFilterUIConfig,
-} from '../../../../../../utils/filter_test_utils'
+} from '../../../../../../utils/filter_test_utils';
 
 describe('Past Date filter test', () => {
   it('should render a Past component', () => {
@@ -48,9 +48,9 @@ describe('Past Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    fireEvent.click(screen.getAllByRole('textbox')[1])
+    fireEvent.click(screen.getAllByRole('textbox')[1]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "seconds",
@@ -70,9 +70,9 @@ describe('Past Date filter test', () => {
         "complete quarters",
         "complete years",
       ]
-    `)
-    closeCombobox()
-  })
+    `);
+    closeCombobox();
+  });
 
   it('should render a Past component with Fiscal unit options', () => {
     renderWithTheme(
@@ -84,9 +84,9 @@ describe('Past Date filter test', () => {
         expressionType="date"
         config={testFilterUIConfig}
       />
-    )
+    );
 
-    fireEvent.click(screen.getAllByRole('textbox')[1])
+    fireEvent.click(screen.getAllByRole('textbox')[1]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "seconds",
@@ -110,7 +110,7 @@ describe('Past Date filter test', () => {
         "complete fiscal quarters",
         "complete fiscal years",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});

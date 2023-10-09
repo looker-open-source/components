@@ -1,11 +1,11 @@
 {
   "is": {
-    "value": "が次である"
+    "value": "次に一致"
   },
   "is any value": {
-    "value": "の値を問わずすべて"
+    "value": "任意の値"
   },
   "is not": {
-    "value": "が次でない"
+    "value": "等しくない"
   }
 }

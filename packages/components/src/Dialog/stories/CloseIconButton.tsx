@@ -3,12 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Dialog, DialogLayout, Button } from '../..'
+import React from 'react';
+import { Dialog, DialogLayout, Button } from '../..';
+import type { DialogProps } from '../Dialog';
 
-export default function CloseIconButton() {
+export default function CloseIconButton(props: DialogProps) {
   return (
     <Dialog
+      {...props}
       content={
         <DialogLayout header="Has a close icon button">
           Some content
@@ -17,5 +19,5 @@ export default function CloseIconButton() {
     >
       <Button>Open Dialog</Button>
     </Dialog>
-  )
+  );
 }

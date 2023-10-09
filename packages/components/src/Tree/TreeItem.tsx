@@ -24,127 +24,138 @@
 
  */
 
-import type { FocusEvent } from 'react'
-import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
-import { Flex } from '../Layout'
-import type { ListItemProps } from '../ListItem'
-import { createListItemPartitions } from '../ListItem/utils'
+import type { FocusEvent, Ref } from 'react';
+import React, { forwardRef, useContext, useState } from 'react';
+import styled from 'styled-components';
+import { Flex } from '../Layout';
+import type { ListItemProps } from '../ListItem';
+import { createListItemPartitions } from '../ListItem/utils';
 import {
   createSafeRel,
   HoverDisclosureContext,
   partitionAriaProps,
   undefinedCoalesce,
   useWrapEvent,
-} from '../utils'
-import { TreeContext } from './TreeContext'
-import { TreeItemContent } from './TreeItemContent'
+} from '../utils';
+import { TreeContext } from './TreeContext';
+import { TreeItemContent } from './TreeItemContent';
 
 export type TreeItemProps = ListItemProps & {
-  labelBackgroundOnly?: boolean
-}
+  border?: boolean;
+  labelBackgroundOnly?: boolean;
+};
 
 export const TreeItem = styled(
-  ({
-    className,
-    color: propsColor,
-    density: propsDensity,
-    disabled,
-    href,
-    itemRole,
-    labelBackgroundOnly: propsLabelBackgroundOnly,
-    onBlur,
-    onClick,
-    onFocus,
-    onKeyDown,
-    onKeyUp,
-    onMouseEnter,
-    onMouseLeave,
-    rel,
-    ripple = false,
-    selected,
-    target,
-    ...restProps
-  }: TreeItemProps) => {
-    const {
-      density: contextDensity,
-      depth,
-      color: contextColor,
-    } = useContext(TreeContext)
+  forwardRef(
+    (
+      {
+        border,
+        className,
+        color: propsColor,
+        colorOnHover,
+        density: propsDensity,
+        disabled,
+        href,
+        itemRole,
+        labelBackgroundOnly: propsLabelBackgroundOnly,
+        onBlur,
+        onClick,
+        onFocus,
+        onKeyDown,
+        onKeyUp,
+        onMouseEnter,
+        onMouseLeave,
+        rel,
+        ripple = false,
+        selected,
+        target,
+        ...restProps
+      }: TreeItemProps,
+      ref: Ref<HTMLLIElement>
+    ) => {
+      const {
+        density: contextDensity,
+        depth,
+        color: contextColor,
+      } = useContext(TreeContext);
 
-    const [hovered, setHovered] = useState(false)
-    const handleWrapperMouseEnter = useWrapEvent(
-      () => setHovered(true),
-      onMouseEnter
-    )
-    const handleWrapperMouseLeave = useWrapEvent(
-      () => setHovered(false),
-      onMouseLeave
-    )
+      const [hovered, setHovered] = useState(false);
+      const handleWrapperMouseEnter = useWrapEvent(
+        () => setHovered(true),
+        onMouseEnter
+      );
+      const handleWrapperMouseLeave = useWrapEvent(
+        () => setHovered(false),
+        onMouseLeave
+      );
 
-    const handleWrapperFocus = () => setHovered(true)
-    // This is needed so that hover disclosed elements don't get lost during keyboard nav
-    const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = event.relatedTarget
+      const handleWrapperFocus = () => setHovered(true);
+      // This is needed so that hover disclosed elements don't get lost during keyboard nav
+      const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
+        const nextFocusTarget = event.relatedTarget;
 
-      if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
-        setHovered(false)
-      }
-    }
+        if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
+          setHovered(false);
+        }
+      };
 
-    const density = undefinedCoalesce([propsDensity, contextDensity])
-    const color = undefinedCoalesce([propsColor, contextColor])
-    const statefulProps = {
-      color,
-      disabled,
-      hovered,
-      ripple,
-      selected,
-    }
-    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
-    const [inside, outside] = createListItemPartitions({
-      density,
-      ...restProps,
-      ...statefulProps,
-    })
+      const density = undefinedCoalesce([propsDensity, contextDensity]);
+      const color = undefinedCoalesce([propsColor, contextColor]);
+      const statefulProps = {
+        color,
+        colorOnHover,
+        disabled,
+        hovered,
+        ripple,
+        selected,
+      };
+      const [ariaProps, wrapperProps] = partitionAriaProps(restProps);
+      const [inside, outside] = createListItemPartitions({
+        density,
+        ...restProps,
+        ...statefulProps,
+      });
 
-    return (
-      <HoverDisclosureContext.Provider value={{ visible: hovered }}>
-        <Flex
-          as="li"
-          className={className}
-          onBlur={handleWrapperBlur}
-          onFocus={handleWrapperFocus}
-          onMouseEnter={handleWrapperMouseEnter}
-          onMouseLeave={handleWrapperMouseLeave}
-          {...wrapperProps}
-        >
-          <TreeItemContent
-            aria-selected={selected}
-            density={density}
-            /**
-             * Child items should be +1 depth more than their parents so that their label
-             * aligns with the label of the parent as opposed to the indicator
-             */
-            depth={depth + 1}
-            href={href}
-            itemRole={itemRole}
-            onClick={onClick}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            onKeyDown={onKeyDown}
-            onKeyUp={onKeyUp}
-            rel={createSafeRel(rel, target)}
-            tabIndex={-1}
-            target={target}
-            {...ariaProps}
-            {...statefulProps}
+      return (
+        <HoverDisclosureContext.Provider value={{ visible: hovered }}>
+          <Flex
+            as="li"
+            ref={ref}
+            className={className}
+            onBlur={handleWrapperBlur}
+            onFocus={handleWrapperFocus}
+            onMouseEnter={handleWrapperMouseEnter}
+            onMouseLeave={handleWrapperMouseLeave}
+            {...wrapperProps}
           >
-            {inside}
-          </TreeItemContent>
-          {outside}
-        </Flex>
-      </HoverDisclosureContext.Provider>
-    )
-  }
-)``
+            <TreeItemContent
+              aria-selected={selected}
+              border={border}
+              density={density}
+              /**
+               * Child items should be +1 depth more than their parents so that their label
+               * aligns with the label of the parent as opposed to the indicator
+               */
+              depth={depth + 1}
+              href={href}
+              itemRole={itemRole}
+              onClick={onClick}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              onKeyDown={onKeyDown}
+              onKeyUp={onKeyUp}
+              rel={createSafeRel(rel, target)}
+              tabIndex={-1}
+              target={target}
+              {...ariaProps}
+              {...statefulProps}
+            >
+              {inside}
+            </TreeItemContent>
+            {outside}
+          </Flex>
+        </HoverDisclosureContext.Provider>
+      );
+    }
+  )
+)``;

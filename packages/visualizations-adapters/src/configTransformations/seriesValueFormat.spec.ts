@@ -24,15 +24,15 @@
 
  */
 
-import { seriesValueFormat } from './seriesValueFormat'
-import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import type { CSeriesBasic } from '../types'
+import { seriesValueFormat } from './seriesValueFormat';
+import { mockBarConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import type { CSeriesBasic } from '../types';
 describe('seriesValueFormat', () => {
   describe('Series as array', () => {
     const series: CSeriesBasic[] = [
       { color: '#FA8072', label: 'Total Orders' },
       { color: '#70BEFB', label: 'Average Order Price' },
-    ]
+    ];
     test(`Fills in default values when series value_format is not specified`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series },
@@ -44,7 +44,7 @@ describe('seriesValueFormat', () => {
           ],
         },
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual([
         {
           color: '#FA8072',
@@ -56,14 +56,14 @@ describe('seriesValueFormat', () => {
           label: 'Average Order Price',
           value_format: '0,0.[00]',
         },
-      ])
-    })
+      ]);
+    });
     test(`Populates value from fields then config.label_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, label_value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual([
         {
           color: '#FA8072',
@@ -75,14 +75,14 @@ describe('seriesValueFormat', () => {
           label: 'Average Order Price',
           value_format: '$#,##0.00',
         },
-      ])
-    })
+      ]);
+    });
     test(`Populates value from fields then config.value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual([
         {
           color: '#FA8072',
@@ -94,19 +94,19 @@ describe('seriesValueFormat', () => {
           label: 'Average Order Price',
           value_format: '$#,##0.00',
         },
-      ])
-    })
+      ]);
+    });
     test(`Preserves user defined config overrides`, () => {
       // override default series array above
       const seriesCopy: CSeriesBasic[] = [
         { ...series[0], value_format: '$#,##0.00' },
         { ...series[1], value_format: '$#,##0.00' },
-      ]
+      ];
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series: seriesCopy, value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual([
         {
           color: '#FA8072',
@@ -118,8 +118,8 @@ describe('seriesValueFormat', () => {
           label: 'Average Order Price',
           value_format: '$#,##0.00',
         },
-      ])
-    })
+      ]);
+    });
     test(`Populates value from config.series_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: {
@@ -132,7 +132,7 @@ describe('seriesValueFormat', () => {
         },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual([
         {
           color: '#FA8072',
@@ -144,9 +144,9 @@ describe('seriesValueFormat', () => {
           label: 'Average Order Price',
           value_format: '1',
         },
-      ])
-    })
-  })
+      ]);
+    });
+  });
 
   describe('Series as object', () => {
     const series: { [k: string]: CSeriesBasic } = {
@@ -155,7 +155,7 @@ describe('seriesValueFormat', () => {
         color: '#70BEFA',
         label: 'Average Order Price',
       },
-    }
+    };
     test(`Fills in default values when series value_format is not specified`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series },
@@ -167,7 +167,7 @@ describe('seriesValueFormat', () => {
           ],
         },
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual({
         'orders.count': {
           ...series['orders.count'],
@@ -177,14 +177,14 @@ describe('seriesValueFormat', () => {
           ...series['orders.average_total_amount_of_order_usd'],
           value_format: '0,0.[00]',
         },
-      })
-    })
+      });
+    });
     test(`Populates value from fields then config.label_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, label_value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual({
         'orders.count': {
           ...series['orders.count'],
@@ -194,14 +194,14 @@ describe('seriesValueFormat', () => {
           ...series['orders.average_total_amount_of_order_usd'],
           value_format: '$#,##0.00',
         },
-      })
-    })
+      });
+    });
     test(`Populates value from fields then config.value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series, value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual({
         'orders.count': {
           ...series['orders.count'],
@@ -211,8 +211,8 @@ describe('seriesValueFormat', () => {
           ...series['orders.average_total_amount_of_order_usd'],
           value_format: '$#,##0.00',
         },
-      })
-    })
+      });
+    });
     test(`Preserves user defined config overrides`, () => {
       const seriesCopy: typeof series = {
         'orders.count': {
@@ -223,14 +223,14 @@ describe('seriesValueFormat', () => {
           ...series['orders.average_total_amount_of_order_usd'],
           value_format: '$#,##0.00',
         },
-      }
+      };
       const transformedConfig = seriesValueFormat({
         config: { ...mockBarConfig, series: seriesCopy, value_format: '#,##0' },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
-      expect(transformedConfig.config.series).toEqual(seriesCopy)
-    })
+      });
+      expect(transformedConfig.config.series).toEqual(seriesCopy);
+    });
     test(`Populates value from config.series_value_format`, () => {
       const transformedConfig = seriesValueFormat({
         config: {
@@ -243,7 +243,7 @@ describe('seriesValueFormat', () => {
         },
         fields: mockFields,
         data: mockSdkDataResponse,
-      })
+      });
       expect(transformedConfig.config.series).toEqual({
         'orders.count': {
           ...series['orders.count'],
@@ -253,7 +253,7 @@ describe('seriesValueFormat', () => {
           ...series['orders.average_total_amount_of_order_usd'],
           value_format: '1',
         },
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});

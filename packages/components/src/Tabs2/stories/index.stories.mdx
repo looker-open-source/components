@@ -1,16 +1,15 @@
-import { Code, MessageBar, Tabs2 } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyDistributed from '!!raw-loader!./Distributed'
-import storyDefaultTab from '!!raw-loader!./DefaultTab'
-import storyScrolling from '!!raw-loader!./Scrolling'
-import storyDisabled from '!!raw-loader!./Disabled'
+import { Code, MessageBar, Tabs2 } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyDistributed from './Distributed?raw';
+import storyDefaultTab from './DefaultTab?raw';
+import storyScrolling from './Scrolling?raw';
+import storyDisabled from './Disabled?raw';
 
 <Meta component={Tabs2} title="Docs/Tabs2" />
 
 # Tabs2
-
 
 `Tabs2` contains one or more `Tab2` components. `Tabs2`, when left uncontrolled, manages the visible tab as well as switching between tabs.
 
@@ -37,10 +36,10 @@ Using the `defaultTabId` prop on `Tabs2` will change the tab that is selected by
 <Editor code={storyScrolling} />
 
 ## Disabled Tab
+
 Using the `disabled` prop on an individual `Tab2` will make the tab disabled and not accessible.
 
 <Editor code={storyDisabled} />
-
 
 ## Props
 

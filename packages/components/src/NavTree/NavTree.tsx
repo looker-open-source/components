@@ -23,37 +23,37 @@
  SOFTWARE.
 
  */
-import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown'
-import { ArrowRight } from '@styled-icons/material/ArrowRight'
-import styled from 'styled-components'
-import type { FocusEvent, KeyboardEvent, MouseEvent } from 'react'
-import React, { cloneElement, useContext } from 'react'
-import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes'
-import { partitionTreeProps, useTreeHandlers } from '../Tree/utils'
-import type { ListItemProps } from '../ListItem'
-import { listItemDimensions } from '../ListItem'
-import { TreeContext } from '../Tree/TreeContext'
-import { useAccordion2 } from '../Accordion2'
+import { ArrowDropDown } from '@styled-icons/material/ArrowDropDown';
+import { ArrowRight } from '@styled-icons/material/ArrowRight';
+import styled from 'styled-components';
+import type { FocusEvent, KeyboardEvent, MouseEvent } from 'react';
+import React, { cloneElement, useContext } from 'react';
+import type { ControlledOrUncontrolled } from '../Accordion2/controlTypes';
+import { partitionTreeProps, useTreeHandlers } from '../Tree/utils';
+import type { ListItemProps } from '../ListItem';
+import { listItemDimensions } from '../ListItem';
+import { TreeContext } from '../Tree/TreeContext';
+import { useAccordion2 } from '../Accordion2';
 import {
   createSafeRel,
   HoverDisclosureContext,
   partitionAriaProps,
   useWrapEvent,
-} from '../utils'
-import { List } from '../List'
-import { AccordionIndicator } from '../Accordion2/AccordionIndicator'
-import { createListItemPartitions } from '../ListItem/utils'
-import { WindowedTreeContext } from '../Tree/WindowedTreeNode'
-import type { NavTreeProps } from './types'
-import { NavTreeDisclosure } from './NavTreeDisclosure'
-import { NavTreeItemContent } from './NavTreeItem/NavTreeItemContent'
+} from '../utils';
+import { List } from '../List';
+import { AccordionIndicator } from '../Accordion2/AccordionIndicator';
+import { createListItemPartitions } from '../ListItem/utils';
+import { WindowedTreeContext } from '../Tree/WindowedTreeNode';
+import type { NavTreeProps } from './types';
+import { NavTreeDisclosure } from './NavTreeDisclosure';
+import { NavTreeItemContent } from './NavTreeItem/NavTreeItemContent';
 
 /**
  * Adds additional padding to left side of all NavTree-related elements
  * to allow for better click targeting when NavTree composition bumps against
  * left page edge.
  */
-export const INDICATOR_SPACER = '8px'
+export const INDICATOR_SPACER = '8px';
 
 export const NavTree = styled(
   ({
@@ -78,23 +78,23 @@ export const NavTree = styled(
      * If `href` is supplied the clicking the label will NOT trigger
      * the underlying accordion. Only the indicator will trigger toggle
      */
-    const isIndicatorToggleOnly = !!restProps.href
+    const isIndicatorToggleOnly = !!restProps.href;
 
     const [treeItemInnerProps, accordionInnerProps] = partitionTreeProps(
       restProps as Record<string, unknown>
-    )
+    );
 
     const { hovered, contentHandlers, wrapperHandlers } = useTreeHandlers({
       onFocus,
       onMouseEnter,
       onMouseLeave,
-    })
+    });
 
     const { disabled, href, icon, rel, selected, target } =
-      treeItemInnerProps as Partial<ListItemProps>
-    const [ariaProps] = partitionAriaProps(restProps)
+      treeItemInnerProps as Partial<ListItemProps>;
+    const [ariaProps] = partitionAriaProps(restProps);
 
-    const treeContext = useContext(TreeContext)
+    const treeContext = useContext(TreeContext);
 
     // Context for supporting windowing
     // - density must be defined at the collection level for consistent child height
@@ -104,28 +104,28 @@ export const NavTree = styled(
       isOpen: contextIsOpen,
       toggleNode,
       partialRender,
-    } = useContext(WindowedTreeContext)
+    } = useContext(WindowedTreeContext);
 
-    const isOpen = contextIsOpen ?? propsIsOpen
-    const toggleOpen = toggleNode ?? propsToggleOpen
+    const isOpen = contextIsOpen ?? propsIsOpen;
+    const toggleOpen = toggleNode ?? propsToggleOpen;
 
-    const startingDepth = 0
-    const depth = treeContext.depth ? treeContext.depth : startingDepth
+    const startingDepth = 0;
+    const depth = treeContext.depth ? treeContext.depth : startingDepth;
 
     const [inside, outside] = createListItemPartitions({
       ...treeItemInnerProps,
       children: label,
       icon,
       truncate,
-    })
+    });
     let accordionProps: ControlledOrUncontrolled = {
       defaultOpen,
       onClose,
       onOpen,
       ...accordionInnerProps,
-    }
+    };
     if (isOpen !== undefined && toggleOpen) {
-      accordionProps = { ...accordionProps, isOpen, toggleOpen }
+      accordionProps = { ...accordionProps, isOpen, toggleOpen };
     }
 
     const {
@@ -151,7 +151,7 @@ export const NavTree = styled(
       role: 'treeitem',
       tabIndex: -1,
       ...accordionProps,
-    })
+    });
 
     const {
       indicator,
@@ -161,37 +161,37 @@ export const NavTree = styled(
       onClick: onClickDisclosureToggle,
       onKeyUp: onKeyUpDisclosureToggle,
       ...disclosureDomProps
-    } = disclosureProps
+    } = disclosureProps;
 
     const indicatorToggleOnlyProps = {
       onBlur: onBlurDisclosureToggle,
       onClick: onClickDisclosureToggle,
       onKeyUp: onKeyUpDisclosureToggle,
       tabIndex: -1,
-    }
+    };
     const renderedIndicator = cloneElement(indicator, {
       ...(isIndicatorToggleOnly ? indicatorToggleOnlyProps : undefined),
-    })
+    });
 
     const handleContentBlur = useWrapEvent((event: FocusEvent<HTMLElement>) => {
       if (!isIndicatorToggleOnly && onBlurDisclosureToggle)
-        onBlurDisclosureToggle(event)
-    })
+        onBlurDisclosureToggle(event);
+    });
 
     const handleContentClick = useWrapEvent(
       (event: MouseEvent<HTMLElement>) => {
         if (!isIndicatorToggleOnly && onClickDisclosureToggle)
-          onClickDisclosureToggle(event)
+          onClickDisclosureToggle(event);
       },
       onClick
-    )
+    );
 
     const handleContentKeyUp = useWrapEvent(
       (event: KeyboardEvent<HTMLElement>) => {
         if (!isIndicatorToggleOnly && onKeyUpDisclosureToggle)
-          onKeyUpDisclosureToggle(event)
+          onKeyUpDisclosureToggle(event);
       }
-    )
+    );
 
     const statefulProps = {
       color: 'key' as const,
@@ -200,7 +200,7 @@ export const NavTree = styled(
       // disables the hover bg color since ripple includes hover style
       ripple: true,
       selected,
-    }
+    };
 
     const content = (
       <>
@@ -232,7 +232,7 @@ export const NavTree = styled(
           {disclosureLabel}
         </NavTreeItemContent>
       </>
-    )
+    );
 
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
@@ -257,7 +257,7 @@ export const NavTree = styled(
           </div>
         </TreeContext.Provider>
       </HoverDisclosureContext.Provider>
-    )
+    );
   }
 )<NavTreeProps>`
   ${AccordionIndicator} {
@@ -268,4 +268,4 @@ export const NavTree = styled(
         theme.space[listItemDimensions(theme.defaults.density).gap]
       };`}
   }
-`
+`;

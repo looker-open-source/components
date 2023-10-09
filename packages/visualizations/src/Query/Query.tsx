@@ -24,44 +24,48 @@
 
  */
 
-import type { ComponentType, ReactNode } from 'react'
-import React, { Children } from 'react'
-import { useTheme } from 'styled-components'
-import flow from 'lodash/flow'
+import type { ComponentType, ReactNode } from 'react';
+import React, { Children } from 'react';
+import { useTheme } from 'styled-components';
+import flow from 'lodash/flow';
 import {
   useQueryId,
   useVisConfig,
   useQueryData,
   useQueryIdFromDashboard,
-} from '@looker/components-data'
-import type { CAll } from '@looker/visualizations-adapters'
-import { ProgressCircular, Space, ComponentsProvider } from '@looker/components'
-import { useTranslation } from '../utils'
+} from '@looker/components-data';
+import type { CAll } from '@looker/visualizations-adapters';
+import {
+  ProgressCircular,
+  Space,
+  ComponentsProvider,
+} from '@looker/components';
+import { useTranslation } from '../utils';
 import {
   ErrorBoundary,
   buildTrackingTag,
   sortByDateTime,
   nullValueZero,
   xAxisReversed,
-} from '@looker/visualizations-adapters'
-import { QueryError } from '../QueryError'
+} from '@looker/visualizations-adapters';
+import { QueryError } from '../QueryError';
 
 export type QueryProps = {
   /* Accept user defined config options to overwrite API response */
-  config?: Partial<CAll>
-  LoadingIndicator?: ComponentType
-  children?: ReactNode
+  config?: Partial<CAll>;
+  LoadingIndicator?: ComponentType;
+  children?: ReactNode;
 } & (
   | /* Restricted prop combo: use EITHER a dashboard or query, but not both */
   {
-      dashboard?: never
-      query?: string | number
+      dashboard?: never;
+      query?: string | number;
     }
   | {
-      dashboard?: number
-      query?: never
+      dashboard?: number;
+      query?: never;
     }
-)
+);
 
 const QueryInternal = ({
   query,
@@ -70,11 +74,11 @@ const QueryInternal = ({
   config: configProp,
   LoadingIndicator,
 }: QueryProps) => {
-  const { t } = useTranslation('Query')
+  const { t } = useTranslation('Query');
 
   if (dashboard && query) {
     // eslint-disable-next-line no-console
-    console.warn(t('Query component received both dashboard and query props'))
+    console.warn(t('Query component received both dashboard and query props'));
   }
 
   const {
@@ -82,21 +86,21 @@ const QueryInternal = ({
     isPending: isDashboardPending,
     isOK: isDashboardOK,
     error: dashboardError,
-  } = useQueryIdFromDashboard(dashboard)
+  } = useQueryIdFromDashboard(dashboard);
 
   const {
     queryId,
     isPending: isQueryIdPending,
     isOK: isQueryIdOK,
     error: queryIdError,
-  } = useQueryId(query || dashboardQueryId)
+  } = useQueryId(query || dashboardQueryId);
 
   const {
     visConfig,
     isPending: isVisConfigPending,
     isOK: isVisConfigOK,
     error: visConfigError,
-  } = useVisConfig(queryId, configProp)
+  } = useVisConfig(queryId, configProp);
 
   const {
     data,
@@ -106,7 +110,7 @@ const QueryInternal = ({
     isPending: isQueryDataPending,
     isOK: isQueryDataOK,
     error: queryDataError,
-  } = useQueryData(queryId, buildTrackingTag(visConfig.type))
+  } = useQueryData(queryId, buildTrackingTag(visConfig.type));
 
   // derived accumulative state from all the various requests:
   const isLoading = [
@@ -114,18 +118,18 @@ const QueryInternal = ({
     isQueryIdPending,
     isVisConfigPending,
     isQueryDataPending,
-  ].some(Boolean)
+  ].some(Boolean);
 
   const isEveryResponseOk = [
     isDashboardOK,
     isQueryIdOK,
     isVisConfigOK,
     isQueryDataOK,
-  ].every(responseOk => responseOk === true)
+  ].every(responseOk => responseOk === true);
 
   if (!query && !dashboard) {
     // no query to render!
-    return null
+    return null;
   }
 
   if (isLoading) {
@@ -133,7 +137,7 @@ const QueryInternal = ({
       <Space justify="center" p="small">
         {LoadingIndicator ? <LoadingIndicator /> : <ProgressCircular />}
       </Space>
-    )
+    );
   }
 
   if (!isEveryResponseOk) {
@@ -146,16 +150,16 @@ const QueryInternal = ({
           queryDataError?.message
         }
       />
-    )
+    );
   }
 
-  const dataTransformations = [sortByDateTime, nullValueZero, xAxisReversed]
+  const dataTransformations = [sortByDateTime, nullValueZero, xAxisReversed];
 
   const { data: transformedData } = flow(dataTransformations)({
     data,
     config: visConfig,
     fields,
-  })
+  });
 
   /*
    * Pass normalized values down to children
@@ -175,19 +179,19 @@ const QueryInternal = ({
                 ok: isEveryResponseOk,
                 totals,
               })
-            : child
+            : child;
         })}
       </>
-    )
+    );
   } else {
     // eslint-disable-next-line no-console
-    console.warn(t('No children passed to Query component'))
-    return null
+    console.warn(t('No children passed to Query component'));
+    return null;
   }
-}
+};
 
 export const Query = (props: QueryProps) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   if (!theme) {
     // Recursively wrap Query in ComponentsProvider to ensure that
@@ -196,12 +200,12 @@ export const Query = (props: QueryProps) => {
       <ComponentsProvider>
         <Query {...props} />
       </ComponentsProvider>
-    )
+    );
   }
 
   return (
     <ErrorBoundary>
       <QueryInternal {...props} />
     </ErrorBoundary>
-  )
-}
+  );
+};

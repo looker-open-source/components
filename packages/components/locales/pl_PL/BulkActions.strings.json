@@ -1,8 +1,8 @@
 {
-  "AllPageCountDisplayedSelected": "Wybrano wszystkie wyświetlone elementy ({{pageCount}})",
-  "AllTotalCountSelected": "Wybrano wszystkie elementy ({{totalCount}})",
-  "Bulk Actions": "Akcje zbiorcze",
-  "Clear Selection": "Wyczyść zaznaczenie",
-  "SelectAllCountResults": "Wybierz wszystkie wyniki ({{totalCount}})",
-  "SelectedCountOfTotalDisplayed": "Wybrane wyświetlone elementy: {{selectedItemCount}} z {{pageCount}}"
+  "AllPageCountDisplayedSelected": "Wybrano wszystkie wyświetlone elementy ({{pageCount}})",
+  "AllTotalCountSelected": "Wybrano wszystkie elementy ({{totalCount}})",
+  "Bulk Actions": "Działania zbiorcze",
+  "Clear Selection": "Odznacz",
+  "SelectAllCountResults": "Wybierz wszystkie wyniki ({{totalCount}})",
+  "SelectedCountOfTotalDisplayed": "Wybrano {{selectedItemCount}} z {{pageCount}} wyświetlonych elementów"
 }

@@ -24,26 +24,26 @@
 
  */
 
-import type { MaxWidthProps } from '@looker/design-tokens'
-import { maxWidth, reset } from '@looker/design-tokens'
-import type { KeyboardEvent, MouseEvent, Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { Close } from '@styled-icons/material/Close'
-import type { GenericClickProps } from '../utils'
+import type { MaxWidthProps } from '@looker/design-tokens';
+import { maxWidth, reset } from '@looker/design-tokens';
+import type { KeyboardEvent, MouseEvent, Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { Close } from '@styled-icons/material/Close';
+import type { GenericClickProps } from '../utils';
 import {
   useCallbackRef,
   useClickable,
   useWrapEvent,
   useTranslation,
   useID,
-} from '../utils'
-import { IconButton } from '../Button/IconButton'
-import type { SpanProps } from '../Text'
-import { Span } from '../Text'
-import type { TruncateCSSProps } from '../Text/truncate'
-import { truncateCSS } from '../Text/truncate'
-import { useTruncateTooltip } from '../Truncate/useTruncateTooltip'
+} from '../utils';
+import { IconButton } from '../Button/IconButton';
+import type { SpanProps } from '../Text';
+import { Span } from '../Text';
+import type { TruncateCSSProps } from '../Text/truncate';
+import { truncateCSS } from '../Text/truncate';
+import { useTruncateTooltip } from '../Truncate/useTruncateTooltip';
 
 export type ChipProps = MaxWidthProps &
   GenericClickProps<HTMLSpanElement> & {
@@ -51,28 +51,28 @@ export type ChipProps = MaxWidthProps &
      * customize the tooltip on the closing icon
      * @default Delete
      */
-    iconLabel?: string
+    iconLabel?: string;
     /**
      * Displays an x icon and is called when the user clicks that or hits the delete key
      */
     onDelete?: (
       e?: MouseEvent<HTMLSpanElement> | KeyboardEvent<HTMLSpanElement>
-    ) => void
+    ) => void;
     /**
      * I18n recommended: content that is user visible should be treated for i18n
      */
-    prefix?: string
-    readOnly?: boolean
-  }
+    prefix?: string;
+    readOnly?: boolean;
+  };
 
 const ChipLabel = styled(Span)<SpanProps & TruncateCSSProps>`
   ${truncateCSS}
-`
+`;
 
 export const Chip = styled(
   forwardRef((props: ChipProps, ref: Ref<HTMLSpanElement>) => {
-    const { t } = useTranslation('Chip')
-    const iconLabelText = t('Delete')
+    const { t } = useTranslation('Chip');
+    const iconLabelText = t('Delete');
     const {
       children,
       disabled,
@@ -85,33 +85,33 @@ export const Chip = styled(
       readOnly = false,
       prefix,
       ...rest
-    } = props
+    } = props;
 
-    const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp })
+    const clickableProps = useClickable({ disabled, onBlur, onClick, onKeyUp });
 
     const handleKeyDown = (event: KeyboardEvent<HTMLSpanElement>) => {
       if (event.key === 'Backspace') {
-        onDelete && onDelete(event)
+        onDelete && onDelete(event);
       }
-    }
+    };
 
     const handleDelete = (e: MouseEvent<HTMLButtonElement>) => {
       if (!disabled) {
-        onDelete && onDelete(e)
+        onDelete && onDelete(e);
       }
-      e.stopPropagation()
-    }
+      e.stopPropagation();
+    };
 
-    const id = useID()
+    const id = useID();
 
-    const [element, setElement] = useCallbackRef()
+    const [element, setElement] = useCallbackRef();
     const {
       domProps: { className: _className, ...restDomProps },
       tooltip,
     } = useTruncateTooltip({
       children,
       element,
-    })
+    });
 
     return (
       <Span
@@ -140,7 +140,7 @@ export const Chip = styled(
             />
           ))}
       </Span>
-    )
+    );
   })
 )`
   ${reset}
@@ -185,4 +185,4 @@ export const Chip = styled(
       background: ${({ theme }) => theme.colors.neutralAccent};
     }
   }
-`
+`;

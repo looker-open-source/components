@@ -3,14 +3,14 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ILookmlModelExplore } from '@looker/sdk/src/4.0u/models'
-import { createExploreViewsTree } from './create_explore_views_tree'
+import type { ILookmlModelExplore } from '@looker/sdk/src/4.0u/models';
+import { createExploreViewsTree } from './create_explore_views_tree';
 
 // TODO: Finish adding tests here
 describe('createExploreViewsTree tests', () => {
   it('should return empty array given empty explores', () => {
-    expect(createExploreViewsTree()).toEqual([])
-  })
+    expect(createExploreViewsTree()).toEqual([]);
+  });
 
   it('should create a tree with views at the top level', () => {
     const explore = {
@@ -49,10 +49,10 @@ describe('createExploreViewsTree tests', () => {
           },
         ],
       },
-    } as ILookmlModelExplore
+    } as ILookmlModelExplore;
 
-    const trees = createExploreViewsTree(explore)
+    const trees = createExploreViewsTree(explore);
 
-    expect(trees).toMatchSnapshot()
-  })
-})
+    expect(trees).toMatchSnapshot();
+  });
+});

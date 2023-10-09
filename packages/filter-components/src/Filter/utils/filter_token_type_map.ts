@@ -19,8 +19,8 @@ const filterTokenTypeMap: { [key: string]: string } = {
   date_time_range_input: 'date_time_range_input',
   slider: 'slider',
   range_slider: 'range_slider',
-}
+};
 
 /** Checks if given filter UI type is valid. If it's not, or if it's advanced, return false */
 export const isValidFilterType = (type?: string): boolean =>
-  !!(type && filterTokenTypeMap[type])
+  !!(type && filterTokenTypeMap[type]);

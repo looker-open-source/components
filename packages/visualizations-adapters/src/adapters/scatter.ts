@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { VisWrapperProps } from '../VisWrapper'
-import type { CLineBase } from './'
+import type { VisWrapperProps } from '../VisWrapper';
+import type { CLineBase } from './';
 import type {
   Fields,
   SDKRecord,
@@ -14,21 +14,21 @@ import type {
   CSeriesLine,
   SupportedChartTypes,
   ChartLayoutProps,
-} from '../types'
+} from '../types';
 
 export type CScatterSeries = CSeriesBasic &
   CSeriesPoints &
   CSeriesSize &
-  CSeriesLine
+  CSeriesLine;
 
 export type CScatter = {
-  series?: CScatterSeries[] | { [key: string]: CScatterSeries }
-  type?: SupportedChartTypes['scatter']
-} & Omit<CLineBase, 'series'>
+  series?: CScatterSeries[] | { [key: string]: CScatterSeries };
+  type?: SupportedChartTypes['scatter'];
+} & Omit<CLineBase, 'series'>;
 
 export type ScatterProps = VisWrapperProps &
   ChartLayoutProps & {
-    data: SDKRecord[]
-    fields: Fields
-    config: CScatter
-  }
+    data: SDKRecord[];
+    fields: Fields;
+    config: CScatter;
+  };

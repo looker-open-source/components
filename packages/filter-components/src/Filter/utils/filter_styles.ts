@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
-export const multiInputWidth = 280
+export const multiInputWidth = 280;
 
 export interface PlacementProps {
   /**
    * Placement in a group of adjacent inputs
    */
-  placement?: 'left' | 'middle' | 'right'
+  placement?: 'left' | 'middle' | 'right';
 }
 
 const flatBorderRight = css`
@@ -20,35 +20,35 @@ const flatBorderRight = css`
   &:not(:focus-within) {
     border-right-color: transparent;
   }
-`
+`;
 
 const flatBorderLeft = css`
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-`
+`;
 
 export const inputPlacementStyle = ({ placement }: PlacementProps) => {
   switch (placement) {
     case 'left':
       return `
       ${flatBorderRight}
-    `
+    `;
     case 'right':
       return `
       ${flatBorderLeft}
-    `
+    `;
     case 'middle':
       return `
       ${flatBorderLeft}
       ${flatBorderRight}
-    `
+    `;
     default:
-      return ''
+      return '';
   }
-}
+};
 
 export interface TokenStyleProps {
-  tokenStyle?: boolean
+  tokenStyle?: boolean;
 }
 
 export const tokenStylePlaceholder = (props: TokenStyleProps) =>
@@ -58,4 +58,4 @@ export const tokenStylePlaceholder = (props: TokenStyleProps) =>
           color: ${({ theme }) => theme.colors.text3};
         }
       `
-    : ''
+    : '';

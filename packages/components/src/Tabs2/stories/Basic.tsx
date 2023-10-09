@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Tabs2, Tab2 } from '../..'
-import type { Tabs2Props } from '../types'
+import React from 'react';
+import { Tabs2, Tab2 } from '../..';
+import type { Tabs2Props } from '../types';
 
 export default function Basic(props: Tabs2Props) {
   return (
@@ -18,5 +18,5 @@ export default function Basic(props: Tabs2Props) {
       </Tab2>
       <Tab2 label="Fish">Are kinda smelly</Tab2>
     </Tabs2>
-  )
+  );
 }

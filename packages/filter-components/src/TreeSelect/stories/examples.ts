@@ -24,8 +24,42 @@
 
  */
 
-import type { ILookmlModelExplore } from '@looker/sdk'
-import type { TreeModel } from '../types'
+import type { ILookmlModelExplore } from '@looker/sdk';
+import { Category } from '@looker/sdk';
+import type { TreeModel } from '../types';
+
+export const mockShortcutTree: TreeModel[] = [
+  // doNotFilter
+  {
+    value: '',
+    id: '.donotfilter',
+    isOpen: true,
+    label: 'Do Not Filter',
+    isNotHighlightable: true,
+    payload: {
+      fieldOptions: {
+        view_label: '',
+        label_short: '',
+      },
+    },
+  },
+
+  // defaultField
+  {
+    value: 'Some Field',
+    id: '.defaultField',
+    isOpen: true,
+    label: 'Some Field',
+    isNotHighlightable: true,
+    payload: {
+      field: 'some_view.some_field',
+      fieldOptions: {
+        view_label: 'Some View',
+        label_short: 'Some Field',
+      },
+    },
+  },
+];
 
 export const mockTreeData: TreeModel[] = [
   {
@@ -118,7 +152,7 @@ export const mockTreeData: TreeModel[] = [
       },
     ],
   },
-]
+];
 
 export const exploreData: ILookmlModelExplore = {
   id: 'thelook::orders',
@@ -129,6 +163,7 @@ export const exploreData: ILookmlModelExplore = {
     dimensions: [
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -175,6 +210,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -221,6 +257,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -267,6 +304,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: false,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -314,6 +352,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -361,6 +400,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -407,6 +447,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -453,6 +494,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -500,6 +542,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -547,6 +590,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -594,6 +638,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -641,6 +686,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -688,6 +734,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -746,6 +793,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -792,6 +840,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -838,6 +887,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -884,6 +934,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: false,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -931,6 +982,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -978,6 +1030,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1024,6 +1077,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1070,6 +1124,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1117,6 +1172,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1164,6 +1220,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1211,6 +1268,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1258,6 +1316,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1305,6 +1364,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1352,6 +1412,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.dimension,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1413,6 +1474,7 @@ export const exploreData: ILookmlModelExplore = {
     measures: [
       {
         can_filter: true,
+        category: Category.measure,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1461,6 +1523,7 @@ export const exploreData: ILookmlModelExplore = {
       },
       {
         can_filter: true,
+        category: Category.measure,
         default_filter_value: null,
         description: '',
         enumerations: null,
@@ -1534,4 +1597,4 @@ export const exploreData: ILookmlModelExplore = {
   source_file: 'thelook/models/thelook.model.lkml',
   view_name: 'orders',
   hidden: false,
-}
+};

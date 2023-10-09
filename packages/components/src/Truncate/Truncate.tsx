@@ -23,42 +23,42 @@
  SOFTWARE.
 
  */
-import type { ReactNode } from 'react'
-import React from 'react'
-import styled from 'styled-components'
+import type { ReactNode } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import type {
   TextColorProps,
   TypographyProps,
   WidthProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   textColor,
   typography,
   width as widthHelper,
-} from '@looker/design-tokens'
-import { Span } from '../Text/Span'
-import { mergeClassNames } from '../utils'
-import { useTruncateTooltip } from './useTruncateTooltip'
+} from '@looker/design-tokens';
+import { Span } from '../Text/Span';
+import { mergeClassNames } from '../utils';
+import { useTruncateTooltip } from './useTruncateTooltip';
 
 export type TruncateProps = TextColorProps &
   TypographyProps &
   WidthProps & {
-    className?: string
+    className?: string;
     /**
      * Specifying `description` will cause truncation tooltip to _always_ be presented
      * Text specified in `description` property will be displayed below `children` supplied
      */
-    description?: string
-    children?: ReactNode
-  }
+    description?: string;
+    children?: ReactNode;
+  };
 
 export type TruncateConfigProp =
   | undefined
   | boolean
-  | { description: TruncateProps['description'] }
+  | { description: TruncateProps['description'] };
 
 const getTruncateDescription = (truncate: TruncateConfigProp) =>
-  typeof truncate === 'object' ? truncate.description : undefined
+  typeof truncate === 'object' ? truncate.description : undefined;
 
 /**
  * If `truncate` is truthy will output a `Truncate` component.
@@ -68,13 +68,13 @@ export const TruncateOptionally = ({
   truncate,
   ...props
 }: TruncateProps & {
-  truncate?: TruncateConfigProp
+  truncate?: TruncateConfigProp;
 }) =>
   truncate ? (
     <Truncate description={getTruncateDescription(truncate)} {...props} />
   ) : (
     <Span {...props} />
-  )
+  );
 
 /**
  * Prevent text wrapping on long labels and instead render truncated text.
@@ -88,7 +88,7 @@ const TruncateLayout = ({
   const { tooltip, domProps } = useTruncateTooltip({
     children,
     description,
-  })
+  });
 
   return (
     <>
@@ -100,8 +100,8 @@ const TruncateLayout = ({
         {children}
       </span>
     </>
-  )
-}
+  );
+};
 
 /**
  * @a11y-TODO we should support :focus-visible emulation here if focus can be drawn by an anchor/link within
@@ -124,4 +124,4 @@ export const Truncate = styled(TruncateLayout).attrs(({ width = '100%' }) => ({
       outline: none;
     }
   }
-`
+`;

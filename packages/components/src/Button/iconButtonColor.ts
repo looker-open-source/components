@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
-import { iconButtonColorDerivation } from '@looker/design-tokens'
-import type { ToggleColorProps } from './iconButtonTypes'
+import { css } from 'styled-components';
+import { iconButtonColorDerivation } from '@looker/design-tokens';
+import type { ToggleColorProps } from './iconButtonTypes';
 
-export const ICON_BUTTON_DEFAULT_COLOR = 'key'
+export const ICON_BUTTON_DEFAULT_COLOR = 'key';
 
 export const iconButtonColor = css<
   ToggleColorProps & {
-    toggle?: boolean
+    toggle?: boolean;
   }
 >`
   ${iconButtonColorDerivation}
@@ -35,4 +35,4 @@ export const iconButtonColor = css<
     color: ${({ theme, toggleColor }) =>
       theme.colors[toggleColor || ICON_BUTTON_DEFAULT_COLOR]};
   }
-`
+`;

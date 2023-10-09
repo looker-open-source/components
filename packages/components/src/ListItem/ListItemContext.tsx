@@ -3,18 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { createContext } from 'react'
-import type { DensityProp } from '@looker/design-tokens'
-import type { ListColor } from '../List'
+import { createContext } from 'react';
+import type { DensityProp } from '@looker/design-tokens';
+import type { ListColor } from './types';
 
 export type ListItemContextProps = DensityProp & {
-  iconGutter: boolean
-  color?: ListColor
-}
+  iconGutter: boolean;
+  color?: ListColor;
+};
 
 const listItemContext: ListItemContextProps = {
   density: 0,
   iconGutter: false,
-}
+};
 
-export const ListItemContext = createContext(listItemContext)
+export const ListItemContext = createContext(listItemContext);

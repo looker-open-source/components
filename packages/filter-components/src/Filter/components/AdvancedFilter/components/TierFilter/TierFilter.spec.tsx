@@ -23,13 +23,13 @@
  SOFTWARE.
 
  */
-import type { FilterModel, TierFilterType } from '@looker/filter-expressions'
-import { Category } from '@looker/sdk'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
+import type { FilterModel, TierFilterType } from '@looker/filter-expressions';
+import { Category } from '@looker/sdk';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
 
-import { TierFilter } from './TierFilter'
+import { TierFilter } from './TierFilter';
 
 describe('Tier filter test', () => {
   const enumerations = [
@@ -37,7 +37,7 @@ describe('Tier filter test', () => {
     { value: '2', label: 'b' },
     { value: 'with^_underscore^_03', label: 'With underscore c' },
     { value: 'with^_underscore^_04', label: 'With underscore d' },
-  ]
+  ];
   const defaultProps = {
     enumerations,
     filterType: 'tier' as const,
@@ -49,19 +49,19 @@ describe('Tier filter test', () => {
     showMatchesAdvanced: false,
     onAdd: jest.fn(),
     onRemove: jest.fn(),
-  }
+  };
   it('should render a TierFilter', () => {
     const item = {
       id: '1',
       is: true,
       type: 'match',
       value: [],
-    } as FilterModel<TierFilterType>
-    renderWithTheme(<TierFilter {...defaultProps} item={item} />)
-    const inputs = screen.getAllByRole('textbox')
-    expect(inputs[0]).toHaveValue('is')
-    expect(inputs[1]).toHaveValue('')
-  })
+    } as FilterModel<TierFilterType>;
+    renderWithTheme(<TierFilter {...defaultProps} item={item} />);
+    const inputs = screen.getAllByRole('textbox');
+    expect(inputs[0]).toHaveValue('is');
+    expect(inputs[1]).toHaveValue('');
+  });
 
   describe('when the filter is a parameter', () => {
     describe('and there is no value selected', () => {
@@ -71,19 +71,19 @@ describe('Tier filter test', () => {
           type: 'match',
           is: false,
           value: [],
-        } as FilterModel
+        } as FilterModel;
         renderWithTheme(
           <TierFilter
             {...defaultProps}
             item={item}
             field={{ category: Category.parameter }}
           />
-        )
-        const inputs = screen.getAllByRole('textbox')
-        expect(inputs[0]).toHaveValue('!match')
-        expect(inputs[1]).toHaveValue('a')
-      })
-    })
+        );
+        const inputs = screen.getAllByRole('textbox');
+        expect(inputs[0]).toHaveValue('!match');
+        expect(inputs[1]).toHaveValue('a');
+      });
+    });
 
     describe('and there is an existing value selected', () => {
       it('should not change the item value (default value does not have underscores)', () => {
@@ -92,18 +92,18 @@ describe('Tier filter test', () => {
           type: 'match',
           is: false,
           value: ['2'],
-        } as FilterModel
+        } as FilterModel;
         renderWithTheme(
           <TierFilter
             {...defaultProps}
             item={item}
             field={{ category: Category.parameter, has_allowed_values: true }}
           />
-        )
-        const inputs = screen.getAllByRole('textbox')
-        expect(inputs[0]).toHaveValue('!match')
-        expect(inputs[1]).toHaveValue('b')
-      })
+        );
+        const inputs = screen.getAllByRole('textbox');
+        expect(inputs[0]).toHaveValue('!match');
+        expect(inputs[1]).toHaveValue('b');
+      });
 
       it('should not change the item value (default value has underscores)', () => {
         const item = {
@@ -111,7 +111,7 @@ describe('Tier filter test', () => {
           type: 'match',
           is: true,
           value: ['with_underscore_04'],
-        } as FilterModel
+        } as FilterModel;
 
         renderWithTheme(
           <TierFilter
@@ -119,12 +119,12 @@ describe('Tier filter test', () => {
             item={item}
             field={{ category: Category.parameter, has_allowed_values: true }}
           />
-        )
-        const inputs = screen.getAllByRole('textbox')
-        expect(inputs[0]).toHaveValue('is')
-        expect(inputs[1]).toHaveValue('With underscore d')
-      })
-    })
+        );
+        const inputs = screen.getAllByRole('textbox');
+        expect(inputs[0]).toHaveValue('is');
+        expect(inputs[1]).toHaveValue('With underscore d');
+      });
+    });
 
     describe('and there is an invalid value selected', () => {
       it('should change the item value', () => {
@@ -133,20 +133,20 @@ describe('Tier filter test', () => {
           type: 'match',
           is: false,
           value: ['abc'],
-        } as FilterModel
+        } as FilterModel;
         renderWithTheme(
           <TierFilter
             {...defaultProps}
             item={item}
             field={{ category: Category.parameter, has_allowed_values: true }}
           />
-        )
-        const inputs = screen.getAllByRole('textbox')
-        expect(inputs[0]).toHaveValue('!match')
-        expect(inputs[1]).toHaveValue('a')
-      })
-    })
-  })
+        );
+        const inputs = screen.getAllByRole('textbox');
+        expect(inputs[0]).toHaveValue('!match');
+        expect(inputs[1]).toHaveValue('a');
+      });
+    });
+  });
 
   describe('and advanced filter control', () => {
     it('should render with Add button', () => {
@@ -155,7 +155,7 @@ describe('Tier filter test', () => {
         type: 'match',
         is: false,
         value: ['abc'],
-      } as FilterModel
+      } as FilterModel;
       renderWithTheme(
         <TierFilter
           {...defaultProps}
@@ -163,9 +163,9 @@ describe('Tier filter test', () => {
           showAdd={true}
           field={{ category: Category.parameter }}
         />
-      )
+      );
 
-      expect(screen.getByRole('button')).toHaveTextContent('Add')
-    })
-  })
-})
+      expect(screen.getByRole('button')).toHaveTextContent('Add');
+    });
+  });
+});

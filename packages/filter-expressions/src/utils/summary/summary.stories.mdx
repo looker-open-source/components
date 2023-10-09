@@ -1,4 +1,4 @@
-import { summary } from './summary'
+import { summary } from './summary';
 
 <Meta component={summary} title="Filters/Docs/Summary" />
 
@@ -11,12 +11,12 @@ filter expression, given the expression's type, the expression itself,
 and the user attributes and field, if applicable.
 
 ```jsx
-;() => {
-  const type = 'number'
-  const [expression, setExpression] = useState('[0,20],>30')
-  const handleChange = (value) => {
-    setExpression(value.expression)
-  }
+() => {
+  const type = 'number';
+  const [expression, setExpression] = useState('[0,20],>30');
+  const handleChange = value => {
+    setExpression(value.expression);
+  };
   return (
     <Popover
       content={
@@ -31,6 +31,6 @@ and the user attributes and field, if applicable.
     >
       <Button>{summary({ type, expression })}</Button>
     </Popover>
-  )
-}
+  );
+};
 ```

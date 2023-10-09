@@ -23,20 +23,20 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '@looker/filter-expressions'
+import type { FilterModel } from '@looker/filter-expressions';
 import {
   closeCombobox,
   getAllComboboxOptionText,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { Filter } from '../../../../../../Filter'
+} from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { Filter } from '../../../../../../Filter';
 import {
   testField,
   testFilterUIConfig,
-} from '../../../../../../utils/filter_test_utils'
-import { BeforeAfter } from './BeforeAfter'
+} from '../../../../../../utils/filter_test_utils';
+import { BeforeAfter } from './BeforeAfter';
 
 describe('BeforeAfter Date filter test', () => {
   it('should render a BeforeAfter component', () => {
@@ -50,16 +50,16 @@ describe('BeforeAfter Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    const inputs = screen.getAllByRole('textbox')
-    expect(inputs[0]).toHaveValue('is before')
-    expect(inputs[1]).toHaveValue('(relative)')
-    expect(inputs[2]).toHaveValue('days ago')
+    const inputs = screen.getAllByRole('textbox');
+    expect(inputs[0]).toHaveValue('is before');
+    expect(inputs[1]).toHaveValue('(relative)');
+    expect(inputs[2]).toHaveValue('days ago');
     // input[type=number] is not captured by getAllByRole('textbox')
-    expect(screen.queryByTestId('number-value')).toHaveValue(3)
+    expect(screen.queryByTestId('number-value')).toHaveValue(3);
 
-    fireEvent.click(inputs[2])
+    fireEvent.click(inputs[2]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "years ago",
@@ -80,9 +80,9 @@ describe('BeforeAfter Date filter test', () => {
         "quarters from now",
         "years from now",
       ]
-    `)
-    closeCombobox()
-  })
+    `);
+    closeCombobox();
+  });
 
   it('should render a BeforeAfter component with FiscalUnit options', () => {
     renderWithTheme(
@@ -95,9 +95,9 @@ describe('BeforeAfter Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    fireEvent.click(screen.getAllByRole('textbox')[2])
+    fireEvent.click(screen.getAllByRole('textbox')[2]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "fiscal years ago",
@@ -122,10 +122,10 @@ describe('BeforeAfter Date filter test', () => {
         "fiscal quarter from now",
         "fiscal years from now",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});
 
 describe('BeforeAfter can render now option', () => {
   const beforeNowItem: FilterModel = {
@@ -134,7 +134,7 @@ describe('BeforeAfter can render now option', () => {
     is: true,
     unit: 'now',
     range: 'relative',
-  }
+  };
 
   it('should render a Before now time unit', () => {
     renderWithTheme(
@@ -144,9 +144,9 @@ describe('BeforeAfter can render now option', () => {
         field={{ ...testField, fiscal_month_offset: 1 }}
         filterType="date"
       />
-    )
-    expect(screen.getAllByRole('textbox')[1]).toHaveValue('now')
-  })
+    );
+    expect(screen.getAllByRole('textbox')[1]).toHaveValue('now');
+  });
 
   it('should not render value component for before now item', () => {
     renderWithTheme(
@@ -156,7 +156,7 @@ describe('BeforeAfter can render now option', () => {
         field={{ ...testField, fiscal_month_offset: 1 }}
         filterType="date"
       />
-    )
-    expect(screen.queryByTestId('number-value')).not.toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.queryByTestId('number-value')).not.toBeInTheDocument();
+  });
+});

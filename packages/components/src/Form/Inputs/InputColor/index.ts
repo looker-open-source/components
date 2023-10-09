@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './InputColor'
-export * from './HueSlider'
-export * from './LightSaturationPreview'
-export * from './Swatch'
+export * from './InputColor';
+export * from './HueSlider';
+export * from './LightSaturationPreview';
+export * from './Swatch';

@@ -3,40 +3,40 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { BlendColors } from './blends'
-import type { StatefulColors } from './stateful'
-import type { SpecifiableColors, TextColor } from './specifiable'
-import type { DerivativeColors } from './derivative'
+import type { BlendColors } from './blends';
+import type { StatefulColors } from './stateful';
+import type { SpecifiableColors, TextColor } from './specifiable';
+import type { DerivativeColors } from './derivative';
 
 export type Colors = SpecifiableColors &
   DerivativeColors &
   BlendColors &
-  StatefulColors
+  StatefulColors;
 
-export type TextColors = TextColor
+export type TextColors = TextColor;
 
-export { coreColors, intentColors, specifiableColors } from './specifiable'
+export { coreColors, intentColors, specifiableColors } from './specifiable';
 
-export type { DerivativeColors } from './derivative'
+export type { DerivativeColors } from './derivative';
 export type {
   CoreColors,
   IllustrationColors,
   IntentColors,
   SpecifiableColors,
   SpecifiableTextColors,
-} from './specifiable'
-export type { BlendColors } from './blends'
+} from './specifiable';
+export type { BlendColors } from './blends';
 export type {
   ExtendedStatefulColor,
   StatefulColor,
   StatefulColors,
   StatefulColorChoices,
-} from './stateful'
-export type { ColorProps } from 'styled-system'
+} from './stateful';
+export type { ColorProps } from 'styled-system';
 
-export type { TextColorProps } from './textColor'
-export { backgroundColor } from './backgroundColor'
-export { uiColors, textColors } from './blends'
-export { derivativeColors } from './derivative'
-export { textColor } from './textColor'
-export { specifiableTextColors } from './specifiable'
+export type { TextColorProps } from './textColor';
+export { backgroundColor } from './backgroundColor';
+export { uiColors, textColors } from './blends';
+export { derivativeColors } from './derivative';
+export { textColor } from './textColor';
+export { specifiableTextColors } from './specifiable';

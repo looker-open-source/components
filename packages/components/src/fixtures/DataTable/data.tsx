@@ -25,19 +25,19 @@
  */
 
 export interface CheeseData {
-  id: string
-  disabled: boolean
-  name: string
-  status: string
-  inventory: number
-  color: string
-  origin: string
-  type?: string
-  calories?: number
-  fat?: number
-  protein?: number
-  calcium?: number
-  description: string
+  id: string;
+  disabled: boolean;
+  name: string;
+  status: string;
+  inventory: number;
+  color: string;
+  origin: string;
+  type?: string;
+  calories?: number;
+  fat?: number;
+  protein?: number;
+  calcium?: number;
+  description: string;
 }
 
 /* eslint-disable sort-keys-fix/sort-keys-fix */
@@ -55,7 +55,7 @@ export const row = {
   protein: 7,
   calcium: 0.958,
   description: `Gouda is a mild-flavored, yellow cow's milk cheese originating from the Netherlands. It is one of the most popular cheeses worldwide. The name is used today as a general term for numerous similar cheeses produced in the traditional Dutch manner. `,
-}
+};
 
 export const data: CheeseData[] = [
   row,
@@ -115,4 +115,4 @@ export const data: CheeseData[] = [
     calcium: undefined,
     description: `Provolone is an Italian cheese. It is an aged pasta filata cheese originating in Casilli near Vesuvius, where it is still produced in pear, sausage, or cone shapes 10 to 15 cm long. Provolone-type cheeses are also produced in other countries.`,
   },
-]
+];

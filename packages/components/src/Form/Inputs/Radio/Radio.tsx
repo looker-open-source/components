@@ -24,12 +24,12 @@
 
  */
 
-import pick from 'lodash/pick'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import type { SpaceProps } from '@looker/design-tokens'
-import { reset, space } from '@looker/design-tokens'
+import pick from 'lodash/pick';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import type { SpaceProps } from '@looker/design-tokens';
+import { reset, space } from '@looker/design-tokens';
 import {
   inputRippleColor,
   RIPPLE_RATIO,
@@ -37,22 +37,22 @@ import {
   rippleStyle,
   useRipple,
   useRippleHandlers,
-} from '../../../Ripple'
-import type { InputProps } from '../InputProps'
-import { pickInputProps } from '../InputProps'
-import type { ValidationType } from '../../ValidationMessage'
-import { FauxRadio } from './FauxRadio'
+} from '../../../Ripple';
+import type { InputProps } from '../InputProps';
+import { pickInputProps } from '../InputProps';
+import type { ValidationType } from '../../ValidationMessage';
+import { FauxRadio } from './FauxRadio';
 
 export interface RadioProps
   extends SpaceProps,
     Omit<InputProps, 'readOnly' | 'type' | 'checked' | 'onClick'> {
-  checked?: boolean
-  validationType?: ValidationType
+  checked?: boolean;
+  validationType?: ValidationType;
 }
 
 export const Radio = styled(
   forwardRef((props: RadioProps, ref: Ref<HTMLInputElement>) => {
-    const { className, style, validationType, ...restProps } = props
+    const { className, style, validationType, ...restProps } = props;
 
     const { callbacks, ...rippleProps } = useRipple({
       className,
@@ -64,13 +64,13 @@ export const Radio = styled(
       // to make the halo slightly bigger than the container
       size: RIPPLE_RATIO,
       style,
-    })
+    });
 
     const rippleHandlers = useRippleHandlers(
       callbacks,
       pick(restProps, rippleHandlerKeys),
       restProps.disabled
-    )
+    );
     return (
       <div {...rippleProps}>
         <input
@@ -82,7 +82,7 @@ export const Radio = styled(
         />
         <FauxRadio />
       </div>
-    )
+    );
   })
 )`
   ${reset}
@@ -130,4 +130,4 @@ export const Radio = styled(
       }
     }
   }
-`
+`;

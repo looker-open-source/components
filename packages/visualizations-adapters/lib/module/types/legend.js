@@ -1,2 +1,0 @@
-
-//# sourceMappingURL=legend.js.map

@@ -1,6 +1,6 @@
 {
   "feet": {
-    "value": "英呎"
+    "value": "英尺"
   },
   "kilometers": {
     "value": "公里"
@@ -9,6 +9,6 @@
     "value": "公尺"
   },
   "miles": {
-    "value": "英哩"
+    "value": "英里"
   }
 }

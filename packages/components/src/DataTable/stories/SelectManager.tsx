@@ -23,15 +23,15 @@
  SOFTWARE.
 
  */
-import React from 'react'
+import React from 'react';
 import {
   DataTableAction,
   DataTableItem,
   DataTableCell,
   DataTable,
   useSelectManager,
-} from '../..'
-import type { DataTableColumns } from '../../'
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function SelectManager() {
   const data = [
@@ -47,7 +47,7 @@ export default function SelectManager() {
       id: 3,
       name: `Blue`,
     },
-  ]
+  ];
 
   const columns: DataTableColumns = [
     {
@@ -62,12 +62,12 @@ export default function SelectManager() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
-  const allSelectableItems = data.map(({ id }) => String(id))
+  const allSelectableItems = data.map(({ id }) => String(id));
 
   const { onSelect, onSelectAll, selections } =
-    useSelectManager(allSelectableItems)
+    useSelectManager(allSelectableItems);
 
   const items = data.map(({ id, name }) => (
     <DataTableItem
@@ -85,7 +85,7 @@ export default function SelectManager() {
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
     </DataTableItem>
-  ))
+  ));
 
   return (
     <DataTable
@@ -100,5 +100,5 @@ export default function SelectManager() {
     >
       {items}
     </DataTable>
-  )
+  );
 }

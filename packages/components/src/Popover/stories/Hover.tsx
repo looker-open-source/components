@@ -2,13 +2,19 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Button, Card, CardContent, Space, Paragraph } from '@looker/components'
-import React from 'react'
-import { Popover, PopoverLayout } from '..'
+import {
+  Button,
+  Card,
+  CardContent,
+  Space,
+  Paragraph,
+} from '@looker/components';
+import React from 'react';
+import { Popover, PopoverLayout } from '..';
 
 export default function Hover() {
-  const hoverRef = React.useRef<HTMLDivElement>(null)
-  const content = <PopoverLayout>I'm in the popover</PopoverLayout>
+  const hoverRef = React.useRef<HTMLDivElement>(null);
+  const content = <PopoverLayout>I'm in the popover</PopoverLayout>;
   return (
     <Card ref={hoverRef} raised>
       <CardContent>
@@ -23,5 +29,5 @@ export default function Hover() {
         </Space>
       </CardContent>
     </Card>
-  )
+  );
 }

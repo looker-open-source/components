@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useEffect } from 'react'
-import type { IDashboard, IError, IQuery } from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import useSWR from 'swr'
-import { getErrorResponse } from '../utils'
-import { DataState } from './useDataState'
-import { useSDK } from './useSDK'
+import { useEffect } from 'react';
+import type { IDashboard, IError, IQuery } from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
+import useSWR from 'swr';
+import { getErrorResponse } from '../utils';
+import { DataState } from './useDataState';
+import { useSDK } from './useSDK';
 
 /**
  * This hook fetches data from provided dashboard Id, and returns
@@ -20,15 +20,15 @@ import { useSDK } from './useSDK'
  */
 
 export const useQueryIdFromDashboard = (dashboardId?: number) => {
-  const sdk = useSDK()
-  const { getIdFromDashboard, setByDashboardId } = DataState.useContainer()
+  const sdk = useSDK();
+  const { getIdFromDashboard, setByDashboardId } = DataState.useContainer();
 
   /*
    * Check for stored value
    * -----------------------------------------------------------
    */
 
-  const queryId = getIdFromDashboard(dashboardId)
+  const queryId = getIdFromDashboard(dashboardId);
 
   /*
    * Dispatch network request
@@ -37,11 +37,11 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
 
   const fetcher = async () => {
     if (dashboardId && !queryId) {
-      return await sdk.dashboard(String(dashboardId), 'dashboard_elements')
+      return await sdk.dashboard(String(dashboardId), 'dashboard_elements');
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data: SWRData, isValidating } = useSWR<void | SDKResponse<
     IDashboard,
@@ -50,7 +50,7 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
     `useQueryIdFromDashboard-${dashboardId}`, // caution: argument string must be unique to this instance
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   /*
    * Publish SWR response to central data store
@@ -60,19 +60,19 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
   useEffect(() => {
     const firstTile = SWRData?.ok
       ? SWRData?.value?.dashboard_elements?.[0]?.query
-      : undefined
+      : undefined;
 
-    const { id, ...query } = firstTile || ({} as IQuery)
+    const { id, ...query } = firstTile || ({} as IQuery);
 
     if (dashboardId && id && Number(id) !== queryId) {
-      setByDashboardId(dashboardId, Number(id), { metadata: query })
+      setByDashboardId(dashboardId, Number(id), { metadata: query });
     }
-  }, [SWRData, dashboardId, setByDashboardId, queryId])
+  }, [SWRData, dashboardId, setByDashboardId, queryId]);
 
   return {
     isOK: !!queryId || typeof dashboardId === 'undefined',
     isPending: isValidating,
     queryId,
     ...getErrorResponse(SWRData),
-  }
-}
+  };
+};

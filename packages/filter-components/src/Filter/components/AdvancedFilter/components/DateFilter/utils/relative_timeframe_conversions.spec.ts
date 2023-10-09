@@ -23,11 +23,11 @@
  SOFTWARE.
 
  */
-import { AllPresetTimeframes } from '../types/relative_timeframe_types'
+import { AllPresetTimeframes } from '../types/relative_timeframe_types';
 import {
   filterModelToRelativeTimeframeModel,
   relativeTimeframeModelToFilterModel,
-} from './relative_timeframe_conversions'
+} from './relative_timeframe_conversions';
 
 describe('Relative Timeframe Conversions', () => {
   describe('filterModelToRelativeTimeframeModel', () => {
@@ -39,8 +39,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'day',
           day: 'today',
         })
-      ).toEqual(AllPresetTimeframes.Today)
-    })
+      ).toEqual(AllPresetTimeframes.Today);
+    });
 
     it('converts Yesterday', () => {
       expect(
@@ -50,8 +50,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'day',
           day: 'yesterday',
         })
-      ).toEqual(AllPresetTimeframes.Yesterday)
-    })
+      ).toEqual(AllPresetTimeframes.Yesterday);
+    });
 
     it('converts Last 7', () => {
       expect(
@@ -62,8 +62,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 7,
         })
-      ).toEqual(AllPresetTimeframes.Last7)
-    })
+      ).toEqual(AllPresetTimeframes.Last7);
+    });
 
     it('converts Last 14', () => {
       expect(
@@ -74,8 +74,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 14,
         })
-      ).toEqual(AllPresetTimeframes.Last14)
-    })
+      ).toEqual(AllPresetTimeframes.Last14);
+    });
 
     it('converts Last 28', () => {
       expect(
@@ -86,8 +86,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 28,
         })
-      ).toEqual(AllPresetTimeframes.Last28)
-    })
+      ).toEqual(AllPresetTimeframes.Last28);
+    });
 
     it('converts Last 30', () => {
       expect(
@@ -98,8 +98,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 30,
         })
-      ).toEqual(AllPresetTimeframes.Last30)
-    })
+      ).toEqual(AllPresetTimeframes.Last30);
+    });
 
     it('converts Last 90', () => {
       expect(
@@ -110,8 +110,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 90,
         })
-      ).toEqual(AllPresetTimeframes.Last90)
-    })
+      ).toEqual(AllPresetTimeframes.Last90);
+    });
 
     it('converts Last 180', () => {
       expect(
@@ -122,8 +122,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 180,
         })
-      ).toEqual(AllPresetTimeframes.Last180)
-    })
+      ).toEqual(AllPresetTimeframes.Last180);
+    });
 
     it('converts Last 365', () => {
       expect(
@@ -134,8 +134,8 @@ describe('Relative Timeframe Conversions', () => {
           unit: 'day',
           value: 365,
         })
-      ).toEqual(AllPresetTimeframes.Last365)
-    })
+      ).toEqual(AllPresetTimeframes.Last365);
+    });
 
     it('converts This Week', () => {
       expect(
@@ -145,8 +145,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'this',
           unit: 'week',
         })
-      ).toEqual(AllPresetTimeframes.ThisWeek)
-    })
+      ).toEqual(AllPresetTimeframes.ThisWeek);
+    });
 
     it('converts This Month', () => {
       expect(
@@ -156,8 +156,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'this',
           unit: 'month',
         })
-      ).toEqual(AllPresetTimeframes.ThisMonth)
-    })
+      ).toEqual(AllPresetTimeframes.ThisMonth);
+    });
 
     it('converts This Quarter', () => {
       expect(
@@ -167,8 +167,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'this',
           unit: 'quarter',
         })
-      ).toEqual(AllPresetTimeframes.ThisQuarter)
-    })
+      ).toEqual(AllPresetTimeframes.ThisQuarter);
+    });
 
     it('converts This Year', () => {
       expect(
@@ -178,8 +178,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'this',
           unit: 'year',
         })
-      ).toEqual(AllPresetTimeframes.ThisYear)
-    })
+      ).toEqual(AllPresetTimeframes.ThisYear);
+    });
 
     it('converts Last Week', () => {
       expect(
@@ -189,8 +189,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'last',
           unit: 'week',
         })
-      ).toEqual(AllPresetTimeframes.PreviousWeek)
-    })
+      ).toEqual(AllPresetTimeframes.PreviousWeek);
+    });
 
     it('converts Last Month', () => {
       expect(
@@ -200,8 +200,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'last',
           unit: 'month',
         })
-      ).toEqual(AllPresetTimeframes.PreviousMonth)
-    })
+      ).toEqual(AllPresetTimeframes.PreviousMonth);
+    });
 
     it('converts Last Quarter', () => {
       expect(
@@ -211,8 +211,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'last',
           unit: 'quarter',
         })
-      ).toEqual(AllPresetTimeframes.PreviousQuarter)
-    })
+      ).toEqual(AllPresetTimeframes.PreviousQuarter);
+    });
 
     it('converts Last Year', () => {
       expect(
@@ -222,8 +222,8 @@ describe('Relative Timeframe Conversions', () => {
           type: 'last',
           unit: 'year',
         })
-      ).toEqual(AllPresetTimeframes.PreviousYear)
-    })
+      ).toEqual(AllPresetTimeframes.PreviousYear);
+    });
 
     it('converts Year to Date', () => {
       expect(
@@ -234,8 +234,8 @@ describe('Relative Timeframe Conversions', () => {
           startInterval: 'year',
           endInterval: 'second',
         })
-      ).toEqual(AllPresetTimeframes.YearToDate)
-    })
+      ).toEqual(AllPresetTimeframes.YearToDate);
+    });
 
     it('converts custom ranges to inclusive ranges', () => {
       expect(
@@ -249,9 +249,9 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         from: new Date(2019, 3, 1),
         to: new Date(2019, 3, 30),
-      })
-    })
-  })
+      });
+    });
+  });
 
   describe('relativeTimeframeModelToFilterModel', () => {
     it('converts Today', () => {
@@ -260,8 +260,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         day: 'today',
         type: 'day',
-      })
-    })
+      });
+    });
 
     it('converts Yesterday', () => {
       expect(
@@ -269,8 +269,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         day: 'yesterday',
         type: 'day',
-      })
-    })
+      });
+    });
 
     it('converts Last 7', () => {
       expect(
@@ -279,8 +279,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 7,
-      })
-    })
+      });
+    });
 
     it('converts Last 14', () => {
       expect(
@@ -289,8 +289,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 14,
-      })
-    })
+      });
+    });
 
     it('converts Last 28', () => {
       expect(
@@ -299,8 +299,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 28,
-      })
-    })
+      });
+    });
 
     it('converts Last 30', () => {
       expect(
@@ -309,8 +309,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 30,
-      })
-    })
+      });
+    });
 
     it('converts Last 90', () => {
       expect(
@@ -319,8 +319,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 90,
-      })
-    })
+      });
+    });
 
     it('converts Last 180', () => {
       expect(
@@ -329,8 +329,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 180,
-      })
-    })
+      });
+    });
 
     it('converts Last 365', () => {
       expect(
@@ -339,8 +339,8 @@ describe('Relative Timeframe Conversions', () => {
         type: 'past',
         unit: 'day',
         value: 365,
-      })
-    })
+      });
+    });
 
     it('converts This Week', () => {
       expect(
@@ -348,8 +348,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'this',
         unit: 'week',
-      })
-    })
+      });
+    });
 
     it('converts This Month', () => {
       expect(
@@ -357,8 +357,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'this',
         unit: 'month',
-      })
-    })
+      });
+    });
 
     it('converts This Quarter', () => {
       expect(
@@ -366,8 +366,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'this',
         unit: 'quarter',
-      })
-    })
+      });
+    });
 
     it('converts This Year', () => {
       expect(
@@ -375,8 +375,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'this',
         unit: 'year',
-      })
-    })
+      });
+    });
 
     it('converts Last Week', () => {
       expect(
@@ -384,8 +384,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'last',
         unit: 'week',
-      })
-    })
+      });
+    });
 
     it('converts Last Month', () => {
       expect(
@@ -393,8 +393,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'last',
         unit: 'month',
-      })
-    })
+      });
+    });
 
     it('converts Last Quarter', () => {
       expect(
@@ -402,8 +402,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'last',
         unit: 'quarter',
-      })
-    })
+      });
+    });
 
     it('converts Last Year', () => {
       expect(
@@ -411,8 +411,8 @@ describe('Relative Timeframe Conversions', () => {
       ).toEqual({
         type: 'last',
         unit: 'year',
-      })
-    })
+      });
+    });
 
     it('converts custom inclusive ranges', () => {
       expect(
@@ -438,7 +438,7 @@ describe('Relative Timeframe Conversions', () => {
           minute: 0,
           second: 0,
         },
-      })
-    })
-  })
-})
+      });
+    });
+  });
+});

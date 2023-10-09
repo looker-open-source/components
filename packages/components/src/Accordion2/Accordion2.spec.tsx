@@ -24,61 +24,61 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { children, label, lorem } from '../fixtures/accordion'
-import { Accordion2 } from './Accordion2'
-import { Controlled } from './stories/index.stories'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { children, label, lorem } from '../fixtures/accordion';
+import { Accordion2 } from './Accordion2';
+import { Controlled } from './stories/index.stories';
 
-const defaultProps = { children, label, lorem }
+const defaultProps = { children, label, lorem };
 
 describe('Accordion2', () => {
   test('Basic', () => {
-    renderWithTheme(<Accordion2 {...defaultProps} />)
-    const accordionLabel = screen.getByText(label)
-    expect(screen.queryByText(children)).not.toBeInTheDocument()
-    fireEvent.click(accordionLabel)
-    screen.getByText(children)
-    fireEvent.click(accordionLabel)
-    expect(screen.queryByText(children)).not.toBeInTheDocument()
-  })
+    renderWithTheme(<Accordion2 {...defaultProps} />);
+    const accordionLabel = screen.getByText(label);
+    expect(screen.queryByText(children)).not.toBeInTheDocument();
+    fireEvent.click(accordionLabel);
+    screen.getByText(children);
+    fireEvent.click(accordionLabel);
+    expect(screen.queryByText(children)).not.toBeInTheDocument();
+  });
 
   test('defaultOpen - renders children by default when defaultOpen === true', () => {
-    renderWithTheme(<Accordion2 defaultOpen {...defaultProps} />)
+    renderWithTheme(<Accordion2 defaultOpen {...defaultProps} />);
 
-    screen.getByText(children)
-  })
+    screen.getByText(children);
+  });
 
   test('Triggers onClose and onOpen callbacks label click', () => {
-    const onOpen = jest.fn()
-    const onClose = jest.fn()
+    const onOpen = jest.fn();
+    const onClose = jest.fn();
 
     renderWithTheme(
       <Accordion2 onOpen={onOpen} onClose={onClose} {...defaultProps} />
-    )
-    const accordionLabel = screen.getByText(label)
-    fireEvent.click(accordionLabel)
-    expect(onOpen).toHaveBeenCalledTimes(1)
-    fireEvent.click(accordionLabel)
-    expect(onClose).toHaveBeenCalledTimes(1)
-  })
+    );
+    const accordionLabel = screen.getByText(label);
+    fireEvent.click(accordionLabel);
+    expect(onOpen).toHaveBeenCalledTimes(1);
+    fireEvent.click(accordionLabel);
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
 
   test('Controlled - shows and hides children with provided isOpen and toggleOpen props', () => {
-    renderWithTheme(<Controlled />)
-    const accordionLabel = screen.getByText('See more')
-    screen.getByText(lorem)
-    fireEvent.click(accordionLabel)
-    expect(screen.queryByText(lorem)).not.toBeInTheDocument()
-    fireEvent.click(accordionLabel)
-    screen.getByText(lorem)
-  })
+    renderWithTheme(<Controlled />);
+    const accordionLabel = screen.getByText('See more');
+    screen.getByText(lorem);
+    fireEvent.click(accordionLabel);
+    expect(screen.queryByText(lorem)).not.toBeInTheDocument();
+    fireEvent.click(accordionLabel);
+    screen.getByText(lorem);
+  });
 
   test('Wraps handlers passed in', () => {
-    const handleKeyDown = jest.fn()
-    const handleKeyUp = jest.fn()
-    const handleClick = jest.fn()
-    const handleBlur = jest.fn()
+    const handleKeyDown = jest.fn();
+    const handleKeyUp = jest.fn();
+    const handleClick = jest.fn();
+    const handleBlur = jest.fn();
 
     renderWithTheme(
       <Accordion2
@@ -88,33 +88,33 @@ describe('Accordion2', () => {
         onBlur={handleBlur}
         {...defaultProps}
       />
-    )
+    );
 
-    const accordionLabel = screen.getByText(label)
-    fireEvent.click(accordionLabel)
-    expect(handleClick).toHaveBeenCalled()
-    fireEvent.blur(accordionLabel)
-    expect(handleBlur).toHaveBeenCalled()
+    const accordionLabel = screen.getByText(label);
+    fireEvent.click(accordionLabel);
+    expect(handleClick).toHaveBeenCalled();
+    fireEvent.blur(accordionLabel);
+    expect(handleBlur).toHaveBeenCalled();
     fireEvent.keyDown(accordionLabel, {
       key: 'Enter',
-    })
-    expect(handleKeyDown).toHaveBeenCalled()
+    });
+    expect(handleKeyDown).toHaveBeenCalled();
     fireEvent.keyUp(accordionLabel, {
       key: 'Enter',
-    })
-    expect(handleKeyUp).toHaveBeenCalled()
-  })
+    });
+    expect(handleKeyUp).toHaveBeenCalled();
+  });
 
   test('Validate both controlled props are required', () => {
     renderWithTheme(
       // @ts-expect-error isOpen without toggleOpen is invalid
       <Accordion2 isOpen {...defaultProps} />
-    )
-  })
+    );
+  });
 
   test('defaultOpen mutation should be ignored', () => {
     const Example = () => {
-      const [defaultOpen, setDefaultOpen] = React.useState(true)
+      const [defaultOpen, setDefaultOpen] = React.useState(true);
 
       return (
         <>
@@ -124,13 +124,13 @@ describe('Accordion2', () => {
           </Accordion2>
           )
         </>
-      )
-    }
+      );
+    };
 
-    renderWithTheme(<Example />)
-    expect(screen.getByText('World')).toBeInTheDocument()
+    renderWithTheme(<Example />);
+    expect(screen.getByText('World')).toBeInTheDocument();
     // Accordion should ignore change
-    fireEvent.click(screen.getByText('Toggle'))
-    expect(screen.getByText('World')).toBeInTheDocument()
-  })
-})
+    fireEvent.click(screen.getByText('Toggle'));
+    expect(screen.getByText('World')).toBeInTheDocument();
+  });
+});

@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { FormEvent } from 'react'
-import { FieldColor } from '../../FieldColor'
-import { Space } from '../../../../Layout'
-import { Button } from '../../../../'
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { FieldColor } from '../../FieldColor';
+import { Space } from '../../../../Layout';
+import { Button } from '../../../../';
 
 export default function Controlled() {
-  const [value, setValue] = useState('white')
-  const handleChange = (e: FormEvent<HTMLInputElement>) =>
-    setValue(e.currentTarget.value)
+  const [value, setValue] = useState('white');
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setValue(e.target.value);
 
   return (
     <Space>
@@ -21,5 +21,5 @@ export default function Controlled() {
       </Button>
       <FieldColor label="Controlled" value={value} onChange={handleChange} />
     </Space>
-  )
+  );
 }

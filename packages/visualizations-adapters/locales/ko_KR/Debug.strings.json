@@ -1,8 +1,8 @@
 {
   "Config": "구성",
-  "Dimensions": "치수",
+  "Dimensions": "측정기준",
   "Error": "오류",
-  "Measures": "측정치",
+  "Measures": "측정",
   "Result": "결과",
   "error": "오류",
   "ok": "확인"

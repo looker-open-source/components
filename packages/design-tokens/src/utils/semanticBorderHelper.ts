@@ -24,14 +24,14 @@
 
  */
 
-import { css } from 'styled-components'
-import { borderRadius } from '../system'
-import type { BorderRadiusProps } from '../system'
-import type { Colors } from '../color'
+import { css } from 'styled-components';
+import { borderRadius } from '../system';
+import type { BorderRadiusProps } from '../system';
+import type { Colors } from '../color';
 
-type BorderBaseProp = keyof Colors | string
-type BorderProp = BorderBaseProp | boolean | 'none'
-type BorderPosition = 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y'
+type BorderBaseProp = keyof Colors | string;
+type BorderProp = BorderBaseProp | boolean | 'none';
+type BorderPosition = 'bottom' | 'left' | 'right' | 'top' | 'x' | 'y';
 
 export type SemanticBorderProps = BorderRadiusProps & {
   /**
@@ -42,71 +42,71 @@ export type SemanticBorderProps = BorderRadiusProps & {
    * `false` - will not apply any border
    * `keyof Colors` - will use the color of the key
    */
-  border?: BorderProp
+  border?: BorderProp;
   /**
    * A 1px border is applied to the bottom.
    * See `border` property for specifics values that can be specified..
    */
-  borderBottom?: BorderProp
+  borderBottom?: BorderProp;
   /**
    * A 1px border is applied to the left.
    * See `border` property for specifics values that can be specified..
    */
-  borderLeft?: BorderProp
+  borderLeft?: BorderProp;
   /**
    * A 1px border is applied to the right.
    * See `border` property for specifics values that can be specified..
    */
-  borderRight?: BorderProp
+  borderRight?: BorderProp;
   /**
    * A 1px border is applied to the top.
    * See `border` property for specifics values that can be specified..
    */
-  borderTop?: BorderProp
+  borderTop?: BorderProp;
   /**
    * A 1px border is applied to the left & right.
    * See `border` property for specifics values that can be specified..
    */
-  borderX?: BorderProp
+  borderX?: BorderProp;
   /**
    * A 1px border is applied to the top & bottom.
    * See `border` property for specifics values that can be specified..
    */
-  borderY?: BorderProp
-}
+  borderY?: BorderProp;
+};
 
 const borderPropertyHelper = (color: BorderBaseProp, property: string) => css`
   ${property}: 1px solid
     ${({ theme }) => theme.colors[color as keyof Colors] || color};
-`
+`;
 
 const borderPositionHelper = (
   border: BorderProp,
   position?: BorderPosition
 ) => {
-  const color = border === true ? 'ui2' : border
-  if (color === 'none' || !color) return null
+  const color = border === true ? 'ui2' : border;
+  if (color === 'none' || !color) return null;
 
-  let properties: string[] = []
+  let properties: string[] = [];
   switch (position) {
     case 'x':
-      properties = ['border-left', 'border-right']
-      break
+      properties = ['border-left', 'border-right'];
+      break;
     case 'y':
-      properties = ['border-bottom', 'border-top']
-      break
+      properties = ['border-bottom', 'border-top'];
+      break;
     case undefined:
       return css`
         ${borderPropertyHelper(color, 'border')}
-      `
+      `;
     default:
-      properties = [`border-${position}`]
+      properties = [`border-${position}`];
   }
 
   return css`
     ${properties.map(property => borderPropertyHelper(color, property))}
-  `
-}
+  `;
+};
 
 export const borderHelper = ({
   border,
@@ -125,4 +125,4 @@ export const borderHelper = ({
   ${borderX && borderPositionHelper(borderX, 'x')}
   ${borderY && borderPositionHelper(borderY, 'y')}
   ${borderRadius}
-`
+`;

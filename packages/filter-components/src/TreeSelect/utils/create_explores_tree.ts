@@ -23,34 +23,37 @@
  SOFTWARE.
 
  */
-import { getExpressionTypeFromField } from '@looker/filter-expressions'
-import type { TreeModel } from '../types'
-import type { ILookmlModelExplore, ILookmlModelExploreField } from '@looker/sdk'
+import { getExpressionTypeFromField } from '@looker/filter-expressions';
+import type { TreeModel } from '../types';
+import type {
+  ILookmlModelExplore,
+  ILookmlModelExploreField,
+} from '@looker/sdk';
 
 // --[ local types ]-----------------------------------------------------------
-type ParentInfo = Omit<TreeModel, 'children'>
+type ParentInfo = Omit<TreeModel, 'children'>;
 type ExploreFieldCollection = {
-  parentInfo: ParentInfo
-  filters: ILookmlModelExploreField[]
-  dimensions: ILookmlModelExploreField[]
-  measures: ILookmlModelExploreField[]
-}
+  parentInfo: ParentInfo;
+  filters: ILookmlModelExploreField[];
+  dimensions: ILookmlModelExploreField[];
+  measures: ILookmlModelExploreField[];
+};
 type TreeModelCollection = {
-  parentInfo: ParentInfo
-  filters: TreeModel[]
-  dimensions: TreeModel[]
-  measures: TreeModel[]
-}
+  parentInfo: ParentInfo;
+  filters: TreeModel[];
+  dimensions: TreeModel[];
+  measures: TreeModel[];
+};
 
 // --[ local utils ]-----------------------------------------------------------
 const getID = (parentId: string, value: string, index: number) =>
-  `${parentId}.${value}_${index}`
+  `${parentId}.${value}_${index}`;
 
 const sort = (a: any, b: any) => {
-  const left: string = a.value
-  const right: string = b.value
-  return left && right ? left.localeCompare(right) : 0
-}
+  const left: string = a.value;
+  const right: string = b.value;
+  return left && right ? left.localeCompare(right) : 0;
+};
 
 const groupByFieldGroupLabel = (data: ILookmlModelExploreField[]) =>
   data.reduce(
@@ -61,47 +64,47 @@ const groupByFieldGroupLabel = (data: ILookmlModelExploreField[]) =>
       if (item.field_group_label) {
         if (acc[item.field_group_label]) {
           // if item has a label and exists on reducer, push
-          acc[item.field_group_label].push(item)
+          acc[item.field_group_label].push(item);
         } else {
           // else, instantiate item in array
-          acc[item.field_group_label] = [item]
+          acc[item.field_group_label] = [item];
         }
       }
-      return acc
+      return acc;
     },
     {}
-  )
+  );
 
 const createCollection = ({
   list,
   explore,
   viewId,
 }: {
-  list: ILookmlModelExploreField[]
-  explore: ILookmlModelExplore
-  viewId: string
+  list: ILookmlModelExploreField[];
+  explore: ILookmlModelExplore;
+  viewId: string;
 }): TreeModel[] => {
   // split fields into groupables and non-groupables by field_group_label
   const { groups, normal } = list.reduce(
     (
       acc: {
-        groups: ILookmlModelExploreField[]
-        normal: ILookmlModelExploreField[]
+        groups: ILookmlModelExploreField[];
+        normal: ILookmlModelExploreField[];
       },
       field: ILookmlModelExploreField
     ) => {
       if (field.field_group_label) {
-        acc.groups.push(field)
+        acc.groups.push(field);
       } else {
-        acc.normal.push(field)
+        acc.normal.push(field);
       }
-      return acc
+      return acc;
     },
     { groups: [], normal: [] }
-  )
+  );
 
   // gather fields with the same field_group_label
-  const groupedFields = groupByFieldGroupLabel(groups)
+  const groupedFields = groupByFieldGroupLabel(groups);
 
   // convert groupBy output into array of groups with fields
   // not tested yet
@@ -112,9 +115,9 @@ const createCollection = ({
       groupIndex: number
     ) => {
       // group object with subsequent fields for each group
-      const children = groupedFields[curr]
-      const value = children[0]?.field_group_label || ''
-      const groupId = getID(viewId, value, groupIndex)
+      const children = groupedFields[curr];
+      const value = children[0]?.field_group_label || '';
+      const groupId = getID(viewId, value, groupIndex);
 
       acc.push({
         id: groupId,
@@ -123,11 +126,11 @@ const createCollection = ({
         children: children.map((child, fieldIndex) =>
           fieldData({ explore, field: child, parentId: groupId, fieldIndex })
         ),
-      })
-      return acc
+      });
+      return acc;
     },
     []
-  )
+  );
   return [
     ...normal.map((field, fieldIndex) =>
       fieldData({
@@ -138,27 +141,27 @@ const createCollection = ({
       })
     ),
     ...groupCollections,
-  ]
-}
+  ];
+};
 
 export const buildExploreFieldTree = (
   explore: ILookmlModelExplore,
   exploreIndex: number
 ): TreeModel => {
   // --[ explore related variables ]-------------------------------------------
-  const fieldSet = explore.fields
+  const fieldSet = explore.fields;
 
   const allFields = [
     ...(fieldSet?.filters ?? []).concat(fieldSet?.parameters ?? []),
     ...(fieldSet?.dimensions ?? []),
     ...(fieldSet?.measures ?? []),
-  ]
+  ];
 
-  const detail = explore.group_label || explore.model_name || undefined
-  const val = explore.label || explore.title || ''
-  const exploreId = getID('', val, exploreIndex)
+  const detail = explore.group_label || explore.model_name || undefined;
+  const val = explore.label || explore.title || '';
+  const exploreId = getID('', val, exploreIndex);
 
-  let counter = 0
+  let counter = 0;
   // --[ generate children ]---------------------------------------------------
   const view_labels = allFields.reduce(
     (
@@ -166,11 +169,11 @@ export const buildExploreFieldTree = (
       field: ILookmlModelExploreField
     ) => {
       // Check if field is valid, if not, return the accumulator
-      if (!field) return acc
-      if (!field.view_label) return acc // filters turtles which are empty strings
+      if (!field) return acc;
+      if (!field.view_label) return acc; // filters turtles which are empty strings
 
-      if (field.hidden) return acc
-      if (!field.can_filter) return acc // only filterables
+      if (field.hidden) return acc;
+      if (!field.can_filter) return acc; // only filterables
 
       // initialize the TreeModelCollection when view_label is missing
       if (!acc[field.view_label]) {
@@ -183,28 +186,28 @@ export const buildExploreFieldTree = (
           filters: [],
           dimensions: [],
           measures: [],
-        }
+        };
       }
 
       // Add the field to the appropriate branch (dimensions, measures, or
       // filters) based on its category
       if (field.category === 'dimension') {
-        acc[field.view_label].dimensions.push(field)
-        return acc
+        acc[field.view_label].dimensions.push(field);
+        return acc;
       } else if (field.category === 'measure') {
-        acc[field.view_label].measures.push(field)
-        return acc
+        acc[field.view_label].measures.push(field);
+        return acc;
       } else {
-        acc[field.view_label].filters.push(field)
+        acc[field.view_label].filters.push(field);
       }
-      return acc
+      return acc;
     },
     {}
-  )
+  );
 
   const groupLabels = Object.keys(view_labels).reduce(
     (acc: { [key: string]: TreeModelCollection }, view_label: string) => {
-      const parentData = view_labels[view_label]
+      const parentData = view_labels[view_label];
       acc[view_label] = {
         ...parentData,
         filters: createCollection({
@@ -222,21 +225,21 @@ export const buildExploreFieldTree = (
           list: parentData.dimensions,
           viewId: parentData.parentInfo.id || '',
         }),
-      }
-      return acc
+      };
+      return acc;
     },
     {}
-  )
+  );
 
   // convert from object to list and sort
   const topLayerChildren = Object.keys(groupLabels)
     .reduce((acc: TreeModel[], name: string) => {
-      const indexed = groupLabels[name]
+      const indexed = groupLabels[name];
       const sorted_fields = {
         filters: indexed.filters.sort(sort),
         dimensions: indexed.dimensions.sort(sort),
         measures: indexed.measures.sort(sort),
-      }
+      };
       const treeModel: TreeModel = {
         ...indexed.parentInfo,
         children: [
@@ -244,13 +247,13 @@ export const buildExploreFieldTree = (
           ...sorted_fields.dimensions,
           ...sorted_fields.measures,
         ],
-      }
+      };
       // push the parent object with sorted children into the tree
-      acc.push(treeModel)
-      return acc
+      acc.push(treeModel);
+      return acc;
     }, [])
     // sort the array of parents
-    .sort(sort)
+    .sort(sort);
 
   return {
     children: topLayerChildren,
@@ -260,8 +263,8 @@ export const buildExploreFieldTree = (
     isOpen: false,
     payload: { explore: explore.name, model: explore.model_name },
     value: val,
-  }
-}
+  };
+};
 
 /**
  * Defines the data stored in each clickable field of the Tree data structure.
@@ -272,10 +275,10 @@ const fieldData = ({
   parentId,
   fieldIndex,
 }: {
-  field: ILookmlModelExploreField
-  explore: ILookmlModelExplore
-  parentId: string
-  fieldIndex: number
+  field: ILookmlModelExploreField;
+  explore: ILookmlModelExplore;
+  parentId: string;
+  fieldIndex: number;
 }): TreeModel => ({
   id: getID(parentId, field.label_short || '', fieldIndex),
   isOpen: false,
@@ -292,12 +295,12 @@ const fieldData = ({
     type: getExpressionTypeFromField(field),
     fieldOptions: field,
   },
-})
+});
 
 export const createExploresTree = (
   explores: ILookmlModelExplore[]
 ): TreeModel[] => {
   return explores.map((explore, index: number) => {
-    return buildExploreFieldTree(explore, index)
-  })
-}
+    return buildExploreFieldTree(explore, index);
+  });
+};

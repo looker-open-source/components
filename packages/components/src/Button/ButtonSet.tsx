@@ -29,22 +29,22 @@ import type {
   MouseEvent,
   ReactNode,
   Ref,
-} from 'react'
-import React, { forwardRef, useCallback, useRef, useState } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { inputHeightNumber } from '../Form/Inputs/height'
-import type { SimpleLayoutProps } from '../Layout/utils/simple'
-import { simpleLayoutCSS } from '../Layout/utils/simple'
-import { useForkedRef } from '../utils'
-import type { ButtonSetCallback } from './ButtonSetContext'
-import { ButtonSetContext } from './ButtonSetContext'
-import { ButtonItem } from './ButtonItem'
+} from 'react';
+import React, { forwardRef, useCallback, useRef, useState } from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { inputHeightNumber } from '../Form/Inputs/height';
+import type { SimpleLayoutProps } from '../Layout/utils/simple';
+import { simpleLayoutCSS } from '../Layout/utils/simple';
+import { useForkedRef } from '../utils';
+import type { ButtonSetCallback } from './ButtonSetContext';
+import { ButtonSetContext } from './ButtonSetContext';
+import { ButtonItem } from './ButtonItem';
 
 export interface ButtonSetOption {
-  value: string
-  label?: string
-  disabled?: boolean
+  value: string;
+  label?: string;
+  disabled?: boolean;
 }
 
 interface ButtonSetProps<TValue extends string | string[] = string[]>
@@ -53,28 +53,28 @@ interface ButtonSetProps<TValue extends string | string[] = string[]>
   /**
    * One or more ButtonItem (do not use if using options)
    */
-  children?: ReactNode
+  children?: ReactNode;
   /**
    * Available options (do not use if using ButtonItem children)
    */
-  options?: ButtonSetOption[]
+  options?: ButtonSetOption[];
   /**
    * Value for controlling the component
    */
-  value?: TValue
-  onItemClick?: (e: MouseEvent<HTMLButtonElement>) => void
+  value?: TValue;
+  onItemClick?: (e: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface ButtonGroupOrToggleBaseProps<
   TValue extends string | string[] = string[]
 > extends Omit<ButtonSetProps<TValue>, 'onChange' | 'onItemClick'> {
-  onChange?: ButtonSetCallback<TValue>
+  onChange?: ButtonSetCallback<TValue>;
 }
 
 export type ButtonSetType<TValue extends string | string[] = string[]> =
   ForwardRefExoticComponent<
     ButtonSetProps<TValue> & { ref: Ref<HTMLDivElement> }
-  >
+  >;
 
 export const ButtonSetLayout = forwardRef(
   (
@@ -91,48 +91,48 @@ export const ButtonSetLayout = forwardRef(
   ) => {
     if (children && options) {
       // eslint-disable-next-line no-console
-      console.warn('Use children or options but not both at the same time.')
+      console.warn('Use children or options but not both at the same time.');
     }
 
     const context = {
       disabled,
       onItemClick,
       value,
-    }
+    };
 
-    const [isWrapping, setIsWrapping] = useState(false)
+    const [isWrapping, setIsWrapping] = useState(false);
 
-    const timeoutRef = useRef<ReturnType<typeof setTimeout>>()
+    const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
     const measureRef = useCallback(
       (node: HTMLElement | null) => {
         if (node) {
-          const { height } = node.getBoundingClientRect()
+          const { height } = node.getBoundingClientRect();
           const getIsWrapping = () => {
-            const firstItem = node.childNodes[0] as HTMLElement
+            const firstItem = node.childNodes[0] as HTMLElement;
             const rowHeight = firstItem
               ? firstItem.getBoundingClientRect().height
-              : inputHeightNumber
+              : inputHeightNumber;
             if (height >= rowHeight * 2) {
-              setIsWrapping(true)
+              setIsWrapping(true);
             } else {
-              setIsWrapping(false)
+              setIsWrapping(false);
             }
-          }
+          };
 
           if (height > 0) {
-            getIsWrapping()
+            getIsWrapping();
           } else {
-            timeoutRef.current = setTimeout(getIsWrapping, 10)
+            timeoutRef.current = setTimeout(getIsWrapping, 10);
           }
         } else if (timeoutRef.current) {
-          clearTimeout(timeoutRef.current)
+          clearTimeout(timeoutRef.current);
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [options]
-    )
+    );
 
-    const ref = useForkedRef(measureRef, forwardedRef)
+    const ref = useForkedRef(measureRef, forwardedRef);
 
     const optionItems =
       options &&
@@ -141,8 +141,8 @@ export const ButtonSetLayout = forwardRef(
           <ButtonItem key={value} disabled={disabled} value={value}>
             {label || value}
           </ButtonItem>
-        )
-      })
+        );
+      });
 
     return (
       <ButtonSetContext.Provider value={context}>
@@ -155,11 +155,11 @@ export const ButtonSetLayout = forwardRef(
           {children || optionItems}
         </div>
       </ButtonSetContext.Provider>
-    )
+    );
   }
-)
+);
 
-ButtonSetLayout.displayName = 'ButtonSetLayout'
+ButtonSetLayout.displayName = 'ButtonSetLayout';
 
 export const ButtonSet = styled(ButtonSetLayout)`
   ${simpleLayoutCSS}
@@ -168,4 +168,4 @@ export const ButtonSet = styled(ButtonSetLayout)`
   flex-wrap: wrap;
   font-size: ${({ theme }) => theme.fontSizes.small};
   text-align: center;
-`
+`;

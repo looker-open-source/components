@@ -33,22 +33,22 @@
     "value": "Anno precedente"
   },
   "This Month": {
-    "value": "Mese corrente"
+    "value": "Questo mese"
   },
   "This Quarter": {
-    "value": "Trimestre corrente"
+    "value": "Questo trimestre"
   },
   "This Week": {
-    "value": "Settimana corrente"
+    "value": "Questa settimana"
   },
   "This Year": {
-    "value": "Anno corrente"
+    "value": "Quest'anno"
   },
   "Today": {
     "value": "Oggi"
   },
   "Year To Date": {
-    "value": "Da inizio anno"
+    "value": "Da inizio anno a oggi"
   },
   "Yesterday": {
     "value": "Ieri"

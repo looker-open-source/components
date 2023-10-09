@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { TreeItem, Tree, TreeCollection } from '..'
-import { IconButton } from '../../Button'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { TreeItem, Tree, TreeCollection } from '..';
+import { IconButton } from '../../Button';
 
 export default function Detail() {
   return (
@@ -25,5 +25,5 @@ export default function Detail() {
         <TreeItem icon={<MaterialIcons.Tag />}>Cost</TreeItem>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

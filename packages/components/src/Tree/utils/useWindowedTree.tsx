@@ -24,25 +24,26 @@
 
  */
 
-import type { DensityProp } from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { useCallback, useEffect, useReducer } from 'react'
-import { listItemDimensions } from '../../ListItem'
-import { useWindow } from '../../utils'
-import type { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types'
-import { WindowedTreeNode } from '../WindowedTreeNode'
-import { windowedTreeReducer } from './windowedTreeReducer'
-import { getWindowedTreeNodeFilterer } from './getWindowedTreeNodeFilterer'
+import type { DensityProp } from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
+import { listItemDimensions } from '../../ListItem';
+import { useWindow } from '../../utils';
+import type { WindowResult } from '../../utils';
+import type { WindowedTreeNodeProps, WindowedTreeNodeIDProps } from '../types';
+import { WindowedTreeNode } from '../WindowedTreeNode';
+import { windowedTreeReducer } from './windowedTreeReducer';
+import type { WindowedTreeState } from './windowedTreeReducer';
+import { getWindowedTreeNodeFilterer } from './getWindowedTreeNodeFilterer';
 
 export type UseWindowedTreeNodeProps = DensityProp & {
-  ref?: Ref<HTMLUListElement>
-  trees: WindowedTreeNodeProps[]
-}
+  ref?: Ref<HTMLUListElement>;
+  trees: WindowedTreeNodeProps[];
+};
 
-export const useWindowedTree = ({
-  density,
+export const useWindowedTreeState = ({
   trees,
-}: UseWindowedTreeNodeProps) => {
+}: Pick<UseWindowedTreeNodeProps, 'trees'>) => {
   // Keep track of the sub-trees opened / closed state by ID and
   // the total number of SHOWN items (i.e. no ancestor is closed)
   const [{ map, shownIDs, treesWithIDs }, dispatch] = useReducer(
@@ -52,47 +53,73 @@ export const useWindowedTree = ({
       shownIDs: [],
       treesWithIDs: [],
     }
-  )
+  );
 
   useEffect(() => {
     // If the trees prop has changed, need to reset all state
-    dispatch({ payload: trees, type: 'RESET' })
-  }, [trees])
+    dispatch({ payload: trees, type: 'RESET' });
+  }, [trees]);
 
   const toggleNode = useCallback((id: number, isOpen: boolean) => {
     if (isOpen) {
-      dispatch({ payload: id, type: 'OPEN' })
+      dispatch({ payload: id, type: 'OPEN' });
     } else {
-      dispatch({ payload: id, type: 'CLOSE' })
+      dispatch({ payload: id, type: 'CLOSE' });
     }
-  }, [])
+  }, []);
+  return { map, shownIDs, toggleNode, treesWithIDs };
+};
 
+export const useWindowedTree = ({
+  density = 0,
+  trees,
+}: UseWindowedTreeNodeProps) => {
+  const { map, shownIDs, toggleNode, treesWithIDs } = useWindowedTreeState({
+    trees,
+  });
   // Get item height from density
-  const { height } = listItemDimensions(density || 0)
+  const { height } = listItemDimensions(density || 0);
 
   // Get the windowing properties
-  const { after, before, end, ref, start } = useWindow({
+  const { ref, ...windowResult } = useWindow({
     enabled: shownIDs.length > 100,
     itemCount: shownIDs.length,
     itemHeight: height,
-  })
+  });
 
-  let content = null
+  return {
+    content: getWindowedTreeContent({
+      ...windowResult,
+      shownIDs,
+      treesWithIDs,
+    }),
+    contextValue: { density, toggleNode, toggleStateMap: map },
+    ref,
+  };
+};
 
+export const getWindowedTreeContent = ({
+  shownIDs,
+  treesWithIDs,
+  start,
+  end,
+  before,
+  after,
+}: Omit<WindowedTreeState, 'map'> & WindowResult) => {
   if (treesWithIDs) {
     // Find the tree nodes that are within the window
-    const firstIDinWindow = shownIDs[start]
-    const lastIDinWindow = shownIDs[end]
-    const nodesInWindow: WindowedTreeNodeIDProps[] = []
+    const firstIDinWindow = shownIDs[start];
+    const lastIDinWindow = shownIDs[end];
+    const nodesInWindow: WindowedTreeNodeIDProps[] = [];
     treesWithIDs.every(
       getWindowedTreeNodeFilterer(
         nodesInWindow,
         firstIDinWindow,
         lastIDinWindow
       )
-    )
+    );
 
-    content = (
+    return (
       <>
         {before}
         {nodesInWindow.map(tree => (
@@ -104,12 +131,7 @@ export const useWindowedTree = ({
         ))}
         {after}
       </>
-    )
+    );
   }
-
-  return {
-    content,
-    contextValue: { density, toggleNode, toggleStateMap: map },
-    ref,
-  }
-}
+  return null;
+};

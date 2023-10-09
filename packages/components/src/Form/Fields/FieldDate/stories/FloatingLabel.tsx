@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { ExtendComponentsThemeProvider } from '@looker/components-providers'
-import { FieldDate } from '..'
+import React from 'react';
+import { ExtendComponentsThemeProvider } from '@looker/components-providers';
+import { FieldDate } from '..';
 
 export default function FloatingLabel(externalLabel: boolean) {
   return (
@@ -18,5 +18,5 @@ export default function FloatingLabel(externalLabel: boolean) {
         externalLabel={false}
       />
     </ExtendComponentsThemeProvider>
-  )
+  );
 }

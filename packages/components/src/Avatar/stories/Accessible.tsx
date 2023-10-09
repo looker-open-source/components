@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { AvatarIcon } from '../..'
+import React from 'react';
+import { AvatarIcon } from '../..';
 
 export default function Accessible() {
-  return <AvatarIcon role="button" />
+  return <AvatarIcon role="button" />;
 }

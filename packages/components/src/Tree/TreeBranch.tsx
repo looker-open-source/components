@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useContext } from 'react'
-import type { ReactNode } from 'react'
-import styled from 'styled-components'
-import { TreeContext } from './TreeContext'
-import { generateIndent } from './utils'
+import React, { useContext } from 'react';
+import type { ReactNode } from 'react';
+import styled from 'styled-components';
+import { TreeContext } from './TreeContext';
+import { generateIndent } from './utils';
 
 export interface TreeBranchProps {
-  className?: string
-  children?: ReactNode
+  className?: string;
+  children?: ReactNode;
 }
 
 const TreeBranchLayout = ({ children, className }: TreeBranchProps) => {
-  const { depth, density } = useContext(TreeContext)
+  const { depth, density } = useContext(TreeContext);
   return (
     <TreeBranchIndentSpacer
       className={className}
@@ -28,11 +28,11 @@ const TreeBranchLayout = ({ children, className }: TreeBranchProps) => {
     >
       {children}
     </TreeBranchIndentSpacer>
-  )
-}
+  );
+};
 
 const TreeBranchIndentSpacer = styled.div`
   ${generateIndent}
-`
+`;
 
-export const TreeBranch = styled(TreeBranchLayout)``
+export const TreeBranch = styled(TreeBranchLayout)``;

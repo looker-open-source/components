@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterModel } from '../../types'
+import type { FilterModel } from '../../types';
 
 export const sanitizeNumber = (item: FilterModel) => {
   const {
@@ -13,11 +13,11 @@ export const sanitizeNumber = (item: FilterModel) => {
     bounds = '[]',
     high,
     low,
-  } = item
-  const [firstValue] = value
+  } = item;
+  const [firstValue] = value;
   switch (type) {
     case '=':
-      return { id, is, type, value }
+      return { id, is, type, value };
     case '>':
     case '<':
     case '>=':
@@ -27,7 +27,7 @@ export const sanitizeNumber = (item: FilterModel) => {
         is,
         type,
         value: firstValue !== undefined ? [firstValue] : [],
-      }
+      };
     case 'between':
       return {
         id,
@@ -36,10 +36,10 @@ export const sanitizeNumber = (item: FilterModel) => {
         bounds,
         low: low ?? firstValue,
         high: high ?? firstValue,
-      }
+      };
     case 'null':
-      return { id, is, type }
+      return { id, is, type };
     default:
-      return { ...item, type }
+      return { ...item, type };
   }
-}
+};

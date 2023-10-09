@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/he'
-import { heIL as componentsLocale } from '@looker/components'
-import { heIL as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/he';
+import { heIL as componentsLocale } from '@looker/components';
+import { heIL as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -247,11 +247,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'נדרש ערך',
   },
-}
+  UserAttributes: {
+    placeholder: 'בחר...',
+  },
+};
 
 export const heIL = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'he-IL',
   resources,
   dateLocale
-)
+);

@@ -1,8 +1,8 @@
 {
   "absolute": {
-    "value": "（絶対指定）"
+    "value": "（絶対）"
   },
   "relative": {
-    "value": "（相対指定）"
+    "value": "（相対）"
   }
 }

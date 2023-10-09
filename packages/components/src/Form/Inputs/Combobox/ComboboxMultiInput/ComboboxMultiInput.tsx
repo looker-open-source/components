@@ -27,66 +27,66 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import type { Ref, FormEvent } from 'react'
+import type { Ref, ChangeEvent } from 'react';
 import React, {
   forwardRef,
   useContext,
   useCallback,
   useEffect,
   useRef,
-} from 'react'
-import styled from 'styled-components'
-import { useForkedRef } from '../../../../utils'
-import type { InputChipsBaseProps } from '../../InputChips'
+} from 'react';
+import styled from 'styled-components';
+import { useForkedRef } from '../../../../utils';
+import type { InputChipsBaseProps } from '../../InputChips';
 import {
   InputChips,
   InputChipsBase,
   joinValues,
   splitInputValue,
-} from '../../InputChips'
-import { ComboboxMultiContext } from '../ComboboxContext'
-import { comboboxStyles } from '../ComboboxInput'
-import type { ComboboxMultiInputProps } from '../types'
-import { getComboboxText, formatOptionAsString, parseOption } from '../utils'
-import { makeHash } from '../utils/makeHash'
+} from '../../InputChips';
+import { ComboboxMultiContext } from '../ComboboxContext';
+import { comboboxStyles } from '../ComboboxInput';
+import type { ComboboxMultiInputProps } from '../types';
+import { getComboboxText, formatOptionAsString, parseOption } from '../utils';
+import { makeHash } from '../utils/makeHash';
 import {
   ComboboxActionType,
   ComboboxState,
   getOptionsFromValues,
-} from '../utils/state'
-import { useInputEvents } from '../utils/useInputEvents'
-import { useInputPropRefs } from '../utils/useInputPropRefs'
+} from '../utils/state';
+import { useInputEvents } from '../utils/useInputEvents';
+import { useInputPropRefs } from '../utils/useInputPropRefs';
 
 function parseInputValue(value: string) {
   try {
-    const parsed = JSON.parse(value)
+    const parsed = JSON.parse(value);
     if (Array.isArray(parsed)) {
       return parsed.map(option =>
         typeof option === 'string' ? option : JSON.stringify(option)
-      )
+      );
     }
-    return splitInputValue(value)
+    return splitInputValue(value);
   } catch (e) {
-    return splitInputValue(value)
+    return splitInputValue(value);
   }
 }
 
 function formatTextToCopy(selectedValues: string[]) {
-  let noJson = true
+  let noJson = true;
   const jsonReadyValues = selectedValues.map(value => {
     try {
-      JSON.parse(value)
-      noJson = false
-      return value
+      JSON.parse(value);
+      noJson = false;
+      return value;
     } catch (e) {
-      return `"${value}"`
+      return `"${value}"`;
     }
-  })
+  });
   if (noJson) {
-    return joinValues(selectedValues)
+    return joinValues(selectedValues);
   }
   // Make it a JSON array string, so it can be parsed via JSON.parse and not need to escape commas
-  return `[${jsonReadyValues.join(',')}]`
+  return `[${jsonReadyValues.join(',')}]`;
 }
 
 export const ComboboxMultiInputInternal = forwardRef(
@@ -116,7 +116,7 @@ export const ComboboxMultiInputInternal = forwardRef(
       clearIconLabel,
 
       ...rest
-    } = props
+    } = props;
 
     const {
       data: { navigationOption, options, inputValue: contextInputValue },
@@ -126,14 +126,14 @@ export const ComboboxMultiInputInternal = forwardRef(
       transition,
       id,
       isVisible,
-    } = useContext(ComboboxMultiContext)
+    } = useContext(ComboboxMultiContext);
 
-    useInputPropRefs(props, ComboboxMultiContext)
+    useInputPropRefs(props, ComboboxMultiContext);
 
     function handleClear() {
-      transition && transition(ComboboxActionType.CLEAR)
-      contextOnChange && contextOnChange([])
-      onClear && onClear()
+      transition && transition(ComboboxActionType.CLEAR);
+      contextOnChange && contextOnChange([]);
+      onClear && onClear();
     }
 
     // if freeInput = false, only called when user removes chips from the input
@@ -141,72 +141,72 @@ export const ComboboxMultiInputInternal = forwardRef(
     // or, if pasting chips from another ComboboxMultiInput with options where label != value, via JSON
     function handleChange(values: string[]) {
       transition &&
-        transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values })
+        transition(ComboboxActionType.CHANGE_VALUES, { inputValues: values });
 
-      const newOptions = getOptionsFromValues(options, values)
-      contextOnChange && contextOnChange(newOptions)
+      const newOptions = getOptionsFromValues(options, values);
+      contextOnChange && contextOnChange(newOptions);
     }
 
     // Whether controlled or uncontrolled, we need to determine if the inputValue changed
     // from the user typing in the input - which should open the list, CHANGE - or otherwise
     // (input being cleared via clear button or value tokenization, external initial state, etc) -
     // which should not open the list, CHANGE_SILENT
-    const isInputting = useRef(false)
+    const isInputting = useRef(false);
 
     const handleInputValueChange = useCallback(
       (value: string) => {
         const action = isInputting.current
           ? ComboboxActionType.CHANGE
-          : ComboboxActionType.CHANGE_SILENT
-        transition?.(action, { inputValue: value })
+          : ComboboxActionType.CHANGE_SILENT;
+        transition?.(action, { inputValue: value });
       },
       [transition]
-    )
+    );
 
     // Use latestInputValueRef to track whether the contextInputValue change
     // originated in this component. If it didn't (e.g. an option was selected
     // or the list was closed) call onInputChange b/c it has not been called yet
-    const latestInputValueRef = useRef<string>()
+    const latestInputValueRef = useRef<string>();
     useEffect(() => {
       if (
         contextInputValue !== undefined &&
         contextInputValue !== latestInputValueRef.current
       ) {
-        onInputChange?.(contextInputValue)
-        latestInputValueRef.current = contextInputValue
+        onInputChange?.(contextInputValue);
+        latestInputValueRef.current = contextInputValue;
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [contextInputValue])
+    }, [contextInputValue]);
 
     // If they are controlling the input value we still need to do transitions
     // and update the context inputValue state
     useEffect(() => {
       if (controlledInputValue !== undefined) {
-        handleInputValueChange(controlledInputValue)
-        latestInputValueRef.current = controlledInputValue
+        handleInputValueChange(controlledInputValue);
+        latestInputValueRef.current = controlledInputValue;
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [controlledInputValue])
+    }, [controlledInputValue]);
 
-    const isControlled = controlledInputValue !== undefined
+    const isControlled = controlledInputValue !== undefined;
     // [*]... and when controlled, we don't trigger handleValueChange as the user
     // types, instead the developer controls it with the onInputChange prop
     const handleInputChange = useCallback(
-      (value: string, event?: FormEvent<HTMLInputElement>) => {
-        isInputting.current = event !== undefined
+      (value: string, event?: ChangeEvent<HTMLInputElement>) => {
+        isInputting.current = event !== undefined;
         if (!isControlled) {
-          handleInputValueChange(value)
+          handleInputValueChange(value);
         }
         requestAnimationFrame(() => {
-          isInputting.current = false
-        })
+          isInputting.current = false;
+        });
       },
       [handleInputValueChange, isControlled]
-    )
+    );
 
-    const inputValues = options.map(formatOptionAsString)
+    const inputValues = options.map(formatOptionAsString);
 
-    let inputValue = contextInputValue || ''
+    let inputValue = contextInputValue || '';
     if (
       autoComplete &&
       (state === ComboboxState.NAVIGATING ||
@@ -214,26 +214,26 @@ export const ComboboxMultiInputInternal = forwardRef(
       navigationOption
     ) {
       // When idle, we don't have a navigationOption on ArrowUp/Down
-      inputValue = getComboboxText(navigationOption)
+      inputValue = getComboboxText(navigationOption);
     }
 
     const wrappedOnInputChange = useCallback(
-      (value: string, event?: FormEvent<HTMLInputElement>) => {
-        handleInputChange(value, event)
-        onInputChange?.(value, event)
-        latestInputValueRef.current = value
+      (value: string, event?: ChangeEvent<HTMLInputElement>) => {
+        handleInputChange(value, event);
+        onInputChange?.(value, event);
+        latestInputValueRef.current = value;
       },
       [handleInputChange, onInputChange]
-    )
+    );
 
-    const inputEvents = useInputEvents(props, ComboboxMultiContext)
+    const inputEvents = useInputEvents(props, ComboboxMultiContext);
 
     function formatChip(value: string) {
-      const option = parseOption(value)
-      return option.label || option.value
+      const option = parseOption(value);
+      return option.label || option.value;
     }
 
-    const { selectOnClick: _selectOnClick, ...restForCommonProps } = rest
+    const { selectOnClick: _selectOnClick, ...restForCommonProps } = rest;
 
     const commonProps: InputChipsBaseProps = {
       ...restForCommonProps,
@@ -257,9 +257,9 @@ export const ComboboxMultiInputInternal = forwardRef(
       readOnly,
       showCaret: true,
       values: inputValues,
-    }
+    };
 
-    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
+    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef);
 
     return freeInput ? (
       <InputChips
@@ -273,13 +273,13 @@ export const ComboboxMultiInputInternal = forwardRef(
       />
     ) : (
       <InputChipsBase {...commonProps} ref={ref} />
-    )
+    );
   }
-)
+);
 
 export const ComboboxMultiInput = styled(ComboboxMultiInputInternal).attrs(
   ({ width = '100%' }) => ({ width })
 )`
   ${comboboxStyles}
   padding-right: 0;
-`
+`;

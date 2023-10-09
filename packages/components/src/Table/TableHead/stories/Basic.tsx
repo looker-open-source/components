@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { TableHead } from '../../TableHead'
-import { TableRow } from '../../TableRow'
-import { TableHeaderCell } from '../../TableHeaderCell'
+import React from 'react';
+import { TableHead } from '../../TableHead';
+import { TableRow } from '../../TableRow';
+import { TableHeaderCell } from '../../TableHeaderCell';
 
 export default function Basic() {
   return (
@@ -16,5 +16,5 @@ export default function Basic() {
         <TableHeaderCell>Column 3</TableHeaderCell>
       </TableRow>
     </TableHead>
-  )
+  );
 }

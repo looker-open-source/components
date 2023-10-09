@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterASTNode, FilterModel } from '../../types'
-import { treeToList } from './tree_to_list'
+import type { FilterASTNode, FilterModel } from '../../types';
+import { treeToList } from './tree_to_list';
 
 /**
  * Given an AST and a nodeToString conversion function for that particular
@@ -14,4 +14,8 @@ export const treeToString = (
   nodeToString: (item: FilterModel) => string,
   filterNode: (item: FilterModel) => boolean = () => true
 ) =>
-  treeToList(root).filter(filterNode).map(nodeToString).filter(String).join(',')
+  treeToList(root)
+    .filter(filterNode)
+    .map(nodeToString)
+    .filter(String)
+    .join(',');

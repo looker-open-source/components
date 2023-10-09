@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { ListDivider } from '../List'
+import { ListDivider } from '../List';
 
-export const MenuDivider = ListDivider
+export const MenuDivider = ListDivider;

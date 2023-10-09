@@ -24,26 +24,26 @@
 
  */
 
-import React from 'react'
+import React from 'react';
 import {
   DataProvider,
   BarSeries,
   XYChart,
   BarStack,
   BarGroup,
-} from '@visx/xychart'
-import type { AxisScaleOutput, AxisScale } from '@visx/axis'
-import type { LinearScaleConfig } from '@visx/scale'
+} from '@visx/xychart';
+import type { AxisScaleOutput, AxisScale } from '@visx/axis';
+import type { LinearScaleConfig } from '@visx/scale';
 import type {
   ColumnProps,
   SDKRecord,
   CLineSeries,
-} from '@looker/visualizations-adapters'
-import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters'
-import { XYLegend } from '../XYLegend'
-import isArray from 'lodash/isArray'
-import get from 'lodash/get'
-import compact from 'lodash/compact'
+} from '@looker/visualizations-adapters';
+import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters';
+import { XYLegend } from '../XYLegend';
+import isArray from 'lodash/isArray';
+import get from 'lodash/get';
+import compact from 'lodash/compact';
 import {
   concatDimensions,
   getX,
@@ -52,9 +52,9 @@ import {
   useAxis,
   useChartTheme,
   isValidChartData,
-} from '../utils'
-import { XYTooltip } from '../XYTooltip'
-import { Grid } from '../Grid'
+} from '../utils';
+import { XYTooltip } from '../XYTooltip';
+import { Grid } from '../Grid';
 
 export const Column = ({
   data,
@@ -63,35 +63,35 @@ export const Column = ({
   width,
   fields,
 }: ColumnProps) => {
-  const { positioning, series: seriesList, legend } = config
+  const { positioning, series: seriesList, legend } = config;
 
   /**
    * The concatDimensions call will further format the data array returned from
    * the tabularReponse call. This new array combines existing dimension properties
    * with a single `dimension` property.
    */
-  const formattedData = concatDimensions(data, fields)
+  const formattedData = concatDimensions(data, fields);
 
   const { XAxis, YAxis, chartMargin } = useAxis({
     config,
     data: formattedData,
     fields,
-  })
+  });
 
-  const chartTheme = useChartTheme(seriesList)
+  const chartTheme = useChartTheme(seriesList);
 
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
-    return null
+    return null;
   }
 
   const renderedColumns: JSX.Element[] | undefined = compact(
     fields.measures.map((measure, i) => {
       const series: CLineSeries = isArray(seriesList)
         ? get(config, ['series', i])
-        : get(config, ['series', measure.name])
+        : get(config, ['series', measure.name]);
 
-      if (!series.visible) return undefined
+      if (!series.visible) return undefined;
 
       return (
         <BarSeries<
@@ -105,19 +105,19 @@ export const Column = ({
           xAccessor={(d: SDKRecord) => getX(d)}
           yAccessor={(d: SDKRecord) => getY(d, i)}
         />
-      )
+      );
     })
-  )
+  );
 
   const domain =
     positioning === 'percent'
       ? [0, 1]
-      : getYAxisRange({ config, data: formattedData, fields })
+      : getYAxisRange({ config, data: formattedData, fields });
 
   const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
-  }
+  };
 
   return (
     <DataProvider
@@ -154,5 +154,5 @@ export const Column = ({
         <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
-  )
-}
+  );
+};

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { css } from 'styled-components'
+import { css } from 'styled-components';
 
 export const inputIconSize = css`
   height: ${({ theme }) => theme.sizes.medium};
   max-width: ${({ theme }) => theme.sizes.medium};
-`
+`;

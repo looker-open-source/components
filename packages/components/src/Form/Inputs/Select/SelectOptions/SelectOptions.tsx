@@ -24,17 +24,17 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React, { createContext, useContext, useEffect, useMemo } from 'react'
-import styled from 'styled-components'
-import { Icon, IconPlaceholder } from '../../../../Icon'
-import { Spinner } from '../../../../Spinner'
-import { ListDivider } from '../../../../List/ListDivider'
-import { ListItemPreface } from '../../../../ListItem/ListItemPreface'
-import type { HeadingProps } from '../../../../Text'
-import { Heading, Paragraph, Text } from '../../../../Text'
-import { useID, useTranslation } from '../../../../utils'
-import type { ComboboxOptionIndicatorProps } from '../../Combobox'
+import type { ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
+import styled from 'styled-components';
+import { Icon, IconPlaceholder } from '../../../../Icon';
+import { Spinner } from '../../../../Spinner';
+import { ListDivider } from '../../../../List/ListDivider';
+import { ListItemPreface } from '../../../../ListItem/ListItemPreface';
+import type { HeadingProps } from '../../../../Text';
+import { Heading, Paragraph, Text } from '../../../../Text';
+import { useID, useTranslation } from '../../../../utils';
+import type { ComboboxOptionIndicatorProps } from '../../Combobox';
 import {
   ComboboxContext,
   ComboboxMultiContext,
@@ -42,21 +42,21 @@ import {
   ComboboxOption,
   ComboboxOptionIndicator,
   ComboboxOptionText,
-} from '../../Combobox'
-import type { FlatOption, SelectOptionObject } from '../types'
-import { optionsHaveIcons, notInOptions } from '../utils/options'
-import { useWindowedOptions } from '../utils/useWindowedOptions'
-import { SelectOptionDetail } from './SelectOptionDetail'
+} from '../../Combobox';
+import type { FlatOption, SelectOptionObject } from '../types';
+import { optionsHaveIcons, notInOptions } from '../utils/options';
+import { useWindowedOptions } from '../utils/useWindowedOptions';
+import { SelectOptionDetail } from './SelectOptionDetail';
 
-export const SelectOptionsContext = createContext({ hasIcons: false })
+export const SelectOptionsContext = createContext({ hasIcons: false });
 interface OptionLayoutProps
   extends Pick<ComboboxOptionIndicatorProps, 'indicator'> {
-  option: SelectOptionObject
-  scrollIntoView?: boolean
+  option: SelectOptionObject;
+  scrollIntoView?: boolean;
 }
 
 interface OptionLayoutBaseProps extends OptionLayoutProps {
-  isMulti?: boolean
+  isMulti?: boolean;
 }
 
 const OptionLayoutBase = ({
@@ -64,8 +64,8 @@ const OptionLayoutBase = ({
   option,
   scrollIntoView,
 }: OptionLayoutBaseProps) => {
-  const { description, detail, preface, ...rest } = option
-  const Component = isMulti ? ComboboxMultiOption : ComboboxOption
+  const { description, detail, preface, ...rest } = option;
+  const Component = isMulti ? ComboboxMultiOption : ComboboxOption;
 
   if (description || detail || preface) {
     return (
@@ -81,10 +81,10 @@ const OptionLayoutBase = ({
         />
         {detail && <SelectOptionDetail>{detail}</SelectOptionDetail>}
       </Component>
-    )
+    );
   }
-  return <Component {...rest} />
-}
+  return <Component {...rest} />;
+};
 
 // Use an FC since isActive & isSelected are passed to the indicator via cloneElement
 // and otherwise would get spread onto Icon
@@ -97,39 +97,39 @@ const OptionIcon = ({ preface, icon }: SelectOptionObject) =>
       icon={icon}
       data-testid="option-icon"
     />
-  ) : null
+  ) : null;
 
 const OptionLayout = ({ option, ...rest }: OptionLayoutProps) => {
-  const { hasIcons } = useContext(SelectOptionsContext)
-  const { indicatorPropRef } = useContext(ComboboxContext)
+  const { hasIcons } = useContext(SelectOptionsContext);
+  const { indicatorPropRef } = useContext(ComboboxContext);
   const iconPlaceholder = hasIcons ? (
     <IconPlaceholder
       mr="xsmall"
       size="small"
       data-testid="option-icon-placeholder"
     />
-  ) : undefined
+  ) : undefined;
 
   const indicator = option.icon ? (
     <OptionIcon {...option} />
   ) : (
     // Either an option or Select-level indicator can override the iconPlaceholder
     option.indicator || indicatorPropRef?.current || iconPlaceholder
-  )
+  );
 
   useEffect(() => {
     if (option.icon && option.indicator) {
       // eslint-disable-next-line no-console
-      console.warn('Use icon or indicator but not both at the same time.')
+      console.warn('Use icon or indicator but not both at the same time.');
     }
-  }, [option.icon, option.indicator])
+  }, [option.icon, option.indicator]);
 
-  return <OptionLayoutBase {...rest} option={{ ...option, indicator }} />
-}
+  return <OptionLayoutBase {...rest} option={{ ...option, indicator }} />;
+};
 
 const MultiOptionLayout = (props: OptionLayoutProps) => (
   <OptionLayoutBase {...props} isMulti />
-)
+);
 
 export const SelectOptionWithDescription = ({
   description,
@@ -149,8 +149,8 @@ export const SelectOptionWithDescription = ({
     </div>
   ) : (
     <ComboboxOptionText />
-  )
-}
+  );
+};
 
 const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
   color: 'text3',
@@ -162,46 +162,46 @@ const SelectOptionGroupTitle = styled(Heading).attrs<HeadingProps>(() => ({
 }))<{ isMulti?: boolean }>`
   display: flex;
   padding-top: ${({ theme }) => theme.space.u1};
-`
+`;
 
 export interface SelectOptionsBaseProps {
   /**
    * The user can type in the input (default false to mimic traditional select tag)
    */
-  isFilterable?: boolean
+  isFilterable?: boolean;
   /**
    * Text to show when there are no available options
    */
-  noOptionsLabel?: string
+  noOptionsLabel?: string;
   /**
    * Render only the options visible in the scroll window
    */
-  windowing?: boolean
+  windowing?: boolean;
   /**
    * Add an on-the-fly option mirroring the typed text (use when isFilterable = true)
    * When `true`, notInOptions is used to show/hide and can be included in a custom function
    */
-  showCreate?: boolean
+  showCreate?: boolean;
   /**
    * Format the label of the on-the-fly create option (use with canCreate)
    */
-  formatCreateLabel?: (inputText: string) => ReactNode
+  formatCreateLabel?: (inputText: string) => ReactNode;
   /**
    * Render a spinner in the list instead of any options
    * @default false
    */
-  isLoading?: boolean
+  isLoading?: boolean;
 }
 
 export interface SelectOptionsProps extends SelectOptionsBaseProps {
-  flatOptions?: FlatOption[]
-  navigationOptions?: SelectOptionObject[]
-  isMulti?: boolean
+  flatOptions?: FlatOption[];
+  navigationOptions?: SelectOptionObject[];
+  isMulti?: boolean;
 }
 
 export const SelectOptions = (props: SelectOptionsProps) => {
-  const { t } = useTranslation('SelectOptions')
-  const noOptionsLabelText = t('No options')
+  const { t } = useTranslation('SelectOptions');
+  const noOptionsLabelText = t('No options');
 
   const {
     flatOptions,
@@ -213,33 +213,36 @@ export const SelectOptions = (props: SelectOptionsProps) => {
     noOptionsLabel = noOptionsLabelText,
     windowing,
     isLoading,
-  } = props
+  } = props;
 
-  const { start, end, before, after, scrollToFirst, scrollToLast } =
-    useWindowedOptions(windowing, flatOptions, navigationOptions, isMulti)
-  const keyPrefix = useID(flatOptions?.length.toString())
+  const { start, end, before, after, scrollTo } = useWindowedOptions(
+    windowing,
+    flatOptions,
+    navigationOptions,
+    isMulti
+  );
+  const keyPrefix = useID(flatOptions?.length.toString());
 
   const hasIcons = useMemo(
     () => optionsHaveIcons(navigationOptions),
     [navigationOptions]
-  )
+  );
 
   if (isLoading) {
     return (
       <EmptyListItem>
         <Spinner size={30} aria-label={t('Loading')} />
       </EmptyListItem>
-    )
+    );
   }
 
-  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : []
-  const OptionLayoutToUse = isMulti ? MultiOptionLayout : OptionLayout
+  const optionsToRender = flatOptions ? flatOptions.slice(start, end + 1) : [];
 
   const noOptions = (
     <EmptyListItem>
       <Text color="text3">{noOptionsLabel}</Text>
     </EmptyListItem>
-  )
+  );
 
   const createOption = isFilterable && showCreate && (
     <SelectCreateOption
@@ -249,67 +252,50 @@ export const SelectOptions = (props: SelectOptionsProps) => {
       isMulti={isMulti}
       key="create"
     />
-  )
+  );
 
   return (
     <SelectOptionsContext.Provider value={{ hasIcons }}>
-      {navigationOptions && scrollToFirst ? (
-        <OptionLayoutToUse
-          option={navigationOptions[0]}
-          key={`${keyPrefix}-0`}
-          scrollIntoView={true}
-        />
-      ) : null}
+      {scrollTo}
       {before}
       {optionsToRender && optionsToRender.length > 0
         ? [
             ...optionsToRender.map((option, index) => {
               // Add start to index to keep key consistent if options are windowed
-              const key = `${keyPrefix}-${start + index}`
+              const key = `${keyPrefix}-${start + index}`;
               if (option.value !== undefined) {
                 const OptionLayoutToUse = isMulti
                   ? MultiOptionLayout
-                  : OptionLayout
+                  : OptionLayout;
                 return (
                   <OptionLayoutToUse
                     option={option as SelectOptionObject}
                     key={key}
                   />
-                )
+                );
               } else if (option.label !== undefined) {
                 return (
                   <SelectOptionGroupTitle isMulti={isMulti} key={key}>
                     <ComboboxOptionIndicator indicator={isMulti && ' '} />
                     {option.label}
                   </SelectOptionGroupTitle>
-                )
+                );
               }
-              return <ListDivider key={key} />
+              return <ListDivider key={key} />;
             }),
             createOption,
           ]
         : createOption || noOptions}
       {after}
-      {navigationOptions && scrollToLast ? (
-        <OptionLayoutToUse
-          option={
-            navigationOptions[
-              navigationOptions.length - 1
-            ] as SelectOptionObject
-          }
-          key={`${keyPrefix}-${navigationOptions.length - 1}`}
-          scrollIntoView
-        />
-      ) : null}
     </SelectOptionsContext.Provider>
-  )
-}
+  );
+};
 
 interface SelectCreateOptionProps {
-  options?: SelectOptionObject[]
-  noOptions: ReactNode
-  formatLabel?: (inputText: string) => ReactNode
-  isMulti?: boolean
+  options?: SelectOptionObject[];
+  noOptions: ReactNode;
+  formatLabel?: (inputText: string) => ReactNode;
+  isMulti?: boolean;
 }
 
 const SelectCreateOption = ({
@@ -318,37 +304,37 @@ const SelectCreateOption = ({
   formatLabel,
   isMulti,
 }: SelectCreateOptionProps) => {
-  const { data } = useContext(ComboboxContext)
-  const { data: dataMulti } = useContext(ComboboxMultiContext)
+  const { data } = useContext(ComboboxContext);
+  const { data: dataMulti } = useContext(ComboboxMultiContext);
 
-  const inputValue = isMulti ? dataMulti.inputValue : data.inputValue
+  const inputValue = isMulti ? dataMulti.inputValue : data.inputValue;
 
   const shouldShow = useMemo(() => {
-    let currentOptions: SelectOptionObject[] = []
+    let currentOptions: SelectOptionObject[] = [];
     if (isMulti) {
-      currentOptions = dataMulti.options
+      currentOptions = dataMulti.options;
     } else if (data.option) {
-      currentOptions = [data.option]
+      currentOptions = [data.option];
     }
-    return notInOptions(currentOptions, options, inputValue)
-  }, [isMulti, data.option, dataMulti.options, options, inputValue])
+    return notInOptions(currentOptions, options, inputValue);
+  }, [isMulti, data.option, dataMulti.options, options, inputValue]);
 
   if (!shouldShow || !inputValue) {
-    if (!options || options.length === 0) return <>{noOptions}</>
-    return null
+    if (!options || options.length === 0) return <>{noOptions}</>;
+    return null;
   }
 
-  const OptionComponent = isMulti ? ComboboxMultiOption : ComboboxOption
+  const OptionComponent = isMulti ? ComboboxMultiOption : ComboboxOption;
 
   return (
     <OptionComponent value={inputValue} highlightText={false} indicator={false}>
       {formatLabel ? formatLabel(inputValue) : `Create "${inputValue}"`}
     </OptionComponent>
-  )
-}
+  );
+};
 
 const EmptyListItem = styled.li`
   display: flex;
   justify-content: center;
   padding: ${({ theme }) => `${theme.space.u8} ${theme.space.u4}`};
-`
+`;

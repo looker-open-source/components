@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { Paragraph, Box, Heading, Button } from '@looker/components'
-import React from 'react'
-import { Popover, PopoverContent } from '..'
+import { Paragraph, Box, Heading, Button } from '@looker/components';
+import React from 'react';
+import { Popover, PopoverContent } from '..';
 
 export default function Placement() {
   const popoverContent = (
@@ -13,7 +13,7 @@ export default function Placement() {
         👋 Hello, I am a popover!
       </Paragraph>
     </PopoverContent>
-  )
+  );
 
   return (
     <Box mt="large">
@@ -28,5 +28,5 @@ export default function Placement() {
         </Popover>
       </Box>
     </Box>
-  )
+  );
 }

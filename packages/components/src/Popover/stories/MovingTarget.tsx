@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useEffect } from 'react'
-import { PopoverContent } from '../Layout/PopoverContent'
-import { usePopover } from '../usePopover'
-import { Paragraph, Box, Heading, useToggle } from '../..'
+import React, { useEffect } from 'react';
+import { PopoverContent } from '../Layout/PopoverContent';
+import { usePopover } from '../usePopover';
+import { Paragraph, Box, Heading, useToggle } from '../..';
 
 // Can't have usePopover at the top level of a story because it ends up at the same level
 // as ComponentsProvider and can't access FocusTrapContext or ScrollLockContext
 const MovingTargetInner = () => {
-  const { value, toggle } = useToggle()
+  const { value, toggle } = useToggle();
   const { popover, popperInstanceRef, open, ref, isOpen } = usePopover({
     content: (
       <PopoverContent p="u5" width="360px">
@@ -22,22 +22,22 @@ const MovingTargetInner = () => {
       </PopoverContent>
     ),
     placement: 'right-end',
-  })
+  });
 
   useEffect(() => {
     if (popperInstanceRef.current) {
-      popperInstanceRef.current.update()
+      popperInstanceRef.current.update();
     }
-  }, [popperInstanceRef, value])
+  }, [popperInstanceRef, value]);
 
   useEffect(() => {
     const int = setInterval(() => {
-      toggle()
-    }, 6000)
+      toggle();
+    }, 6000);
     return () => {
-      clearInterval(int)
-    }
-  }, [toggle])
+      clearInterval(int);
+    };
+  }, [toggle]);
   return (
     <Box mt="large">
       <Heading>Moving Target</Heading>
@@ -56,9 +56,9 @@ const MovingTargetInner = () => {
         Open Popover
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 export default function MovingTarget() {
-  return <MovingTargetInner />
+  return <MovingTargetInner />;
 }

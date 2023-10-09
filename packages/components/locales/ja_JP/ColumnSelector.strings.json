@@ -1,7 +1,7 @@
 {
-  "Apply": "適用する",
+  "Apply": "適用",
   "Cancel": "キャンセル",
   "Select All": "すべて選択",
-  "Select None": "選択しない",
-  "Select columns to display": "表示する列を選択"
+  "Select None": "すべて選択解除",
+  "Select columns to display": "表示する列を選択してください"
 }

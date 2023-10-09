@@ -3,21 +3,21 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DateFilterType } from '@looker/filter-expressions'
+import type { DateFilterType } from '@looker/filter-expressions';
 import {
   convertTypeToMatchesAdvancedOption,
   isDateTime,
   sanitizeDate,
-} from '@looker/filter-expressions'
-import type { ElementType } from 'react'
-import React from 'react'
-import type { FilterParamProps } from '../../../../types/filter_param_props'
-import { useDateFilterOptions } from '../../utils/get_date_filter_options'
-import { GroupSelect } from '../GroupSelect'
-import { dateFilterTypeToFilter } from './utils/date_filter_type_to_filter'
-import { newDateItem } from './utils/new_date_item'
-import { useFilterOptions } from '../../utils'
-import { ItemLayout } from '../ItemLayout'
+} from '@looker/filter-expressions';
+import type { ElementType } from 'react';
+import React from 'react';
+import type { FilterParamProps } from '../../../../types/filter_param_props';
+import { useDateFilterOptions } from '../../utils/get_date_filter_options';
+import { GroupSelect } from '../GroupSelect';
+import { dateFilterTypeToFilter } from './utils/date_filter_type_to_filter';
+import { newDateItem } from './utils/new_date_item';
+import { useFilterOptions } from '../../utils';
+import { ItemLayout } from '../ItemLayout';
 
 export const DateFilter = ({
   item,
@@ -32,22 +32,22 @@ export const DateFilter = ({
   ...rest
 }: FilterParamProps<DateFilterType>) => {
   const typeChange = (value: string) =>
-    onChange(item.id, sanitizeDate({ ...item, type: value }))
-  const isParameter = !!field?.parameter
-  const dateFilterOptions = useDateFilterOptions(isParameter)
-  const type = convertTypeToMatchesAdvancedOption(item)
+    onChange(item.id, sanitizeDate({ ...item, type: value }));
+  const isParameter = !!field?.parameter;
+  const dateFilterOptions = useDateFilterOptions(isParameter);
+  const type = convertTypeToMatchesAdvancedOption(item);
   if (type === 'matchesAdvanced') {
-    showMatchesAdvanced = true
-    showAdd = false
+    showMatchesAdvanced = true;
+    showAdd = false;
   }
   const options = useFilterOptions(
     dateFilterOptions,
     !isParameter && showMatchesAdvanced
-  )
+  );
 
-  const handleOnAdd = () => onAdd(newDateItem(item), true)
+  const handleOnAdd = () => onAdd(newDateItem(item), true);
 
-  const FilterComponent: ElementType = dateFilterTypeToFilter(item.type)
+  const FilterComponent: ElementType = dateFilterTypeToFilter(item.type);
 
   return (
     <ItemLayout item={item} showAdd={showAdd} onAdd={handleOnAdd} {...rest}>
@@ -74,5 +74,5 @@ export const DateFilter = ({
         placement="right"
       />
     </ItemLayout>
-  )
-}
+  );
+};

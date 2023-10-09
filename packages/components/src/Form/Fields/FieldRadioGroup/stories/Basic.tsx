@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldRadioGroup } from '../'
+import React from 'react';
+import { FieldRadioGroup } from '../';
 export default function Basic() {
   const options = [
     { label: 'Cheddar', value: 'cheddar' },
@@ -19,12 +19,12 @@ export default function Basic() {
     { label: 'Gouda', value: 'gouda-3' },
     { disabled: true, label: 'Swiss', value: 'swiss-3' },
     { label: 'Roquefort', value: 'roquefort-3' },
-  ]
+  ];
   return (
     <FieldRadioGroup
       label="Cheeses"
       description="Pick all your cheeses"
       options={options}
     />
-  )
+  );
 }

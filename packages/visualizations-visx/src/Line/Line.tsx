@@ -24,20 +24,20 @@
 
  */
 
-import React, { Fragment } from 'react'
-import { useTheme } from 'styled-components'
-import { DataProvider, LineSeries, XYChart } from '@visx/xychart'
-import type { AxisScaleOutput, AxisScale } from '@visx/axis'
-import type { LinearScaleConfig } from '@visx/scale'
+import React, { Fragment } from 'react';
+import { useTheme } from 'styled-components';
+import { DataProvider, LineSeries, XYChart } from '@visx/xychart';
+import type { AxisScaleOutput, AxisScale } from '@visx/axis';
+import type { LinearScaleConfig } from '@visx/scale';
 import type {
   LineProps,
   SDKRecord,
   CLineSeries,
-} from '@looker/visualizations-adapters'
-import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters'
-import { XYLegend } from '../XYLegend'
-import isArray from 'lodash/isArray'
-import get from 'lodash/get'
+} from '@looker/visualizations-adapters';
+import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters';
+import { XYLegend } from '../XYLegend';
+import isArray from 'lodash/isArray';
+import get from 'lodash/get';
 import {
   concatDimensions,
   dimensionToDate,
@@ -49,10 +49,10 @@ import {
   useChartTheme,
   isValidChartData,
   isDateQuery,
-} from '../utils'
-import { XYTooltip } from '../XYTooltip'
-import { Marker } from '../Marker'
-import { Grid } from '../Grid'
+} from '../utils';
+import { XYTooltip } from '../XYTooltip';
+import { Marker } from '../Marker';
+import { Grid } from '../Grid';
 
 export const Line = ({
   data,
@@ -61,37 +61,37 @@ export const Line = ({
   width,
   fields,
 }: LineProps) => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   /**
    * The concatDimensions call will further format the data array returned from
    * the tabularReponse call. This new array combines existing dimension properties
    * with a single `dimension` property.
    */
-  const formattedData = concatDimensions(data, fields)
+  const formattedData = concatDimensions(data, fields);
 
   const { XAxis, YAxis, chartMargin } = useAxis({
     config,
     data: formattedData,
     fields,
-  })
+  });
 
-  const chartTheme = useChartTheme(config.series)
+  const chartTheme = useChartTheme(config.series);
 
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
-    return null
+    return null;
   }
 
   const lines: JSX.Element[] | undefined = fields.measures.map((measure, i) => {
     const series: CLineSeries = isArray(config.series)
       ? get(config, ['series', i])
-      : get(config, ['series', measure.name])
+      : get(config, ['series', measure.name]);
 
-    if (!series?.visible) return <Fragment key={i}></Fragment>
+    if (!series?.visible) return <Fragment key={i}></Fragment>;
 
-    const { style, line_width, shape } = series
-    const id = `marker-${shape}-${i}`
+    const { style, line_width, shape } = series;
+    const id = `marker-${shape}-${i}`;
 
     return (
       <Fragment key={id}>
@@ -114,15 +114,15 @@ export const Line = ({
           markerEnd={`url(#${id})`}
         />
       </Fragment>
-    )
-  })
+    );
+  });
 
-  const domain = getYAxisRange({ config, data: formattedData, fields })
+  const domain = getYAxisRange({ config, data: formattedData, fields });
 
   const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
-  }
+  };
 
   return (
     <DataProvider
@@ -147,5 +147,5 @@ export const Line = ({
         <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
-  )
-}
+  );
+};

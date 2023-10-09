@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens'
-import { flexbox, shouldForwardProp } from '@looker/design-tokens'
-import styled, { css } from 'styled-components'
-import type { CommonLayoutProps } from '../Layout/utils/common'
-import { commonLayoutCSS } from '../Layout/utils/common'
+import type { CompatibleHTMLProps, FlexboxProps } from '@looker/design-tokens';
+import { flexbox, shouldForwardProp } from '@looker/design-tokens';
+import styled, { css } from 'styled-components';
+import type { CommonLayoutProps } from '../Layout/utils/common';
+import { commonLayoutCSS } from '../Layout/utils/common';
 
 export interface CardProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -17,12 +17,13 @@ export interface CardProps
    * Show card with a BoxShadow applied
    * @default false
    */
-  raised?: boolean
+  raised?: boolean;
+  removeHover?: boolean;
 }
 
 const cardTransition = () => css`
   ${({ theme }) => `${theme.transitions.quick}ms ${theme.easings.ease}`}
-`
+`;
 
 const raised = (props: CardProps) =>
   props.raised &&
@@ -32,7 +33,15 @@ const raised = (props: CardProps) =>
     &:hover {
       box-shadow: ${({ theme }) => theme.elevations.plus2};
     }
-  `
+  `;
+
+const hover = (props: CardProps) =>
+  !props.removeHover &&
+  css`
+    &:hover {
+      border-color: ${({ theme }) => theme.colors.ui4};
+    }
+  `;
 
 export const Card = styled.div
   .withConfig({ shouldForwardProp })
@@ -62,9 +71,6 @@ export const Card = styled.div
 
   transition: border ${cardTransition}, box-shadow ${cardTransition};
 
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.ui4};
-  }
-
   ${raised}
-`
+  ${hover}
+`;

@@ -3,19 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Colors } from '@looker/design-tokens'
-import React from 'react'
-import styled from 'styled-components'
-import { rippleStyle } from '../../../Ripple'
-import type { SwitchElementProps } from './types'
+import type { Colors } from '@looker/design-tokens';
+import React from 'react';
+import styled from 'styled-components';
+import { rippleStyle } from '../../../Ripple';
+import type { SwitchElementProps } from './types';
 
 const getColor = ({ on, validationType }: SwitchElementProps): keyof Colors => {
   if (on) {
-    if (validationType === 'error') return 'critical'
-    return 'key'
+    if (validationType === 'error') return 'critical';
+    return 'key';
   }
-  return 'field'
-}
+  return 'field';
+};
 
 export const Handle = styled(({ className, style }: SwitchElementProps) => (
   <div className={className} style={style} data-testid="handle">
@@ -42,4 +42,4 @@ export const Handle = styled(({ className, style }: SwitchElementProps) => (
     position: relative;
     width: 100%;
   }
-`
+`;

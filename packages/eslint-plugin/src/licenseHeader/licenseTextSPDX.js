@@ -6,6 +6,6 @@
 const licenseTextSPDX = `/**
  * Copyright (c) ${new Date().getFullYear()} Google LLC
  * SPDX-License-Identifier: MIT
- */`
+ */`;
 
-module.exports = licenseTextSPDX
+module.exports = licenseTextSPDX;

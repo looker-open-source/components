@@ -7,14 +7,14 @@ import type {
   CompatibleHTMLProps,
   BorderProps,
   TypographyProps,
-} from '@looker/design-tokens'
+} from '@looker/design-tokens';
 import {
   reset,
   border,
   typography,
   shouldForwardProp,
-} from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface TableRowProps
   extends BorderProps,
@@ -27,4 +27,4 @@ export const TableRow = styled.tr.withConfig({
   ${reset}
   ${border}
   ${typography}
-`
+`;

@@ -23,8 +23,8 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import type { FontWeights, FontSizes } from '@looker/design-tokens'
+import React from 'react';
+import type { FontWeights, FontSizes } from '@looker/design-tokens';
 import {
   Code,
   TableBody,
@@ -33,17 +33,17 @@ import {
   TableHeaderCell,
   TableRow,
   Text,
-} from '../../../src'
-import { DocTable } from './DocTable'
+} from '../../../src';
+import { DocTable } from './DocTable';
 
 const specimen =
-  "Roboto is the typographic base for the tone and content of Looker's design system"
+  "Roboto is the typographic base for the tone and content of Looker's design system";
 const typeFamily: Array<{ weight: FontWeights; value: string }> = [
   { value: '400', weight: 'normal' },
   { value: '500', weight: 'medium' },
   { value: '600', weight: 'semiBold' },
   { value: '700', weight: 'bold' },
-]
+];
 
 const tableRows = typeFamily.map(t => {
   return (
@@ -58,8 +58,8 @@ const tableRows = typeFamily.map(t => {
         </Text>
       </TableDataCell>
     </TableRow>
-  )
-})
+  );
+});
 
 export function FontWeightDemo() {
   return (
@@ -73,10 +73,10 @@ export function FontWeightDemo() {
       </TableHead>
       <TableBody>{tableRows}</TableBody>
     </DocTable>
-  )
+  );
 }
 
-const specimen2 = 'Looker Components are great'
+const specimen2 = 'Looker Components are great';
 const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
   { lh: '52px', px: '44px', size: 'xxxxxlarge' },
   { lh: '44px', px: '36px', size: 'xxxxlarge' },
@@ -88,7 +88,7 @@ const typeRamp: Array<{ size: FontSizes; px: string; lh: string }> = [
   { lh: '20px', px: '14px', size: 'small' },
   { lh: '16px', px: '12px', size: 'xsmall' },
   { lh: '16px', px: '11px', size: 'xxsmall' },
-]
+];
 
 const tableRows2 = typeRamp.map(t => {
   return (
@@ -102,8 +102,8 @@ const tableRows2 = typeRamp.map(t => {
         <Code>{t.size}</Code>
       </TableDataCell>
     </TableRow>
-  )
-})
+  );
+});
 
 export function TypeScaleDemo() {
   return (
@@ -118,5 +118,5 @@ export function TypeScaleDemo() {
       </TableHead>
       <TableBody>{tableRows2}</TableBody>
     </DocTable>
-  )
+  );
 }

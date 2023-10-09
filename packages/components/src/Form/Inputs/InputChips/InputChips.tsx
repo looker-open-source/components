@@ -24,72 +24,82 @@
 
  */
 
-import type { ClipboardEvent, KeyboardEvent, Ref, FormEvent } from 'react'
-import React, { forwardRef, useRef, useState } from 'react'
-import styled from 'styled-components'
+import type {
+  ClipboardEvent,
+  FocusEvent,
+  KeyboardEvent,
+  Ref,
+  ChangeEvent,
+} from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
+import styled from 'styled-components';
 
-import { useControlWarn, useWrapEvent } from '../../../utils'
+import { useControlWarn, useWrapEvent } from '../../../utils';
 import type {
   InputChipsCommonProps,
   InputChipsControlProps,
   InputChipsInputControlProps,
-} from './InputChipsBase'
-import { InputChipsBase } from './InputChipsBase'
+} from './InputChipsBase';
+import { InputChipsBase } from './InputChipsBase';
 
 /**
  * InputChips is a component that appears to be a regular text input,
  * but also allows (validated) user inputs to be stored as 'chips' (see the Chip element)
  */
 
-export type FormatInputValue = ((value: string) => string) | false
+export type FormatInputValue = ((value: string) => string) | false;
 export interface InputChipsValidationProps {
   /**
    * for checking each value before converting to a chip
    */
-  validate?: (value: string) => boolean
+  validate?: (value: string) => boolean;
   /**
    * Callback to format each value entered, before validation.
    * Defaults to `value.trim()`, set to `false` to avoid trimming whitespace.
    */
-  formatInputValue?: FormatInputValue
+  formatInputValue?: FormatInputValue;
   /**
    * callback when values fail validation
    */
-  onValidationFail?: (values: string[]) => void
+  onValidationFail?: (values: string[]) => void;
   /**
    * callback when values are duplicates
    */
-  onDuplicate?: (values: string[]) => void
+  onDuplicate?: (values: string[]) => void;
 }
 
 export const splitInputValue = (inputValue: string) => {
   // Preserve escaped commas & tabs using these strings produced by a random string generator
-  const commaKey = '0UX1bJKsFBFQonIIXq9oyeV40ITHwtew'
-  const tabKey = 'heF6X4qMBtIti8c8U9nMhskYOQUQiXqx'
+  const commaKey = '0UX1bJKsFBFQonIIXq9oyeV40ITHwtew';
+  const tabKey = 'heF6X4qMBtIti8c8U9nMhskYOQUQiXqx';
   const removedEscapes = inputValue
     .replace(/\\,/g, commaKey)
-    .replace(/\\\t/g, tabKey)
+    .replace(/\\\t/g, tabKey);
 
   // Values may be separated by ',' '\t', '\n' and ' '
-  const splitRegexp = `[,\\t\\n\\r]+`
+  const splitRegexp = `[,\\t\\n\\r]+`;
   return removedEscapes
     .split(new RegExp(splitRegexp))
     .map(value =>
       value
         .replace(new RegExp(commaKey, 'g'), ',')
         .replace(new RegExp(tabKey, 'g'), '\t')
-    )
-}
+    );
+};
 
 export interface InputChipsProps
-  extends Omit<InputChipsCommonProps, 'onValidationFail'>,
+  extends Omit<InputChipsCommonProps, 'onValidationFail' | 'onBlur'>,
     InputChipsControlProps,
     Partial<InputChipsInputControlProps>,
     InputChipsValidationProps {
   /**
    * How to convert a typed or pasted string into an array of values
    */
-  parseInputValue?: (value: string) => string[]
+  parseInputValue?: (value: string) => string[];
+  /**
+   * values are passed for validation purposes (since state updates are async)
+   */
+  onBlur?: (event: FocusEvent<HTMLInputElement>, values: string[]) => void;
 }
 
 export const validateValues = (
@@ -98,30 +108,37 @@ export const validateValues = (
   validate?: (value: string) => boolean,
   formatInputValue?: FormatInputValue
 ) => {
-  const duplicateValues: string[] = []
-  const invalidValues: string[] = []
-  const unusedValues: string[] = []
-  const validValues: string[] = []
+  const duplicateValues: string[] = [];
+  const invalidValues: string[] = [];
+  const unusedValues: string[] = [];
+  const validValues: string[] = [];
 
   newValues.forEach((val: string) => {
-    const formattedValue = formatInputValue ? formatInputValue(val) : val
-    if (formattedValue === '') return
+    const formattedValue = formatInputValue ? formatInputValue(val) : val;
+    if (formattedValue === '') return;
     // Make sure each value is valid and doesn't already exist
     if (validate && !validate(formattedValue)) {
-      unusedValues.push(formattedValue)
-      return invalidValues.push(formattedValue)
+      unusedValues.push(formattedValue);
+      return invalidValues.push(formattedValue);
     } else if (currentValues && currentValues.includes(formattedValue)) {
-      unusedValues.push(formattedValue)
-      return duplicateValues.push(formattedValue)
+      unusedValues.push(formattedValue);
+      return duplicateValues.push(formattedValue);
     } else {
-      return validValues.push(formattedValue)
+      return validValues.push(formattedValue);
     }
-  })
+  });
 
-  return { duplicateValues, invalidValues, unusedValues, validValues }
+  return { duplicateValues, invalidValues, unusedValues, validValues };
+};
+
+const trimValue = (value: string) => value.trim();
+
+interface UpdatedValues {
+  duplicateValues: string[];
+  invalidValues: string[];
+  updatedInputValue: string;
+  newValues: false | string[];
 }
-
-const trimValue = (value: string) => value.trim()
 
 export const InputChips = styled(
   forwardRef(
@@ -153,68 +170,86 @@ export const InputChips = styled(
         isControlledCheck: () =>
           controlledInputValue !== undefined && onInputChange !== undefined,
         name: 'InputChips',
-      })
+      });
 
-      const [uncontrolledValue, setUncontrolledValue] = useState('')
+      const [uncontrolledValue, setUncontrolledValue] = useState('');
       const inputValue = isControlled
         ? controlledInputValue || ''
-        : uncontrolledValue
+        : uncontrolledValue;
 
       const setInputValue = (
         val: string,
-        event?: FormEvent<HTMLInputElement>
+        event?: ChangeEvent<HTMLInputElement>
       ) => {
         if (!isControlled) {
-          setUncontrolledValue(val)
+          setUncontrolledValue(val);
         }
         if (val !== inputValue) {
-          onInputChange && onInputChange(val, event)
+          onInputChange && onInputChange(val, event);
         }
-      }
+      };
 
-      const updateValues = (newInputValue?: string) => {
-        const inputValues = parseInputValue(newInputValue || inputValue)
+      const getUpdatedValues = (newInputValue?: string) => {
+        const inputValues = parseInputValue(newInputValue || inputValue);
         const { duplicateValues, invalidValues, unusedValues, validValues } =
-          validateValues(inputValues, values, validate, formatInputValue)
+          validateValues(inputValues, values, validate, formatInputValue);
 
         // Save valid values and keep invalid ones in the input
-        const updatedInputValue = unusedValues.join(', ')
-        const updatedValues = validValues.length && [...values, ...validValues]
-        if (updatedValues) {
-          onChange(updatedValues)
+        const updatedInputValue = unusedValues.join(', ');
+        const newValues = validValues.length > 0 && [...values, ...validValues];
+        return {
+          duplicateValues,
+          invalidValues,
+          newValues,
+          updatedInputValue,
+        };
+      };
+
+      const updateValues = ({
+        duplicateValues,
+        invalidValues,
+        newValues,
+        updatedInputValue,
+      }: UpdatedValues) => {
+        if (newValues) {
+          onChange(newValues);
         }
-        setInputValue(updatedInputValue)
+        setInputValue(updatedInputValue);
 
         if (invalidValues.length > 0) {
-          onValidationFail && onValidationFail(invalidValues)
+          onValidationFail && onValidationFail(invalidValues);
         }
         if (duplicateValues.length > 0) {
-          onDuplicate && onDuplicate(duplicateValues)
+          onDuplicate && onDuplicate(duplicateValues);
         }
-      }
+      };
 
-      const handleBlur = () => {
-        updateValues()
-      }
+      const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+        const updatedValues = getUpdatedValues();
+        onBlur?.(e, updatedValues.newValues || []);
+        if (!e.defaultPrevented) {
+          updateValues(updatedValues);
+        }
+      };
 
       const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
           // Don't submit a form if there is one
-          e.preventDefault()
+          e.preventDefault();
           // Update values when the user hits return
-          updateValues()
+          updateValues(getUpdatedValues());
         }
-      }
+      };
 
-      const pastedValue = useRef<string | null>()
+      const pastedValue = useRef<string | null>();
       const handlePaste = (e: ClipboardEvent<HTMLInputElement>) => {
         // Save the pasted value to detect newlines before the browser strips them
-        pastedValue.current = e.clipboardData.getData('Text')
-      }
+        pastedValue.current = e.clipboardData.getData('Text');
+      };
 
       const handleInputChange = (
         value: string,
-        event?: FormEvent<HTMLInputElement>
+        event?: ChangeEvent<HTMLInputElement>
       ) => {
         // If the last character is an unescaped comma, update the values
         // Or, if the user pastes content, we assume that the final value is complete
@@ -225,18 +260,17 @@ export const InputChips = styled(
         ) {
           // Use the pasted value if there is one
           // (before newlines are stripped by the browser)
-          updateValues(pastedValue.current || value)
-          pastedValue.current = null
+          updateValues(getUpdatedValues(pastedValue.current || value));
+          pastedValue.current = null;
         } else {
-          setInputValue(value, event)
+          setInputValue(value, event);
         }
-      }
+      };
 
       const wrappedEvents = {
-        onBlur: useWrapEvent(handleBlur, onBlur),
         onKeyDown: useWrapEvent(handleKeyDown, onKeyDown),
         onPaste: useWrapEvent(handlePaste, onPaste),
-      }
+      };
 
       return (
         <InputChipsBase
@@ -247,10 +281,11 @@ export const InputChips = styled(
           clearIconLabel={clearIconLabel}
           inputValue={inputValue}
           onInputChange={handleInputChange}
+          onBlur={handleBlur}
           {...wrappedEvents}
           {...props}
         />
-      )
+      );
     }
   )
-)``
+)``;

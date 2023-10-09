@@ -24,19 +24,19 @@
 
  */
 
-import React, { Fragment } from 'react'
-import { DataProvider, AreaSeries, XYChart, AreaStack } from '@visx/xychart'
-import type { AxisScaleOutput, AxisScale } from '@visx/axis'
-import type { LinearScaleConfig } from '@visx/scale'
+import React, { Fragment } from 'react';
+import { DataProvider, AreaSeries, XYChart, AreaStack } from '@visx/xychart';
+import type { AxisScaleOutput, AxisScale } from '@visx/axis';
+import type { LinearScaleConfig } from '@visx/scale';
 import type {
   AreaProps,
   SDKRecord,
   CLineSeries,
-} from '@looker/visualizations-adapters'
-import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters'
-import { XYLegend } from '../XYLegend'
-import isArray from 'lodash/isArray'
-import get from 'lodash/get'
+} from '@looker/visualizations-adapters';
+import { DEFAULT_HEIGHT, VisWrapper } from '@looker/visualizations-adapters';
+import { XYLegend } from '../XYLegend';
+import isArray from 'lodash/isArray';
+import get from 'lodash/get';
 import {
   concatDimensions,
   getX,
@@ -47,13 +47,13 @@ import {
   isValidChartData,
   isDateQuery,
   dimensionToDate,
-} from '../utils'
-import { XYTooltip } from '../XYTooltip'
-import { Marker } from '../Marker'
-import { Grid } from '../Grid'
+} from '../utils';
+import { XYTooltip } from '../XYTooltip';
+import { Marker } from '../Marker';
+import { Grid } from '../Grid';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const NoopComponent = ({ children }: any) => <>{children}</>
+const NoopComponent = ({ children }: any) => <>{children}</>;
 
 export const Area = ({
   data,
@@ -62,37 +62,37 @@ export const Area = ({
   width,
   fields,
 }: AreaProps) => {
-  const { positioning, series: seriesList, legend } = config
+  const { positioning, series: seriesList, legend } = config;
 
   /**
    * The concatDimensions call will further format the data array returned from
    * the tabularReponse call. This new array combines existing dimension properties
    * with a single `dimension` property.
    */
-  const formattedData = concatDimensions(data, fields)
+  const formattedData = concatDimensions(data, fields);
 
   const { XAxis, YAxis, chartMargin } = useAxis({
     config,
     data: formattedData,
     fields,
-  })
+  });
 
-  const chartTheme = useChartTheme(seriesList)
+  const chartTheme = useChartTheme(seriesList);
 
   // Early return if the data response is insufficient
   if (!isValidChartData(data, fields)) {
-    return null
+    return null;
   }
 
   const areas: JSX.Element[] | undefined = fields.measures.map((measure, i) => {
     const series: CLineSeries = isArray(seriesList)
       ? get(config, ['series', i])
-      : get(config, ['series', measure.name])
+      : get(config, ['series', measure.name]);
 
-    if (!series.visible) return <Fragment key={i}></Fragment>
+    if (!series.visible) return <Fragment key={i}></Fragment>;
 
-    const { style, line_width, shape } = series
-    const id = `marker-${shape}-${i}`
+    const { style, line_width, shape } = series;
+    const id = `marker-${shape}-${i}`;
 
     return (
       <Fragment key={id}>
@@ -116,23 +116,23 @@ export const Area = ({
           yAccessor={(d: SDKRecord) => getY(d, i)}
         />
       </Fragment>
-    )
-  })
+    );
+  });
 
   const domain =
     positioning === 'percent'
       ? [0, 1]
-      : getYAxisRange({ config, data: formattedData, fields })
+      : getYAxisRange({ config, data: formattedData, fields });
 
   const Y_SCALE: LinearScaleConfig<AxisScaleOutput> = {
     type: 'linear',
     ...(domain && { domain, zero: false }),
-  }
+  };
 
   const PositioningWrapper =
     positioning === 'stacked' || positioning === 'percent'
       ? AreaStack
-      : NoopComponent
+      : NoopComponent;
 
   return (
     <DataProvider
@@ -161,5 +161,5 @@ export const Area = ({
         <XYLegend chartWidth={width} config={config} fields={fields} />
       </VisWrapper>
     </DataProvider>
-  )
-}
+  );
+};

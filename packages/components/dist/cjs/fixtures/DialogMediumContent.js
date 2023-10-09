@@ -1,0 +1,17 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.DialogMediumContent = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _Constitution = require("./Constitution");
+var _DialogExampleLayout = require("./DialogExampleLayout");
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var DialogMediumContent = function DialogMediumContent() {
+  return _react["default"].createElement(_DialogExampleLayout.DialogExampleLayout, {
+    header: "The Constitution of the United States"
+  }, _react["default"].createElement(_Constitution.ConstitutionShort, null));
+};
+exports.DialogMediumContent = DialogMediumContent;
+//# sourceMappingURL=DialogMediumContent.js.map

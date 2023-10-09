@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { sanitizeFontFamily } from './sanitizeFont'
+import { sanitizeFontFamily } from './sanitizeFont';
 
 export const fontFacesToFamily = (
   faces: string[] | string,
   fallbacks: string[]
 ) => {
-  const facesStr = typeof faces === 'string' ? faces : faces.join(',')
-  return sanitizeFontFamily(`${facesStr}, ${fallbacks.join(',')}`)
-}
+  const facesStr = typeof faces === 'string' ? faces : faces.join(',');
+  return sanitizeFontFamily(`${facesStr}, ${fallbacks.join(',')}`);
+};

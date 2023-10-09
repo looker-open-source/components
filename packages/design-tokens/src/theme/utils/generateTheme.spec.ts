@@ -24,14 +24,14 @@
 
  */
 
-import { theme } from '../theme'
-import { generateTheme } from './generateTheme'
+import { theme } from '../theme';
+import { generateTheme } from './generateTheme';
 
 describe('generateTheme', () => {
   test('custom text color', () => {
     const generated = generateTheme(theme, {
       colors: { text: 'black' },
-    })
+    });
     expect(generated.colors).toMatchInlineSnapshot(`
       Object {
         "background": "#FFFFFF",
@@ -94,6 +94,12 @@ describe('generateTheme', () => {
         "pageBackground": "#FFFFFF",
         "positive": "#24b25f",
         "positiveAccent": "#dbf2e5",
+        "positiveBorder": "#24b25f",
+        "positiveFocus": "#7bd09f",
+        "positiveInteractive": "#27c368",
+        "positivePressed": "#1e944f",
+        "positiveSubtle": "#e9f7ef",
+        "positiveText": "#FFFFFF",
         "text": "black",
         "text1": "#8c8c8c",
         "text2": "#595959",
@@ -109,13 +115,13 @@ describe('generateTheme', () => {
         "warn": "#FFA800",
         "warnAccent": "#fff1d6",
       }
-    `)
-  })
+    `);
+  });
 
   test('inverted theme', () => {
     const generated = generateTheme(theme, {
       colors: { background: 'black', key: 'purple', text: 'white' },
-    })
+    });
     expect(generated.colors).toMatchInlineSnapshot(`
       Object {
         "background": "black",
@@ -178,6 +184,12 @@ describe('generateTheme', () => {
         "pageBackground": "#FFFFFF",
         "positive": "#24b25f",
         "positiveAccent": "#093019",
+        "positiveBorder": "#24b25f",
+        "positiveFocus": "#24b560",
+        "positiveInteractive": "#27c368",
+        "positivePressed": "#1e944f",
+        "positiveSubtle": "#061e10",
+        "positiveText": "black",
         "text": "white",
         "text1": "#727272",
         "text2": "#a5a5a5",
@@ -193,16 +205,16 @@ describe('generateTheme', () => {
         "warn": "#FFA800",
         "warnAccent": "#452d00",
       }
-    `)
-  })
+    `);
+  });
 
   test('title and body colors', () => {
     const generated = generateTheme(theme, {
       colors: { body: 'aqua', title: 'red' },
-    })
-    expect(generated.colors.body).toEqual('aqua')
-    expect(generated.colors.title).toEqual('red')
-  })
+    });
+    expect(generated.colors.body).toEqual('aqua');
+    expect(generated.colors.title).toEqual('red');
+  });
 
   test('fontFamilies', () => {
     const generated = generateTheme(theme, {
@@ -211,26 +223,26 @@ describe('generateTheme', () => {
         brand: 'verdana',
         code: 'fixed',
       },
-    })
+    });
     expect(generated.fonts).toMatchInlineSnapshot(`
       Object {
         "body": "'Times new roman', 'Noto Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
         "brand": "verdana, 'Noto Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
         "code": "fixed, Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
       }
-    `)
-  })
+    `);
+  });
 
   test('fontFamilies - unquoted faces', () => {
     const generated = generateTheme(theme, {
       fontFamilies: {
         body: 'Open Sans, Noto Sans',
       },
-    })
+    });
     expect(generated.fonts.body).toMatchInlineSnapshot(
       `"'Open Sans', 'Noto Sans', 'Noto Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif"`
-    )
-  })
+    );
+  });
 
   test('stock', () => {
     expect(generateTheme(theme).fonts).toMatchInlineSnapshot(`
@@ -239,7 +251,7 @@ describe('generateTheme', () => {
         "brand": "Roboto, 'Noto Sans', 'Noto Sans JP', 'Noto Sans CJK KR', 'Noto Sans Arabic UI', 'Noto Sans Devanagari UI', 'Noto Sans Hebrew', 'Noto Sans Thai UI', Helvetica, Arial, sans-serif",
         "code": "'Roboto Mono', Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace",
       }
-    `)
+    `);
 
     expect(generateTheme(theme).colors).toMatchInlineSnapshot(`
       Object {
@@ -302,7 +314,13 @@ describe('generateTheme', () => {
         "neutralText": "#FFFFFF",
         "pageBackground": "#FFFFFF",
         "positive": "#24b25f",
-        "positiveAccent": "#dbf2e5",
+        "positiveAccent": "#e0ffe7",
+        "positiveBorder": "#33cc73",
+        "positiveFocus": "#67e591",
+        "positiveInteractive": "#27c368",
+        "positivePressed": "#1e944f",
+        "positiveSubtle": "#f2fff5",
+        "positiveText": "#FFFFFF",
         "text": "#262D33",
         "text1": "#939BA5",
         "text2": "#707781",
@@ -318,8 +336,8 @@ describe('generateTheme', () => {
         "warn": "#FFA800",
         "warnAccent": "#fff1d6",
       }
-    `)
-  })
+    `);
+  });
 
   describe('fontSources', () => {
     const generated = generateTheme(theme, {
@@ -332,7 +350,7 @@ describe('generateTheme', () => {
           url: 'http://faux-font.com',
         },
       ],
-    })
+    });
 
     expect(generated.fontSources).toMatchInlineSnapshot(`
       Array [
@@ -344,6 +362,6 @@ describe('generateTheme', () => {
           "url": "http://faux-font.com",
         },
       ]
-    `)
-  })
-})
+    `);
+  });
+});

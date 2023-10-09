@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { getYear } from 'date-fns'
-import React, { useCallback } from 'react'
-import { useTheme } from 'styled-components'
-import { Grid, SpaceVertical } from '../Layout'
-import { Span } from '../Text'
-import { MonthPicker } from './MonthPicker'
-import type { ScrollableDateListItemProps, YearBaseProps } from './types'
-import { confirmToday } from './utils/dateConfirmations'
+import { getYear } from 'date-fns';
+import React, { useCallback } from 'react';
+import { useTheme } from 'styled-components';
+import { Grid, SpaceVertical } from '../Layout';
+import { Span } from '../Text';
+import { MonthPicker } from './MonthPicker';
+import type { ScrollableDateListItemProps, YearBaseProps } from './types';
+import { confirmToday } from './utils/dateConfirmations';
 
-export type YearProps = YearBaseProps & ScrollableDateListItemProps
+export type YearProps = YearBaseProps & ScrollableDateListItemProps;
 
 export const Year = ({
   fullRender,
@@ -27,14 +27,14 @@ export const Year = ({
   const ref = useCallback(
     (element: HTMLElement | null) => {
       if (element) {
-        setItemPosition(index, element)
+        setItemPosition(index, element);
       }
     },
     [setItemPosition, index]
-  )
+  );
 
-  const { space } = useTheme()
-  const height = `calc(${space.u7} * 3 + ${space.u3} * 2)`
+  const { space } = useTheme();
+  const height = `calc(${space.u7} * 3 + ${space.u3} * 2)`;
 
   return (
     <SpaceVertical py="u3" px="u4" gap="u5" ref={ref}>
@@ -53,9 +53,9 @@ export const Year = ({
                 locale={locale}
                 {...props}
               />
-            )
+            );
           })}
       </Grid>
     </SpaceVertical>
-  )
-}
+  );
+};

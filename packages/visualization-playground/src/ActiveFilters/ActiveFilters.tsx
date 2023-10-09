@@ -24,21 +24,21 @@
 
  */
 
-import React, { useState } from 'react'
-import { useExplore } from '@looker/components-data'
-import { createExploreViewsTree, findField } from '@looker/filter-components'
-import { Space, IconButton, ButtonOutline } from '@looker/components'
-import { Close } from '@styled-icons/material/Close'
-import { Add } from '@styled-icons/material/Add'
-import type { IQuery } from '@looker/sdk'
-import { FilterEntry } from '../FilterEntry'
+import React, { useState } from 'react';
+import { useExplore } from '@looker/components-data';
+import { createExploreViewsTree, findField } from '@looker/filter-components';
+import { Space, IconButton, ButtonOutline } from '@looker/components';
+import { Close } from '@styled-icons/material/Close';
+import { Add } from '@styled-icons/material/Add';
+import type { IQuery } from '@looker/sdk';
+import { FilterEntry } from '../FilterEntry';
 
 type ActiveFiltersProps = {
-  filters: IQuery['filters']
-  queryId: number
-  onRemoveFilter: (name: string) => void
-  onUpdateFilter: (name: string, expression: string) => void
-}
+  filters: IQuery['filters'];
+  queryId: number;
+  onRemoveFilter: (name: string) => void;
+  onUpdateFilter: (name: string, expression: string) => void;
+};
 
 export const ActiveFilters = ({
   filters,
@@ -46,28 +46,28 @@ export const ActiveFilters = ({
   onRemoveFilter,
   onUpdateFilter,
 }: ActiveFiltersProps) => {
-  const { explore } = useExplore(queryId)
-  const tree = explore ? createExploreViewsTree(explore) : []
+  const { explore } = useExplore(queryId);
+  const tree = explore ? createExploreViewsTree(explore) : [];
 
   const [filterEntries, setFilterEntries] = useState(
     Object.entries(filters || {})
-  )
+  );
 
   const handleCreateFilter = () => {
-    setFilterEntries([...filterEntries, ['', '']])
-  }
+    setFilterEntries([...filterEntries, ['', '']]);
+  };
 
   const handleDeleteFilter = (name: string, i: number) => {
-    const draftFilterEntries = [...filterEntries]
-    draftFilterEntries.splice(i, 1)
-    setFilterEntries(draftFilterEntries)
-    onRemoveFilter(name)
-  }
+    const draftFilterEntries = [...filterEntries];
+    draftFilterEntries.splice(i, 1);
+    setFilterEntries(draftFilterEntries);
+    onRemoveFilter(name);
+  };
 
   return (
     <>
       {filterEntries.map(([name, value], i) => {
-        const filterField = findField(name, explore)
+        const filterField = findField(name, explore);
         if (filterField || name === '') {
           return (
             <Space key={`${name}${i}`}>
@@ -84,9 +84,9 @@ export const ActiveFilters = ({
                 onUpdateFilter={onUpdateFilter}
               />
             </Space>
-          )
+          );
         }
-        return null
+        return null;
       })}
       <ButtonOutline
         iconBefore={<Add />}
@@ -96,5 +96,5 @@ export const ActiveFilters = ({
         Create Filter
       </ButtonOutline>
     </>
-  )
-}
+  );
+};

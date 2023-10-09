@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputChips } from '..'
+import React, { useState } from 'react';
+import { InputChips } from '..';
 
 export default function AutoResize() {
-  const [values, setValues] = useState<string[]>([])
+  const [values, setValues] = useState<string[]>([]);
 
   return (
     <InputChips
@@ -16,5 +16,5 @@ export default function AutoResize() {
       onChange={setValues}
       placeholder="shrink to fit content"
     />
-  )
+  );
 }

@@ -1,8 +1,8 @@
 {
   "absolute": {
-    "value": "(絕對)"
+    "value": "(絕對值)"
   },
   "relative": {
-    "value": "(相對)"
+    "value": "(相對值)"
   }
 }

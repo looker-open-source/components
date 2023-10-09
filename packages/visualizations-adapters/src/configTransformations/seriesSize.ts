@@ -24,15 +24,15 @@
 
  */
 
-import merge from 'lodash/merge'
-import pick from 'lodash/pick'
-import set from 'lodash/set'
-import type { CScatter, CScatterSeries } from '../adapters'
-import type { ConfigHelper, Fields } from '../types'
-import { getMeasureNames } from '../utils'
+import merge from 'lodash/merge';
+import pick from 'lodash/pick';
+import set from 'lodash/set';
+import type { CScatter, CScatterSeries } from '../adapters';
+import type { ConfigHelper, Fields } from '../types';
+import { getMeasureNames } from '../utils';
 
-type NamedSeries = { [key: string]: CScatterSeries }
-type ArraySeries = CScatterSeries[]
+type NamedSeries = { [key: string]: CScatterSeries };
+type ArraySeries = CScatterSeries[];
 
 /**
  * A small helper function to remove size by value if it references a field that doesn't
@@ -42,17 +42,17 @@ function removeInvalidSizeBy(
   series: CScatter['series'] = {},
   fields: Fields
 ): CScatter['series'] {
-  const measureNames = getMeasureNames(fields)
-  const entries = Object.entries(series || {})
+  const measureNames = getMeasureNames(fields);
+  const entries = Object.entries(series || {});
   for (const [key, seriesEntry] of entries) {
-    const { size_by } = seriesEntry
+    const { size_by } = seriesEntry;
     set(
       series,
       [key, 'size_by'],
       size_by && measureNames.includes(size_by) ? size_by : false
-    )
+    );
   }
-  return series
+  return series;
 }
 
 /**
@@ -64,41 +64,41 @@ export const seriesSize: ConfigHelper<CScatter> = ({
   data,
   fields,
 }) => {
-  const { size_by_field, series = {}, ...restConfig } = config
+  const { size_by_field, series = {}, ...restConfig } = config;
 
-  const measures = getMeasureNames(fields)
+  const measures = getMeasureNames(fields);
 
   const defaultSizeByValue =
-    size_by_field && size_by_field.length ? size_by_field : false
+    size_by_field && size_by_field.length ? size_by_field : false;
 
   const buildNamedSeries = (s: NamedSeries) => {
     const namedSeries: NamedSeries = measures.reduce((seriesConfig, field) => {
-      const currentFieldSettings = pick(s, field)
-      const defaultSizeBy = { [field]: { size_by: defaultSizeByValue } }
+      const currentFieldSettings = pick(s, field);
+      const defaultSizeBy = { [field]: { size_by: defaultSizeByValue } };
       const draftSeries = merge(
         seriesConfig,
         defaultSizeBy,
         currentFieldSettings
-      )
+      );
 
-      return draftSeries
-    }, {})
+      return draftSeries;
+    }, {});
 
-    return removeInvalidSizeBy(namedSeries, fields)
-  }
+    return removeInvalidSizeBy(namedSeries, fields);
+  };
 
   const buildArraySeries = (s: ArraySeries) => {
-    const arraySeries = [...s]
+    const arraySeries = [...s];
     for (let i = 0; i < measures.length; i++) {
-      const currentSeries = arraySeries[i] || {}
+      const currentSeries = arraySeries[i] || {};
       const draftSeries: CScatterSeries = {
         size_by: defaultSizeByValue,
         ...currentSeries,
-      }
-      arraySeries[i] = draftSeries
+      };
+      arraySeries[i] = draftSeries;
     }
-    return removeInvalidSizeBy(arraySeries, fields)
-  }
+    return removeInvalidSizeBy(arraySeries, fields);
+  };
 
   return {
     config: {
@@ -109,5 +109,5 @@ export const seriesSize: ConfigHelper<CScatter> = ({
     },
     data,
     fields,
-  }
-}
+  };
+};

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import type { DateTimeFormatProps } from '../DateTimeFormat'
-import { DateTimeFormat } from '../DateTimeFormat'
+import React from 'react';
+import type { DateTimeFormatProps } from '../DateTimeFormat';
+import { DateTimeFormat } from '../DateTimeFormat';
 
 export const DateFormat = (props: DateTimeFormatProps) => (
   <DateTimeFormat {...props} time={false} />
-)
+);

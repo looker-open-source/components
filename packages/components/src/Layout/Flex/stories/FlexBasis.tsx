@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { Flex, FlexItem, Box } from '../../..'
+import React from 'react';
+import { Flex, FlexItem, Box } from '../../..';
 
 export default function FlexBasis() {
   return (
@@ -31,5 +31,5 @@ export default function FlexBasis() {
         </FlexItem>
       </Flex>
     </>
-  )
+  );
 }

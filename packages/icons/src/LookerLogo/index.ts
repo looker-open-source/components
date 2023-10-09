@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './LookerLogo'
+export * from './LookerLogo';

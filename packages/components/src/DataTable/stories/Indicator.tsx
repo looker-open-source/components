@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { DataTableItem, DataTableCell, DataTable, Link, Icon } from '../..'
-import type { DataTableColumns } from '../../'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { DataTableItem, DataTableCell, DataTable, Link, Icon } from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function Indicator() {
   const link = (
@@ -15,7 +15,7 @@ export default function Indicator() {
     >
       Wikipedia
     </Link>
-  )
+  );
 
   const indicator = (
     <Icon
@@ -24,7 +24,7 @@ export default function Indicator() {
       size={24}
       marginRight="small"
     />
-  )
+  );
 
   const columns: DataTableColumns = [
     {
@@ -32,7 +32,7 @@ export default function Indicator() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
   return (
     <DataTable caption="Cheeses example" columns={columns}>
@@ -42,5 +42,5 @@ export default function Indicator() {
         </DataTableCell>
       </DataTableItem>
     </DataTable>
-  )
+  );
 }

@@ -3,25 +3,25 @@
     "value": "jest"
   },
   "is any time": {
-    "value": "jest dowolnym czasem"
+    "value": "jest w dowolnym momencie"
   },
   "is before": {
-    "value": "jest przed"
+    "value": "jest wcześniej niż"
   },
   "is in range": {
     "value": "mieści się w zakresie"
   },
   "is in the last": {
-    "value": "miało miejsce w ciągu ostatnich"
+    "value": "przypada na ostatni"
   },
   "is in the month": {
-    "value": "miało miejsce w miesiącu"
+    "value": "przypada na miesiąc"
   },
   "is in the year": {
-    "value": "jest w danym roku"
+    "value": "jest w roku"
   },
   "is next": {
-    "value": "jest następnym"
+    "value": "przypada na następny"
   },
   "is not null": {
     "value": "nie ma wartości null"
@@ -30,15 +30,15 @@
     "value": "ma wartość null"
   },
   "is on or after": {
-    "value": "jest w danym terminie lub po"
+    "value": "przypada nie wcześniej niż"
   },
   "is on the day": {
-    "value": "jest w danym terminie"
+    "value": "jest w dniu"
   },
   "is previous": {
-    "value": "jest poprzednim"
+    "value": "przypada na poprzedni"
   },
   "is this": {
-    "value": "jest tym"
+    "value": "przypada na ten"
   }
 }

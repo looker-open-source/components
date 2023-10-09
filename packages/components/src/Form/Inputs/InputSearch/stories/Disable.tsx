@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputSearch } from '../'
-import type { InputSearchProps } from '../'
-import { SpaceVertical } from '../../../../'
+import React from 'react';
+import { InputSearch } from '../';
+import type { InputSearchProps } from '../';
+import { SpaceVertical } from '../../../../';
 
 export default function Disable(props: InputSearchProps) {
   const {
@@ -14,7 +14,7 @@ export default function Disable(props: InputSearchProps) {
     placeholder = 'Type your search',
     value = 'Value Disabled',
     ...restProps
-  } = props
+  } = props;
 
   return (
     <SpaceVertical align="start">
@@ -26,5 +26,5 @@ export default function Disable(props: InputSearchProps) {
         {...restProps}
       />
     </SpaceVertical>
-  )
+  );
 }

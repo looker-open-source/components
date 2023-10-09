@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-const path = require('path')
-const { getPackagesSync } = require('@manypkg/get-packages')
+const path = require('path');
+const { getPackagesSync } = require('@manypkg/get-packages');
 
 module.exports = {
   overrides: [
@@ -20,39 +20,39 @@ module.exports = {
   rules: {
     'no-private-dependencies': {
       create(context) {
-        const [options] = context.options
-        const filename = context.getFilename()
+        const [options] = context.options;
+        const filename = context.getFilename();
 
         if (path.basename(filename) !== 'package.json') {
-          return {}
+          return {};
         }
 
-        const json = require(filename)
+        const json = require(filename);
 
         if (json.private) {
-          return {}
+          return {};
         }
 
-        const { packages } = getPackagesSync(process.cwd())
+        const { packages } = getPackagesSync(process.cwd());
 
         return {
           'JSONProperty[key.value=/ependencies$/] JSONProperty'(node) {
-            const dependency = node.key.value
+            const dependency = node.key.value;
 
             for (const { packageJson } of packages) {
               if (options.exclude.includes(dependency)) {
-                continue
+                continue;
               }
               if (dependency === packageJson.name && packageJson.private) {
                 context.report({
                   data: { dependency, dependent: json.name },
                   messageId: 'invalidPackage',
                   node,
-                })
+                });
               }
             }
           },
-        }
+        };
       },
       meta: {
         docs: {
@@ -80,4 +80,4 @@ module.exports = {
       },
     },
   },
-}
+};

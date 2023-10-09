@@ -24,22 +24,22 @@
 
  */
 
-import React, { forwardRef } from 'react'
-import { Popover, PopoverContent } from '@looker/components'
+import React, { forwardRef } from 'react';
+import { Popover, PopoverContent } from '@looker/components';
 import {
   getExpressionType,
   getUserAttributeMatchingTypeAndExpression,
-} from '@looker/filter-expressions'
-import { ERROR_TYPE } from '../constants'
-import type { FilterProps } from '../Filter/types/filter_props'
-import { Filter } from '../Filter/Filter'
-import { FilterErrorMessage, useFiltersErrors } from '../FilterErrorMessage'
-import { Token } from './Token'
-import type { TokenProps } from './Token'
-import { getLabel } from './utils/get_label'
+} from '@looker/filter-expressions';
+import { ERROR_TYPE } from '../constants';
+import type { FilterProps } from '../Filter/types/filter_props';
+import { Filter } from '../Filter/Filter';
+import { FilterErrorMessage, useFiltersErrors } from '../FilterErrorMessage';
+import { Token } from './Token';
+import type { TokenProps } from './Token';
+import { getLabel } from './utils/get_label';
 
 export type FilterTokenProps = FilterProps &
-  Pick<TokenProps, 'maxWidth' | 'onClick'>
+  Pick<TokenProps, 'maxWidth' | 'onClick'>;
 
 export const FilterToken = forwardRef(
   (
@@ -48,24 +48,24 @@ export const FilterToken = forwardRef(
   ) => {
     const expressionType =
       props.expressionType ||
-      getExpressionType({ type: props.type, field: props.field || undefined })
+      getExpressionType({ type: props.type, field: props.field || undefined });
 
     const label = getLabel({
       ...props,
       type: expressionType,
       userAttributes,
-    })
+    });
     const hasError =
-      useFiltersErrors([props], { userAttributes }).type === ERROR_TYPE
+      useFiltersErrors([props], { userAttributes }).type === ERROR_TYPE;
     const userAttribute = getUserAttributeMatchingTypeAndExpression(
       expressionType,
       props.expression,
       userAttributes
-    )
+    );
     const isSubdued =
       props.expression === '' ||
       props.expression === undefined ||
-      (!!userAttribute && !userAttribute.value)
+      (!!userAttribute && !userAttribute.value);
 
     const content = (
       <Filter
@@ -75,10 +75,10 @@ export const FilterToken = forwardRef(
         userAttributes={userAttributes}
         {...props}
       />
-    )
+    );
 
     if (config?.display === 'inline') {
-      return content
+      return content;
     }
 
     const popoverContent = (
@@ -90,7 +90,7 @@ export const FilterToken = forwardRef(
           useLongMessageForm={true}
         />
       </PopoverContent>
-    )
+    );
 
     return (
       <Popover content={popoverContent} placement="bottom-start" ref={ref}>
@@ -102,6 +102,6 @@ export const FilterToken = forwardRef(
           onClick={onClick}
         />
       </Popover>
-    )
+    );
   }
-)
+);

@@ -24,72 +24,72 @@
 
  */
 
-import { getDateLocale } from '@looker/i18n'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { isAfter, isBefore, isSameDay } from 'date-fns'
+import { getDateLocale } from '@looker/i18n';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { isAfter, isBefore, isSameDay } from 'date-fns';
 import React, {
   useCallback,
   useContext,
   useEffect,
   useRef,
   useState,
-} from 'react'
-import styled from 'styled-components'
-import { Divider } from '../Divider'
-import { useToggle } from '../utils'
-import { DialogContext } from '../Dialog/DialogContext'
-import { DaysOfWeek } from './DaysOfWeek'
-import type { CalendarLocaleProps, NavCB, RangeModifier } from './types'
-import { CalendarNav } from './CalendarNav'
-import { MonthList } from './MonthList'
-import { MonthPickerNav } from './MonthPickerNav'
+} from 'react';
+import styled from 'styled-components';
+import { Divider } from '../Divider';
+import { useToggle } from '../utils';
+import { DialogContext } from '../Dialog/DialogContext';
+import { DaysOfWeek } from './DaysOfWeek';
+import type { CalendarLocaleProps, NavCB, RangeModifier } from './types';
+import { CalendarNav } from './CalendarNav';
+import { MonthList } from './MonthList';
+import { MonthPickerNav } from './MonthPickerNav';
 
 export type CalendarProps = Partial<CalendarLocaleProps> &
   CompatibleHTMLProps<HTMLDivElement> & {
-    onMonthChange: NavCB
-    readOnly?: boolean
-    showNextButton?: boolean
-    showPreviousButton?: boolean
+    onMonthChange: NavCB;
+    readOnly?: boolean;
+    showNextButton?: boolean;
+    showPreviousButton?: boolean;
     /**
      * Set the month displayed. Defaults to the current month
      */
-    viewMonth: Date
+    viewMonth: Date;
     /**
      * Set to true for range selection mode
      */
-    isRange?: boolean
+    isRange?: boolean;
     /**
      * Control the selected date for single date selection mode
      */
-    selectedDate?: Date
+    selectedDate?: Date;
     /**
      * Callback when the user selects a date (both single date and range selection mode)
      */
-    onSelectDate?: NavCB
+    onSelectDate?: NavCB;
     /**
      * Control the date range for range selection mode (use with isRange: true)
      */
-    selectedRange?: RangeModifier
+    selectedRange?: RangeModifier;
     /**
      * Callback for range selection mode (use with isRange: true)
      */
-    onSelectRange?: (range: RangeModifier) => void
-  }
+    onSelectRange?: (range: RangeModifier) => void;
+  };
 
 const getDatesSelected = (date?: Date, range?: RangeModifier): Date[] => {
   // single date selection
-  if (date && !range) return [date]
+  if (date && !range) return [date];
   // range selection
   if (range) {
     // may only have `from` or may have `to` as well
     return [
       ...(range.from ? [range.from] : []),
       ...(range.to ? [range.to] : []),
-    ]
+    ];
   }
   // no current selection
-  return []
-}
+  return [];
+};
 
 export const Calendar = styled(
   ({
@@ -108,25 +108,25 @@ export const Calendar = styled(
     viewMonth = new Date(),
     ...props
   }: CalendarProps) => {
-    const datesSelected = getDatesSelected(selectedDate, selectedRange)
+    const datesSelected = getDatesSelected(selectedDate, selectedRange);
     // For showing the user the potential range selection as they hover/focus
     // after selecting the from date
-    const [draftTo, setDraftTo] = useState<Date>()
+    const [draftTo, setDraftTo] = useState<Date>();
     // The base for the scrolling list of months
     // to be updated when user scrolls all the way to the top or bottom
-    const [baseMonth, setBaseMonth] = useState(viewMonth)
+    const [baseMonth, setBaseMonth] = useState(viewMonth);
 
-    const [activeInput, setActiveInput] = useState<'from' | 'to'>('from')
+    const [activeInput, setActiveInput] = useState<'from' | 'to'>('from');
 
     // Toggle the month picker view
-    const { value: showMonthPicker, setOn, setOff } = useToggle(false)
+    const { value: showMonthPicker, setOn, setOff } = useToggle(false);
     const onOpenMonthPicker = useCallback(() => {
-      setOn()
+      setOn();
       // Reset the baseMonth for MonthList so it will scroll to the
       // right location if the month picker view closes without
       // selecting a new month
-      setBaseMonth(viewMonth)
-    }, [setOn, viewMonth])
+      setBaseMonth(viewMonth);
+    }, [setOn, viewMonth]);
 
     const handleDraftSelect = useCallback(
       (date: Date) => {
@@ -135,50 +135,50 @@ export const Calendar = styled(
             isSameDay(date, selectedRange.from) ||
             isBefore(date, selectedRange.from)
           ) {
-            setDraftTo(undefined)
+            setDraftTo(undefined);
           } else {
-            setDraftTo(date)
+            setDraftTo(date);
           }
         }
       },
       [isRange, selectedRange]
-    )
-    const { closeModal } = useContext(DialogContext)
+    );
+    const { closeModal } = useContext(DialogContext);
 
     const handleSelect = useCallback(
       (date: Date) => {
         // Always call onSelectDate whether single or range mode
         // it may also be useful for range selection, for validation, etc
-        onSelectDate?.(date)
+        onSelectDate?.(date);
 
         if (isRange) {
           // check if date is earlier than from
           const beforeFrom =
-            selectedRange?.from && isBefore(date, selectedRange.from)
+            selectedRange?.from && isBefore(date, selectedRange.from);
           // check if date is after to
-          const afterTo = selectedRange?.to && isAfter(date, selectedRange.to)
+          const afterTo = selectedRange?.to && isAfter(date, selectedRange.to);
           // if activeInput is from and
           if (activeInput === 'from') {
             // if date clicked is not later than to
             if (!afterTo) {
-              onSelectRange?.({ ...selectedRange, from: date })
-              setActiveInput('to')
+              onSelectRange?.({ ...selectedRange, from: date });
+              setActiveInput('to');
             } else {
               // otherwise expand selection by setting date to to
-              onSelectRange?.({ ...selectedRange, to: date })
+              onSelectRange?.({ ...selectedRange, to: date });
             }
           } else if (activeInput === 'to') {
             // if date clicked is not earlier than from
             if (!beforeFrom) {
-              onSelectRange?.({ ...selectedRange, to: date })
-              setActiveInput('from')
+              onSelectRange?.({ ...selectedRange, to: date });
+              setActiveInput('from');
             } else {
               // otherwise expand selection by setting date to from
-              onSelectRange?.({ ...selectedRange, from: date })
+              onSelectRange?.({ ...selectedRange, from: date });
             }
           }
         } else {
-          closeModal()
+          closeModal();
         }
       },
       [
@@ -189,31 +189,31 @@ export const Calendar = styled(
         activeInput,
         isRange,
       ]
-    )
+    );
 
     // Keep track of when the month was updated from scrolling
     // and don't update the baseMonth in that case
-    const monthChangedFromScroll = useRef(false)
+    const monthChangedFromScroll = useRef(false);
     useEffect(() => {
       if (!monthChangedFromScroll.current) {
-        setBaseMonth(viewMonth)
+        setBaseMonth(viewMonth);
       }
-    }, [viewMonth])
+    }, [viewMonth]);
     const handleMonthChangeByScroll = useCallback(
       (newMonth: Date) => {
-        monthChangedFromScroll.current = true
-        onMonthChange(newMonth)
+        monthChangedFromScroll.current = true;
+        onMonthChange(newMonth);
         window.setTimeout(() => {
-          monthChangedFromScroll.current = false
-        }, 50)
+          monthChangedFromScroll.current = false;
+        }, 50);
       },
       [onMonthChange]
-    )
+    );
 
     const localeProps = {
       firstDayOfWeek: firstDayOfWeek || locale.options?.weekStartsOn || 0,
       locale,
-    }
+    };
     return (
       <div className={className} {...props}>
         {showMonthPicker ? (
@@ -247,9 +247,9 @@ export const Calendar = styled(
           </>
         )}
       </div>
-    )
+    );
   }
 )`
   font-family: ${({ theme }) => theme.fonts.brand};
   width: fit-content;
-`
+`;

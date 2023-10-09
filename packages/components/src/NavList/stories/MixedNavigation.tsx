@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
 import {
   NavList,
   ListItem,
@@ -12,7 +12,7 @@ import {
   NavTree,
   NavTreeItem,
   ProgressCircular,
-} from '../..'
+} from '../..';
 
 export default function MixedNavigation() {
   return (
@@ -58,5 +58,5 @@ export default function MixedNavigation() {
         </NavTree>
       </NavList>
     </Aside>
-  )
+  );
 }

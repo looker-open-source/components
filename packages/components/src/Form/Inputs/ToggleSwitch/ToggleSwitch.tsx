@@ -24,32 +24,32 @@
 
  */
 
-import type { SpaceProps } from '@looker/design-tokens'
-import { reset, space } from '@looker/design-tokens'
-import noop from 'lodash/noop'
-import pick from 'lodash/pick'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import type { SpaceProps } from '@looker/design-tokens';
+import { reset, space } from '@looker/design-tokens';
+import noop from 'lodash/noop';
+import pick from 'lodash/pick';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
 import {
   inputRippleColor,
   RIPPLE_RATIO,
   rippleHandlerKeys,
   useRipple,
   useRippleHandlers,
-} from '../../../Ripple'
-import { DISABLED_OPACITY } from '../../constants'
-import type { InputProps } from '../InputProps'
-import { pickInputProps } from '../InputProps'
-import type { SwitchProps } from './types'
-import { Handle } from './Handle'
-import { Track } from './Track'
+} from '../../../Ripple';
+import { DISABLED_OPACITY } from '../../constants';
+import type { InputProps } from '../InputProps';
+import { pickInputProps } from '../InputProps';
+import type { SwitchProps } from './types';
+import { Handle } from './Handle';
+import { Track } from './Track';
 
 export interface ToggleSwitchProps
   extends SpaceProps,
     Omit<InputProps, 'type'>,
     SwitchProps {
-  size?: number
+  size?: number;
 }
 
 export const ToggleSwitch = styled(
@@ -71,13 +71,13 @@ export const ToggleSwitch = styled(
         // Only define size for density -6,
         // to make the halo slightly bigger than the container
         size: RIPPLE_RATIO,
-      })
+      });
 
       const rippleHandlers = useRippleHandlers(
         callbacks,
         pick(props, rippleHandlerKeys),
         disabled
-      )
+      );
 
       // Ripple event handlers go on the container but the ripple styles go on the handle
       return (
@@ -97,7 +97,7 @@ export const ToggleSwitch = styled(
           <Track on={on} validationType={validationType} />
           <Handle on={on} validationType={validationType} {...rippleProps} />
         </div>
-      )
+      );
     }
   )
 )`
@@ -124,4 +124,4 @@ export const ToggleSwitch = styled(
     width: 100%;
     z-index: 1;
   }
-`
+`;

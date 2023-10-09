@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { isSameYear, getMonth } from 'date-fns'
+import { isSameYear, getMonth } from 'date-fns';
 
-export const confirmToday = (i: number) => getMonth(new Date()) === i
+export const confirmToday = (i: number) => getMonth(new Date()) === i;
 
 export const isThisMonth = (
   date: Date,
@@ -14,4 +14,4 @@ export const isThisMonth = (
 ) =>
   selectedMonth &&
   isSameYear(selectedMonth, date) &&
-  getMonth(selectedMonth) === monthNumber
+  getMonth(selectedMonth) === monthNumber;

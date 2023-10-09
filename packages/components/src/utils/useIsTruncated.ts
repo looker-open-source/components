@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { useState, useCallback } from 'react'
-import { useSafeLayoutEffect } from './useSafeLayoutEffect'
-import { isOverflowing } from './isOverflowing'
+import { useState, useCallback } from 'react';
+import { useSafeLayoutEffect } from './useSafeLayoutEffect';
+import { isOverflowing } from './isOverflowing';
 
 /**
  * Detects if an element's content overflows its width using a ResizeObserver.
@@ -15,33 +15,26 @@ export const useIsTruncated = (
   element: HTMLElement | null,
   identity?: number
 ): boolean => {
-  const [isTruncated, setIsTruncated] = useState(false)
+  const [isTruncated, setIsTruncated] = useState(false);
 
   // Re-run truncation detection when element is resized.
   // Could run on window resize or just dom element change
   // thanks to Resize Observer.
   const handleResize = useCallback(() => {
-    element && setIsTruncated(isOverflowing(element))
-  }, [element])
+    if (!element) return;
+    setIsTruncated(isOverflowing(element));
+  }, [element]);
 
   useSafeLayoutEffect(() => {
-    if (!element) {
-      return
-    }
+    if (!element) return;
 
-    const resizeObserver = new ResizeObserver(() => handleResize())
-    if (element) {
-      resizeObserver.observe(element as unknown as HTMLElement)
-    }
+    const resizeObserver = new ResizeObserver(handleResize);
+    resizeObserver.observe(element);
 
     return () => {
-      if (!resizeObserver) {
-        return
-      }
+      resizeObserver.disconnect();
+    };
+  }, [handleResize, element, identity]);
 
-      resizeObserver.disconnect()
-    }
-  }, [handleResize, element, identity])
-
-  return isTruncated
-}
+  return isTruncated;
+};

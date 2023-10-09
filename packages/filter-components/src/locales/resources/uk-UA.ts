@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/uk'
-import { ukUA as componentsLocale } from '@looker/components'
-import { ukUA as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/uk';
+import { ukUA as componentsLocale } from '@looker/components';
+import { ukUA as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Потрібно ввести значення',
   },
-}
+  UserAttributes: {
+    placeholder: 'Вибрати…',
+  },
+};
 
 export const ukUA = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'uk-UA',
   resources,
   dateLocale
-)
+);

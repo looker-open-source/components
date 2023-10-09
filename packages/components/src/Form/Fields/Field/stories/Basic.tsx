@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Field } from '../../Field'
-import { InputText } from '../../../Inputs'
-import { Space } from '../../../../Layout'
-import type { FieldProps } from '../../Field'
+import React from 'react';
+import { Field } from '../../Field';
+import { InputText } from '../../../Inputs';
+import { Space } from '../../../../Layout';
+import type { FieldProps } from '../../Field';
 export default function Basic(props: FieldProps) {
-  const id = 'coolField'
+  const id = 'coolField';
   return (
     <Field
       id={id}
@@ -29,5 +29,5 @@ export default function Basic(props: FieldProps) {
         />
       </Space>
     </Field>
-  )
+  );
 }

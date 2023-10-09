@@ -3,25 +3,25 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { CTableSeries } from '..'
-import { mockTableConfig, mockFields, mockSdkDataResponse } from '../fixtures'
-import { seriesCellVis } from './seriesCellVis'
+import type { CTableSeries } from '..';
+import { mockTableConfig, mockFields, mockSdkDataResponse } from '../fixtures';
+import { seriesCellVis } from './seriesCellVis';
 
 describe('seriesCellVis', () => {
   test('series as array', () => {
     const series: CTableSeries[] = [
       { cell_visualization: true, color: 'blue' },
       { cell_visualization: false, visible: false },
-    ]
+    ];
 
     const transformedConfig = seriesCellVis({
       config: { ...mockTableConfig, series },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
-    expect(transformedConfig.config.series).toEqual(series)
-  })
+    expect(transformedConfig.config.series).toEqual(series);
+  });
 
   test('series as object', () => {
     const series: { [k: string]: CTableSeries } = {
@@ -31,7 +31,7 @@ describe('seriesCellVis', () => {
         label: 'Average',
         visible: false,
       },
-    }
+    };
     const series_cell_visualizations = {
       'orders.count': {
         is_active: true,
@@ -39,13 +39,13 @@ describe('seriesCellVis', () => {
       'orders.average_total_amount_of_order_usd': {
         is_active: false,
       },
-    }
+    };
 
     const transformedConfig = seriesCellVis({
       config: { ...mockTableConfig, series, series_cell_visualizations },
       data: mockSdkDataResponse,
       fields: mockFields,
-    })
+    });
 
     expect(transformedConfig.config.series).toEqual({
       'orders.count': {
@@ -56,6 +56,6 @@ describe('seriesCellVis', () => {
         cell_visualization: false,
         ...series['orders.average_total_amount_of_order_usd'],
       },
-    })
-  })
-})
+    });
+  });
+});

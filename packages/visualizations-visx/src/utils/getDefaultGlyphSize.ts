@@ -12,5 +12,5 @@
  */
 
 export const getDefaultGlyphSize = (line_width: number) => {
-  return Math.round(Math.pow(line_width, 2)) + 20
-}
+  return Math.round(Math.pow(line_width, 2)) + 20;
+};

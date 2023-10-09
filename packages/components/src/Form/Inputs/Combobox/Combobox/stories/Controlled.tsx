@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Button, Space } from '../../../../../'
-import type { ComboboxProps } from '../..'
-import { Combobox, ComboboxOption, ComboboxList } from '../..'
-import { ComboboxInput } from '../../ComboboxInput'
-import type { MaybeComboboxOptionObject } from '../../'
+import React, { useState } from 'react';
+import { Button, Space } from '../../../../../';
+import type { ComboboxProps } from '../..';
+import { Combobox, ComboboxOption, ComboboxList } from '../..';
+import { ComboboxInput } from '../../ComboboxInput';
+import type { MaybeComboboxOptionObject } from '../../';
 
 export default function Controlled(props: ComboboxProps) {
   const {
@@ -18,17 +18,17 @@ export default function Controlled(props: ComboboxProps) {
     },
     onChange: _onChange,
     ...restProps
-  } = props
+  } = props;
 
-  const [option, setOption] = useState<MaybeComboboxOptionObject>(valueProp)
+  const [option, setOption] = useState<MaybeComboboxOptionObject>(valueProp);
 
   const handleChange = (newOption: MaybeComboboxOptionObject) => {
-    setOption(newOption)
-  }
+    setOption(newOption);
+  };
 
   const handlePineappleClick = () => {
-    setOption({ value: 'Pineapples' })
-  }
+    setOption({ value: 'Pineapples' });
+  };
 
   return (
     <Space>
@@ -64,5 +64,5 @@ export default function Controlled(props: ComboboxProps) {
         </ComboboxList>
       </Combobox>
     </Space>
-  )
+  );
 }

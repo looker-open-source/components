@@ -28,11 +28,11 @@ import type {
   CompatibleHTMLProps,
   PaddingProps,
   SpacingSizes,
-} from '@looker/design-tokens'
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { OverflowShadow, useOverflow } from '../../utils'
+} from '@looker/design-tokens';
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { OverflowShadow, useOverflow } from '../../utils';
 
 export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
   PaddingProps & {
@@ -41,14 +41,14 @@ export type ModalContentProps = CompatibleHTMLProps<HTMLDivElement> &
      * at the bottom of the ModalContent. (`hasFooter={false}`)
      * @default true
      */
-    hasFooter?: boolean
+    hasFooter?: boolean;
     /**
      * If the Modal does not have a header use this property to manually render padding
      * at the top of the ModalContent. (`hasHeader={false}`)
      * @default true
      */
-    hasHeader?: boolean
-  }
+    hasHeader?: boolean;
+  };
 
 type ModalContentPropsInternal = ModalContentProps & {
   /**
@@ -57,8 +57,8 @@ type ModalContentPropsInternal = ModalContentProps & {
    * @private
    * @default 'xxxsmall'
    */
-  overflowVerticalPadding?: SpacingSizes
-}
+  overflowVerticalPadding?: SpacingSizes;
+};
 
 const ModalContentLayout = forwardRef(
   (
@@ -75,7 +75,7 @@ const ModalContentLayout = forwardRef(
     }: ModalContentPropsInternal,
     forwardedRef: Ref<HTMLDivElement>
   ) => {
-    const [hasOverflow, ref] = useOverflow(forwardedRef)
+    const [hasOverflow, ref] = useOverflow(forwardedRef);
 
     return (
       <OverflowShadow
@@ -88,15 +88,15 @@ const ModalContentLayout = forwardRef(
       >
         {children}
       </OverflowShadow>
-    )
+    );
   }
-)
+);
 
-ModalContentLayout.displayName = 'ModalContentLayout'
+ModalContentLayout.displayName = 'ModalContentLayout';
 
 export const ModalContent = styled(
   ModalContentLayout
 )<ModalContentPropsInternal>`
   flex: 1 1 auto;
   overflow: auto;
-`
+`;

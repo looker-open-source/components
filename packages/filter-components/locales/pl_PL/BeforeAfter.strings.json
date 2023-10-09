@@ -1,8 +1,8 @@
 {
   "absolute": {
-    "value": "(wartość bezwzględna)"
+    "value": "(bezwzględne)"
   },
   "relative": {
-    "value": "(wartość relatywna)"
+    "value": "(względne)"
   }
 }

@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { Tree, TreeCollection, TreeItem } from '..'
-import { Space } from '../../Layout'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { Tree, TreeCollection, TreeItem } from '..';
+import { Space } from '../../Layout';
 
 export default function Icon() {
   return (
@@ -26,5 +26,5 @@ export default function Icon() {
         <TreeItem>Don't mind me</TreeItem>
       </Tree>
     </TreeCollection>
-  )
+  );
 }

@@ -2,9 +2,9 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import React from 'react'
-import { List } from '../../'
-import { ListItem } from '..'
+import React from 'react';
+import { List } from '../../';
+import { ListItem } from '..';
 
 export default function Role() {
   return (
@@ -19,5 +19,5 @@ export default function Role() {
         List Item
       </ListItem>
     </List>
-  )
+  );
 }

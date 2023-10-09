@@ -23,24 +23,24 @@
  SOFTWARE.
 
  */
-import { ChipButton } from '@looker/components'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
+import { ChipButton } from '@looker/components';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
 
-const MAX_TOKEN_WIDTH = '20rem'
+const MAX_TOKEN_WIDTH = '20rem';
 export interface TokenProps {
-  label: string
-  subdued?: boolean
-  isHoverTarget?: boolean
-  isEmpty?: boolean
-  maxWidth?: string
-  onClick?: (event: React.SyntheticEvent) => void
-  hasError?: boolean
-  'aria-expanded'?: boolean
+  label: string;
+  subdued?: boolean;
+  isHoverTarget?: boolean;
+  isEmpty?: boolean;
+  maxWidth?: string;
+  onClick?: (event: React.SyntheticEvent) => void;
+  hasError?: boolean;
+  'aria-expanded'?: boolean;
 }
 
 interface ChipTokenProps {
-  showError?: boolean
+  showError?: boolean;
 }
 
 /**
@@ -61,16 +61,17 @@ export const Token = forwardRef(
     }: TokenProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
-    const showError = !props['aria-expanded'] && hasError
-    let TokenComponent
+    const showError = !props['aria-expanded'] && hasError;
+    let TokenComponent;
     if (isHoverTarget) {
-      TokenComponent = DropTargetToken
+      TokenComponent = DropTargetToken;
     } else if (isEmpty) {
-      TokenComponent = EmptyToken
+      TokenComponent = EmptyToken;
     } else {
-      TokenComponent = TokenBase
+      TokenComponent = TokenBase;
     }
     return (
+      // eslint-disable-next-line jsx-a11y/role-supports-aria-props
       <TokenComponent
         showError={showError}
         onClick={onClick}
@@ -81,11 +82,11 @@ export const Token = forwardRef(
       >
         {label}
       </TokenComponent>
-    )
+    );
   }
-)
+);
 
-Token.displayName = 'Token'
+Token.displayName = 'Token';
 
 export const TokenBase = styled(ChipButton)<
   ChipTokenProps & { maxWidth?: string }
@@ -93,13 +94,13 @@ export const TokenBase = styled(ChipButton)<
   ${({ theme, showError }) =>
     showError && `border: 1px solid ${theme.colors.criticalBorder};`}
   max-width: ${({ maxWidth }) => maxWidth || MAX_TOKEN_WIDTH};
-`
+`;
 
 const DropTargetToken = styled(TokenBase)`
   &:hover {
     border-color: ${({ theme }) => theme.colors.key};
   }
-`
+`;
 
 const EmptyToken = styled(TokenBase)`
   &[aria-selected='false'] {
@@ -107,7 +108,7 @@ const EmptyToken = styled(TokenBase)`
     border: 1px dashed ${({ theme }) => theme.colors.ui4};
     color: ${({ theme }) => theme.colors.text1};
   }
-`
+`;
 
 export const SubduedToken = styled(TokenBase)`
   font-weight: normal;
@@ -115,4 +116,4 @@ export const SubduedToken = styled(TokenBase)`
   &:hover {
     cursor: not-allowed;
   }
-`
+`;

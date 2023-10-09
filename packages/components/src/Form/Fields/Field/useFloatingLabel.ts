@@ -24,37 +24,37 @@
 
  */
 
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { FocusEvent } from 'react'
-import { useState } from 'react'
-import { useTheme } from 'styled-components'
-import { getPortalRoot } from '../../../Portal'
-import { useSyncedState } from '../../../utils'
-import type { UseFloatingLabelProps } from './types'
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { FocusEvent } from 'react';
+import { useState } from 'react';
+import { useTheme } from 'styled-components';
+import { getPortalRoot } from '../../../Portal';
+import { useSyncedState } from '../../../utils';
+import type { UseFloatingLabelProps } from './types';
 
 const defaultCheckValueOnBlur = (e: FocusEvent) => {
-  const target = e.currentTarget
+  const target = e.currentTarget;
   const input =
-    target.querySelector('input') || target.querySelector('textarea')
-  return input?.value !== undefined && input.value !== ''
-}
+    target.querySelector('input') || target.querySelector('textarea');
+  return input?.value !== undefined && input.value !== '';
+};
 
 const getIsInSelectList = (
   nextFocusTarget: Element | Node | null,
   inputArea: HTMLElement
 ) => {
-  const portalRoot = getPortalRoot()
+  const portalRoot = getPortalRoot();
   if (!portalRoot.contains(nextFocusTarget)) {
-    return false
+    return false;
   }
   if (portalRoot.contains(inputArea)) {
     return (
       (nextFocusTarget as unknown as Element)?.closest('portal-child') !==
       inputArea.closest('portal-child')
-    )
+    );
   }
-  return true
-}
+  return true;
+};
 
 /**
  * A helper function to derive the hasValue prop from the value and defaultValue props.
@@ -62,17 +62,17 @@ const getIsInSelectList = (
  */
 export const getHasValue = <
   Props extends {
-    value?: unknown
-    defaultValue?: unknown
+    value?: unknown;
+    defaultValue?: unknown;
   } = CompatibleHTMLProps<HTMLInputElement>
 >({
   value,
   defaultValue,
 }: Pick<Props, 'value' | 'defaultValue'>) => {
-  if (value !== undefined) return value !== ''
-  if (defaultValue !== undefined) return defaultValue !== ''
-  return false
-}
+  if (value !== undefined) return value !== '';
+  if (defaultValue !== undefined) return defaultValue !== '';
+  return false;
+};
 
 /**
  * Controls the label position for FloatingLabelField
@@ -82,15 +82,15 @@ export const useFloatingLabel = ({
   hasValue: propsHasValue,
   labelOffset = '0rem',
 }: UseFloatingLabelProps) => {
-  const [isFocused, setIsFocused] = useState(false)
-  const [hasValue, setHasValue] = useSyncedState(propsHasValue)
+  const [isFocused, setIsFocused] = useState(false);
+  const [hasValue, setHasValue] = useSyncedState(propsHasValue);
 
-  const theme = useTheme()
+  const theme = useTheme();
   // Limitations of style/CSSProperties type
   // https://github.com/frenic/csstype#what-should-i-do-when-i-get-type-errors
   const style: Record<string, string> = {
     '--label-translate': `${labelOffset}, ${theme.space.u4}`,
-  }
+  };
 
   return {
     className: hasValue || isFocused ? 'label-up' : 'label-down',
@@ -99,30 +99,30 @@ export const useFloatingLabel = ({
         // Check for a value on blur – if there is one,
         // the label shouldn't move back down
         if (checkValueOnBlur) {
-          setHasValue(checkValueOnBlur(e))
+          setHasValue(checkValueOnBlur(e));
         }
 
-        const nextFocusTarget = e.relatedTarget
+        const nextFocusTarget = e.relatedTarget;
         // For FieldSelect, focus can move (briefly) into the list,
         // which is in a Portal
         // (and a separate portal child from the input, if the input is also in aportal)
         const isInSelectList = getIsInSelectList(
           nextFocusTarget,
           e.currentTarget
-        )
+        );
         if (
           nextFocusTarget &&
           !e.currentTarget.contains(nextFocusTarget) &&
           !isInSelectList
         ) {
-          setIsFocused(false)
+          setIsFocused(false);
         }
       },
       onFocus: () => {
-        setIsFocused(true)
+        setIsFocused(true);
       },
     },
     isFocused,
     style,
-  }
-}
+  };
+};

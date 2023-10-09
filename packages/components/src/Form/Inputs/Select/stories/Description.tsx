@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Select } from '..'
+import React from 'react';
+import { Select } from '..';
 
 export default function Description() {
   return (
@@ -20,5 +20,5 @@ export default function Description() {
         { description: 'Full of holes', label: 'Swiss', value: 'swiss' },
       ]}
     />
-  )
+  );
 }

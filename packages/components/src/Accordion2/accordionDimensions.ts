@@ -7,40 +7,40 @@ import type {
   DensityRamp,
   FontSizes,
   SpacingSizes,
-} from '@looker/design-tokens'
-import type { IconSize } from '../Icon'
+} from '@looker/design-tokens';
+import type { IconSize } from '../Icon';
 
 type AccordionDensityDimensions = {
-  indicatorGap: SpacingSizes
-  indicatorSize: IconSize
-  fontSize: FontSizes
-}
+  indicatorGap: SpacingSizes;
+  indicatorSize: IconSize;
+  fontSize: FontSizes;
+};
 
 // Positive density values
 export const densityPositive1: AccordionDensityDimensions = {
   fontSize: 'medium',
   indicatorGap: 'u1',
   indicatorSize: 'medium',
-}
+};
 
 export const density0: AccordionDensityDimensions = {
   ...densityPositive1,
   fontSize: 'small',
   indicatorSize: 'small',
-}
+};
 
 // Negative density values
 export const densityNegative1: AccordionDensityDimensions = {
   ...density0,
-}
+};
 export const densityNegative2: AccordionDensityDimensions = {
   ...densityNegative1,
-}
+};
 export const densityNegative3: AccordionDensityDimensions = {
   ...densityNegative2,
   fontSize: 'xsmall',
   indicatorSize: 'xxsmall',
-}
+};
 
 // Lookup object
 export const densities = {
@@ -49,7 +49,7 @@ export const densities = {
   '-3': densityNegative3,
   '0': density0,
   '1': densityPositive1,
-}
+};
 
 /**
  * Returns an object with size and spacing scaled to "density" parameter value
@@ -57,4 +57,4 @@ export const densities = {
  */
 export const accordionDimensions = (
   density: DensityRamp = 0
-): AccordionDensityDimensions => densities[density]
+): AccordionDensityDimensions => densities[density];

@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './SqlRunner'
+export * from './SqlRunner';

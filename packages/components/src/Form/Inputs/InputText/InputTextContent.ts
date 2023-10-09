@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { SpaceProps } from '@looker/design-tokens'
-import { space } from '@looker/design-tokens'
-import styled from 'styled-components'
-import { inputIconSize } from '../inputIconSize'
+import type { SpaceProps } from '@looker/design-tokens';
+import { space } from '@looker/design-tokens';
+import styled from 'styled-components';
+import { inputIconSize } from '../inputIconSize';
 
 export const InputTextContent = styled.div<SpaceProps>`
   ${space}
@@ -19,4 +19,4 @@ export const InputTextContent = styled.div<SpaceProps>`
   > svg {
     ${inputIconSize}
   }
-`
+`;

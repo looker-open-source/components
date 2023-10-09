@@ -1,17 +1,15 @@
-import { ProgressCircular, MessageBar } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyDefault from '!!raw-loader!./Default'
-import storyDeterminateProgress from '!!raw-loader!./DeterminateProgress'
-import storySize from '!!raw-loader!./Size'
+import { ProgressCircular, MessageBar } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyDefault from './Default?raw';
+import storyDeterminateProgress from './DeterminateProgress?raw';
+import storySize from './Size?raw';
+import storyIntent from './Intent?raw';
+import storyRenderTrough from './RenderTrough?raw';
 
 <Meta component={ProgressCircular} title="Docs/ProgressCircular" />
 
 # ProgressCircular
-
-<MessageBar noActions intent="warn">
-  This component is currently experimental.
-</MessageBar>
 
 The `ProgressCircular` helps express an unspecified wait time or displays the length of a process
 
@@ -32,5 +30,22 @@ If the process has known steps to completion, you can use the `progress` prop to
 `ProgressCircular` is available in four sizes, `xsmall`, `small`, `medium`, and `large`.
 
 <Editor code={storySize} />
+
+## Intent Colors
+
+`ProgressCircular` supports four color variants accessed through our standard intent values:
+
+- inform
+- warn
+- critical
+- positive
+
+<Editor code={storyIntent} />
+
+## Visible Trough
+
+For an additional style variant, you can toggle the progress trough or track with a subtle background indicating values that are yet to be filled in.
+
+<Editor code={storyRenderTrough} />
 
 <ArgsTable of={ProgressCircular} exclude={excludedProps} />

@@ -2,12 +2,12 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { useTranslation } from '../../../../utils'
-import { useUserAttributeOption } from './get_user_attribute_option'
+import { useTranslation } from '../../../../utils';
+import { useUserAttributeOption } from './get_user_attribute_option';
 
 export const useLocationFilterOptions = () => {
-  const { t } = useTranslation('get_location_filter_options')
-  const userAttributeOption = useUserAttributeOption()
+  const { t } = useTranslation('get_location_filter_options');
+  const userAttributeOption = useUserAttributeOption();
   return [
     { value: 'location', label: t('Location') },
     { value: 'circle', label: t('Circle') },
@@ -16,15 +16,15 @@ export const useLocationFilterOptions = () => {
     { value: 'null', label: t('is null') },
     { value: 'notnull', label: t('is not null') },
     userAttributeOption,
-  ]
-}
+  ];
+};
 
 export const useUnitOptions = () => {
-  const { t } = useTranslation('get_location_filter_options')
+  const { t } = useTranslation('get_location_filter_options');
   return [
     { value: 'feet', label: t('feet') },
     { value: 'kilometers', label: t('kilometers') },
     { value: 'meters', label: t('meters') },
     { value: 'miles', label: t('miles') },
-  ]
-}
+  ];
+};

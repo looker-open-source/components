@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/fr-CA'
+import dateLocale from 'date-fns/locale/fr-CA';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -153,6 +153,6 @@ const resources = {
   TabList: {
     Tabs: 'Onglets',
   },
-}
+};
 
-export const frCA = mergeLocaleObjects([], 'fr-CA', resources, dateLocale)
+export const frCA = mergeLocaleObjects([], 'fr-CA', resources, dateLocale);

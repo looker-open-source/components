@@ -1,13 +1,13 @@
-import { Icon } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyAccessibility from '!!raw-loader!./Accessibility'
-import storyArtwork from '!!raw-loader!./Artwork'
-import storyBasic from '!!raw-loader!./Basic'
-import storyColor from '!!raw-loader!./Color'
-import storyInsideComponents from '!!raw-loader!./InsideComponents'
-import storyPairedWithText from '!!raw-loader!./PairedWithText'
-import storySize from '!!raw-loader!./Size'
+import { Icon } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyAccessibility from './Accessibility?raw';
+import storyArtwork from './Artwork?raw';
+import storyBasic from './Basic?raw';
+import storyColor from './Color?raw';
+import storyInsideComponents from './InsideComponents?raw';
+import storyPairedWithText from './PairedWithText?raw';
+import storySize from './Size?raw';
 
 <Meta component={Icon} title="Docs/Icon" />
 
@@ -54,9 +54,9 @@ When using an `Icon` we strongly encourage specification of a `title` attribute.
 [Styled Icons](https://styled-icons.js.org/) has a massive suite of prebuilt icons for an array of icon libraries including the Material Design collection. Within suite of components we often leverage `@styled-icons/material`, `@styled-icons/material-outlined` and `@styled-icons/material-rounded`
 
 ```js static
-import { Add } from '@styled-icons/material/Add'
-import { Add } from '@styled-icons/material-outlined/Add'
-import { Add } from '@styled-icons/material-rounded/Add'
+import { Add } from '@styled-icons/material/Add';
+import { Add } from '@styled-icons/material-outlined/Add';
+import { Add } from '@styled-icons/material-rounded/Add';
 ```
 
 # @looker/icons Library
@@ -64,7 +64,7 @@ import { Add } from '@styled-icons/material-rounded/Add'
 The Looker Components team ships a small suite of Looker-specific icons via a NPM package - `@looker/icons`. Below you can see a complete list of the icons we ship in our package. To use one simply add the package to your project and import the apppriate icon:
 
 ```js static
-import { Pivot } from '@looker/icons'
+import { Pivot } from '@looker/icons';
 ```
 
 ## Props

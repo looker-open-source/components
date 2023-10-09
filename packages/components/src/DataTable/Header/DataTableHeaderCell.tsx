@@ -23,28 +23,28 @@
  SOFTWARE.
 
  */
-import type { AriaAttributes, Ref } from 'react'
-import React, { useContext, forwardRef } from 'react'
-import styled from 'styled-components'
-import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import { DataTableContext } from '../DataTableContext'
-import { Icon } from '../../Icon'
-import { Space } from '../../Layout/Space'
-import { Tooltip } from '../../Tooltip'
-import { Truncate } from '../../Truncate'
-import { useClickable } from '../../utils'
-import { VisuallyHidden } from '../../VisuallyHidden'
-import { columnSize, sizeInfersTruncate } from '../Column/columnSize'
-import type { DataTableColumn } from '../Column'
-import { FocusableCell } from '../Column/FocusableCell'
+import type { AriaAttributes, Ref } from 'react';
+import React, { useContext, forwardRef } from 'react';
+import styled from 'styled-components';
+import { ExpandLess } from '@styled-icons/material-rounded/ExpandLess';
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore';
+import { DataTableContext } from '../DataTableContext';
+import { Icon } from '../../Icon';
+import { Space } from '../../Layout/Space';
+import { Tooltip } from '../../Tooltip';
+import { Truncate } from '../../Truncate';
+import { useClickable } from '../../utils';
+import { VisuallyHidden } from '../../VisuallyHidden';
+import { columnSize, sizeInfersTruncate } from '../Column/columnSize';
+import type { DataTableColumn } from '../Column';
+import { FocusableCell } from '../Column/FocusableCell';
 
 export interface DataTableHeaderCellProps extends Omit<DataTableColumn, 'id'> {
-  className?: string
+  className?: string;
   /**
    * Used for sorting column assignment
    */
-  columnId: DataTableColumn['id']
+  columnId: DataTableColumn['id'];
 }
 
 const DataTableHeaderCellLayout = forwardRef(
@@ -61,16 +61,16 @@ const DataTableHeaderCellLayout = forwardRef(
     }: DataTableHeaderCellProps,
     ref: Ref<HTMLTableHeaderCellElement>
   ) => {
-    const { onSort } = useContext(DataTableContext)
+    const { onSort } = useContext(DataTableContext);
 
     const onClick = () => {
       if (onSort && canSort) {
-        onSort(columnId, sortDirection === 'asc' ? 'desc' : 'asc')
+        onSort(columnId, sortDirection === 'asc' ? 'desc' : 'asc');
       }
-    }
-    const { role: _role, ...clickableProps } = useClickable({ onClick })
+    };
+    const { role: _role, ...clickableProps } = useClickable({ onClick });
 
-    let label
+    let label;
 
     if (titleIcon) {
       label = (
@@ -80,19 +80,19 @@ const DataTableHeaderCellLayout = forwardRef(
             <Icon color="ui3" icon={titleIcon} size="small" />
           </Tooltip>
         </>
-      )
+      );
     } else if (size && sizeInfersTruncate(size)) {
-      label = <Truncate width="auto">{title}</Truncate>
+      label = <Truncate width="auto">{title}</Truncate>;
     } else {
-      label = title
+      label = title;
     }
 
-    let ariaSort: AriaAttributes['aria-sort'] = 'none'
+    let ariaSort: AriaAttributes['aria-sort'] = 'none';
 
     if (sortDirection === 'asc') {
-      ariaSort = 'ascending'
+      ariaSort = 'ascending';
     } else if (sortDirection === 'desc') {
-      ariaSort = 'descending'
+      ariaSort = 'descending';
     }
 
     return (
@@ -114,11 +114,11 @@ const DataTableHeaderCellLayout = forwardRef(
           )}
         </Space>
       </FocusableCell>
-    )
+    );
   }
-)
+);
 
-DataTableHeaderCellLayout.displayName = 'DataTableHeaderCellLayout'
+DataTableHeaderCellLayout.displayName = 'DataTableHeaderCellLayout';
 
 export const DataTableHeaderCell = styled(DataTableHeaderCellLayout)`
   ${columnSize}
@@ -126,4 +126,4 @@ export const DataTableHeaderCell = styled(DataTableHeaderCellLayout)`
   color: ${({ theme }) => theme.colors.text5};
   font-weight: ${({ theme }) => theme.fontWeights.semiBold};
   text-align: left;
-`
+`;

@@ -1,0 +1,15 @@
+/// <reference types="react" />
+import type { CompatibleInputHTMLProps } from '@looker/design-tokens';
+import type { ValidationType } from '../../ValidationMessage';
+import type { SimpleLayoutProps } from '../../../Layout/utils/simple';
+declare type TextAreaResize = 'vertical' | 'none' | boolean;
+export interface TextAreaProps extends Omit<SimpleLayoutProps, 'size'>, CompatibleInputHTMLProps<HTMLTextAreaElement> {
+    /**
+     * Allows the end-user to resize vertical height of textarea
+     * @default vertical
+     */
+    resize?: TextAreaResize;
+    validationType?: ValidationType;
+}
+export declare const TextArea: import("styled-components").StyledComponent<({ className, validationType, ...props }: TextAreaProps) => JSX.Element, import("styled-components").DefaultTheme, TextAreaProps, never>;
+export {};

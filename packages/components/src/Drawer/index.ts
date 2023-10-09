@@ -3,5 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Drawer'
-export * from './useDrawer'
+export * from './Drawer';
+export * from './useDrawer';

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Locale } from 'date-fns'
-import type { Resource } from 'i18next'
-import type { I18nStateWithDates } from './types'
+import type { Locale } from 'date-fns';
+import type { Resource } from 'i18next';
+import type { I18nStateWithDates } from './types';
 
 /**
  * For use in a package's individual locale files,
@@ -22,12 +22,16 @@ export const mergeLocaleObjects = (
   translations: Resource,
   dateLocale?: Locale
 ): I18nStateWithDates => {
-  const translationsArr = locales.map(locale => locale.resources[localeString])
+  const translationsArr = locales.map(locale => locale.resources[localeString]);
   // Merge all namespaced translations into one object
-  const mergedTranslations = Object.assign({}, ...translationsArr, translations)
-  const dateLocaleObject = dateLocale ? { dateLocale } : {}
+  const mergedTranslations = Object.assign(
+    {},
+    ...translationsArr,
+    translations
+  );
+  const dateLocaleObject = dateLocale ? { dateLocale } : {};
   return Object.assign({ locale: localeString }, dateLocaleObject, ...locales, {
     // Overwrite resources with the merged resources
     resources: { [localeString]: mergedTranslations },
-  })
-}
+  });
+};

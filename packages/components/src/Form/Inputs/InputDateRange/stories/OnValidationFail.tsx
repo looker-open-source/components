@@ -3,24 +3,24 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import type { RangeModifier } from '../../../../Calendar'
-import { Divider } from '../../../../Divider'
-import { SpaceVertical } from '../../../../Layout'
-import { Heading, Paragraph } from '../../../../Text'
-import { InputDateRange } from '../InputDateRange'
+import React, { useState } from 'react';
+import type { RangeModifier } from '../../../../Calendar';
+import { Divider } from '../../../../Divider';
+import { SpaceVertical } from '../../../../Layout';
+import { Heading, Paragraph } from '../../../../Text';
+import { InputDateRange } from '../InputDateRange';
 
 export default function OnValidationFail() {
-  const [value, setValue] = useState<RangeModifier>({})
-  const [isValid, setIsValid] = useState(true)
+  const [value, setValue] = useState<RangeModifier>({});
+  const [isValid, setIsValid] = useState(true);
   const handleChange = (newValue: RangeModifier) => {
-    setValue(newValue)
-    setIsValid(true)
-  }
-  const handleValidationFail = () => setIsValid(false)
+    setValue(newValue);
+    setIsValid(true);
+  };
+  const handleValidationFail = () => setIsValid(false);
 
-  const message = isValid ? 'Valid Input' : 'Invalid Input'
-  const color = isValid ? undefined : 'critical'
+  const message = isValid ? 'Valid Input' : 'Invalid Input';
+  const color = isValid ? undefined : 'critical';
 
   return (
     <SpaceVertical>
@@ -37,5 +37,5 @@ export default function OnValidationFail() {
         onValidationFail={handleValidationFail}
       />
     </SpaceVertical>
-  )
+  );
 }

@@ -24,26 +24,26 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { inputFilterEditor } from './inputFilterEditor'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { inputFilterEditor } from './inputFilterEditor';
 
 describe('inputFilterEditor', () => {
-  const closeEditor = jest.fn()
+  const closeEditor = jest.fn();
   const filterOptions1 = {
     field: 'persistance-type',
     label: 'Persistance Type',
     multiple: true,
     options: ['datagroup_trigger', 'datagroup_trigger1', 'datagroup_trigger2'],
-  }
+  };
   const filterOptions2 = {
     field: 'group',
     label: 'Group',
     options: ['Cheddar', 'Gouda'],
-  }
-  const value = 'user'
-  const onChange = jest.fn()
+  };
+  const value = 'user';
+  const onChange = jest.fn();
 
   test('renders', () => {
     renderWithTheme(
@@ -55,9 +55,9 @@ describe('inputFilterEditor', () => {
           value,
         })}
       </>
-    )
-    expect(screen.getByText('datagroup_trigger')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByText('datagroup_trigger')).toBeInTheDocument();
+  });
 
   test('onChange is called', () => {
     renderWithTheme(
@@ -69,11 +69,11 @@ describe('inputFilterEditor', () => {
           value,
         })}
       </>
-    )
-    const selectingFilter = screen.queryByText('datagroup_trigger')
-    selectingFilter && fireEvent.click(selectingFilter)
-    expect(onChange).toBeCalled()
-  })
+    );
+    const selectingFilter = screen.queryByText('datagroup_trigger');
+    selectingFilter && fireEvent.click(selectingFilter);
+    expect(onChange).toBeCalled();
+  });
 
   test('closeEditor is called', () => {
     renderWithTheme(
@@ -85,11 +85,11 @@ describe('inputFilterEditor', () => {
           value,
         })}
       </>
-    )
-    const selectingFilter = screen.queryByText('Cheddar')
-    selectingFilter && fireEvent.click(selectingFilter)
-    expect(closeEditor).toBeCalled()
-  })
+    );
+    const selectingFilter = screen.queryByText('Cheddar');
+    selectingFilter && fireEvent.click(selectingFilter);
+    expect(closeEditor).toBeCalled();
+  });
 
   test('displays CheckboxGroup when multiple = true', () => {
     renderWithTheme(
@@ -101,10 +101,10 @@ describe('inputFilterEditor', () => {
           value,
         })}
       </>
-    )
-    const checkbox = screen.getByLabelText('Gouda')
-    expect(checkbox).toHaveAttribute('type', 'checkbox')
-  })
+    );
+    const checkbox = screen.getByLabelText('Gouda');
+    expect(checkbox).toHaveAttribute('type', 'checkbox');
+  });
 
   test('displays RadioGroup when multiple = false', () => {
     renderWithTheme(
@@ -116,8 +116,8 @@ describe('inputFilterEditor', () => {
           value,
         })}
       </>
-    )
-    const radio = screen.getByLabelText('Gouda')
-    expect(radio).toHaveAttribute('type', 'radio')
-  })
-})
+    );
+    const radio = screen.getByLabelText('Gouda');
+    expect(radio).toHaveAttribute('type', 'radio');
+  });
+});

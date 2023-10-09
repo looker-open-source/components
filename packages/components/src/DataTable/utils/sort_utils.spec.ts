@@ -24,8 +24,8 @@
 
  */
 
-import type { DataTableColumns } from '../Column'
-import { stringComparator, doDataTableSort } from './sort_utils'
+import type { DataTableColumns } from '../Column';
+import { stringComparator, doDataTableSort } from './sort_utils';
 
 describe('DataTable Sort Utils', () => {
   test('Default string comparison', () => {
@@ -35,7 +35,7 @@ describe('DataTable Sort Utils', () => {
       ['Samus', 'Link'],
       ['', '%(#&@'],
       ['1234', '10000'],
-    ].map(values => stringComparator(values[0], values[1]))
+    ].map(values => stringComparator(values[0], values[1]));
 
     expect(compared).toMatchInlineSnapshot(`
       Array [
@@ -45,12 +45,12 @@ describe('DataTable Sort Utils', () => {
         -1,
         1,
       ]
-    `)
-  })
+    `);
+  });
 
   interface ExampleArgumentSet {
-    id: string
-    sortDirection: 'asc' | 'desc'
+    id: string;
+    sortDirection: 'asc' | 'desc';
   }
 
   const data = [
@@ -69,7 +69,7 @@ describe('DataTable Sort Utils', () => {
       id: 3,
       name: 'Andrew Rannells',
     },
-  ]
+  ];
   const columns: DataTableColumns = [
     {
       canSort: true,
@@ -89,9 +89,9 @@ describe('DataTable Sort Utils', () => {
       title: 'Birthday',
       type: 'date',
     },
-  ]
+  ];
 
-  type TestTuple = [string, ExampleArgumentSet]
+  type TestTuple = [string, ExampleArgumentSet];
 
   const testConditions: TestTuple[] = [
     [
@@ -136,11 +136,11 @@ describe('DataTable Sort Utils', () => {
         sortDirection: 'desc',
       },
     ],
-  ]
+  ];
 
   test.each(testConditions)('%s', (_, { id, sortDirection }) => {
     expect(
       doDataTableSort(data, columns, id, sortDirection).data
-    ).toMatchSnapshot()
-  })
-})
+    ).toMatchSnapshot();
+  });
+});

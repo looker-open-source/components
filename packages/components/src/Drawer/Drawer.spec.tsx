@@ -24,82 +24,82 @@
 
  */
 
-import 'jest-styled-components'
-import React, { useContext } from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
+import 'jest-styled-components';
+import React, { useContext } from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
 import {
   act,
   screen,
   fireEvent,
   waitForElementToBeRemoved,
-} from '@testing-library/react'
-import { DialogContext } from '../Dialog/DialogContext'
-import { Drawer } from './Drawer'
-import { UseDrawer } from './stories/index.stories'
+} from '@testing-library/react';
+import { DialogContext } from '../Dialog/DialogContext';
+import { Drawer } from './Drawer';
+import { UseDrawer } from './stories/index.stories';
 
 const SimpleContent = () => {
-  const { closeModal } = useContext(DialogContext)
+  const { closeModal } = useContext(DialogContext);
 
   return (
     <>
       Drawer content
       <button onClick={closeModal}>Done</button>
     </>
-  )
-}
+  );
+};
 
 beforeEach(() => {
-  jest.useFakeTimers()
-})
+  jest.useFakeTimers();
+});
 afterEach(() => {
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('Drawer', () => {
   test('Basic render', () => {
-    renderWithTheme(<Drawer content={<SimpleContent />} />)
-    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument()
-  })
+    renderWithTheme(<Drawer content={<SimpleContent />} />);
+    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument();
+  });
 
   test('defaultOpen', async () => {
-    renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />)
-    runTimers()
-    expect(screen.getByText('Drawer content')).toBeInTheDocument()
-    const doneButton = screen.getByText('Done')
-    fireEvent.click(doneButton)
-    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'))
-  })
+    renderWithTheme(<Drawer defaultOpen content={<SimpleContent />} />);
+    runTimers();
+    expect(screen.getByText('Drawer content')).toBeInTheDocument();
+    const doneButton = screen.getByText('Done');
+    fireEvent.click(doneButton);
+    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'));
+  });
 
   test('useDrawer hook', async () => {
-    renderWithTheme(<UseDrawer />)
+    renderWithTheme(<UseDrawer />);
 
     // Dialog closed
-    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument()
+    expect(screen.queryByText('Drawer content')).not.toBeInTheDocument();
 
     // Open Drawer
-    const link = screen.getByText('Open Drawer')
-    fireEvent.click(link)
-    runTimers()
-    expect(screen.getByText('Drawer content')).toBeInTheDocument()
+    const link = screen.getByText('Open Drawer');
+    fireEvent.click(link);
+    runTimers();
+    expect(screen.getByText('Drawer content')).toBeInTheDocument();
 
     // Close the Drawer
-    const backdrop = screen.getByTestId('backdrop')
-    fireEvent.click(backdrop)
-    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'))
-  })
+    const backdrop = screen.getByTestId('backdrop');
+    fireEvent.click(backdrop);
+    await waitForElementToBeRemoved(() => screen.queryByText('Drawer content'));
+  });
 
   test('drawer form', async () => {
     renderWithTheme(
       <Drawer defaultOpen width="rail" content={<SimpleContent />}></Drawer>
-    )
+    );
     expect(screen.getByText('Drawer content')).toHaveStyleRule(
       'width',
       '3.5rem'
-    )
-  })
-})
+    );
+  });
+});

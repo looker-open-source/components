@@ -2,10 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import React from 'react'
-import { CheckboxGroup } from './CheckboxGroup'
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import React from 'react';
+import { CheckboxGroup } from './CheckboxGroup';
 
 const options = [
   {
@@ -20,7 +20,7 @@ const options = [
     label: 'label3',
     value: 'value3',
   },
-]
+];
 
 describe('CheckboxGroup', () => {
   it('handles loading state', () => {
@@ -31,7 +31,7 @@ describe('CheckboxGroup', () => {
         onChange={jest.fn()}
         value={[]}
       />
-    )
-    expect(screen.getByRole('progressbar')).toBeInTheDocument()
-  })
-})
+    );
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+});

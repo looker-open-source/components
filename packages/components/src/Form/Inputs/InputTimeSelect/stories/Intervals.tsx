@@ -3,13 +3,13 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputTimeSelect } from '../'
-import type { InputTimeSelectProps } from '../'
-import { Fieldset, SpaceVertical, Heading } from '../../../../'
+import React from 'react';
+import { InputTimeSelect } from '../';
+import type { InputTimeSelectProps } from '../';
+import { Fieldset, SpaceVertical, Heading } from '../../../../';
 
 export default function Intervals(props: InputTimeSelectProps) {
-  const { interval: _intervals, ...restProps } = props
+  const { interval: _intervals, ...restProps } = props;
   return (
     <Fieldset>
       <SpaceVertical gap="u1">
@@ -37,5 +37,5 @@ export default function Intervals(props: InputTimeSelectProps) {
         <InputTimeSelect interval={60} {...restProps} />
       </SpaceVertical>
     </Fieldset>
-  )
+  );
 }

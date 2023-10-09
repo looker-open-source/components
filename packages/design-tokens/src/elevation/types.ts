@@ -9,6 +9,6 @@ export type ElevationRamp =
   | 'plus2'
   | 'plus3'
   | 'plus4'
-  | 'plus5'
+  | 'plus5';
 
-export type Elevations = { [K in ElevationRamp]: string }
+export type Elevations = { [K in ElevationRamp]: string };

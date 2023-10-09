@@ -24,16 +24,16 @@
 
  */
 
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import { FieldSelectMulti } from './FieldSelectMulti'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import { FieldSelectMulti } from './FieldSelectMulti';
 
 const fieldSelectMultiOptions = [
   { label: 'Apples', value: '1' },
   { label: 'Bananas', value: '2' },
   { label: 'Oranges', value: '3' },
-]
+];
 
 describe('FieldSelectMulti', () => {
   test('should accept detail and description attributes', () => {
@@ -46,13 +46,13 @@ describe('FieldSelectMulti', () => {
         id="thumbs-up"
         options={fieldSelectMultiOptions}
       />
-    )
+    );
 
-    expect(screen.getByText('5/50')).toBeInTheDocument()
+    expect(screen.getByText('5/50')).toBeInTheDocument();
     expect(screen.getByLabelText('👍')).toHaveAccessibleDescription(
       'this is the description'
-    )
-  })
+    );
+  });
 
   test('should accept a disabled prop', () => {
     renderWithTheme(
@@ -63,11 +63,11 @@ describe('FieldSelectMulti', () => {
         name="test"
         options={fieldSelectMultiOptions}
       />
-    )
+    );
 
-    const input = screen.getByLabelText('Test Label')
-    expect(input).toBeDisabled()
-  })
+    const input = screen.getByLabelText('Test Label');
+    expect(input).toBeDisabled();
+  });
 
   test('should accept required attributes', () => {
     renderWithTheme(
@@ -78,12 +78,12 @@ describe('FieldSelectMulti', () => {
         options={fieldSelectMultiOptions}
         required
       />
-    )
-    expect(screen.getByText('required')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('required')).toBeVisible();
+  });
 
   test('should display error message', () => {
-    const errorMessage = 'This is an error'
+    const errorMessage = 'This is an error';
 
     renderWithTheme(
       <FieldSelectMulti
@@ -93,13 +93,13 @@ describe('FieldSelectMulti', () => {
         options={fieldSelectMultiOptions}
         validationMessage={{ message: errorMessage, type: 'error' }}
       />
-    )
+    );
 
-    expect(screen.getByText('This is an error')).toBeVisible()
-  })
+    expect(screen.getByText('This is an error')).toBeVisible();
+  });
 
   test('Should trigger onChange handler', () => {
-    const handleChange = jest.fn()
+    const handleChange = jest.fn();
 
     renderWithTheme(
       <FieldSelectMulti
@@ -109,17 +109,17 @@ describe('FieldSelectMulti', () => {
         onChange={handleChange}
         options={fieldSelectMultiOptions}
       />
-    )
+    );
 
     // The combobox container and the input share the label
-    const input = screen.getByLabelText('👍')
-    fireEvent.click(input)
+    const input = screen.getByLabelText('👍');
+    fireEvent.click(input);
 
-    const apples = screen.getByText('Apples')
-    fireEvent.click(apples)
+    const apples = screen.getByText('Apples');
+    fireEvent.click(apples);
 
-    expect(handleChange).toHaveBeenCalledTimes(1)
+    expect(handleChange).toHaveBeenCalledTimes(1);
 
-    fireEvent.click(document)
-  })
-})
+    fireEvent.click(document);
+  });
+});

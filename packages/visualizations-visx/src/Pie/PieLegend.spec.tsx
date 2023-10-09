@@ -24,13 +24,13 @@
 
  */
 
-import React from 'react'
-import { fireEvent, screen } from '@testing-library/react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { PieLegend } from './PieLegend'
-import { scaleOrdinal } from '@visx/scale'
+import React from 'react';
+import { fireEvent, screen } from '@testing-library/react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { PieLegend } from './PieLegend';
+import { scaleOrdinal } from '@visx/scale';
 
-const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect
+const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect;
 
 beforeEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
@@ -45,14 +45,14 @@ beforeEach(() => {
       width: 0,
       x: 0,
       y: 0,
-    }
-  })
-})
+    };
+  });
+});
 
 afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect
-})
+  Element.prototype.getBoundingClientRect = globalGetBoundingClientRect;
+});
 
 describe('PieLegend', () => {
   const mockData = {
@@ -63,12 +63,12 @@ describe('PieLegend', () => {
     Philadelphia: 8,
     'San Diego': 4,
     'San Antonio': 4,
-  }
+  };
 
   const mockScale = scaleOrdinal<string, string>({
     domain: Object.keys(mockData),
     range: Object.values(mockData).map(() => '#fa8072'),
-  })
+  });
 
   it('paginates legend when height is smaller than content', () => {
     renderWithTheme(
@@ -84,20 +84,20 @@ describe('PieLegend', () => {
         width={150}
         height={150}
       />
-    )
+    );
 
     // load "page 1"
-    expect(screen.getByText('New York – 32.00%')).toBeInTheDocument()
-    expect(screen.getByLabelText('Legend page 1 of 3')).toBeInTheDocument()
-    expect(screen.getByText('Previous page').closest('button')).toBeDisabled()
+    expect(screen.getByText('New York – 32.00%')).toBeInTheDocument();
+    expect(screen.getByLabelText('Legend page 1 of 3')).toBeInTheDocument();
+    expect(screen.getByText('Previous page').closest('button')).toBeDisabled();
 
     // scroll to  "page 2"
-    fireEvent.click(screen.getByText('Next page'))
-    expect(screen.getByLabelText('Legend page 2 of 3')).toBeInTheDocument()
+    fireEvent.click(screen.getByText('Next page'));
+    expect(screen.getByLabelText('Legend page 2 of 3')).toBeInTheDocument();
 
     // scroll to  "page 3"
-    fireEvent.click(screen.getByText('Next page'))
-    expect(screen.getByLabelText('Legend page 3 of 3')).toBeInTheDocument()
-    expect(screen.getByText('Next page').closest('button')).toBeDisabled()
-  })
-})
+    fireEvent.click(screen.getByText('Next page'));
+    expect(screen.getByLabelText('Legend page 3 of 3')).toBeInTheDocument();
+    expect(screen.getByText('Next page').closest('button')).toBeDisabled();
+  });
+});

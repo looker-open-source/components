@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Span } from '../Span'
+import React from 'react';
+import { Span } from '../Span';
 
 export default function XXXXLarge() {
-  return <Span fontSize="xxxxlarge">Span Text</Span>
+  return <Span fontSize="xxxxlarge">Span Text</Span>;
 }

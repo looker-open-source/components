@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { useTranslation } from '../../../utils'
+import React from 'react';
+import { useTranslation } from '../../../utils';
 
 export const CheckMarkMixed = () => {
-  const { t } = useTranslation('CheckMarkMixed')
+  const { t } = useTranslation('CheckMarkMixed');
   return (
     <svg
       role="presentation"
@@ -27,5 +27,5 @@ export const CheckMarkMixed = () => {
         <line x1="4" y1="7" x2="10" y2="7"></line>
       </g>
     </svg>
-  )
-}
+  );
+};

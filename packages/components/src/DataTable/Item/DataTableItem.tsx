@@ -24,52 +24,52 @@
 
  */
 
-import type { ReactNode } from 'react'
-import React, { useContext, useRef } from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import { MoreVert } from '@styled-icons/material/MoreVert'
-import { IconButton } from '../../Button'
-import { Menu } from '../../Menu'
-import { useTranslation } from '../../utils'
-import { DataTableContext } from '../DataTableContext'
-import { DataTableRow } from './DataTableRow'
-import { ItemTarget, ItemTargetGroup } from './ItemTarget'
+import type { ReactNode } from 'react';
+import React, { useContext, useRef } from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import { MoreVert } from '@styled-icons/material/MoreVert';
+import { IconButton } from '../../Button';
+import { Menu } from '../../Menu';
+import { useTranslation } from '../../utils';
+import { DataTableContext } from '../DataTableContext';
+import { DataTableRow } from './DataTableRow';
+import { ItemTarget, ItemTargetGroup } from './ItemTarget';
 
 export interface DataTableItemProps
   extends CompatibleHTMLProps<HTMLDivElement> {
   /**
    *  The available actions for this item
    */
-  actions?: ReactNode
+  actions?: ReactNode;
   /**
    *  Sets the tooltip text and a hidden text label for the actions button (accessible to assistive technology)
    *  If unprovided by the user, a default string will be used instead
    * I18n recommended: content that is user visible should be treated for i18n
    *  @default Options
    */
-  actionsTooltip?: string
+  actionsTooltip?: string;
   /**
    *  The id of this item
    */
-  id: string
+  id: string;
   /**
    * A boolean indicating whether this item is selectable or not (the item will appear greyed out if true)
    */
-  disabled?: boolean
+  disabled?: boolean;
   /**
    * I18n recommended: content that is user visible should be treated for i18n
    */
-  children: JSX.Element | JSX.Element[]
+  children: JSX.Element | JSX.Element[];
   /*
    * A ReactNode (IconButton) that will be placed as a primary action on the right side of the row
    */
-  actionPrimary?: ReactNode
+  actionPrimary?: ReactNode;
 }
 
 const DataTableItemLayout = (props: DataTableItemProps) => {
-  const { t } = useTranslation('DataTableItem')
-  const actionsTooltipText = t('Options')
+  const { t } = useTranslation('DataTableItem');
+  const actionsTooltipText = t('Options');
   const {
     actions,
     actionsTooltip = actionsTooltipText,
@@ -79,11 +79,11 @@ const DataTableItemLayout = (props: DataTableItemProps) => {
     id,
     onClick,
     actionPrimary,
-  } = props
-  const ref = useRef<HTMLTableRowElement>(null)
-  const { select } = useContext(DataTableContext)
+  } = props;
+  const ref = useRef<HTMLTableRowElement>(null);
+  const { select } = useContext(DataTableContext);
 
-  const handleClick = disabled ? undefined : onClick || undefined
+  const handleClick = disabled ? undefined : onClick || undefined;
 
   const ItemActions = (actionPrimary || actions) && (
     <ItemTargetGroup>
@@ -101,11 +101,11 @@ const DataTableItemLayout = (props: DataTableItemProps) => {
         </ItemTarget>
       )}
     </ItemTargetGroup>
-  )
+  );
 
-  const onChange = select ? () => select.onSelect(id) : undefined
+  const onChange = select ? () => select.onSelect(id) : undefined;
 
-  const checked = select && select.selectedItems.includes(id)
+  const checked = select && select.selectedItems.includes(id);
   return (
     <DataTableRow
       checked={checked}
@@ -121,7 +121,7 @@ const DataTableItemLayout = (props: DataTableItemProps) => {
     >
       {children}
     </DataTableRow>
-  )
-}
+  );
+};
 
-export const DataTableItem = styled(DataTableItemLayout)``
+export const DataTableItem = styled(DataTableItemLayout)``;

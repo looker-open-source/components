@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { parseISO } from 'date-fns'
-import type { ChartData, Fields } from '@looker/visualizations-adapters'
-import { isDateQuery } from './isDateQuery'
+import { parseISO } from 'date-fns';
+import type { ChartData, Fields } from '@looker/visualizations-adapters';
+import { isDateQuery } from './isDateQuery';
 
 export const dimensionToDate = (data: ChartData, fields: Fields) =>
   isDateQuery(fields)
@@ -13,4 +13,4 @@ export const dimensionToDate = (data: ChartData, fields: Fields) =>
         dimension: parseISO(dimension),
         ...restDatum,
       }))
-    : data
+    : data;

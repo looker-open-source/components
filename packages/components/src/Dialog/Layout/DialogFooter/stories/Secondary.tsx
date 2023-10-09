@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { DialogFooter } from '../../..'
+import React from 'react';
+import { DialogFooter } from '../../..';
 
 export default function Secondary() {
   return (
     <DialogFooter secondary={<button>Done</button>}>Footer Text</DialogFooter>
-  )
+  );
 }

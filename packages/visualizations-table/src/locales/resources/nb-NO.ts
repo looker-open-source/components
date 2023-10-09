@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { nbNO as componentsLocale } from '@looker/components'
-import { nbNO as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { nbNO as componentsLocale } from '@looker/components';
+import { nbNO as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Table: {
@@ -15,10 +15,10 @@ const resources = {
     'Sort descending': 'Sorter synkende',
     Totals: 'Summer',
   },
-}
+};
 
 export const nbNO = mergeLocaleObjects(
   [componentsLocale, visualizationsadaptersLocale],
   'nb-NO',
   resources
-)
+);

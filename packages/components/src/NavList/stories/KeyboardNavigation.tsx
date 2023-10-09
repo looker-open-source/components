@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import * as MaterialIcons from '@styled-icons/material'
-import { NavList, ListItem, NavTree, NavTreeItem, IconButton } from '../..'
+import React from 'react';
+import * as MaterialIcons from '@styled-icons/material';
+import { NavList, ListItem, NavTree, NavTreeItem, IconButton } from '../..';
 
 export default function KeyboardNavigation() {
   const getDetail = (label: string) => ({
@@ -17,7 +17,7 @@ export default function KeyboardNavigation() {
       />
     ),
     options: { hoverDisclosure: true },
-  })
+  });
 
   return (
     <NavList>
@@ -56,5 +56,5 @@ export default function KeyboardNavigation() {
         </NavTreeItem>
       </NavTree>
     </NavList>
-  )
+  );
 }

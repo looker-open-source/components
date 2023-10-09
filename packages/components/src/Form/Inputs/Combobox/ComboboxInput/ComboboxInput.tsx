@@ -27,23 +27,23 @@
 // Much of the following is pulled from https://github.com/reach/reach-ui
 // because their work is fantastic (but is not in TypeScript)
 
-import type { FormEvent, Ref } from 'react'
-import React, { forwardRef, useRef, useContext } from 'react'
-import styled, { css } from 'styled-components'
+import type { ChangeEvent, Ref } from 'react';
+import React, { forwardRef, useRef, useContext } from 'react';
+import styled, { css } from 'styled-components';
 import {
   useForkedRef,
   useSafeLayoutEffect,
   useWrapEvent,
-} from '../../../../utils'
-import { InputText } from '../../InputText'
-import { AdvancedInputControls } from '../../AdvancedInputControls'
-import { ComboboxContext } from '../ComboboxContext'
-import type { ComboboxInputProps } from '../types'
-import { getComboboxText } from '../utils/getComboboxText'
-import { makeHash } from '../utils/makeHash'
-import { ComboboxActionType, ComboboxState } from '../utils/state'
-import { useInputEvents } from '../utils/useInputEvents'
-import { useInputPropRefs } from '../utils/useInputPropRefs'
+} from '../../../../utils';
+import { InputText } from '../../InputText';
+import { AdvancedInputControls } from '../../AdvancedInputControls';
+import { ComboboxContext } from '../ComboboxContext';
+import type { ComboboxInputProps } from '../types';
+import { getComboboxText } from '../utils/getComboboxText';
+import { makeHash } from '../utils/makeHash';
+import { ComboboxActionType, ComboboxState } from '../utils/state';
+import { useInputEvents } from '../utils/useInputEvents';
+import { useInputPropRefs } from '../utils/useInputPropRefs';
 
 export const ComboboxInputInternal = forwardRef(
   (props: ComboboxInputProps, forwardedRef: Ref<HTMLInputElement>) => {
@@ -64,7 +64,7 @@ export const ComboboxInputInternal = forwardRef(
       // might be controlled
       value: controlledValue,
       ...rest
-    } = props
+    } = props;
 
     const {
       data: { navigationOption, option, inputValue: contextInputValue },
@@ -75,61 +75,62 @@ export const ComboboxInputInternal = forwardRef(
       transition,
       id,
       isVisible,
-    } = useContext(ComboboxContext)
+    } = useContext(ComboboxContext);
 
-    useInputPropRefs(props, ComboboxContext)
+    useInputPropRefs(props, ComboboxContext);
 
-    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef)
+    const ref = useForkedRef<HTMLInputElement>(inputCallbackRef, forwardedRef);
 
-    const isControlled = controlledValue !== undefined
+    const isControlled = controlledValue !== undefined;
 
     function handleClear() {
-      contextOnChange && contextOnChange(undefined)
-      transition && transition(ComboboxActionType.CLEAR)
-      inputElement?.focus()
+      contextOnChange && contextOnChange(undefined);
+      transition && transition(ComboboxActionType.CLEAR);
+      inputElement?.focus();
     }
 
     function handleValueChange(value: string) {
-      transition && transition(ComboboxActionType.CHANGE, { inputValue: value })
+      transition &&
+        transition(ComboboxActionType.CHANGE, { inputValue: value });
     }
 
     // Need to determine whether the updated value come from change event on the input
     // or from a new value prop (controlled)
-    const isInputting = useRef(false)
+    const isInputting = useRef(false);
     // If they are controlling the value we still need to do our transitions, so
     // we have this derived state to emulate onChange of the input as we receive
     // new `value`s ...[*]
     useSafeLayoutEffect(() => {
       if (controlledValue !== undefined) {
         if (isInputting.current) {
-          handleValueChange(controlledValue)
+          handleValueChange(controlledValue);
         } else {
           // this is most likely the initial value so we want to
           // update the value without transitioning to suggesting
           transition &&
             transition(ComboboxActionType.CHANGE_SILENT, {
               inputValue: controlledValue,
-            })
+            });
         }
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [controlledValue])
+    }, [controlledValue]);
 
     // [*]... and when controlled, we don't trigger handleValueChange as the user
     // types, instead the developer controls it with the normal input onChange
     // prop
-    function handleChange(event: FormEvent<HTMLInputElement>) {
-      isInputting.current = true
+    function handleChange(event: ChangeEvent<HTMLInputElement>) {
+      isInputting.current = true;
       if (!isControlled) {
-        handleValueChange(event.currentTarget.value)
+        handleValueChange(event.target.value);
       }
       requestAnimationFrame(() => {
-        isInputting.current = false
-      })
+        isInputting.current = false;
+      });
     }
 
     let inputOption =
-      contextInputValue !== undefined ? contextInputValue : option
+      contextInputValue !== undefined ? contextInputValue : option;
 
     if (
       autoComplete &&
@@ -137,18 +138,18 @@ export const ComboboxInputInternal = forwardRef(
         state === ComboboxState.INTERACTING)
     ) {
       // When idle, we don't have a navigationOption on ArrowUp/Down
-      inputOption = navigationOption || option
+      inputOption = navigationOption || option;
     }
     const inputValue =
       controlledValue !== undefined
         ? controlledValue
-        : getComboboxText(inputOption)
+        : getComboboxText(inputOption);
 
-    const wrappedOnChange = useWrapEvent(handleChange, onChange)
+    const wrappedOnChange = useWrapEvent(handleChange, onChange);
 
-    const inputEvents = useInputEvents(props, ComboboxContext)
+    const inputEvents = useInputEvents(props, ComboboxContext);
 
-    const { selectOnClick: _selectOnClick, ...restForInputText } = rest
+    const { selectOnClick: _selectOnClick, ...restForInputText } = rest;
 
     return (
       <InputText
@@ -181,9 +182,9 @@ export const ComboboxInputInternal = forwardRef(
             : undefined
         }
       />
-    )
+    );
   }
-)
+);
 
 export const comboboxStyles = css<{ inputReadOnly?: boolean }>`
   ${({ inputReadOnly }) =>
@@ -195,7 +196,7 @@ export const comboboxStyles = css<{ inputReadOnly?: boolean }>`
           }
         `
       : ''}
-`
+`;
 
 export const ComboboxInput = styled(ComboboxInputInternal).attrs(
   ({ width = '100%' }) => ({
@@ -203,4 +204,5 @@ export const ComboboxInput = styled(ComboboxInputInternal).attrs(
   })
 )`
   ${comboboxStyles}
-`
+  flex-shrink: 0;
+`;

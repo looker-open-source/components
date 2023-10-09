@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Button, Heading, Space } from '../../../../'
-import { RangeSlider } from '..'
-import type { RangeSliderProps } from '../'
+import React, { useState } from 'react';
+import { Button, Heading, Space } from '../../../../';
+import { RangeSlider } from '..';
+import type { RangeSliderProps } from '../';
 
 export default function Disabled(props: RangeSliderProps) {
-  const { value: valueProp = [3, 7], ...restProps } = props
+  const { value: valueProp = [3, 7], ...restProps } = props;
 
-  const [sliderValue, setSliderValue] = useState(valueProp)
+  const [sliderValue, setSliderValue] = useState(valueProp);
   return (
     <>
       <Heading>
@@ -28,5 +28,5 @@ export default function Disabled(props: RangeSliderProps) {
         <Button onClick={() => setSliderValue([4, 6])}>4 &mdash; 6</Button>
       </Space>
     </>
-  )
+  );
 }

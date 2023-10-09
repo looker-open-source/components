@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/lt'
-import { ltLT as componentsLocale } from '@looker/components'
-import { ltLT as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/lt';
+import { ltLT as componentsLocale } from '@looker/components';
+import { ltLT as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Būtina užpildyti',
   },
-}
+  UserAttributes: {
+    placeholder: 'Pasirinkti...',
+  },
+};
 
 export const ltLT = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'lt-LT',
   resources,
   dateLocale
-)
+);

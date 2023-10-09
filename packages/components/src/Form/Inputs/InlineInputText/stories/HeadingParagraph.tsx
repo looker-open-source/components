@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { Space } from '../../../../Layout'
-import { Heading, Paragraph } from '../../../../Text'
-import { InlineInputText } from '../InlineInputText'
+import React from 'react';
+import { Space } from '../../../../Layout';
+import { Heading, Paragraph } from '../../../../Text';
+import { InlineInputText } from '../InlineInputText';
 
 export default function HeadingParagraph() {
   return (
@@ -18,5 +18,5 @@ export default function HeadingParagraph() {
         <InlineInputText placeholder="Type here..." />
       </Paragraph>
     </Space>
-  )
+  );
 }

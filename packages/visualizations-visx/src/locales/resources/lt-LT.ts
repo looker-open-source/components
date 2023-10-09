@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import dateLocale from 'date-fns/locale/lt'
-import { ltLT as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/lt';
+import { ltLT as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   PieLegend: {
@@ -19,11 +19,11 @@ const resources = {
   XYTooltip: {
     'Points sized by': 'Taškų dydis pagal',
   },
-}
+};
 
 export const ltLT = mergeLocaleObjects(
   [visualizationsadaptersLocale],
   'lt-LT',
   resources,
   dateLocale
-)
+);

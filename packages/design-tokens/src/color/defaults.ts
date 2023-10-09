@@ -12,19 +12,19 @@ import {
   red500,
   yellow500,
   white,
-} from '../legacy/palette'
-import type { CoreColors, IntentColors } from './types'
+} from '../legacy/palette';
+import type { CoreColors, IntentColors } from './types';
 
-const calculation = '#319220'
-const dimension = '#31689E'
-const measure = '#C2772E'
+const calculation = '#319220';
+const dimension = '#31689E';
+const measure = '#C2772E';
 
 export const defaultCoreColors: CoreColors = {
   background: white,
   key: purple400,
   pageBackground: white,
   text: charcoal800,
-}
+};
 
 export const defaultIntentColors: IntentColors = {
   calculation,
@@ -35,4 +35,4 @@ export const defaultIntentColors: IntentColors = {
   measure,
   positive: green500,
   warn: yellow500,
-}
+};

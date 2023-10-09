@@ -24,10 +24,10 @@
 
  */
 
-import dateLocale from 'date-fns/locale/fr-CA'
-import { frCA as componentsLocale } from '@looker/components'
-import { frCA as filterexpressionsLocale } from '@looker/filter-expressions'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/fr-CA';
+import { frCA as componentsLocale } from '@looker/components';
+import { frCA as filterexpressionsLocale } from '@looker/filter-expressions';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AddRemoveButtons: {
@@ -248,11 +248,14 @@ const resources = {
   use_validation_message: {
     'Value required': 'Valeur requise',
   },
-}
+  UserAttributes: {
+    placeholder: 'Sélectionner...',
+  },
+};
 
 export const frCA = mergeLocaleObjects(
   [componentsLocale, filterexpressionsLocale],
   'fr-CA',
   resources,
   dateLocale
-)
+);

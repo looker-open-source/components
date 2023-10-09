@@ -24,50 +24,52 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { Science } from '@styled-icons/material-outlined'
-import { act, fireEvent, screen } from '@testing-library/react'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { Science } from '@styled-icons/material-outlined';
+import { act, fireEvent, screen } from '@testing-library/react';
 
-import { MenuItem } from './MenuItem'
+import { MenuItem } from './MenuItem';
 
-const globalConsole = global.console
-const warnMock = jest.fn()
+const globalConsole = global.console;
+const warnMock = jest.fn();
 
 beforeEach(() => {
-  jest.useFakeTimers()
+  jest.useFakeTimers();
   global.console = {
     warn: warnMock,
-  } as unknown as Console
-})
+  } as unknown as Console;
+});
 
 afterEach(() => {
-  global.console = globalConsole
-  jest.runOnlyPendingTimers()
-  jest.useRealTimers()
-})
+  global.console = globalConsole;
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
+});
 
 const runTimers = () =>
   act(() => {
-    jest.runOnlyPendingTimers()
-  })
+    jest.runOnlyPendingTimers();
+  });
 
 describe('MenuItem', () => {
   test('renders', () => {
-    renderWithTheme(<MenuItem>who!</MenuItem>)
-    expect(screen.getByText('who!')).toBeVisible()
-  })
+    renderWithTheme(<MenuItem>who!</MenuItem>);
+    expect(screen.getByText('who!')).toBeVisible();
+  });
 
   test('detail', () => {
-    renderWithTheme(<MenuItem detail="Is an excellent question">who!</MenuItem>)
-    expect(screen.getByText('Is an excellent question')).toBeVisible()
-  })
+    renderWithTheme(
+      <MenuItem detail="Is an excellent question">who!</MenuItem>
+    );
+    expect(screen.getByText('Is an excellent question')).toBeVisible();
+  });
 
   test('icon', () => {
-    renderWithTheme(<MenuItem icon={<Science />}>Icon</MenuItem>)
-    expect(screen.getByText('Icon')).toBeVisible()
-  })
+    renderWithTheme(<MenuItem icon={<Science />}>Icon</MenuItem>);
+    expect(screen.getByText('Icon')).toBeVisible();
+  });
 
   test('artwork', () => {
     renderWithTheme(
@@ -80,12 +82,12 @@ describe('MenuItem', () => {
       >
         Artwork
       </MenuItem>
-    )
-    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument()
-  })
+    );
+    expect(screen.getByTitle('SVG Title Here')).toBeInTheDocument();
+  });
 
   test('disabled to be a button', () => {
-    const callbackFn = jest.fn()
+    const callbackFn = jest.fn();
 
     renderWithTheme(
       <MenuItem
@@ -96,40 +98,40 @@ describe('MenuItem', () => {
       >
         Item
       </MenuItem>
-    )
-    const item = screen.getByText('Item')
-    expect(item.closest('button')).toBeInTheDocument()
-  })
+    );
+    const item = screen.getByText('Item');
+    expect(item.closest('button')).toBeInTheDocument();
+  });
 
   test('disabled is not clickable', () => {
-    const callbackFn = jest.fn()
+    const callbackFn = jest.fn();
 
     renderWithTheme(
       <MenuItem itemRole="button" disabled onClick={callbackFn}>
         Item
       </MenuItem>
-    )
+    );
 
-    const item = screen.getByText('Item')
-    fireEvent.click(item)
+    const item = screen.getByText('Item');
+    fireEvent.click(item);
 
-    expect(callbackFn).toHaveBeenCalledTimes(0)
-  })
+    expect(callbackFn).toHaveBeenCalledTimes(0);
+  });
 
   test('link with target="_blank" and no passed-in rel prop value uses rel="noopener noreferrer"', () => {
     renderWithTheme(
       <MenuItem itemRole="link" href="https://google.com" target="_blank">
         Link
       </MenuItem>
-    )
+    );
 
-    const item = screen.getByRole('menuitem')
+    const item = screen.getByRole('menuitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('target', '_blank')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'noopener noreferrer')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('target', '_blank');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 
   test('link with target="_blank" and passed-in rel prop value auto appends "noopener noreferrer" to rel prop value', () => {
     renderWithTheme(
@@ -141,42 +143,42 @@ describe('MenuItem', () => {
       >
         Link
       </MenuItem>
-    )
+    );
 
-    const item = screen.getByRole('menuitem')
+    const item = screen.getByRole('menuitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('target', '_blank')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('target', '_blank');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'nogouda noopener noreferrer');
+  });
 
   test('link without target="_blank" does not auto append "noopener noreferrer"', () => {
     renderWithTheme(
       <MenuItem itemRole="link" rel="nogouda" href="https://google.com">
         Link
       </MenuItem>
-    )
+    );
 
-    const item = screen.getByRole('menuitem')
+    const item = screen.getByRole('menuitem');
 
-    expect(item.nodeName).toBe('A')
-    expect(item).toHaveAttribute('href', 'https://google.com')
-    expect(item).toHaveAttribute('rel', 'nogouda')
-  })
+    expect(item.nodeName).toBe('A');
+    expect(item).toHaveAttribute('href', 'https://google.com');
+    expect(item).toHaveAttribute('rel', 'nogouda');
+  });
 
   test('warns on nested menu item w/ detail', () => {
-    const warnMock = jest.fn()
+    const warnMock = jest.fn();
 
     global.console = {
       warn: warnMock,
-    } as unknown as Console
+    } as unknown as Console;
 
     renderWithTheme(
       <MenuItem detail="Something" nestedMenu>
         Nested Menu
       </MenuItem>
-    )
+    );
     expect(warnMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
@@ -186,38 +188,38 @@ describe('MenuItem', () => {
           "The detail prop is not supported when nestedMenu is used.",
         ],
       ]
-    `)
-  })
+    `);
+  });
   describe('ripple effect', () => {
     test('default', () => {
-      renderWithTheme(<MenuItem>Menu Item</MenuItem>)
+      renderWithTheme(<MenuItem>Menu Item</MenuItem>);
 
-      const menu = screen.getByText('Menu Item').closest('button')
-      expect(menu).not.toHaveClass('bg-on fg-in')
+      const menu = screen.getByText('Menu Item').closest('button');
+      expect(menu).not.toHaveClass('bg-on fg-in');
       expect(menu).toHaveStyle({
         '--ripple-color': '#71767a',
         '--ripple-scale-end': '1',
         '--ripple-scale-start': '0.1',
         '--ripple-size': '100%',
         '--ripple-translate': '0, 0',
-      })
+      });
 
-      menu && fireEvent.focus(menu)
-      expect(menu).toHaveClass('bg-on')
+      menu && fireEvent.focus(menu);
+      expect(menu).toHaveClass('bg-on');
 
-      menu && fireEvent.mouseDown(menu)
-      expect(menu).toHaveClass('bg-on fg-in')
+      menu && fireEvent.mouseDown(menu);
+      expect(menu).toHaveClass('bg-on fg-in');
 
       // foreground is locked for a minimum time to animate the ripple
-      menu && fireEvent.mouseUp(menu)
-      runTimers()
-      expect(menu).toHaveClass('bg-on fg-out')
-      runTimers()
-      expect(menu).toHaveClass('bg-on')
+      menu && fireEvent.mouseUp(menu);
+      runTimers();
+      expect(menu).toHaveClass('bg-on fg-out');
+      runTimers();
+      expect(menu).toHaveClass('bg-on');
 
-      menu && fireEvent.blur(menu)
-      expect(menu).not.toHaveClass('bg-on fg-in')
-      fireEvent.click(document)
-    })
-  })
-})
+      menu && fireEvent.blur(menu);
+      expect(menu).not.toHaveClass('bg-on fg-in');
+      fireEvent.click(document);
+    });
+  });
+});

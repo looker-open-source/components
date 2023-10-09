@@ -33,31 +33,31 @@ import {
   setDate,
   isAfter,
   isBefore,
-} from 'date-fns'
-import React, { useCallback } from 'react'
-import styled, { useTheme } from 'styled-components'
-import { fadeIn } from '@looker/design-tokens'
-import { Grid } from '../Layout'
-import { Day } from './Day'
-import { Cell } from './Cell'
-import { MonthTitle } from './MonthTitle'
+} from 'date-fns';
+import React, { useCallback } from 'react';
+import styled, { useTheme } from 'styled-components';
+import { fadeIn } from '@looker/design-tokens';
+import { Grid } from '../Layout';
+import { Day } from './Day';
+import { Cell } from './Cell';
+import { MonthTitle } from './MonthTitle';
 import type {
   ScrollableDateListItemProps,
   DateStateProps,
   MonthBaseProps,
-} from './types'
+} from './types';
 
-export type MonthPropsWithScroll = MonthBaseProps & ScrollableDateListItemProps
+export type MonthPropsWithScroll = MonthBaseProps & ScrollableDateListItemProps;
 
 const getMonthPadding = (month: Date, firstDayOfWeek: number) => {
-  const startDate = startOfMonth(month)
-  const endDate = endOfMonth(month)
-  const startDay = getDay(startDate)
-  const endDay = getDay(endDate)
-  const startPadding = correctNegativePadding(startDay - firstDayOfWeek)
-  const endPadding = 6 - endDay + firstDayOfWeek
-  return { endPadding, startPadding }
-}
+  const startDate = startOfMonth(month);
+  const endDate = endOfMonth(month);
+  const startDay = getDay(startDate);
+  const endDay = getDay(endDate);
+  const startPadding = correctNegativePadding(startDay - firstDayOfWeek);
+  const endPadding = 6 - endDay + firstDayOfWeek;
+  return { endPadding, startPadding };
+};
 
 /**
  * Negative padding never makes sense, so add 7 if it's negative.
@@ -66,42 +66,42 @@ const getMonthPadding = (month: Date, firstDayOfWeek: number) => {
  * @returns padding + 7 if it's negative, otherwise return padding unchanged
  */
 const correctNegativePadding = (padding: number) =>
-  padding < 0 ? padding + 7 : padding
+  padding < 0 ? padding + 7 : padding;
 
-type CalendarCell = Date | 'before' | 'after'
+type CalendarCell = Date | 'before' | 'after';
 
 const getDaysArray = (
   month: Date,
   startPadding: number,
   endPadding: number
 ): CalendarCell[] => {
-  const daysInMonth = getDaysInMonth(month)
-  const totalDays = startPadding + daysInMonth + endPadding
+  const daysInMonth = getDaysInMonth(month);
+  const totalDays = startPadding + daysInMonth + endPadding;
   return Array.from(Array(totalDays), (_, i) => {
     // spacers for the days before the 1st of the month
-    if (i < startPadding) return 'before'
+    if (i < startPadding) return 'before';
     // spacers for the days after the last of the month
-    if (i > totalDays - endPadding - 1) return 'after'
+    if (i > totalDays - endPadding - 1) return 'after';
     // date at the nth of the month
-    const dayOfMonth = i - startPadding + 1
-    return setDate(month, dayOfMonth)
-  })
-}
+    const dayOfMonth = i - startPadding + 1;
+    return setDate(month, dayOfMonth);
+  });
+};
 
 const getRangeType = ({ datesSelected, draftTo }: DateStateProps) => {
-  if (datesSelected.length === 2) return 'selected'
-  if (draftTo) return 'draft'
-  return 'none'
-}
+  if (datesSelected.length === 2) return 'selected';
+  if (draftTo) return 'draft';
+  return 'none';
+};
 
 const getRangePosition = (
   day: CalendarCell,
   month: Date,
   { datesSelected, draftTo }: DateStateProps
 ) => {
-  const start = datesSelected[0]
-  const end = datesSelected[1] || draftTo
-  if (!start || !end) return undefined
+  const start = datesSelected[0];
+  const end = datesSelected[1] || draftTo;
+  if (!start || !end) return undefined;
 
   if (day === 'before') {
     // Empty cell at the beginning of the month & range spans months
@@ -111,9 +111,9 @@ const getRangePosition = (
       isBefore(start, startOfMonth(month)) &&
       isAfter(end, startOfMonth(month))
     ) {
-      return 'middle'
+      return 'middle';
     }
-    return undefined
+    return undefined;
   }
 
   if (day === 'after') {
@@ -124,22 +124,22 @@ const getRangePosition = (
       isBefore(start, endOfMonth(month)) &&
       isAfter(end, endOfMonth(month))
     ) {
-      return 'middle'
+      return 'middle';
     }
-    return undefined
+    return undefined;
   }
 
   // Range starts AND ends on the day
-  if (isSameDay(day, start) && isSameDay(day, end)) return undefined
+  if (isSameDay(day, start) && isSameDay(day, end)) return undefined;
   // Range starts on the day
-  if (isSameDay(day, start)) return 'start'
+  if (isSameDay(day, start)) return 'start';
   // Range ends on the day
-  if (isSameDay(day, end)) return 'end'
+  if (isSameDay(day, end)) return 'end';
   // Range spans across the day
-  if (isAfter(day, start) && isBefore(day, end)) return 'middle'
+  if (isAfter(day, start) && isBefore(day, end)) return 'middle';
   // Day is outside range
-  return undefined
-}
+  return undefined;
+};
 
 export const Month = styled(
   ({
@@ -155,39 +155,39 @@ export const Month = styled(
     date,
     setItemPosition,
   }: MonthPropsWithScroll) => {
-    const { startPadding, endPadding } = getMonthPadding(date, firstDayOfWeek)
-    const days = getDaysArray(date, startPadding, endPadding)
+    const { startPadding, endPadding } = getMonthPadding(date, firstDayOfWeek);
+    const days = getDaysArray(date, startPadding, endPadding);
     // For highlighting the range on the Cell
-    const rangeType = getRangeType({ datesSelected, draftTo })
+    const rangeType = getRangeType({ datesSelected, draftTo });
 
     // Calls setItemPosition to store the current child's position
     // in the parent list
     const ref = useCallback(
       (element: HTMLElement | null) => {
         if (element) {
-          setItemPosition(index, element)
+          setItemPosition(index, element);
         }
       },
       [setItemPosition, index]
-    )
+    );
 
     // If there are 3 or more empty days in the 1st week
     // title should go inline
-    const titleInline = startPadding > 2
+    const titleInline = startPadding > 2;
     // Does the selected/draft range span this month?
     const firstDayRangePosition = getRangePosition(startOfMonth(date), date, {
       datesSelected,
       draftTo,
-    })
+    });
     // If so, the background should also go on the title
     // but not till fully rendered and not needed if it's inline
     const titleRangeType =
       !titleInline && fullRender && firstDayRangePosition === 'middle'
         ? rangeType
-        : 'none'
+        : 'none';
 
-    const { space } = useTheme()
-    const height = `calc(${space.u8} * ${days.length / 7})`
+    const { space } = useTheme();
+    const height = `calc(${space.u8} * ${days.length / 7})`;
 
     return (
       <div className={className} ref={ref}>
@@ -209,7 +209,7 @@ export const Month = styled(
               const rangePosition = getRangePosition(day, date, {
                 datesSelected,
                 draftTo,
-              })
+              });
               return (
                 <Cell
                   key={i}
@@ -230,11 +230,11 @@ export const Month = styled(
                     />
                   )}
                 </Cell>
-              )
+              );
             })}
         </Grid>
       </div>
-    )
+    );
   }
 )`
   width: fit-content;
@@ -248,4 +248,4 @@ export const Month = styled(
       animation-name: ${fadeIn};
     }
   }
-`
+`;

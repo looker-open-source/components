@@ -3,10 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { InputSearch } from '../'
-import type { SelectOptionObject } from '../../'
-import { Space } from '../../../../'
+import React from 'react';
+import { InputSearch } from '../';
+import type { SelectOptionObject } from '../../';
+import { Space } from '../../../../';
 
 export default function Options() {
   const cheeses = [
@@ -16,12 +16,12 @@ export default function Options() {
       value: 'Gouda',
     },
     { value: 'Cheddar' },
-  ]
+  ];
 
-  const cheeses2 = [{ value: 'Jack' }, { value: 'Swiss' }]
+  const cheeses2 = [{ value: 'Jack' }, { value: 'Swiss' }];
 
   const handleSelectOption = (option?: SelectOptionObject) =>
-    option && alert(`You picked ${option.value}`)
+    option && alert(`You picked ${option.value}`);
 
   return (
     <Space>
@@ -36,5 +36,5 @@ export default function Options() {
         placeholder="Options act like suggestions"
       />
     </Space>
-  )
+  );
 }

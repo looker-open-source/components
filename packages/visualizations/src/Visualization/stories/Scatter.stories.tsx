@@ -3,36 +3,36 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Story } from '@storybook/react'
-import React from 'react'
-import { Visualization } from '../Visualization'
+import type { Story } from '@storybook/react';
+import React from 'react';
+import { Visualization } from '../Visualization';
 import type {
   ScatterProps,
   Fields,
   CScatter,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 import {
   buildChartConfig,
   mockSdkConfigResponse,
   mockSdkDataResponse,
   mockSdkFieldsResponse,
   tabularResponse,
-} from '@looker/visualizations-adapters'
+} from '@looker/visualizations-adapters';
 
 export default {
   component: Visualization,
   title: 'Visualizations/Stories/Scatter',
-}
+};
 
 type StoryTemplateProps = Omit<ScatterProps, 'config' | 'fields' | 'data'> & {
-  config: Omit<CScatter, 'type'>
-}
+  config: Omit<CScatter, 'type'>;
+};
 
 const Template: Story<StoryTemplateProps> = ({
   config: configProp,
   ...restProps
 }) => {
-  const data = tabularResponse([...mockSdkDataResponse])
+  const data = tabularResponse([...mockSdkDataResponse]);
 
   const config = buildChartConfig({
     config: {
@@ -42,7 +42,7 @@ const Template: Story<StoryTemplateProps> = ({
     },
     data,
     fields: mockSdkFieldsResponse as Fields,
-  })
+  });
 
   return (
     <Visualization
@@ -51,16 +51,16 @@ const Template: Story<StoryTemplateProps> = ({
       fields={mockSdkFieldsResponse as Fields}
       {...restProps}
     />
-  )
-}
+  );
+};
 
-export const Scatter = Template.bind({})
+export const Scatter = Template.bind({});
 Scatter.args = {
   height: 600,
   width: 800,
-}
+};
 
-export const SizeBy = Template.bind({})
+export const SizeBy = Template.bind({});
 SizeBy.args = {
   height: 600,
   width: 800,
@@ -70,4 +70,4 @@ SizeBy.args = {
     },
     y_axis: [{ range: [20, 75] }],
   },
-}
+};

@@ -3,16 +3,16 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { Ref } from 'react'
-import React, { forwardRef } from 'react'
-import styled from 'styled-components'
-import { useID } from '../../../utils'
-import { useFormContext } from '../../Form'
-import type { SelectProps } from '../../Inputs/Select/Select'
-import { Select } from '../../Inputs/Select/Select'
-import type { FloatingLabelFieldProps } from '../Field'
-import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field'
-import { getHasValue } from '../Field/useFloatingLabel'
+import type { Ref } from 'react';
+import React, { forwardRef } from 'react';
+import styled from 'styled-components';
+import { useID } from '../../../utils';
+import { useFormContext } from '../../Form';
+import type { SelectProps } from '../../Inputs/Select/Select';
+import { Select } from '../../Inputs/Select/Select';
+import type { FloatingLabelFieldProps } from '../Field';
+import { FloatingLabelField, omitFieldProps, pickFieldProps } from '../Field';
+import { getHasValue } from '../Field/useFloatingLabel';
 
 export interface FieldSelectProps
   extends FloatingLabelFieldProps,
@@ -20,8 +20,8 @@ export interface FieldSelectProps
 
 const FieldSelectComponent = forwardRef(
   (props: FieldSelectProps, ref: Ref<HTMLInputElement>) => {
-    const validationMessage = useFormContext(props)
-    const id = useID(props.id)
+    const validationMessage = useFormContext(props);
+    const id = useID(props.id);
     return (
       <FloatingLabelField
         {...pickFieldProps(props)}
@@ -39,10 +39,10 @@ const FieldSelectComponent = forwardRef(
           wrapperAriaLabel={`${props.label}`}
         />
       </FloatingLabelField>
-    )
+    );
   }
-)
+);
 
-FieldSelectComponent.displayName = 'FieldSelectComponent'
+FieldSelectComponent.displayName = 'FieldSelectComponent';
 
-export const FieldSelect = styled(FieldSelectComponent)``
+export const FieldSelect = styled(FieldSelectComponent)``;

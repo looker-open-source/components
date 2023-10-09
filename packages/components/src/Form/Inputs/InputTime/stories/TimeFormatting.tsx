@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { InputTime } from '..'
-import type { InputTimeProps } from '..'
-import { SpaceVertical, Space, Heading, Grid } from '../../../..'
+import React, { useState } from 'react';
+import { InputTime } from '..';
+import type { InputTimeProps } from '..';
+import { SpaceVertical, Space, Heading, Grid } from '../../../..';
 
 export default function TimeFormatting(props: InputTimeProps) {
-  const { format: _format, value: valueProp = '14:34', ...restProps } = props
+  const { format: _format, value: valueProp = '14:34', ...restProps } = props;
 
-  const [value, setValue] = useState<string | undefined>(valueProp)
+  const [value, setValue] = useState<string | undefined>(valueProp);
   return (
     <Grid>
       <SpaceVertical gap="u2">
@@ -37,5 +37,5 @@ export default function TimeFormatting(props: InputTimeProps) {
         </Space>
       </SpaceVertical>
     </Grid>
-  )
+  );
 }

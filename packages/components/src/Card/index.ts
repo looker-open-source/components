@@ -3,6 +3,6 @@
  * SPDX-License-Identifier: MIT
  */
 
-export * from './Card'
-export * from './CardContent'
-export * from './CardMedia'
+export * from './Card';
+export * from './CardContent';
+export * from './CardMedia';

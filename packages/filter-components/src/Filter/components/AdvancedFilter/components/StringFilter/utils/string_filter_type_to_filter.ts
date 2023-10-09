@@ -2,19 +2,19 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { ElementType } from 'react'
+import type { ElementType } from 'react';
 import type {
   FilterTypeMap,
   StringFilterType,
-} from '@looker/filter-expressions'
-import defaultTo from 'lodash/defaultTo'
-import { MatchesAdvanced } from '../../MatchesAdvanced'
-import { UserAttributes } from '../../UserAttributes'
+} from '@looker/filter-expressions';
+import defaultTo from 'lodash/defaultTo';
+import { MatchesAdvanced } from '../../MatchesAdvanced';
+import { UserAttributes } from '../../UserAttributes';
 
-import { MultiStringInput } from '../components/MultiStringInput'
-import { StringInput } from '../components/StringInput'
+import { MultiStringInput } from '../components/MultiStringInput';
+import { StringInput } from '../components/StringInput';
 
-const Blank = () => ''
+const Blank = () => '';
 
 const filterTypeToStringMap: FilterTypeMap<StringFilterType> = {
   null: Blank,
@@ -24,14 +24,14 @@ const filterTypeToStringMap: FilterTypeMap<StringFilterType> = {
   endsWith: MultiStringInput,
   blank: Blank,
   user_attribute: UserAttributes,
-}
+};
 
 const filterTypeToStringMapSingleValue: FilterTypeMap<string> = {
   contains: StringInput,
   match: StringInput,
   startsWith: StringInput,
   endsWith: StringInput,
-}
+};
 
 export const stringFilterTypeToFilter = (
   type: StringFilterType,
@@ -42,7 +42,7 @@ export const stringFilterTypeToFilter = (
     (!allowMultipleValues || isParameterField) &&
     filterTypeToStringMapSingleValue[type]
   ) {
-    return filterTypeToStringMapSingleValue[type]
+    return filterTypeToStringMapSingleValue[type];
   }
-  return defaultTo(filterTypeToStringMap[type], MatchesAdvanced)
-}
+  return defaultTo(filterTypeToStringMap[type], MatchesAdvanced);
+};

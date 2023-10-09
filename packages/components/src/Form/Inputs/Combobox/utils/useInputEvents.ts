@@ -24,21 +24,21 @@
 
  */
 
-import type { FocusEvent, MouseEvent as ReactMouseEvent, Context } from 'react'
-import { useRef, useContext, useCallback } from 'react'
+import type { FocusEvent, MouseEvent as ReactMouseEvent, Context } from 'react';
+import { useRef, useContext, useCallback } from 'react';
 import {
   targetIsButton,
   useMouseDownClick,
   useWrapEvent,
-} from '../../../../utils'
+} from '../../../../utils';
 import type {
   ComboboxContextProps,
   ComboboxMultiContextProps,
-} from '../ComboboxContext'
-import type { ComboboxInputProps, ComboboxMultiInputProps } from '../types'
-import { ComboboxActionType, ComboboxState } from './state'
-import { useBlur } from './useBlur'
-import { useKeyDown } from './useKeyDown'
+} from '../ComboboxContext';
+import type { ComboboxInputProps, ComboboxMultiInputProps } from '../types';
+import { ComboboxActionType, ComboboxState } from './state';
+import { useBlur } from './useBlur';
+import { useKeyDown } from './useKeyDown';
 
 export function useInputEvents<
   TProps extends
@@ -68,61 +68,64 @@ export function useInputEvents<
     openOnFocus,
     openOnClick,
     persistSelectionPropRef,
+    shouldRenderListInline,
     state,
     transition,
-  } = useContext(context)
+  } = useContext(context);
   // Because we close the List on blur, we need to track if the blur is
   // caused by clicking inside the list, and if so, don't close the List.
-  const selectOnClickRef = useRef(false)
+  const selectOnClickRef = useRef(false);
 
-  const handleKeyDown = useKeyDown()
+  const handleKeyDown = useKeyDown();
 
-  const handleBlur = useBlur(context)
+  const handleBlur = useBlur(context);
 
   function handleFocus(e: FocusEvent<HTMLInputElement>) {
     if (inputReadOnly) {
       // User can't type in the input so deselect the text
       // if it gets naturally selected from focusing via keyboard
-      const input = e.currentTarget
-      input.selectionStart = input.selectionEnd
+      const input = e.currentTarget;
+      input.selectionStart = input.selectionEnd;
     } else if (selectOnClick) {
       // If user can type in the input, and selectOnClick is true,
       // a newly focused input should select the text on next click
       // because the user is likely to want to replace it
-      selectOnClickRef.current = true
+      selectOnClickRef.current = true;
     }
 
-    // If we select an option with click, useFocusManagement will focus the
-    // input, in those cases we don't want to cause the menu to open back up,
-    // so we guard behind these states
+    // If we select an option with click, or otherwise click in the list area,
+    // useFocusManagement will re-focus the input, and in those cases we don't
+    // want to cause the menu to open back up if it's closing, or navigate to the
+    // selected option if remaining open, so we guard behind these action types
     if (
       openOnFocus &&
       lastActionType !== ComboboxActionType.SELECT_WITH_CLICK &&
-      lastActionType !== ComboboxActionType.NAVIGATE
+      lastActionType !== ComboboxActionType.NAVIGATE &&
+      lastActionType !== ComboboxActionType.INTERACT
     ) {
       transition &&
         transition(ComboboxActionType.FOCUS, {
           persistSelection:
             persistSelectionPropRef && persistSelectionPropRef.current,
-        })
+        });
     }
   }
 
   const selectText = useCallback(() => {
     if (selectOnClickRef.current) {
-      selectOnClickRef.current = false
-      inputElement && inputElement.select()
+      selectOnClickRef.current = false;
+      inputElement && inputElement.select();
     }
-  }, [inputElement])
+  }, [inputElement]);
 
   const handleMouseDownClick = useCallback(
     (e: ReactMouseEvent<HTMLElement>) => {
-      if (disabled) return
+      if (disabled) return;
       // Without this, when clicking on a "clear" or "remove value" icon button
       // the list will flash open & closed (if closed)
       // or unnecessarily close (if open)
       if (targetIsButton(e)) {
-        return
+        return;
       }
       if (state === ComboboxState.IDLE) {
         if (openOnClick) {
@@ -131,43 +134,44 @@ export function useInputEvents<
             transition(ComboboxActionType.FOCUS, {
               persistSelection:
                 persistSelectionPropRef && persistSelectionPropRef.current,
-            })
+            });
         }
-      } else {
+      } else if (!shouldRenderListInline) {
         // Closing an opened list
-        transition && transition(ComboboxActionType.ESCAPE)
+        transition && transition(ComboboxActionType.ESCAPE);
       }
       if (e.type === 'click') {
-        selectText()
+        selectText();
       }
     },
     [
       disabled,
       openOnClick,
       persistSelectionPropRef,
+      shouldRenderListInline,
       state,
       selectText,
       transition,
     ]
-  )
+  );
 
   const handleMouseUp = useCallback(
     (e: MouseEvent) => {
       if (e.target === inputElement) {
-        selectText()
+        selectText();
       }
     },
     [inputElement, selectText]
-  )
+  );
 
   const { onMouseDown: handleMouseDown, onClick: handleClick } =
-    useMouseDownClick(handleMouseDownClick, handleMouseUp)
+    useMouseDownClick(handleMouseDownClick, handleMouseUp);
 
-  const wrappedOnBlur = useWrapEvent(handleBlur, onBlur)
-  const wrappedOnClick = useWrapEvent(handleClick, onClick)
-  const wrappedOnFocus = useWrapEvent(handleFocus, onFocus)
-  const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown)
-  const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown)
+  const wrappedOnBlur = useWrapEvent(handleBlur, onBlur);
+  const wrappedOnClick = useWrapEvent(handleClick, onClick);
+  const wrappedOnFocus = useWrapEvent(handleFocus, onFocus);
+  const wrappedOnMouseDown = useWrapEvent(handleMouseDown, onMouseDown);
+  const wrappedOnKeyDown = useWrapEvent(handleKeyDown, onKeyDown);
 
   return {
     onBlur: wrappedOnBlur,
@@ -175,5 +179,5 @@ export function useInputEvents<
     onFocus: wrappedOnFocus,
     onKeyDown: wrappedOnKeyDown,
     onMouseDown: wrappedOnMouseDown,
-  }
+  };
 }

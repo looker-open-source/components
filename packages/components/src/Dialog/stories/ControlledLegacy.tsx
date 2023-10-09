@@ -3,16 +3,18 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React, { useState } from 'react'
-import { Dialog, DialogLayout } from '../../Dialog'
-import { Button, ButtonTransparent } from '../../Button'
+import React, { useState } from 'react';
+import { Dialog, DialogLayout } from '../../Dialog';
+import type { DialogProps } from '../Dialog';
+import { Button, ButtonTransparent } from '../../Button';
 
-export default function ControlledLegacy() {
-  const [isOpen, setIsOpen] = useState(false)
+export default function ControlledLegacy(props: DialogProps) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <Dialog
+        {...props}
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         content={
@@ -39,5 +41,5 @@ export default function ControlledLegacy() {
       />
       <button onClick={() => setIsOpen(true)}>Open Dialog</button>
     </>
-  )
+  );
 }

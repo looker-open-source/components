@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { SDKRecord } from '@looker/visualizations-adapters'
-import type { Header, Table } from '@tanstack/react-table'
+import type { SDKRecord } from '@looker/visualizations-adapters';
+import type { Header, Table } from '@tanstack/react-table';
 
 /**
  * If any header elements span multiple columns, we need
@@ -18,11 +18,11 @@ export const normalizeHeaderColumns = (table: Table<SDKRecord>) =>
     const headers = headerGroup.headers.flatMap(
       (header): Array<Header<SDKRecord, unknown> | null> => {
         if (header.colSpan > 1) {
-          const spacerArray: null[] = Array(header.colSpan - 1).fill(null)
-          return [header, ...spacerArray]
+          const spacerArray: null[] = Array(header.colSpan - 1).fill(null);
+          return [header, ...spacerArray];
         }
-        return [header]
+        return [header];
       }
-    )
-    return { ...headerGroup, headers }
-  })
+    );
+    return { ...headerGroup, headers };
+  });

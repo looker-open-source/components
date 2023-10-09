@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { FieldSelectMulti } from '../../FieldSelectMulti'
+import React from 'react';
+import { FieldSelectMulti } from '../../FieldSelectMulti';
 
 export default function FreeInput() {
   return (
@@ -20,5 +20,5 @@ export default function FreeInput() {
       isFilterable={true}
       freeInput
     />
-  )
+  );
 }

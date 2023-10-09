@@ -24,22 +24,22 @@
 
  */
 
-import type { FocusEvent } from 'react'
-import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
-import { Flex } from '../Layout'
-import { createListItemPartitions } from '../ListItem/utils'
+import type { FocusEvent } from 'react';
+import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+import { Flex } from '../Layout';
+import { createListItemPartitions } from '../ListItem/utils';
 import {
   HoverDisclosureContext,
   partitionAriaProps,
   useFocusVisible,
   useWrapEvent,
-} from '../utils'
-import { TreeContext } from '../Tree/TreeContext'
-import { LkFieldItemContent } from './LkFieldItemContent'
-import { LkFieldItemLabel } from './LkFieldItemLabel'
-import type { LkFieldItemProps } from './types'
-import { lkFieldItemDensity } from './defaults'
+} from '../utils';
+import { TreeContext } from '../Tree/TreeContext';
+import { LkFieldItemContent } from './LkFieldItemContent';
+import { LkFieldItemLabel } from './LkFieldItemLabel';
+import type { LkFieldItemProps } from './types';
+import { lkFieldItemDensity } from './defaults';
 
 export const LkFieldItem = styled(
   ({
@@ -56,44 +56,44 @@ export const LkFieldItem = styled(
     selected,
     ...restProps
   }: LkFieldItemProps) => {
-    const { depth } = useContext(TreeContext)
+    const { depth } = useContext(TreeContext);
 
-    const [hovered, setHovered] = useState(false)
+    const [hovered, setHovered] = useState(false);
     const handleWrapperMouseEnter = useWrapEvent(
       () => setHovered(true),
       onMouseEnter
-    )
+    );
     const handleWrapperMouseLeave = useWrapEvent(
       () => setHovered(false),
       onMouseLeave
-    )
+    );
 
-    const handleWrapperFocus = () => setHovered(true)
+    const handleWrapperFocus = () => setHovered(true);
     // This is needed so that hover disclosed elements don't get lost during keyboard nav
     const handleWrapperBlur = (event: FocusEvent<HTMLElement>) => {
-      const nextFocusTarget = event.relatedTarget
+      const nextFocusTarget = event.relatedTarget;
 
       if (nextFocusTarget && !event.currentTarget.contains(nextFocusTarget)) {
-        setHovered(false)
+        setHovered(false);
       }
-    }
+    };
     const { focusVisible, ...focusVisibleHandlers } = useFocusVisible({
       onBlur,
       onKeyUp,
-    })
+    });
 
     const statefulProps = {
       color,
       disabled,
       hovered,
       selected,
-    }
-    const [ariaProps, wrapperProps] = partitionAriaProps(restProps)
+    };
+    const [ariaProps, wrapperProps] = partitionAriaProps(restProps);
     const [inside, outside] = createListItemPartitions({
       density: lkFieldItemDensity,
       ...restProps,
       ...statefulProps,
-    })
+    });
 
     return (
       <HoverDisclosureContext.Provider value={{ visible: hovered }}>
@@ -128,6 +128,6 @@ export const LkFieldItem = styled(
           {outside}
         </Flex>
       </HoverDisclosureContext.Provider>
-    )
+    );
   }
-)``
+)``;

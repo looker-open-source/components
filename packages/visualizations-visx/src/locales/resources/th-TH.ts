@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-import dateLocale from 'date-fns/locale/th'
-import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters'
-import { mergeLocaleObjects } from '@looker/i18n'
+import dateLocale from 'date-fns/locale/th';
+import { thTH as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   PieLegend: {
@@ -19,11 +19,11 @@ const resources = {
   XYTooltip: {
     'Points sized by': 'กำหนดขนาดจุดโดย',
   },
-}
+};
 
 export const thTH = mergeLocaleObjects(
   [visualizationsadaptersLocale],
   'th-TH',
   resources,
   dateLocale
-)
+);

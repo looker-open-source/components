@@ -24,9 +24,9 @@
 
  */
 
-import dateLocale from 'date-fns/locale/ko'
+import dateLocale from 'date-fns/locale/ko';
 
-import { mergeLocaleObjects } from '@looker/i18n'
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   AdvancedInputControls: {
@@ -40,19 +40,19 @@ const resources = {
   },
   BulkActions: {
     AllPageCountDisplayedSelected: '표시된 항목 {{pageCount}}개 모두 선택됨',
-    AllTotalCountSelected: '{{totalCount}}개 항목 모두 선택됨',
+    AllTotalCountSelected: '항목 {{totalCount}}개 모두 선택됨',
     'Bulk Actions': '일괄 작업',
-    'Clear Selection': '선택 지우기',
-    SelectAllCountResults: '{{totalCount}}개 결과 모두 선택',
+    'Clear Selection': '항목 선택 해제',
+    SelectAllCountResults: '검색결과 {{totalCount}}개 모두 선택',
     SelectedCountOfTotalDisplayed:
-      '표시된 항목 {{selectedItemCount}}/{{pageCount}}개 선택됨',
+      '표시된 항목 {{pageCount}}개 중 {{selectedItemCount}}개 선택됨',
   },
   CalendarNav: {
     'next month': '다음 달',
-    'previous month': '이전 달',
+    'previous month': '지난달',
   },
   CheckMarkMixed: {
-    'Check Mark Mixed': '체크 표시 섞임',
+    'Check Mark Mixed': '체크박스 일부 선택됨',
   },
   Chip: {
     Delete: '삭제',
@@ -61,7 +61,7 @@ const resources = {
     Apply: '적용',
     Cancel: '취소',
     'Select All': '모두 선택',
-    'Select None': '선택 안 함',
+    'Select None': '모두 선택 해제',
     'Select columns to display': '표시할 열 선택',
   },
   ConfirmationDialog: {
@@ -70,7 +70,7 @@ const resources = {
   },
   CopyToClipboard: {
     Copied: '복사됨',
-    'Copy to Clipboard': '클립보드에 복사',
+    'Copy to Clipboard': '클립보드로 복사',
   },
   DataTable: {
     'No Results': '결과 없음',
@@ -91,37 +91,36 @@ const resources = {
     'Open calendar': '캘린더 열기',
   },
   InputDateRange: {
-    'End date': '종료 날짜',
-    'Start date': '시작 날짜',
+    'End date': '종료일',
+    'Start date': '시작일',
   },
   InputFilters: {
     'Clear Filters': '필터 지우기',
     'Filter List': '필터 목록',
-    'bottom-start': 'bottom-start',
   },
   InputTimeSelect: {
     'Select time': '시간 선택',
   },
   MessageBar: {
-    DismissIntent: '{{intent}} 취소',
+    DismissIntent: '{{intent}} 닫기',
   },
   ModalHeaderCloseButton: {
     Close: '닫기',
   },
   MonthPickerNav: {
     close: '닫기',
-    'next year': '내년',
-    'previous year': '작년',
+    'next year': '다음 연도',
+    'previous year': '이전 연도',
   },
   PageSize: {
     Display: '표시',
     of: '/',
   },
   Pagination: {
-    'First page of results': '결과 첫 번째 페이지',
-    'Last page of results': '결과 마지막 페이지',
-    'Next page of results': '결과 다음 페이지',
-    'Previous page of results': '결과 이전 페이지',
+    'First page of results': '결과의 첫 페이지',
+    'Last page of results': '결과의 마지막 페이지',
+    'Next page of results': '결과의 다음 페이지',
+    'Previous page of results': '결과의 이전 페이지',
     of: '/',
   },
   PanelHeader: {
@@ -150,6 +149,6 @@ const resources = {
   TabList: {
     Tabs: '탭',
   },
-}
+};
 
-export const koKR = mergeLocaleObjects([], 'ko-KR', resources, dateLocale)
+export const koKR = mergeLocaleObjects([], 'ko-KR', resources, dateLocale);

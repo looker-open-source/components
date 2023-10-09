@@ -2,5 +2,5 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-export * from './Slider'
-export * from './RangeSlider'
+export * from './Slider';
+export * from './RangeSlider';

@@ -24,24 +24,24 @@
 
  */
 
-import 'jest-styled-components'
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import { screen } from '@testing-library/react'
-import { FieldDate } from './FieldDate'
+import 'jest-styled-components';
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import { screen } from '@testing-library/react';
+import { FieldDate } from './FieldDate';
 
-const realDateNow = Date.now.bind(global.Date)
+const realDateNow = Date.now.bind(global.Date);
 
 beforeEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = jest.fn(() => 1580567580000)
-})
+  global.Date.now = jest.fn(() => 1580567580000);
+});
 
 afterEach(() => {
   /* eslint-disable-next-line @typescript-eslint/unbound-method */
-  global.Date.now = realDateNow
-  jest.clearAllMocks()
-})
+  global.Date.now = realDateNow;
+  jest.clearAllMocks();
+});
 
 test('FieldDate renders and displays label', () => {
   renderWithTheme(
@@ -50,10 +50,10 @@ test('FieldDate renders and displays label', () => {
       id="FieldDateID"
       label="Test Label"
     />
-  )
+  );
 
-  expect(screen.getByLabelText('Test Label')).toBeInTheDocument()
-})
+  expect(screen.getByLabelText('Test Label')).toBeInTheDocument();
+});
 
 test('FieldDate should accept detail and description attributes', () => {
   renderWithTheme(
@@ -64,13 +64,13 @@ test('FieldDate should accept detail and description attributes', () => {
       id="FieldDateID"
       label="Label"
     />
-  )
+  );
 
-  expect(screen.getByText('5/50')).toBeInTheDocument()
+  expect(screen.getByText('5/50')).toBeInTheDocument();
   expect(screen.getByLabelText('Label')).toHaveAccessibleDescription(
     'this is the description'
-  )
-})
+  );
+});
 
 test('FieldDate should accept a disabled prop', () => {
   renderWithTheme(
@@ -80,11 +80,11 @@ test('FieldDate should accept a disabled prop', () => {
       id="FieldDateID"
       label="Disabled Label"
     />
-  )
+  );
 
-  const input = screen.getByLabelText('Disabled Label')
-  expect(input).toBeDisabled()
-})
+  const input = screen.getByLabelText('Disabled Label');
+  expect(input).toBeDisabled();
+});
 
 test('FieldDate should accept required attributes', () => {
   renderWithTheme(
@@ -94,12 +94,12 @@ test('FieldDate should accept required attributes', () => {
       label="Required Label"
       required
     />
-  )
-  expect(screen.getByText('required')).toBeVisible()
-})
+  );
+  expect(screen.getByText('required')).toBeVisible();
+});
 
 test('FieldDate should display error message', () => {
-  const errorMessage = 'This is an error'
+  const errorMessage = 'This is an error';
 
   renderWithTheme(
     <FieldDate
@@ -108,7 +108,7 @@ test('FieldDate should display error message', () => {
       label="Validation Label"
       validationMessage={{ message: errorMessage, type: 'error' }}
     />
-  )
+  );
 
-  expect(screen.getByText('This is an error')).toBeVisible()
-})
+  expect(screen.getByText('This is an error')).toBeVisible();
+});

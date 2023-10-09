@@ -24,20 +24,20 @@
 
  */
 
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens'
-import { useTranslation } from '../utils'
-import type { AvatarProps } from './Avatar'
-import { avatarCSS } from './Avatar'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { omitStyledProps, shouldForwardProp } from '@looker/design-tokens';
+import { useTranslation } from '../utils';
+import type { AvatarProps } from './Avatar';
+import { avatarCSS } from './Avatar';
 
 /* eslint-disable camelcase */
 export interface AvatarUserProps extends AvatarProps {
   user?: {
-    first_name: string | null
-    last_name: string | null
-    avatar_url: string | null
-  }
+    first_name: string | null;
+    last_name: string | null;
+    avatar_url: string | null;
+  };
 }
 
 const AvatarLayout = ({
@@ -47,16 +47,16 @@ const AvatarLayout = ({
   size,
   ...props
 }: AvatarUserProps) => {
-  const { t } = useTranslation('AvatarUser')
+  const { t } = useTranslation('AvatarUser');
 
-  const [imgError, setImgError] = useState(false)
-  const handleError = () => setImgError(true)
+  const [imgError, setImgError] = useState(false);
+  const handleError = () => setImgError(true);
 
-  const firstInitial = user && user.first_name && user.first_name[0]
-  const lastInitial = user && user.last_name && user.last_name[0]
-  const name = user ? `${user.first_name} ${user.last_name}` : t('Avatar')
+  const firstInitial = user && user.first_name && user.first_name[0];
+  const lastInitial = user && user.last_name && user.last_name[0];
+  const name = user ? `${user.first_name} ${user.last_name}` : t('Avatar');
 
-  const BaseElement = role === 'button' ? 'button' : 'div'
+  const BaseElement = role === 'button' ? 'button' : 'div';
 
   return (
     <BaseElement {...omitStyledProps(props)} aria-label={name}>
@@ -74,8 +74,8 @@ const AvatarLayout = ({
         />
       )}
     </BaseElement>
-  )
-}
+  );
+};
 
 const AvatarPhoto = styled.img`
   bottom: 0;
@@ -85,13 +85,13 @@ const AvatarPhoto = styled.img`
   right: 0;
   top: 0;
   width: 100%;
-`
+`;
 
 const AvatarInitials = styled.div
   .withConfig({ shouldForwardProp })
   .attrs<AvatarUserProps>(({ color }) => ({ bg: color }))<AvatarUserProps>`
   color: ${({ theme }) => theme.colors.keyText};
-`
+`;
 
 export const AvatarUser = styled(AvatarLayout).attrs(
   ({ color = 'key', size = 'small' }) => ({
@@ -104,4 +104,4 @@ export const AvatarUser = styled(AvatarLayout).attrs(
 
   background: currentColor;
   position: relative;
-`
+`;

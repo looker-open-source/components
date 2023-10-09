@@ -7,9 +7,9 @@ import type {
   CompatibleHTMLProps,
   SizeProps,
   SpaceProps,
-} from '@looker/design-tokens'
-import { size, space } from '@looker/design-tokens'
-import styled from 'styled-components'
+} from '@looker/design-tokens';
+import { size, space } from '@looker/design-tokens';
+import styled from 'styled-components';
 
 export interface IconPlaceholderProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -21,4 +21,4 @@ export const IconPlaceholder = styled.div.attrs<IconPlaceholderProps>(() => ({
 }))<IconPlaceholderProps>`
   ${size}
   ${space}
-`
+`;

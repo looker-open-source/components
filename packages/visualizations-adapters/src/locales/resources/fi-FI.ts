@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import { fiFI as componentsLocale } from '@looker/components'
-import { mergeLocaleObjects } from '@looker/i18n'
+import { fiFI as componentsLocale } from '@looker/components';
+import { mergeLocaleObjects } from '@looker/i18n';
 
 const resources = {
   Debug: {
@@ -19,8 +19,7 @@ const resources = {
   ErrorBoundary: {
     'Something went wrong': 'Jokin meni pieleen',
   },
-  translation: {
-    'Row Total': 'Rivin summa',
+  KeyValueList: {
     false: 'epätosi',
     null: 'nolla',
     true: 'tosi',
@@ -29,6 +28,6 @@ const resources = {
   useNormalizedPivotLabels: {
     'Row Total': 'Rivin summa',
   },
-}
+};
 
-export const fiFI = mergeLocaleObjects([componentsLocale], 'fi-FI', resources)
+export const fiFI = mergeLocaleObjects([componentsLocale], 'fi-FI', resources);

@@ -23,24 +23,24 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import type { InternalFilterProps } from '../../types/filter_props'
-import type { FilterModel, FilterASTNode } from '@looker/filter-expressions'
-import { addNode, removeNode, treeToList } from '@looker/filter-expressions'
-import { typeToComponent } from '../../utils/type_to_component'
-import { SpaceVertical } from '@looker/components'
+import React from 'react';
+import type { InternalFilterProps } from '../../types/filter_props';
+import type { FilterModel, FilterASTNode } from '@looker/filter-expressions';
+import { addNode, removeNode, treeToList } from '@looker/filter-expressions';
+import { typeToComponent } from '../../utils/type_to_component';
+import { SpaceVertical } from '@looker/components';
 
 const getShowOperator = (length: number, index: number) => {
-  if (index > 0) return true
-  if (length > 1) return 'spacer'
-  return false
-}
+  if (index > 0) return true;
+  if (length > 1) return 'spacer';
+  return false;
+};
 
 /**
  * Advanced filters allow for more flexibility and specific customization by the user
  */
 export interface AdvancedFilterProps extends InternalFilterProps {
-  updateAST: (ast?: FilterASTNode) => void
+  updateAST: (ast?: FilterASTNode) => void;
 }
 
 export const AdvancedFilter = ({
@@ -63,34 +63,34 @@ export const AdvancedFilter = ({
 }: AdvancedFilterProps) => {
   const onAdd = (filterItem: FilterModel, keepValue?: boolean) => {
     if (ast) {
-      const newItem = keepValue ? filterItem : { ...filterItem, value: [] }
-      updateAST(addNode(ast, newItem as FilterASTNode))
+      const newItem = keepValue ? filterItem : { ...filterItem, value: [] };
+      updateAST(addNode(ast, newItem as FilterASTNode));
     }
-  }
+  };
 
   const onRemove = (id: string) => {
     if (ast) {
-      updateAST(removeNode(ast, id))
+      updateAST(removeNode(ast, id));
     }
-  }
+  };
 
-  const FilterComponent = typeToComponent(expressionType)
-  if (!FilterComponent) return null
+  const FilterComponent = typeToComponent(expressionType);
+  if (!FilterComponent) return null;
 
-  const items: FilterModel[] = treeToList(ast || {})
+  const items: FilterModel[] = treeToList(ast || {});
 
-  const lastItemIndex = items.length - 1
+  const lastItemIndex = items.length - 1;
 
   const filterList = items.map((item, itemIndex) => {
-    const key = `${name}-${item.id}`
-    const isMatchesAdvanced = item.type === 'matchesAdvanced'
+    const key = `${name}-${item.id}`;
+    const isMatchesAdvanced = item.type === 'matchesAdvanced';
     const showAdd =
       itemIndex === lastItemIndex &&
       !isMatchesAdvanced &&
       !field?.parameter &&
       Boolean(allowMultipleValues) &&
-      !hideAdd
-    const showRemove = lastItemIndex > 0 && !isMatchesAdvanced
+      !hideAdd;
+    const showRemove = lastItemIndex > 0 && !isMatchesAdvanced;
 
     return (
       <FilterComponent
@@ -117,7 +117,7 @@ export const AdvancedFilter = ({
         validationMessage={validationMessage}
         allowMultipleOptions={Boolean(allowMultipleValues)}
       />
-    )
-  })
-  return <SpaceVertical>{filterList}</SpaceVertical>
-}
+    );
+  });
+  return <SpaceVertical>{filterList}</SpaceVertical>;
+};

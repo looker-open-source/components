@@ -1,22 +1,22 @@
-import { Select } from '@looker/components'
-import { Editor, excludedProps } from '@looker/storybook'
-import { ArgsTable, Meta } from '@storybook/addon-docs'
-import storyBasic from '!!raw-loader!./Basic'
-import storyFiltering from '!!raw-loader!./Filtering'
-import storyShowCreate from '!!raw-loader!./ShowCreate'
-import storyGroups from '!!raw-loader!./Groups'
-import storyDescription from '!!raw-loader!./Description'
-import storyDetail from '!!raw-loader!./Detail'
-import storyError from '!!raw-loader!./Error'
-import storyDisabled from '!!raw-loader!./Disabled'
-import storyPlaceholder from '!!raw-loader!./Placeholder'
-import storyLoading from '!!raw-loader!./Loading'
-import storyScrollIntoView from '!!raw-loader!./ScrollIntoView'
-import storyWindowing from '!!raw-loader!./Windowing'
-import storyListLayout from '!!raw-loader!./ListLayout'
-import storyAutoResize from '!!raw-loader!./AutoResize'
-import storyIcons from '!!raw-loader!./Icons'
-import storyPreface from '!!raw-loader!./Preface'
+import { Select } from '@looker/components';
+import { Editor, excludedProps } from '@looker/storybook';
+import { ArgsTable, Meta } from '@storybook/addon-docs';
+import storyBasic from './Basic?raw';
+import storyFiltering from './Filtering?raw';
+import storyShowCreate from './ShowCreate?raw';
+import storyGroups from './Groups?raw';
+import storyDescription from './Description?raw';
+import storyDetail from './Detail?raw';
+import storyError from './Error?raw';
+import storyDisabled from './Disabled?raw';
+import storyPlaceholder from './Placeholder?raw';
+import storyLoading from './Loading?raw';
+import storyScrollIntoView from './ScrollIntoView?raw';
+import storyWindowing from './Windowing?raw';
+import storyListLayout from './ListLayout?raw';
+import storyAutoResize from './AutoResize?raw';
+import storyIcons from './Icons?raw';
+import storyPreface from './Preface?raw';
 
 <Meta component={Select} title="Docs/Select" />
 
@@ -89,6 +89,7 @@ the user to delete the current value.
 
 When `isFilterable` is true, use the `showCreate` prop along with the `formatCreateLabel` (defaults to `'Create "${input value}"'`)
 to allow the user to enter a value not found in the options.
+
 <Editor code={storyShowCreate} />
 
 ## Groups

@@ -24,52 +24,59 @@
 
  */
 
-import type { ReactElement } from 'react'
-import React from 'react'
-import { DataProvider } from '@looker/components-data'
-import { Query } from './'
-import type { Response, SDKRecord, CAll } from '@looker/visualizations-adapters'
-import type { Looker40SDK } from '@looker/sdk'
-import { waitFor, screen } from '@testing-library/react'
-import { mockSDK, mockSdkFieldsResponse } from '@looker/visualizations-adapters'
-import { renderWithTheme } from '@looker/components-test-utils'
+import type { ReactElement } from 'react';
+import React from 'react';
+import { DataProvider } from '@looker/components-data';
+import { Query } from './';
+import type {
+  Response,
+  SDKRecord,
+  CAll,
+} from '@looker/visualizations-adapters';
+import type { Looker40SDK } from '@looker/sdk';
+import { waitFor, screen } from '@testing-library/react';
+import {
+  mockSDK,
+  mockSdkFieldsResponse,
+} from '@looker/visualizations-adapters';
+import { renderWithTheme } from '@looker/components-test-utils';
 
-const mockConsoleWarn = jest.fn()
-const defaultConsoleWarn = globalThis.console.warn
+const mockConsoleWarn = jest.fn();
+const defaultConsoleWarn = globalThis.console.warn;
 
 beforeEach(() => {
-  globalThis.console.warn = mockConsoleWarn
-})
+  globalThis.console.warn = mockConsoleWarn;
+});
 
 afterEach(() => {
-  jest.clearAllMocks()
-  globalThis.console.warn = defaultConsoleWarn
-})
+  jest.clearAllMocks();
+  globalThis.console.warn = defaultConsoleWarn;
+});
 
 describe('Query', () => {
-  const mockDataListener = jest.fn()
-  const isResponseOk = jest.fn()
+  const mockDataListener = jest.fn();
+  const isResponseOk = jest.fn();
 
   const TestChild = ({
     data,
     ok,
     loading,
   }: {
-    data?: SDKRecord[]
-    ok?: boolean
-    loading?: boolean
+    data?: SDKRecord[];
+    ok?: boolean;
+    loading?: boolean;
   }) => {
-    mockDataListener(data)
-    isResponseOk(ok === true && loading === false)
-    return null
-  }
+    mockDataListener(data);
+    isResponseOk(ok === true && loading === false);
+    return null;
+  };
 
   const QueryTemplate = ({
     config,
     children,
   }: {
-    config?: Partial<CAll>
-    children: ReactElement
+    config?: Partial<CAll>;
+    children: ReactElement;
   }) => {
     const mockData = [
       {
@@ -80,7 +87,7 @@ describe('Query', () => {
         'orders.created_date': { value: '2014-07' },
         'orders.count': { value: 300 },
       },
-    ]
+    ];
     return (
       <DataProvider
         sdk={
@@ -102,38 +109,38 @@ describe('Query', () => {
           {children}
         </Query>
       </DataProvider>
-    )
-  }
+    );
+  };
 
   it('sorts data chronologically when dimension is_timeframe is true', async () => {
     renderWithTheme(
       <QueryTemplate>
         <TestChild />
       </QueryTemplate>
-    )
+    );
 
     await waitFor(() =>
       expect(mockDataListener).toHaveBeenLastCalledWith([
         { 'orders.created_date': '2014-07', 'orders.count': 300 },
         { 'orders.created_date': '2019-11', 'orders.count': 1 },
       ])
-    )
-  })
+    );
+  });
 
   it('reverses data when config.x_axis[0].reversed is true', async () => {
     renderWithTheme(
       <QueryTemplate config={{ x_axis: [{ reversed: true }] }}>
         <TestChild />
       </QueryTemplate>
-    )
+    );
 
     await waitFor(() =>
       expect(mockDataListener).toHaveBeenLastCalledWith([
         { 'orders.created_date': '2019-11', 'orders.count': 1 },
         { 'orders.created_date': '2014-07', 'orders.count': 300 },
       ])
-    )
-  })
+    );
+  });
 
   it('Restricted Props: Expect type failure if both query and dashboard props are used', async () => {
     renderWithTheme(
@@ -143,17 +150,17 @@ describe('Query', () => {
           <TestChild />
         </Query>
       </DataProvider>
-    )
+    );
 
     await waitFor(() => {
-      expect(isResponseOk).toHaveBeenLastCalledWith(true)
-    })
+      expect(isResponseOk).toHaveBeenLastCalledWith(true);
+    });
 
-    expect(mockConsoleWarn).toHaveBeenCalled()
-  })
+    expect(mockConsoleWarn).toHaveBeenCalled();
+  });
 
   it('Renders sdk error message in the dom', async () => {
-    const errorMessage = 'Query not found'
+    const errorMessage = 'Query not found';
 
     const mockSDKNotFound = {
       ...mockSDK,
@@ -162,16 +169,16 @@ describe('Query', () => {
           ok: false,
           error: { message: errorMessage },
         }),
-    } as unknown as Looker40SDK
+    } as unknown as Looker40SDK;
 
     renderWithTheme(
       <DataProvider sdk={mockSDKNotFound}>
         <Query query={'abc123'}>{() => null}</Query>
       </DataProvider>
-    )
+    );
 
     await waitFor(() => {
-      expect(screen.getByText(errorMessage)).toBeInTheDocument()
-    })
-  })
-})
+      expect(screen.getByText(errorMessage)).toBeInTheDocument();
+    });
+  });
+});

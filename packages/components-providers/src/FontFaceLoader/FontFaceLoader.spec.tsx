@@ -24,20 +24,20 @@
 
  */
 
-import React from 'react'
-import { HelmetProvider } from 'react-helmet-async'
-import type { DefaultTheme } from 'styled-components'
-import { ThemeProvider } from 'styled-components'
-import type { FontSources } from '@looker/design-tokens'
-import { render } from '@testing-library/react'
-import { fontFacesCSS, FontFaceLoader } from './FontFaceLoader'
+import React from 'react';
+import { HelmetProvider } from 'react-helmet-async';
+import type { DefaultTheme } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
+import type { FontSources } from '@looker/design-tokens';
+import { render } from '@testing-library/react';
+import { fontFacesCSS, FontFaceLoader } from './FontFaceLoader';
 
-HelmetProvider.canUseDOM = false
+HelmetProvider.canUseDOM = false;
 
 const fontSources: FontSources = [
   { url: 'http//magic.com' },
   { face: 'Curly', url: 'http//moe.com/curly.ttf' },
-]
+];
 
 describe('FontFaceLoader', () => {
   it('Font face with URL', () => {
@@ -47,15 +47,15 @@ describe('FontFaceLoader', () => {
         font-family: Curly;
         src: url('http//moe.com/curly.ttf');
       }"
-    `)
-  })
+    `);
+  });
 
   it('URL only (Google font)', () => {
     expect(fontFacesCSS([fontSources[0]])).toMatchInlineSnapshot(`
       "
       @import url(http//magic.com);"
-    `)
-  })
+    `);
+  });
 
   it('Multiple fonts', () => {
     expect(fontFacesCSS(fontSources)).toMatchInlineSnapshot(`
@@ -66,12 +66,12 @@ describe('FontFaceLoader', () => {
         font-family: Curly;
         src: url('http//moe.com/curly.ttf');
       }"
-    `)
-  })
+    `);
+  });
 
   it('Does nothing if fontSource undefined', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const context = {} as any
+    const context = {} as any;
 
     render(
       <HelmetProvider context={context}>
@@ -79,13 +79,13 @@ describe('FontFaceLoader', () => {
           <FontFaceLoader />
         </ThemeProvider>
       </HelmetProvider>
-    )
-    expect(context.helmet.style.toString()).toEqual('')
-  })
+    );
+    expect(context.helmet.style.toString()).toEqual('');
+  });
 
   it('Does nothing if fontSource empty', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const context = {} as any
+    const context = {} as any;
 
     render(
       <HelmetProvider context={context}>
@@ -93,14 +93,14 @@ describe('FontFaceLoader', () => {
           <FontFaceLoader />
         </ThemeProvider>
       </HelmetProvider>
-    )
+    );
 
-    expect(context.helmet.style.toString()).toEqual('')
-  })
+    expect(context.helmet.style.toString()).toEqual('');
+  });
 
   it('theme.fontSources has entries', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const context = {} as any
+    const context = {} as any;
 
     render(
       <HelmetProvider context={context}>
@@ -114,7 +114,7 @@ describe('FontFaceLoader', () => {
           <FontFaceLoader />
         </ThemeProvider>
       </HelmetProvider>
-    )
+    );
     // expect(component.find('head').length).toEqual(0)
     expect(context.helmet.style.toString()).toMatchInlineSnapshot(`
       "<style data-rh=\\"true\\" type=\\"text/css\\">
@@ -124,6 +124,6 @@ describe('FontFaceLoader', () => {
         font-family: Curly;
         src: url('http//moe.com/curly.ttf');
       }</style>"
-    `)
-  })
-})
+    `);
+  });
+});

@@ -29,28 +29,28 @@ import type {
   IColorCollection,
   IContinuousPalette,
   IDiscretePalette,
-} from '@looker/sdk'
-import type { SDKResponse } from '@looker/sdk-rtl'
-import find from 'lodash/find'
-import useSWR from 'swr'
-import { DEFAULT_SERIES_COLORS } from '@looker/visualizations-adapters'
-import type { ColorApplication } from '@looker/visualizations-adapters'
-import { getErrorResponse, isErrorResponse } from '../utils'
-import { useSDK } from './useSDK'
+} from '@looker/sdk';
+import type { SDKResponse } from '@looker/sdk-rtl';
+import find from 'lodash/find';
+import useSWR from 'swr';
+import { DEFAULT_SERIES_COLORS } from '@looker/visualizations-adapters';
+import type { ColorApplication } from '@looker/visualizations-adapters';
+import { getErrorResponse, isErrorResponse } from '../utils';
+import { useSDK } from './useSDK';
 
-type RunQueryReturnType = SDKResponse<IColorCollection, IError>
+type RunQueryReturnType = SDKResponse<IColorCollection, IError>;
 
 const isDiscretePalette = (
   palette: IDiscretePalette | IContinuousPalette
 ): palette is IDiscretePalette => {
-  return 'colors' in palette
-}
+  return 'colors' in palette;
+};
 
 const isContinuousPalette = (
   palette: IDiscretePalette | IContinuousPalette
 ): palette is IContinuousPalette => {
-  return 'stops' in palette
-}
+  return 'stops' in palette;
+};
 
 /**
  * normalizePalette extracts an array of hex codes from discrete and continuous
@@ -62,7 +62,7 @@ const normalizePalette = (
   palette: IDiscretePalette | IContinuousPalette = {}
 ): IDiscretePalette => {
   if (isDiscretePalette(palette)) {
-    return palette
+    return palette;
   } else if (isContinuousPalette(palette)) {
     return {
       colors: palette.stops?.map((stop, i) =>
@@ -70,11 +70,11 @@ const normalizePalette = (
           ? stop.color
           : DEFAULT_SERIES_COLORS[i % DEFAULT_SERIES_COLORS.length]
       ),
-    }
+    };
   } else {
-    return { colors: DEFAULT_SERIES_COLORS }
+    return { colors: DEFAULT_SERIES_COLORS };
   }
-}
+};
 
 /**
  * useColorPalette fetches color collection based on vis config metadata
@@ -83,9 +83,9 @@ const normalizePalette = (
  */
 
 export const useColorPalette = (colorApplication?: ColorApplication) => {
-  const { collection_id, palette_id, custom } = colorApplication || {}
+  const { collection_id, palette_id, custom } = colorApplication || {};
 
-  const sdk = useSDK()
+  const sdk = useSDK();
 
   /*
    * Dispatch network request
@@ -96,17 +96,17 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
     if (collection_id) {
       return (await sdk.color_collection(
         collection_id
-      )) as unknown as Promise<RunQueryReturnType>
+      )) as unknown as Promise<RunQueryReturnType>;
     }
 
-    return undefined
-  }
+    return undefined;
+  };
 
   const { data, isValidating } = useSWR<void | RunQueryReturnType>(
     collection_id,
     fetcher,
     { revalidateOnFocus: false }
-  )
+  );
 
   const {
     value: {
@@ -114,23 +114,23 @@ export const useColorPalette = (colorApplication?: ColorApplication) => {
       divergingPalettes = [],
       sequentialPalettes = [],
     },
-  } = data?.ok === true ? data : { value: {} }
+  } = data?.ok === true ? data : { value: {} };
 
   const allPalettes = [
     ...categoricalPalettes,
     ...divergingPalettes,
     ...sequentialPalettes,
     custom,
-  ]
+  ];
 
-  const paletteConfig = find(allPalettes, { id: palette_id ?? custom?.id })
+  const paletteConfig = find(allPalettes, { id: palette_id ?? custom?.id });
 
-  const colorPalette = normalizePalette(paletteConfig).colors
+  const colorPalette = normalizePalette(paletteConfig).colors;
 
   return {
     colorPalette,
     isOK: !(colorApplication && isErrorResponse(data)) || !!colorPalette,
     isPending: isValidating,
     ...getErrorResponse(data),
-  }
-}
+  };
+};

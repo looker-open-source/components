@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { DataTableColumns } from '../Column'
-import { getNumericColumnIndices } from './dataTableFormatting'
+import type { DataTableColumns } from '../Column';
+import { getNumericColumnIndices } from './dataTableFormatting';
 
 describe('DataTable CSS Utils', () => {
   const columns: DataTableColumns = [
@@ -23,11 +23,11 @@ describe('DataTable CSS Utils', () => {
       title: 'Age',
       type: 'number',
     },
-  ]
+  ];
 
   test('getNumericColumnIndices', () => {
     expect(getNumericColumnIndices(columns, ['id', 'name', 'age'])).toEqual([
       1, 3,
-    ])
-  })
-})
+    ]);
+  });
+});

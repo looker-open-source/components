@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import {
   DataTableAction,
   DataTableItem,
@@ -33,8 +33,8 @@ import {
   Box,
   Pagination,
   useSelectManager,
-} from '../..'
-import type { DataTableColumns } from '../../'
+} from '../..';
+import type { DataTableColumns } from '../../';
 
 export default function ControlBar() {
   const data = [
@@ -44,7 +44,7 @@ export default function ControlBar() {
     { id: 4, name: 'American' },
     { id: 5, name: 'Cheddar' },
     { id: 6, name: 'Pepper Jack' },
-  ]
+  ];
 
   const columns: DataTableColumns = [
     {
@@ -59,16 +59,16 @@ export default function ControlBar() {
       title: 'Name',
       type: 'string',
     },
-  ]
+  ];
 
-  const [page, setPage] = useState(1)
-  const perPageCount = 3
+  const [page, setPage] = useState(1);
+  const perPageCount = 3;
 
   // The logic for which items are being displayed on which page will vary
   const pageItemData = data.filter(
     ({ id }) => id > (page - 1) * perPageCount && id <= page * perPageCount
-  )
-  const pageItemIds = pageItemData.map(({ id }) => String(id))
+  );
+  const pageItemIds = pageItemData.map(({ id }) => String(id));
   const pageItems = pageItemData.map(({ id, name }) => (
     <DataTableItem
       id={String(id)}
@@ -85,14 +85,14 @@ export default function ControlBar() {
       <DataTableCell>{id}</DataTableCell>
       <DataTableCell>{name}</DataTableCell>
     </DataTableItem>
-  ))
+  ));
 
   const { onSelect, onSelectAll, selections, setSelections } =
-    useSelectManager(pageItemIds)
+    useSelectManager(pageItemIds);
 
-  const allItems = [...data].map(({ id }) => String(id))
-  const onTotalSelectAll = () => setSelections(allItems)
-  const onTotalClearAll = () => setSelections([])
+  const allItems = [...data].map(({ id }) => String(id));
+  const onTotalSelectAll = () => setSelections(allItems);
+  const onTotalClearAll = () => setSelections([]);
 
   const bulkActionsConfig = {
     actions: (
@@ -104,7 +104,7 @@ export default function ControlBar() {
     onTotalSelectAll,
     pageCount: pageItems.length,
     totalCount: allItems.length,
-  }
+  };
 
   return (
     <Flex flexDirection="column" alignItems="center">
@@ -127,10 +127,10 @@ export default function ControlBar() {
         current={page}
         pages={data.length / perPageCount}
         onChange={nextPage => {
-          setSelections([])
-          setPage(nextPage)
+          setSelections([]);
+          setPage(nextPage);
         }}
       />
     </Flex>
-  )
+  );
 }

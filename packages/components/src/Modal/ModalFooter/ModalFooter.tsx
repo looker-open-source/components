@@ -3,12 +3,12 @@
  * SPDX-License-Identifier: MIT
  */
 
-import type { ReactNode } from 'react'
-import React from 'react'
-import styled from 'styled-components'
-import type { CompatibleHTMLProps } from '@looker/design-tokens'
-import type { SpaceHelperProps } from '../../Layout/Space'
-import { Space } from '../../Layout/Space'
+import type { ReactNode } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+import type { CompatibleHTMLProps } from '@looker/design-tokens';
+import type { SpaceHelperProps } from '../../Layout/Space';
+import { Space } from '../../Layout/Space';
 
 export interface ModalFooterProps
   extends CompatibleHTMLProps<HTMLDivElement>,
@@ -16,11 +16,11 @@ export interface ModalFooterProps
   /**
    *
    */
-  children: ReactNode
+  children: ReactNode;
   /**
    * Secondary content to place in the footer
    */
-  secondary?: ReactNode
+  secondary?: ReactNode;
 }
 
 const ModalFooterLayout = ({
@@ -32,8 +32,8 @@ const ModalFooterLayout = ({
     <Space reverse>{children}</Space>
     {secondary && <Space>{secondary}</Space>}
   </Space>
-)
+);
 
 export const ModalFooter = styled(ModalFooterLayout)`
   flex-shrink: 0;
-`
+`;

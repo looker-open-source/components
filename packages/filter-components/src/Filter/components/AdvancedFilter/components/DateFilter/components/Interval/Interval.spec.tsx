@@ -6,14 +6,14 @@ import {
   closeCombobox,
   getAllComboboxOptionText,
   renderWithTheme,
-} from '@looker/components-test-utils'
-import { fireEvent, screen } from '@testing-library/react'
-import React from 'react'
-import { Filter } from '../../../../../../Filter'
+} from '@looker/components-test-utils';
+import { fireEvent, screen } from '@testing-library/react';
+import React from 'react';
+import { Filter } from '../../../../../../Filter';
 import {
   testField,
   testFilterUIConfig,
-} from '../../../../../../utils/filter_test_utils'
+} from '../../../../../../utils/filter_test_utils';
 
 describe('Interval Date filter test', () => {
   it('should render an Interval component', () => {
@@ -27,9 +27,9 @@ describe('Interval Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    fireEvent.click(screen.getAllByRole('textbox')[1])
+    fireEvent.click(screen.getAllByRole('textbox')[1]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "seconds",
@@ -41,9 +41,9 @@ describe('Interval Date filter test', () => {
         "quarters",
         "years",
       ]
-    `)
-    closeCombobox()
-  })
+    `);
+    closeCombobox();
+  });
 
   it('should render an Interval component with Fiscal unit options', () => {
     renderWithTheme(
@@ -56,9 +56,9 @@ describe('Interval Date filter test', () => {
         config={testFilterUIConfig}
         allowMultipleValues={true}
       />
-    )
+    );
 
-    fireEvent.click(screen.getAllByRole('textbox')[1])
+    fireEvent.click(screen.getAllByRole('textbox')[1]);
     expect(getAllComboboxOptionText()).toMatchInlineSnapshot(`
       Array [
         "seconds",
@@ -72,7 +72,7 @@ describe('Interval Date filter test', () => {
         "fiscal quarters",
         "fiscal years",
       ]
-    `)
-    closeCombobox()
-  })
-})
+    `);
+    closeCombobox();
+  });
+});

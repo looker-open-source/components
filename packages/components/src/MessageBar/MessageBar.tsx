@@ -24,29 +24,29 @@
 
  */
 
-import type { TFunction } from 'i18next'
+import type { TFunction } from 'i18next';
 import type {
   CompatibleHTMLProps,
   TypographyProps,
-} from '@looker/design-tokens'
-import { omitStyledProps, variant } from '@looker/design-tokens'
-import { Close } from '@styled-icons/material/Close'
-import noop from 'lodash/noop'
-import isUndefined from 'lodash/isUndefined'
-import type { Ref, ReactElement } from 'react'
-import React, { forwardRef, useState, useEffect } from 'react'
-import styled from 'styled-components'
-import type { ButtonProps } from '../Button'
-import { IconButton, ButtonTransparent } from '../Button'
-import { Space } from '../Layout/Space'
-import type { SimpleLayoutProps } from '../Layout/utils/simple'
-import { simpleLayoutCSS } from '../Layout/utils/simple'
-import { useReadOnlyWarn, useTranslation } from '../utils'
-import { getIntentLabel, Status } from '../Status'
+} from '@looker/design-tokens';
+import { omitStyledProps, variant } from '@looker/design-tokens';
+import { Close } from '@styled-icons/material/Close';
+import noop from 'lodash/noop';
+import isUndefined from 'lodash/isUndefined';
+import type { Ref, ReactElement } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
+import styled from 'styled-components';
+import type { ButtonProps } from '../Button';
+import { IconButton, ButtonTransparent } from '../Button';
+import { Space } from '../Layout/Space';
+import type { SimpleLayoutProps } from '../Layout/utils/simple';
+import { simpleLayoutCSS } from '../Layout/utils/simple';
+import { useReadOnlyWarn, useTranslation } from '../utils';
+import { getIntentLabel, Status } from '../Status';
 
-export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn'
+export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn';
 
-export type SupportedActionTypes = string | ReactElement<ButtonProps>
+export type SupportedActionTypes = string | ReactElement<ButtonProps>;
 
 export interface MessageBarProps
   extends CompatibleHTMLProps<HTMLElement>,
@@ -56,46 +56,46 @@ export interface MessageBarProps
    * Determines the icon choice and background color
    * @default: 'inform'
    */
-  intent?: MessageBarIntent
+  intent?: MessageBarIntent;
   /**
    * Determines whether the MessageBar is rendered or not.
    * @default: true
    */
-  visible?: boolean
+  visible?: boolean;
   /**
    * Polymorphic prop defines the primary action button to render.
    * @default true (which renders IconButton)
    */
-  primaryAction?: SupportedActionTypes
+  primaryAction?: SupportedActionTypes;
   /**
    * Polymorphic prop defines the secondary action button to render.
    */
-  secondaryAction?: SupportedActionTypes
+  secondaryAction?: SupportedActionTypes;
   /**
    * Callback fires when primaryAction is clicked
    * @default noop
    */
-  onPrimaryClick?: () => void
+  onPrimaryClick?: () => void;
   /**
    * Callback fires when secondaryAction is clicked
    * @default noop
    */
-  onSecondaryClick?: () => void
+  onSecondaryClick?: () => void;
   /**
    * Hide action buttons altogether
    * @default false
    */
-  noActions?: boolean
-  className?: string
+  noActions?: boolean;
+  className?: string;
 }
 
 interface DefaultDismissButtonProps {
-  id?: string
-  intent?: MessageBarIntent
-  onClick: () => void
+  id?: string;
+  intent?: MessageBarIntent;
+  onClick: () => void;
 }
 
-const NoopComponent = () => <></>
+const NoopComponent = () => <></>;
 
 /* eslint-disable react/display-name */
 
@@ -118,10 +118,10 @@ function getPrimaryActionButton(
       // string label
       return ({ onClick }: DefaultDismissButtonProps) => (
         <ButtonTransparent onClick={onClick}>{primaryAction}</ButtonTransparent>
-      )
+      );
     case 'object':
       // custom react component
-      return () => primaryAction
+      return () => primaryAction;
     default:
       return ({ intent, onClick, id }: DefaultDismissButtonProps) => (
         <IconButton
@@ -134,7 +134,7 @@ function getPrimaryActionButton(
             ns: 'MessageBar',
           })}`}
         />
-      )
+      );
   }
 }
 
@@ -157,12 +157,12 @@ function getSecondaryActionButton(
         <ButtonTransparent onClick={onClick} color="neutral">
           {secondaryAction}
         </ButtonTransparent>
-      )
+      );
     case 'object':
       // custom react component
-      return () => secondaryAction
+      return () => secondaryAction;
     default:
-      return NoopComponent
+      return NoopComponent;
   }
 }
 
@@ -184,31 +184,31 @@ const MessageBarLayout = forwardRef(
     }: MessageBarProps,
     ref: Ref<HTMLDivElement>
   ) => {
-    useReadOnlyWarn('MessageBar', visibleProp, onPrimaryClick)
+    useReadOnlyWarn('MessageBar', visibleProp, onPrimaryClick);
 
     const [visible, setVisible] = useState(
       isUndefined(visibleProp) ? true : visibleProp
-    )
+    );
 
     const handlePrimaryClick = () => {
-      setVisible(visibleProp || false)
-      onPrimaryClick()
-    }
+      setVisible(visibleProp || false);
+      onPrimaryClick();
+    };
 
     const handleSecondaryClick = () => {
-      setVisible(visibleProp || false)
-      onSecondaryClick()
-    }
+      setVisible(visibleProp || false);
+      onSecondaryClick();
+    };
 
     useEffect(() => {
       if (!isUndefined(visibleProp)) {
-        setVisible(visibleProp)
+        setVisible(visibleProp);
       }
-    }, [visibleProp])
+    }, [visibleProp]);
 
-    const { t } = useTranslation('MessageBar')
-    const PrimaryButton = getPrimaryActionButton(t, primaryAction)
-    const SecondaryButton = getSecondaryActionButton(secondaryAction)
+    const { t } = useTranslation('MessageBar');
+    const PrimaryButton = getPrimaryActionButton(t, primaryAction);
+    const SecondaryButton = getSecondaryActionButton(secondaryAction);
 
     const messageBarMarkup = (
       <div
@@ -231,18 +231,18 @@ const MessageBarLayout = forwardRef(
           </Space>
         )}
       </div>
-    )
+    );
 
-    return visible ? messageBarMarkup : null
+    return visible ? messageBarMarkup : null;
   }
-)
+);
 
-MessageBarLayout.displayName = 'MessageBarLayout'
+MessageBarLayout.displayName = 'MessageBarLayout';
 
 const MessageBarContent = styled.div`
   flex-grow: 1;
   padding: 0 ${({ theme: { space } }) => space.u5};
-`
+`;
 
 const backgroundColor = variant({
   prop: 'intent',
@@ -260,7 +260,7 @@ const backgroundColor = variant({
       backgroundColor: 'warnAccent',
     },
   },
-})
+});
 
 export const MessageBar = styled(MessageBarLayout).attrs(
   ({ intent = 'inform', px = 'medium', py = 'small', width = '100%' }) => ({
@@ -277,4 +277,4 @@ export const MessageBar = styled(MessageBarLayout).attrs(
   color: ${({ theme: { colors } }) => colors.text5};
   display: flex;
   font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
-`
+`;

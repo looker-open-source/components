@@ -3,11 +3,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-import React from 'react'
-import { List } from '../'
-import { ListItem, Space } from '../../'
+import React from 'react';
+import { List } from '../';
+import { ListItem, Space } from '../../';
 
-const array3000 = Array.from(Array(3000), (_, i) => String(i))
+const array3000 = Array.from(Array(3000), (_, i) => String(i));
 export default function LongList() {
   return (
     <Space height={300}>
@@ -25,5 +25,5 @@ export default function LongList() {
         layout to be unstable.
       </div>
     </Space>
-  )
+  );
 }

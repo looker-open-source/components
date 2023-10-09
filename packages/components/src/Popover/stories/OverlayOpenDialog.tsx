@@ -37,16 +37,16 @@ import {
   Menu,
   MenuItem,
   Tooltip,
-} from '@looker/components'
+} from '@looker/components';
 import {
   ScrollLockContext,
   FocusTrapContext,
-} from '@looker/components-providers'
-import React, { useContext } from 'react'
-import { Popover } from '..'
+} from '@looker/components-providers';
+import React, { useContext } from 'react';
+import { Popover } from '..';
 
 export default function OverlayOpenDialog() {
-  const { value, setOn, setOff } = useToggle()
+  const { value, setOn, setOff } = useToggle();
   return (
     <SpaceVertical mt="large" align="start" width={1000} mx="auto">
       <Paragraph>
@@ -77,7 +77,7 @@ export default function OverlayOpenDialog() {
       <Button onClick={setOn}>Open Dialog</Button>
       <Box height={1000} />
     </SpaceVertical>
-  )
+  );
 }
 
 const DialogInner = () => {
@@ -85,25 +85,25 @@ const DialogInner = () => {
     activeTrapRef: activeLockRef,
     disableCurrentTrap: disableCurrentLock,
     enableCurrentTrap: enableCurrentLock,
-  } = useContext(ScrollLockContext)
+  } = useContext(ScrollLockContext);
   const toggleScrollLock = () => {
     if (activeLockRef && activeLockRef.current) {
-      disableCurrentLock?.()
+      disableCurrentLock?.();
     } else {
-      enableCurrentLock?.()
+      enableCurrentLock?.();
     }
-  }
+  };
   const { activeTrapRef, disableCurrentTrap, enableCurrentTrap } =
-    useContext(FocusTrapContext)
+    useContext(FocusTrapContext);
   const toggleFocusTrap = () => {
     if (activeTrapRef && activeTrapRef.current) {
-      disableCurrentTrap?.()
+      disableCurrentTrap?.();
     } else {
-      enableCurrentTrap?.()
+      enableCurrentTrap?.();
     }
-  }
+  };
   function openAlert() {
-    alert(`It's working!`)
+    alert(`It's working!`);
   }
   return (
     <DialogContent>
@@ -127,8 +127,8 @@ const DialogInner = () => {
         <Box height={500} />
       </SpaceVertical>
     </DialogContent>
-  )
-}
+  );
+};
 
 const options = [
   { label: 'Apples', value: '1' },
@@ -156,4 +156,4 @@ const options = [
   { label: 'Oranges5', value: '35' },
   { label: 'Pineapples5', value: '45' },
   { label: 'Kiwis5', value: '55' },
-]
+];

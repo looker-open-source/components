@@ -3,4 +3,4 @@
  * SPDX-License-Identifier: MIT
  */
 
-export type LegendOrientations = 'horizontal' | 'vertical'
+export type LegendOrientations = 'horizontal' | 'vertical';

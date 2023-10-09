@@ -24,22 +24,22 @@
 
  */
 
-import type { ChangeEvent, Ref } from 'react'
-import React, { forwardRef, useState } from 'react'
-import isFunction from 'lodash/isFunction'
-import styled from 'styled-components'
-import type { TypographyProps } from '@looker/design-tokens'
-import { omitStyledProps, typography } from '@looker/design-tokens'
-import type { InputProps, InputTextTypeProps } from '../InputProps'
-import { pickInputProps } from '../InputProps'
-import { innerInputStyle } from '../innerInputStyle'
+import type { ChangeEvent, Ref } from 'react';
+import React, { forwardRef, useState } from 'react';
+import isFunction from 'lodash/isFunction';
+import styled from 'styled-components';
+import type { TypographyProps } from '@looker/design-tokens';
+import { omitStyledProps, typography } from '@looker/design-tokens';
+import type { InputProps, InputTextTypeProps } from '../InputProps';
+import { pickInputProps } from '../InputProps';
+import { innerInputStyle } from '../innerInputStyle';
 
 export interface InlineInputTextProps
   extends TypographyProps,
     Omit<InputProps, 'type'>,
     InputTextTypeProps {
-  underlineOnlyOnHover?: boolean
-  simple?: boolean
+  underlineOnlyOnHover?: boolean;
+  simple?: boolean;
 }
 
 const InlineInputTextLayout = forwardRef(
@@ -55,15 +55,15 @@ const InlineInputTextLayout = forwardRef(
     }: InlineInputTextProps,
     ref: Ref<HTMLInputElement>
   ) => {
-    const [value, setValueChange] = useState(valueProp || defaultValue || '')
+    const [value, setValueChange] = useState(valueProp || defaultValue || '');
 
-    const displayValue = isFunction(onChange) ? valueProp : value
+    const displayValue = isFunction(onChange) ? valueProp : value;
 
     const handleValueChange = (event: ChangeEvent<HTMLInputElement>) => {
-      setValueChange(event.currentTarget.value)
-    }
+      setValueChange(event.target.value);
+    };
 
-    const handleChange = isFunction(onChange) ? onChange : handleValueChange
+    const handleChange = isFunction(onChange) ? onChange : handleValueChange;
 
     return (
       <span className={className}>
@@ -77,9 +77,9 @@ const InlineInputTextLayout = forwardRef(
         />
         <StyledText>{displayValue || placeholder || ' '}</StyledText>
       </span>
-    )
+    );
   }
-)
+);
 
 const StyledInput = styled.input`
   ${innerInputStyle}
@@ -99,7 +99,7 @@ const StyledInput = styled.input`
   &[type='number'] {
     appearance: textfield;
   }
-`
+`;
 
 const StyledText = styled.span`
   align-self: center;
@@ -111,14 +111,14 @@ const StyledText = styled.span`
   overflow: hidden;
   text-align: inherit;
   white-space: pre;
-`
+`;
 
 export const InlineInputTextBase = styled(InlineInputTextLayout)`
   display: inline-flex;
   justify-content: center;
   min-width: 2rem;
   position: relative;
-`
+`;
 
 export const InlineInputText = styled(InlineInputTextBase)`
   ${typography}
@@ -158,4 +158,4 @@ export const InlineInputText = styled(InlineInputTextBase)`
     color: ${({ theme }) => theme.colors.text1};
     -webkit-text-fill-color: ${({ theme }) => theme.colors.text1};
   }
-`
+`;
