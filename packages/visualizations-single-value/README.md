@@ -1,3 +1,9 @@
+# THIS PACKAGE IS DEPRECATED
+
+Lookers suite of React visualization components is no longer maintained.
+
+---
+
 # @looker/visualizations-single-value
 
 This package stores the default Single Value visualization used within the Looker Visualization Components library.

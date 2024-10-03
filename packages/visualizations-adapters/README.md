@@ -1,3 +1,9 @@
+# THIS PACKAGE IS DEPRECATED
+
+Lookers suite of React visualization components is no longer maintained.
+
+---
+
 # @looker/visualizations-adapters
 
 This is a low-level package used within the Looker Visualizations Components library. This package contains all the types, utilities, data transformations, and adapters, which are agnostic to any one charting library and will be referenced by other higher-level packages.
