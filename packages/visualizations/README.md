@@ -1,3 +1,9 @@
+# THIS PACKAGE IS DEPRECATED
+
+Lookers suite of React visualization components is no longer maintained.
+
+---
+
 # Looker Visualization Components
 
 Looker Visualization Components is a collection of utilities to aid in building and embedding data experiences inside of a React application. It is designed to be used in conjuncution with [Looker's SDK](https://www.npmjs.com/package/@looker/sdk), and can be integrated after authenticating with the SDK service.

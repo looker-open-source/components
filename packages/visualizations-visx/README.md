@@ -1,3 +1,9 @@
+# THIS PACKAGE IS DEPRECATED
+
+Lookers suite of React visualization components is no longer maintained.
+
+---
+
 # @looker/visualizations-visx
 
 This package contains the Looker visualizations that are built on top of [Airbnb's visx](https://airbnb.io/visx/) charting primitives.
