@@ -43,7 +43,7 @@ import { useQueryData, useQueryMetadata } from '.';
  * @returns final visConfig object and api state
  */
 
-export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
+export const useVisConfig = (id: string, configOverrides?: Partial<CAll>) => {
   /*
    * Check for stored values
    * -----------------------------------------------------------

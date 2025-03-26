@@ -36,7 +36,7 @@ import { useFieldGroups } from './useFieldGroups';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  id?: number;
+  id?: string;
 };
 
 const TestComponent = ({ id = 1 }: TestComponentProps) => {
@@ -83,7 +83,7 @@ describe('useFieldGroups', () => {
           slugIdMap: {},
         }}
       >
-        <TestComponent id={456} />
+        <TestComponent id={'456'} />
       </ContextWrapper>
     );
 

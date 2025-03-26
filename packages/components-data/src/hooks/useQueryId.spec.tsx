@@ -39,7 +39,7 @@ describe('useQueryId', () => {
 
     expect(dataContainerListener).toHaveBeenCalledWith(
       expect.objectContaining({
-        queryId: 126,
+        queryId: '126',
       })
     );
   });
@@ -51,7 +51,7 @@ describe('useQueryId', () => {
           byId: {},
           dashboardIdMap: {},
           modelExplore: {},
-          slugIdMap: { qz123: 456 },
+          slugIdMap: { qz123: '456' },
         }}
       >
         <TestComponent slug={'qz123'} />
@@ -62,7 +62,7 @@ describe('useQueryId', () => {
       expect(dataContainerListener).toHaveBeenCalledWith({
         isOK: true,
         isPending: false,
-        queryId: 456,
+        queryId: '456',
       })
     );
 

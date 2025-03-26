@@ -63,7 +63,7 @@ type RunQueryReturnType = SDKResponse<IQueryExtended, IError>;
  * @returns normalized data, fields, totals, and async request state
  */
 
-export const useQueryData = (id: number, agentTag?: string) => {
+export const useQueryData = (id: string, agentTag?: string) => {
   const sdk = useSDK();
   const { getById, setById } = DataState.useContainer();
 

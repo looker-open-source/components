@@ -92,8 +92,8 @@ export const useQueryId = (slugOrId: string | number = '') => {
 
     const draftQuery = { ...cachedQuery, ...SWRValue };
 
-    if (id && Number(id) !== queryId) {
-      setBySlug(querySlug, Number(id), { metadata: draftQuery });
+    if (id && id !== queryId) {
+      setBySlug(querySlug, id, { metadata: draftQuery });
     }
   }, [SWRData, queryId, querySlug, setBySlug, cachedQuery]);
 

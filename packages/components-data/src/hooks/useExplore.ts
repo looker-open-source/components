@@ -41,7 +41,7 @@ import { useSDK, useQueryMetadata, DataState } from '.';
  * @returns field groups and api state
  */
 
-export const useExplore = (id: number) => {
+export const useExplore = (id: string) => {
   const sdk = useSDK();
   const { setModelExplore, getModelExplore } = DataState.useContainer();
 
@@ -60,7 +60,7 @@ export const useExplore = (id: number) => {
    */
 
   const fetcher = async () => {
-    if (id > 0 && model && view && isEmpty(explore)) {
+    if (id && model && view && isEmpty(explore)) {
       return await sdk.lookml_model_explore(model, view);
     }
 

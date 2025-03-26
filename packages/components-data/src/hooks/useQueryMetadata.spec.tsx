@@ -34,10 +34,10 @@ import { useQueryMetadata } from './useQueryMetadata';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  queryId?: number;
+  queryId?: string;
 };
 
-const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
+const TestComponent = ({ queryId = '1' }: TestComponentProps) => {
   const response = useQueryMetadata(queryId);
   dataContainerListener(response);
   return null;
@@ -89,7 +89,7 @@ describe('useQueryMetadata', () => {
           slugIdMap: {},
         }}
       >
-        <TestComponent queryId={456} />
+        <TestComponent queryId={'456'} />
       </ContextWrapper>
     );
     await waitFor(() =>

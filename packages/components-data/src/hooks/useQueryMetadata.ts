@@ -44,7 +44,7 @@ import { DataState } from './useDataState';
  * @returns metadata object and api state
  */
 
-export const useQueryMetadata = (id: number) => {
+export const useQueryMetadata = (id: string) => {
   const sdk = useSDK();
   const { getById, setById } = DataState.useContainer();
 
@@ -65,7 +65,7 @@ export const useQueryMetadata = (id: number) => {
 
   const fetcher = async () => {
     if (
-      id > 0 &&
+      id &&
       (isEmpty(metadata.vis_config) || !metadata.model || !metadata.view)
     ) {
       return await sdk.query(String(id));
