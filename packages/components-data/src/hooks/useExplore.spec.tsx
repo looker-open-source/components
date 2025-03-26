@@ -39,7 +39,7 @@ type TestComponentProps = {
   id?: string;
 };
 
-const TestComponent = ({ id = 1 }: TestComponentProps) => {
+const TestComponent = ({ id = '1' }: TestComponentProps) => {
   const response = useExplore(id);
   dataContainerListener(response);
   return null;
