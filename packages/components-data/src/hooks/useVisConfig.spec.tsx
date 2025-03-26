@@ -36,7 +36,7 @@ type TestComponentProps = {
   queryId?: string;
 };
 
-const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
+const TestComponent = ({ queryId = '1' }: TestComponentProps) => {
   const response = useVisConfig(queryId);
   dataContainerListener(response);
   return null;
