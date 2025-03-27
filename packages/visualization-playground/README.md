@@ -1,9 +1,3 @@
-# THIS PACKAGE IS DEPRECATED
-
-Lookers suite of React visualization components is no longer maintained.
-
----
-
 # Looker Visualization Playground
 
 Looker Visualization Playground is a demo and development product for rendering [Visualization Components](https://www.npmjs.com/package/@looker/visualizations) and [Filter Components](https://www.npmjs.com/package/@looker/filter-components). It provides an easy way to try out various features of those libraries and generate a configuration object for use in your own embededded contexts.

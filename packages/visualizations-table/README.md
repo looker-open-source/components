@@ -1,9 +1,3 @@
-# THIS PACKAGE IS DEPRECATED
-
-Lookers suite of React visualization components is no longer maintained.
-
----
-
 # @looker/visualizations-table
 
 This package stores the core web component used for Looker's open source table visualization.

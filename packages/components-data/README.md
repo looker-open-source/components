@@ -1,9 +1,3 @@
-# THIS PACKAGE IS DEPRECATED
-
-Lookers suite of React visualization components is no longer maintained.
-
----
-
 # @looker/components-data
 
 This package provides shared application state within react context for use in filter and visualization components.
