@@ -1,4 +1,10 @@
 {
-  "Copied": "Скопійовано",
-  "Copy to Clipboard": "Скопіювати в буфер обміну"
+  "Copied": {
+    "value": "Скопійовано",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Скопіювати в буфер обміну",
+    "description": ""
+  }
 }

@@ -1,82 +1,162 @@
 {
-  "complete day": "jour complet",
+  "complete day": {
+    "value": "jour complet",
+    "description": ""
+  },
   "complete days": {
-    "value": "jours complets"
+    "value": "jours complets",
+    "description": ""
   },
-  "complete fiscal quarter": "trimestre fiscal complet",
+  "complete fiscal quarter": {
+    "value": "trimestre fiscal complet",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "trimestres fiscaux complets"
+    "value": "trimestres fiscaux complets",
+    "description": ""
   },
-  "complete fiscal year": "année fiscale complète",
+  "complete fiscal year": {
+    "value": "année fiscale complète",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "années fiscales complètes"
+    "value": "années fiscales complètes",
+    "description": ""
   },
-  "complete hour": "heure complète",
+  "complete hour": {
+    "value": "heure complète",
+    "description": ""
+  },
   "complete hours": {
-    "value": "heures complètes"
+    "value": "heures complètes",
+    "description": ""
   },
-  "complete minute": "minute complète",
+  "complete minute": {
+    "value": "minute complète",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "minutes complètes"
+    "value": "minutes complètes",
+    "description": ""
   },
-  "complete month": "mois complet",
+  "complete month": {
+    "value": "mois complet",
+    "description": ""
+  },
   "complete months": {
-    "value": "mois complets"
+    "value": "mois complets",
+    "description": ""
   },
-  "complete quarter": "trimestre complet",
+  "complete quarter": {
+    "value": "trimestre complet",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "trimestres complets"
+    "value": "trimestres complets",
+    "description": ""
   },
-  "complete second": "seconde complète",
+  "complete second": {
+    "value": "seconde complète",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "secondes complètes"
+    "value": "secondes complètes",
+    "description": ""
   },
-  "complete week": "semaine complète",
+  "complete week": {
+    "value": "semaine complète",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "semaines complètes"
+    "value": "semaines complètes",
+    "description": ""
   },
-  "complete year": "année complète",
+  "complete year": {
+    "value": "année complète",
+    "description": ""
+  },
   "complete years": {
-    "value": "années complètes"
+    "value": "années complètes",
+    "description": ""
   },
-  "day": "jour",
+  "day": {
+    "value": "jour",
+    "description": ""
+  },
   "days": {
-    "value": "jours"
+    "value": "jours",
+    "description": ""
   },
-  "fiscal quarter": "trimestre fiscal",
+  "fiscal quarter": {
+    "value": "trimestre fiscal",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "trimestres fiscaux"
+    "value": "trimestres fiscaux",
+    "description": ""
   },
-  "fiscal year": "année fiscale",
+  "fiscal year": {
+    "value": "année fiscale",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "années fiscales"
+    "value": "années fiscales",
+    "description": ""
   },
-  "hour": "heure",
+  "hour": {
+    "value": "heure",
+    "description": ""
+  },
   "hours": {
-    "value": "heures"
+    "value": "heures",
+    "description": ""
   },
-  "minute": "minute",
+  "minute": {
+    "value": "minute",
+    "description": ""
+  },
   "minutes": {
-    "value": "minutes"
+    "value": "minutes",
+    "description": ""
   },
-  "month": "mois",
+  "month": {
+    "value": "mois",
+    "description": ""
+  },
   "months": {
-    "value": "mois"
+    "value": "mois",
+    "description": ""
   },
-  "quarter": "trimestre",
+  "quarter": {
+    "value": "trimestre",
+    "description": ""
+  },
   "quarters": {
-    "value": "trimestres"
+    "value": "trimestres",
+    "description": ""
   },
-  "second": "seconde",
+  "second": {
+    "value": "seconde",
+    "description": ""
+  },
   "seconds": {
-    "value": "secondes"
+    "value": "secondes",
+    "description": ""
   },
-  "week": "semaine",
+  "week": {
+    "value": "semaine",
+    "description": ""
+  },
   "weeks": {
-    "value": "semaines"
+    "value": "semaines",
+    "description": ""
   },
-  "year": "année",
+  "year": {
+    "value": "année",
+    "description": ""
+  },
   "years": {
-    "value": "années"
+    "value": "années",
+    "description": ""
   }
 }

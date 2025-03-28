@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Используйте формат ЧЧ:ММ"
+  "Please use format HHMM": {
+    "value": "Используйте формат ЧЧ:ММ",
+    "description": ""
+  }
 }

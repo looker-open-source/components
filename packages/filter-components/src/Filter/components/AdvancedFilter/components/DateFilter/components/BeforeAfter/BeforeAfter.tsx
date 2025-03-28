@@ -23,32 +23,32 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '@looker/filter-expressions'
+import type { FilterModel } from '@looker/filter-expressions';
 import {
   dateToFilterDateTimeModel,
   filterDateTimeModelToDate,
-} from '@looker/filter-expressions'
-import type { ILookmlModelExploreField } from '@looker/sdk'
-import type { ChangeEvent } from 'react'
-import React, { useMemo } from 'react'
+} from '@looker/filter-expressions';
+import type { ILookmlModelExploreField } from '@looker/sdk';
+import type { ChangeEvent } from 'react';
+import React, { useMemo } from 'react';
 import {
   useBeforeOrAfterUnits,
   useFiscalBeforeOrAfterUnits,
-} from '../../../../../../constants'
-import { useTranslation } from '../../../../../../../utils'
-import { showFiscalUnits } from '../../../../utils/show_fiscal_units'
-import { GroupSelect } from '../../../GroupSelect'
-import { DateInput } from '../DateInput'
-import { TimeInput } from '../TimeInput'
+} from '../../../../../../constants';
+import { useTranslation } from '../../../../../../../utils';
+import { showFiscalUnits } from '../../../../utils/show_fiscal_units';
+import { GroupSelect } from '../../../GroupSelect';
+import { DateInput } from '../DateInput';
+import { TimeInput } from '../TimeInput';
 
-import { GroupInput } from '../../../GroupInput'
+import { GroupInput } from '../../../GroupInput';
 
 interface BeforeAfterProps {
-  item: FilterModel
-  onChange: (id: string, item: Partial<FilterModel>) => void
-  showTime?: boolean
-  field: ILookmlModelExploreField
-  filterType: string
+  item: FilterModel;
+  onChange: (id: string, item: Partial<FilterModel>) => void;
+  showTime?: boolean;
+  field: ILookmlModelExploreField;
+  filterType: string;
 }
 
 export const BeforeAfter = ({
@@ -56,42 +56,44 @@ export const BeforeAfter = ({
   onChange,
   showTime,
   field,
-} : BeforeAfterProps) => {
-  const { t } = useTranslation('BeforeAfter')
+}: BeforeAfterProps) => {
+  const { t } = useTranslation('BeforeAfter');
   const options = [
     { value: 'absolute', label: t('absolute') },
     { value: 'relative', label: t('relative') },
-  ]
-  const { id, range, date, unit, value, fromnow } = item
+  ];
+  const { id, range, date, unit, value, fromnow } = item;
+  const actualDate = date ? filterDateTimeModelToDate(date) : new Date();
+  const selectedValue = fromnow ? `f_${unit}` : `${unit}`;
+
   const rangeChange = (value: string) => {
-    onChange(id, { range: value })
-  }
+    const dateTimeModel = dateToFilterDateTimeModel(actualDate);
+    onChange(id, { range: value, date: dateTimeModel });
+  };
   const valueChange = (e: ChangeEvent<HTMLInputElement>) =>
-    onChange(id, { value: Number(e.target.value) })
+    onChange(id, { value: Number(e.target.value) });
 
   const unitChange = (value: string) => {
-    const option = unitOptions.find((option) => option.value === value)
-    onChange(id, { unit: option?.unit, fromnow: option?.fromnow })
-  }
+    const option = unitOptions.find(option => option.value === value);
+    onChange(id, { unit: option?.unit, fromnow: option?.fromnow });
+  };
 
   const dateChange = (newDate: Date) => {
-    const newDateTimeModel = dateToFilterDateTimeModel(newDate)
-    onChange(id, { date: newDateTimeModel })
-  }
+    const newDateTimeModel = dateToFilterDateTimeModel(newDate);
+    onChange(id, { date: newDateTimeModel });
+  };
 
-  const actualDate = date ? filterDateTimeModelToDate(date) : new Date()
-  const selectedValue = fromnow ? `f_${unit}` : `${unit}`
-
-  const fiscalBeforeOrAfterUnits = useFiscalBeforeOrAfterUnits()
-  const beforeOrAfterUnits = useBeforeOrAfterUnits()
+  const fiscalBeforeOrAfterUnits = useFiscalBeforeOrAfterUnits();
+  const beforeOrAfterUnits = useBeforeOrAfterUnits();
   const unitOptions = showFiscalUnits(field)
     ? fiscalBeforeOrAfterUnits
-    : beforeOrAfterUnits
+    : beforeOrAfterUnits;
   // unitOptions have extra properties that will cause React warnings
   const formattedUnitOptions = useMemo(
     () => unitOptions.map(({ label, value }) => ({ label, value })),
     [unitOptions]
-  )
+  );
+
   return (
     <>
       <GroupSelect
@@ -99,13 +101,14 @@ export const BeforeAfter = ({
         value={range}
         options={options}
         onChange={rangeChange}
+        data-testid="beforeafter-option"
       />
       {range === 'relative' && (
         <>
           {selectedValue !== 'now' && (
             <GroupInput
               onChange={valueChange}
-              value={value}
+              value={String(value)}
               placement="middle"
               data-testid="number-value"
             />
@@ -115,6 +118,7 @@ export const BeforeAfter = ({
             value={selectedValue}
             options={formattedUnitOptions}
             onChange={unitChange}
+            data-testid="beforeafter-relative-select"
           />
         </>
       )}
@@ -124,18 +128,20 @@ export const BeforeAfter = ({
             date={actualDate}
             onChange={dateChange}
             placement={showTime ? 'middle' : 'right'}
+            data-testid="beforeafter-absolute-date"
           />
           {showTime && (
             <TimeInput
               date={actualDate}
               onChange={dateChange}
               placement="right"
+              data-testid="beforeafter-absolute-time"
             />
           )}
         </>
       )}
     </>
-  )
-}
+  );
+};
 
-export default BeforeAfter
+export default BeforeAfter;

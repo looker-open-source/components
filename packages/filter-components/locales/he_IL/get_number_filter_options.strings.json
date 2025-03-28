@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(לא כולל)"
+    "value": "(לא כולל)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[כולל]"
+    "value": "[כולל]",
+    "description": ""
   },
   "is": {
-    "value": "הוא"
+    "value": "הוא",
+    "description": ""
   },
   "is between": {
-    "value": "בין"
+    "value": "בין",
+    "description": ""
   },
   "is greater": {
-    "value": "הוא >"
+    "value": "הוא >",
+    "description": ""
   },
   "is greater equal": {
-    "value": "הוא >="
+    "value": "הוא >=",
+    "description": ""
   },
   "is less": {
-    "value": "הוא <"
+    "value": "הוא <",
+    "description": ""
   },
   "is less equal": {
-    "value": "הוא <="
+    "value": "הוא <=",
+    "description": ""
   },
   "is not": {
-    "value": "אינו"
+    "value": "אינו",
+    "description": ""
   },
   "is not between": {
-    "value": "לא בין"
+    "value": "לא בין",
+    "description": ""
   },
   "is not null": {
-    "value": "אינו Null"
+    "value": "אינו Null",
+    "description": ""
   },
   "is null": {
-    "value": "Null"
+    "value": "Null",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(לא כולל משמאל]"
+    "value": "(לא כולל משמאל]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[לא כולל מימין)"
+    "value": "[לא כולל מימין)",
+    "description": ""
   }
 }

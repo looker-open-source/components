@@ -1,3 +1,6 @@
 {
-  "Row Total": "Řádkový součet"
+  "Row Total": {
+    "value": "Řádkový součet",
+    "description": ""
+  }
 }

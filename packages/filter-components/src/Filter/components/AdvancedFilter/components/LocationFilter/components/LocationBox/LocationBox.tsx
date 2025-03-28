@@ -3,10 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 import { Flex } from '@looker/components';
-import type {
-  BoxFilterItem,
-  ExactLocationFilterItem,
-} from '@looker/filter-expressions';
+import type { FilterModel } from '@looker/filter-expressions';
 import pick from 'lodash/pick';
 import React from 'react';
 
@@ -14,21 +11,13 @@ import { LocationExact } from '../LocationExact';
 
 interface LocationBoxProps {
   onChange: (id: string, value: any) => void;
-  item: BoxFilterItem;
+  item: FilterModel;
 }
 
 export const LocationBox = ({ item, onChange }: LocationBoxProps) => (
-  <Flex flexDirection="row">
+  <Flex flexDirection="row" data-testid="location-box">
     <LocationExact
-      item={
-        pick(item, [
-          'id',
-          'is',
-          'lat',
-          'lon',
-          'type',
-        ]) as ExactLocationFilterItem
-      }
+      item={pick(item, ['id', 'is', 'lat', 'lon', 'type'])}
       onChange={onChange}
       placement="middle"
       latString="FROM LATITUDE"

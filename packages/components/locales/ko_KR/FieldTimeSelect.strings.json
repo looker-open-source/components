@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "HH:MM 형식을 사용하세요."
+  "Please use format HHMM": {
+    "description": "",
+    "value": "HH:MM 형식을 사용하세요."
+  }
 }

@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "siden"
+    "value": "siden",
+    "description": ""
   },
   "from now": {
-    "value": "fra nå"
+    "value": "fra nå",
+    "description": ""
   }
 }

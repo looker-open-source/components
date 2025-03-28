@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "est"
+    "value": "est",
+    "description": ""
   },
   "is any time": {
-    "value": "est à tout moment"
+    "value": "est à tout moment",
+    "description": ""
   },
   "is before": {
-    "value": "est situé avant"
+    "value": "est situé avant",
+    "description": ""
   },
   "is in range": {
-    "value": "est dans la portée"
+    "value": "est dans la portée",
+    "description": ""
   },
   "is in the last": {
-    "value": "est au cours du dernier"
+    "value": "est au cours du dernier",
+    "description": ""
   },
   "is in the month": {
-    "value": "est dans le mois"
+    "value": "est dans le mois",
+    "description": ""
   },
   "is in the year": {
-    "value": "est dans l’année"
+    "value": "est dans l’année",
+    "description": ""
   },
   "is next": {
-    "value": "est le prochain"
+    "value": "est le prochain",
+    "description": ""
   },
   "is not null": {
-    "value": "n’est pas nul"
+    "value": "n’est pas nul",
+    "description": ""
   },
   "is null": {
-    "value": "est nul"
+    "value": "est nul",
+    "description": ""
   },
   "is on or after": {
-    "value": "est situé le jour même ou après"
+    "value": "est situé le jour même ou après",
+    "description": ""
   },
   "is on the day": {
-    "value": "est le jour même"
+    "value": "est le jour même",
+    "description": ""
   },
   "is previous": {
-    "value": "est avant"
+    "value": "est avant",
+    "description": ""
   },
   "is this": {
-    "value": "est ce"
+    "value": "est ce",
+    "description": ""
   }
 }

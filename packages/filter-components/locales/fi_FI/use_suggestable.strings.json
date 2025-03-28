@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Virhe ehdotusten lataamisessa"
+  "Error loading suggestions": {
+    "value": "Virhe ehdotusten lataamisessa",
+    "description": ""
+  }
 }

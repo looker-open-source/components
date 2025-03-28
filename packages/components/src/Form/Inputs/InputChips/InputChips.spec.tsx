@@ -367,7 +367,13 @@ tag2`
   describe('Selecting chips', () => {
     // Utils to check for selected values
     function hasSelectedValues(values: string[]) {
-      const selectedChips = screen.getAllByRole('option', { selected: true });
+      // temporary fix for b/396048653 (chrome crashes in explore).
+      // rename aria-selected to data-aria-selected. This will be
+      // reverted once the chrome fix has been rolled out.
+      // const selectedChips = screen.getAllByRole('option', { selected: true });
+      const selectedChips = screen
+        .getAllByRole('option')
+        .filter(el => el.dataset.ariaSelected === 'true');
       expect(selectedChips).toHaveLength(values.length);
       values.forEach((value, index) => {
         expect(selectedChips[index]).toHaveTextContent(value);

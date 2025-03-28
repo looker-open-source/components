@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
+    "description": "",
     "value": "{{coords1}}至{{coords2}}"
   },
   "distance unit from lat, lon": {
+    "description": "",
     "value": "距{{lat}}，{{lon}} {{distance}} {{unit}}"
   },
   "is anywhere": {
+    "description": "",
     "value": "不限位置"
   },
   "is not null": {
+    "description": "",
     "value": "不是 null"
   },
   "is null": {
+    "description": "",
     "value": "是 null"
   },
   "lat degrees north": {
+    "description": "",
     "value": "{{lat}}°N"
   },
   "lat degrees south": {
+    "description": "",
     "value": "{{lat}}°S"
   },
   "lon degrees east": {
+    "description": "",
     "value": "{{lon}}°E"
   },
   "lon degrees west": {
+    "description": "",
     "value": "{{lon}}°W"
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Next page": "Kitas puslapis",
-  "Previous page": "Ankstesnis puslapis"
+  "Next page": {
+    "value": "Kitas puslapis",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "Ankstesnis puslapis",
+    "description": ""
+  }
 }

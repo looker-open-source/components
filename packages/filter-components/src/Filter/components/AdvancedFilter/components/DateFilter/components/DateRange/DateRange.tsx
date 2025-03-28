@@ -86,18 +86,30 @@ export const DateRange = ({
         date={startDate}
         onChange={startChange}
         placement={placement === 'right' ? 'middle' : 'left'}
+        data-testid="daterange-start-date"
       />
       {showTime && (
-        <TimeInput date={startDate} onChange={startChange} placement="middle" />
+        <TimeInput
+          date={startDate}
+          onChange={startChange}
+          placement="middle"
+          data-testid="daterange-start-time"
+        />
       )}
       <MidInputLabel>{t('until (before)')}</MidInputLabel>
       <DateInput
         date={endDate}
         onChange={endChange}
         placement={showTime ? 'middle' : 'right'}
+        data-testid="daterange-end-date"
       />
       {showTime && (
-        <TimeInput date={endDate} onChange={endChange} placement="right" />
+        <TimeInput
+          date={endDate}
+          onChange={endChange}
+          placement="right"
+          data-testid="daterange-end-time"
+        />
       )}
     </Flex>
   );

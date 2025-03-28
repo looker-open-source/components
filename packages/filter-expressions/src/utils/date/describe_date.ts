@@ -29,6 +29,7 @@ import type {
   FilterExpressionType,
   FilterDateTimeModel,
   FilterModel,
+  FilterInterval,
 } from '../../types';
 import { describeNull } from '../summary/describe_null';
 import { describeUserAttribute } from '../user_attribute/describe_user_attribute';
@@ -65,7 +66,10 @@ const describeDateTime = (
   return result;
 };
 
-const describeInterval = ({ value, unit, complete }: FilterModel) => {
+const describeInterval = (interval: FilterModel['startInterval']) => {
+  if (!interval) return '';
+  if (typeof interval === 'string') return interval;
+  const { value, unit, complete } = interval;
   const t = i18next.t.bind(i18next);
   const result = t('value complete unitLabel', {
     ns: 'describe_date',
@@ -84,7 +88,7 @@ const past = (item: FilterModel) => {
   const t = i18next.t.bind(i18next);
   return t('is in the last', {
     ns: 'describe_date',
-    describeInterval: describeInterval(item),
+    describeInterval: describeInterval(item as FilterInterval),
   });
 };
 
@@ -92,7 +96,7 @@ const describePastAgo = (item: FilterModel) => {
   const t = i18next.t.bind(i18next);
   return t('is interval ago', {
     ns: 'describe_date',
-    interval: describeInterval(item),
+    interval: describeInterval(item as FilterInterval),
   });
 };
 
@@ -107,7 +111,7 @@ const describeTypeAndUnit = ({ type, unit }: FilterModel) => {
   return t('is type unitLabel', {
     ns: 'describe_date',
     type: type === 'this' ? thisText : nextText,
-    unitLabel: getUnitLabel(unit),
+    unitLabel: unit && getUnitLabel(unit),
   });
 };
 
@@ -115,7 +119,7 @@ const describeLast = ({ unit }: FilterModel) => {
   const t = i18next.t.bind(i18next);
   return t('is previous unitLabel', {
     ns: 'describe_date',
-    unitLabel: getUnitLabel(unit),
+    unitLabel: unit && getUnitLabel(unit),
   });
 };
 
@@ -131,7 +135,7 @@ const describeMonth = ({ month, year }: FilterModel) => {
   const t = i18next.t.bind(i18next);
   return t('is in month year', {
     ns: 'describe_date',
-    month: getMonths()[parseInt(month, 10) - 1],
+    month: getMonths()[parseInt(String(month), 10) - 1],
     year,
   });
 };
@@ -169,7 +173,7 @@ const beforeAfter = (item: FilterModel, showTime: boolean) => {
     : t('prefix interval timePassed', {
         ns: 'describe_date',
         prefix,
-        interval: describeInterval(item),
+        interval: describeInterval(item as FilterInterval),
         timePassed,
       });
 };

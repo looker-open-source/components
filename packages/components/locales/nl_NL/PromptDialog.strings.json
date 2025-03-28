@@ -1,4 +1,10 @@
 {
-  "Cancel": "Annuleren",
-  "Save": "Opslaan"
+  "Cancel": {
+    "value": "Annuleren",
+    "description": ""
+  },
+  "Save": {
+    "value": "Opslaan",
+    "description": ""
+  }
 }

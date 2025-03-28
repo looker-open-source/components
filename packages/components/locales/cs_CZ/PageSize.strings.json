@@ -1,4 +1,10 @@
 {
-  "Display": "Zobrazení",
-  "of": "z"
+  "Display": {
+    "value": "Zobrazení",
+    "description": ""
+  },
+  "of": {
+    "value": "z",
+    "description": ""
+  }
 }

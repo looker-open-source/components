@@ -1,32 +1,42 @@
 {
   "complete days": {
+    "description": "",
     "value": "pełne dni"
   },
   "complete fiscal quarters": {
+    "description": "",
     "value": "pełne kwartały podatkowe"
   },
   "complete fiscal years": {
+    "description": "",
     "value": "pełne lata podatkowe"
   },
   "complete hours": {
+    "description": "",
     "value": "pełne godziny"
   },
   "complete minutes": {
+    "description": "",
     "value": "pełne minuty"
   },
   "complete months": {
+    "description": "",
     "value": "pełne miesiące"
   },
   "complete quarters": {
+    "description": "",
     "value": "pełne kwartały"
   },
   "complete seconds": {
+    "description": "",
     "value": "pełne sekundy"
   },
   "complete weeks": {
+    "description": "",
     "value": "pełne tygodnie"
   },
   "complete years": {
+    "description": "",
     "value": "pełne lata"
   }
 }

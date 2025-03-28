@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "{{intent}} 닫기"
+  "DismissIntent": {
+    "description": "",
+    "value": "{{intent}} 닫기"
+  }
 }

@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "est à portée {{range}}"
+    "value": "est à portée {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "n’est pas à portée {{range}}"
+    "value": "n’est pas à portée {{range}}",
+    "description": ""
   }
 }

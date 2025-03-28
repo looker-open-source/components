@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Немає значень"
+    "value": "Немає значень",
+    "description": ""
   },
   "No values match": {
-    "value": "Немає значень, що збігаються"
+    "value": "Немає значень, що збігаються",
+    "description": ""
   }
 }

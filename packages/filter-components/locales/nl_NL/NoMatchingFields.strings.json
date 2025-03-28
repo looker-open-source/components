@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "Geen overeenkomende velden"
+    "value": "Geen overeenkomende velden",
+    "description": ""
   },
   "Try Something Else": {
-    "value": "Gebruik een andere zoekterm of begin opnieuw en vouw een Explore uit om door beschikbare velden te bladeren."
+    "value": "Gebruik een andere zoekterm of begin opnieuw en vouw een Explore uit om door beschikbare velden te bladeren.",
+    "description": ""
   }
 }

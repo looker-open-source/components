@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "ไม่มีค่า"
+    "value": "ไม่มีค่า",
+    "description": ""
   },
   "No values match": {
-    "value": "ไม่มีค่าที่ตรงกัน"
+    "value": "ไม่มีค่าที่ตรงกัน",
+    "description": ""
   }
 }

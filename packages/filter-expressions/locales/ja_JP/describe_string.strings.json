@@ -1,23 +1,30 @@
 {
   "blank": {
+    "description": "",
     "value": "空白"
   },
   "contains value": {
+    "description": "",
     "value": "{{value}} を含む"
   },
   "does not contain value": {
+    "description": "",
     "value": "{{value}} を含まない"
   },
   "does not end with value": {
+    "description": "",
     "value": "{{value}} で終わらない"
   },
   "does not start with value": {
+    "description": "",
     "value": "{{value}} で始まらない"
   },
   "ends with value": {
+    "description": "",
     "value": "{{value}} で終わる"
   },
   "starts with value": {
+    "description": "",
     "value": "{{value}} で始まる"
   }
 }

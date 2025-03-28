@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Znacznik wyboru Mieszane"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "Znacznik wyboru Mieszane"
+  }
 }

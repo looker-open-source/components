@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "ריק"
+    "value": "ריק",
+    "description": ""
   },
   "contains value": {
-    "value": "מכיל {{value}}"
+    "value": "מכיל {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "אינו מכיל {{value}}"
+    "value": "אינו מכיל {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "אינו מסתיים ב-{{value}}"
+    "value": "אינו מסתיים ב-{{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "מסתיים ב-{{value}}"
+    "value": "מסתיים ב-{{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "מסתיים ב-{{value}}"
+    "value": "מסתיים ב-{{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "מתחיל ב-{{value}}"
+    "value": "מתחיל ב-{{value}}",
+    "description": ""
   }
 }

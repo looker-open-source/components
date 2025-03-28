@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "(przedział otwarty)"
   },
   "inclusive": {
+    "description": "",
     "value": "[przedział domknięty]"
   },
   "is": {
+    "description": "",
     "value": "jest"
   },
   "is between": {
+    "description": "",
     "value": "jest pomiędzy"
   },
   "is greater": {
+    "description": "",
     "value": "jest >"
   },
   "is greater equal": {
+    "description": "",
     "value": "jest >="
   },
   "is less": {
+    "description": "",
     "value": "jest <"
   },
   "is less equal": {
+    "description": "",
     "value": "jest <="
   },
   "is not": {
+    "description": "",
     "value": "nie jest"
   },
   "is not between": {
+    "description": "",
     "value": "nie jest pomiędzy"
   },
   "is not null": {
+    "description": "",
     "value": "nie ma wartości null"
   },
   "is null": {
+    "description": "",
     "value": "ma wartość null"
   },
   "left exclusive": {
+    "description": "",
     "value": "(przedział lewostronnie otwarty]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[przedział prawostronnie otwarty)"
   }
 }

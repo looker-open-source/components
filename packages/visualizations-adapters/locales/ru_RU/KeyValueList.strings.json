@@ -1,6 +1,18 @@
 {
-  "false": "false",
-  "null": "null",
-  "true": "true",
-  "undefined": "undefined"
+  "false": {
+    "value": "false",
+    "description": ""
+  },
+  "null": {
+    "value": "null",
+    "description": ""
+  },
+  "true": {
+    "value": "true",
+    "description": ""
+  },
+  "undefined": {
+    "value": "undefined",
+    "description": ""
+  }
 }

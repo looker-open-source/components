@@ -1,3 +1,6 @@
 {
-  "Tabs": "टैब"
+  "Tabs": {
+    "value": "टैब",
+    "description": ""
+  }
 }

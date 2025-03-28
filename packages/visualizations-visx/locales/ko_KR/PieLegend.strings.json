@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "범례 {{page}}/{{totalPages}}페이지"
+  "Legend page {{page}} of {{totalPages}}": {
+    "description": "",
+    "value": "범례 {{page}}/{{totalPages}}페이지"
+  }
 }

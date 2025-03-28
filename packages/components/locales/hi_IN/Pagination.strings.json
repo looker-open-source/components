@@ -1,7 +1,22 @@
 {
-  "First page of results": "परिणामों का पहला पेज",
-  "Last page of results": "परिणामों का अंतिम पेज",
-  "Next page of results": "परिणामों का अगला पेज",
-  "Previous page of results": "परिणामों का पिछला पेज",
-  "of": "में से"
+  "First page of results": {
+    "value": "परिणामों का पहला पेज",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "परिणामों का अंतिम पेज",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "परिणामों का अगला पेज",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "परिणामों का पिछला पेज",
+    "description": ""
+  },
+  "of": {
+    "value": "में से",
+    "description": ""
+  }
 }

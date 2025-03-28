@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "полн. дн."
+    "value": "полн. дн.",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "полн. финанс. кварт."
+    "value": "полн. финанс. кварт.",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "полн. финанс. год(а)/лет"
+    "value": "полн. финанс. год(а)/лет",
+    "description": ""
   },
   "complete hours": {
-    "value": "полн. ч"
+    "value": "полн. ч",
+    "description": ""
   },
   "complete minutes": {
-    "value": "полн. мин"
+    "value": "полн. мин",
+    "description": ""
   },
   "complete months": {
-    "value": "полн. мес."
+    "value": "полн. мес.",
+    "description": ""
   },
   "complete quarters": {
-    "value": "полн. кварт."
+    "value": "полн. кварт.",
+    "description": ""
   },
   "complete seconds": {
-    "value": "полн. сек"
+    "value": "полн. сек",
+    "description": ""
   },
   "complete weeks": {
-    "value": "полн. нед."
+    "value": "полн. нед.",
+    "description": ""
   },
   "complete years": {
-    "value": "полн. год(а)/лет"
+    "value": "полн. год(а)/лет",
+    "description": ""
   }
 }

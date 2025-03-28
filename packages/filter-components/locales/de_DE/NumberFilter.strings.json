@@ -1,3 +1,6 @@
 {
-  "any value": "beliebiger Wert"
+  "any value": {
+    "description": "",
+    "value": "beliebiger Wert"
+  }
 }

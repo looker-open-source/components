@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Laatikko"
+    "value": "Laatikko",
+    "description": ""
   },
   "Circle": {
-    "value": "Ympyrä"
+    "value": "Ympyrä",
+    "description": ""
   },
   "Location": {
-    "value": "Sijainti"
+    "value": "Sijainti",
+    "description": ""
   },
   "feet": {
-    "value": "jalkaa"
+    "value": "jalkaa",
+    "description": ""
   },
   "is anywhere": {
-    "value": "on missä tahansa"
+    "value": "on missä tahansa",
+    "description": ""
   },
   "is not null": {
-    "value": "ei ole nolla"
+    "value": "ei ole nolla",
+    "description": ""
   },
   "is null": {
-    "value": "on nolla"
+    "value": "on nolla",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometriä"
+    "value": "kilometriä",
+    "description": ""
   },
   "meters": {
-    "value": "metriä"
+    "value": "metriä",
+    "description": ""
   },
   "miles": {
-    "value": "mailia"
+    "value": "mailia",
+    "description": ""
   }
 }

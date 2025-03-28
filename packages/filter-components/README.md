@@ -19,20 +19,20 @@ You'll also need to satisfy peer dependencies - React & Styled Components:
 
 ```bash static
 # Using npm
-npm install react react-dom styled-components
+npm install react styled-components
 
 # Using Yarn
-yarn add react react-dom styled-components
+yarn add react styled-components
 ```
 
 Finally, if you're using Typescript you'll want to add the associated types for the dependencies (note @looker/filter-components is built in Typescript and therefore has built-in types).
 
 ```bash static
 # Using npm
-npm install --save-dev @types/react @types/react-dom @types/styled-components
+npm install --save-dev @types/react @types/styled-components
 
 # Using Yarn
-yarn add --dev @types/react @types/react-dom @types/styled-components
+yarn add --dev @types/react @types/styled-components
 ```
 
 2. In your [React app](https://reactjs.org/docs/getting-started.html), add a `ComponentsProvider`\*, and render filters inside with the `DashboardFilter` component. If using a language other than English, import the locale module and spread that onto the `ComponentsProvider`.

@@ -1,4 +1,10 @@
 {
-  "Cancel": "Annulla",
-  "Save": "Salva"
+  "Cancel": {
+    "description": "",
+    "value": "Annulla"
+  },
+  "Save": {
+    "description": "",
+    "value": "Salva"
+  }
 }

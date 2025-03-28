@@ -1,4 +1,10 @@
 {
-  "Cancel": "ביטול",
-  "Confirm": "אשר"
+  "Cancel": {
+    "value": "ביטול",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "אשר",
+    "description": ""
+  }
 }

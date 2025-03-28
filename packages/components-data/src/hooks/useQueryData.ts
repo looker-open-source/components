@@ -57,13 +57,13 @@ type IQueryExtended = IQuery & {
 type RunQueryReturnType = SDKResponse<IQueryExtended, IError>;
 
 /**
- * useQueryData fetches the query response (data, fields, etc) from a numeric query id
- * @param id numeric query id
+ * useQueryData fetches the query response (data, fields, etc) from a query id
+ * @param id query id
  * @param agentTag used for internal telemetry
  * @returns normalized data, fields, totals, and async request state
  */
 
-export const useQueryData = (id: number, agentTag?: string) => {
+export const useQueryData = (id: string, agentTag?: string) => {
   const sdk = useSDK();
   const { getById, setById } = DataState.useContainer();
 
@@ -83,7 +83,7 @@ export const useQueryData = (id: number, agentTag?: string) => {
    */
 
   const fetcher = async () => {
-    if (id > 0 && isEmpty(data)) {
+    if (id && isEmpty(data)) {
       return (await sdk.run_query(
         {
           query_id: String(id),

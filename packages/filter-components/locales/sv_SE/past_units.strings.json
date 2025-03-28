@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "hela dagar"
+    "value": "hela dagar",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "hela räkenskapskvartal"
+    "value": "hela räkenskapskvartal",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "hela räkenskapsår"
+    "value": "hela räkenskapsår",
+    "description": ""
   },
   "complete hours": {
-    "value": "hela timmar"
+    "value": "hela timmar",
+    "description": ""
   },
   "complete minutes": {
-    "value": "hela minuter"
+    "value": "hela minuter",
+    "description": ""
   },
   "complete months": {
-    "value": "hela månader"
+    "value": "hela månader",
+    "description": ""
   },
   "complete quarters": {
-    "value": "hela kvartal"
+    "value": "hela kvartal",
+    "description": ""
   },
   "complete seconds": {
-    "value": "hela sekunder"
+    "value": "hela sekunder",
+    "description": ""
   },
   "complete weeks": {
-    "value": "hela veckor"
+    "value": "hela veckor",
+    "description": ""
   },
   "complete years": {
-    "value": "hela år"
+    "value": "hela år",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "required": "erforderlich"
+  "required": {
+    "description": "",
+    "value": "erforderlich"
+  }
 }

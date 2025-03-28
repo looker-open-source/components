@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "เลือกรายการที่แสดงทั้งหมด {{pageCount}} รายการแล้ว",
-  "AllTotalCountSelected": "เลือกรายการทั้งหมด {{totalCount}} รายการแล้ว",
-  "Bulk Actions": "การดำเนินการเป็นกลุ่ม",
-  "Clear Selection": "ล้างการเลือก",
-  "SelectAllCountResults": "เลือกผลลัพธ์ทั้งหมด {{totalCount}} รายการ",
-  "SelectedCountOfTotalDisplayed": "เลือกรายการที่แสดง {{selectedItemCount}} จาก {{pageCount}} รายการแล้ว"
+  "AllPageCountDisplayedSelected": {
+    "value": "เลือกรายการที่แสดงทั้งหมด {{pageCount}} รายการแล้ว",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "เลือกรายการทั้งหมด {{totalCount}} รายการแล้ว",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "การดำเนินการเป็นกลุ่ม",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "ล้างการเลือก",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "เลือกผลลัพธ์ทั้งหมด {{totalCount}} รายการ",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "เลือกรายการที่แสดง {{selectedItemCount}} จาก {{pageCount}} รายการแล้ว",
+    "description": ""
+  }
 }

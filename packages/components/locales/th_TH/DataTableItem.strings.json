@@ -1,3 +1,6 @@
 {
-  "Options": "ตัวเลือก"
+  "Options": {
+    "value": "ตัวเลือก",
+    "description": ""
+  }
 }

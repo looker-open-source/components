@@ -1,4 +1,10 @@
 {
-  "Loading": "Načítání",
-  "No options": "Žádné možnosti"
+  "Loading": {
+    "value": "Načítání",
+    "description": ""
+  },
+  "No options": {
+    "value": "Žádné možnosti",
+    "description": ""
+  }
 }

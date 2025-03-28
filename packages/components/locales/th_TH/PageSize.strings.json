@@ -1,4 +1,10 @@
 {
-  "Display": "แสดง",
-  "of": "ของ"
+  "Display": {
+    "value": "แสดง",
+    "description": ""
+  },
+  "of": {
+    "value": "ของ",
+    "description": ""
+  }
 }

@@ -1,14 +1,50 @@
 {
-  "contains": "包含",
-  "doesnt contain": "不含",
-  "doesnt end with": "結尾不是",
-  "doesnt start with": "開頭不是",
-  "ends with": "結尾為",
-  "is": "為",
-  "is blank": "為空白",
-  "is not": "不是",
-  "is not blank": "不是空白",
-  "is not null": "不是空值",
-  "is null": "為空值",
-  "starts with": "開頭為"
+  "contains": {
+    "description": "",
+    "value": "包含"
+  },
+  "doesnt contain": {
+    "description": "",
+    "value": "不含"
+  },
+  "doesnt end with": {
+    "description": "",
+    "value": "結尾不是"
+  },
+  "doesnt start with": {
+    "description": "",
+    "value": "開頭不是"
+  },
+  "ends with": {
+    "description": "",
+    "value": "結尾為"
+  },
+  "is": {
+    "description": "",
+    "value": "為"
+  },
+  "is blank": {
+    "description": "",
+    "value": "為空白"
+  },
+  "is not": {
+    "description": "",
+    "value": "不是"
+  },
+  "is not blank": {
+    "description": "",
+    "value": "不是空白"
+  },
+  "is not null": {
+    "description": "",
+    "value": "不是空值"
+  },
+  "is null": {
+    "description": "",
+    "value": "為空值"
+  },
+  "starts with": {
+    "description": "",
+    "value": "開頭為"
+  }
 }

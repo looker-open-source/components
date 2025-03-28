@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "prieš"
+    "value": "prieš",
+    "description": ""
   },
   "from now": {
-    "value": "nuo dabar"
+    "value": "nuo dabar",
+    "description": ""
   }
 }

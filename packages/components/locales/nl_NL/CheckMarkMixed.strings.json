@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Gemengd vinkje"
+  "Check Mark Mixed": {
+    "value": "Gemengd vinkje",
+    "description": ""
+  }
 }

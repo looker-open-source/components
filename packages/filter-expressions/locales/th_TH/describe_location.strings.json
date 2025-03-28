@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} ถึง {{coords2}}"
+    "value": "{{coords1}} ถึง {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} จาก {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} จาก {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "ที่ใดก็ได้"
+    "value": "ที่ใดก็ได้",
+    "description": ""
   },
   "is not null": {
-    "value": "ไม่เป็นค่าว่าง"
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
   },
   "is null": {
-    "value": "เป็นค่าว่าง"
+    "value": "เป็นค่าว่าง",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}°N",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}°S",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "{{lon}}°E",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°W"
+    "value": "{{lon}}°W",
+    "description": ""
   }
 }

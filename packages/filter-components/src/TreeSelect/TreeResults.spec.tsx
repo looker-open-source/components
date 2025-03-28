@@ -5,7 +5,7 @@
 import React from 'react';
 import { fireEvent, screen } from '@testing-library/react';
 import { renderWithTheme } from '@looker/test-utils';
-import { mockTreeData } from './stories/examples';
+import { mockTreeData } from './fixtures';
 import { TreeResults } from './TreeResults';
 
 describe('TreeResults', () => {

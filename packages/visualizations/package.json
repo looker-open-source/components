@@ -1,7 +1,7 @@
 {
   "name": "@looker/visualizations",
   "license": "MIT",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "src/index.ts",
@@ -23,38 +23,42 @@
     "postprepare": "lk updateLocales",
     "prepublishOnly": "lk prepublishOnly",
     "test": "lk test",
-    "coverage": "lk coverage"
+    "coverage": "lk coverage",
+    "start": "storybook dev"
   },
   "dependencies": {
-    "@looker/components": "^5.0.3",
-    "@looker/components-data": "^1.0.3",
-    "@looker/i18n": "^1.0.0",
-    "@looker/sdk": "^22.4.2",
-    "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^1.0.3",
-    "@looker/visualizations-single-value": "^1.0.3",
-    "@looker/visualizations-table": "^1.1.3",
-    "@looker/visualizations-visx": "^1.0.3",
-    "@styled-icons/material": "10.34.0",
-    "lodash": "4.17.21"
+    "@looker/components": "5.0.3",
+    "@looker/components-data": "1.0.4",
+    "@looker/i18n": "1.0.0",
+    "@looker/sdk": "0.0.0",
+    "@looker/sdk-rtl": "0.0.0",
+    "@looker/visualizations-adapters": "1.0.3",
+    "@looker/visualizations-single-value": "1.0.3",
+    "@looker/visualizations-table": "1.1.3",
+    "@looker/visualizations-visx": "1.0.3",
+    "@styled-icons/material": "^10.34.0",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@looker/babel-preset-styled-components": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
-    "@storybook/react": "7.0.18",
+    "@looker/babel-preset-react": "0.0.4",
+    "@looker/babel-preset-styled-components": "0.0.2",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/components-test-utils": "1.5.27",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
+    "@storybook/react": "7.6.20",
+    "@storybook/react-webpack5": "7.6.20",
+    "@storybook/types": "7.6.20",
     "@testing-library/react": "12.1.5",
     "prettier": "2.8.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "storybook": "7.6.20"
   },
   "peerDependencies": {
-    "react": "16.14.0 - 18",
-    "react-dom": "16.14.0 - 18",
+    "react": ">=16.14.0",
     "styled-components": "^5.3.1"
   },
   "eslintConfig": {
@@ -69,6 +73,7 @@
         ],
         "rules": {
           "camelcase": "off",
+          "i18next/no-literal-string": "off",
           "import/no-webpack-loader-syntax": "off",
           "import/order": "off",
           "sort-keys-fix/sort-keys-fix": "off",

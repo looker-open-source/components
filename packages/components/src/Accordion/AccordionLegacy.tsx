@@ -40,7 +40,7 @@ export const AccordionLegacy = ({
 
       if (isAccordionDisclosure) {
         accordionChildren.push(
-          React.cloneElement(child, {
+          React.cloneElement(child as React.ReactHTMLElement<HTMLElement>, {
             ...disclosureProps,
             className: mergeClassNames([
               disclosureProps.className,
@@ -51,7 +51,7 @@ export const AccordionLegacy = ({
         );
       } else if (isAccordionContent && isOpen) {
         accordionChildren.push(
-          React.cloneElement(child, {
+          React.cloneElement(child as React.ReactHTMLElement<HTMLElement>, {
             ...contentDomProps,
             className: mergeClassNames([
               child.props.className,

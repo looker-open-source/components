@@ -1,3 +1,6 @@
 {
-  "Close": "关闭"
+  "Close": {
+    "description": "",
+    "value": "关闭"
+  }
 }

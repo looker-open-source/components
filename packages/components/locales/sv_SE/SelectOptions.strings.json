@@ -1,4 +1,10 @@
 {
-  "Loading": "Läser in",
-  "No options": "Inga alternativ"
+  "Loading": {
+    "value": "Läser in",
+    "description": ""
+  },
+  "No options": {
+    "value": "Inga alternativ",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "No Results": "Inga resultat"
+  "No Results": {
+    "value": "Inga resultat",
+    "description": ""
+  }
 }

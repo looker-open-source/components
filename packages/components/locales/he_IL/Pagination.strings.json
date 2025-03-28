@@ -1,7 +1,22 @@
 {
-  "First page of results": "דף ראשון של תוצאות",
-  "Last page of results": "דף אחרון של תוצאות",
-  "Next page of results": "הדף הבא של התוצאות",
-  "Previous page of results": "הדף הקודם של התוצאות",
-  "of": "מתוך"
+  "First page of results": {
+    "value": "דף ראשון של תוצאות",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "דף אחרון של תוצאות",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "הדף הבא של התוצאות",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "הדף הקודם של התוצאות",
+    "description": ""
+  },
+  "of": {
+    "value": "מתוך",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Marca de verificação mista"
+  "Check Mark Mixed": {
+    "value": "Marca de verificação mista",
+    "description": ""
+  }
 }

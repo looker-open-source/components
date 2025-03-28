@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "發生錯誤"
+  "Something went wrong": {
+    "description": "",
+    "value": "發生錯誤"
+  }
 }

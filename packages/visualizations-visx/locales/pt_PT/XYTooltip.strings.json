@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Pontos calibrados por"
+  "Points sized by": {
+    "value": "Pontos calibrados por",
+    "description": ""
+  }
 }

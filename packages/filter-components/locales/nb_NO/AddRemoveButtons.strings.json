@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Legg til"
+    "value": "Legg til",
+    "description": ""
   },
   "Remove": {
-    "value": "Fjern"
+    "value": "Fjern",
+    "description": ""
   }
 }

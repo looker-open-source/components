@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Lisää"
+    "value": "Lisää",
+    "description": ""
   },
   "Remove": {
-    "value": "Poista"
+    "value": "Poista",
+    "description": ""
   }
 }

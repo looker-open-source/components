@@ -1,3 +1,6 @@
 {
-  "until (before)": "jusqu'au (avant)"
+  "until (before)": {
+    "description": "",
+    "value": "jusqu'au (avant)"
+  }
 }

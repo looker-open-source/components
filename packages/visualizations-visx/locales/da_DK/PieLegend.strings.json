@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Forklaringsside {{page}} af {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Forklaringsside {{page}} af {{totalPages}}",
+    "description": ""
+  }
 }

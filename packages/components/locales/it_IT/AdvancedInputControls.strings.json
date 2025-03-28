@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Cancella campo"
+  "Clear Field": {
+    "description": "",
+    "value": "Cancella campo"
+  }
 }

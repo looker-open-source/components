@@ -28,7 +28,7 @@ import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { act, fireEvent, screen } from '@testing-library/react';
 import { DialogContext } from '../Dialog';
-import { Basic, Range } from './stories/index.stories';
+import { Basic, Range } from './fixtures';
 
 beforeEach(() => {
   jest.useFakeTimers();

@@ -1,3 +1,6 @@
 {
-  "Tabs": "Flikar"
+  "Tabs": {
+    "value": "Flikar",
+    "description": ""
+  }
 }

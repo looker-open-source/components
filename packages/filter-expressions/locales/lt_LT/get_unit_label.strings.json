@@ -1,82 +1,162 @@
 {
-  "complete day": "praėjusi diena",
+  "complete day": {
+    "value": "praėjusi diena",
+    "description": ""
+  },
   "complete days": {
-    "value": "praėjusios dienos"
+    "value": "praėjusios dienos",
+    "description": ""
   },
-  "complete fiscal quarter": "praėjęs finansinis ketvirtis",
+  "complete fiscal quarter": {
+    "value": "praėjęs finansinis ketvirtis",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "praėję finansiniai ketvirčiai"
+    "value": "praėję finansiniai ketvirčiai",
+    "description": ""
   },
-  "complete fiscal year": "praėję finansiniai metai",
+  "complete fiscal year": {
+    "value": "praėję finansiniai metai",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "praėję finansiniai metai"
+    "value": "praėję finansiniai metai",
+    "description": ""
   },
-  "complete hour": "praėjusi valanda",
+  "complete hour": {
+    "value": "praėjusi valanda",
+    "description": ""
+  },
   "complete hours": {
-    "value": "praėjusios valandos"
+    "value": "praėjusios valandos",
+    "description": ""
   },
-  "complete minute": "praėjusi minutė",
+  "complete minute": {
+    "value": "praėjusi minutė",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "praėjusios minutės"
+    "value": "praėjusios minutės",
+    "description": ""
   },
-  "complete month": "praėjęs mėnuo",
+  "complete month": {
+    "value": "praėjęs mėnuo",
+    "description": ""
+  },
   "complete months": {
-    "value": "praėję mėnesiai"
+    "value": "praėję mėnesiai",
+    "description": ""
   },
-  "complete quarter": "praėjęs ketvirtis",
+  "complete quarter": {
+    "value": "praėjęs ketvirtis",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "praėję ketvirčiai"
+    "value": "praėję ketvirčiai",
+    "description": ""
   },
-  "complete second": "praėjusi sekundė",
+  "complete second": {
+    "value": "praėjusi sekundė",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "praėjusios sekundės"
+    "value": "praėjusios sekundės",
+    "description": ""
   },
-  "complete week": "praėjusi savaitė",
+  "complete week": {
+    "value": "praėjusi savaitė",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "praėjusios savaitės"
+    "value": "praėjusios savaitės",
+    "description": ""
   },
-  "complete year": "praėję metai",
+  "complete year": {
+    "value": "praėję metai",
+    "description": ""
+  },
   "complete years": {
-    "value": "praėję metai"
+    "value": "praėję metai",
+    "description": ""
   },
-  "day": "d.",
+  "day": {
+    "value": "d.",
+    "description": ""
+  },
   "days": {
-    "value": "dienos"
+    "value": "dienos",
+    "description": ""
   },
-  "fiscal quarter": "finansinis ketvirtis",
+  "fiscal quarter": {
+    "value": "finansinis ketvirtis",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "finansiniai ketvirčiai"
+    "value": "finansiniai ketvirčiai",
+    "description": ""
   },
-  "fiscal year": "finansiniai metai",
+  "fiscal year": {
+    "value": "finansiniai metai",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "finansiniai metai"
+    "value": "finansiniai metai",
+    "description": ""
   },
-  "hour": "val.",
+  "hour": {
+    "value": "val.",
+    "description": ""
+  },
   "hours": {
-    "value": "valandos"
+    "value": "valandos",
+    "description": ""
   },
-  "minute": "min.",
+  "minute": {
+    "value": "min.",
+    "description": ""
+  },
   "minutes": {
-    "value": "minutės"
+    "value": "minutės",
+    "description": ""
   },
-  "month": "mėnuo",
+  "month": {
+    "value": "mėnuo",
+    "description": ""
+  },
   "months": {
-    "value": "mėnesiai"
+    "value": "mėnesiai",
+    "description": ""
   },
-  "quarter": "ketvirtis",
+  "quarter": {
+    "value": "ketvirtis",
+    "description": ""
+  },
   "quarters": {
-    "value": "ketvirčiai"
+    "value": "ketvirčiai",
+    "description": ""
   },
-  "second": "sek.",
+  "second": {
+    "value": "sek.",
+    "description": ""
+  },
   "seconds": {
-    "value": "sekundės"
+    "value": "sekundės",
+    "description": ""
   },
-  "week": "savaitė",
+  "week": {
+    "value": "savaitė",
+    "description": ""
+  },
   "weeks": {
-    "value": "savaitės"
+    "value": "savaitės",
+    "description": ""
   },
-  "year": "metai",
+  "year": {
+    "value": "metai",
+    "description": ""
+  },
   "years": {
-    "value": "metai"
+    "value": "metai",
+    "description": ""
   }
 }

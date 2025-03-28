@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Vak"
+    "value": "Vak",
+    "description": ""
   },
   "Circle": {
-    "value": "Cirkel"
+    "value": "Cirkel",
+    "description": ""
   },
   "Location": {
-    "value": "Locatie"
+    "value": "Locatie",
+    "description": ""
   },
   "feet": {
-    "value": "feet"
+    "value": "feet",
+    "description": ""
   },
   "is anywhere": {
-    "value": "overal"
+    "value": "overal",
+    "description": ""
   },
   "is not null": {
-    "value": "geldige datums"
+    "value": "geldige datums",
+    "description": ""
   },
   "is null": {
-    "value": "ongeldige datums"
+    "value": "ongeldige datums",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometer"
+    "value": "kilometer",
+    "description": ""
   },
   "meters": {
-    "value": "meter"
+    "value": "meter",
+    "description": ""
   },
   "miles": {
-    "value": "mijl"
+    "value": "mijl",
+    "description": ""
   }
 }

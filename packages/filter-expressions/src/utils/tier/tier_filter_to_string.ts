@@ -11,6 +11,7 @@ import type {
   FilterItemToStringMapType,
   FilterModel,
 } from '../..';
+import type { TierFilterType } from '../../types/filter_type';
 import { quoteFilter } from '../string/quote_filter';
 import isItemToString from '../to_string/is_item_to_string';
 import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
@@ -18,14 +19,14 @@ import { escapeParameterValue } from './escape_parameter_value';
 import { treeToList } from '../tree/tree_to_list';
 
 const matchToString = (
-  { value, is }: FilterModel,
+  { value, is }: FilterModel<TierFilterType>,
   _?: string,
   field?: ILookmlModelExploreField | null
 ) => {
   return (
     isItemToString(is, '', '-') +
     value
-      .map((val: string) =>
+      ?.map((val: string) =>
         field?.has_allowed_values && field?.parameter
           ? escapeParameterValue(val)
           : quoteFilter(val)
@@ -36,7 +37,7 @@ const matchToString = (
 
 const anyvalueToString = () => '';
 
-const filterToStringMap: FilterItemToStringMapType = {
+const filterToStringMap: FilterItemToStringMapType<TierFilterType> = {
   anyvalue: anyvalueToString,
   match: matchToString,
   user_attribute: userAttributeToString,
@@ -45,9 +46,11 @@ const filterToStringMap: FilterItemToStringMapType = {
 const serializeTierItem =
   (type: FilterExpressionType, field?: ILookmlModelExploreField) =>
   (item: FilterModel): string => {
-    const toStringFunction: FilterItemToStringFunction =
+    const toStringFunction: FilterItemToStringFunction<TierFilterType> =
       filterToStringMap[item.type];
-    return toStringFunction?.(item, type, field) || '';
+    return (
+      toStringFunction?.(item as FilterModel<TierFilterType>, type, field) || ''
+    );
   };
 /**
  * Maps a FilterItem to a function for converting it to an expression

@@ -1,6 +1,18 @@
 {
-  "false": "falsk",
-  "null": "null",
-  "true": "sand",
-  "undefined": "ikke defineret"
+  "false": {
+    "value": "falsk",
+    "description": ""
+  },
+  "null": {
+    "value": "null",
+    "description": ""
+  },
+  "true": {
+    "value": "sand",
+    "description": ""
+  },
+  "undefined": {
+    "value": "ikke defineret",
+    "description": ""
+  }
 }

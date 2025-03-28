@@ -1,4 +1,10 @@
 {
-  "Display": "Exibir",
-  "of": "de"
+  "Display": {
+    "value": "Exibir",
+    "description": ""
+  },
+  "of": {
+    "value": "de",
+    "description": ""
+  }
 }

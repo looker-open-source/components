@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterModel, StringFilterType } from '@looker/filter-expressions';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
@@ -35,7 +35,7 @@ describe('MultiStringInput tests', () => {
     <MultiStringInput
       onChange={jest.fn()}
       onInputChange={jest.fn()}
-      item={{ id: '1' } as FilterModel}
+      item={{ id: '1' } as FilterModel<StringFilterType>}
       suggestions={['Foo']}
       {...props}
     />

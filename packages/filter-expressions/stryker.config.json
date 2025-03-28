@@ -1,0 +1,11 @@
+{
+  "packageManager": "npm",
+  "reporters": ["html", "clear-text", "progress", "json"],
+  "testRunner": "jest",
+  "mutate": [
+    "src/grammars/**/*.ts",
+    "!src/utils/user_attribute/*",
+    "src/utils/**/*.ts"
+  ],
+  "ignorePatterns": ["src/utils/user_attribute/*.spec.ts"]
+}

@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
+    "description": "",
     "value": "{{coords1}}에서 {{coords2}}(으)로"
   },
   "distance unit from lat, lon": {
+    "description": "",
     "value": "{{lat}}, {{lon}}에서 {{distance}}{{unit}}"
   },
   "is anywhere": {
+    "description": "",
     "value": "위치 무관"
   },
   "is not null": {
+    "description": "",
     "value": "null 아님"
   },
   "is null": {
+    "description": "",
     "value": "null"
   },
   "lat degrees north": {
+    "description": "",
     "value": "{{lat}}°N"
   },
   "lat degrees south": {
+    "description": "",
     "value": "{{lat}}°S"
   },
   "lon degrees east": {
+    "description": "",
     "value": "{{lon}}°E"
   },
   "lon degrees west": {
+    "description": "",
     "value": "{{lon}}°W"
   }
 }

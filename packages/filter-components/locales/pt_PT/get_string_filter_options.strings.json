@@ -1,14 +1,50 @@
 {
-  "contains": "contém",
-  "doesnt contain": "não contém",
-  "doesnt end with": "não acaba em",
-  "doesnt start with": "não começa por",
-  "ends with": "acaba em",
-  "is": "é",
-  "is blank": "está vazio",
-  "is not": "não é",
-  "is not blank": "não está vazio",
-  "is not null": "não é nulo",
-  "is null": "é nulo",
-  "starts with": "começa por"
+  "contains": {
+    "value": "contém",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "não contém",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "não acaba em",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "não começa por",
+    "description": ""
+  },
+  "ends with": {
+    "value": "acaba em",
+    "description": ""
+  },
+  "is": {
+    "value": "é",
+    "description": ""
+  },
+  "is blank": {
+    "value": "está vazio",
+    "description": ""
+  },
+  "is not": {
+    "value": "não é",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "não está vazio",
+    "description": ""
+  },
+  "is not null": {
+    "value": "não é nulo",
+    "description": ""
+  },
+  "is null": {
+    "value": "é nulo",
+    "description": ""
+  },
+  "starts with": {
+    "value": "começa por",
+    "description": ""
+  }
 }

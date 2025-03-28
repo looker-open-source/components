@@ -1,4 +1,10 @@
 {
-  "Cancel": "Zrušit",
-  "Save": "Uložit"
+  "Cancel": {
+    "value": "Zrušit",
+    "description": ""
+  },
+  "Save": {
+    "value": "Uložit",
+    "description": ""
+  }
 }

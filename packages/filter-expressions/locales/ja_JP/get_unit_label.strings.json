@@ -1,82 +1,162 @@
 {
-  "complete day": "終了した日",
+  "complete day": {
+    "description": "",
+    "value": "一日中"
+  },
   "complete days": {
+    "description": "",
     "value": "全日"
   },
-  "complete fiscal quarter": "終了した会計四半期",
+  "complete fiscal quarter": {
+    "description": "",
+    "value": "一会計四半期中"
+  },
   "complete fiscal quarters": {
+    "description": "",
     "value": "全会計四半期"
   },
-  "complete fiscal year": "終了した会計年度",
+  "complete fiscal year": {
+    "description": "",
+    "value": "一会計年度中"
+  },
   "complete fiscal years": {
+    "description": "",
     "value": "全会計年度"
   },
-  "complete hour": "終了した時間",
+  "complete hour": {
+    "description": "",
+    "value": "一時間中"
+  },
   "complete hours": {
+    "description": "",
     "value": "全時間"
   },
-  "complete minute": "終了した分",
+  "complete minute": {
+    "description": "",
+    "value": "一分間中"
+  },
   "complete minutes": {
+    "description": "",
     "value": "全分"
   },
-  "complete month": "終了した月",
+  "complete month": {
+    "description": "",
+    "value": "一か月中"
+  },
   "complete months": {
+    "description": "",
     "value": "全月"
   },
-  "complete quarter": "終了した四半期",
+  "complete quarter": {
+    "description": "",
+    "value": "一四半期中"
+  },
   "complete quarters": {
+    "description": "",
     "value": "全四半期"
   },
-  "complete second": "終了した秒",
+  "complete second": {
+    "description": "",
+    "value": "一秒間中"
+  },
   "complete seconds": {
+    "description": "",
     "value": "全秒"
   },
-  "complete week": "終了した週",
+  "complete week": {
+    "description": "",
+    "value": "一週間中"
+  },
   "complete weeks": {
+    "description": "",
     "value": "全週"
   },
-  "complete year": "終了した年",
+  "complete year": {
+    "description": "",
+    "value": "一年中"
+  },
   "complete years": {
+    "description": "",
     "value": "全年"
   },
-  "day": "日",
-  "days": {
+  "day": {
+    "description": "",
     "value": "日"
   },
-  "fiscal quarter": "会計四半期",
-  "fiscal quarters": {
+  "days": {
+    "description": "",
+    "value": "日"
+  },
+  "fiscal quarter": {
+    "description": "",
     "value": "会計四半期"
   },
-  "fiscal year": "会計年度",
-  "fiscal years": {
+  "fiscal quarters": {
+    "description": "",
+    "value": "会計四半期"
+  },
+  "fiscal year": {
+    "description": "",
     "value": "会計年度"
   },
-  "hour": "時間",
-  "hours": {
+  "fiscal years": {
+    "description": "",
+    "value": "会計年度"
+  },
+  "hour": {
+    "description": "",
     "value": "時間"
   },
-  "minute": "分",
-  "minutes": {
+  "hours": {
+    "description": "",
+    "value": "時間"
+  },
+  "minute": {
+    "description": "",
     "value": "分"
   },
-  "month": "か月",
-  "months": {
+  "minutes": {
+    "description": "",
+    "value": "分"
+  },
+  "month": {
+    "description": "",
     "value": "月"
   },
-  "quarter": "四半期",
-  "quarters": {
+  "months": {
+    "description": "",
+    "value": "月"
+  },
+  "quarter": {
+    "description": "",
     "value": "四半期"
   },
-  "second": "秒",
-  "seconds": {
+  "quarters": {
+    "description": "",
+    "value": "四半期"
+  },
+  "second": {
+    "description": "",
     "value": "秒"
   },
-  "week": "週",
-  "weeks": {
+  "seconds": {
+    "description": "",
+    "value": "秒"
+  },
+  "week": {
+    "description": "",
     "value": "週"
   },
-  "year": "年",
+  "weeks": {
+    "description": "",
+    "value": "週"
+  },
+  "year": {
+    "description": "",
+    "value": "年"
+  },
   "years": {
+    "description": "",
     "value": "年"
   }
 }

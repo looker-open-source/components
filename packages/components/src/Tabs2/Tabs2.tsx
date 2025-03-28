@@ -25,6 +25,7 @@
  */
 
 import React, { Children, useEffect, useState } from 'react';
+import { Space } from '../Layout';
 import { Tab2 } from './Tab2';
 import { TabList2 } from './TabList2';
 import { TabPanels2 } from './TabPanels2';
@@ -65,6 +66,7 @@ export const Tabs2 = <IDType extends string = string>({
   defaultTabId,
   distributed = false,
   tabId: propsTabId,
+  secondaryContent,
 }: Tabs2Props<IDType>) => {
   // list of all elements to be displayed as Tab and its content.
   const initialTabs = getTabsData(children);
@@ -119,7 +121,10 @@ export const Tabs2 = <IDType extends string = string>({
 
   return (
     <>
-      <TabList2 distribute={distributed}>{labels}</TabList2>
+      <Space between borderBottom flexWrap="wrap">
+        <TabList2 distribute={distributed}>{labels}</TabList2>
+        {secondaryContent}
+      </Space>
       {currentTab && (
         <TabPanels2 id={currentTab.id}>
           {currentTab.children as JSX.Element}

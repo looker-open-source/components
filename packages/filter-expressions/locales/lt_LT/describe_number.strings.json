@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "yra diapazone {{range}}"
+    "value": "yra diapazone {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "nėra diapazone {{range}}"
+    "value": "nėra diapazone {{range}}",
+    "description": ""
   }
 }

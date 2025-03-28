@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " slutför"
+    "value": " slutför",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "sedan"
+    "value": "sedan",
+    "description": ""
   },
   "from now": {
-    "value": "från nu"
+    "value": "från nu",
+    "description": ""
   },
   "is any time": {
-    "value": "är när som helst"
+    "value": "är när som helst",
+    "description": ""
   },
   "is before": {
-    "value": "är före"
+    "value": "är före",
+    "description": ""
   },
   "is day": {
-    "value": "är {{day}}"
+    "value": "är {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "är från {{dateTimeStart}} till och med {{dateTimeEnd}}"
+    "value": "är från {{dateTimeStart}} till och med {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "är om {{month}} {{year}}"
+    "value": "är om {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "är under senaste {{describeInterval}}"
+    "value": "är under senaste {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "är under år {{year}}"
+    "value": "är under år {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "är {{interval}} sedan"
+    "value": "är {{interval}} sedan",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "är {{intervalStart}} {{intervalType}} för {{intervalEnd}}"
+    "value": "är {{intervalStart}} {{intervalType}} för {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "är inte null"
+    "value": "är inte null",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "är den {{dateTime}}"
+    "value": "är den {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "är på eller efter"
+    "value": "är på eller efter",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "är föregående {{unitLabel}}"
+    "value": "är föregående {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "är {{type}} {{unitLabel}}"
+    "value": "är {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "nästa"
+    "value": "nästa",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} nu"
+    "value": "{{prefix}} nu",
+    "description": ""
   },
   "this": {
-    "value": "detta"
+    "value": "detta",
+    "description": ""
   },
-  "this startInterval to endInterval": "detta {{startInterval}} till {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "detta {{startInterval}} till {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

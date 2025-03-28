@@ -1,6 +1,18 @@
 {
-  "false": "לא נכון",
-  "null": "ריק",
-  "true": "נכון",
-  "undefined": "לא מוגדר"
+  "false": {
+    "value": "לא נכון",
+    "description": ""
+  },
+  "null": {
+    "value": "ריק",
+    "description": ""
+  },
+  "true": {
+    "value": "נכון",
+    "description": ""
+  },
+  "undefined": {
+    "value": "לא מוגדר",
+    "description": ""
+  }
 }

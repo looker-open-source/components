@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "チェックマークの混合"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "チェックマークの混合"
+  }
 }

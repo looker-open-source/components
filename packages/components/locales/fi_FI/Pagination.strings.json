@@ -1,7 +1,22 @@
 {
-  "First page of results": "Ensimmäinen tulossivu",
-  "Last page of results": "Viimeinen tulossivu",
-  "Next page of results": "Seuraava tulossivu",
-  "Previous page of results": "Edellinen tulossivu",
-  "of": "/"
+  "First page of results": {
+    "value": "Ensimmäinen tulossivu",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Viimeinen tulossivu",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Seuraava tulossivu",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Edellinen tulossivu",
+    "description": ""
+  },
+  "of": {
+    "value": "/",
+    "description": ""
+  }
 }

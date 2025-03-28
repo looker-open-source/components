@@ -1,3 +1,6 @@
 {
-  "Row Total": "Totale riga"
+  "Row Total": {
+    "description": "",
+    "value": "Totale riga"
+  }
 }

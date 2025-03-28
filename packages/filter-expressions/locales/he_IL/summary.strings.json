@@ -1,3 +1,6 @@
 {
-  "Value required": "נדרש ערך"
+  "Value required": {
+    "value": "נדרש ערך",
+    "description": ""
+  }
 }

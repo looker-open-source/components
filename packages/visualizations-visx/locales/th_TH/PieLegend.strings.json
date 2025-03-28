@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "หน้าคำอธิบาย {{page}} จาก {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "หน้าคำอธิบาย {{page}} จาก {{totalPages}}",
+    "description": ""
+  }
 }

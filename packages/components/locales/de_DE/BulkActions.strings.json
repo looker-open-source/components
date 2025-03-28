@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Alle {{pageCount}} angezeigten Elemente ausgewählt",
-  "AllTotalCountSelected": "Alle {{totalCount}} Elemente ausgewählt",
-  "Bulk Actions": "Bulk-Aktionen",
-  "Clear Selection": "Auswahl löschen",
-  "SelectAllCountResults": "Alle {{totalCount}} Ergebnisse auswählen",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} von {{pageCount}} angezeigten Elementen ausgewählt"
+  "AllPageCountDisplayedSelected": {
+    "description": "",
+    "value": "Alle {{pageCount}} angezeigten Elemente ausgewählt"
+  },
+  "AllTotalCountSelected": {
+    "description": "",
+    "value": "Alle {{totalCount}} Elemente ausgewählt"
+  },
+  "Bulk Actions": {
+    "description": "",
+    "value": "Bulk-Aktionen"
+  },
+  "Clear Selection": {
+    "description": "",
+    "value": "Auswahl löschen"
+  },
+  "SelectAllCountResults": {
+    "description": "",
+    "value": "Alle {{totalCount}} Ergebnisse auswählen"
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "description": "",
+    "value": "{{selectedItemCount}} von {{pageCount}} angezeigten Elementen ausgewählt"
+  }
 }

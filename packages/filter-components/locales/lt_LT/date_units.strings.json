@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "d."
+    "value": "d.",
+    "description": ""
   },
   "days": {
-    "value": "dienos"
+    "value": "dienos",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "finansinis ketvirtis"
+    "value": "finansinis ketvirtis",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "finansiniai ketvirčiai"
+    "value": "finansiniai ketvirčiai",
+    "description": ""
   },
   "fiscal year": {
-    "value": "finansiniai metai"
+    "value": "finansiniai metai",
+    "description": ""
   },
   "fiscal years": {
-    "value": "finansiniai metai"
+    "value": "finansiniai metai",
+    "description": ""
   },
   "hour": {
-    "value": "val."
+    "value": "val.",
+    "description": ""
   },
   "hours": {
-    "value": "valandos"
+    "value": "valandos",
+    "description": ""
   },
   "minute": {
-    "value": "min."
+    "value": "min.",
+    "description": ""
   },
   "minutes": {
-    "value": "minutės"
+    "value": "minutės",
+    "description": ""
   },
   "month": {
-    "value": "mėnuo"
+    "value": "mėnuo",
+    "description": ""
   },
   "months": {
-    "value": "mėnesiai"
+    "value": "mėnesiai",
+    "description": ""
   },
   "quarter": {
-    "value": "ketvirtis"
+    "value": "ketvirtis",
+    "description": ""
   },
   "quarters": {
-    "value": "ketvirčiai"
+    "value": "ketvirčiai",
+    "description": ""
   },
   "second": {
-    "value": "sek."
+    "value": "sek.",
+    "description": ""
   },
   "seconds": {
-    "value": "sekundės"
+    "value": "sekundės",
+    "description": ""
   },
   "week": {
-    "value": "savaitė"
+    "value": "savaitė",
+    "description": ""
   },
   "weeks": {
-    "value": "savaitės"
+    "value": "savaitės",
+    "description": ""
   },
   "year": {
-    "value": "metai"
+    "value": "metai",
+    "description": ""
   },
   "years": {
-    "value": "metai"
+    "value": "metai",
+    "description": ""
   }
 }

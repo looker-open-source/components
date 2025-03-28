@@ -1,11 +1,14 @@
 {
   "is": {
+    "description": "",
     "value": "다음과 일치:"
   },
   "is any value": {
+    "description": "",
     "value": "값 무관"
   },
   "is not": {
+    "description": "",
     "value": "다음과 일치하지 않음:"
   }
 }

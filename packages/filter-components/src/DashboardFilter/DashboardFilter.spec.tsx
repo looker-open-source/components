@@ -23,45 +23,45 @@
  SOFTWARE.
 
  */
-import React from 'react'
-import { renderWithTheme } from '@looker/components-test-utils'
-import type { IAPIMethods } from '@looker/sdk-rtl'
-import { fireEvent, screen } from '@testing-library/react'
-import { DashboardFilter } from './DashboardFilter'
+import React from 'react';
+import { renderWithTheme } from '@looker/components-test-utils';
+import type { IAPIMethods } from '@looker/sdk-rtl';
+import { fireEvent, screen } from '@testing-library/react';
+import { DashboardFilter } from './DashboardFilter';
 
 jest.mock('@looker/sdk', () => ({
   ...jest.requireActual('@looker/sdk'),
   model_fieldname_suggestions: jest.fn((sdk: { get: () => any }) => sdk.get()),
-}))
+}));
 
 // eslint-disable-next-line import/first
-import { model_fieldname_suggestions } from '@looker/sdk'
+import { model_fieldname_suggestions } from '@looker/sdk';
 
 describe('DashboardFilter', () => {
   it('renders label', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <DashboardFilter
         filter={{ name: 'Status', field: {} }}
         onChange={onChangeMock}
       />
-    )
-    expect(screen.getByText('Status')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('Status')).toBeVisible();
+  });
 
   it('renders validation message', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <DashboardFilter
         filter={{ name: 'Status', field: {}, required: true }}
         onChange={onChangeMock}
       />
-    )
-    expect(screen.getByText('Value required')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('Value required')).toBeVisible();
+  });
 
   it('calls onChange', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <DashboardFilter
         filter={{
@@ -71,20 +71,20 @@ describe('DashboardFilter', () => {
         }}
         onChange={onChangeMock}
       />
-    )
-    const cancelled = screen.getByText('cancelled')
-    fireEvent.click(cancelled)
+    );
+    const cancelled = screen.getByText('cancelled');
+    fireEvent.click(cancelled);
     expect(onChangeMock.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
           "cancelled",
         ],
       ]
-    `)
-  })
+    `);
+  });
 
   it('handles undefined field (LookML filter)', () => {
-    const onChangeMock = jest.fn()
+    const onChangeMock = jest.fn();
     renderWithTheme(
       <DashboardFilter
         filter={{
@@ -94,15 +94,15 @@ describe('DashboardFilter', () => {
         }}
         onChange={onChangeMock}
       />
-    )
-    expect(screen.getByText('is in the last')).toBeVisible()
-    expect(screen.getByText('30')).toBeVisible()
-    expect(screen.getByText('days')).toBeVisible()
-  })
+    );
+    expect(screen.getByText('is in the last')).toBeVisible();
+    expect(screen.getByText('30')).toBeVisible();
+    expect(screen.getByText('days')).toBeVisible();
+  });
 
   describe('value', () => {
     it('uses default_value', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       renderWithTheme(
         <DashboardFilter
           filter={{
@@ -113,12 +113,12 @@ describe('DashboardFilter', () => {
           }}
           onChange={onChangeMock}
         />
-      )
-      expect(screen.getByRole('option')).toHaveTextContent('complete')
-    })
+      );
+      expect(screen.getByRole('option')).toHaveTextContent('complete');
+    });
 
     it('uses expression if available', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       renderWithTheme(
         <DashboardFilter
           filter={{
@@ -130,16 +130,16 @@ describe('DashboardFilter', () => {
           expression="complete,pending"
           onChange={onChangeMock}
         />
-      )
-      const values = screen.getAllByRole('option')
-      expect(values[0]).toHaveTextContent('complete')
-      expect(values[1]).toHaveTextContent('pending')
-    })
-  })
+      );
+      const values = screen.getAllByRole('option');
+      expect(values[0]).toHaveTextContent('complete');
+      expect(values[1]).toHaveTextContent('pending');
+    });
+  });
 
   describe('options', () => {
     it('uses field suggestions if available', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       renderWithTheme(
         <DashboardFilter
           filter={{
@@ -151,21 +151,21 @@ describe('DashboardFilter', () => {
           expression="complete,pending"
           onChange={onChangeMock}
         />
-      )
-      const values = screen.getAllByRole('button')
+      );
+      const values = screen.getAllByRole('button');
 
-      expect(values[0]).toHaveTextContent('complete')
-      expect(values[0]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[0]).toHaveTextContent('complete');
+      expect(values[0]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[1]).toHaveTextContent('pending')
-      expect(values[1]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[1]).toHaveTextContent('pending');
+      expect(values[1]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[2]).toHaveTextContent('cancelled')
-      expect(values[2]).toHaveAttribute('aria-pressed', 'false')
-    })
+      expect(values[2]).toHaveTextContent('cancelled');
+      expect(values[2]).toHaveAttribute('aria-pressed', 'false');
+    });
 
     it('uses field enumerations if available', () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       renderWithTheme(
         <DashboardFilter
           filter={{
@@ -183,31 +183,31 @@ describe('DashboardFilter', () => {
           expression="complete,pending"
           onChange={onChangeMock}
         />
-      )
-      const values = screen.getAllByRole('button')
+      );
+      const values = screen.getAllByRole('button');
 
-      expect(values[0]).toHaveTextContent('complete')
-      expect(values[0]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[0]).toHaveTextContent('complete');
+      expect(values[0]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[1]).toHaveTextContent('pending')
-      expect(values[1]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[1]).toHaveTextContent('pending');
+      expect(values[1]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[2]).toHaveTextContent('cancelled')
-      expect(values[2]).toHaveAttribute('aria-pressed', 'false')
-    })
+      expect(values[2]).toHaveTextContent('cancelled');
+      expect(values[2]).toHaveAttribute('aria-pressed', 'false');
+    });
 
     it('fetches suggestions', async () => {
-      const onChangeMock = jest.fn()
-      const sdkOkMock = jest.fn((value) => Promise.resolve(value))
+      const onChangeMock = jest.fn();
+      const sdkOkMock = jest.fn(value => Promise.resolve(value));
 
       const sdkGetMock = jest.fn(() => ({
         suggestions: ['complete', 'pending', 'cancelled'],
-      }))
+      }));
 
       const sdkMock = {
         ok: sdkOkMock,
         get: sdkGetMock,
-      } as unknown as IAPIMethods
+      } as unknown as IAPIMethods;
 
       renderWithTheme(
         <DashboardFilter
@@ -228,17 +228,17 @@ describe('DashboardFilter', () => {
           expression="complete,pending"
           onChange={onChangeMock}
         />
-      )
-      const values = await screen.findAllByRole('button')
+      );
+      const values = await screen.findAllByRole('button');
 
-      expect(values[0]).toHaveTextContent('complete')
-      expect(values[0]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[0]).toHaveTextContent('complete');
+      expect(values[0]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[1]).toHaveTextContent('pending')
-      expect(values[1]).toHaveAttribute('aria-pressed', 'true')
+      expect(values[1]).toHaveTextContent('pending');
+      expect(values[1]).toHaveAttribute('aria-pressed', 'true');
 
-      expect(values[2]).toHaveTextContent('cancelled')
-      expect(values[2]).toHaveAttribute('aria-pressed', 'false')
+      expect(values[2]).toHaveTextContent('cancelled');
+      expect(values[2]).toHaveAttribute('aria-pressed', 'false');
 
       expect(model_fieldname_suggestions).toHaveBeenCalledWith(
         { ok: sdkOkMock, get: sdkGetMock },
@@ -247,18 +247,21 @@ describe('DashboardFilter', () => {
           model_name: 'foo',
           term: '',
           view_name: 'orders',
+        },
+        {
+          signal: expect.any(AbortSignal),
         }
-      )
-    })
+      );
+    });
 
     it('shows fetch error message', async () => {
-      const onChangeMock = jest.fn()
+      const onChangeMock = jest.fn();
       const sdkMock = {
-        ok: jest.fn((value) => value),
+        ok: jest.fn(value => value),
         get: jest.fn(() => {
-          throw new Error()
+          throw new Error();
         }),
-      } as unknown as IAPIMethods
+      } as unknown as IAPIMethods;
       renderWithTheme(
         <DashboardFilter
           filter={{
@@ -273,8 +276,8 @@ describe('DashboardFilter', () => {
           expression="complete,pending"
           onChange={onChangeMock}
         />
-      )
-      expect(await screen.findByTestId('error-icon')).toBeVisible()
-    })
-  })
-})
+      );
+      expect(await screen.findByTestId('error-icon')).toBeVisible();
+    });
+  });
+});

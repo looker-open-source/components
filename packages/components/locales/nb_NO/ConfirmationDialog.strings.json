@@ -1,4 +1,10 @@
 {
-  "Cancel": "Avbryt",
-  "Confirm": "Bekreft"
+  "Cancel": {
+    "value": "Avbryt",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Bekreft",
+    "description": ""
+  }
 }

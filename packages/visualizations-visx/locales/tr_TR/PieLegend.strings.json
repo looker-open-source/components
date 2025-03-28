@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Gösterge sayfa {{page}}/{{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Gösterge sayfa {{page}}/{{totalPages}}",
+    "description": ""
+  }
 }

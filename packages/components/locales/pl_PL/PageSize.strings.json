@@ -1,4 +1,10 @@
 {
-  "Display": "Wyświetlanie",
-  "of": "z"
+  "Display": {
+    "description": "",
+    "value": "Wyświetlanie"
+  },
+  "of": {
+    "description": "",
+    "value": "z"
+  }
 }

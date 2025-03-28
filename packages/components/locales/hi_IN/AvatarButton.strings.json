@@ -1,3 +1,6 @@
 {
-  "Profile Picture": "प्रोफ़ाइल फ़ोटो"
+  "Profile Picture": {
+    "value": "प्रोफ़ाइल फ़ोटो",
+    "description": ""
+  }
 }

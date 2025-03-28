@@ -1,65 +1,86 @@
 {
   "days ago": {
+    "description": "",
     "value": "天前"
   },
   "days from now": {
+    "description": "",
     "value": "天後"
   },
   "fiscal quarter from now": {
+    "description": "",
     "value": "會計季度 (從現在起算)"
   },
   "fiscal quarters ago": {
+    "description": "",
     "value": "個會計季度前"
   },
   "fiscal years ago": {
+    "description": "",
     "value": "個會計年度前"
   },
   "fiscal years from now": {
+    "description": "",
     "value": "個會計年度後"
   },
   "hours ago": {
+    "description": "",
     "value": "小時前"
   },
   "hours from now": {
+    "description": "",
     "value": "小時後"
   },
   "minutes ago": {
+    "description": "",
     "value": "分鐘前"
   },
   "minutes from now": {
+    "description": "",
     "value": "分鐘後"
   },
   "months ago": {
+    "description": "",
     "value": "個月前"
   },
   "months from now": {
+    "description": "",
     "value": "個月後"
   },
   "now": {
+    "description": "",
     "value": "現在"
   },
   "quarters ago": {
+    "description": "",
     "value": "季前"
   },
   "quarters from now": {
+    "description": "",
     "value": "季後"
   },
   "seconds ago": {
+    "description": "",
     "value": "秒前"
   },
   "seconds from now": {
+    "description": "",
     "value": "秒後"
   },
   "weeks ago": {
+    "description": "",
     "value": "週前"
   },
   "weeks from now": {
+    "description": "",
     "value": "週後"
   },
   "years ago": {
+    "description": "",
     "value": "年前"
   },
   "years from now": {
+    "description": "",
     "value": "年後"
   }
 }

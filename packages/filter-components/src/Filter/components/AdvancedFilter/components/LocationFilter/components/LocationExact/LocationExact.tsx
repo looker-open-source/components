@@ -24,7 +24,7 @@
 
  */
 import { Flex } from '@looker/components';
-import type { ExactLocationFilterItem } from '@looker/filter-expressions';
+import type { FilterModel } from '@looker/filter-expressions';
 import type { ChangeEvent } from 'react';
 import React from 'react';
 import styled from 'styled-components';
@@ -37,7 +37,7 @@ import {
 import { GroupInput } from '../../../GroupInput';
 
 interface LocationExactProps {
-  item: ExactLocationFilterItem;
+  item: FilterModel;
   onChange: (id: string, value: any) => void;
 
   latString?: string;
@@ -87,6 +87,7 @@ export const LocationExact = ({
         onChange={latChange}
         placement="middle"
         minWidth={`${latString.length / 2 + 5.5}em`}
+        data-testid="location-exact-lat"
       />
       <GroupInput
         before={<Prefix>{lonString}</Prefix>}
@@ -95,6 +96,7 @@ export const LocationExact = ({
         onChange={lonChange}
         placement={placement}
         minWidth={`${lonString.length / 2 + 5.5}em`}
+        data-testid="location-exact-lon"
       />
     </Flex>
   );

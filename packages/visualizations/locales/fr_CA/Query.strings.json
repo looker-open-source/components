@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Pas d’enfant passé au composant de requête",
-  "Query component received both dashboard and query props": "Le composant de requête a reçu à la fois le tableau de bord et les propriétés de requête"
+  "No children passed to Query component": {
+    "value": "Pas d’enfant passé au composant de requête",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Le composant de requête a reçu à la fois le tableau de bord et les propriétés de requête",
+    "description": ""
+  }
 }

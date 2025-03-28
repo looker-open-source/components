@@ -1,3 +1,6 @@
 {
-  "Row Total": "行全体"
+  "Row Total": {
+    "description": "",
+    "value": "行全体"
+  }
 }

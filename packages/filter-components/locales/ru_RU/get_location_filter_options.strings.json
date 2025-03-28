@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Прямоугольник"
+    "value": "Прямоугольник",
+    "description": ""
   },
   "Circle": {
-    "value": "Круг"
+    "value": "Круг",
+    "description": ""
   },
   "Location": {
-    "value": "Расположение"
+    "value": "Расположение",
+    "description": ""
   },
   "feet": {
-    "value": "фут(а/ов)"
+    "value": "фут(а/ов)",
+    "description": ""
   },
   "is anywhere": {
-    "value": "находится где-либо"
+    "value": "находится где-либо",
+    "description": ""
   },
   "is not null": {
-    "value": "не является нулевым значением"
+    "value": "не является нулевым значением",
+    "description": ""
   },
   "is null": {
-    "value": "является нулевым значением"
+    "value": "является нулевым значением",
+    "description": ""
   },
   "kilometers": {
-    "value": "км"
+    "value": "км",
+    "description": ""
   },
   "meters": {
-    "value": "м"
+    "value": "м",
+    "description": ""
   },
   "miles": {
-    "value": "миль(и)"
+    "value": "миль(и)",
+    "description": ""
   }
 }

@@ -47,12 +47,11 @@ LOGICAL_EXPRESSION = left:TERM _ type:LOGIC_SYMBOL _ right:EXPRESSION {
 }
 
 TERM = term:(USER_ATTRIBUTE /
-       DATES /
        RELATIVE_RANGE /
        FROM_NOW /
        PAST_AGO /
        PAST /
-       THIS_RANGE / 
+       THIS_RANGE /
        THIS_NEXT /
        LAST /
        LAST_INTERVAL /
@@ -62,6 +61,7 @@ TERM = term:(USER_ATTRIBUTE /
        BEFORE_AFTER /
        FISCAL_QUARTER_RULE /
        FISCAL_YEAR_RULE /
+       DATES /
        NULLS) {
            return Object.assign({}, term, {is: true})
        }
@@ -104,7 +104,8 @@ INTERVAL_TYPE = SPACE dir:("AGO"i/"FROM NOW"i) {
 
 RELATIVE_RANGE = startInterval:N_INTERVAL intervalType:INTERVAL_TYPE SPACE "for"i SPACE endInterval:N_INTERVAL  {
     if (startInterval.value === endInterval.value &&
-        startInterval.unit === endInterval.unit) {
+        startInterval.unit === endInterval.unit &&
+        intervalType !== 'from now') {
         return {
             type: 'past',
             value: startInterval.value,

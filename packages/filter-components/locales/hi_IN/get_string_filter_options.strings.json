@@ -1,14 +1,50 @@
 {
-  "contains": "शामिल है",
-  "doesnt contain": "शामिल नहीं है",
-  "doesnt end with": "पर समाप्त नहीं होता है",
-  "doesnt start with": "से शुरू नहीं होता है",
-  "ends with": "पर समाप्त होता है",
-  "is": "है",
-  "is blank": "खाली है",
-  "is not": "नहीं है",
-  "is not blank": "खाली नहीं है",
-  "is not null": "नल नहीं है",
-  "is null": "नल है",
-  "starts with": "से शुरू होता है"
+  "contains": {
+    "value": "शामिल है",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "शामिल नहीं है",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "पर समाप्त नहीं होता है",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "से शुरू नहीं होता है",
+    "description": ""
+  },
+  "ends with": {
+    "value": "पर समाप्त होता है",
+    "description": ""
+  },
+  "is": {
+    "value": "है",
+    "description": ""
+  },
+  "is blank": {
+    "value": "खाली है",
+    "description": ""
+  },
+  "is not": {
+    "value": "नहीं है",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "खाली नहीं है",
+    "description": ""
+  },
+  "is not null": {
+    "value": "नल नहीं है",
+    "description": ""
+  },
+  "is null": {
+    "value": "नल है",
+    "description": ""
+  },
+  "starts with": {
+    "value": "से शुरू होता है",
+    "description": ""
+  }
 }

@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Rensa alla"
+    "value": "Rensa alla",
+    "description": ""
   },
   "Remove": {
-    "value": "Ta bort"
+    "value": "Ta bort",
+    "description": ""
   },
   "Toggle": {
-    "value": "Växla"
+    "value": "Växla",
+    "description": ""
   }
 }

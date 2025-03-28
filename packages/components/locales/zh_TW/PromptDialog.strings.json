@@ -1,4 +1,10 @@
 {
-  "Cancel": "取消",
-  "Save": "儲存"
+  "Cancel": {
+    "description": "",
+    "value": "取消"
+  },
+  "Save": {
+    "description": "",
+    "value": "儲存"
+  }
 }

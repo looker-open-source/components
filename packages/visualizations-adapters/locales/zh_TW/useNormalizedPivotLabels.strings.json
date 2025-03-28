@@ -1,3 +1,6 @@
 {
-  "Row Total": "資料列總計"
+  "Row Total": {
+    "description": "",
+    "value": "資料列總計"
+  }
 }

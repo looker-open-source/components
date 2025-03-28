@@ -23,20 +23,20 @@
  SOFTWARE.
 
  */
-import defaultTo from 'lodash/defaultTo'
-import flow from 'lodash/fp/flow'
-import isEmpty from 'lodash/isEmpty'
-import partition from 'lodash/partition'
+import defaultTo from 'lodash/defaultTo';
+import flow from 'lodash/fp/flow';
+import isEmpty from 'lodash/isEmpty';
+import partition from 'lodash/partition';
 import type {
   FilterItemToStringFunction,
   FilterItemToStringMapType,
   FilterModel,
   ValueProps,
-} from '../../types'
-import { NumberTypes } from '../../types/number_types'
-import { treeToList } from '../tree/tree_to_list'
-import { userAttributeToString } from '../user_attribute/user_attribute_to_string'
-import { isNullUndefinedOrEmpty } from './is_null_undefined_or_empty'
+} from '../../types';
+import { NumberTypes } from '../../types/number_types';
+import { treeToList } from '../tree/tree_to_list';
+import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
+import { isNullUndefinedOrEmpty } from './is_null_undefined_or_empty';
 
 /**
  * number_to_string.ts
@@ -52,7 +52,7 @@ import { isNullUndefinedOrEmpty } from './is_null_undefined_or_empty'
  * }
  */
 
-const nullToString = ({ is }: FilterModel): string => `${isToString(is)}null`
+const nullToString = ({ is }: FilterModel): string => `${isToString(is)}null`;
 
 /**
  * Builds the expression of a 'between' range item
@@ -66,7 +66,7 @@ const betweenToString = ({ bounds, low, high, is }: any) =>
         high,
         ''
       )}${bounds[1]}`
-    : ''
+    : '';
 
 /**
  * Builds the filter expression for an =, <, >, <=, >= item
@@ -74,35 +74,35 @@ const betweenToString = ({ bounds, low, high, is }: any) =>
  */
 const valueToString = ({ is, type, value }: ValueProps) =>
   value
-    ?.map<string>((v) => `${isToString(is)}${type === '=' ? '' : type}${v}`)
-    .join(',') || ''
+    ?.map<string>(v => `${isToString(is)}${type === '=' ? '' : type}${v}`)
+    .join(',') || '';
 
 /**
  * Converts the 'is' value to string filter expression
  * 'is' is a prefix for the expresion value, blank for true and 'not ' for false
  */
-const isToString = (is = true, yes = '', no = 'not ') => `${is ? yes : no}`
+const isToString = (is = true, yes = '', no = 'not ') => `${is ? yes : no}`;
 
 const filterToStringMap: FilterItemToStringMapType = {
   null: nullToString,
   between: betweenToString,
   user_attribute: userAttributeToString,
-}
+};
 
 /**
  * Maps a FilterItem to a function for converting it to an expression
  */
 export const serializeNumberNode = (item: FilterModel): string => {
   const toStringFunction: FilterItemToStringFunction =
-    filterToStringMap[item.type] || valueToString
-  return toStringFunction?.(item) || ''
-}
+    filterToStringMap[item.type] || valueToString;
+  return toStringFunction?.(item) || '';
+};
 
 /**
  * Converts a list of items into its number expression value
  */
 const listToExpression = (items: FilterModel[]) =>
-  items.map(serializeNumberNode).filter(String).join(',')
+  items.map(serializeNumberNode).filter(String).join(',');
 
 /**
  * itemIsNotEmpty is to filter out empty nodes when
@@ -112,7 +112,7 @@ const removeEmptyItems = (items: FilterModel[]) =>
   items.filter(
     ({ type, value }) =>
       !(['=', '>', '<', '>=', '<='].indexOf(type) > -1 && isEmpty(value))
-  )
+  );
 
 /**
  * Adds fix for an even weirder case of bad sql generation with literal number equality
@@ -121,23 +121,24 @@ const removeEmptyItems = (items: FilterModel[]) =>
  */
 const addDuplicateNotNodeIfNeeded = (list: FilterModel[]): FilterModel[] => {
   // break up into OR and AND clauses
-  const [orClauses, andClauses] = partition(list, (item) => item.is)
+  const [orClauses, andClauses] = partition(list, item => item.is);
   // check for duplicate not condition
   if (
     andClauses.length === 1 &&
     // exlude case when an 'is not equal' clause contains multiple values since those will produce multiple not clauses
     !(
       andClauses[0].type === NumberTypes.EQUAL &&
+      Array.isArray(andClauses[0].value) &&
       andClauses[0].value?.length > 1
     ) &&
     orClauses.length >= 1 &&
-    orClauses.every((item) => item.type === '=')
+    orClauses.every(item => item.type === '=')
   ) {
     // duplicate the first not (AND) clause
-    return [...orClauses, ...andClauses, andClauses[0]]
+    return [...orClauses, ...andClauses, andClauses[0]];
   }
-  return list
-}
+  return list;
+};
 
 /**
  * Converts the AST to an array of FilterItems and then
@@ -148,4 +149,4 @@ export const numberToString = flow(
   removeEmptyItems,
   addDuplicateNotNodeIfNeeded,
   listToExpression
-)
+);

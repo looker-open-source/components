@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "je v rozsahu {{range}}"
+    "value": "je v rozsahu {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "není v rozsahu {{range}}"
+    "value": "není v rozsahu {{range}}",
+    "description": ""
   }
 }

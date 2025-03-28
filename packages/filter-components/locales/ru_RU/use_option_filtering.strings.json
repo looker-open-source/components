@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Нет значений"
+    "value": "Нет значений",
+    "description": ""
   },
   "No values match": {
-    "value": "Нет совпадающих значений"
+    "value": "Нет совпадающих значений",
+    "description": ""
   }
 }

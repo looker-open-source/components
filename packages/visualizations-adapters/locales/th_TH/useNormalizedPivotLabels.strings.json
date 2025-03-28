@@ -1,3 +1,6 @@
 {
-  "Row Total": "ยอดรวมของแถว"
+  "Row Total": {
+    "value": "ยอดรวมของแถว",
+    "description": ""
+  }
 }

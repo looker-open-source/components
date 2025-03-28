@@ -1,3 +1,6 @@
 {
-  "Tabs": "Faner"
+  "Tabs": {
+    "value": "Faner",
+    "description": ""
+  }
 }

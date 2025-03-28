@@ -1,44 +1,58 @@
 {
   "is": {
+    "description": "",
     "value": "次に一致"
   },
   "is any time": {
+    "description": "",
     "value": "随時"
   },
   "is before": {
+    "description": "",
     "value": "が指定日より前"
   },
   "is in range": {
+    "description": "",
     "value": "次の範囲内"
   },
   "is in the last": {
+    "description": "",
     "value": "直近"
   },
   "is in the month": {
+    "description": "",
     "value": "月"
   },
   "is in the year": {
+    "description": "",
     "value": "次の年"
   },
   "is next": {
+    "description": "",
     "value": "次の"
   },
   "is not null": {
+    "description": "",
     "value": "null ではない"
   },
   "is null": {
+    "description": "",
     "value": "null である"
   },
   "is on or after": {
+    "description": "",
     "value": "次の日付以降"
   },
   "is on the day": {
+    "description": "",
     "value": "当日"
   },
   "is previous": {
+    "description": "",
     "value": "前の"
   },
   "is this": {
+    "description": "",
     "value": "この"
   }
 }

@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Nėra verčių"
+    "value": "Nėra verčių",
+    "description": ""
   },
   "No values match": {
-    "value": "Nėra sutampančių verčių"
+    "value": "Nėra sutampančių verčių",
+    "description": ""
   }
 }

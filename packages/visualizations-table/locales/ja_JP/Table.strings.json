@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Shift キーを押しながらクリックすると、追加の列を並べ替えることができます",
-  "Sort ascending": "昇順に並べ替え",
-  "Sort descending": "降順に並べ替え",
-  "Totals": "合計"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "Shift キーを押しながらクリックすると、追加の列を並べ替えることができます"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "昇順に並べ替え"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "降順に並べ替え"
+  },
+  "Totals": {
+    "description": "",
+    "value": "合計"
+  }
 }

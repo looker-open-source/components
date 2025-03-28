@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Effacer les filtres",
-  "Filter List": "Filtrer la liste",
-  "bottom-start": "bottom-start"
+  "Clear Filters": {
+    "value": "Effacer les filtres",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filtrer la liste",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "bottom-start",
+    "description": ""
+  }
 }

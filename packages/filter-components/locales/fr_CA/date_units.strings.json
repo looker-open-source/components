@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "jour"
+    "value": "jour",
+    "description": ""
   },
   "days": {
-    "value": "jours"
+    "value": "jours",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "trimestre fiscal"
+    "value": "trimestre fiscal",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "trimestres fiscaux"
+    "value": "trimestres fiscaux",
+    "description": ""
   },
   "fiscal year": {
-    "value": "année fiscale"
+    "value": "année fiscale",
+    "description": ""
   },
   "fiscal years": {
-    "value": "années fiscales"
+    "value": "années fiscales",
+    "description": ""
   },
   "hour": {
-    "value": "heure"
+    "value": "heure",
+    "description": ""
   },
   "hours": {
-    "value": "heures"
+    "value": "heures",
+    "description": ""
   },
   "minute": {
-    "value": "minute"
+    "value": "minute",
+    "description": ""
   },
   "minutes": {
-    "value": "minutes"
+    "value": "minutes",
+    "description": ""
   },
   "month": {
-    "value": "mois"
+    "value": "mois",
+    "description": ""
   },
   "months": {
-    "value": "mois"
+    "value": "mois",
+    "description": ""
   },
   "quarter": {
-    "value": "trimestre"
+    "value": "trimestre",
+    "description": ""
   },
   "quarters": {
-    "value": "trimestres"
+    "value": "trimestres",
+    "description": ""
   },
   "second": {
-    "value": "seconde"
+    "value": "seconde",
+    "description": ""
   },
   "seconds": {
-    "value": "secondes"
+    "value": "secondes",
+    "description": ""
   },
   "week": {
-    "value": "semaine"
+    "value": "semaine",
+    "description": ""
   },
   "weeks": {
-    "value": "semaines"
+    "value": "semaines",
+    "description": ""
   },
   "year": {
-    "value": "année"
+    "value": "année",
+    "description": ""
   },
   "years": {
-    "value": "années"
+    "value": "années",
+    "description": ""
   }
 }

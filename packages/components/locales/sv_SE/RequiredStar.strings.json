@@ -1,3 +1,6 @@
 {
-  "required": "krävs"
+  "required": {
+    "value": "krävs",
+    "description": ""
+  }
 }

@@ -1,14 +1,18 @@
 {
   "feet": {
-    "value": "רגל (מידת אורך)"
+    "value": "רגל (מידת אורך)",
+    "description": ""
   },
   "kilometers": {
-    "value": "קילומטרים"
+    "value": "קילומטרים",
+    "description": ""
   },
   "meters": {
-    "value": "מטרים"
+    "value": "מטרים",
+    "description": ""
   },
   "miles": {
-    "value": "מייל (מידת מרחק)"
+    "value": "מייל (מידת מרחק)",
+    "description": ""
   }
 }

@@ -21,16 +21,17 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "date-fns": "2.24.0",
-    "i18next": "20.3.1",
-    "react-i18next": "11.8.15"
+    "date-fns": "^2.24.0",
+    "i18next": "^20.3.1",
+    "react-i18next": "^11.8.15"
   },
   "devDependencies": {
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
+    "@stryker-mutator/jest-runner": "8.2.6",
     "prettier": "2.8.2"
   },
   "eslintConfig": {

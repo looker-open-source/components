@@ -40,21 +40,16 @@ module.exports = {
     'plugin:react-hooks/recommended',
     'plugin:@looker/recommended',
   ],
-  ignorePatterns: ['/dist/**', '*.d.ts', '!.storybook', '/test/output/**'],
+  ignorePatterns: [
+    '/dist/**',
+    '*.d.ts',
+    '/test/output/**',
+    '/src/locales/**/*.ts',
+  ],
   overrides: [
-    {
-      extends: ['plugin:mdx/recommended'],
-      files: ['**/*.mdx', '**/stories/**'],
-      rules: {
-        'import/no-extraneous-dependencies': 'off',
-        'react/jsx-no-undef': 'off',
-      },
-    },
     {
       files: [
         '*.spec.*',
-        '*.stories.*',
-        '**/stories/**',
         '*.js',
         '**/__mocks__/**',
         '**/fixtures/**',
@@ -84,8 +79,6 @@ module.exports = {
               '@looker/jest-config',
               // Actually public, but private: true locally.
               '@looker/sdk',
-              // Required for running Storybook.
-              '@looker/storybook',
               // Required for tests.
               '@looker/test-utils',
             ],
@@ -93,6 +86,19 @@ module.exports = {
         ],
         'no-unused-expressions': 'off',
         'sort-keys-fix/sort-keys-fix': 'off',
+      },
+    },
+    {
+      extends: ['plugin:@looker/recommended'],
+      files: ['**/*.strings.json'],
+      rules: {
+        'no-irregular-whitespace': 'off',
+      },
+    },
+    {
+      files: ['**/.babelrc.*'],
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
       },
     },
   ],

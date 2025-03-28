@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Tøm felt"
+  "Clear Field": {
+    "value": "Tøm felt",
+    "description": ""
+  }
 }

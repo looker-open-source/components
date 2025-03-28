@@ -1,3 +1,6 @@
 {
-  "Tabs": "Separadores"
+  "Tabs": {
+    "value": "Separadores",
+    "description": ""
+  }
 }

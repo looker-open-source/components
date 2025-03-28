@@ -1,38 +1,50 @@
 {
   "April": {
+    "description": "",
     "value": "4 月"
   },
   "August": {
+    "description": "",
     "value": "8 月"
   },
   "December": {
+    "description": "",
     "value": "12 月"
   },
   "February": {
+    "description": "",
     "value": "2 月"
   },
   "January": {
+    "description": "",
     "value": "1 月"
   },
   "July": {
+    "description": "",
     "value": "7 月"
   },
   "June": {
+    "description": "",
     "value": "6 月"
   },
   "March": {
+    "description": "",
     "value": "3 月"
   },
   "May": {
+    "description": "",
     "value": "5 月"
   },
   "November": {
+    "description": "",
     "value": "11 月"
   },
   "October": {
+    "description": "",
     "value": "10 月"
   },
   "September": {
+    "description": "",
     "value": "9 月"
   }
 }

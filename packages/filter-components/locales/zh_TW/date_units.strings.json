@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "天"
   },
   "days": {
+    "description": "",
     "value": "天"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "會計季度"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "個會計季度"
   },
   "fiscal year": {
+    "description": "",
     "value": "會計年度"
   },
   "fiscal years": {
+    "description": "",
     "value": "個會計年度"
   },
   "hour": {
+    "description": "",
     "value": "小時"
   },
   "hours": {
+    "description": "",
     "value": "小時"
   },
   "minute": {
+    "description": "",
     "value": "分鐘"
   },
   "minutes": {
+    "description": "",
     "value": "分鐘"
   },
   "month": {
+    "description": "",
     "value": "個月"
   },
   "months": {
+    "description": "",
     "value": "個月"
   },
   "quarter": {
+    "description": "",
     "value": "季"
   },
   "quarters": {
+    "description": "",
     "value": "季"
   },
   "second": {
+    "description": "",
     "value": "秒"
   },
   "seconds": {
+    "description": "",
     "value": "秒"
   },
   "week": {
+    "description": "",
     "value": "週"
   },
   "weeks": {
+    "description": "",
     "value": "週"
   },
   "year": {
+    "description": "",
     "value": "年"
   },
   "years": {
+    "description": "",
     "value": "年"
   }
 }

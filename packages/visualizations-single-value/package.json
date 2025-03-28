@@ -24,18 +24,19 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/visualizations-adapters": "^1.0.3",
-    "numeral": "2.0.6"
+    "@looker/visualizations-adapters": "1.0.3",
+    "numeral": "^2.0.6"
   },
   "devDependencies": {
-    "@looker/babel-preset-styled-components": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
-    "@looker/stylelint-config": "*",
+    "@looker/babel-preset-react": "0.0.4",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/babel-preset-styled-components": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/components-test-utils": "1.5.27",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
+    "@looker/stylelint-config": "1.5.19",
     "@testing-library/react": "12.1.5",
     "@types/numeral": "2.0.2",
     "prettier": "2.8.2",
@@ -43,9 +44,8 @@
     "react-dom": "17.0.2"
   },
   "peerDependencies": {
-    "@looker/components": "1.4 - 5",
-    "react": "16.14.0 - 18",
-    "react-dom": "16.14.0 - 18",
+    "@looker/components": "5.0.3",
+    "react": ">=16.14.0",
     "styled-components": "^5.3.1"
   },
   "eslintConfig": {

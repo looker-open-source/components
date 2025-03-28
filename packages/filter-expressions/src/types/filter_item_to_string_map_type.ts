@@ -4,6 +4,6 @@
  */
 import type { FilterItemToStringFunction } from './filter_item_to_string_function';
 
-export interface FilterItemToStringMapType {
-  [name: string]: FilterItemToStringFunction;
+export interface FilterItemToStringMapType<T extends string = string> {
+  [name: string]: FilterItemToStringFunction | FilterItemToStringFunction<T>;
 }

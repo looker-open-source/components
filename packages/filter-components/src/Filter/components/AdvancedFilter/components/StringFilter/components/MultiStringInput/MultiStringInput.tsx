@@ -25,7 +25,7 @@
  */
 import type { ValidationMessageProps } from '@looker/components';
 import { InputChips, InputText, SelectMulti } from '@looker/components';
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterModel, StringFilterType } from '@looker/filter-expressions';
 import isArray from 'lodash/isArray';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
@@ -44,7 +44,7 @@ interface MultiStringInputProps extends PlacementProps {
   onChange?: (id?: string, props?: any) => void;
   onInputChange?: (value: string) => void;
   isLoading?: boolean;
-  item: FilterModel;
+  item: FilterModel<StringFilterType>;
   disableCreate?: boolean;
   suggestions?: string[];
   enumerations?: Option[];
@@ -87,7 +87,7 @@ export const MultiStringInputLayout = ({
       excludeValues: true,
       onInputChange,
       options,
-      value: item.value,
+      value: item.value || [],
     });
 
   const handleChange = (newValues?: string[]) => {

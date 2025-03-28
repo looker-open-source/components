@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "ימים חלפו"
+    "value": "ימים חלפו",
+    "description": ""
   },
   "days from now": {
-    "value": "ימים מעכשיו"
+    "value": "ימים מעכשיו",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "רבעון פיסקלי מעכשיו"
+    "value": "רבעון פיסקלי מעכשיו",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "רבעונים פיסקליים חלפו"
+    "value": "רבעונים פיסקליים חלפו",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "שנים פיסקליות חלפו"
+    "value": "שנים פיסקליות חלפו",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "שנים פיסקליות מעכשיו"
+    "value": "שנים פיסקליות מעכשיו",
+    "description": ""
   },
   "hours ago": {
-    "value": "שעות חלפו"
+    "value": "שעות חלפו",
+    "description": ""
   },
   "hours from now": {
-    "value": "שעות מעכשיו"
+    "value": "שעות מעכשיו",
+    "description": ""
   },
   "minutes ago": {
-    "value": "דקות חלפו"
+    "value": "דקות חלפו",
+    "description": ""
   },
   "minutes from now": {
-    "value": "דקות מעכשיו"
+    "value": "דקות מעכשיו",
+    "description": ""
   },
   "months ago": {
-    "value": "חודשים חלפו"
+    "value": "חודשים חלפו",
+    "description": ""
   },
   "months from now": {
-    "value": "חודשים מעכשיו"
+    "value": "חודשים מעכשיו",
+    "description": ""
   },
   "now": {
-    "value": "עכשיו"
+    "value": "עכשיו",
+    "description": ""
   },
   "quarters ago": {
-    "value": "רבעונים חלפו"
+    "value": "רבעונים חלפו",
+    "description": ""
   },
   "quarters from now": {
-    "value": "רבעונים מעכשיו"
+    "value": "רבעונים מעכשיו",
+    "description": ""
   },
   "seconds ago": {
-    "value": "שניות חלפו"
+    "value": "שניות חלפו",
+    "description": ""
   },
   "seconds from now": {
-    "value": "שניות מעכשיו"
+    "value": "שניות מעכשיו",
+    "description": ""
   },
   "weeks ago": {
-    "value": "שבועות חלפו"
+    "value": "שבועות חלפו",
+    "description": ""
   },
   "weeks from now": {
-    "value": "שבועות מעכשיו"
+    "value": "שבועות מעכשיו",
+    "description": ""
   },
   "years ago": {
-    "value": "שנים חלפו"
+    "value": "שנים חלפו",
+    "description": ""
   },
   "years from now": {
-    "value": "שנים מעכשיו"
+    "value": "שנים מעכשיו",
+    "description": ""
   }
 }

@@ -1,7 +1,22 @@
 {
-  "Apply": "החל",
-  "Cancel": "ביטול",
-  "Select All": "בחר הכול",
-  "Select None": "אל תבחר כלום",
-  "Select columns to display": "בחר עמודות להצגה"
+  "Apply": {
+    "value": "החל",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "ביטול",
+    "description": ""
+  },
+  "Select All": {
+    "value": "בחר הכול",
+    "description": ""
+  },
+  "Select None": {
+    "value": "אל תבחר כלום",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "בחר עמודות להצגה",
+    "description": ""
+  }
 }

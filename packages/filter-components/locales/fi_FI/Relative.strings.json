@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "sitten"
+    "value": "sitten",
+    "description": ""
   },
   "from now": {
-    "value": "tästä hetkestä"
+    "value": "tästä hetkestä",
+    "description": ""
   }
 }

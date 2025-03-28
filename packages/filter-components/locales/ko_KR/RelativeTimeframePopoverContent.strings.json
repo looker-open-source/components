@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "커스텀"
   },
   "Presets": {
+    "description": "",
     "value": "사전 설정"
   }
 }

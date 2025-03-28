@@ -23,21 +23,21 @@
  SOFTWARE.
 
  */
-import type { ILookmlModelExploreField } from '@looker/sdk'
+import type { ILookmlModelExploreField } from '@looker/sdk';
 import type {
   FilterASTNode,
   FilterItemToStringFunction,
   FilterModel,
   FilterExpressionType,
   UserAttributeWithValue,
-} from '../../types'
-import { hasMatchesAdvancedNode } from '../has_matches_advanced_node'
-import { hasUserAttributeNodeWithoutValue } from '../has_user_attribute_node_without_value'
-import { parseFilterExpression } from '../parse_filter_expression'
-import { inorderTraversal } from '../tree'
-import { typeToGrammar } from '../type_to_grammar'
-import i18next from 'i18next'
-const t = i18next.t.bind(i18next)
+} from '../../types';
+import { hasMatchesAdvancedNode } from '../has_matches_advanced_node';
+import { hasUserAttributeNodeWithoutValue } from '../has_user_attribute_node_without_value';
+import { parseFilterExpression } from '../parse_filter_expression';
+import { inorderTraversal } from '../tree';
+import { typeToGrammar } from '../type_to_grammar';
+import i18next from 'i18next';
+const t = i18next.t.bind(i18next);
 
 /**
  * Traverses ast and calls the describe function for every node
@@ -49,73 +49,73 @@ const treeToSummary = (
   filterType: FilterExpressionType,
   field?: ILookmlModelExploreField | null
 ): string => {
-  const orItems: string[] = []
-  const andItems: string[] = []
+  const orItems: string[] = [];
+  const andItems: string[] = [];
   inorderTraversal(root, (node: FilterASTNode) => {
-    const item = node as FilterModel
+    const item = node as FilterModel;
     if (item.type !== ',') {
-      ;(item.is ? orItems : andItems).push(describe(item, filterType, field))
+      (item.is ? orItems : andItems).push(describe(item, filterType, field));
     }
-  })
-  const resultOr = orItems ? orItems.join(' or ') : ''
-  const resultAnd = andItems ? andItems.join(' and ') : ''
-  let result = resultOr
-  result += resultOr && resultAnd ? ', and ' : ''
-  result += resultAnd
+  });
+  const resultOr = orItems ? orItems.join(' or ') : '';
+  const resultAnd = andItems ? andItems.join(' and ') : '';
+  let result = resultOr;
+  result += resultOr && resultAnd ? ', and ' : '';
+  result += resultAnd;
 
-  return result
-}
+  return result;
+};
 
 interface ISummaryOptions {
   /** The type of filter expression - number, string, etc. */
-  type: FilterExpressionType
+  type: FilterExpressionType;
   /** The current value being filtered */
-  expression?: string
+  expression?: string;
   /** User attributes to be considered */
-  userAttributes?: UserAttributeWithValue[]
+  userAttributes?: UserAttributeWithValue[];
   /** Field being filtered */
-  field?: ILookmlModelExploreField | null
+  field?: ILookmlModelExploreField | null;
   /** Filter is required if true; required fields must have a value */
-  required?: boolean
+  required?: boolean;
 }
 
-type ISummary = (o: ISummaryOptions) => string
+type ISummary = (o: ISummaryOptions) => string;
 
 /**
  * Builds a summary description for a filter expression
  */
-export const summary: ISummary = (props) => {
+export const summary: ISummary = props => {
   const {
     type,
     expression = '',
     userAttributes,
     field,
     required,
-  } = props as ISummaryOptions
+  } = props as ISummaryOptions;
 
   if (required && !expression) {
-    return t('Value required', { ns: 'summary' })
+    return t('Value required', { ns: 'summary' });
   }
 
-  const { describe, subTypes } = typeToGrammar(type)
-  const ast = parseFilterExpression(type, expression, userAttributes)
+  const { describe, subTypes } = typeToGrammar(type);
+  const ast = parseFilterExpression(type, expression, userAttributes);
 
   // Special case: user attribute should be displayed
   // as the name and a "(null)" text if it has no value
   if (hasUserAttributeNodeWithoutValue(ast)) {
-    const userAttribute = getUserAttributeMatchingAST(ast, userAttributes)
+    const userAttribute = getUserAttributeMatchingAST(ast, userAttributes);
     if (userAttribute) {
-      return `${userAttribute?.label} (null)`
+      return `${userAttribute?.label} (null)`;
     }
   }
 
-  const isMatchesAdvanced = hasMatchesAdvancedNode(subTypes)(ast)
+  const isMatchesAdvanced = hasMatchesAdvancedNode(subTypes)(ast);
   return isMatchesAdvanced
     ? expression
-    : treeToSummary(ast, describe, type, field)
-}
+    : treeToSummary(ast, describe, type, field);
+};
 
 const getUserAttributeMatchingAST = (
   { attributeName }: FilterASTNode,
   userAttributes?: UserAttributeWithValue[]
-) => userAttributes?.find((ua) => ua.name === attributeName)
+) => userAttributes?.find(ua => ua.name === attributeName);

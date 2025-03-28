@@ -31,11 +31,11 @@ const groupFields = (fields: ILookmlModelExploreField[] | undefined) => {
  * A shared hook for fetching the Field Groups associated with query ID.
  * Used for rendering filter options.
  *
- * @param id a numeric query id
+ * @param id query id
  * @returns field groups and api state
  */
 
-export const useFieldGroups = (id: number) => {
+export const useFieldGroups = (id: string) => {
   const { explore, ...rest } = useExplore(id);
   const { fields } = explore || ({} as ILookmlModelExplore);
 

@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Компоненту запиту не передано жодних дочірніх об’єктів",
-  "Query component received both dashboard and query props": "Компонент запиту отримав властивості як приладної дошки, так і запиту"
+  "No children passed to Query component": {
+    "value": "Компоненту запиту не передано жодних дочірніх об’єктів",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Компонент запиту отримав властивості як приладної дошки, так і запиту",
+    "description": ""
+  }
 }

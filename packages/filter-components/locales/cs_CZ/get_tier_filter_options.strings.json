@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "je"
+    "value": "je",
+    "description": ""
   },
   "is any value": {
-    "value": "má jakoukoliv hodnotu"
+    "value": "má jakoukoliv hodnotu",
+    "description": ""
   },
   "is not": {
-    "value": "není"
+    "value": "není",
+    "description": ""
   }
 }

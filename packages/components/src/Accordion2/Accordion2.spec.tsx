@@ -28,8 +28,17 @@ import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { fireEvent, screen } from '@testing-library/react';
 import { children, label, lorem } from '../fixtures/accordion';
+import { useToggle } from '../utils/useToggle';
 import { Accordion2 } from './Accordion2';
-import { Controlled } from './stories/index.stories';
+
+function Controlled() {
+  const { value, change } = useToggle(true);
+  return (
+    <Accordion2 isOpen={value} toggleOpen={change} label="See more">
+      {lorem}
+    </Accordion2>
+  );
+}
 
 const defaultProps = { children, label, lorem };
 

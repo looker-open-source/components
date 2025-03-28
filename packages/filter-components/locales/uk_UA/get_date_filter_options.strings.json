@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "є"
+    "value": "є",
+    "description": ""
   },
   "is any time": {
-    "value": "є будь-яким часом"
+    "value": "є будь-яким часом",
+    "description": ""
   },
   "is before": {
-    "value": "раніше"
+    "value": "раніше",
+    "description": ""
   },
   "is in range": {
-    "value": "у діапазоні"
+    "value": "у діапазоні",
+    "description": ""
   },
   "is in the last": {
-    "value": "за останні"
+    "value": "за останні",
+    "description": ""
   },
   "is in the month": {
-    "value": "станом на місяць"
+    "value": "станом на місяць",
+    "description": ""
   },
   "is in the year": {
-    "value": "станом на рік"
+    "value": "станом на рік",
+    "description": ""
   },
   "is next": {
-    "value": "у наступний"
+    "value": "у наступний",
+    "description": ""
   },
   "is not null": {
-    "value": "не має значення NULL"
+    "value": "не має значення NULL",
+    "description": ""
   },
   "is null": {
-    "value": "має значення NULL"
+    "value": "має значення NULL",
+    "description": ""
   },
   "is on or after": {
-    "value": "не раніше"
+    "value": "не раніше",
+    "description": ""
   },
   "is on the day": {
-    "value": "станом на день"
+    "value": "станом на день",
+    "description": ""
   },
   "is previous": {
-    "value": "у попередній"
+    "value": "у попередній",
+    "description": ""
   },
   "is this": {
-    "value": "у цей"
+    "value": "у цей",
+    "description": ""
   }
 }

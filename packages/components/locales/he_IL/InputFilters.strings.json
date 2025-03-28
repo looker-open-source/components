@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "נקה מסננים",
-  "Filter List": "רשימת מסננים",
-  "bottom-start": "התחלה מלמטה"
+  "Clear Filters": {
+    "value": "נקה מסננים",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "רשימת מסננים",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "התחלה מלמטה",
+    "description": ""
+  }
 }

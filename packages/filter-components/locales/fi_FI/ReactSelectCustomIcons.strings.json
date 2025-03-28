@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Tyhjennä kaikki"
+    "value": "Tyhjennä kaikki",
+    "description": ""
   },
   "Remove": {
-    "value": "Poista"
+    "value": "Poista",
+    "description": ""
   },
   "Toggle": {
-    "value": "Vaihda"
+    "value": "Vaihda",
+    "description": ""
   }
 }

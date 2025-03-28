@@ -1,4 +1,10 @@
 {
-  "End date": "終了日",
-  "Start date": "開始日"
+  "End date": {
+    "description": "",
+    "value": "終了日"
+  },
+  "Start date": {
+    "description": "",
+    "value": "開始日"
+  }
 }

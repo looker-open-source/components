@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "praėjusios dienos"
+    "value": "praėjusios dienos",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "praėję finansiniai ketvirčiai"
+    "value": "praėję finansiniai ketvirčiai",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "praėję finansiniai metai"
+    "value": "praėję finansiniai metai",
+    "description": ""
   },
   "complete hours": {
-    "value": "praėjusios valandos"
+    "value": "praėjusios valandos",
+    "description": ""
   },
   "complete minutes": {
-    "value": "praėjusios minutės"
+    "value": "praėjusios minutės",
+    "description": ""
   },
   "complete months": {
-    "value": "praėję mėnesiai"
+    "value": "praėję mėnesiai",
+    "description": ""
   },
   "complete quarters": {
-    "value": "praėję ketvirčiai"
+    "value": "praėję ketvirčiai",
+    "description": ""
   },
   "complete seconds": {
-    "value": "praėjusios sekundės"
+    "value": "praėjusios sekundės",
+    "description": ""
   },
   "complete weeks": {
-    "value": "praėjusios savaitės"
+    "value": "praėjusios savaitės",
+    "description": ""
   },
   "complete years": {
-    "value": "praėję metai"
+    "value": "praėję metai",
+    "description": ""
   }
 }

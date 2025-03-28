@@ -29,10 +29,7 @@ import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { TreeSelect } from './TreeSelect';
-import WithoutDropdown from './stories/WithoutDropdown';
-import Basic from './stories/Basic';
-import ShortcutTree from './stories/ShortcutTree';
-import Windowing from './stories/Windowing';
+import { Basic, ShortcutTree, Windowing, WithoutDropdown } from './fixtures';
 
 describe('TreeSelect', () => {
   test('without dropdown, clicking', () => {

@@ -1,3 +1,6 @@
 {
-  "Row Total": "Eilutės sumos"
+  "Row Total": {
+    "value": "Eilutės sumos",
+    "description": ""
+  }
 }

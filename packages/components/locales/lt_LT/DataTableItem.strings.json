@@ -1,3 +1,6 @@
 {
-  "Options": "Parinktys"
+  "Options": {
+    "value": "Parinktys",
+    "description": ""
+  }
 }

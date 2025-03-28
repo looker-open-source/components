@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "(제외)"
   },
   "inclusive": {
+    "description": "",
     "value": "[포함]"
   },
   "is": {
+    "description": "",
     "value": "다음과 일치:"
   },
   "is between": {
+    "description": "",
     "value": "다음 두 값 사이에 있음:"
   },
   "is greater": {
+    "description": "",
     "value": ">"
   },
   "is greater equal": {
+    "description": "",
     "value": ">="
   },
   "is less": {
+    "description": "",
     "value": "<"
   },
   "is less equal": {
+    "description": "",
     "value": "<="
   },
   "is not": {
+    "description": "",
     "value": "다음과 일치하지 않음:"
   },
   "is not between": {
+    "description": "",
     "value": "다음 두 값 사이에 있지 않음:"
   },
   "is not null": {
+    "description": "",
     "value": "null 아님"
   },
   "is null": {
+    "description": "",
     "value": "null"
   },
   "left exclusive": {
+    "description": "",
     "value": "(왼쪽 제외]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[오른쪽 제외)"
   }
 }

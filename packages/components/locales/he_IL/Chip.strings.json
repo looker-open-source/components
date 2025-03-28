@@ -1,3 +1,6 @@
 {
-  "Delete": "מחק"
+  "Delete": {
+    "value": "מחק",
+    "description": ""
+  }
 }

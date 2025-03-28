@@ -1,32 +1,42 @@
 {
   "Box": {
+    "description": "",
     "value": "ボックス"
   },
   "Circle": {
+    "description": "",
     "value": "円"
   },
   "Location": {
+    "description": "",
     "value": "場所"
   },
   "feet": {
+    "description": "",
     "value": "フィート"
   },
   "is anywhere": {
+    "description": "",
     "value": "任意の場所"
   },
   "is not null": {
+    "description": "",
     "value": "null ではない"
   },
   "is null": {
+    "description": "",
     "value": "null である"
   },
   "kilometers": {
+    "description": "",
     "value": "キロメートル"
   },
   "meters": {
+    "description": "",
     "value": "メートル"
   },
   "miles": {
+    "description": "",
     "value": "マイル"
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Nepavyko įkelti pasiūlymų"
+  "Error loading suggestions": {
+    "value": "Nepavyko įkelti pasiūlymų",
+    "description": ""
+  }
 }

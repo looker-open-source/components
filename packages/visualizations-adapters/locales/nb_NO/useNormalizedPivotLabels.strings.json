@@ -1,3 +1,6 @@
 {
-  "Row Total": "Radsum"
+  "Row Total": {
+    "value": "Radsum",
+    "description": ""
+  }
 }

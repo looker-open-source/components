@@ -1,3 +1,6 @@
 {
-  "until (before)": "fino al giorno (prima)"
+  "until (before)": {
+    "description": "",
+    "value": "fino al giorno (prima)"
+  }
 }

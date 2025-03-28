@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Lütfen şu biçimi kullanın: SS:DD"
+  "Please use format HHMM": {
+    "value": "Lütfen şu biçimi kullanın: SS:DD",
+    "description": ""
+  }
 }

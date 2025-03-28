@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "Virheellinen arvo"
+    "value": "Virheellinen arvo",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "Käyttäjäattribuutille ei ole asetettu arvoa"
+    "value": "Käyttäjäattribuutille ei ole asetettu arvoa",
+    "description": ""
   },
   "Selection required": {
-    "value": "Valinta tarvitaan"
+    "value": "Valinta tarvitaan",
+    "description": ""
   }
 }

@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(absoluut)"
+    "value": "(absoluut)",
+    "description": ""
   },
   "relative": {
-    "value": "(relatief)"
+    "value": "(relatief)",
+    "description": ""
   }
 }

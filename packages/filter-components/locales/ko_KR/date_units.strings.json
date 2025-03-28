@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "일"
   },
   "days": {
+    "description": "",
     "value": "일"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "회계 분기"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "회계 분기"
   },
   "fiscal year": {
+    "description": "",
     "value": "회계 연도"
   },
   "fiscal years": {
+    "description": "",
     "value": "회계 연도"
   },
   "hour": {
+    "description": "",
     "value": "시간"
   },
   "hours": {
+    "description": "",
     "value": "시간"
   },
   "minute": {
+    "description": "",
     "value": "분"
   },
   "minutes": {
+    "description": "",
     "value": "분"
   },
   "month": {
+    "description": "",
     "value": "월"
   },
   "months": {
+    "description": "",
     "value": "개월"
   },
   "quarter": {
+    "description": "",
     "value": "분기"
   },
   "quarters": {
+    "description": "",
     "value": "분기"
   },
   "second": {
+    "description": "",
     "value": "초"
   },
   "seconds": {
+    "description": "",
     "value": "초"
   },
   "week": {
+    "description": "",
     "value": "주"
   },
   "weeks": {
+    "description": "",
     "value": "주"
   },
   "year": {
+    "description": "",
     "value": "년"
   },
   "years": {
+    "description": "",
     "value": "년"
   }
 }

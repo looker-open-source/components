@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "datumbereik (van/tot) {{range}}"
+    "value": "datumbereik (van/tot) {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "buiten datumbereik (van/tot) {{range}}"
+    "value": "buiten datumbereik (van/tot) {{range}}",
+    "description": ""
   }
 }

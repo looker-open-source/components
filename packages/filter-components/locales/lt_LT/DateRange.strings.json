@@ -1,3 +1,6 @@
 {
-  "until (before)": "iki (prieš)"
+  "until (before)": {
+    "value": "iki (prieš)",
+    "description": ""
+  }
 }

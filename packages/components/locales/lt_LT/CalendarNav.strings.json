@@ -1,4 +1,10 @@
 {
-  "next month": "kitas mėnuo",
-  "previous month": "ankstesnis mėnuo"
+  "next month": {
+    "value": "kitas mėnuo",
+    "description": ""
+  },
+  "previous month": {
+    "value": "ankstesnis mėnuo",
+    "description": ""
+  }
 }

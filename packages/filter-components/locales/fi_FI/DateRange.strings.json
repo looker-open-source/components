@@ -1,3 +1,6 @@
 {
-  "until (before)": "ennen kuin (ennen)"
+  "until (before)": {
+    "value": "ennen kuin (ennen)",
+    "description": ""
+  }
 }

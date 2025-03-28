@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Kutu"
+    "value": "Kutu",
+    "description": ""
   },
   "Circle": {
-    "value": "Daire"
+    "value": "Daire",
+    "description": ""
   },
   "Location": {
-    "value": "Konum"
+    "value": "Konum",
+    "description": ""
   },
   "feet": {
-    "value": "feet"
+    "value": "feet",
+    "description": ""
   },
   "is anywhere": {
-    "value": "her yerde"
+    "value": "her yerde",
+    "description": ""
   },
   "is not null": {
-    "value": "değer içeriyor"
+    "value": "değer içeriyor",
+    "description": ""
   },
   "is null": {
-    "value": "değer içermiyor"
+    "value": "değer içermiyor",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometre"
+    "value": "kilometre",
+    "description": ""
   },
   "meters": {
-    "value": "metre"
+    "value": "metre",
+    "description": ""
   },
   "miles": {
-    "value": "mil"
+    "value": "mil",
+    "description": ""
   }
 }

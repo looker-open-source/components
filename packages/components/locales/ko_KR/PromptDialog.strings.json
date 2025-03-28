@@ -1,4 +1,10 @@
 {
-  "Cancel": "취소",
-  "Save": "저장"
+  "Cancel": {
+    "description": "",
+    "value": "취소"
+  },
+  "Save": {
+    "description": "",
+    "value": "저장"
+  }
 }

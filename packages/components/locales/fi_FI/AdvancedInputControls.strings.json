@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Tyhjennä kenttä"
+  "Clear Field": {
+    "value": "Tyhjennä kenttä",
+    "description": ""
+  }
 }

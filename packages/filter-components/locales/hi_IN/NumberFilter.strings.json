@@ -1,3 +1,6 @@
 {
-  "any value": "कोई भी मान"
+  "any value": {
+    "value": "कोई भी मान",
+    "description": ""
+  }
 }

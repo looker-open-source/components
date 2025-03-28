@@ -1,5 +1,6 @@
 {
   "a or b": {
+    "description": "",
     "value": "{{a}}或{{b}}"
   }
 }

@@ -1,5 +1,14 @@
 {
-  "close": "uždaryti",
-  "next year": "kiti metai",
-  "previous year": "ankstesni metai"
+  "close": {
+    "value": "uždaryti",
+    "description": ""
+  },
+  "next year": {
+    "value": "kiti metai",
+    "description": ""
+  },
+  "previous year": {
+    "value": "ankstesni metai",
+    "description": ""
+  }
 }

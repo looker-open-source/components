@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Shift + לחיצה למיון עמודות נוספות",
-  "Sort ascending": "מיון בסדר עולה",
-  "Sort descending": "מיון בסדר יורד",
-  "Totals": "סכומים"
+  "Shift + Click to sort additional columns": {
+    "value": "Shift + לחיצה למיון עמודות נוספות",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "מיון בסדר עולה",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "מיון בסדר יורד",
+    "description": ""
+  },
+  "Totals": {
+    "value": "סכומים",
+    "description": ""
+  }
 }

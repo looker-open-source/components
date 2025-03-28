@@ -1,3 +1,6 @@
 {
-  "until (before)": "直到 (早於)"
+  "until (before)": {
+    "description": "",
+    "value": "直到 (早於)"
+  }
 }

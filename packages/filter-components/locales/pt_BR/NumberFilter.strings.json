@@ -1,3 +1,6 @@
 {
-  "any value": "qualquer valor"
+  "any value": {
+    "description": "",
+    "value": "qualquer valor"
+  }
 }

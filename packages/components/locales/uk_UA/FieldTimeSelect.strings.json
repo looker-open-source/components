@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Використовуйте формат ГГ:ХХ"
+  "Please use format HHMM": {
+    "value": "Використовуйте формат ГГ:ХХ",
+    "description": ""
+  }
 }

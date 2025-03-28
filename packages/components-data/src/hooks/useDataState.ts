@@ -45,29 +45,29 @@ type QueryAttributes = {
 };
 
 export type DataStore = {
-  dashboardIdMap: Record<number, number>; // { DashboardID: QueryID }
-  slugIdMap: Record<string, number>; // { Slug: QueryID }
-  byId: Record<number, Partial<QueryAttributes>>;
+  dashboardIdMap: Record<string, string>; // { DashboardID: QueryID }
+  slugIdMap: Record<string, string>; // { Slug: QueryID }
+  byId: Record<string, Partial<QueryAttributes>>;
   modelExplore: Record<string, Record<string, ILookmlModelExplore>>; // { thelook: { orders: {... } }
 };
 
 type UpdateByDashboardID = {
   type: 'update_by_dashboard_id';
   payload: {
-    dashboardId: number;
-    id: number;
+    dashboardId: string;
+    id: string;
     queryInfo: Partial<QueryAttributes>;
   };
 };
 
 type UpdateBySlug = {
   type: 'update_by_slug';
-  payload: { slug: string; id: number; queryInfo: Partial<QueryAttributes> };
+  payload: { slug: string; id: string; queryInfo: Partial<QueryAttributes> };
 };
 
 type UpdateByID = {
   type: 'update_by_id';
-  payload: { id: number; queryInfo: Partial<QueryAttributes> };
+  payload: { id: string; queryInfo: Partial<QueryAttributes> };
 };
 
 type UpdateModelView = {
@@ -164,28 +164,28 @@ const useDataState = (initialState = defaultInitialState) => {
   const [{ dashboardIdMap, slugIdMap, byId, modelExplore }, dispatch] =
     useReducer(reducer, initialState);
 
-  const getIdFromDashboard = (dashboardId?: number) =>
+  const getIdFromDashboard = (dashboardId?: string) =>
     dashboardId && dashboardIdMap[dashboardId];
 
   const getIdFromSlug = (slug: string) => slugIdMap[slug];
 
   const getById = <K extends keyof QueryAttributes>(
-    id: number,
+    id: string,
     key: K
   ): Partial<QueryAttributes>[K] => byId[id]?.[key];
 
-  const setById = (id: number, queryInfo: Partial<QueryAttributes>) =>
+  const setById = (id: string, queryInfo: Partial<QueryAttributes>) =>
     dispatch({ payload: { id, queryInfo }, type: 'update_by_id' });
 
   const setBySlug = (
     slug: string,
-    id: number,
+    id: string,
     queryInfo: Partial<QueryAttributes>
   ) => dispatch({ payload: { id, queryInfo, slug }, type: 'update_by_slug' });
 
   const setByDashboardId = (
-    dashboardId: number,
-    queryId: number,
+    dashboardId: string,
+    queryId: string,
     queryInfo: Partial<QueryAttributes>
   ) => {
     dispatch({

@@ -1,4 +1,10 @@
 {
-  "Cancel": "Avbryt",
-  "Save": "Spara"
+  "Cancel": {
+    "value": "Avbryt",
+    "description": ""
+  },
+  "Save": {
+    "value": "Spara",
+    "description": ""
+  }
 }

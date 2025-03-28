@@ -1,3 +1,6 @@
 {
-  "Row Total": "Satır Toplamı"
+  "Row Total": {
+    "value": "Satır Toplamı",
+    "description": ""
+  }
 }

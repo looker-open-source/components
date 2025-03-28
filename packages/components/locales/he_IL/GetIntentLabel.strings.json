@@ -1,6 +1,18 @@
 {
-  "Error": "שגיאה",
-  "Inform": "הודע",
-  "Success": "הצלחה",
-  "Warning": "אזהרה"
+  "Error": {
+    "value": "שגיאה",
+    "description": ""
+  },
+  "Inform": {
+    "value": "הודע",
+    "description": ""
+  },
+  "Success": {
+    "value": "הצלחה",
+    "description": ""
+  },
+  "Warning": {
+    "value": "אזהרה",
+    "description": ""
+  }
 }

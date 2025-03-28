@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Riquadro"
+    "description": "",
+    "value": "Box"
   },
   "Circle": {
+    "description": "",
     "value": "Cerchio"
   },
   "Location": {
+    "description": "",
     "value": "Località"
   },
   "feet": {
+    "description": "",
     "value": "piedi"
   },
   "is anywhere": {
+    "description": "",
     "value": "è ovunque"
   },
   "is not null": {
+    "description": "",
     "value": "non è null"
   },
   "is null": {
+    "description": "",
     "value": "è null"
   },
   "kilometers": {
+    "description": "",
     "value": "chilometri"
   },
   "meters": {
+    "description": "",
     "value": "metri"
   },
   "miles": {
+    "description": "",
     "value": "miglia"
   }
 }

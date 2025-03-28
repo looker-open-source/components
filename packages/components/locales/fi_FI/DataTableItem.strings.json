@@ -1,3 +1,6 @@
 {
-  "Options": "Asetukset"
+  "Options": {
+    "value": "Asetukset",
+    "description": ""
+  }
 }

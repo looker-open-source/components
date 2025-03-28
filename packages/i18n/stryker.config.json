@@ -1,0 +1,9 @@
+{
+  "packageManager": "npm",
+  "reporters": ["html", "clear-text", "progress", "json"],
+  "testRunner": "jest",
+  "dryRunTimeoutMinutes": 15,
+  "concurrency": 10,
+  "timeoutMS": 600000,
+  "mutate": ["src/**/*.ts", "!src/**/*.spec.ts"]
+}

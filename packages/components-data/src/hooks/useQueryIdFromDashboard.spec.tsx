@@ -12,10 +12,10 @@ import { useQueryIdFromDashboard } from './useQueryIdFromDashboard';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  dashboardId?: number;
+  dashboardId?: string;
 };
 
-const TestComponent = ({ dashboardId = 1 }: TestComponentProps) => {
+const TestComponent = ({ dashboardId = '1' }: TestComponentProps) => {
   const response = useQueryIdFromDashboard(dashboardId);
   dataContainerListener(response);
   return null;
@@ -35,7 +35,7 @@ describe('useQueryIdFromDashboard', () => {
     await waitFor(() =>
       expect(dataContainerListener).toHaveBeenCalledWith(
         expect.objectContaining({
-          queryId: 126,
+          queryId: '126',
         })
       )
     );
@@ -47,12 +47,12 @@ describe('useQueryIdFromDashboard', () => {
       <ContextWrapper
         initialState={{
           byId: {},
-          dashboardIdMap: { 456: 789 },
+          dashboardIdMap: { '456': '789' },
           modelExplore: {},
           slugIdMap: {},
         }}
       >
-        <TestComponent dashboardId={456} />
+        <TestComponent dashboardId={'456'} />
       </ContextWrapper>
     );
 
@@ -60,7 +60,7 @@ describe('useQueryIdFromDashboard', () => {
       expect(dataContainerListener).toHaveBeenCalledWith({
         isOK: true,
         isPending: false,
-        queryId: 789,
+        queryId: '789',
       })
     );
 

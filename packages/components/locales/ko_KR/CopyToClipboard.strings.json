@@ -1,4 +1,10 @@
 {
-  "Copied": "복사됨",
-  "Copy to Clipboard": "클립보드로 복사"
+  "Copied": {
+    "description": "",
+    "value": "복사됨"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "클립보드로 복사"
+  }
 }

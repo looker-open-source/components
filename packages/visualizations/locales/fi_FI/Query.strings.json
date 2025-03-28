@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Yhtään lasta ei ole välitetty kyselykomponenttiin",
-  "Query component received both dashboard and query props": "Kyselykomponentti vastaanotti sekä hallintapaneeli- että kyselyominaisuuksia"
+  "No children passed to Query component": {
+    "value": "Yhtään lasta ei ole välitetty kyselykomponenttiin",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Kyselykomponentti vastaanotti sekä hallintapaneeli- että kyselyominaisuuksia",
+    "description": ""
+  }
 }

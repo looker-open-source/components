@@ -1,8 +1,10 @@
 {
   "AND": {
-    "value": "İLE"
+    "value": "İLE",
+    "description": ""
   },
   "OR": {
-    "value": "VEYA"
+    "value": "VEYA",
+    "description": ""
   }
 }

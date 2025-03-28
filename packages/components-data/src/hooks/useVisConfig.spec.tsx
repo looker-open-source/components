@@ -33,10 +33,10 @@ import { useVisConfig } from './useVisConfig';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  queryId?: number;
+  queryId?: string;
 };
 
-const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
+const TestComponent = ({ queryId = '1' }: TestComponentProps) => {
   const response = useVisConfig(queryId);
   dataContainerListener(response);
   return null;
@@ -71,7 +71,7 @@ describe('useVisConfig', () => {
       <ContextWrapper
         initialState={{
           byId: {
-            456: {
+            '456': {
               metadata: {
                 model: 'thelook',
                 view: 'orders',
@@ -84,7 +84,7 @@ describe('useVisConfig', () => {
           slugIdMap: {},
         }}
       >
-        <TestComponent queryId={456} />
+        <TestComponent queryId={'456'} />
       </ContextWrapper>
     );
 

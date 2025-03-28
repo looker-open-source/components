@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "day"
   },
   "days": {
+    "description": "",
     "value": "days"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "fiscal quarter"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "fiscal quarters"
   },
   "fiscal year": {
+    "description": "",
     "value": "fiscal year"
   },
   "fiscal years": {
+    "description": "",
     "value": "fiscal years"
   },
   "hour": {
+    "description": "",
     "value": "hour"
   },
   "hours": {
+    "description": "",
     "value": "hours"
   },
   "minute": {
+    "description": "",
     "value": "minute"
   },
   "minutes": {
+    "description": "",
     "value": "minutes"
   },
   "month": {
+    "description": "",
     "value": "month"
   },
   "months": {
+    "description": "",
     "value": "months"
   },
   "quarter": {
+    "description": "",
     "value": "quarter"
   },
   "quarters": {
+    "description": "",
     "value": "quarters"
   },
   "second": {
+    "description": "",
     "value": "second"
   },
   "seconds": {
+    "description": "",
     "value": "seconds"
   },
   "week": {
+    "description": "",
     "value": "week"
   },
   "weeks": {
+    "description": "",
     "value": "weeks"
   },
   "year": {
+    "description": "",
     "value": "year"
   },
   "years": {
+    "description": "",
     "value": "years"
   }
 }

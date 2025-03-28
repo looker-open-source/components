@@ -1,3 +1,6 @@
 {
-  "Close": "閉じる"
+  "Close": {
+    "description": "",
+    "value": "閉じる"
+  }
 }

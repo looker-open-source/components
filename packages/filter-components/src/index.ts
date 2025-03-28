@@ -19,7 +19,7 @@ export * from './utils';
 export * from './locales';
 // Proxy imports to `@looker/filter-expressions`
 export {
-  FilterExpressionType,
+  type FilterExpressionType,
   getExpressionType,
   getExpressionTypeFromField,
   summary,

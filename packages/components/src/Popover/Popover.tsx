@@ -84,7 +84,10 @@ export const Popover = forwardRef(
     const ref = useForkedRef(popoverRef, forwardedRef);
 
     if (isValidElement(children)) {
-      children = cloneElement(children, {
+      children = cloneElement<
+        React.HTMLAttributes<HTMLElement> & { ref: unknown },
+        HTMLElement
+      >(children as React.ReactHTMLElement<HTMLElement>, {
         ...restDomProps,
         onClick: mergeHandlers(onClick, children.props.onClick),
         ref,

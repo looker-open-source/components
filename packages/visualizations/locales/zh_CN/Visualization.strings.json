@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "目前不支持“日期”类型的测量",
-  "No chart found for type \"{{type}}\"": "找不到类型为“{{type}}”的图表"
+  "Measures of type 'date' are currently not supported": {
+    "description": "",
+    "value": "目前不支持“日期”类型的测量"
+  },
+  "No chart found for type \"{{type}}\"": {
+    "description": "",
+    "value": "找不到“{{type}}”类型的图表"
+  }
 }

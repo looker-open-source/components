@@ -1,65 +1,86 @@
 {
   "days ago": {
+    "description": "",
     "value": "일 전"
   },
   "days from now": {
+    "description": "",
     "value": "일 후"
   },
   "fiscal quarter from now": {
+    "description": "",
     "value": "회계 분기 후"
   },
   "fiscal quarters ago": {
+    "description": "",
     "value": "회계 분기 전"
   },
   "fiscal years ago": {
+    "description": "",
     "value": "회계 연도 전"
   },
   "fiscal years from now": {
+    "description": "",
     "value": "회계 연도 후"
   },
   "hours ago": {
+    "description": "",
     "value": "시간 전"
   },
   "hours from now": {
+    "description": "",
     "value": "시간 후"
   },
   "minutes ago": {
+    "description": "",
     "value": "분 전"
   },
   "minutes from now": {
+    "description": "",
     "value": "분 후"
   },
   "months ago": {
+    "description": "",
     "value": "개월 전"
   },
   "months from now": {
+    "description": "",
     "value": "개월 후"
   },
   "now": {
+    "description": "",
     "value": "지금"
   },
   "quarters ago": {
+    "description": "",
     "value": "분기 전"
   },
   "quarters from now": {
+    "description": "",
     "value": "분기 후"
   },
   "seconds ago": {
+    "description": "",
     "value": "초 전"
   },
   "seconds from now": {
+    "description": "",
     "value": "초 후"
   },
   "weeks ago": {
+    "description": "",
     "value": "주 전"
   },
   "weeks from now": {
+    "description": "",
     "value": "주 후"
   },
   "years ago": {
+    "description": "",
     "value": "년 전"
   },
   "years from now": {
+    "description": "",
     "value": "년 후"
   }
 }

@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "No hay campos coincidentes"
+    "description": "",
+    "value": "No se encontró ningún campo que coincida"
   },
   "Try Something Else": {
-    "value": "Pruebe con otro término de búsqueda o vuelva a empezar y amplíe cualquier Explore para ver los campos disponibles."
+    "description": "",
+    "value": "Prueba con otro término de búsqueda o vuelve a empezar y expande cualquier exploración para navegar por los campos disponibles."
   }
 }

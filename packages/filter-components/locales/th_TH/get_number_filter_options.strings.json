@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(ไม่รวม)"
+    "value": "(ไม่รวม)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[รวม]"
+    "value": "[รวม]",
+    "description": ""
   },
   "is": {
-    "value": "เป็น"
+    "value": "เป็น",
+    "description": ""
   },
   "is between": {
-    "value": "อยู่ระหว่าง"
+    "value": "อยู่ระหว่าง",
+    "description": ""
   },
   "is greater": {
-    "value": "เป็น >"
+    "value": "เป็น >",
+    "description": ""
   },
   "is greater equal": {
-    "value": "เป็น >="
+    "value": "เป็น >=",
+    "description": ""
   },
   "is less": {
-    "value": "เป็น <"
+    "value": "เป็น <",
+    "description": ""
   },
   "is less equal": {
-    "value": "เป็น <="
+    "value": "เป็น <=",
+    "description": ""
   },
   "is not": {
-    "value": "ไม่"
+    "value": "ไม่",
+    "description": ""
   },
   "is not between": {
-    "value": "ไม่อยู่ระหว่าง"
+    "value": "ไม่อยู่ระหว่าง",
+    "description": ""
   },
   "is not null": {
-    "value": "ไม่เป็นค่าว่าง"
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
   },
   "is null": {
-    "value": "เป็นค่าว่าง"
+    "value": "เป็นค่าว่าง",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(ไม่รวมซ้าย]"
+    "value": "(ไม่รวมซ้าย]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[ไม่รวมขวา)"
+    "value": "[ไม่รวมขวา)",
+    "description": ""
   }
 }

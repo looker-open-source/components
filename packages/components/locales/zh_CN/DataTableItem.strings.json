@@ -1,3 +1,6 @@
 {
-  "Options": "选项"
+  "Options": {
+    "description": "",
+    "value": "选项"
+  }
 }

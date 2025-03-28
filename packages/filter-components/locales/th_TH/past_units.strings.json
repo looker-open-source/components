@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "วันถ้วน"
+    "value": "วันถ้วน",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "ไตรมาสงบประมาณถ้วน"
+    "value": "ไตรมาสงบประมาณถ้วน",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "ปีงบประมาณถ้วน"
+    "value": "ปีงบประมาณถ้วน",
+    "description": ""
   },
   "complete hours": {
-    "value": "ชั่วโมงถ้วน"
+    "value": "ชั่วโมงถ้วน",
+    "description": ""
   },
   "complete minutes": {
-    "value": "นาทีถ้วน"
+    "value": "นาทีถ้วน",
+    "description": ""
   },
   "complete months": {
-    "value": "เดือนถ้วน"
+    "value": "เดือนถ้วน",
+    "description": ""
   },
   "complete quarters": {
-    "value": "ไตรมาสถ้วน"
+    "value": "ไตรมาสถ้วน",
+    "description": ""
   },
   "complete seconds": {
-    "value": "วินาทีถ้วน"
+    "value": "วินาทีถ้วน",
+    "description": ""
   },
   "complete weeks": {
-    "value": "สัปดาห์ถ้วน"
+    "value": "สัปดาห์ถ้วน",
+    "description": ""
   },
   "complete years": {
-    "value": "ปีถ้วน"
+    "value": "ปีถ้วน",
+    "description": ""
   }
 }

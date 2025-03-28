@@ -1,4 +1,10 @@
 {
-  "Next page": "Seuraava sivu",
-  "Previous page": "Edellinen sivu"
+  "Next page": {
+    "value": "Seuraava sivu",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "Edellinen sivu",
+    "description": ""
+  }
 }

@@ -15,7 +15,7 @@ describe('ProgressCircular', () => {
   });
 
   test('renders progress of 25', () => {
-    renderWithTheme(<ProgressCircular progress={25} />);
+    renderWithTheme(<ProgressCircular progress={0.25} />);
     expect(screen.queryByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '25'
@@ -34,7 +34,7 @@ describe('ProgressCircular', () => {
   });
 
   test('renders progress of 50', () => {
-    renderWithTheme(<ProgressCircular progress={50} />);
+    renderWithTheme(<ProgressCircular progress={0.5} />);
     expect(screen.queryByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '50'
@@ -42,7 +42,7 @@ describe('ProgressCircular', () => {
   });
 
   test('renders progress of 75', () => {
-    renderWithTheme(<ProgressCircular progress={75} />);
+    renderWithTheme(<ProgressCircular progress={0.75} />);
     expect(screen.queryByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '75'
@@ -50,7 +50,7 @@ describe('ProgressCircular', () => {
   });
 
   test('renders progress of 100', () => {
-    renderWithTheme(<ProgressCircular progress={100} />);
+    renderWithTheme(<ProgressCircular progress={1} />);
     expect(screen.queryByRole('progressbar')).toHaveAttribute(
       'aria-valuenow',
       '100'

@@ -25,7 +25,6 @@
  */
 
 import { useEffect, useMemo } from 'react';
-import { isNumeric } from '@looker/visualizations-adapters';
 import type { IQuery, IError } from '@looker/sdk';
 import type { SDKResponse, ISDKSuccessResponse } from '@looker/sdk-rtl';
 import useSWR from 'swr';
@@ -34,11 +33,11 @@ import { useSDK } from './useSDK';
 import { DataState } from './useDataState';
 
 /**
- * useQueryId is a hook for getting the numeric query id from a string slug
- * @param slugOrId can be either a string slug or numeric id
- * @returns the numeric id associated with the query and async request state
+ * useQueryId is a hook for getting the query id from a string slug
+ * @param slugOrId can be either a string slug or id
+ * @returns the id associated with the query and async request state
  */
-export const useQueryId = (slugOrId: string | number = '') => {
+export const useQueryId = (slugOrId = '') => {
   const sdk = useSDK();
   const { getIdFromSlug, setBySlug, getById } = DataState.useContainer();
 
@@ -60,14 +59,14 @@ export const useQueryId = (slugOrId: string | number = '') => {
    */
 
   const fetcher = async () => {
-    if (isNumeric(querySlug)) {
-      // Already have numeric Id; skip network request
+    if (!queryId) {
+      return await sdk.query_for_slug(querySlug);
+    } else if (querySlug) {
+      // Already have Id; skip network request
       return Promise.resolve({
         ok: true,
         value: { id: querySlug },
       }) as unknown as Promise<ISDKSuccessResponse<IQuery>>;
-    } else if (querySlug && !queryId) {
-      return await sdk.query_for_slug(querySlug);
     }
 
     return undefined;
@@ -92,8 +91,8 @@ export const useQueryId = (slugOrId: string | number = '') => {
 
     const draftQuery = { ...cachedQuery, ...SWRValue };
 
-    if (id && Number(id) !== queryId) {
-      setBySlug(querySlug, Number(id), { metadata: draftQuery });
+    if (id && id !== queryId) {
+      setBySlug(querySlug, id, { metadata: draftQuery });
     }
   }, [SWRData, queryId, querySlug, setBySlug, cachedQuery]);
 

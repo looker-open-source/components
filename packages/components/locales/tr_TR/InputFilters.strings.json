@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Filtreleri Temizle",
-  "Filter List": "Filtre Listesi",
-  "bottom-start": "alttan başlama"
+  "Clear Filters": {
+    "value": "Filtreleri Temizle",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filtre Listesi",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "alttan başlama",
+    "description": ""
+  }
 }

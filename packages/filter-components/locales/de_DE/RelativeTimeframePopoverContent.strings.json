@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "Benutzerdefiniert"
   },
   "Presets": {
+    "description": "",
     "value": "Voreinstellungen"
   }
 }

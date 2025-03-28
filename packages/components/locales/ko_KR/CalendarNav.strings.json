@@ -1,4 +1,10 @@
 {
-  "next month": "다음 달",
-  "previous month": "지난달"
+  "next month": {
+    "description": "",
+    "value": "다음 달"
+  },
+  "previous month": {
+    "description": "",
+    "value": "지난달"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "No Results": "Sonuç Yok"
+  "No Results": {
+    "value": "Sonuç Yok",
+    "description": ""
+  }
 }

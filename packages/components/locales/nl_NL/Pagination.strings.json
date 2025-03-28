@@ -1,7 +1,22 @@
 {
-  "First page of results": "Eerste pagina resultaten",
-  "Last page of results": "Laatste pagina resultaten",
-  "Next page of results": "Volgende pagina resultaten",
-  "Previous page of results": "Vorige pagina resultaten",
-  "of": "van"
+  "First page of results": {
+    "value": "Eerste pagina resultaten",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Laatste pagina resultaten",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Volgende pagina resultaten",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Vorige pagina resultaten",
+    "description": ""
+  },
+  "of": {
+    "value": "van",
+    "description": ""
+  }
 }

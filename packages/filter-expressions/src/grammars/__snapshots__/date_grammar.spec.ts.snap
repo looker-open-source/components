@@ -65,6 +65,18 @@ Object {
 }
 `;
 
+exports[`Date grammar can parse 2000 days 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "past",
+  "unit": "day",
+  "value": 2000,
+}
+`;
+
 exports[`Date grammar can parse 2018 1`] = `
 Object {
   "id": 1,
@@ -126,6 +138,18 @@ Object {
     "year": "2018",
   },
   "type": "range",
+}
+`;
+
+exports[`Date grammar can parse 50000 minutes 1`] = `
+Object {
+  "id": 1,
+  "is": true,
+  "left": undefined,
+  "right": undefined,
+  "type": "past",
+  "unit": "minute",
+  "value": 50000,
 }
 `;
 

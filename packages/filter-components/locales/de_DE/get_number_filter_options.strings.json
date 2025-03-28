@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "(ausschließlich)"
   },
   "inclusive": {
+    "description": "",
     "value": "[einschließlich]"
   },
   "is": {
+    "description": "",
     "value": "ist"
   },
   "is between": {
+    "description": "",
     "value": "liegt zwischen"
   },
   "is greater": {
+    "description": "",
     "value": "ist >"
   },
   "is greater equal": {
+    "description": "",
     "value": "ist >="
   },
   "is less": {
+    "description": "",
     "value": "ist <"
   },
   "is less equal": {
+    "description": "",
     "value": "ist <="
   },
   "is not": {
+    "description": "",
     "value": "ist nicht"
   },
   "is not between": {
+    "description": "",
     "value": "liegt nicht zwischen"
   },
   "is not null": {
+    "description": "",
     "value": "ist nicht null"
   },
   "is null": {
+    "description": "",
     "value": "ist null"
   },
   "left exclusive": {
+    "description": "",
     "value": "(links ausschließlich]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[rechts ausschließlich)"
   }
 }

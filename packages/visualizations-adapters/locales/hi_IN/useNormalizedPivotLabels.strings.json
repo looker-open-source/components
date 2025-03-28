@@ -1,3 +1,6 @@
 {
-  "Row Total": "कुल पंक्ति"
+  "Row Total": {
+    "value": "कुल पंक्ति",
+    "description": ""
+  }
 }

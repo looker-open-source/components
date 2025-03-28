@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
+    "description": "",
     "value": "{{coords1}} to {{coords2}}"
   },
   "distance unit from lat, lon": {
+    "description": "",
     "value": "{{distance}} {{unit}} from {{lat}}, {{lon}}"
   },
   "is anywhere": {
+    "description": "",
     "value": "is anywhere"
   },
   "is not null": {
+    "description": "",
     "value": "is not null"
   },
   "is null": {
+    "description": "",
     "value": "is null"
   },
   "lat degrees north": {
+    "description": "",
     "value": "{{lat}}°N"
   },
   "lat degrees south": {
+    "description": "",
     "value": "{{lat}}°S"
   },
   "lon degrees east": {
+    "description": "",
     "value": "{{lon}}°E"
   },
   "lon degrees west": {
+    "description": "",
     "value": "{{lon}}°W"
   }
 }

@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "按 Shift 键的同时点击鼠标可对其他列进行排序",
-  "Sort ascending": "升序排序",
-  "Sort descending": "降序排序",
-  "Totals": "合计"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "按 Shift 键的同时点击鼠标可对其他列进行排序"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "升序排序"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "降序排序"
+  },
+  "Totals": {
+    "description": "",
+    "value": "合计"
+  }
 }

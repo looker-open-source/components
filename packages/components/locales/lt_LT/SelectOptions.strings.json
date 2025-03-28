@@ -1,4 +1,10 @@
 {
-  "Loading": "Įkeliama",
-  "No options": "Parinkčių nėra"
+  "Loading": {
+    "value": "Įkeliama",
+    "description": ""
+  },
+  "No options": {
+    "value": "Parinkčių nėra",
+    "description": ""
+  }
 }

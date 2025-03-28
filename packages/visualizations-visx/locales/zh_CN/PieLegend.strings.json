@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "图例页面 {{page}}/{{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "description": "",
+    "value": "图例页面 {{page}}/{{totalPages}}"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Points sized by": "포인트 크기 기준"
+  "Points sized by": {
+    "description": "",
+    "value": "포인트 크기 기준"
+  }
 }

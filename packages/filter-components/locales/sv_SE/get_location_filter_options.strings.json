@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Ruta"
+    "value": "Ruta",
+    "description": ""
   },
   "Circle": {
-    "value": "Cirkel"
+    "value": "Cirkel",
+    "description": ""
   },
   "Location": {
-    "value": "Plats"
+    "value": "Plats",
+    "description": ""
   },
   "feet": {
-    "value": "fot"
+    "value": "fot",
+    "description": ""
   },
   "is anywhere": {
-    "value": "är var som helst"
+    "value": "är var som helst",
+    "description": ""
   },
   "is not null": {
-    "value": "är inte null"
+    "value": "är inte null",
+    "description": ""
   },
   "is null": {
-    "value": "är null"
+    "value": "är null",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometer"
+    "value": "kilometer",
+    "description": ""
   },
   "meters": {
-    "value": "meter"
+    "value": "meter",
+    "description": ""
   },
   "miles": {
-    "value": "miles"
+    "value": "miles",
+    "description": ""
   }
 }

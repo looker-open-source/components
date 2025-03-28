@@ -1,5 +1,14 @@
 {
-  "close": "закрити",
-  "next year": "наступний рік",
-  "previous year": "попередній рік"
+  "close": {
+    "value": "закрити",
+    "description": ""
+  },
+  "next year": {
+    "value": "наступний рік",
+    "description": ""
+  },
+  "previous year": {
+    "value": "попередній рік",
+    "description": ""
+  }
 }

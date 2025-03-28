@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "बॉक्स"
+    "value": "बॉक्स",
+    "description": ""
   },
   "Circle": {
-    "value": "वृत्त"
+    "value": "वृत्त",
+    "description": ""
   },
   "Location": {
-    "value": "लोकेशन"
+    "value": "लोकेशन",
+    "description": ""
   },
   "feet": {
-    "value": "फ़ीट"
+    "value": "फ़ीट",
+    "description": ""
   },
   "is anywhere": {
-    "value": "कहीं भी है"
+    "value": "कहीं भी है",
+    "description": ""
   },
   "is not null": {
-    "value": "नल नहीं है"
+    "value": "नल नहीं है",
+    "description": ""
   },
   "is null": {
-    "value": "नल है"
+    "value": "नल है",
+    "description": ""
   },
   "kilometers": {
-    "value": "किलोमीटर"
+    "value": "किलोमीटर",
+    "description": ""
   },
   "meters": {
-    "value": "मीटर"
+    "value": "मीटर",
+    "description": ""
   },
   "miles": {
-    "value": "मील"
+    "value": "मील",
+    "description": ""
   }
 }

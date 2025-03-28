@@ -1,3 +1,6 @@
 {
-  "Done": "Gereed"
+  "Done": {
+    "value": "Gereed",
+    "description": ""
+  }
 }

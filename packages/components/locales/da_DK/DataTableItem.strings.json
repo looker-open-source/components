@@ -1,3 +1,6 @@
 {
-  "Options": "Indstillinger"
+  "Options": {
+    "value": "Indstillinger",
+    "description": ""
+  }
 }

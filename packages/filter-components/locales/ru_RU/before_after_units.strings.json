@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "дн. назад"
+    "value": "дн. назад",
+    "description": ""
   },
   "days from now": {
-    "value": "дн. спустя"
+    "value": "дн. спустя",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "финанс. кварт. спустя"
+    "value": "финанс. кварт. спустя",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "финанс. кварт. назад"
+    "value": "финанс. кварт. назад",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "финанс. год(а)/лет назад"
+    "value": "финанс. год(а)/лет назад",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "финанс. год(а)/лет спустя"
+    "value": "финанс. год(а)/лет спустя",
+    "description": ""
   },
   "hours ago": {
-    "value": "ч назад"
+    "value": "ч назад",
+    "description": ""
   },
   "hours from now": {
-    "value": "ч спустя"
+    "value": "ч спустя",
+    "description": ""
   },
   "minutes ago": {
-    "value": "мин назад"
+    "value": "мин назад",
+    "description": ""
   },
   "minutes from now": {
-    "value": "мин спустя"
+    "value": "мин спустя",
+    "description": ""
   },
   "months ago": {
-    "value": "мес. назад"
+    "value": "мес. назад",
+    "description": ""
   },
   "months from now": {
-    "value": "мес. спустя"
+    "value": "мес. спустя",
+    "description": ""
   },
   "now": {
-    "value": "сейчас"
+    "value": "сейчас",
+    "description": ""
   },
   "quarters ago": {
-    "value": "кварт. назад"
+    "value": "кварт. назад",
+    "description": ""
   },
   "quarters from now": {
-    "value": "кварт. спустя"
+    "value": "кварт. спустя",
+    "description": ""
   },
   "seconds ago": {
-    "value": "сек. назад"
+    "value": "сек. назад",
+    "description": ""
   },
   "seconds from now": {
-    "value": "сек. спустя"
+    "value": "сек. спустя",
+    "description": ""
   },
   "weeks ago": {
-    "value": "нед. назад"
+    "value": "нед. назад",
+    "description": ""
   },
   "weeks from now": {
-    "value": "нед. спустя"
+    "value": "нед. спустя",
+    "description": ""
   },
   "years ago": {
-    "value": "год(а)/лет назад"
+    "value": "год(а)/лет назад",
+    "description": ""
   },
   "years from now": {
-    "value": "год(а)/лет спустя"
+    "value": "год(а)/лет спустя",
+    "description": ""
   }
 }

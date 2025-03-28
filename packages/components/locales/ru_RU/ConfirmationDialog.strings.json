@@ -1,4 +1,10 @@
 {
-  "Cancel": "Отмена",
-  "Confirm": "Подтвердить"
+  "Cancel": {
+    "value": "Отмена",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Подтвердить",
+    "description": ""
+  }
 }

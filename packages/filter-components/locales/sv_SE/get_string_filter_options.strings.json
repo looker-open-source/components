@@ -1,14 +1,50 @@
 {
-  "contains": "innehåller",
-  "doesnt contain": "innehåller inte",
-  "doesnt end with": "slutar inte med",
-  "doesnt start with": "börjar inte med",
-  "ends with": "slutar med",
-  "is": "är",
-  "is blank": "är tom",
-  "is not": "är inte",
-  "is not blank": "är inte tom",
-  "is not null": "är inte null",
-  "is null": "är null",
-  "starts with": "börjar med"
+  "contains": {
+    "value": "innehåller",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "innehåller inte",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "slutar inte med",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "börjar inte med",
+    "description": ""
+  },
+  "ends with": {
+    "value": "slutar med",
+    "description": ""
+  },
+  "is": {
+    "value": "är",
+    "description": ""
+  },
+  "is blank": {
+    "value": "är tom",
+    "description": ""
+  },
+  "is not": {
+    "value": "är inte",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "är inte tom",
+    "description": ""
+  },
+  "is not null": {
+    "value": "är inte null",
+    "description": ""
+  },
+  "is null": {
+    "value": "är null",
+    "description": ""
+  },
+  "starts with": {
+    "value": "börjar med",
+    "description": ""
+  }
 }

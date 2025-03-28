@@ -1,14 +1,50 @@
 {
-  "contains": "містить",
-  "doesnt contain": "не містить",
-  "doesnt end with": "не закінчується на",
-  "doesnt start with": "не починається з",
-  "ends with": "закінчується на",
-  "is": "є",
-  "is blank": "пусте",
-  "is not": "не є",
-  "is not blank": "не пусте",
-  "is not null": "не має значення NULL",
-  "is null": "має значення NULL",
-  "starts with": "починається з"
+  "contains": {
+    "value": "містить",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "не містить",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "не закінчується на",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "не починається з",
+    "description": ""
+  },
+  "ends with": {
+    "value": "закінчується на",
+    "description": ""
+  },
+  "is": {
+    "value": "є",
+    "description": ""
+  },
+  "is blank": {
+    "value": "пусте",
+    "description": ""
+  },
+  "is not": {
+    "value": "не є",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "не пусте",
+    "description": ""
+  },
+  "is not null": {
+    "value": "не має значення NULL",
+    "description": ""
+  },
+  "is null": {
+    "value": "має значення NULL",
+    "description": ""
+  },
+  "starts with": {
+    "value": "починається з",
+    "description": ""
+  }
 }

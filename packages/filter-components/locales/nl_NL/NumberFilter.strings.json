@@ -1,3 +1,6 @@
 {
-  "any value": "elke waarde"
+  "any value": {
+    "value": "elke waarde",
+    "description": ""
+  }
 }

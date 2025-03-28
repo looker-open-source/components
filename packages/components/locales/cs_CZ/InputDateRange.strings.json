@@ -1,4 +1,10 @@
 {
-  "End date": "Datum ukončení",
-  "Start date": "Datum zahájení"
+  "End date": {
+    "value": "Datum ukončení",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Datum zahájení",
+    "description": ""
+  }
 }

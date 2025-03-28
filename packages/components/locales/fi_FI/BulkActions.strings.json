@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Kaikki {{pageCount}} näytettyä kohdetta valittu",
-  "AllTotalCountSelected": "Kaikki {{totalCount}} kohdetta valittu",
-  "Bulk Actions": "Joukkotoiminnot",
-  "Clear Selection": "Tyhjennä valinta",
-  "SelectAllCountResults": "Valitse kaikki {{totalCount}} tulosta",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}}/{{pageCount}} näytettyä kohdetta valittu"
+  "AllPageCountDisplayedSelected": {
+    "value": "Kaikki {{pageCount}} näytettyä kohdetta valittu",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Kaikki {{totalCount}} kohdetta valittu",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Joukkotoiminnot",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Tyhjennä valinta",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Valitse kaikki {{totalCount}} tulosta",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}}/{{pageCount}} näytettyä kohdetta valittu",
+    "description": ""
+  }
 }

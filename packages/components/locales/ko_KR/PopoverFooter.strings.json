@@ -1,3 +1,6 @@
 {
-  "Done": "완료"
+  "Done": {
+    "description": "",
+    "value": "완료"
+  }
 }

@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Stisknutím Shift a současným kliknutím lze seřadit další sloupce",
-  "Sort ascending": "Seřadit vzestupně",
-  "Sort descending": "Seřadit sestupně",
-  "Totals": "Součty"
+  "Shift + Click to sort additional columns": {
+    "value": "Stisknutím Shift a současným kliknutím lze seřadit další sloupce",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Seřadit vzestupně",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Seřadit sestupně",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Součty",
+    "description": ""
+  }
 }

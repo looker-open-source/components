@@ -1,14 +1,18 @@
 {
   "feet": {
-    "value": "pėdų"
+    "value": "pėdų",
+    "description": ""
   },
   "kilometers": {
-    "value": "km"
+    "value": "km",
+    "description": ""
   },
   "meters": {
-    "value": "m"
+    "value": "m",
+    "description": ""
   },
   "miles": {
-    "value": "mylių"
+    "value": "mylių",
+    "description": ""
   }
 }

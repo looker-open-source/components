@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "खाली है"
+    "value": "खाली है",
+    "description": ""
   },
   "contains value": {
-    "value": "{{value}} शामिल है"
+    "value": "{{value}} शामिल है",
+    "description": ""
   },
   "does not contain value": {
-    "value": "{{value}} शामिल नहीं है"
+    "value": "{{value}} शामिल नहीं है",
+    "description": ""
   },
   "does not end with value": {
-    "value": "{{value}} के साथ समाप्त नहीं होता"
+    "value": "{{value}} के साथ समाप्त नहीं होता",
+    "description": ""
   },
   "does not start with value": {
-    "value": "{{value}} से शुरू नहीं होता है"
+    "value": "{{value}} से शुरू नहीं होता है",
+    "description": ""
   },
   "ends with value": {
-    "value": "{{value}} पर समाप्त होता है"
+    "value": "{{value}} पर समाप्त होता है",
+    "description": ""
   },
   "starts with value": {
-    "value": "{{value}} से शुरू होता है"
+    "value": "{{value}} से शुरू होता है",
+    "description": ""
   }
 }

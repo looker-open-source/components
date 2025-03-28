@@ -203,28 +203,20 @@ const SliderInput = styled.input.attrs(() => ({
   left: 8px;
   margin: 0;
   position: relative;
+  // Safari <= 15.3
   -webkit-appearance: none; /* stylelint-disable-line */
+  appearance: none;
   width: calc(100% - 16px);
 
   &::-webkit-slider-thumb {
+    // Safari <= 15.3
     -webkit-appearance: none; /* stylelint-disable-line */
+    appearance: none;
     ${sliderThumbCss}
   }
 
   &::-moz-range-thumb {
     ${sliderThumbCss}
-  }
-
-  &::-ms-thumb {
-    ${sliderThumbCss}
-  }
-
-  &::-ms-track {
-    background: transparent;
-    border-color: transparent;
-    color: transparent;
-    cursor: pointer;
-    width: 100%;
   }
 
   &::-moz-focus-outer {

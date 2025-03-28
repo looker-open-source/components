@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Error al cargar las sugerencias"
+  "Error loading suggestions": {
+    "description": "",
+    "value": "Se produjo un error mientras se cargaban las sugerencias"
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Copied": "ההעתקה בוצעה",
-  "Copy to Clipboard": "העתק ללוח ההדבקות"
+  "Copied": {
+    "value": "ההעתקה בוצעה",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "העתק ללוח ההדבקות",
+    "description": ""
+  }
 }

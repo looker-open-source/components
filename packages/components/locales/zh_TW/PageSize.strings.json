@@ -1,4 +1,10 @@
 {
-  "Display": "顯示",
-  "of": "/"
+  "Display": {
+    "description": "",
+    "value": "顯示"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

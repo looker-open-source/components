@@ -1,3 +1,6 @@
 {
-  "No Results": "一致する結果はありません"
+  "No Results": {
+    "description": "",
+    "value": "一致する結果はありません"
+  }
 }

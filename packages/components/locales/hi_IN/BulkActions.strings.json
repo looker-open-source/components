@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "सभी {{pageCount}} दिखाई गई वस्तुएँ चुनी गई",
-  "AllTotalCountSelected": "सभी {{totalCount}} वस्तुएँ चुनी गई",
-  "Bulk Actions": "बल्क क्रियाएँ",
-  "Clear Selection": "चयन साफ़ करें",
-  "SelectAllCountResults": "सभी {{totalCount}} परिणाम चुनें",
-  "SelectedCountOfTotalDisplayed": "{{pageCount}} के {{selectedItemCount}} दिखाई गई वस्तुएँ चुनी गई"
+  "AllPageCountDisplayedSelected": {
+    "value": "सभी {{pageCount}} दिखाई गई वस्तुएँ चुनी गई",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "सभी {{totalCount}} वस्तुएँ चुनी गई",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "बल्क क्रियाएँ",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "चयन साफ़ करें",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "सभी {{totalCount}} परिणाम चुनें",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{pageCount}} के {{selectedItemCount}} दिखाई गई वस्तुएँ चुनी गई",
+    "description": ""
+  }
 }

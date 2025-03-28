@@ -36,7 +36,9 @@ module.exports = {
         const { packages } = getPackagesSync(process.cwd());
 
         return {
-          'JSONProperty[key.value=/ependencies$/] JSONProperty'(node) {
+          'JSONProperty[key.value=/(d|devD|peerD)ependencies$/] JSONProperty'(
+            node
+          ) {
             const dependency = node.key.value;
 
             for (const { packageJson } of packages) {

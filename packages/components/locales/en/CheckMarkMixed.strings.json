@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Check Mark Mixed"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "Check Mark Mixed"
+  }
 }

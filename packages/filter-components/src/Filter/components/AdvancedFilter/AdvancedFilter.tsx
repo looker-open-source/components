@@ -74,7 +74,7 @@ export const AdvancedFilter = ({
     }
   };
 
-  const FilterComponent = typeToComponent(expressionType);
+  const FilterComponent = typeToComponent(expressionType, field);
   if (!FilterComponent) return null;
 
   const items: FilterModel[] = treeToList(ast || {});

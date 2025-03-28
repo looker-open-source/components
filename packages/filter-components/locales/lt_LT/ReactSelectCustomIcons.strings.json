@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Valyti visus"
+    "value": "Valyti visus",
+    "description": ""
   },
   "Remove": {
-    "value": "Pašalinti"
+    "value": "Pašalinti",
+    "description": ""
   },
   "Toggle": {
-    "value": "Perjungti"
+    "value": "Perjungti",
+    "description": ""
   }
 }

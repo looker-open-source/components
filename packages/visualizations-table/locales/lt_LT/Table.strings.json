@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "„Shift + Click“, jei norite rūšiuoti papildomus stulpelius",
-  "Sort ascending": "Didėjančia tvarka",
-  "Sort descending": "Mažėjančia tvarka",
-  "Totals": "Sumos"
+  "Shift + Click to sort additional columns": {
+    "value": "„Shift + Click“, jei norite rūšiuoti papildomus stulpelius",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Didėjančia tvarka",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Mažėjančia tvarka",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Sumos",
+    "description": ""
+  }
 }

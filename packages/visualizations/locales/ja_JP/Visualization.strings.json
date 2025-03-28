@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "現在、「date」タイプの measure には対応していません",
-  "No chart found for type \"{{type}}\"": "タイプ「{{type}}」のチャートが見つかりません"
+  "Measures of type 'date' are currently not supported": {
+    "description": "",
+    "value": "現在、「date」タイプの measure には対応していません"
+  },
+  "No chart found for type \"{{type}}\"": {
+    "description": "",
+    "value": "タイプ「{{type}}」のグラフは見つかりませんでした"
+  }
 }

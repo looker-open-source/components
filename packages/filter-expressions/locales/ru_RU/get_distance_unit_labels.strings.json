@@ -1,14 +1,18 @@
 {
   "feet": {
-    "value": "фут(а/ов)"
+    "value": "фут(а/ов)",
+    "description": ""
   },
   "kilometers": {
-    "value": "км"
+    "value": "км",
+    "description": ""
   },
   "meters": {
-    "value": "м"
+    "value": "м",
+    "description": ""
   },
   "miles": {
-    "value": "миль(и)"
+    "value": "миль(и)",
+    "description": ""
   }
 }

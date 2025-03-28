@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Measures of type 'date' are currently not supported",
-  "No chart found for type \"{{type}}\"": "No chart found for type \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "description": "",
+    "value": "Measures of type 'date' are currently not supported"
+  },
+  "No chart found for type \"{{type}}\"": {
+    "description": "",
+    "value": "No chart found for type \"{{type}}\""
+  }
 }

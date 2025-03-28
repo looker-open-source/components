@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "סימני ביקורת מעורבים"
+  "Check Mark Mixed": {
+    "value": "סימני ביקורת מעורבים",
+    "description": ""
+  }
 }

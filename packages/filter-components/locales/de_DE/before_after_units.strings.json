@@ -1,65 +1,86 @@
 {
   "days ago": {
+    "description": "",
     "value": "Tage zuvor"
   },
   "days from now": {
+    "description": "",
     "value": "Tage ab jetzt"
   },
   "fiscal quarter from now": {
+    "description": "",
     "value": "Geschäftsquartal ab jetzt"
   },
   "fiscal quarters ago": {
+    "description": "",
     "value": "Geschäftsquartale zuvor"
   },
   "fiscal years ago": {
+    "description": "",
     "value": "Geschäftsjahre zuvor"
   },
   "fiscal years from now": {
+    "description": "",
     "value": "Geschäftsjahre ab jetzt"
   },
   "hours ago": {
+    "description": "",
     "value": "Stunden zuvor"
   },
   "hours from now": {
+    "description": "",
     "value": "Stunden ab jetzt"
   },
   "minutes ago": {
+    "description": "",
     "value": "Minuten zuvor"
   },
   "minutes from now": {
+    "description": "",
     "value": "Minuten ab jetzt"
   },
   "months ago": {
+    "description": "",
     "value": "Monate zuvor"
   },
   "months from now": {
+    "description": "",
     "value": "Monate ab jetzt"
   },
   "now": {
+    "description": "",
     "value": "jetzt"
   },
   "quarters ago": {
+    "description": "",
     "value": "Quartale zuvor"
   },
   "quarters from now": {
+    "description": "",
     "value": "Quartale ab jetzt"
   },
   "seconds ago": {
+    "description": "",
     "value": "Sekunden zuvor"
   },
   "seconds from now": {
+    "description": "",
     "value": "Sekunden ab jetzt"
   },
   "weeks ago": {
+    "description": "",
     "value": "Wochen zuvor"
   },
   "weeks from now": {
+    "description": "",
     "value": "Wochen ab jetzt"
   },
   "years ago": {
+    "description": "",
     "value": "Jahre zuvor"
   },
   "years from now": {
+    "description": "",
     "value": "Jahre ab jetzt"
   }
 }

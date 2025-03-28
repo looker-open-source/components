@@ -1,3 +1,6 @@
 {
-  "Tabs": "탭"
+  "Tabs": {
+    "description": "",
+    "value": "탭"
+  }
 }

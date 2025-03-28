@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Додати"
+    "value": "Додати",
+    "description": ""
   },
   "Remove": {
-    "value": "Вилучити"
+    "value": "Вилучити",
+    "description": ""
   }
 }

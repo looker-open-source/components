@@ -4,7 +4,7 @@
  */
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterModel, TierFilterType } from '@looker/filter-expressions';
 import React from 'react';
 import { ParamFilter } from './ParamFilter';
 
@@ -31,7 +31,7 @@ describe('ParamFilter tests', () => {
           {
             id: 1,
             value: ['first'],
-          } as unknown as FilterModel
+          } as unknown as FilterModel<TierFilterType>
         }
         enumerations={enumerations}
       />

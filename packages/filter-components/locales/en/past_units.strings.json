@@ -1,32 +1,42 @@
 {
   "complete days": {
+    "description": "",
     "value": "complete days"
   },
   "complete fiscal quarters": {
+    "description": "",
     "value": "complete fiscal quarters"
   },
   "complete fiscal years": {
+    "description": "",
     "value": "complete fiscal years"
   },
   "complete hours": {
+    "description": "",
     "value": "complete hours"
   },
   "complete minutes": {
+    "description": "",
     "value": "complete minutes"
   },
   "complete months": {
+    "description": "",
     "value": "complete months"
   },
   "complete quarters": {
+    "description": "",
     "value": "complete quarters"
   },
   "complete seconds": {
+    "description": "",
     "value": "complete seconds"
   },
   "complete weeks": {
+    "description": "",
     "value": "complete weeks"
   },
   "complete years": {
+    "description": "",
     "value": "complete years"
   }
 }

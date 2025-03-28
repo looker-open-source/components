@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} से लेकर {{coords2}} तक"
+    "value": "{{coords1}} से लेकर {{coords2}} तक",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{lat}} से {{distance}} {{unit}}, {{lon}}"
+    "value": "{{lat}} से {{distance}} {{unit}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "कहीं भी है"
+    "value": "कहीं भी है",
+    "description": ""
   },
   "is not null": {
-    "value": "नल नहीं है"
+    "value": "नल नहीं है",
+    "description": ""
   },
   "is null": {
-    "value": "नल है"
+    "value": "नल है",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°उत्तर"
+    "value": "{{lat}}°उत्तर",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°दक्षिण"
+    "value": "{{lat}}°दक्षिण",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°पूर्व"
+    "value": "{{lon}}°पूर्व",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°पश्चिम"
+    "value": "{{lon}}°पश्चिम",
+    "description": ""
   }
 }

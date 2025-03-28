@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " полн."
+    "value": " полн.",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "назад"
+    "value": "назад",
+    "description": ""
   },
   "from now": {
-    "value": "спустя"
+    "value": "спустя",
+    "description": ""
   },
   "is any time": {
-    "value": "любое значение времени"
+    "value": "любое значение времени",
+    "description": ""
   },
   "is before": {
-    "value": "до даты"
+    "value": "до даты",
+    "description": ""
   },
   "is day": {
-    "value": "между {{day}}"
+    "value": "между {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "с {{dateTimeStart}} до {{dateTimeEnd}}"
+    "value": "с {{dateTimeStart}} до {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "в {{month}} {{year}}"
+    "value": "в {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "в последнем {{describeInterval}}"
+    "value": "в последнем {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "в {{year}} году"
+    "value": "в {{year}} году",
+    "description": ""
   },
   "is interval ago": {
-    "value": "{{interval}} назад"
+    "value": "{{interval}} назад",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "{{intervalStart}} {{intervalType}} для {{intervalEnd}}"
+    "value": "{{intervalStart}} {{intervalType}} для {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "не является нулевым значением"
+    "value": "не является нулевым значением",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "приходится на дату {{dateTime}}"
+    "value": "приходится на дату {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "в указанную дату или после нее"
+    "value": "в указанную дату или после нее",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "в предыдущем {{unitLabel}}"
+    "value": "в предыдущем {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "является {{type}} {{unitLabel}}"
+    "value": "является {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "далее"
+    "value": "далее",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} сейчас"
+    "value": "{{prefix}} сейчас",
+    "description": ""
   },
   "this": {
-    "value": "текущий"
+    "value": "текущий",
+    "description": ""
   },
-  "this startInterval to endInterval": "от {{startInterval}} до {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "от {{startInterval}} до {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

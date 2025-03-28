@@ -1,3 +1,6 @@
 {
-  "Clear Field": "ล้างฟิลด์"
+  "Clear Field": {
+    "value": "ล้างฟิลด์",
+    "description": ""
+  }
 }

@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "dager siden"
+    "value": "dager siden",
+    "description": ""
   },
   "days from now": {
-    "value": "dager fra nå"
+    "value": "dager fra nå",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "regnskapskvartal fra nå"
+    "value": "regnskapskvartal fra nå",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "regnskapskvartaler siden"
+    "value": "regnskapskvartaler siden",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "regnskapsår siden"
+    "value": "regnskapsår siden",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "regnskapsår fra nå"
+    "value": "regnskapsår fra nå",
+    "description": ""
   },
   "hours ago": {
-    "value": "timer siden"
+    "value": "timer siden",
+    "description": ""
   },
   "hours from now": {
-    "value": "timer fra nå"
+    "value": "timer fra nå",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minutter siden"
+    "value": "minutter siden",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minutter fra nå"
+    "value": "minutter fra nå",
+    "description": ""
   },
   "months ago": {
-    "value": "måneder siden"
+    "value": "måneder siden",
+    "description": ""
   },
   "months from now": {
-    "value": "måneder fra nå"
+    "value": "måneder fra nå",
+    "description": ""
   },
   "now": {
-    "value": "nå"
+    "value": "nå",
+    "description": ""
   },
   "quarters ago": {
-    "value": "kvartaler siden"
+    "value": "kvartaler siden",
+    "description": ""
   },
   "quarters from now": {
-    "value": "kvartaler fra nå"
+    "value": "kvartaler fra nå",
+    "description": ""
   },
   "seconds ago": {
-    "value": "sekunder siden"
+    "value": "sekunder siden",
+    "description": ""
   },
   "seconds from now": {
-    "value": "sekunder fra nå"
+    "value": "sekunder fra nå",
+    "description": ""
   },
   "weeks ago": {
-    "value": "uker siden"
+    "value": "uker siden",
+    "description": ""
   },
   "weeks from now": {
-    "value": "uker fra nå"
+    "value": "uker fra nå",
+    "description": ""
   },
   "years ago": {
-    "value": "år siden"
+    "value": "år siden",
+    "description": ""
   },
   "years from now": {
-    "value": "år fra nå"
+    "value": "år fra nå",
+    "description": ""
   }
 }

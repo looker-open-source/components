@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
+    "description": "",
     "value": "过去 14 天"
   },
   "Last 180 Days": {
+    "description": "",
     "value": "过去 180 天"
   },
   "Last 28 Days": {
+    "description": "",
     "value": "过去 28 天"
   },
   "Last 30 Days": {
+    "description": "",
     "value": "过去 30 天"
   },
   "Last 365 Days": {
+    "description": "",
     "value": "过去 365 天"
   },
   "Last 7 Days": {
+    "description": "",
     "value": "过去 7 天"
   },
   "Last 90 Days": {
+    "description": "",
     "value": "过去 90 天"
   },
   "Previous Month": {
+    "description": "",
     "value": "上个月"
   },
   "Previous Quarter": {
+    "description": "",
     "value": "上个季度"
   },
   "Previous Week": {
+    "description": "",
     "value": "上周"
   },
   "Previous Year": {
+    "description": "",
     "value": "上一年"
   },
   "This Month": {
+    "description": "",
     "value": "本月"
   },
   "This Quarter": {
+    "description": "",
     "value": "本季度"
   },
   "This Week": {
+    "description": "",
     "value": "本周"
   },
   "This Year": {
+    "description": "",
     "value": "今年"
   },
   "Today": {
+    "description": "",
     "value": "今天"
   },
   "Year To Date": {
+    "description": "",
     "value": "年初至今"
   },
   "Yesterday": {
+    "description": "",
     "value": "昨天"
   }
 }

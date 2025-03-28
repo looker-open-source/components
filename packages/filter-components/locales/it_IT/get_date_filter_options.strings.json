@@ -1,44 +1,58 @@
 {
   "is": {
+    "description": "",
     "value": "è"
   },
   "is any time": {
+    "description": "",
     "value": "è in qualsiasi momento"
   },
   "is before": {
+    "description": "",
     "value": "è precedente a"
   },
   "is in range": {
+    "description": "",
     "value": "è compreso nell'intervallo"
   },
   "is in the last": {
-    "value": "è nell'ultimo"
+    "description": "",
+    "value": "è nell'ultimo/negli ultimi"
   },
   "is in the month": {
+    "description": "",
     "value": "è nel mese di"
   },
   "is in the year": {
+    "description": "",
     "value": "è nell'anno"
   },
   "is next": {
+    "description": "",
     "value": "è successivo"
   },
   "is not null": {
+    "description": "",
     "value": "non è null"
   },
   "is null": {
+    "description": "",
     "value": "è null"
   },
   "is on or after": {
+    "description": "",
     "value": "è in questa data o dopo"
   },
   "is on the day": {
+    "description": "",
     "value": "è il giorno"
   },
   "is previous": {
+    "description": "",
     "value": "è precedente"
   },
   "is this": {
+    "description": "",
     "value": "è questo"
   }
 }

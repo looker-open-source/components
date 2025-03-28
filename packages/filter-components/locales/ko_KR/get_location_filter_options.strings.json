@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "상자"
+    "description": "",
+    "value": "Box"
   },
   "Circle": {
+    "description": "",
     "value": "원"
   },
   "Location": {
+    "description": "",
     "value": "위치"
   },
   "feet": {
+    "description": "",
     "value": "피트"
   },
   "is anywhere": {
+    "description": "",
     "value": "위치 무관"
   },
   "is not null": {
+    "description": "",
     "value": "null 아님"
   },
   "is null": {
+    "description": "",
     "value": "null"
   },
   "kilometers": {
+    "description": "",
     "value": "킬로미터"
   },
   "meters": {
+    "description": "",
     "value": "미터"
   },
   "miles": {
+    "description": "",
     "value": "마일"
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "מדדים מסוג 'תאריך' אינם נתמכים כרגע",
-  "No chart found for type \"{{type}}\"": "לא נמצאה טבלה עבור הסוג \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "value": "מדדים מסוג 'תאריך' אינם נתמכים כרגע",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "לא נמצאה טבלה עבור הסוג \"{{type}}\"",
+    "description": ""
+  }
 }

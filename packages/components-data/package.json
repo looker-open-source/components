@@ -5,7 +5,7 @@
   "module": "dist/esm/index.js",
   "types": "src/index.ts",
   "src": "src/index.ts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "sideEffects": false,
   "publishConfig": {
     "access": "public",
@@ -24,29 +24,29 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "@looker/components": "^5.0.3",
-    "@looker/sdk": "^22.4.2",
-    "@looker/sdk-rtl": "^21.3.3",
-    "@looker/visualizations-adapters": "^1.0.3",
-    "lodash": "4.17.21",
-    "swr": "1.2.2",
-    "unstated-next": "1.1.0"
+    "@looker/components": "5.0.3",
+    "@looker/sdk": "0.0.0",
+    "@looker/sdk-rtl": "0.0.0",
+    "@looker/visualizations-adapters": "1.0.3",
+    "lodash": "^4.17.21",
+    "swr": "^1.2.2",
+    "unstated-next": "^1.1.0"
   },
   "devDependencies": {
-    "@looker/babel-preset-react": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
+    "@looker/babel-preset-react": "0.0.4",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/components-test-utils": "1.5.27",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
-    "prettier": "2.8.2"
+    "prettier": "2.8.2",
+    "react": "17.0.2"
   },
   "peerDependencies": {
-    "react": "16.14.0 - 18",
-    "react-dom": "16.14.0 - 18"
+    "react": ">=16.14.0"
   },
   "eslintConfig": {
     "root": true,

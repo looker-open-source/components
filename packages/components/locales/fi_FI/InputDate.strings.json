@@ -1,3 +1,6 @@
 {
-  "Open calendar": "Avaa kalenteri"
+  "Open calendar": {
+    "value": "Avaa kalenteri",
+    "description": ""
+  }
 }

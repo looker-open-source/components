@@ -1,7 +1,22 @@
 {
-  "Apply": "Anvend",
-  "Cancel": "Annuller",
-  "Select All": "Vælg alt",
-  "Select None": "Vælg ingen",
-  "Select columns to display": "Vælg de kolonner, der skal vises"
+  "Apply": {
+    "value": "Anvend",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Annuller",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Vælg alt",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Vælg ingen",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Vælg de kolonner, der skal vises",
+    "description": ""
+  }
 }

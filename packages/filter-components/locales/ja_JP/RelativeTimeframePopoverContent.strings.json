@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "カスタム"
   },
   "Presets": {
+    "description": "",
     "value": "プリセット"
   }
 }

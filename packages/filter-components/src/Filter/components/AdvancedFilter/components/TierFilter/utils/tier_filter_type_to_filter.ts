@@ -2,9 +2,10 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterTypeMap } from '@looker/filter-expressions';
 import defaultTo from 'lodash/defaultTo';
 import type { ElementType } from 'react';
+import type { FilterTypeMap } from '../../../../../types';
+import { Blank } from '../../Blank';
 import { MatchesAdvanced } from '../../MatchesAdvanced';
 
 import { MultiStringInput } from '../../StringFilter/components/MultiStringInput';
@@ -13,7 +14,7 @@ import { UserAttributes } from '../../UserAttributes';
 import { ParamFilter } from '../components/ParamFilter';
 
 const typeMap: FilterTypeMap = {
-  anyvalue: () => '',
+  anyvalue: Blank,
   match: MultiStringInput,
   user_attribute: UserAttributes,
 };

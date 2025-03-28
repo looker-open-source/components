@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Błąd wczytywania sugestii"
+  "Error loading suggestions": {
+    "description": "",
+    "value": "Błąd wczytywania sugestii"
+  }
 }

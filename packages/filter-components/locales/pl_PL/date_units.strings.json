@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "dzień"
   },
   "days": {
+    "description": "",
     "value": "dni"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "kwartał fiskalny"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "kwartały podatkowe"
   },
   "fiscal year": {
+    "description": "",
     "value": "rok fiskalny"
   },
   "fiscal years": {
+    "description": "",
     "value": "lata podatkowe"
   },
   "hour": {
+    "description": "",
     "value": "godzina"
   },
   "hours": {
+    "description": "",
     "value": "godziny"
   },
   "minute": {
+    "description": "",
     "value": "minuta"
   },
   "minutes": {
+    "description": "",
     "value": "minuty"
   },
   "month": {
+    "description": "",
     "value": "miesiąc"
   },
   "months": {
+    "description": "",
     "value": "miesiące"
   },
   "quarter": {
+    "description": "",
     "value": "kwartał"
   },
   "quarters": {
+    "description": "",
     "value": "kwartały"
   },
   "second": {
+    "description": "",
     "value": "sekunda"
   },
   "seconds": {
+    "description": "",
     "value": "sekundy"
   },
   "week": {
+    "description": "",
     "value": "tydzień"
   },
   "weeks": {
+    "description": "",
     "value": "tygodnie"
   },
   "year": {
+    "description": "",
     "value": "rok"
   },
   "years": {
+    "description": "",
     "value": "lata"
   }
 }

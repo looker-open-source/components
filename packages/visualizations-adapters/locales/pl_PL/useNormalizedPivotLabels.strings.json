@@ -1,3 +1,6 @@
 {
-  "Row Total": "Łącznie w wierszu"
+  "Row Total": {
+    "description": "",
+    "value": "Łącznie w wierszu"
+  }
 }

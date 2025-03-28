@@ -1,3 +1,6 @@
 {
-  "Error": "錯誤"
+  "Error": {
+    "description": "",
+    "value": "錯誤"
+  }
 }

@@ -2,18 +2,15 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type {
-  FilterTypeMap,
-  LocationFilterType,
-} from '@looker/filter-expressions';
+import type { LocationFilterType } from '@looker/filter-expressions';
+import type { FilterTypeMap } from '../../../../../types';
+import { Blank } from '../../Blank';
 import { MatchesAdvanced } from '../../MatchesAdvanced';
 import { UserAttributes } from '../../UserAttributes';
 
 import { LocationBox } from '../components/LocationBox';
 import { LocationCircle } from '../components/LocationCircle';
 import { LocationExact } from '../components/LocationExact';
-
-const Blank = () => '';
 
 const filterTypeToLocationMap: FilterTypeMap<LocationFilterType> = {
   location: LocationExact,

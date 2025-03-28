@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Maksimum {{name}}",
-  "Maximum Value": "Maksverdi",
-  "Minimum Name": "Minimum {{name}}",
-  "Minimum Value": "Minimumsverdi"
+  "Maximum Name": {
+    "value": "Maksimum {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Maksverdi",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Minimum {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Minimumsverdi",
+    "description": ""
+  }
 }

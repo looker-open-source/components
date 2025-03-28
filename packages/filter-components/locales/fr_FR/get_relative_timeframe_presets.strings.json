@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
+    "description": "",
     "value": "14 derniers jours"
   },
   "Last 180 Days": {
+    "description": "",
     "value": "180 derniers jours"
   },
   "Last 28 Days": {
+    "description": "",
     "value": "28 derniers jours"
   },
   "Last 30 Days": {
+    "description": "",
     "value": "30 derniers jours"
   },
   "Last 365 Days": {
+    "description": "",
     "value": "365 derniers jours"
   },
   "Last 7 Days": {
+    "description": "",
     "value": "7 derniers jours"
   },
   "Last 90 Days": {
+    "description": "",
     "value": "90 derniers jours"
   },
   "Previous Month": {
+    "description": "",
     "value": "Mois précédent"
   },
   "Previous Quarter": {
+    "description": "",
     "value": "Trimestre précédent"
   },
   "Previous Week": {
+    "description": "",
     "value": "Semaine précédente"
   },
   "Previous Year": {
+    "description": "",
     "value": "Année précédente"
   },
   "This Month": {
+    "description": "",
     "value": "Ce mois"
   },
   "This Quarter": {
+    "description": "",
     "value": "Ce trimestre"
   },
   "This Week": {
+    "description": "",
     "value": "Cette semaine"
   },
   "This Year": {
+    "description": "",
     "value": "Cette année"
   },
   "Today": {
+    "description": "",
     "value": "Aujourd'hui"
   },
   "Year To Date": {
+    "description": "",
     "value": "Depuis le début de l'année"
   },
   "Yesterday": {
+    "description": "",
     "value": "Hier"
   }
 }

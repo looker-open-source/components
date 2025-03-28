@@ -1,5 +1,6 @@
 {
   "matches a user attribute": {
+    "description": "",
     "value": "사용자 속성 일치"
   }
 }

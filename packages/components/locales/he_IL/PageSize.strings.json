@@ -1,4 +1,10 @@
 {
-  "Display": "הצג",
-  "of": "מתוך"
+  "Display": {
+    "value": "הצג",
+    "description": ""
+  },
+  "of": {
+    "value": "מתוך",
+    "description": ""
+  }
 }

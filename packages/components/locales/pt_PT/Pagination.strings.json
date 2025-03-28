@@ -1,7 +1,22 @@
 {
-  "First page of results": "Primeira página de resultados",
-  "Last page of results": "Última página de resultados",
-  "Next page of results": "Próxima página de resultados",
-  "Previous page of results": "Página anterior de resultados",
-  "of": "de"
+  "First page of results": {
+    "value": "Primeira página de resultados",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Última página de resultados",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Próxima página de resultados",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Página anterior de resultados",
+    "description": ""
+  },
+  "of": {
+    "value": "de",
+    "description": ""
+  }
 }

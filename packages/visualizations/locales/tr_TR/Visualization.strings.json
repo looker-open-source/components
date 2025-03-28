@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "\"Tarih\" tür ölçümleri şu anda desteklenmiyor",
-  "No chart found for type \"{{type}}\"": "\"{{type}}\" türü için grafik bulunamadı"
+  "Measures of type 'date' are currently not supported": {
+    "value": "\"Tarih\" tür ölçümleri şu anda desteklenmiyor",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "\"{{type}}\" türü için grafik bulunamadı",
+    "description": ""
+  }
 }

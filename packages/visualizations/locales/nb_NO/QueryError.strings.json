@@ -1,3 +1,6 @@
 {
-  "Error": "Feil"
+  "Error": {
+    "value": "Feil",
+    "description": ""
+  }
 }

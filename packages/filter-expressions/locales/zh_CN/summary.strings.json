@@ -1,3 +1,6 @@
 {
-  "Value required": "必须提供值"
+  "Value required": {
+    "description": "",
+    "value": "必须提供值"
+  }
 }

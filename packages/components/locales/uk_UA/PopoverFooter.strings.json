@@ -1,3 +1,6 @@
 {
-  "Done": "Готово"
+  "Done": {
+    "value": "Готово",
+    "description": ""
+  }
 }

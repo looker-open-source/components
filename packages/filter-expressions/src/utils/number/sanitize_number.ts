@@ -4,7 +4,7 @@
  */
 import type { FilterModel } from '../../types';
 
-export const sanitizeNumber = (item: FilterModel) => {
+export const sanitizeNumber = (item: FilterModel): FilterModel => {
   const {
     id = '0',
     is = true,
@@ -14,7 +14,8 @@ export const sanitizeNumber = (item: FilterModel) => {
     high,
     low,
   } = item;
-  const [firstValue] = value;
+  const arrayValue = Array.isArray(value) ? value : [value];
+  const [firstValue] = arrayValue;
   switch (type) {
     case '=':
       return { id, is, type, value };
@@ -26,7 +27,7 @@ export const sanitizeNumber = (item: FilterModel) => {
         id,
         is,
         type,
-        value: firstValue !== undefined ? [firstValue] : [],
+        value: firstValue !== undefined ? arrayValue.slice(0, 1) : [],
       };
     case 'between':
       return {

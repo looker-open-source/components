@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(vyjma)"
+    "value": "(vyjma)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[včetně]"
+    "value": "[včetně]",
+    "description": ""
   },
   "is": {
-    "value": "je"
+    "value": "je",
+    "description": ""
   },
   "is between": {
-    "value": "je mezi"
+    "value": "je mezi",
+    "description": ""
   },
   "is greater": {
-    "value": "je >"
+    "value": "je >",
+    "description": ""
   },
   "is greater equal": {
-    "value": "je >="
+    "value": "je >=",
+    "description": ""
   },
   "is less": {
-    "value": "je <"
+    "value": "je <",
+    "description": ""
   },
   "is less equal": {
-    "value": "je <="
+    "value": "je <=",
+    "description": ""
   },
   "is not": {
-    "value": "není"
+    "value": "není",
+    "description": ""
   },
   "is not between": {
-    "value": "není mezi"
+    "value": "není mezi",
+    "description": ""
   },
   "is not null": {
-    "value": "není prázdné"
+    "value": "není prázdné",
+    "description": ""
   },
   "is null": {
-    "value": "je prázdné"
+    "value": "je prázdné",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(vyjma hodnoty vlevo]"
+    "value": "(vyjma hodnoty vlevo]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[vyjma hodnoty vpravo)"
+    "value": "[vyjma hodnoty vpravo)",
+    "description": ""
   }
 }

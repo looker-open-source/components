@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "den"
+    "value": "den",
+    "description": ""
   },
   "days": {
-    "value": "dny/ů"
+    "value": "dny/ů",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "fiskální čtvrtletí"
+    "value": "fiskální čtvrtletí",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "fiskální čtvrtletí"
+    "value": "fiskální čtvrtletí",
+    "description": ""
   },
   "fiscal year": {
-    "value": "fiskální rok"
+    "value": "fiskální rok",
+    "description": ""
   },
   "fiscal years": {
-    "value": "fiskální roky"
+    "value": "fiskální roky",
+    "description": ""
   },
   "hour": {
-    "value": "hodina"
+    "value": "hodina",
+    "description": ""
   },
   "hours": {
-    "value": "hodin(y)"
+    "value": "hodin(y)",
+    "description": ""
   },
   "minute": {
-    "value": "minuta"
+    "value": "minuta",
+    "description": ""
   },
   "minutes": {
-    "value": "minut(y)"
+    "value": "minut(y)",
+    "description": ""
   },
   "month": {
-    "value": "měsíc"
+    "value": "měsíc",
+    "description": ""
   },
   "months": {
-    "value": "měsíce/ů"
+    "value": "měsíce/ů",
+    "description": ""
   },
   "quarter": {
-    "value": "čtvrtletí"
+    "value": "čtvrtletí",
+    "description": ""
   },
   "quarters": {
-    "value": "čtvrtletí"
+    "value": "čtvrtletí",
+    "description": ""
   },
   "second": {
-    "value": "sekunda"
+    "value": "sekunda",
+    "description": ""
   },
   "seconds": {
-    "value": "sekund(y)"
+    "value": "sekund(y)",
+    "description": ""
   },
   "week": {
-    "value": "týden"
+    "value": "týden",
+    "description": ""
   },
   "weeks": {
-    "value": "týdny/ů"
+    "value": "týdny/ů",
+    "description": ""
   },
   "year": {
-    "value": "rok"
+    "value": "rok",
+    "description": ""
   },
   "years": {
-    "value": "roky/ů"
+    "value": "roky/ů",
+    "description": ""
   }
 }

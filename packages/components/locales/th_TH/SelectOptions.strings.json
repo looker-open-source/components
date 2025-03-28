@@ -1,4 +1,10 @@
 {
-  "Loading": "กำลังโหลด",
-  "No options": "ไม่มีตัวเลือก"
+  "Loading": {
+    "value": "กำลังโหลด",
+    "description": ""
+  },
+  "No options": {
+    "value": "ไม่มีตัวเลือก",
+    "description": ""
+  }
 }

@@ -89,7 +89,7 @@ describe('legendType', () => {
   });
 
   test('config.legend === false', () => {
-    const config = { ...mockPieConfig, legend: false };
+    const config = { ...mockPieConfig, legend: false as const };
     const { config: transformedConfig } = legendType({
       config,
       data: mockSdkDataResponse,

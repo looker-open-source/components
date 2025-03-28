@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "ค่าไม่ถูกต้อง"
+    "value": "ค่าไม่ถูกต้อง",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "ไม่มีการกำหนดค่าสำหรับแอตทริบิวต์ของผู้ใช้ของคุณ"
+    "value": "ไม่มีการกำหนดค่าสำหรับแอตทริบิวต์ของผู้ใช้ของคุณ",
+    "description": ""
   },
   "Selection required": {
-    "value": "ต้องเลือก"
+    "value": "ต้องเลือก",
+    "description": ""
   }
 }

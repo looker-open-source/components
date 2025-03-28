@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "назад"
+    "value": "назад",
+    "description": ""
   },
   "from now": {
-    "value": "спустя"
+    "value": "спустя",
+    "description": ""
   }
 }

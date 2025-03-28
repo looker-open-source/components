@@ -1,4 +1,10 @@
 {
-  "Cancel": "Atšaukti",
-  "Save": "Išsaugoti"
+  "Cancel": {
+    "value": "Atšaukti",
+    "description": ""
+  },
+  "Save": {
+    "value": "Išsaugoti",
+    "description": ""
+  }
 }

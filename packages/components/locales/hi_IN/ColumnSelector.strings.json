@@ -1,7 +1,22 @@
 {
-  "Apply": "लागू करें",
-  "Cancel": "रद्द करें",
-  "Select All": "सभी को चुनें",
-  "Select None": "कोई नहीं चुनें",
-  "Select columns to display": "दिखाने के लिए कॉलम चुनें"
+  "Apply": {
+    "value": "लागू करें",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "रद्द करें",
+    "description": ""
+  },
+  "Select All": {
+    "value": "सभी को चुनें",
+    "description": ""
+  },
+  "Select None": {
+    "value": "कोई नहीं चुनें",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "दिखाने के लिए कॉलम चुनें",
+    "description": ""
+  }
 }

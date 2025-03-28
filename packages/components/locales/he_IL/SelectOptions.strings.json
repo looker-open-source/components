@@ -1,4 +1,10 @@
 {
-  "Loading": "טוען",
-  "No options": "אין אפשרויות"
+  "Loading": {
+    "value": "טוען",
+    "description": ""
+  },
+  "No options": {
+    "value": "אין אפשרויות",
+    "description": ""
+  }
 }

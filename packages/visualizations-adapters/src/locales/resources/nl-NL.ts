@@ -1,33 +1,36 @@
-/**
- * Copyright (c) 2023 Google LLC
- * SPDX-License-Identifier: MIT
- */
 
-import { nlNL as componentsLocale } from '@looker/components';
-import { mergeLocaleObjects } from '@looker/i18n';
+    import {nlNL as componentsLocale} from '@looker/components'
+    import { mergeLocaleObjects } from '@looker/i18n'
 
-const resources = {
-  Debug: {
-    Config: 'Configureren',
-    Dimensions: 'Dimensies',
-    Error: 'Fout',
-    Measures: 'Maten',
-    Result: 'Resultaat',
-    error: 'fout',
-    ok: 'OK',
+    const resources = {
+  "Debug": {
+    "Config": "Configureren",
+    "Dimensions": "Dimensies",
+    "Error": "Fout",
+    "Measures": "Maten",
+    "Result": "Resultaat",
+    "error": "fout",
+    "ok": "OK"
   },
-  ErrorBoundary: {
-    'Something went wrong': 'Er is iets fout gegaan',
+  "ErrorBoundary": {
+    "Something went wrong": "Er is iets fout gegaan"
   },
-  KeyValueList: {
-    false: 'onwaar',
-    null: 'ongeldig',
-    true: 'waar',
-    undefined: 'ongedefinieerd',
+  "KeyValueList": {
+    "false": "onwaar",
+    "null": "ongeldig",
+    "true": "waar",
+    "undefined": "ongedefinieerd"
   },
-  useNormalizedPivotLabels: {
-    'Row Total': 'Rijtotaal',
-  },
-};
+  "useNormalizedPivotLabels": {
+    "Row Total": "Rijtotaal"
+  }
+}
 
-export const nlNL = mergeLocaleObjects([componentsLocale], 'nl-NL', resources);
+    export const nlNL = mergeLocaleObjects(
+      [
+        componentsLocale,
+      ],
+      'nl-NL',
+      resources,
+      
+    )

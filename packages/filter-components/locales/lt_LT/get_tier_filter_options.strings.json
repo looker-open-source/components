@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "yra"
+    "value": "yra",
+    "description": ""
   },
   "is any value": {
-    "value": "yra bet kuri vertė"
+    "value": "yra bet kuri vertė",
+    "description": ""
   },
   "is not": {
-    "value": "nėra"
+    "value": "nėra",
+    "description": ""
   }
 }

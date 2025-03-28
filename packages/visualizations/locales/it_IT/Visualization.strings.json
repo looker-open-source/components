@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Al momento, le misure di tipo \"data\" non sono supportate",
-  "No chart found for type \"{{type}}\"": "Nessun grafico trovato per il tipo \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "description": "",
+    "value": "Al momento, le misure di tipo \"data\" non sono supportate"
+  },
+  "No chart found for type \"{{type}}\"": {
+    "description": "",
+    "value": "Nessun grafico trovato per il tipo \"{{type}}\""
+  }
 }

@@ -8,9 +8,21 @@ export * from './filter_item_to_string_function';
 export * from './filter_item_to_string_map_type';
 export * from './filter_model';
 export * from './filter_to_string_function_type';
-export * from './filter_type';
-export * from './filter_type_map';
-export * from './location';
+export type {
+  FilterExpressionType,
+  DateFilterType,
+  NumberFilterType,
+  StringFilterType,
+  TierFilterType,
+  LocationFilterType,
+} from './filter_type';
+export {
+  dateFilterTypes,
+  numberFilterTypes,
+  stringFilterTypes,
+  tierFilterTypes,
+  locationFilterTypes,
+} from './filter_type';
 export * from './transform_function';
 export * from './user_attribute';
 export * from './value_props';

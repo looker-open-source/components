@@ -1,3 +1,6 @@
 {
-  "CloseTitle": "Stäng {{title}}"
+  "CloseTitle": {
+    "value": "Stäng {{title}}",
+    "description": ""
+  }
 }

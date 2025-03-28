@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Vymazat filtry",
-  "Filter List": "Seznam filtrů",
-  "bottom-start": "bottom-start"
+  "Clear Filters": {
+    "value": "Vymazat filtry",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Seznam filtrů",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "bottom-start",
+    "description": ""
+  }
 }

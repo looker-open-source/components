@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "按住 Shift 鍵並按一下滑鼠，即可將其他資料欄排序",
-  "Sort ascending": "遞增排序",
-  "Sort descending": "遞減排序",
-  "Totals": "總計"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "按住 Shift 鍵並按一下滑鼠，即可將其他資料欄排序"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "遞增排序"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "遞減排序"
+  },
+  "Totals": {
+    "description": "",
+    "value": "總計"
+  }
 }

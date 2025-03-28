@@ -1,3 +1,6 @@
 {
-  "Tabs": "分頁"
+  "Tabs": {
+    "description": "",
+    "value": "分頁"
+  }
 }

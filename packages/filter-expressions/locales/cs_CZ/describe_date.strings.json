@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " hotovo"
+    "value": " hotovo",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "v minulosti"
+    "value": "v minulosti",
+    "description": ""
   },
   "from now": {
-    "value": "od této chvíle"
+    "value": "od této chvíle",
+    "description": ""
   },
   "is any time": {
-    "value": "je kdykoliv"
+    "value": "je kdykoliv",
+    "description": ""
   },
   "is before": {
-    "value": "je před"
+    "value": "je před",
+    "description": ""
   },
   "is day": {
-    "value": "je {{day}}"
+    "value": "je {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "je od {{dateTimeStart}} do {{dateTimeEnd}}"
+    "value": "je od {{dateTimeStart}} do {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "je v {{month}} {{year}}"
+    "value": "je v {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "je v minulém intervalu {{describeInterval}}"
+    "value": "je v minulém intervalu {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "je v roce {{year}}"
+    "value": "je v roce {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "je před intervalem {{interval}}"
+    "value": "je před intervalem {{interval}}",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "je {{intervalStart}} {{intervalType}} pro {{intervalEnd}}"
+    "value": "je {{intervalStart}} {{intervalType}} pro {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "není prázdné"
+    "value": "není prázdné",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "je {{dateTime}}"
+    "value": "je {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "je přesně nebo po"
+    "value": "je přesně nebo po",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "je předchozí {{unitLabel}}"
+    "value": "je předchozí {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "je {{type}} {{unitLabel}}"
+    "value": "je {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "další"
+    "value": "další",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} nyní"
+    "value": "{{prefix}} nyní",
+    "description": ""
   },
   "this": {
-    "value": "tato"
+    "value": "tato",
+    "description": ""
   },
-  "this startInterval to endInterval": "tento {{startInterval}} do {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "tento {{startInterval}} do {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

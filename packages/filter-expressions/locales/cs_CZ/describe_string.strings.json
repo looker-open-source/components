@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "prázdné"
+    "value": "prázdné",
+    "description": ""
   },
   "contains value": {
-    "value": "obsahuje {{value}}"
+    "value": "obsahuje {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "neobsahuje {{value}}"
+    "value": "neobsahuje {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "nemá na konci {{value}}"
+    "value": "nemá na konci {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "nemá na začátku {{value}}"
+    "value": "nemá na začátku {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "má na konci {{value}}"
+    "value": "má na konci {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "má na začátku {{value}}"
+    "value": "má na začátku {{value}}",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Tabs": "แท็บ"
+  "Tabs": {
+    "value": "แท็บ",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Jokin meni pieleen"
+  "Something went wrong": {
+    "value": "Jokin meni pieleen",
+    "description": ""
+  }
 }

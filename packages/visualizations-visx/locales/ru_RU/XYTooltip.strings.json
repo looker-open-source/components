@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Точки отсортированы по"
+  "Points sized by": {
+    "value": "Точки отсортированы по",
+    "description": ""
+  }
 }

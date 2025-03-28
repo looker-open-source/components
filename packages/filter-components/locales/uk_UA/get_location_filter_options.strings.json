@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Прямокутник"
+    "value": "Прямокутник",
+    "description": ""
   },
   "Circle": {
-    "value": "Коло"
+    "value": "Коло",
+    "description": ""
   },
   "Location": {
-    "value": "Розташування"
+    "value": "Розташування",
+    "description": ""
   },
   "feet": {
-    "value": "футів"
+    "value": "футів",
+    "description": ""
   },
   "is anywhere": {
-    "value": "будь-де"
+    "value": "будь-де",
+    "description": ""
   },
   "is not null": {
-    "value": "не має значення NULL"
+    "value": "не має значення NULL",
+    "description": ""
   },
   "is null": {
-    "value": "має значення NULL"
+    "value": "має значення NULL",
+    "description": ""
   },
   "kilometers": {
-    "value": "км"
+    "value": "км",
+    "description": ""
   },
   "meters": {
-    "value": "м"
+    "value": "м",
+    "description": ""
   },
   "miles": {
-    "value": "миль"
+    "value": "миль",
+    "description": ""
   }
 }

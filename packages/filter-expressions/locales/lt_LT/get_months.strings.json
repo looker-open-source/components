@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "Balandis"
+    "value": "Balandis",
+    "description": ""
   },
   "August": {
-    "value": "Rugpjūtis"
+    "value": "Rugpjūtis",
+    "description": ""
   },
   "December": {
-    "value": "Gruodis"
+    "value": "Gruodis",
+    "description": ""
   },
   "February": {
-    "value": "Vasaris"
+    "value": "Vasaris",
+    "description": ""
   },
   "January": {
-    "value": "Sausis"
+    "value": "Sausis",
+    "description": ""
   },
   "July": {
-    "value": "Liepa"
+    "value": "Liepa",
+    "description": ""
   },
   "June": {
-    "value": "Birželis"
+    "value": "Birželis",
+    "description": ""
   },
   "March": {
-    "value": "Kovas"
+    "value": "Kovas",
+    "description": ""
   },
   "May": {
-    "value": "Geg."
+    "value": "Geg.",
+    "description": ""
   },
   "November": {
-    "value": "Lapkritis"
+    "value": "Lapkritis",
+    "description": ""
   },
   "October": {
-    "value": "Spalis"
+    "value": "Spalis",
+    "description": ""
   },
   "September": {
-    "value": "Rugsėjis"
+    "value": "Rugsėjis",
+    "description": ""
   }
 }

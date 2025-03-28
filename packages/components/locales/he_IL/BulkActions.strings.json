@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "כל {{pageCount}} הפריטים המוצגים נבחרוו",
-  "AllTotalCountSelected": "כל {{totalCount}} הפריטים נבחרו",
-  "Bulk Actions": "פעולות במרוכז",
-  "Clear Selection": "נקה את הבחירה",
-  "SelectAllCountResults": "בחר את כל {{totalCount}} התוצאות",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} מתוך {{pageCount}} הפריטים המוצגים נבחרו"
+  "AllPageCountDisplayedSelected": {
+    "value": "כל {{pageCount}} הפריטים המוצגים נבחרוו",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "כל {{totalCount}} הפריטים נבחרו",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "פעולות במרוכז",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "נקה את הבחירה",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "בחר את כל {{totalCount}} התוצאות",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}} מתוך {{pageCount}} הפריטים המוצגים נבחרו",
+    "description": ""
+  }
 }

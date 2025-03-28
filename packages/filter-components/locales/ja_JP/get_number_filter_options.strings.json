@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "（排他）"
   },
   "inclusive": {
+    "description": "",
     "value": "[含む]"
   },
   "is": {
+    "description": "",
     "value": "次に一致"
   },
   "is between": {
+    "description": "",
     "value": "次の範囲内"
   },
   "is greater": {
+    "description": "",
     "value": ">"
   },
   "is greater equal": {
+    "description": "",
     "value": ">="
   },
   "is less": {
+    "description": "",
     "value": "<"
   },
   "is less equal": {
+    "description": "",
     "value": "<="
   },
   "is not": {
+    "description": "",
     "value": "等しくない"
   },
   "is not between": {
+    "description": "",
     "value": "次の範囲外"
   },
   "is not null": {
+    "description": "",
     "value": "null ではない"
   },
   "is null": {
+    "description": "",
     "value": "null である"
   },
   "left exclusive": {
+    "description": "",
     "value": "（左側を除く]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[右側を除く）"
   }
 }

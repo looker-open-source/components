@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "há dias"
+    "value": "há dias",
+    "description": ""
   },
   "days from now": {
-    "value": "daqui a dias"
+    "value": "daqui a dias",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "trimestre fiscal a partir de agora"
+    "value": "trimestre fiscal a partir de agora",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "há trimestres fiscais"
+    "value": "há trimestres fiscais",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "há anos fiscais"
+    "value": "há anos fiscais",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "daqui a anos fiscais"
+    "value": "daqui a anos fiscais",
+    "description": ""
   },
   "hours ago": {
-    "value": "há horas"
+    "value": "há horas",
+    "description": ""
   },
   "hours from now": {
-    "value": "daqui a horas"
+    "value": "daqui a horas",
+    "description": ""
   },
   "minutes ago": {
-    "value": "há minutos"
+    "value": "há minutos",
+    "description": ""
   },
   "minutes from now": {
-    "value": "daqui a minutos"
+    "value": "daqui a minutos",
+    "description": ""
   },
   "months ago": {
-    "value": "há meses"
+    "value": "há meses",
+    "description": ""
   },
   "months from now": {
-    "value": "daqui a meses"
+    "value": "daqui a meses",
+    "description": ""
   },
   "now": {
-    "value": "agora"
+    "value": "agora",
+    "description": ""
   },
   "quarters ago": {
-    "value": "há trimestres"
+    "value": "há trimestres",
+    "description": ""
   },
   "quarters from now": {
-    "value": "daqui a trimestres"
+    "value": "daqui a trimestres",
+    "description": ""
   },
   "seconds ago": {
-    "value": "há segundos"
+    "value": "há segundos",
+    "description": ""
   },
   "seconds from now": {
-    "value": "daqui a segundos"
+    "value": "daqui a segundos",
+    "description": ""
   },
   "weeks ago": {
-    "value": "há semanas"
+    "value": "há semanas",
+    "description": ""
   },
   "weeks from now": {
-    "value": "daqui a semanas"
+    "value": "daqui a semanas",
+    "description": ""
   },
   "years ago": {
-    "value": "há anos"
+    "value": "há anos",
+    "description": ""
   },
   "years from now": {
-    "value": "daqui a anos"
+    "value": "daqui a anos",
+    "description": ""
   }
 }

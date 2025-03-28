@@ -1,9 +1,30 @@
 {
-  "Config": "Konfigurer",
-  "Dimensions": "Dimensioner",
-  "Error": "Fejl",
-  "Measures": "Mål",
-  "Result": "Resultat",
-  "error": "fejl",
-  "ok": "OK"
+  "Config": {
+    "value": "Konfigurer",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Dimensioner",
+    "description": ""
+  },
+  "Error": {
+    "value": "Fejl",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Mål",
+    "description": ""
+  },
+  "Result": {
+    "value": "Resultat",
+    "description": ""
+  },
+  "error": {
+    "value": "fejl",
+    "description": ""
+  },
+  "ok": {
+    "value": "OK",
+    "description": ""
+  }
 }

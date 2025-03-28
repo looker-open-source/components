@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Størrelse af punkter efter"
+  "Points sized by": {
+    "value": "Størrelse af punkter efter",
+    "description": ""
+  }
 }

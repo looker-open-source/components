@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "{{totalPages}} में से {{page}} लीजेंड पेज"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "{{totalPages}} में से {{page}} लीजेंड पेज",
+    "description": ""
+  }
 }

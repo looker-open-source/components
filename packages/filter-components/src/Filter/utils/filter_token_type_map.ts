@@ -16,7 +16,6 @@ const filterTokenTypeMap: { [key: string]: string } = {
   relative_timeframes: 'relative_timeframes',
   day_picker: 'day_picker',
   day_range_picker: 'day_range_picker',
-  date_time_range_input: 'date_time_range_input',
   slider: 'slider',
   range_slider: 'range_slider',
 };

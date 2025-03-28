@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Нет дочерних элементов, переданных в компонент запросов Query",
-  "Query component received both dashboard and query props": "Компонент запросов Query получил свойства панелей мониторинга и запросов"
+  "No children passed to Query component": {
+    "value": "Нет дочерних элементов, переданных в компонент запросов Query",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Компонент запросов Query получил свойства панелей мониторинга и запросов",
+    "description": ""
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Display": "显示",
-  "of": "/"
+  "Display": {
+    "description": "",
+    "value": "显示"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

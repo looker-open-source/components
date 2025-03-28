@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "कस्टम"
+    "value": "कस्टम",
+    "description": ""
   },
   "Presets": {
-    "value": "प्रीसेट"
+    "value": "प्रीसेट",
+    "description": ""
   }
 }

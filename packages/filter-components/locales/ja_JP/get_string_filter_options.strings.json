@@ -1,14 +1,50 @@
 {
-  "contains": "次を含む",
-  "doesnt contain": "次を含まない",
-  "doesnt end with": "次で終わらない",
-  "doesnt start with": "次で始まらない",
-  "ends with": "次で終わる",
-  "is": "次に一致",
-  "is blank": "空白である",
-  "is not": "等しくない",
-  "is not blank": "空白ではない",
-  "is not null": "null ではない",
-  "is null": "null である",
-  "starts with": "次で始まる"
+  "contains": {
+    "description": "",
+    "value": "次を含む"
+  },
+  "doesnt contain": {
+    "description": "",
+    "value": "次を含まない"
+  },
+  "doesnt end with": {
+    "description": "",
+    "value": "次で終わらない"
+  },
+  "doesnt start with": {
+    "description": "",
+    "value": "次で始まらない"
+  },
+  "ends with": {
+    "description": "",
+    "value": "次で終わる"
+  },
+  "is": {
+    "description": "",
+    "value": "次に一致"
+  },
+  "is blank": {
+    "description": "",
+    "value": "空白である"
+  },
+  "is not": {
+    "description": "",
+    "value": "等しくない"
+  },
+  "is not blank": {
+    "description": "",
+    "value": "空白ではない"
+  },
+  "is not null": {
+    "description": "",
+    "value": "null ではない"
+  },
+  "is null": {
+    "description": "",
+    "value": "null である"
+  },
+  "starts with": {
+    "description": "",
+    "value": "次で始まる"
+  }
 }

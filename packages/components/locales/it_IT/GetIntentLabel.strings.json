@@ -1,6 +1,18 @@
 {
-  "Error": "Errore",
-  "Inform": "Informa",
-  "Success": "Operazione completata",
-  "Warning": "Avviso"
+  "Error": {
+    "description": "",
+    "value": "Errore"
+  },
+  "Inform": {
+    "description": "",
+    "value": "Informa"
+  },
+  "Success": {
+    "description": "",
+    "value": "Operazione completata"
+  },
+  "Warning": {
+    "description": "",
+    "value": "Avviso"
+  }
 }

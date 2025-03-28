@@ -23,13 +23,13 @@
  SOFTWARE.
 
  */
-import { getComboboxText } from '@looker/components'
-import type { Option } from '../types/option'
+import { getComboboxText } from '@looker/components';
+import type { Option } from '../types/option';
 
 const createOption = (value: string): Option => ({
   value,
   label: value,
-})
+});
 
 export const createOptions = (values?: string | string[]) => {
   if (!values?.length) return [];
@@ -53,7 +53,7 @@ export const createEnumeration =
   (e: Option): Option => ({
     label: e.label,
     value: isParameter ? unescapeParameterValue(e.value) : String(e.value),
-  })
+  });
 
 /**
  * Unescape parameter values to match the escape done in
@@ -62,7 +62,7 @@ export const createEnumeration =
 const unescapeParameterValue = (value: string) =>
   String(value)
     .replace(/^\^([-])/, '$1')
-    .replace(/\^([_%,"'])/g, '$1')
+    .replace(/\^([_%,"'])/g, '$1');
 
 /**
  * Filters a list of options by a filter term and/or values to exclude
@@ -75,26 +75,26 @@ export const filterOptions = (
   filterTerm?: string,
   excludedValues?: string[]
 ) => {
-  if (!excludedValues && (!filterTerm || filterTerm === '')) return options
-  return options.filter((option) =>
+  if (!excludedValues && (!filterTerm || filterTerm === '')) return options;
+  return options.filter(option =>
     filterOption(option, filterTerm || '', excludedValues)
-  )
-}
+  );
+};
 
 const filterOption = (
   option: Option,
   filterTerm: string,
   excludedValues?: string[]
 ): boolean => {
-  let matchesFilter = true
+  let matchesFilter = true;
 
   if (filterTerm !== '') {
-    const filterText = filterTerm.trim().toLowerCase()
-    const optionText = getComboboxText(option).trim().toLowerCase()
-    matchesFilter = optionText.indexOf(filterText) > -1
+    const filterText = filterTerm.trim().toLowerCase();
+    const optionText = getComboboxText(option).trim().toLowerCase();
+    matchesFilter = optionText.indexOf(filterText) > -1;
   }
 
   return excludedValues
     ? matchesFilter && !excludedValues.includes(option.value)
-    : matchesFilter
-}
+    : matchesFilter;
+};

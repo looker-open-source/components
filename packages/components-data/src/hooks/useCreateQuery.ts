@@ -41,16 +41,18 @@ export const useCreateQuery = (newQuery?: Partial<IWriteQuery>) => {
     (SWRData as ISDKSuccessResponse<IQuery>)?.value || {};
 
   useEffect(() => {
-    setById(Number(draftId), {
-      metadata: draftMetadata,
-    });
+    if (draftId) {
+      setById(draftId, {
+        metadata: draftMetadata,
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [draftId]);
 
   return {
     isOK: isSuccessResponse(SWRData) || typeof newQuery === 'undefined',
     isPending: isValidating,
-    queryId: draftId ? Number(draftId) : undefined,
+    queryId: draftId || undefined,
     ...getErrorResponse(SWRData),
   };
 };

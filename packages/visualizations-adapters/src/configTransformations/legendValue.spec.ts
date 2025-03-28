@@ -196,7 +196,7 @@ describe('legendValue', () => {
   });
 
   test('config.legend === false', () => {
-    const config = { ...mockPieConfig, legend: false };
+    const config = { ...mockPieConfig, legend: false as const };
     const { config: transformedConfig } = legendValue({
       config,
       data: mockSdkDataResponse,

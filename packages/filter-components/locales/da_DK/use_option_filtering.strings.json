@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Ingen værdier"
+    "value": "Ingen værdier",
+    "description": ""
   },
   "No values match": {
-    "value": "Ingen matchende værdier"
+    "value": "Ingen matchende værdier",
+    "description": ""
   }
 }

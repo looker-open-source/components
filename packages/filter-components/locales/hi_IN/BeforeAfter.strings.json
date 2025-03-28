@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(परम)"
+    "value": "(परम)",
+    "description": ""
   },
   "relative": {
-    "value": "(सापेक्षिक)"
+    "value": "(सापेक्षिक)",
+    "description": ""
   }
 }

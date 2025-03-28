@@ -1,3 +1,6 @@
 {
-  "Clear Field": "清除欄位"
+  "Clear Field": {
+    "description": "",
+    "value": "清除欄位"
+  }
 }

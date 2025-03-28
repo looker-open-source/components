@@ -89,7 +89,7 @@ const DataTableItemLayout = (props: DataTableItemProps) => {
     <ItemTargetGroup>
       {actionPrimary && <ItemTarget>{actionPrimary}</ItemTarget>}
       {actions && (
-        <ItemTarget>
+        <ItemTarget data-testid="content-item-menu-actions">
           <Menu content={actions}>
             <IconButton
               icon={<MoreVert />}

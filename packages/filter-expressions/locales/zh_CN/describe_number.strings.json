@@ -1,8 +1,10 @@
 {
   "is in range range": {
+    "description": "",
     "value": "在{{range}}范围内"
   },
   "is not in range range": {
+    "description": "",
     "value": "不在{{range}}范围内"
   }
 }

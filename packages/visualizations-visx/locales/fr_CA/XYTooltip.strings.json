@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Taille des points selon"
+  "Points sized by": {
+    "value": "Taille des points selon",
+    "description": ""
+  }
 }

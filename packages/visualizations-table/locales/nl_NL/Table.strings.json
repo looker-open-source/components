@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Shift + klik om aanvullende kolommen te sorteren",
-  "Sort ascending": "Oplopend sorteren",
-  "Sort descending": "Aflopend sorteren",
-  "Totals": "Totalen"
+  "Shift + Click to sort additional columns": {
+    "value": "Shift + klik om aanvullende kolommen te sorteren",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Oplopend sorteren",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Aflopend sorteren",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Totalen",
+    "description": ""
+  }
 }

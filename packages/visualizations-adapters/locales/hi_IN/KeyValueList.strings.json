@@ -1,6 +1,18 @@
 {
-  "false": "ग़लत",
-  "null": "नल",
-  "true": "सही",
-  "undefined": "अपरिभाषित"
+  "false": {
+    "value": "ग़लत",
+    "description": ""
+  },
+  "null": {
+    "value": "नल",
+    "description": ""
+  },
+  "true": {
+    "value": "सही",
+    "description": ""
+  },
+  "undefined": {
+    "value": "अपरिभाषित",
+    "description": ""
+  }
 }

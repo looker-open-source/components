@@ -1,4 +1,10 @@
 {
-  "Loading": "Indlæser",
-  "No options": "Ingen indstillinger"
+  "Loading": {
+    "value": "Indlæser",
+    "description": ""
+  },
+  "No options": {
+    "value": "Ingen indstillinger",
+    "description": ""
+  }
 }

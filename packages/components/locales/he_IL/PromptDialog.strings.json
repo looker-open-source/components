@@ -1,4 +1,10 @@
 {
-  "Cancel": "ביטול",
-  "Save": "שמור"
+  "Cancel": {
+    "value": "ביטול",
+    "description": ""
+  },
+  "Save": {
+    "value": "שמור",
+    "description": ""
+  }
 }

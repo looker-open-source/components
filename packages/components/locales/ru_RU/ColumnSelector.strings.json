@@ -1,7 +1,22 @@
 {
-  "Apply": "Применить",
-  "Cancel": "Отмена",
-  "Select All": "Выбрать все",
-  "Select None": "Ничего не выбирать",
-  "Select columns to display": "Выбрать столбцы для отображения"
+  "Apply": {
+    "value": "Применить",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Отмена",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Выбрать все",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Ничего не выбирать",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Выбрать столбцы для отображения",
+    "description": ""
+  }
 }

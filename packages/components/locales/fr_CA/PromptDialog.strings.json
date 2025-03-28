@@ -1,4 +1,10 @@
 {
-  "Cancel": "Annuler",
-  "Save": "Enregistrer"
+  "Cancel": {
+    "value": "Annuler",
+    "description": ""
+  },
+  "Save": {
+    "value": "Enregistrer",
+    "description": ""
+  }
 }

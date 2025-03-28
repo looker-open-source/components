@@ -1,7 +1,22 @@
 {
-  "First page of results": "Första sidan med resultat",
-  "Last page of results": "Sista sidan med resultat",
-  "Next page of results": "Nästa sida med resultat",
-  "Previous page of results": "Föregående sida med resultat",
-  "of": "av"
+  "First page of results": {
+    "value": "Första sidan med resultat",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Sista sidan med resultat",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Nästa sida med resultat",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Föregående sida med resultat",
+    "description": ""
+  },
+  "of": {
+    "value": "av",
+    "description": ""
+  }
 }

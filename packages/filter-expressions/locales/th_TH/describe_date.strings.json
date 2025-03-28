@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " เสร็จสมบูรณ์"
+    "value": " เสร็จสมบูรณ์",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "ที่แล้ว"
+    "value": "ที่แล้ว",
+    "description": ""
   },
   "from now": {
-    "value": "นับจากนี้"
+    "value": "นับจากนี้",
+    "description": ""
   },
   "is any time": {
-    "value": "เป็นเวลาใดก็ได้"
+    "value": "เป็นเวลาใดก็ได้",
+    "description": ""
   },
   "is before": {
-    "value": "อยู่ก่อน"
+    "value": "อยู่ก่อน",
+    "description": ""
   },
   "is day": {
-    "value": "เป็น {{day}}"
+    "value": "เป็น {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "ตั้งแต่ {{dateTimeStart}} จนถึง {{dateTimeEnd}}"
+    "value": "ตั้งแต่ {{dateTimeStart}} จนถึง {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "อยู่ใน {{month}} {{year}}"
+    "value": "อยู่ใน {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "อยู่ใน {{describeInterval}} ล่าสุด"
+    "value": "อยู่ใน {{describeInterval}} ล่าสุด",
+    "description": ""
   },
   "is in the year year": {
-    "value": "ภายในปี {{year}}"
+    "value": "ภายในปี {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "เมื่อ {{interval}} ที่แล้ว"
+    "value": "เมื่อ {{interval}} ที่แล้ว",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "อยู่ตั้งแต่ {{intervalStart}} {{intervalType}} เป็นเวลา {{intervalEnd}}"
+    "value": "อยู่ตั้งแต่ {{intervalStart}} {{intervalType}} เป็นเวลา {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "ไม่เป็นค่าว่าง"
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "เมื่อ {{dateTime}}"
+    "value": "เมื่อ {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "อยู่ที่หรือหลัง"
+    "value": "อยู่ที่หรือหลัง",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "คือ {{unitLabel}} ก่อนหน้า"
+    "value": "คือ {{unitLabel}} ก่อนหน้า",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "คือ {{type}} {{unitLabel}}"
+    "value": "คือ {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "ถัดไป"
+    "value": "ถัดไป",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} ตอนนี้"
+    "value": "{{prefix}} ตอนนี้",
+    "description": ""
   },
   "this": {
-    "value": "นี้"
+    "value": "นี้",
+    "description": ""
   },
-  "this startInterval to endInterval": "{{startInterval}} นี้ถึง {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "{{startInterval}} นี้ถึง {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

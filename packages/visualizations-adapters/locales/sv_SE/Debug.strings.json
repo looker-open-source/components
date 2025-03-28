@@ -1,9 +1,30 @@
 {
-  "Config": "Konfigurera",
-  "Dimensions": "Dimensioner",
-  "Error": "Fel",
-  "Measures": "Mått",
-  "Result": "Resultat",
-  "error": "fel",
-  "ok": "OK"
+  "Config": {
+    "value": "Konfigurera",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Dimensioner",
+    "description": ""
+  },
+  "Error": {
+    "value": "Fel",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Mått",
+    "description": ""
+  },
+  "Result": {
+    "value": "Resultat",
+    "description": ""
+  },
+  "error": {
+    "value": "fel",
+    "description": ""
+  },
+  "ok": {
+    "value": "OK",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Anpassat"
+    "value": "Anpassat",
+    "description": ""
   },
   "Presets": {
-    "value": "Förinställningar"
+    "value": "Förinställningar",
+    "description": ""
   }
 }

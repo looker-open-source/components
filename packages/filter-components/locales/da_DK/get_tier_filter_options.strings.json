@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "er"
+    "value": "er",
+    "description": ""
   },
   "is any value": {
-    "value": "er enhver værdi"
+    "value": "er enhver værdi",
+    "description": ""
   },
   "is not": {
-    "value": "er ikke"
+    "value": "er ikke",
+    "description": ""
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Cancel": "रद्द करें",
-  "Save": "सहेजें"
+  "Cancel": {
+    "value": "रद्द करें",
+    "description": ""
+  },
+  "Save": {
+    "value": "सहेजें",
+    "description": ""
+  }
 }

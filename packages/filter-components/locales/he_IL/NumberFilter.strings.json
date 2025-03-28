@@ -1,3 +1,6 @@
 {
-  "any value": "ערך כלשהו"
+  "any value": {
+    "value": "ערך כלשהו",
+    "description": ""
+  }
 }

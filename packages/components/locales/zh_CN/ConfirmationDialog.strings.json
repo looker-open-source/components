@@ -1,4 +1,10 @@
 {
-  "Cancel": "取消",
-  "Confirm": "确认"
+  "Cancel": {
+    "description": "",
+    "value": "取消"
+  },
+  "Confirm": {
+    "description": "",
+    "value": "确认"
+  }
 }

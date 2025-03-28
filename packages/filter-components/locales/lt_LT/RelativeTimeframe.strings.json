@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Pasirinkite laikotarpį"
+  "Choose a Timeframe": {
+    "value": "Pasirinkite laikotarpį",
+    "description": ""
+  }
 }

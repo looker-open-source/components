@@ -37,6 +37,17 @@ import type {
 import { typography } from '@looker/design-tokens';
 import { pickInputProps } from '../InputProps';
 
+/**
+ * a simple shortcut function to test whether a single string
+ * matches regex whitespace
+ * @param char string
+ * @return boolean
+ */
+function isWhitespace(char: string) {
+  const whitespace = /\s/;
+  return whitespace.test(char);
+}
+
 export interface InlineTextAreaProps
   extends Omit<LayoutProps, 'size'>,
     SpaceProps,
@@ -79,7 +90,15 @@ export const InlineTextAreaLayout = forwardRef(
         />
         <VisibleText displayValue={displayValue}>
           {displayValue || placeholder}
-          {`\u00A0`}
+          {
+            /**
+             * Append a non-breaking space to ensure content that ends in empty lines is
+             * rendered appropriately.
+             */
+            isWhitespace(displayValue.charAt(displayValue.length - 1))
+              ? '\u00A0'
+              : null
+          }
         </VisibleText>
       </div>
     );
@@ -137,7 +156,6 @@ export const InlineTextArea = styled(InlineTextAreaLayout)`
   position: relative;
   text-align: inherit;
   white-space: pre-wrap;
-
   :focus,
   :hover {
     background-color: ${({ theme }) => theme.colors.ui1};

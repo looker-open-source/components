@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Произошла ошибка"
+  "Something went wrong": {
+    "value": "Произошла ошибка",
+    "description": ""
+  }
 }

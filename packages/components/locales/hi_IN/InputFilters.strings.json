@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "फ़िल्टर साफ़ करें",
-  "Filter List": "सूची फ़िल्टर करें",
-  "bottom-start": "बॉटम-स्टार्ट"
+  "Clear Filters": {
+    "value": "फ़िल्टर साफ़ करें",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "सूची फ़िल्टर करें",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "बॉटम-स्टार्ट",
+    "description": ""
+  }
 }

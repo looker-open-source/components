@@ -1,4 +1,10 @@
 {
-  "Cancel": "Cancel",
-  "Confirm": "Confirm"
+  "Cancel": {
+    "description": "",
+    "value": "Cancel"
+  },
+  "Confirm": {
+    "description": "",
+    "value": "Confirm"
+  }
 }

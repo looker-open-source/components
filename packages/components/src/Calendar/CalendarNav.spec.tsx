@@ -6,7 +6,7 @@
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { fireEvent, screen } from '@testing-library/react';
-import { Basic } from './stories/index.stories';
+import { Basic } from './fixtures';
 
 describe('CalendarNav', () => {
   test('expected month displayed', () => {

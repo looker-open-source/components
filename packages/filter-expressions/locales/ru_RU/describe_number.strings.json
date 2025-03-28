@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "в диапазоне {{range}}"
+    "value": "в диапазоне {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "не входит в диапазон {{range}}"
+    "value": "не входит в диапазон {{range}}",
+    "description": ""
   }
 }

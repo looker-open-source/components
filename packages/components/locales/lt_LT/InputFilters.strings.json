@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Išvalyti filtrus",
-  "Filter List": "Filtrų sąrašas",
-  "bottom-start": "iš apačios į viršų"
+  "Clear Filters": {
+    "value": "Išvalyti filtrus",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filtrų sąrašas",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "iš apačios į viršų",
+    "description": ""
+  }
 }

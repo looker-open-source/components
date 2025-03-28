@@ -62,7 +62,7 @@ export interface VisualizationProps extends VisWrapperProps, ChartLayoutProps {
   data?: SDKRecord[];
   fields?: Fields;
   config?: CAll;
-  totals?: Record<string, number>;
+  totals?: Record<string, number | null>;
   pivots?: Pivots;
   chartTypeMap?: Record<string, FunctionComponentType>;
 }

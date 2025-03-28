@@ -31,7 +31,7 @@ import { dateToFilterDateTimeModel } from '@looker/filter-expressions';
 import { ButtonToggles } from '../components/ControlFilter/components/ButtonToggles';
 import { DropdownMenu } from '../components/ControlFilter/components/DropdownMenu';
 import { DateInput } from '../components/AdvancedFilter/components/DateFilter/components/DateInput';
-import { DateRange } from '../components/AdvancedFilter/components/DateFilter/components/DateRange';
+// import { DayRangeInput } from '../components/AdvancedFilter/components/DateFilter/components/DayRangeInput';
 import type { Option } from '../types/option';
 import {
   getControlFilterInfo,
@@ -272,35 +272,6 @@ describe('getControlFilterInfo', () => {
     const { year, month, day } = dateToFilterDateTimeModel(
       tokenInfo?.props.date
     );
-    expect(year).toBe(2019);
-    expect(month).toBe(9);
-    expect(day).toBe(6);
-  });
-
-  it('Returns a dictionary with all supported controls for date ranges', () => {
-    const date: FilterDateTimeModel = {
-      year: 2019,
-      month: 9,
-      day: 6,
-    };
-
-    const item: FilterModel = {
-      id: 'filter',
-      type: 'range',
-      is: true,
-      start: date,
-      end: date,
-    };
-
-    const tokenInfo = getControlFilterInfo(item, {
-      config: getConfig({}, 'date_time_range_input'),
-      changeFilter: jest.fn(),
-      onInputChange: jest.fn(),
-      name: '',
-    });
-
-    expect(tokenInfo?.Component).toBe(DateRange);
-    const { year, month, day } = tokenInfo?.props.item.start ?? {};
     expect(year).toBe(2019);
     expect(month).toBe(9);
     expect(day).toBe(6);

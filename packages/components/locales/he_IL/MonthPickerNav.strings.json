@@ -1,5 +1,14 @@
 {
-  "close": "סגור",
-  "next year": "בשנה הבאה",
-  "previous year": "בשנה שעברה"
+  "close": {
+    "value": "סגור",
+    "description": ""
+  },
+  "next year": {
+    "value": "בשנה הבאה",
+    "description": ""
+  },
+  "previous year": {
+    "value": "בשנה שעברה",
+    "description": ""
+  }
 }

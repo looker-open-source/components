@@ -56,7 +56,16 @@ export const getFilterTokenItem = (
       item = getDateFilterTokenItem(item, configType);
       break;
   }
-  return { ...item, is: true, left: null, right: null };
+  return { ...item, is: true };
+};
+
+const getNewNumberValue = (item: FilterModel) => {
+  if (Array.isArray(item.value) && item.value.length) {
+    return item.value;
+  } else if (item.low) {
+    return [Number(item.low)];
+  }
+  return [0];
 };
 
 /**
@@ -66,20 +75,14 @@ const getNumberFilterTokenItem = (
   item: FilterModel,
   configType: string
 ): FilterModel => {
-  let value = [0];
-  if (item.value?.length) {
-    value = item.value;
-  } else if (item.low) {
-    value = [item.low];
-  }
+  const value = getNewNumberValue(item);
   switch (configType) {
     case 'range_slider': {
-      const value = (item.value && item.value?.[0]) || 0;
       return sanitizeNumber({
         ...item,
         type: 'between',
-        low: item.low ?? value,
-        high: item.high ?? value,
+        low: item.low ?? value[0],
+        high: item.high ?? value[0],
       });
     }
     case 'slider':

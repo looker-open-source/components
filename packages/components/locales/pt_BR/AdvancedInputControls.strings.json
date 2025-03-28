@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Limpar campo"
+  "Clear Field": {
+    "description": "",
+    "value": "Limpar campo"
+  }
 }

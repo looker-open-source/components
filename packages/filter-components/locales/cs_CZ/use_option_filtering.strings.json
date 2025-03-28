@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Žádné hodnoty"
+    "value": "Žádné hodnoty",
+    "description": ""
   },
   "No values match": {
-    "value": "Žádné hodnoty se neshodují"
+    "value": "Žádné hodnoty se neshodují",
+    "description": ""
   }
 }

@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Personnalisation"
+    "value": "Personnalisation",
+    "description": ""
   },
   "Presets": {
-    "value": "Prérégler"
+    "value": "Prérégler",
+    "description": ""
   }
 }

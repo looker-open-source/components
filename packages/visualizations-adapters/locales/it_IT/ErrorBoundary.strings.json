@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Si è verificato un errore"
+  "Something went wrong": {
+    "description": "",
+    "value": "Si è verificato un errore"
+  }
 }

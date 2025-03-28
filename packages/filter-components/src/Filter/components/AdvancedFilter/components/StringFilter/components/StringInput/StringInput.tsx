@@ -25,8 +25,7 @@
  */
 import type { ValidationMessageProps } from '@looker/components';
 import { InputText, InputSearch } from '@looker/components';
-import type { FilterModel } from '@looker/filter-expressions';
-import isArray from 'lodash/isArray';
+import type { FilterModel, StringFilterType } from '@looker/filter-expressions';
 import React, { useMemo } from 'react';
 import styled from 'styled-components';
 import type { Option } from '../../../../../../types/option';
@@ -44,7 +43,7 @@ interface StringInputProps extends PlacementProps {
   onChange?: (id?: string, props?: any) => void;
   onInputChange?: (value: string) => void;
   isLoading?: boolean;
-  item: FilterModel;
+  item: FilterModel<StringFilterType>;
   suggestions?: string[];
   enumerations?: Option[];
   validationMessage?: ValidationMessageProps;
@@ -52,6 +51,13 @@ interface StringInputProps extends PlacementProps {
   width?: string | number;
   height?: string | number;
 }
+
+const getValue = ({ value }: FilterModel<StringFilterType>) => {
+  if (Array.isArray(value)) {
+    return value.length > 0 ? value[0] : '';
+  }
+  return value || '';
+};
 
 export const StringInputLayout = ({
   className,
@@ -75,7 +81,7 @@ export const StringInputLayout = ({
     excludeValues: false,
     onInputChange,
     options,
-    value: item.value,
+    value: item.value || [],
   });
 
   const handleChange = (newValue?: string) => {
@@ -104,8 +110,7 @@ export const StringInputLayout = ({
     validationType: validationMessage?.type,
     width,
   };
-  const value =
-    isArray(item.value) && item.value.length ? item.value[0] : item.value;
+  const value = getValue(item);
 
   return (
     <InputSearch

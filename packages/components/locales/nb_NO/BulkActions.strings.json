@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Alle {{pageCount}} viste elementer er valgt",
-  "AllTotalCountSelected": "Alle {{totalCount}} elementer er valgt",
-  "Bulk Actions": "Bulk-handlinger",
-  "Clear Selection": "Tøm valg",
-  "SelectAllCountResults": "Velg alle {{totalCount}} resultater",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} av {{pageCount}} viste elementer er valgt"
+  "AllPageCountDisplayedSelected": {
+    "value": "Alle {{pageCount}} viste elementer er valgt",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Alle {{totalCount}} elementer er valgt",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Bulk-handlinger",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Tøm valg",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Velg alle {{totalCount}} resultater",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}} av {{pageCount}} viste elementer er valgt",
+    "description": ""
+  }
 }

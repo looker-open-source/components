@@ -1,7 +1,22 @@
 {
-  "Apply": "Taikyti",
-  "Cancel": "Atšaukti",
-  "Select All": "Pasirinkti: viską",
-  "Select None": "Pasirinkti: nieko",
-  "Select columns to display": "Pasirinkti norimus rodyti stulpelius"
+  "Apply": {
+    "value": "Taikyti",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Atšaukti",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Pasirinkti: viską",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Pasirinkti: nieko",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Pasirinkti norimus rodyti stulpelius",
+    "description": ""
+  }
 }

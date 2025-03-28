@@ -1,4 +1,10 @@
 {
-  "Copied": "Copied",
-  "Copy to Clipboard": "Copy to Clipboard"
+  "Copied": {
+    "description": "",
+    "value": "Copied"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "Copy to Clipboard"
+  }
 }

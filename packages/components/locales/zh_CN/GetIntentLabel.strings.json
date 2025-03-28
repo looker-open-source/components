@@ -1,6 +1,18 @@
 {
-  "Error": "错误",
-  "Inform": "通知",
-  "Success": "成功",
-  "Warning": "警告"
+  "Error": {
+    "description": "",
+    "value": "错误"
+  },
+  "Inform": {
+    "description": "",
+    "value": "通知"
+  },
+  "Success": {
+    "description": "",
+    "value": "成功"
+  },
+  "Warning": {
+    "description": "",
+    "value": "警告"
+  }
 }

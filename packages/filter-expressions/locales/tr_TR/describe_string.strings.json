@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "boş"
+    "value": "boş",
+    "description": ""
   },
   "contains value": {
-    "value": "şunu içeriyor: {{value}}"
+    "value": "şunu içeriyor: {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "şunu içermiyor: {{value}}"
+    "value": "şunu içermiyor: {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "şununla bitmiyor: {{value}}"
+    "value": "şununla bitmiyor: {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "şununla başlamıyor: {{value}}"
+    "value": "şununla başlamıyor: {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "şununla bitiyor: {{value}}"
+    "value": "şununla bitiyor: {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "şununla başlıyor: {{value}}"
+    "value": "şununla başlıyor: {{value}}",
+    "description": ""
   }
 }

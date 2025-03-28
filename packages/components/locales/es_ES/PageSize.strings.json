@@ -1,4 +1,10 @@
 {
-  "Display": "Mostrar",
-  "of": "de"
+  "Display": {
+    "description": "",
+    "value": "Visualización"
+  },
+  "of": {
+    "description": "",
+    "value": "de"
+  }
 }

@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Maj + cliquez pour trier les colonnes supplémentaires",
-  "Sort ascending": "Trier dans l’ordre croissant",
-  "Sort descending": "Trier dans l’ordre décroissant",
-  "Totals": "Totaux"
+  "Shift + Click to sort additional columns": {
+    "value": "Maj + cliquez pour trier les colonnes supplémentaires",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Trier dans l’ordre croissant",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Trier dans l’ordre décroissant",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Totaux",
+    "description": ""
+  }
 }

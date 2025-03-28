@@ -1,3 +1,6 @@
 {
-  "Points sized by": "กำหนดขนาดจุดโดย"
+  "Points sized by": {
+    "value": "กำหนดขนาดจุดโดย",
+    "description": ""
+  }
 }

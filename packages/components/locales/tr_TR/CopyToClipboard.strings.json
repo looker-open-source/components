@@ -1,4 +1,10 @@
 {
-  "Copied": "Kopyalandı",
-  "Copy to Clipboard": "Panoya Kopyala"
+  "Copied": {
+    "value": "Kopyalandı",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Panoya Kopyala",
+    "description": ""
+  }
 }

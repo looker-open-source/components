@@ -1,4 +1,10 @@
 {
-  "Loading": "Ladataan",
-  "No options": "Ei asetuksia"
+  "Loading": {
+    "value": "Ladataan",
+    "description": ""
+  },
+  "No options": {
+    "value": "Ei asetuksia",
+    "description": ""
+  }
 }

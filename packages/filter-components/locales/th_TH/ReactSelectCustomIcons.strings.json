@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "ล้างทั้งหมด"
+    "value": "ล้างทั้งหมด",
+    "description": ""
   },
   "Remove": {
-    "value": "นำออก"
+    "value": "นำออก",
+    "description": ""
   },
   "Toggle": {
-    "value": "สลับ"
+    "value": "สลับ",
+    "description": ""
   }
 }

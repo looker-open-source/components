@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "tyhjä"
+    "value": "tyhjä",
+    "description": ""
   },
   "contains value": {
-    "value": "sisältää kohteen {{value}}"
+    "value": "sisältää kohteen {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "ei sisällä kohdetta {{value}}"
+    "value": "ei sisällä kohdetta {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "ei lopu kohteella {{value}}"
+    "value": "ei lopu kohteella {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "ei ala kohteella {{value}}"
+    "value": "ei ala kohteella {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "loppuu kohteella {{value}}"
+    "value": "loppuu kohteella {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "alkaa kohteella {{value}}"
+    "value": "alkaa kohteella {{value}}",
+    "description": ""
   }
 }

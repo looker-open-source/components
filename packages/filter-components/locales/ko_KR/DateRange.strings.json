@@ -1,3 +1,6 @@
 {
-  "until (before)": "종료 시간(그 이전):"
+  "until (before)": {
+    "description": "",
+    "value": "종료 시간(그 이전):"
+  }
 }

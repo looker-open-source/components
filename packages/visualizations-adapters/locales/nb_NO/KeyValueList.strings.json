@@ -1,6 +1,18 @@
 {
-  "false": "falsk",
-  "null": "null",
-  "true": "sann",
-  "undefined": "udefinert"
+  "false": {
+    "value": "falsk",
+    "description": ""
+  },
+  "null": {
+    "value": "null",
+    "description": ""
+  },
+  "true": {
+    "value": "sann",
+    "description": ""
+  },
+  "undefined": {
+    "value": "udefinert",
+    "description": ""
+  }
 }

@@ -1,82 +1,162 @@
 {
-  "complete day": "pełny dzień",
+  "complete day": {
+    "description": "",
+    "value": "cały dzień"
+  },
   "complete days": {
+    "description": "",
     "value": "pełne dni"
   },
-  "complete fiscal quarter": "pełny kwartał fiskalny",
+  "complete fiscal quarter": {
+    "description": "",
+    "value": "pełny kwartał fiskalny"
+  },
   "complete fiscal quarters": {
+    "description": "",
     "value": "pełne kwartały podatkowe"
   },
-  "complete fiscal year": "pełny rok fiskalny",
+  "complete fiscal year": {
+    "description": "",
+    "value": "pełny rok fiskalny"
+  },
   "complete fiscal years": {
+    "description": "",
     "value": "pełne lata podatkowe"
   },
-  "complete hour": "pełna godzina",
+  "complete hour": {
+    "description": "",
+    "value": "pełna godzina"
+  },
   "complete hours": {
+    "description": "",
     "value": "pełne godziny"
   },
-  "complete minute": "pełna minuta",
+  "complete minute": {
+    "description": "",
+    "value": "pełna minuta"
+  },
   "complete minutes": {
+    "description": "",
     "value": "pełne minuty"
   },
-  "complete month": "pełny miesiąc",
+  "complete month": {
+    "description": "",
+    "value": "pełny miesiąc"
+  },
   "complete months": {
+    "description": "",
     "value": "pełne miesiące"
   },
-  "complete quarter": "pełny kwartał",
+  "complete quarter": {
+    "description": "",
+    "value": "pełny kwartał"
+  },
   "complete quarters": {
+    "description": "",
     "value": "pełne kwartały"
   },
-  "complete second": "pełna sekunda",
+  "complete second": {
+    "description": "",
+    "value": "pełna sekunda"
+  },
   "complete seconds": {
+    "description": "",
     "value": "pełne sekundy"
   },
-  "complete week": "pełny tydzień",
+  "complete week": {
+    "description": "",
+    "value": "pełny tydzień"
+  },
   "complete weeks": {
+    "description": "",
     "value": "pełne tygodnie"
   },
-  "complete year": "pełny rok",
+  "complete year": {
+    "description": "",
+    "value": "pełny rok"
+  },
   "complete years": {
+    "description": "",
     "value": "pełne lata"
   },
-  "day": "dzień",
+  "day": {
+    "description": "",
+    "value": "dzień"
+  },
   "days": {
+    "description": "",
     "value": "dni"
   },
-  "fiscal quarter": "kwartał fiskalny",
+  "fiscal quarter": {
+    "description": "",
+    "value": "kwartał fiskalny"
+  },
   "fiscal quarters": {
+    "description": "",
     "value": "kwartały podatkowe"
   },
-  "fiscal year": "rok fiskalny",
+  "fiscal year": {
+    "description": "",
+    "value": "rok fiskalny"
+  },
   "fiscal years": {
+    "description": "",
     "value": "lata podatkowe"
   },
-  "hour": "godzina",
+  "hour": {
+    "description": "",
+    "value": "godzina"
+  },
   "hours": {
+    "description": "",
     "value": "godziny"
   },
-  "minute": "minuta",
+  "minute": {
+    "description": "",
+    "value": "minuta"
+  },
   "minutes": {
+    "description": "",
     "value": "minuty"
   },
-  "month": "miesiąc",
+  "month": {
+    "description": "",
+    "value": "miesiąc"
+  },
   "months": {
+    "description": "",
     "value": "miesiące"
   },
-  "quarter": "kwartał",
+  "quarter": {
+    "description": "",
+    "value": "kwartał"
+  },
   "quarters": {
+    "description": "",
     "value": "kwartały"
   },
-  "second": "sekunda",
+  "second": {
+    "description": "",
+    "value": "sekunda"
+  },
   "seconds": {
+    "description": "",
     "value": "sekundy"
   },
-  "week": "tydzień",
+  "week": {
+    "description": "",
+    "value": "tydzień"
+  },
   "weeks": {
+    "description": "",
     "value": "tygodnie"
   },
-  "year": "rok",
+  "year": {
+    "description": "",
+    "value": "rok"
+  },
   "years": {
+    "description": "",
     "value": "lata"
   }
 }

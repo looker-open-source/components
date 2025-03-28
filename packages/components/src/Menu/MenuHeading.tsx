@@ -97,4 +97,5 @@ const MenuHeadingWrapper = styled.li<MenuHeadingWrapperProps>`
     renderBoxShadow ? `0 4px 8px -2px ${colors.ui2}` : 'none'};
   position: sticky;
   top: -1px;
+  z-index: 1;
 `;

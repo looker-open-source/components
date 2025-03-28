@@ -1,33 +1,36 @@
-/**
- * Copyright (c) 2023 Google LLC
- * SPDX-License-Identifier: MIT
- */
 
-import { daDK as componentsLocale } from '@looker/components';
-import { mergeLocaleObjects } from '@looker/i18n';
+    import {daDK as componentsLocale} from '@looker/components'
+    import { mergeLocaleObjects } from '@looker/i18n'
 
-const resources = {
-  Debug: {
-    Config: 'Konfigurer',
-    Dimensions: 'Dimensioner',
-    Error: 'Fejl',
-    Measures: 'Mål',
-    Result: 'Resultat',
-    error: 'fejl',
-    ok: 'OK',
+    const resources = {
+  "Debug": {
+    "Config": "Konfigurer",
+    "Dimensions": "Dimensioner",
+    "Error": "Fejl",
+    "Measures": "Mål",
+    "Result": "Resultat",
+    "error": "fejl",
+    "ok": "OK"
   },
-  ErrorBoundary: {
-    'Something went wrong': 'Der gik noget galt',
+  "ErrorBoundary": {
+    "Something went wrong": "Der gik noget galt"
   },
-  KeyValueList: {
-    false: 'falsk',
-    null: 'null',
-    true: 'sand',
-    undefined: 'ikke defineret',
+  "KeyValueList": {
+    "false": "falsk",
+    "null": "null",
+    "true": "sand",
+    "undefined": "ikke defineret"
   },
-  useNormalizedPivotLabels: {
-    'Row Total': 'Rækketotal',
-  },
-};
+  "useNormalizedPivotLabels": {
+    "Row Total": "Rækketotal"
+  }
+}
 
-export const daDK = mergeLocaleObjects([componentsLocale], 'da-DK', resources);
+    export const daDK = mergeLocaleObjects(
+      [
+        componentsLocale,
+      ],
+      'da-DK',
+      resources,
+      
+    )

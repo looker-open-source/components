@@ -1,4 +1,10 @@
 {
-  "next month": "další měsíc",
-  "previous month": "předchozí měsíc"
+  "next month": {
+    "value": "další měsíc",
+    "description": ""
+  },
+  "previous month": {
+    "value": "předchozí měsíc",
+    "description": ""
+  }
 }

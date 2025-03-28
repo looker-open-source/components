@@ -1,8 +1,10 @@
 {
   "is not value": {
+    "description": "",
     "value": "{{value}} 아님"
   },
   "is value": {
+    "description": "",
     "value": "{{value}}임"
   }
 }

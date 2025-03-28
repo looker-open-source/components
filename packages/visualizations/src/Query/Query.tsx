@@ -24,7 +24,7 @@
 
  */
 
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType, ReactElement } from 'react';
 import React, { Children } from 'react';
 import { useTheme } from 'styled-components';
 import flow from 'lodash/flow';
@@ -48,21 +48,24 @@ import {
   nullValueZero,
   xAxisReversed,
 } from '@looker/visualizations-adapters';
+import type { VisualizationProps } from '../Visualization/Visualization';
 import { QueryError } from '../QueryError';
 
 export type QueryProps = {
   /* Accept user defined config options to overwrite API response */
   config?: Partial<CAll>;
   LoadingIndicator?: ComponentType;
-  children?: ReactNode;
+  children?: ReactElement<
+    VisualizationProps & { loading?: boolean; ok?: boolean }
+  >;
 } & (
   | /* Restricted prop combo: use EITHER a dashboard or query, but not both */
   {
       dashboard?: never;
-      query?: string | number;
+      query?: string;
     }
   | {
-      dashboard?: number;
+      dashboard?: string;
       query?: never;
     }
 );

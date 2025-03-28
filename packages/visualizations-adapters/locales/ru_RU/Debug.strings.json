@@ -1,9 +1,30 @@
 {
-  "Config": "Конфигурация",
-  "Dimensions": "Поля dimension",
-  "Error": "Ошибка",
-  "Measures": "Поля measure",
-  "Result": "Результат",
-  "error": "ошибка",
-  "ok": "ОК"
+  "Config": {
+    "value": "Конфигурация",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Поля dimension",
+    "description": ""
+  },
+  "Error": {
+    "value": "Ошибка",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Поля measure",
+    "description": ""
+  },
+  "Result": {
+    "value": "Результат",
+    "description": ""
+  },
+  "error": {
+    "value": "ошибка",
+    "description": ""
+  },
+  "ok": {
+    "value": "ОК",
+    "description": ""
+  }
 }

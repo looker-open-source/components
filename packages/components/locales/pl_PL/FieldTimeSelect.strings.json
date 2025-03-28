@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Użyj formatu GG:MM"
+  "Please use format HHMM": {
+    "description": "",
+    "value": "Użyj formatu GG:MM"
+  }
 }

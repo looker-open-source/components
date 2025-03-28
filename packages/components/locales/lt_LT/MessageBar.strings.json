@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Atmesti {{intent}}"
+  "DismissIntent": {
+    "value": "Atmesti {{intent}}",
+    "description": ""
+  }
 }

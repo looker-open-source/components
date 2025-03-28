@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Sista 14 dagarna"
+    "value": "Sista 14 dagarna",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Sista 180 dagarna"
+    "value": "Sista 180 dagarna",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Sista 28 dagarna"
+    "value": "Sista 28 dagarna",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Sista 30 dagarna"
+    "value": "Sista 30 dagarna",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Sista 365 dagarna"
+    "value": "Sista 365 dagarna",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Sista 7 dagarna"
+    "value": "Sista 7 dagarna",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Sista 90 dagarna"
+    "value": "Sista 90 dagarna",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Föregående månad"
+    "value": "Föregående månad",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Föregående kvartal"
+    "value": "Föregående kvartal",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Föregående vecka"
+    "value": "Föregående vecka",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Föregående år"
+    "value": "Föregående år",
+    "description": ""
   },
   "This Month": {
-    "value": "Denna månad"
+    "value": "Denna månad",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Detta kvartal"
+    "value": "Detta kvartal",
+    "description": ""
   },
   "This Week": {
-    "value": "Denna vecka"
+    "value": "Denna vecka",
+    "description": ""
   },
   "This Year": {
-    "value": "Detta år"
+    "value": "Detta år",
+    "description": ""
   },
   "Today": {
-    "value": "I dag"
+    "value": "I dag",
+    "description": ""
   },
   "Year To Date": {
-    "value": "År till dags dato"
+    "value": "År till dags dato",
+    "description": ""
   },
   "Yesterday": {
-    "value": "I går"
+    "value": "I går",
+    "description": ""
   }
 }

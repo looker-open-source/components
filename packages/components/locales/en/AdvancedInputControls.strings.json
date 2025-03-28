@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Clear Field"
+  "Clear Field": {
+    "description": "",
+    "value": "Clear Field"
+  }
 }

@@ -7,8 +7,11 @@ import 'jest-styled-components';
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
-import Basic from './stories/Basic';
 import { PopoverContent } from './PopoverContent';
+
+function Basic() {
+  return <PopoverContent>We the People of the United States, </PopoverContent>;
+}
 
 describe('PopoverContent', () => {
   test('Basic', () => {

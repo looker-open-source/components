@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Selitesivu {{page}}/{{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Selitesivu {{page}}/{{totalPages}}",
+    "description": ""
+  }
 }

@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Caixa"
+    "value": "Caixa",
+    "description": ""
   },
   "Circle": {
-    "value": "Círculo"
+    "value": "Círculo",
+    "description": ""
   },
   "Location": {
-    "value": "Localização"
+    "value": "Localização",
+    "description": ""
   },
   "feet": {
-    "value": "pés"
+    "value": "pés",
+    "description": ""
   },
   "is anywhere": {
-    "value": "está em qualquer lado"
+    "value": "está em qualquer lado",
+    "description": ""
   },
   "is not null": {
-    "value": "não é nulo"
+    "value": "não é nulo",
+    "description": ""
   },
   "is null": {
-    "value": "é nulo"
+    "value": "é nulo",
+    "description": ""
   },
   "kilometers": {
-    "value": "quilómetros"
+    "value": "quilómetros",
+    "description": ""
   },
   "meters": {
-    "value": "metros"
+    "value": "metros",
+    "description": ""
   },
   "miles": {
-    "value": "milhas"
+    "value": "milhas",
+    "description": ""
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Cancel": "Peruuta",
-  "Save": "Tallenna"
+  "Cancel": {
+    "value": "Peruuta",
+    "description": ""
+  },
+  "Save": {
+    "value": "Tallenna",
+    "description": ""
+  }
 }

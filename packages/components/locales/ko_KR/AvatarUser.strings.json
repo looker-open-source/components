@@ -1,3 +1,6 @@
 {
-  "Avatar": "아바타"
+  "Avatar": {
+    "description": "",
+    "value": "아바타"
+  }
 }

@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "ล้างตัวกรอง",
-  "Filter List": "รายการตัวกรอง",
-  "bottom-start": "เริ่มจากจุดเริ่มต้น"
+  "Clear Filters": {
+    "value": "ล้างตัวกรอง",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "รายการตัวกรอง",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "เริ่มจากจุดเริ่มต้น",
+    "description": ""
+  }
 }

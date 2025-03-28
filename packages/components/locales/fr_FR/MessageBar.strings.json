@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Fermer {{intent}}"
+  "DismissIntent": {
+    "description": "",
+    "value": "Fermer {{intent}}"
+  }
 }

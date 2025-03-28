@@ -1,3 +1,6 @@
 {
-  "until (before)": "do (před)"
+  "until (before)": {
+    "value": "do (před)",
+    "description": ""
+  }
 }

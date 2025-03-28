@@ -1,8 +1,10 @@
 {
   "Add": {
+    "description": "",
     "value": "추가"
   },
   "Remove": {
+    "description": "",
     "value": "삭제"
   }
 }

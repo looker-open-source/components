@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "dia"
   },
   "days": {
+    "description": "",
     "value": "dias"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "trimestre fiscal"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "trimestres fiscais"
   },
   "fiscal year": {
+    "description": "",
     "value": "ano fiscal"
   },
   "fiscal years": {
+    "description": "",
     "value": "anos fiscais"
   },
   "hour": {
+    "description": "",
     "value": "hora"
   },
   "hours": {
+    "description": "",
     "value": "horas"
   },
   "minute": {
+    "description": "",
     "value": "minuto"
   },
   "minutes": {
+    "description": "",
     "value": "minutos"
   },
   "month": {
+    "description": "",
     "value": "mês"
   },
   "months": {
+    "description": "",
     "value": "meses"
   },
   "quarter": {
+    "description": "",
     "value": "trimestre"
   },
   "quarters": {
+    "description": "",
     "value": "trimestres"
   },
   "second": {
+    "description": "",
     "value": "segundo"
   },
   "seconds": {
+    "description": "",
     "value": "segundos"
   },
   "week": {
+    "description": "",
     "value": "semana"
   },
   "weeks": {
+    "description": "",
     "value": "semanas"
   },
   "year": {
+    "description": "",
     "value": "ano"
   },
   "years": {
+    "description": "",
     "value": "anos"
   }
 }

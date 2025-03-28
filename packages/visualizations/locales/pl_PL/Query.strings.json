@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Żadne elementy podrzędne nie zostały przekazane do komponentu Zapytanie",
-  "Query component received both dashboard and query props": "Komponent Zapytanie odebrał zarówno właściwości panelu, jak i zapytania"
+  "No children passed to Query component": {
+    "description": "",
+    "value": "Żadne elementy podrzędne nie zostały przekazane do komponentu Zapytanie"
+  },
+  "Query component received both dashboard and query props": {
+    "description": "",
+    "value": "Komponent Zapytanie odebrał zarówno właściwości panelu, jak i zapytania"
+  }
 }

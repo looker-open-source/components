@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Egendefinert"
+    "value": "Egendefinert",
+    "description": ""
   },
   "Presets": {
-    "value": "Forhåndsinnstillinger"
+    "value": "Forhåndsinnstillinger",
+    "description": ""
   }
 }

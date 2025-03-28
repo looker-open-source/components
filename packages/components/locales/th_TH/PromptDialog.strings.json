@@ -1,4 +1,10 @@
 {
-  "Cancel": "ยกเลิก",
-  "Save": "บันทึก"
+  "Cancel": {
+    "value": "ยกเลิก",
+    "description": ""
+  },
+  "Save": {
+    "value": "บันทึก",
+    "description": ""
+  }
 }

@@ -1,82 +1,162 @@
 {
-  "complete day": "kokonainen päivä",
+  "complete day": {
+    "value": "kokonainen päivä",
+    "description": ""
+  },
   "complete days": {
-    "value": "kokonaista päivää"
+    "value": "kokonaista päivää",
+    "description": ""
   },
-  "complete fiscal quarter": "kokonainen tilikauden vuosineljännes",
+  "complete fiscal quarter": {
+    "value": "kokonainen tilikauden vuosineljännes",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "kokonaista tilikauden vuosineljännestä"
+    "value": "kokonaista tilikauden vuosineljännestä",
+    "description": ""
   },
-  "complete fiscal year": "kokonainen tilivuosi",
+  "complete fiscal year": {
+    "value": "kokonainen tilivuosi",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "kokonaista tilivuotta"
+    "value": "kokonaista tilivuotta",
+    "description": ""
   },
-  "complete hour": "kokonainen tunti",
+  "complete hour": {
+    "value": "kokonainen tunti",
+    "description": ""
+  },
   "complete hours": {
-    "value": "kokonaista tuntia"
+    "value": "kokonaista tuntia",
+    "description": ""
   },
-  "complete minute": "kokonainen minuutti",
+  "complete minute": {
+    "value": "kokonainen minuutti",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "kokonaista minuuttia"
+    "value": "kokonaista minuuttia",
+    "description": ""
   },
-  "complete month": "kokonainen kuukausi",
+  "complete month": {
+    "value": "kokonainen kuukausi",
+    "description": ""
+  },
   "complete months": {
-    "value": "kokonaista kuukautta"
+    "value": "kokonaista kuukautta",
+    "description": ""
   },
-  "complete quarter": "kokonainen vuosineljännes",
+  "complete quarter": {
+    "value": "kokonainen vuosineljännes",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "kokonaista vuosineljännestä"
+    "value": "kokonaista vuosineljännestä",
+    "description": ""
   },
-  "complete second": "kokonainen sekunti",
+  "complete second": {
+    "value": "kokonainen sekunti",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "kokonaista sekuntia"
+    "value": "kokonaista sekuntia",
+    "description": ""
   },
-  "complete week": "kokonainen viikko",
+  "complete week": {
+    "value": "kokonainen viikko",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "kokonaista viikkoa"
+    "value": "kokonaista viikkoa",
+    "description": ""
   },
-  "complete year": "kokonainen vuosi",
+  "complete year": {
+    "value": "kokonainen vuosi",
+    "description": ""
+  },
   "complete years": {
-    "value": "kokonaista vuotta"
+    "value": "kokonaista vuotta",
+    "description": ""
   },
-  "day": "päivä",
+  "day": {
+    "value": "päivä",
+    "description": ""
+  },
   "days": {
-    "value": "päivää"
+    "value": "päivää",
+    "description": ""
   },
-  "fiscal quarter": "tilikauden vuosineljännes",
+  "fiscal quarter": {
+    "value": "tilikauden vuosineljännes",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "tilikauden vuosineljännestä"
+    "value": "tilikauden vuosineljännestä",
+    "description": ""
   },
-  "fiscal year": "tilivuosi",
+  "fiscal year": {
+    "value": "tilivuosi",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "tilivuotta"
+    "value": "tilivuotta",
+    "description": ""
   },
-  "hour": "tunti",
+  "hour": {
+    "value": "tunti",
+    "description": ""
+  },
   "hours": {
-    "value": "tuntia"
+    "value": "tuntia",
+    "description": ""
   },
-  "minute": "minuutti",
+  "minute": {
+    "value": "minuutti",
+    "description": ""
+  },
   "minutes": {
-    "value": "minuuttia"
+    "value": "minuuttia",
+    "description": ""
   },
-  "month": "kuukausi",
+  "month": {
+    "value": "kuukausi",
+    "description": ""
+  },
   "months": {
-    "value": "kuukautta"
+    "value": "kuukautta",
+    "description": ""
   },
-  "quarter": "vuosineljännes",
+  "quarter": {
+    "value": "vuosineljännes",
+    "description": ""
+  },
   "quarters": {
-    "value": "vuosineljännestä"
+    "value": "vuosineljännestä",
+    "description": ""
   },
-  "second": "sekunti",
+  "second": {
+    "value": "sekunti",
+    "description": ""
+  },
   "seconds": {
-    "value": "sekuntia"
+    "value": "sekuntia",
+    "description": ""
   },
-  "week": "viikko",
+  "week": {
+    "value": "viikko",
+    "description": ""
+  },
   "weeks": {
-    "value": "viikkoa"
+    "value": "viikkoa",
+    "description": ""
   },
-  "year": "vuosi",
+  "year": {
+    "value": "vuosi",
+    "description": ""
+  },
   "years": {
-    "value": "vuotta"
+    "value": "vuotta",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "कुछ गड़बड़ी हुई"
+  "Something went wrong": {
+    "value": "कुछ गड़बड़ी हुई",
+    "description": ""
+  }
 }

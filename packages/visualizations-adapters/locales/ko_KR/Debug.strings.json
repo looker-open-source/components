@@ -1,9 +1,30 @@
 {
-  "Config": "구성",
-  "Dimensions": "측정기준",
-  "Error": "오류",
-  "Measures": "측정",
-  "Result": "결과",
-  "error": "오류",
-  "ok": "확인"
+  "Config": {
+    "description": "",
+    "value": "구성"
+  },
+  "Dimensions": {
+    "description": "",
+    "value": "측정기준"
+  },
+  "Error": {
+    "description": "",
+    "value": "오류"
+  },
+  "Measures": {
+    "description": "",
+    "value": "측정"
+  },
+  "Result": {
+    "description": "",
+    "value": "결과"
+  },
+  "error": {
+    "description": "",
+    "value": "오류"
+  },
+  "ok": {
+    "description": "",
+    "value": "확인"
+  }
 }

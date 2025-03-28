@@ -1,3 +1,6 @@
 {
-  "Delete": "Radera"
+  "Delete": {
+    "value": "Radera",
+    "description": ""
+  }
 }

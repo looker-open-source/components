@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "Недійсне значення"
+    "value": "Недійсне значення",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "Значення для атрибута користувача не вказано"
+    "value": "Значення для атрибута користувача не вказано",
+    "description": ""
   },
   "Selection required": {
-    "value": "Обов’язково виберіть елемент"
+    "value": "Обов’язково виберіть елемент",
+    "description": ""
   }
 }

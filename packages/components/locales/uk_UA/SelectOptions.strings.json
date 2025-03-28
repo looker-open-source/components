@@ -1,4 +1,10 @@
 {
-  "Loading": "Завантаження",
-  "No options": "Немає параметрів"
+  "Loading": {
+    "value": "Завантаження",
+    "description": ""
+  },
+  "No options": {
+    "value": "Немає параметрів",
+    "description": ""
+  }
 }

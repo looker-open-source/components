@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "is"
+    "value": "is",
+    "description": ""
   },
   "is any value": {
-    "value": "alle waarden"
+    "value": "alle waarden",
+    "description": ""
   },
   "is not": {
-    "value": "is niet"
+    "value": "is niet",
+    "description": ""
   }
 }

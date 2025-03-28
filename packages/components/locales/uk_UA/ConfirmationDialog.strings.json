@@ -1,4 +1,10 @@
 {
-  "Cancel": "Скасувати",
-  "Confirm": "Підтвердити"
+  "Cancel": {
+    "value": "Скасувати",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Підтвердити",
+    "description": ""
+  }
 }

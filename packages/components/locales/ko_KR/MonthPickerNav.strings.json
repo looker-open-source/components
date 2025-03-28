@@ -1,5 +1,14 @@
 {
-  "close": "닫기",
-  "next year": "다음 연도",
-  "previous year": "이전 연도"
+  "close": {
+    "description": "",
+    "value": "닫기"
+  },
+  "next year": {
+    "description": "",
+    "value": "다음 연도"
+  },
+  "previous year": {
+    "description": "",
+    "value": "이전 연도"
+  }
 }

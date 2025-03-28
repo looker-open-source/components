@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Onay İşareti Karışık"
+  "Check Mark Mixed": {
+    "value": "Onay İşareti Karışık",
+    "description": ""
+  }
 }

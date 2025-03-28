@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "Ongeldige waarde"
+    "value": "Ongeldige waarde",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "Er is geen waarde ingesteld voor uw gebruikerskenmerk"
+    "value": "Er is geen waarde ingesteld voor uw gebruikerskenmerk",
+    "description": ""
   },
   "Selection required": {
-    "value": "Selectie vereist"
+    "value": "Selectie vereist",
+    "description": ""
   }
 }

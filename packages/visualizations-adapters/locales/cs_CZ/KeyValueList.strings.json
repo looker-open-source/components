@@ -1,6 +1,18 @@
 {
-  "false": "nepravda",
-  "null": "prázdné",
-  "true": "pravda",
-  "undefined": "není definováno"
+  "false": {
+    "value": "nepravda",
+    "description": ""
+  },
+  "null": {
+    "value": "prázdné",
+    "description": ""
+  },
+  "true": {
+    "value": "pravda",
+    "description": ""
+  },
+  "undefined": {
+    "value": "není definováno",
+    "description": ""
+  }
 }

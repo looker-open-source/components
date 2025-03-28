@@ -1,3 +1,6 @@
 {
-  "Points sized by": "ポイントのサイズの基準:"
+  "Points sized by": {
+    "description": "",
+    "value": "ポイントのサイズの基準:"
+  }
 }

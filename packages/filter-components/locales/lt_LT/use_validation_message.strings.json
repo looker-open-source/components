@@ -1,3 +1,6 @@
 {
-  "Value required": "Būtina užpildyti"
+  "Value required": {
+    "value": "Būtina užpildyti",
+    "description": ""
+  }
 }

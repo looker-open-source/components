@@ -1,7 +1,22 @@
 {
-  "First page of results": "结果的第一页",
-  "Last page of results": "结果的最后一页",
-  "Next page of results": "结果的下一页",
-  "Previous page of results": "结果的上一页",
-  "of": "/"
+  "First page of results": {
+    "description": "",
+    "value": "结果的第一页"
+  },
+  "Last page of results": {
+    "description": "",
+    "value": "结果的最后一页"
+  },
+  "Next page of results": {
+    "description": "",
+    "value": "结果的下一页"
+  },
+  "Previous page of results": {
+    "description": "",
+    "value": "结果的上一页"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

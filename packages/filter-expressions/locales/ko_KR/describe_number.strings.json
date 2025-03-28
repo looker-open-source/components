@@ -1,8 +1,10 @@
 {
   "is in range range": {
+    "description": "",
     "value": "{{range}} 범위 내에 있음"
   },
   "is not in range range": {
+    "description": "",
     "value": "{{range}} 범위 내에 없음"
   }
 }

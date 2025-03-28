@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "पूर्ण दिन"
+    "value": "पूर्ण दिन",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "पूर्ण वित्तीय तिमाहियां"
+    "value": "पूर्ण वित्तीय तिमाहियां",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "पूर्ण वित्तीय वर्ष"
+    "value": "पूर्ण वित्तीय वर्ष",
+    "description": ""
   },
   "complete hours": {
-    "value": "पूर्ण घंटे"
+    "value": "पूर्ण घंटे",
+    "description": ""
   },
   "complete minutes": {
-    "value": "पूर्ण मिनट"
+    "value": "पूर्ण मिनट",
+    "description": ""
   },
   "complete months": {
-    "value": "पूर्ण महीने"
+    "value": "पूर्ण महीने",
+    "description": ""
   },
   "complete quarters": {
-    "value": "पूर्ण तिमाहियां"
+    "value": "पूर्ण तिमाहियां",
+    "description": ""
   },
   "complete seconds": {
-    "value": "पूर्ण सेकंड"
+    "value": "पूर्ण सेकंड",
+    "description": ""
   },
   "complete weeks": {
-    "value": "पूर्ण सप्ताह"
+    "value": "पूर्ण सप्ताह",
+    "description": ""
   },
   "complete years": {
-    "value": "पूर्ण वर्ष"
+    "value": "पूर्ण वर्ष",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Points dimensionnés suivant"
+  "Points sized by": {
+    "description": "",
+    "value": "Points dimensionnés suivant"
+  }
 }

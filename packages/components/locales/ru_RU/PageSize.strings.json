@@ -1,4 +1,10 @@
 {
-  "Display": "Показать",
-  "of": "из"
+  "Display": {
+    "value": "Показать",
+    "description": ""
+  },
+  "of": {
+    "value": "из",
+    "description": ""
+  }
 }

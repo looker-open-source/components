@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Clear all"
+    "value": "Clear all",
+    "description": ""
   },
   "Remove": {
-    "value": "Remove"
+    "value": "Remove",
+    "description": ""
   },
   "Toggle": {
-    "value": "Toggle"
+    "value": "Toggle",
+    "description": ""
   }
 }

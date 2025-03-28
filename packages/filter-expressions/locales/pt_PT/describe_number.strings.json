@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "está no intervalo {{range}}"
+    "value": "está no intervalo {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "não está no intervalo {{range}}"
+    "value": "não está no intervalo {{range}}",
+    "description": ""
   }
 }

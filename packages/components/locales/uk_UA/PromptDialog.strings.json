@@ -1,4 +1,10 @@
 {
-  "Cancel": "Скасувати",
-  "Save": "Зберегти"
+  "Cancel": {
+    "value": "Скасувати",
+    "description": ""
+  },
+  "Save": {
+    "value": "Зберегти",
+    "description": ""
+  }
 }

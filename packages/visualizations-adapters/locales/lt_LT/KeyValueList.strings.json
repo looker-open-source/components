@@ -1,6 +1,18 @@
 {
-  "false": "neteisinga",
-  "null": "negaliojantis",
-  "true": "teisinga",
-  "undefined": "neapibrėžta"
+  "false": {
+    "value": "neteisinga",
+    "description": ""
+  },
+  "null": {
+    "value": "negaliojantis",
+    "description": ""
+  },
+  "true": {
+    "value": "teisinga",
+    "description": ""
+  },
+  "undefined": {
+    "value": "neapibrėžta",
+    "description": ""
+  }
 }

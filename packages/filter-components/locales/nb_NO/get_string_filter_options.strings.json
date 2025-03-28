@@ -1,14 +1,50 @@
 {
-  "contains": "inneholder",
-  "doesnt contain": "inneholder ikke",
-  "doesnt end with": "slutter ikke med",
-  "doesnt start with": "starter ikke med",
-  "ends with": "slutter med",
-  "is": "er",
-  "is blank": "er tom",
-  "is not": "er ikke",
-  "is not blank": "er ikke tom",
-  "is not null": "er ikke null",
-  "is null": "er null",
-  "starts with": "starter med"
+  "contains": {
+    "value": "inneholder",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "inneholder ikke",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "slutter ikke med",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "starter ikke med",
+    "description": ""
+  },
+  "ends with": {
+    "value": "slutter med",
+    "description": ""
+  },
+  "is": {
+    "value": "er",
+    "description": ""
+  },
+  "is blank": {
+    "value": "er tom",
+    "description": ""
+  },
+  "is not": {
+    "value": "er ikke",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "er ikke tom",
+    "description": ""
+  },
+  "is not null": {
+    "value": "er ikke null",
+    "description": ""
+  },
+  "is null": {
+    "value": "er null",
+    "description": ""
+  },
+  "starts with": {
+    "value": "starter med",
+    "description": ""
+  }
 }

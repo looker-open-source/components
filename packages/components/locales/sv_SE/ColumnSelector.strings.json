@@ -1,7 +1,22 @@
 {
-  "Apply": "Tillämpa",
-  "Cancel": "Avbryt",
-  "Select All": "Markera allt",
-  "Select None": "Markera inget",
-  "Select columns to display": "Välj kolumner att visa"
+  "Apply": {
+    "value": "Tillämpa",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Avbryt",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Markera allt",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Markera inget",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Välj kolumner att visa",
+    "description": ""
+  }
 }

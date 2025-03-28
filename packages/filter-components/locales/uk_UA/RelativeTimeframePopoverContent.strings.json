@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Настроюване"
+    "value": "Настроюване",
+    "description": ""
   },
   "Presets": {
-    "value": "Заготовки"
+    "value": "Заготовки",
+    "description": ""
   }
 }

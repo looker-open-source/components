@@ -1,3 +1,6 @@
 {
-  "Error": "Hata"
+  "Error": {
+    "value": "Hata",
+    "description": ""
+  }
 }

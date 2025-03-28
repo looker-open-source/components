@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "เป็น"
+    "value": "เป็น",
+    "description": ""
   },
   "is any value": {
-    "value": "เป็นค่าใดก็ได้"
+    "value": "เป็นค่าใดก็ได้",
+    "description": ""
   },
   "is not": {
-    "value": "ไม่"
+    "value": "ไม่",
+    "description": ""
   }
 }

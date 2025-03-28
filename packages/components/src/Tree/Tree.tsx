@@ -143,7 +143,7 @@ const TreeLayout = forwardRef(
       onOpen,
       ...accordionInnerProps,
     };
-    if (isOpen !== undefined && toggleOpen) {
+    if (isOpen !== undefined) {
       accordionProps = { ...accordionProps, isOpen, toggleOpen };
     }
 

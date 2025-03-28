@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Tyhjennä suodattimet",
-  "Filter List": "Suodatinluettelo",
-  "bottom-start": "aloitus pohjalta"
+  "Clear Filters": {
+    "value": "Tyhjennä suodattimet",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Suodatinluettelo",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "aloitus pohjalta",
+    "description": ""
+  }
 }

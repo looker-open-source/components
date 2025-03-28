@@ -1,3 +1,6 @@
 {
-  "Value required": "Hodnota je povinná"
+  "Value required": {
+    "value": "Hodnota je povinná",
+    "description": ""
+  }
 }

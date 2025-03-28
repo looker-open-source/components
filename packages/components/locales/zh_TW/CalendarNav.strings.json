@@ -1,4 +1,10 @@
 {
-  "next month": "下個月",
-  "previous month": "上個月"
+  "next month": {
+    "description": "",
+    "value": "下個月"
+  },
+  "previous month": {
+    "description": "",
+    "value": "上個月"
+  }
 }

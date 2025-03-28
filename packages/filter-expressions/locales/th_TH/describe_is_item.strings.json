@@ -1,8 +1,10 @@
 {
   "is not value": {
-    "value": "ไม่ใช่ {{value}}"
+    "value": "ไม่ใช่ {{value}}",
+    "description": ""
   },
   "is value": {
-    "value": "เป็น {{value}}"
+    "value": "เป็น {{value}}",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Value required": "Verdi må angis"
+  "Value required": {
+    "value": "Verdi må angis",
+    "description": ""
+  }
 }

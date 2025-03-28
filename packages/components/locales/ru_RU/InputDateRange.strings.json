@@ -1,4 +1,10 @@
 {
-  "End date": "Дата завершения",
-  "Start date": "Дата начала"
+  "End date": {
+    "value": "Дата завершения",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Дата начала",
+    "description": ""
+  }
 }

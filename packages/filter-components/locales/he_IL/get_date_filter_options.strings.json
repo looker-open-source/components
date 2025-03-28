@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "הוא"
+    "value": "הוא",
+    "description": ""
   },
   "is any time": {
-    "value": "מועד כלשהו"
+    "value": "מועד כלשהו",
+    "description": ""
   },
   "is before": {
-    "value": "לפני"
+    "value": "לפני",
+    "description": ""
   },
   "is in range": {
-    "value": "בטווח"
+    "value": "בטווח",
+    "description": ""
   },
   "is in the last": {
-    "value": "האחרון"
+    "value": "האחרון",
+    "description": ""
   },
   "is in the month": {
-    "value": "בחודש"
+    "value": "בחודש",
+    "description": ""
   },
   "is in the year": {
-    "value": "בשנת"
+    "value": "בשנת",
+    "description": ""
   },
   "is next": {
-    "value": "הבא"
+    "value": "הבא",
+    "description": ""
   },
   "is not null": {
-    "value": "אינו Null"
+    "value": "אינו Null",
+    "description": ""
   },
   "is null": {
-    "value": "Null"
+    "value": "Null",
+    "description": ""
   },
   "is on or after": {
-    "value": "אחרי או ב-"
+    "value": "אחרי או ב-",
+    "description": ""
   },
   "is on the day": {
-    "value": "ביום"
+    "value": "ביום",
+    "description": ""
   },
   "is previous": {
-    "value": "הקודם"
+    "value": "הקודם",
+    "description": ""
   },
   "is this": {
-    "value": "זה הוא"
+    "value": "זה הוא",
+    "description": ""
   }
 }

@@ -2,6 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
+import type { ComponentType } from 'react';
 import { numberFilterTypeToFilter } from './number_filter_type_to_filter';
 
 describe('number filter options', () => {
@@ -11,6 +12,8 @@ describe('number filter options', () => {
     ).toBe('MultiInput');
   });
   it('should use single input filter if allowMultipleValues is false', () => {
-    expect(numberFilterTypeToFilter('=', false).name).toBe('SingleNumberInput');
+    expect((numberFilterTypeToFilter('=', false) as ComponentType).name).toBe(
+      'SingleNumberInput'
+    );
   });
 });

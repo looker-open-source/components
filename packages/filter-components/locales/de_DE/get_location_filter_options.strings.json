@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Feld"
+    "description": "",
+    "value": "Box"
   },
   "Circle": {
+    "description": "",
     "value": "Kreis"
   },
   "Location": {
+    "description": "",
     "value": "Standort"
   },
   "feet": {
+    "description": "",
     "value": "Fuß"
   },
   "is anywhere": {
+    "description": "",
     "value": "ist überall"
   },
   "is not null": {
+    "description": "",
     "value": "ist nicht null"
   },
   "is null": {
+    "description": "",
     "value": "ist null"
   },
   "kilometers": {
+    "description": "",
     "value": "Kilometer"
   },
   "meters": {
+    "description": "",
     "value": "Meter"
   },
   "miles": {
+    "description": "",
     "value": "Meilen"
   }
 }

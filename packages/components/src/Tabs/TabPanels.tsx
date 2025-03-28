@@ -49,9 +49,6 @@ const Layout = ({
   );
 };
 
-/**
- * @deprecated Use `Tabs2` and `Tab2` instead
- */
 export const TabPanels = styled(Layout).attrs(({ pt = 'large' }) => ({
   pt,
 }))`

@@ -1,3 +1,6 @@
 {
-  "Delete": "Ištrinti"
+  "Delete": {
+    "value": "Ištrinti",
+    "description": ""
+  }
 }

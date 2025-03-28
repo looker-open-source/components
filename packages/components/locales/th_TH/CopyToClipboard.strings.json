@@ -1,4 +1,10 @@
 {
-  "Copied": "คัดลอกแล้ว",
-  "Copy to Clipboard": "คัดลอกไปยังคลิปบอร์ด"
+  "Copied": {
+    "value": "คัดลอกแล้ว",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "คัดลอกไปยังคลิปบอร์ด",
+    "description": ""
+  }
 }

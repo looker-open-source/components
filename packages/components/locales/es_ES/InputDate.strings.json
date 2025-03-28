@@ -1,3 +1,6 @@
 {
-  "Open calendar": "Abrir calendario"
+  "Open calendar": {
+    "description": "",
+    "value": "Abrir calendario"
+  }
 }

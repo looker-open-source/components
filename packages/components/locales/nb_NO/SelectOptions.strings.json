@@ -1,4 +1,10 @@
 {
-  "Loading": "Laster",
-  "No options": "Ingen alternativer"
+  "Loading": {
+    "value": "Laster",
+    "description": ""
+  },
+  "No options": {
+    "value": "Ingen alternativer",
+    "description": ""
+  }
 }

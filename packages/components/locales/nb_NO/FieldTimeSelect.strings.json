@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Bruk formatet TT:MM"
+  "Please use format HHMM": {
+    "value": "Bruk formatet TT:MM",
+    "description": ""
+  }
 }

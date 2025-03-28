@@ -1,8 +1,10 @@
 {
   "Add": {
+    "description": "",
     "value": "新增"
   },
   "Remove": {
+    "description": "",
     "value": "移除"
   }
 }

@@ -1,3 +1,6 @@
 {
-  "any value": "값 무관"
+  "any value": {
+    "description": "",
+    "value": "값 무관"
+  }
 }

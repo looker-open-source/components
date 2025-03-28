@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "{{name}}上限",
-  "Maximum Value": "最大值",
-  "Minimum Name": "{{name}}下限",
-  "Minimum Value": "最小值"
+  "Maximum Name": {
+    "description": "",
+    "value": "{{name}}上限"
+  },
+  "Maximum Value": {
+    "description": "",
+    "value": "最大值"
+  },
+  "Minimum Name": {
+    "description": "",
+    "value": "{{name}}下限"
+  },
+  "Minimum Value": {
+    "description": "",
+    "value": "最小值"
+  }
 }

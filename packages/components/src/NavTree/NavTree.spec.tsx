@@ -26,11 +26,28 @@
 
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
+import * as MaterialIcons from '@styled-icons/material';
 import { act, fireEvent, screen } from '@testing-library/react';
 import { NavList } from '../NavList';
-import { Link } from './stories/index.stories';
 import { NavTreeItem } from './NavTreeItem';
 import { NavTree } from './NavTree';
+
+function Link() {
+  return (
+    <NavTree
+      defaultOpen
+      label="Click me to go to Google"
+      icon={<MaterialIcons.Folder />}
+      href="https://google.com"
+      target="_blank"
+      indicatorLabel="Google Link Indicator"
+    >
+      <NavTreeItem href="https://google.com" target="_blank" parentIcon>
+        Some Item
+      </NavTreeItem>{' '}
+    </NavTree>
+  );
+}
 
 const Basic = () => (
   <NavList>

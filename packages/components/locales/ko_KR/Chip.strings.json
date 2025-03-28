@@ -1,3 +1,6 @@
 {
-  "Delete": "삭제"
+  "Delete": {
+    "description": "",
+    "value": "삭제"
+  }
 }

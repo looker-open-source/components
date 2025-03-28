@@ -1,3 +1,6 @@
 {
-  "No Results": "Žádné výsledky"
+  "No Results": {
+    "value": "Žádné výsledky",
+    "description": ""
+  }
 }

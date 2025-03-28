@@ -3,8 +3,10 @@
  * SPDX-License-Identifier: MIT
  */
 import type { ElementType } from 'react';
-import type { DateFilterType, FilterTypeMap } from '@looker/filter-expressions';
+import type { DateFilterType } from '@looker/filter-expressions';
 import defaultTo from 'lodash/defaultTo';
+import type { FilterTypeMap } from '../../../../../types';
+import { Blank } from '../../Blank';
 import { MatchesAdvanced } from '../../MatchesAdvanced';
 import { UserAttributes } from '../../UserAttributes';
 import { BeforeAfter } from '../components/BeforeAfter';
@@ -15,8 +17,6 @@ import { Relative } from '../components/Relative';
 import { ThisNextLast } from '../components/ThisNextLast';
 import { Year } from '../components/Year';
 import { YearMonth } from '../components/YearMonth';
-
-const Blank = () => '';
 
 const filterTypeToDateMap: FilterTypeMap<DateFilterType> = {
   null: Blank,

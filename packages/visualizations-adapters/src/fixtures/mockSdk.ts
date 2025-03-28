@@ -49,7 +49,7 @@ export const mockSDK = {
     Promise.resolve({
       ok: true,
       value: {
-        id: 126,
+        id: '126',
         vis_config: mockSdkConfigResponse,
         model: 'thelook',
         view: 'orders',
@@ -62,7 +62,7 @@ export const mockSDK = {
         dashboard_elements: [
           {
             query: {
-              id: 126,
+              id: '126',
               vis_config: mockSdkConfigResponse,
               model: 'thelook',
               view: 'orders',
@@ -77,7 +77,7 @@ export const mockSDK = {
     Promise.resolve({
       ok: true,
       value: {
-        id: 126,
+        id: '126',
         vis_config: mockSdkConfigResponse,
         model: 'thelook',
         view: 'orders',

@@ -94,9 +94,13 @@ const StyledInput = styled.input`
   top: 0;
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
+    // Safari <= 15.3
+    -webkit-appearance: none; /* stylelint-disable-line */
     appearance: none;
   }
   &[type='number'] {
+    // Safari <= 15.3
+    -webkit-appearance: textfield; /* stylelint-disable-line */
     appearance: textfield;
   }
 `;

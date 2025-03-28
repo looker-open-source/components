@@ -1,4 +1,10 @@
 {
-  "Copied": "Zkopírováno",
-  "Copy to Clipboard": "Kopírovat do schránky"
+  "Copied": {
+    "value": "Zkopírováno",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Kopírovat do schránky",
+    "description": ""
+  }
 }

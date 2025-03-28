@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Tümünü temizle"
+    "value": "Tümünü temizle",
+    "description": ""
   },
   "Remove": {
-    "value": "Kaldır"
+    "value": "Kaldır",
+    "description": ""
   },
   "Toggle": {
-    "value": "Değiştir"
+    "value": "Değiştir",
+    "description": ""
   }
 }

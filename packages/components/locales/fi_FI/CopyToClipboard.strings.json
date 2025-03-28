@@ -1,4 +1,10 @@
 {
-  "Copied": "Kopioitu",
-  "Copy to Clipboard": "Kopioi leikepöydälle"
+  "Copied": {
+    "value": "Kopioitu",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Kopioi leikepöydälle",
+    "description": ""
+  }
 }

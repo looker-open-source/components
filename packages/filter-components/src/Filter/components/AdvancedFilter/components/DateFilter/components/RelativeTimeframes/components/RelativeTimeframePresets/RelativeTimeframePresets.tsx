@@ -23,7 +23,7 @@
  SOFTWARE.
 
  */
-import type { AnimationProps } from '@looker/components'
+import type { AnimationProps } from '@looker/components';
 import {
   FadeIn,
   Icon,
@@ -31,18 +31,18 @@ import {
   MenuItem,
   MenuList,
   DialogContext,
-} from '@looker/components'
-import { Check } from '@styled-icons/material/Check'
-import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore'
-import type { MouseEvent } from 'react'
-import React, { useContext, useState } from 'react'
-import styled from 'styled-components'
-import { useTranslation } from '../../../../../../../../../utils'
+} from '@looker/components';
+import { Check } from '@styled-icons/material/Check';
+import { ExpandMore } from '@styled-icons/material-rounded/ExpandMore';
+import type { MouseEvent } from 'react';
+import React, { useContext, useState } from 'react';
+import styled from 'styled-components';
+import { useTranslation } from '../../../../../../../../../utils';
 import type {
   AllPresetTimeframes,
   RelativeTimeframeModel,
-} from '../../../../types/relative_timeframe_types'
-import { useRelativeTimeframePresets } from '../../utils/get_relative_timeframe_presets'
+} from '../../../../types/relative_timeframe_types';
+import { useRelativeTimeframePresets } from '../../utils/get_relative_timeframe_presets';
 import {
   PresetTimeframes,
   PresetTimeframesLeastRecent,
@@ -50,25 +50,25 @@ import {
   PresetTimeframesPrevious,
   PresetTimeframesRecent,
   PresetTimeframesThis,
-} from '../../../../types/relative_timeframe_types'
+} from '../../../../types/relative_timeframe_types';
 
 interface RelativeTimeframePresetsProps {
-  value: RelativeTimeframeModel
-  onPresetChange: (selected: AllPresetTimeframes) => void
+  value: RelativeTimeframeModel;
+  onPresetChange: (selected: AllPresetTimeframes) => void;
 }
 
-export const RelativeTimeframePresets  = (
-  props : RelativeTimeframePresetsProps
+export const RelativeTimeframePresets = (
+  props: RelativeTimeframePresetsProps
 ) => {
-  const { t } = useTranslation('RelativeTimeframePresets')
+  const { t } = useTranslation('RelativeTimeframePresets');
 
-  const [showMore, setShowMore] = useState(false)
+  const [showMore, setShowMore] = useState(false);
 
   const handleClick = (e: MouseEvent<HTMLLIElement>) => {
-    setShowMore(true)
+    setShowMore(true);
     // Needed to avoid closing the popover until MenuItem is replaced with ListItem
-    e.preventDefault()
-  }
+    e.preventDefault();
+  };
 
   return (
     <MenuList density={-1} iconGutter>
@@ -119,34 +119,34 @@ export const RelativeTimeframePresets  = (
         </>
       )}
     </MenuList>
-  )
-}
+  );
+};
 
 interface PresetTimeframeGroupProps
   extends AnimationProps,
     RelativeTimeframePresetsProps {
-  presetTimeframe: { [key: string]: string }
+  presetTimeframe: { [key: string]: string };
 }
 
-const PresetTimeframeGroup  = ({
+const PresetTimeframeGroup = ({
   duration = 'simple',
   delay,
   onPresetChange,
   presetTimeframe,
   value,
-} : PresetTimeframeGroupProps) => {
-  const presets = useRelativeTimeframePresets()
-  const { closeModal } = useContext(DialogContext)
+}: PresetTimeframeGroupProps) => {
+  const presets = useRelativeTimeframePresets();
+  const { closeModal } = useContext(DialogContext);
 
   const handleOnClick = (timeframe: AllPresetTimeframes) => () => {
-    onPresetChange(timeframe)
-    closeModal?.()
-  }
+    onPresetChange(timeframe);
+    closeModal?.();
+  };
 
   return (
     <>
       {Object.values(presetTimeframe).map((timeframe, index) => {
-        const current = typeof value === 'string' && value === timeframe
+        const current = typeof value === 'string' && value === timeframe;
 
         return (
           <CustomMenuItem
@@ -159,13 +159,13 @@ const PresetTimeframeGroup  = ({
               {presets[timeframe as AllPresetTimeframes]}
             </FadeIn>
           </CustomMenuItem>
-        )
+        );
       })}
 
       <MenuDivider />
     </>
-  )
-}
+  );
+};
 
 const CustomMenuItem = styled(MenuItem)`
   & > button {
@@ -180,4 +180,4 @@ const CustomMenuItem = styled(MenuItem)`
       background-color: ${({ theme: { colors } }) => colors.keySubtle};
     }
   }
-`
+`;

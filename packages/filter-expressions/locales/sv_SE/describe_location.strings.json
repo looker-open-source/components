@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} till {{coords2}}"
+    "value": "{{coords1}} till {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} från {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} från {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "är var som helst"
+    "value": "är var som helst",
+    "description": ""
   },
   "is not null": {
-    "value": "är inte null"
+    "value": "är inte null",
+    "description": ""
   },
   "is null": {
-    "value": "är null"
+    "value": "är null",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}°N",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}°S",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°O"
+    "value": "{{lon}}°O",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°V"
+    "value": "{{lon}}°V",
+    "description": ""
   }
 }

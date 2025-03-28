@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Mått av ”data”-typ stöds inte för tillfället",
-  "No chart found for type \"{{type}}\"": "Inget diagram hittades för typen \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "value": "Mått av ”data”-typ stöds inte för tillfället",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Inget diagram hittades för typen \"{{type}}\"",
+    "description": ""
+  }
 }

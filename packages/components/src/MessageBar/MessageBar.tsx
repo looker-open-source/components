@@ -28,6 +28,7 @@ import type { TFunction } from 'i18next';
 import type {
   CompatibleHTMLProps,
   TypographyProps,
+  StatefulColor,
 } from '@looker/design-tokens';
 import { omitStyledProps, variant } from '@looker/design-tokens';
 import { Close } from '@styled-icons/material/Close';
@@ -45,6 +46,13 @@ import { useReadOnlyWarn, useTranslation } from '../utils';
 import { getIntentLabel, Status } from '../Status';
 
 export type MessageBarIntent = 'critical' | 'inform' | 'positive' | 'warn';
+
+const intentToStatefulColorMap: Record<MessageBarIntent, StatefulColor> = {
+  critical: 'critical',
+  inform: 'key',
+  positive: 'positive',
+  warn: 'neutral',
+};
 
 export type SupportedActionTypes = string | ReactElement<ButtonProps>;
 
@@ -89,12 +97,6 @@ export interface MessageBarProps
   className?: string;
 }
 
-interface DefaultDismissButtonProps {
-  id?: string;
-  intent?: MessageBarIntent;
-  onClick: () => void;
-}
-
 const NoopComponent = () => <></>;
 
 /* eslint-disable react/display-name */
@@ -109,25 +111,41 @@ const NoopComponent = () => <></>;
  *  -- true returns the default `X` dismiss button
  *  -- false returns NoopComponent
  */
+
 function getPrimaryActionButton(
   t: TFunction,
-  primaryAction?: SupportedActionTypes
-): (props: DefaultDismissButtonProps) => ReactElement {
+  {
+    primaryAction,
+    onClick,
+    id,
+    intent = 'inform',
+  }: Pick<MessageBarProps, 'intent' | 'primaryAction' | 'id'> & {
+    onClick: () => void;
+  }
+) {
   switch (typeof primaryAction) {
     case 'string':
       // string label
-      return ({ onClick }: DefaultDismissButtonProps) => (
-        <ButtonTransparent onClick={onClick}>{primaryAction}</ButtonTransparent>
+      return (
+        <ButtonTransparent
+          color={intentToStatefulColorMap[intent]}
+          onClick={onClick}
+          id={id}
+          className="message-bar-primary-action"
+        >
+          {primaryAction}
+        </ButtonTransparent>
       );
+
     case 'object':
       // custom react component
-      return () => primaryAction;
+      return primaryAction;
     default:
-      return ({ intent, onClick, id }: DefaultDismissButtonProps) => (
+      return (
         <IconButton
           id={id ? `${id}-iconButton` : undefined}
           onClick={onClick}
-          icon={<Close />}
+          icon={<Close color={intentToStatefulColorMap[intent]} />}
           size="small"
           label={`${t('DismissIntent', {
             intent: getIntentLabel(t, intent),
@@ -147,22 +165,27 @@ function getPrimaryActionButton(
  * type: boolean or undefined
  *  -- returns NoopComponent
  */
-function getSecondaryActionButton(
-  secondaryAction?: SupportedActionTypes
-): (props: DefaultDismissButtonProps) => ReactElement {
+function getSecondaryActionButton({
+  secondaryAction,
+  onClick,
+}: Pick<MessageBarProps, 'secondaryAction'> & { onClick: () => void }) {
   switch (typeof secondaryAction) {
     case 'string':
       // string label
-      return ({ onClick }: DefaultDismissButtonProps) => (
-        <ButtonTransparent onClick={onClick} color="neutral">
+      return (
+        <ButtonTransparent
+          onClick={onClick}
+          color="neutral"
+          className="message-bar-secondary-action"
+        >
           {secondaryAction}
         </ButtonTransparent>
       );
     case 'object':
       // custom react component
-      return () => secondaryAction;
+      return secondaryAction;
     default:
-      return NoopComponent;
+      return <NoopComponent />;
   }
 }
 
@@ -207,8 +230,16 @@ const MessageBarLayout = forwardRef(
     }, [visibleProp]);
 
     const { t } = useTranslation('MessageBar');
-    const PrimaryButton = getPrimaryActionButton(t, primaryAction);
-    const SecondaryButton = getSecondaryActionButton(secondaryAction);
+    const primaryButton = getPrimaryActionButton(t, {
+      id,
+      intent,
+      onClick: handlePrimaryClick,
+      primaryAction,
+    });
+    const secondaryButton = getSecondaryActionButton({
+      onClick: handleSecondaryClick,
+      secondaryAction,
+    });
 
     const messageBarMarkup = (
       <div
@@ -222,12 +253,8 @@ const MessageBarLayout = forwardRef(
         <MessageBarContent>{children}</MessageBarContent>
         {!noActions && (
           <Space width="auto">
-            <SecondaryButton onClick={handleSecondaryClick} />
-            <PrimaryButton
-              intent={intent}
-              onClick={handlePrimaryClick}
-              id={id}
-            />
+            {secondaryButton}
+            {primaryButton}
           </Space>
         )}
       </div>

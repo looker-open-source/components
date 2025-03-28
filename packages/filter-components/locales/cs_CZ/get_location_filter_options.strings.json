@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Box"
+    "value": "Box",
+    "description": ""
   },
   "Circle": {
-    "value": "Kruh"
+    "value": "Kruh",
+    "description": ""
   },
   "Location": {
-    "value": "Poloha"
+    "value": "Poloha",
+    "description": ""
   },
   "feet": {
-    "value": "st."
+    "value": "st.",
+    "description": ""
   },
   "is anywhere": {
-    "value": "je kdekoliv"
+    "value": "je kdekoliv",
+    "description": ""
   },
   "is not null": {
-    "value": "není prázdné"
+    "value": "není prázdné",
+    "description": ""
   },
   "is null": {
-    "value": "je prázdné"
+    "value": "je prázdné",
+    "description": ""
   },
   "kilometers": {
-    "value": "km"
+    "value": "km",
+    "description": ""
   },
   "meters": {
-    "value": "m"
+    "value": "m",
+    "description": ""
   },
   "miles": {
-    "value": "míle"
+    "value": "míle",
+    "description": ""
   }
 }

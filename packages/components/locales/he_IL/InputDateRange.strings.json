@@ -1,4 +1,10 @@
 {
-  "End date": "תאריך סיום",
-  "Start date": "תאריך התחלה"
+  "End date": {
+    "value": "תאריך סיום",
+    "description": ""
+  },
+  "Start date": {
+    "value": "תאריך התחלה",
+    "description": ""
+  }
 }

@@ -24,6 +24,7 @@
 
  */
 
+import type { IValidationError } from '@looker/sdk';
 import type {
   CreateFetchHooksOptions,
   CreateFetchHooksReturn,
@@ -34,6 +35,12 @@ import type { PayloadAction, Slice } from '@reduxjs/toolkit';
 import { useRef } from 'react';
 import { call, put, takeEvery } from 'typed-redux-saga/macro';
 import { createSlice, createSliceHooks } from '..';
+
+export function readError(error: any) {
+  return error === null
+    ? ''
+    : (error as IValidationError)?.errors?.[0]?.message || error?.message;
+}
 
 function toString<T>(params: T): string {
   return typeof params === 'string' ? params : JSON.stringify(params);
@@ -58,7 +65,10 @@ function handleRequest<DataType, FetchArgs>({
         // handle aborting
       } else {
         yield put(
-          slice.actions.failure({ request_key, response: error.message })
+          slice.actions.failure({
+            request_key,
+            response: error,
+          })
         );
       }
     }
@@ -71,6 +81,7 @@ function getDefaultState<DataType>(
 ): FetchStateItem<DataType> {
   return {
     abortController: new AbortController(),
+    completed: false,
     data: initialState,
     error: null,
     expired: false,
@@ -89,8 +100,9 @@ export const createFetchHooks = <DataType, FetchArgs>(
         ...state,
         [toString(action.payload)]: {
           ...state[toString(action.payload)],
-          loading: true,
+          completed: false,
           error: null,
+          loading: true,
         },
       }),
       success: (state, action) => ({
@@ -104,6 +116,7 @@ export const createFetchHooks = <DataType, FetchArgs>(
         ...state,
         [action.payload.request_key]: {
           ...state[action.payload.request_key],
+          completed: true,
           loading: false,
         },
       }),
@@ -134,10 +147,9 @@ export const createFetchHooks = <DataType, FetchArgs>(
     slice,
   });
 
-  function useSlice(
-    hookParams: FetchArgs = { request: {} } as unknown as FetchArgs
-  ) {
-    const ref = useRef(toString(hookParams));
+  function useSlice() {
+    const fetchParamsDefaults = { request: {} } as unknown as FetchArgs;
+    const ref = useRef(toString(fetchParamsDefaults));
     const [state, actions] = hooks.useSlice();
     return [
       {
@@ -145,7 +157,7 @@ export const createFetchHooks = <DataType, FetchArgs>(
         ...state[ref.current],
       },
       {
-        fetch: (fetchParams: FetchArgs = hookParams) => {
+        fetch: (fetchParams: FetchArgs = fetchParamsDefaults) => {
           ref.current = toString(fetchParams);
           actions.request(fetchParams);
         },

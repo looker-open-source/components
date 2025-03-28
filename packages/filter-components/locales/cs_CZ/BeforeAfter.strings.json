@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(absolutně)"
+    "value": "(absolutně)",
+    "description": ""
   },
   "relative": {
-    "value": "(relativně)"
+    "value": "(relativně)",
+    "description": ""
   }
 }

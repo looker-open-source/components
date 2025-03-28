@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "เลือกเครื่องหมายที่คละกัน"
+  "Check Mark Mixed": {
+    "value": "เลือกเครื่องหมายที่คละกัน",
+    "description": ""
+  }
 }

@@ -1,5 +1,14 @@
 {
-  "close": "बंद करें",
-  "next year": "अगला वर्ष",
-  "previous year": "पिछला वर्ष"
+  "close": {
+    "value": "बंद करें",
+    "description": ""
+  },
+  "next year": {
+    "value": "अगला वर्ष",
+    "description": ""
+  },
+  "previous year": {
+    "value": "पिछला वर्ष",
+    "description": ""
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Display": "Weergeven",
-  "of": "van"
+  "Display": {
+    "value": "Weergeven",
+    "description": ""
+  },
+  "of": {
+    "value": "van",
+    "description": ""
+  }
 }

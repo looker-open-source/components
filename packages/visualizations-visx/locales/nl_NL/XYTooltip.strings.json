@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Punten ingepast op basis van"
+  "Points sized by": {
+    "value": "Punten ingepast op basis van",
+    "description": ""
+  }
 }

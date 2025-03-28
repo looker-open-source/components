@@ -1,9 +1,8 @@
 /**/*.md
 /**/*.mdx
-/locales
+/**/locales
 /dist
 /lib
-/storybook-static
 /test/output/jest
 /src/Form/Fields/Field/Field.tsx
 /src/Form/Inputs/ariaProps.ts

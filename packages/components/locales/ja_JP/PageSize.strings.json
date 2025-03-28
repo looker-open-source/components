@@ -1,4 +1,10 @@
 {
-  "Display": "表示",
-  "of": "/"
+  "Display": {
+    "description": "",
+    "value": "表示"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

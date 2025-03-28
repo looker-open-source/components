@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Meetwaarden van het type Datum worden momenteel niet ondersteund",
-  "No chart found for type \"{{type}}\"": "Geen grafiek gevonden voor type {{type}}"
+  "Measures of type 'date' are currently not supported": {
+    "value": "Meetwaarden van het type Datum worden momenteel niet ondersteund",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Geen grafiek gevonden voor type {{type}}",
+    "description": ""
+  }
 }

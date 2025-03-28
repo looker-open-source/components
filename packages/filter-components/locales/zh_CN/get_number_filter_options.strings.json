@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "（不含边界值）"
   },
   "inclusive": {
+    "description": "",
     "value": "[含边界值]"
   },
   "is": {
+    "description": "",
     "value": "是"
   },
   "is between": {
+    "description": "",
     "value": "介于下列二者之间："
   },
   "is greater": {
+    "description": "",
     "value": "大于"
   },
   "is greater equal": {
+    "description": "",
     "value": "大于等于"
   },
   "is less": {
+    "description": "",
     "value": "小于"
   },
   "is less equal": {
+    "description": "",
     "value": "小于等于"
   },
   "is not": {
+    "description": "",
     "value": "不是"
   },
   "is not between": {
+    "description": "",
     "value": "不介于下列二者之间："
   },
   "is not null": {
+    "description": "",
     "value": "不是 null"
   },
   "is null": {
+    "description": "",
     "value": "是 null"
   },
   "left exclusive": {
+    "description": "",
     "value": "(不含左侧边界值]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[不含右侧边界值)"
   }
 }

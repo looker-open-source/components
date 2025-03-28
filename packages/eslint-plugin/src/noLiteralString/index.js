@@ -227,13 +227,7 @@ module.exports = {
       },
     },
     {
-      files: [
-        '*.spec.*',
-        '*.stories.*',
-        '**/stories/**',
-        '**/__mocks__/**',
-        '**/locales/**',
-      ],
+      files: ['*.spec.*', '**/__mocks__/**', '**/locales/**'],
       rules: {
         'i18next/no-literal-string': 'off',
       },

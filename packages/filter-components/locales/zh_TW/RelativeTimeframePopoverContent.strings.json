@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "自訂"
   },
   "Presets": {
+    "description": "",
     "value": "預設"
   }
 }

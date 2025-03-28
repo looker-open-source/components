@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " завершено"
+    "value": " завершено",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "тому"
+    "value": "тому",
+    "description": ""
   },
   "from now": {
-    "value": "відтепер"
+    "value": "відтепер",
+    "description": ""
   },
   "is any time": {
-    "value": "є будь-яким часом"
+    "value": "є будь-яким часом",
+    "description": ""
   },
   "is before": {
-    "value": "раніше"
+    "value": "раніше",
+    "description": ""
   },
   "is day": {
-    "value": "{{day}}"
+    "value": "{{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "з {{dateTimeStart}} до {{dateTimeEnd}}"
+    "value": "з {{dateTimeStart}} до {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "станом на {{month}} {{year}}"
+    "value": "станом на {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "за останні {{describeInterval}}"
+    "value": "за останні {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "станом на {{year}} рік"
+    "value": "станом на {{year}} рік",
+    "description": ""
   },
   "is interval ago": {
-    "value": "{{interval}} тому"
+    "value": "{{interval}} тому",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "це {{intervalStart}} {{intervalType}} для {{intervalEnd}}"
+    "value": "це {{intervalStart}} {{intervalType}} для {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "не має значення NULL"
+    "value": "не має значення NULL",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "станом на {{dateTime}}"
+    "value": "станом на {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "не раніше"
+    "value": "не раніше",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "це попередній {{unitLabel}}"
+    "value": "це попередній {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "це {{type}} {{unitLabel}}"
+    "value": "це {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "далі"
+    "value": "далі",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} зараз"
+    "value": "{{prefix}} зараз",
+    "description": ""
   },
   "this": {
-    "value": "це"
+    "value": "це",
+    "description": ""
   },
-  "this startInterval to endInterval": "це {{startInterval}} до {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "це {{startInterval}} до {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

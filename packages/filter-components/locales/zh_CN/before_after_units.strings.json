@@ -1,65 +1,86 @@
 {
   "days ago": {
+    "description": "",
     "value": "天前"
   },
   "days from now": {
+    "description": "",
     "value": "天后"
   },
   "fiscal quarter from now": {
+    "description": "",
     "value": "从现在开始的财季"
   },
   "fiscal quarters ago": {
+    "description": "",
     "value": "个财季前"
   },
   "fiscal years ago": {
+    "description": "",
     "value": "个财年前"
   },
   "fiscal years from now": {
+    "description": "",
     "value": "个财年后"
   },
   "hours ago": {
+    "description": "",
     "value": "小时前"
   },
   "hours from now": {
+    "description": "",
     "value": "小时后"
   },
   "minutes ago": {
+    "description": "",
     "value": "分钟前"
   },
   "minutes from now": {
+    "description": "",
     "value": "分钟后"
   },
   "months ago": {
+    "description": "",
     "value": "个月前"
   },
   "months from now": {
+    "description": "",
     "value": "个月后"
   },
   "now": {
+    "description": "",
     "value": "现在"
   },
   "quarters ago": {
+    "description": "",
     "value": "个季度前"
   },
   "quarters from now": {
+    "description": "",
     "value": "个季度后"
   },
   "seconds ago": {
+    "description": "",
     "value": "秒前"
   },
   "seconds from now": {
+    "description": "",
     "value": "秒后"
   },
   "weeks ago": {
+    "description": "",
     "value": "周前"
   },
   "weeks from now": {
+    "description": "",
     "value": "周后"
   },
   "years ago": {
+    "description": "",
     "value": "年前"
   },
   "years from now": {
+    "description": "",
     "value": "年后"
   }
 }

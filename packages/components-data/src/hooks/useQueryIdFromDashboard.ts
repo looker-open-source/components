@@ -15,11 +15,11 @@ import { useSDK } from './useSDK';
  * This hook fetches data from provided dashboard Id, and returns
  * the first query listed in `dashboard_elements` response.
  *
- * @param dashboardId a numeric dashboard Id
+ * @param dashboardId a dashboard Id
  * @returns the query ID associated with the first dashboard tile, and api state
  */
 
-export const useQueryIdFromDashboard = (dashboardId?: number) => {
+export const useQueryIdFromDashboard = (dashboardId?: string) => {
   const sdk = useSDK();
   const { getIdFromDashboard, setByDashboardId } = DataState.useContainer();
 
@@ -64,8 +64,8 @@ export const useQueryIdFromDashboard = (dashboardId?: number) => {
 
     const { id, ...query } = firstTile || ({} as IQuery);
 
-    if (dashboardId && id && Number(id) !== queryId) {
-      setByDashboardId(dashboardId, Number(id), { metadata: query });
+    if (dashboardId && id && id !== queryId) {
+      setByDashboardId(dashboardId, id, { metadata: query });
     }
   }, [SWRData, dashboardId, setByDashboardId, queryId]);
 

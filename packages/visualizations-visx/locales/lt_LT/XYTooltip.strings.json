@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Taškų dydis pagal"
+  "Points sized by": {
+    "value": "Taškų dydis pagal",
+    "description": ""
+  }
 }

@@ -1,7 +1,22 @@
 {
-  "First page of results": "หน้าแรกของผลลัพธ์",
-  "Last page of results": "หน้าสุดท้ายของผลลัพธ์",
-  "Next page of results": "หน้าถัดไปของผลลัพธ์",
-  "Previous page of results": "หน้าก่อนหน้าของผลลัพธ์",
-  "of": "ของ"
+  "First page of results": {
+    "value": "หน้าแรกของผลลัพธ์",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "หน้าสุดท้ายของผลลัพธ์",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "หน้าถัดไปของผลลัพธ์",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "หน้าก่อนหน้าของผลลัพธ์",
+    "description": ""
+  },
+  "of": {
+    "value": "ของ",
+    "description": ""
+  }
 }

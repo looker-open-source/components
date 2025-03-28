@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Įvyko klaida"
+  "Something went wrong": {
+    "value": "Įvyko klaida",
+    "description": ""
+  }
 }

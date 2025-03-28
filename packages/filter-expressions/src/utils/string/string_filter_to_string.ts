@@ -29,6 +29,7 @@ import type {
   FilterItemToStringFunction,
   FilterItemToStringMapType,
   FilterModel,
+  StringFilterType,
 } from '../../types';
 import isItemToString from '../to_string/is_item_to_string';
 import { treeToString } from '../tree/tree_to_string';
@@ -64,7 +65,7 @@ const escapeWithDoubleLastEscape = (v: string) =>
 const escapeWithoutDoubleLastEscape = (v: string) =>
   escapeLeadingAndTrailingWhitespaces(v, false);
 
-const matchToString = ({ value, is }: FilterModel) =>
+const matchToString = ({ value = [], is }: FilterModel<StringFilterType>) =>
   isItemToString(is, '', '-') +
   value
     .map(quoteFilter)
@@ -76,39 +77,39 @@ const multiValueToString = (
   toString: (token: string) => string
 ) => values.map(toString).join(',');
 
-const startWithToString = ({ value, is }: FilterModel) =>
+const startWithToString = ({ value = [], is }: FilterModel<StringFilterType>) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-') + String(token)}%`
   );
 
-const endsWithToString = ({ value, is }: FilterModel) =>
+const endsWithToString = ({ value = [], is }: FilterModel<StringFilterType>) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}`
   );
 
-const containsToString = ({ value, is }: FilterModel) =>
+const containsToString = ({ value = [], is }: FilterModel<StringFilterType>) =>
   multiValueToString(
     value.map(escapeWithCaret).map(escapeWithoutDoubleLastEscape),
     (token: string) => `${isItemToString(is, '', '-')}%${String(token)}%`
   );
 
-const otherToString = ({ value, is }: FilterModel) =>
+const otherToString = ({ value = [], is }: FilterModel<StringFilterType>) =>
   multiValueToString(
     value,
     (token: string) => `${isItemToString(is, '', '-')}${String(token)}`
   );
 
-const blankToString = ({ is }: FilterModel) =>
+const blankToString = ({ is }: FilterModel<StringFilterType>) =>
   `${isItemToString(is, '', '-')}EMPTY`;
 
-const nullToString = ({ is }: FilterModel) =>
+const nullToString = ({ is }: FilterModel<StringFilterType>) =>
   `${isItemToString(is, '', '-')}NULL`;
 
 const anyvalueToString = () => '';
 
-const filterToStringMap: FilterItemToStringMapType = {
+const filterToStringMap: FilterItemToStringMapType<StringFilterType> = {
   startsWith: startWithToString,
   endsWith: endsWithToString,
   contains: containsToString,
@@ -124,9 +125,9 @@ const filterToStringMap: FilterItemToStringMapType = {
  * Maps a FilterItem to a function for converting it to an expression
  */
 const stringToExpression = (item: FilterModel): string => {
-  const toStringFunction: FilterItemToStringFunction =
+  const toStringFunction: FilterItemToStringFunction<StringFilterType> =
     filterToStringMap[item.type];
-  return toStringFunction?.(item) || '';
+  return toStringFunction?.(item as FilterModel<StringFilterType>) || '';
 };
 
 /**

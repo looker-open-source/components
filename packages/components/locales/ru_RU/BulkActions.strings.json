@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Выбраны все отображаемые элементы ({{pageCount}})",
-  "AllTotalCountSelected": "Выбраны все элементы ({{totalCount}})",
-  "Bulk Actions": "Массовые действия",
-  "Clear Selection": "Очистить выбор",
-  "SelectAllCountResults": "Выбрать все результаты ({{totalCount}})",
-  "SelectedCountOfTotalDisplayed": "Выбраны отображаемые элементы: {{selectedItemCount}} из {{pageCount}}"
+  "AllPageCountDisplayedSelected": {
+    "value": "Выбраны все отображаемые элементы ({{pageCount}})",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Выбраны все элементы ({{totalCount}})",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Массовые действия",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Очистить выбор",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Выбрать все результаты ({{totalCount}})",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "Выбраны отображаемые элементы: {{selectedItemCount}} из {{pageCount}}",
+    "description": ""
+  }
 }

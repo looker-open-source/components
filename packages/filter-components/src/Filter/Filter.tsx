@@ -30,14 +30,14 @@ import {
   parseFilterExpression,
   updateNode,
 } from '@looker/filter-expressions';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useRef, useState, useEffect } from 'react';
 import type { FilterProps } from './types/filter_props';
 import { useFilterConfig, useValidationMessage } from './utils';
 import { updateASTFromProps } from './utils/update_ast';
 import { isValidFilterType } from './utils/filter_token_type_map';
 import { ControlFilter } from './components/ControlFilter';
 import { AdvancedFilter } from './components/AdvancedFilter';
-import { checkAndLoadUserAttributes } from './utils/check_and_load_user_attributes';
+import { checkUserAttributes } from './utils/check_user_attributes';
 
 /**
  * The top-level filter component that generates an AST from the expression
@@ -67,7 +67,6 @@ export const Filter = ({
       expressionType,
       expression,
       userAttributes: props.userAttributes,
-      loadUserAttributes,
     });
 
   const [ast, setAST] = useState(getAST);
@@ -101,6 +100,21 @@ export const Filter = ({
     }
   };
 
+  const userAttributesNeeded =
+    ast &&
+    loadUserAttributes &&
+    !checkUserAttributes(props.userAttributes, ast);
+
+  useEffect(() => {
+    if (userAttributesNeeded) {
+      loadUserAttributes();
+    }
+    // Note: The absence of a dependency array is intentional
+    // due to a page load race conditions involving redux slice initialization.
+    // We want this to run on every load, but it's ok if loadUserAttributes
+    // gets called multiple times due to redux using the takeLeading pattern.
+  });
+
   const updateAST = (newAST: FilterASTNode | undefined) => {
     internallyUpdating.current = true;
     requestAnimationFrame(() => {
@@ -108,28 +122,20 @@ export const Filter = ({
     });
     setAST(newAST);
     if (newAST) {
-      if (
-        checkAndLoadUserAttributes(
-          loadUserAttributes,
-          props.userAttributes,
-          newAST
-        )
-      ) {
-        try {
-          const newExpression = updateExpression(newAST);
-          // verify newExpression is valid
-          parseFilterExpression(
-            expressionType,
-            newExpression,
-            props.userAttributes
-          );
-          expressionRef.current = newExpression;
-          // call onChange with new expression
-          props.onChange?.({ expression: newExpression });
-        } catch (error) {
-          // expression derived from UI change is invalid
-          // catch silently and let user continue editing filter
-        }
+      try {
+        const newExpression = updateExpression(newAST);
+        // verify newExpression is valid
+        parseFilterExpression(
+          expressionType,
+          newExpression,
+          props.userAttributes
+        );
+        expressionRef.current = newExpression;
+        // call onChange with new expression
+        props.onChange?.({ expression: newExpression });
+      } catch (error) {
+        // expression derived from UI change is invalid
+        // catch silently and let user continue editing filter
       }
     }
   };

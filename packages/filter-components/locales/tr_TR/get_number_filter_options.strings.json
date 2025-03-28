@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(hariç)"
+    "value": "(hariç)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[dahil]"
+    "value": "[dahil]",
+    "description": ""
   },
   "is": {
-    "value": "şudur:"
+    "value": "şudur:",
+    "description": ""
   },
   "is between": {
-    "value": "şunların arasında:"
+    "value": "şunların arasında:",
+    "description": ""
   },
   "is greater": {
-    "value": ">"
+    "value": ">",
+    "description": ""
   },
   "is greater equal": {
-    "value": ">="
+    "value": ">=",
+    "description": ""
   },
   "is less": {
-    "value": "<"
+    "value": "<",
+    "description": ""
   },
   "is less equal": {
-    "value": "<="
+    "value": "<=",
+    "description": ""
   },
   "is not": {
-    "value": "şu değildir:"
+    "value": "şu değildir:",
+    "description": ""
   },
   "is not between": {
-    "value": "şunların arasında değil:"
+    "value": "şunların arasında değil:",
+    "description": ""
   },
   "is not null": {
-    "value": "değer içeriyor"
+    "value": "değer içeriyor",
+    "description": ""
   },
   "is null": {
-    "value": "değer içermiyor"
+    "value": "değer içermiyor",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(sol hariç]"
+    "value": "(sol hariç]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[sağ hariç)"
+    "value": "[sağ hariç)",
+    "description": ""
   }
 }

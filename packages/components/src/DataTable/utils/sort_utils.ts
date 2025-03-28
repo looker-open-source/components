@@ -34,14 +34,14 @@ export const dateComparator = (dateA: Date, dateB: Date) => {
 export type DataTableDatum = Record<string, any>;
 export type DataTableData = DataTableDatum[];
 
-export const doDataTableSort = <T>(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const doDataTableSort = <T extends Record<string, any>>(
   data: T[],
   columns: DataTableColumns,
   id: string,
   sortDirection: 'asc' | 'desc'
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sortedData: Array<{ [key: string]: any }> = [...data];
+  const sortedData = [...data];
   const updatedColumns = [...columns];
   const targetColumn = updatedColumns.find(column => column.id === id);
 

@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Blandad bockmarkering"
+  "Check Mark Mixed": {
+    "value": "Blandad bockmarkering",
+    "description": ""
+  }
 }

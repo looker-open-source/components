@@ -1,4 +1,10 @@
 {
-  "next month": "sonraki ay",
-  "previous month": "önceki ay"
+  "next month": {
+    "value": "sonraki ay",
+    "description": ""
+  },
+  "previous month": {
+    "value": "önceki ay",
+    "description": ""
+  }
 }

@@ -1,7 +1,22 @@
 {
-  "First page of results": "Первая страница результатов",
-  "Last page of results": "Последняя страница результатов",
-  "Next page of results": "Следующая страница результатов",
-  "Previous page of results": "Предыдущая страница результатов",
-  "of": "из"
+  "First page of results": {
+    "value": "Первая страница результатов",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Последняя страница результатов",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Следующая страница результатов",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Предыдущая страница результатов",
+    "description": ""
+  },
+  "of": {
+    "value": "из",
+    "description": ""
+  }
 }

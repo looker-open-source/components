@@ -1,11 +1,14 @@
 {
   "Invalid value": {
+    "description": "",
     "value": "無效的值"
   },
   "No value is set for your user attribute": {
+    "description": "",
     "value": "使用者屬性未設有任何值"
   },
   "Selection required": {
+    "description": "",
     "value": "請選取"
   }
 }

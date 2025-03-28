@@ -26,24 +26,25 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components": "^5.0.3",
-    "@looker/i18n": "^1.0.0",
-    "@looker/sdk": "^22.4.2",
-    "@looker/sdk-rtl": "^21.3.3",
-    "d3-color": "3.1.0",
-    "d3-hsv": "0.1.0",
-    "lodash": "4.17.21",
-    "react-i18next": "11.8.15"
+    "@looker/components": "5.0.3",
+    "@looker/i18n": "1.0.0",
+    "@looker/sdk": "0.0.0",
+    "@looker/sdk-rtl": "0.0.0",
+    "d3-color": "^3.1.0",
+    "d3-hsv": "^0.1.0",
+    "lodash": "^4.17.21",
+    "react-i18next": "^11.8.15"
   },
   "devDependencies": {
-    "@looker/babel-preset-styled-components": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
-    "@looker/stylelint-config": "*",
+    "@looker/babel-preset-react": "0.0.4",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/babel-preset-styled-components": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/components-test-utils": "1.5.27",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
+    "@looker/stylelint-config": "1.5.19",
     "@testing-library/react": "12.1.5",
     "@testing-library/react-hooks": "8.0.1",
     "prettier": "2.8.2",
@@ -51,8 +52,7 @@
     "react-dom": "17.0.2"
   },
   "peerDependencies": {
-    "react": "16.14.0 - 18",
-    "react-dom": "16.11.0 - 18",
+    "react": ">=16.14.0",
     "styled-components": "^5.3.1"
   },
   "eslintConfig": {
@@ -62,6 +62,7 @@
     ],
     "rules": {
       "camelcase": "off",
+      "i18next/no-literal-string": "off",
       "import/order": "off",
       "sort-keys-fix/sort-keys-fix": "off"
     }

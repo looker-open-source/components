@@ -1,3 +1,6 @@
 {
-  "Select time": "Sélectionner l'heure"
+  "Select time": {
+    "value": "Sélectionner l'heure",
+    "description": ""
+  }
 }

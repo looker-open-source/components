@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "עמוד מקרא {{page}} מתוך {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "עמוד מקרא {{page}} מתוך {{totalPages}}",
+    "description": ""
+  }
 }

@@ -6,7 +6,7 @@
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { fireEvent, screen } from '@testing-library/react';
-import Windowing from './stories/Windowing';
+import { Windowing } from './fixtures';
 
 /* eslint-disable-next-line @typescript-eslint/unbound-method */
 const globalGetBoundingClientRect = Element.prototype.getBoundingClientRect;

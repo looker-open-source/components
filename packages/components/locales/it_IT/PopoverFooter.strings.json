@@ -1,3 +1,6 @@
 {
-  "Done": "Fine"
+  "Done": {
+    "description": "",
+    "value": "Fine"
+  }
 }

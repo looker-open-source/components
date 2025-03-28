@@ -173,7 +173,9 @@ describe('Query', () => {
 
     renderWithTheme(
       <DataProvider sdk={mockSDKNotFound}>
-        <Query query={'abc123'}>{() => null}</Query>
+        <Query query={'abc123'}>
+          <TestChild />
+        </Query>
       </DataProvider>
     );
 

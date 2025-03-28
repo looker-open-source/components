@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "เป็น"
+    "value": "เป็น",
+    "description": ""
   },
   "is any time": {
-    "value": "เป็นเวลาใดก็ได้"
+    "value": "เป็นเวลาใดก็ได้",
+    "description": ""
   },
   "is before": {
-    "value": "อยู่ก่อน"
+    "value": "อยู่ก่อน",
+    "description": ""
   },
   "is in range": {
-    "value": "อยู่ในช่วง"
+    "value": "อยู่ในช่วง",
+    "description": ""
   },
   "is in the last": {
-    "value": "อยู่ในรายการล่าสุด"
+    "value": "อยู่ในรายการล่าสุด",
+    "description": ""
   },
   "is in the month": {
-    "value": "อยู่ในเดือน"
+    "value": "อยู่ในเดือน",
+    "description": ""
   },
   "is in the year": {
-    "value": "อยู่ในปี"
+    "value": "อยู่ในปี",
+    "description": ""
   },
   "is next": {
-    "value": "อยู่ถัดไป"
+    "value": "อยู่ถัดไป",
+    "description": ""
   },
   "is not null": {
-    "value": "ไม่เป็นค่าว่าง"
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
   },
   "is null": {
-    "value": "เป็นค่าว่าง"
+    "value": "เป็นค่าว่าง",
+    "description": ""
   },
   "is on or after": {
-    "value": "อยู่ที่หรือหลัง"
+    "value": "อยู่ที่หรือหลัง",
+    "description": ""
   },
   "is on the day": {
-    "value": "อยู่ในวัน"
+    "value": "อยู่ในวัน",
+    "description": ""
   },
   "is previous": {
-    "value": "อยู่ก่อนหน้า"
+    "value": "อยู่ก่อนหน้า",
+    "description": ""
   },
   "is this": {
-    "value": "อยู่รายการนี้"
+    "value": "อยู่รายการนี้",
+    "description": ""
   }
 }

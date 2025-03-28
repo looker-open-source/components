@@ -1,3 +1,6 @@
 {
-  "Delete": "मिटाएं"
+  "Delete": {
+    "value": "मिटाएं",
+    "description": ""
+  }
 }

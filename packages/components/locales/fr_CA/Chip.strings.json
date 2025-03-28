@@ -1,3 +1,6 @@
 {
-  "Delete": "Supprimer"
+  "Delete": {
+    "value": "Supprimer",
+    "description": ""
+  }
 }

@@ -8,7 +8,7 @@ import { findUserAttribute } from '../user_attribute';
 export const sanitizeString = (
   item: FilterModel,
   userAttributes: UserAttributeWithValue[] = []
-) => {
+): FilterModel => {
   const { id = '0', is = true, type, value = [], attributeName } = item;
   const userAttribute = findUserAttribute(attributeName, userAttributes);
   switch (type) {
@@ -17,7 +17,7 @@ export const sanitizeString = (
         id,
         is,
         type,
-        value: userAttribute ? [userAttribute.value] : value,
+        value: userAttribute?.value ? [userAttribute.value] : value,
         attributeName: '',
         attributeValue: '',
       };

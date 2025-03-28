@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Максимум {{name}}",
-  "Maximum Value": "Максимальне значення",
-  "Minimum Name": "Мінімум {{name}}",
-  "Minimum Value": "Мінімальне значення"
+  "Maximum Name": {
+    "value": "Максимум {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Максимальне значення",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Мінімум {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Мінімальне значення",
+    "description": ""
+  }
 }

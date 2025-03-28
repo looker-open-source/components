@@ -1,3 +1,6 @@
 {
-  "required": "verplicht"
+  "required": {
+    "value": "verplicht",
+    "description": ""
+  }
 }

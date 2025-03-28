@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Wyczyść pole"
+  "Clear Field": {
+    "description": "",
+    "value": "Wyczyść pole"
+  }
 }

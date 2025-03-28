@@ -1,4 +1,10 @@
 {
-  "Cancel": "रद्द करें",
-  "Confirm": "पुष्टि करें"
+  "Cancel": {
+    "value": "रद्द करें",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "पुष्टि करें",
+    "description": ""
+  }
 }

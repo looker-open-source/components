@@ -1,4 +1,10 @@
 {
-  "Loading": "लोड हो रहा है",
-  "No options": "कोई विकल्प नहीं"
+  "Loading": {
+    "value": "लोड हो रहा है",
+    "description": ""
+  },
+  "No options": {
+    "value": "कोई विकल्प नहीं",
+    "description": ""
+  }
 }

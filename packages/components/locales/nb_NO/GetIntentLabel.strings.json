@@ -1,6 +1,18 @@
 {
-  "Error": "Feil",
-  "Inform": "Informer",
-  "Success": "Vellykket",
-  "Warning": "Advarsel"
+  "Error": {
+    "value": "Feil",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Informer",
+    "description": ""
+  },
+  "Success": {
+    "value": "Vellykket",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Advarsel",
+    "description": ""
+  }
 }

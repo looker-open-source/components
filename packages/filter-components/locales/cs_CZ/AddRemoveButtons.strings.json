@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Přidat"
+    "value": "Přidat",
+    "description": ""
   },
   "Remove": {
-    "value": "Odebrat"
+    "value": "Odebrat",
+    "description": ""
   }
 }

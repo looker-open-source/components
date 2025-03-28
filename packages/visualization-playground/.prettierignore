@@ -1,7 +1,0 @@
-/**/*.md
-/**/*.mdx
-/**/locales
-/dist
-/lib
-/storybook-static
-/test/output/jest

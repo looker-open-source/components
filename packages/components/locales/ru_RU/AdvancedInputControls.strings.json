@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Очистить поле"
+  "Clear Field": {
+    "value": "Очистить поле",
+    "description": ""
+  }
 }

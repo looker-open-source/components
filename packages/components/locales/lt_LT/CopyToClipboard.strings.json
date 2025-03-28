@@ -1,4 +1,10 @@
 {
-  "Copied": "Nukopijuota",
-  "Copy to Clipboard": "Kopijuoti į iškarpinę"
+  "Copied": {
+    "value": "Nukopijuota",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Kopijuoti į iškarpinę",
+    "description": ""
+  }
 }

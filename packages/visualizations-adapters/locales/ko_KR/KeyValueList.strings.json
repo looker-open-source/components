@@ -1,6 +1,18 @@
 {
-  "false": "거짓",
-  "null": "null",
-  "true": "참",
-  "undefined": "정의되지 않음"
+  "false": {
+    "description": "",
+    "value": "거짓"
+  },
+  "null": {
+    "description": "",
+    "value": "null"
+  },
+  "true": {
+    "description": "",
+    "value": "참"
+  },
+  "undefined": {
+    "description": "",
+    "value": "정의되지 않음"
+  }
 }

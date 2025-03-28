@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "Huhtikuu"
+    "value": "Huhtikuu",
+    "description": ""
   },
   "August": {
-    "value": "Elokuu"
+    "value": "Elokuu",
+    "description": ""
   },
   "December": {
-    "value": "Joulukuu"
+    "value": "Joulukuu",
+    "description": ""
   },
   "February": {
-    "value": "Helmikuu"
+    "value": "Helmikuu",
+    "description": ""
   },
   "January": {
-    "value": "Tammikuu"
+    "value": "Tammikuu",
+    "description": ""
   },
   "July": {
-    "value": "Heinäkuu"
+    "value": "Heinäkuu",
+    "description": ""
   },
   "June": {
-    "value": "Kesäkuu"
+    "value": "Kesäkuu",
+    "description": ""
   },
   "March": {
-    "value": "Maaliskuu"
+    "value": "Maaliskuu",
+    "description": ""
   },
   "May": {
-    "value": "Touko"
+    "value": "Touko",
+    "description": ""
   },
   "November": {
-    "value": "Marraskuu"
+    "value": "Marraskuu",
+    "description": ""
   },
   "October": {
-    "value": "Lokakuu"
+    "value": "Lokakuu",
+    "description": ""
   },
   "September": {
-    "value": "Syyskuu"
+    "value": "Syyskuu",
+    "description": ""
   }
 }

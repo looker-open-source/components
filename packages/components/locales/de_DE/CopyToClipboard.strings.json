@@ -1,4 +1,10 @@
 {
-  "Copied": "Kopiert",
-  "Copy to Clipboard": "In Zwischenablage kopieren"
+  "Copied": {
+    "description": "",
+    "value": "Kopiert"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "In Zwischenablage kopieren"
+  }
 }

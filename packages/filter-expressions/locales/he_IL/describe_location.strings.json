@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} אל {{coords2}}"
+    "value": "{{coords1}} אל {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} מ- {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} מ- {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "בכל מקום"
+    "value": "בכל מקום",
+    "description": ""
   },
   "is not null": {
-    "value": "אינו Null"
+    "value": "אינו Null",
+    "description": ""
   },
   "is null": {
-    "value": "Null"
+    "value": "Null",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°צפון"
+    "value": "{{lat}}°צפון",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°דרום"
+    "value": "{{lat}}°דרום",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°מזרח"
+    "value": "{{lon}}°מזרח",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°מערב"
+    "value": "{{lon}}°מערב",
+    "description": ""
   }
 }

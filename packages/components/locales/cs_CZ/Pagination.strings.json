@@ -1,7 +1,22 @@
 {
-  "First page of results": "První stránka výsledků",
-  "Last page of results": "Poslední stránka výsledků",
-  "Next page of results": "Další stránka výsledků",
-  "Previous page of results": "Předchozí stránka výsledků",
-  "of": "z"
+  "First page of results": {
+    "value": "První stránka výsledků",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Poslední stránka výsledků",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Další stránka výsledků",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Předchozí stránka výsledků",
+    "description": ""
+  },
+  "of": {
+    "value": "z",
+    "description": ""
+  }
 }

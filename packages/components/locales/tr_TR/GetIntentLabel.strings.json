@@ -1,6 +1,18 @@
 {
-  "Error": "Hata",
-  "Inform": "Bilgilendir",
-  "Success": "Başarılı",
-  "Warning": "Uyarı"
+  "Error": {
+    "value": "Hata",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Bilgilendir",
+    "description": ""
+  },
+  "Success": {
+    "value": "Başarılı",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Uyarı",
+    "description": ""
+  }
 }

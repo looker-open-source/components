@@ -1,3 +1,6 @@
 {
-  "Close": "बंद करें"
+  "Close": {
+    "value": "बंद करें",
+    "description": ""
+  }
 }

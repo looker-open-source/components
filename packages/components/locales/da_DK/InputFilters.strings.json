@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Ryd filtre",
-  "Filter List": "Filtrer liste",
-  "bottom-start": "nederst-start"
+  "Clear Filters": {
+    "value": "Ryd filtre",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filtrer liste",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "nederst-start",
+    "description": ""
+  }
 }

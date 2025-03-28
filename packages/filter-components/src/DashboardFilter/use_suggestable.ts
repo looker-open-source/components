@@ -28,6 +28,7 @@ import type { IDashboardFilter, ILookmlModelExploreField } from '@looker/sdk';
 import type { IAPIMethods } from '@looker/sdk-rtl';
 import { model_fieldname_suggestions } from '@looker/sdk';
 import { useContext, useMemo, useRef, useState } from 'react';
+import { useDebounce } from 'use-debounce';
 import { useTranslation } from '../utils';
 import type { FilterProps } from '../Filter/types/filter_props';
 import type { FilterMap } from '../FilterCollection';
@@ -42,11 +43,38 @@ export interface UseSuggestableProps {
    * An initialized Looker SDK instance
    */
   sdk?: IAPIMethods;
+  /**
+   * If true, and the search term is empty, suggestions will not be fetched.
+   * Use to minimize API requests, toggling to true when a filter is focused,
+   * for example.
+   */
+  waitToFetch?: boolean;
+  /**
+   * Optional prop to override SDK method for fetching suggestions
+   */
+  fetchSuggestions?: (params: {
+    modelName: string;
+    viewName: string;
+    fieldName: string;
+    term: string;
+    filters?: string;
+    abortController: AbortController;
+  }) => Promise<Response>;
 }
 
-const shouldFetchSuggestions = (field?: ILookmlModelExploreField) => {
+export interface UseSuggestableResult {
+  errorMessage: string;
+  suggestableProps: Pick<
+    FilterProps,
+    'isLoading' | 'onInputChange' | 'suggestions' | 'enumerations'
+  >;
+}
+
+const hasRemoteSuggestions = (field?: ILookmlModelExploreField) => {
   return field?.suggestable && !field?.enumerations && !field?.suggestions;
 };
+
+const DEBOUNCE_TIME = 300;
 
 /**
  * Returns the correct prop & value for suggestions, enumerations, or none
@@ -55,7 +83,7 @@ const getOptionsProps = (
   field: ILookmlModelExploreField | undefined,
   fetchedSuggestions: string[]
 ) => {
-  if (shouldFetchSuggestions(field)) {
+  if (hasRemoteSuggestions(field)) {
     return { suggestions: fetchedSuggestions };
   }
   const { enumerations, suggestions } = field || {};
@@ -101,13 +129,18 @@ const getLinkedFilterMap = (
 export const useSuggestable = ({
   filter,
   sdk: propsSdk,
-}: UseSuggestableProps) => {
+  fetchSuggestions,
+  waitToFetch,
+}: UseSuggestableProps): UseSuggestableResult => {
   const { state, sdk = propsSdk } = useContext(FilterContext);
   const filterMap = state.filterMap;
 
   const field = filter.field as ILookmlModelExploreField | undefined;
 
   const [searchTerm, setSearchTerm] = useState('');
+  const [debouncedSearchTerm] = useDebounce(searchTerm, DEBOUNCE_TIME, {
+    leading: true,
+  });
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setLoading] = useState(false);
   const [fetchedSuggestions, setSuggestions] = useState<string[]>([]);
@@ -129,30 +162,55 @@ export const useSuggestable = ({
 
   // linkedFilterMap is empty for linked filters, and undefined for non-linked filters
   useEffectDeepEquals(() => {
+    const abortController = new AbortController();
     const loadSuggestions = async () => {
       // Only need to fetch suggestions if they're not included on the field
-      if (sdk && shouldFetchSuggestions(field)) {
+      if ((fetchSuggestions || sdk) && hasRemoteSuggestions(field)) {
         if (!canFilterOnClientRef.current) {
           setLoading(true);
           const params = {
             field_name: field?.suggest_dimension || '',
             model_name: filter.model || '',
-            term: searchTerm,
+            term: debouncedSearchTerm,
             view_name: field?.suggest_explore || field?.view || '',
             filters: linkedFilterMap,
           };
 
           try {
-            const result = await sdk.ok(
-              model_fieldname_suggestions(sdk, params)
-            );
+            let result;
+            if (fetchSuggestions) {
+              result = await fetchSuggestions({
+                fieldName: params.field_name,
+                modelName: params.model_name,
+                viewName: params.view_name,
+                term: params.term,
+                filters: params.filters
+                  ? JSON.stringify(params.filters)
+                  : undefined,
+                abortController,
+              }).then((res: Response) => {
+                if (res.ok) {
+                  return res.json();
+                } else {
+                  return res;
+                }
+              });
+            } else if (sdk) {
+              result = await sdk.ok(
+                model_fieldname_suggestions(sdk, params, {
+                  signal: abortController?.signal,
+                })
+              );
+            }
 
-            setLoading(false);
-            setSuggestions(result.suggestions || []);
-            // If the limit was not hit with an empty search term,
-            // suggestion filtering can be done on the client side
-            if (searchTerm === '' && result.hit_limit === false) {
-              canFilterOnClientRef.current = true;
+            if (result) {
+              setLoading(false);
+              setSuggestions(result.suggestions || []);
+              // If the limit was not hit with an empty search term,
+              // suggestion filtering can be done on the client side
+              if (debouncedSearchTerm === '' && result.hit_limit === false) {
+                canFilterOnClientRef.current = true;
+              }
             }
           } catch (error) {
             setLoading(false);
@@ -161,12 +219,21 @@ export const useSuggestable = ({
         }
       }
     };
-    loadSuggestions();
+    if (!waitToFetch || debouncedSearchTerm !== '') {
+      loadSuggestions();
+    }
+
+    return () => {
+      // Cancel in-flight request
+      abortController.abort();
+    };
   }, [
+    waitToFetch,
     filter.model,
     field,
-    searchTerm,
+    debouncedSearchTerm,
     sdk,
+    fetchSuggestions,
     linkedFilterMap || {},
     translatedErrorMessage,
   ]);

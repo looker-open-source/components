@@ -1,82 +1,162 @@
 {
-  "complete day": "전체 일",
+  "complete day": {
+    "description": "",
+    "value": "하루 전체"
+  },
   "complete days": {
+    "description": "",
     "value": "일 전체"
   },
-  "complete fiscal quarter": "전체 회계 분기",
-  "complete fiscal quarters": {
+  "complete fiscal quarter": {
+    "description": "",
     "value": "회계 분기 전체"
   },
-  "complete fiscal year": "전체 회계 연수",
-  "complete fiscal years": {
+  "complete fiscal quarters": {
+    "description": "",
+    "value": "회계 분기 전체"
+  },
+  "complete fiscal year": {
+    "description": "",
     "value": "회계 연도 전체"
   },
-  "complete hour": "전체 시간",
+  "complete fiscal years": {
+    "description": "",
+    "value": "회계 연도 전체"
+  },
+  "complete hour": {
+    "description": "",
+    "value": "1시간 전체"
+  },
   "complete hours": {
+    "description": "",
     "value": "시간 전체"
   },
-  "complete minute": "전체 분",
+  "complete minute": {
+    "description": "",
+    "value": "1분 전체"
+  },
   "complete minutes": {
+    "description": "",
     "value": "분 전체"
   },
-  "complete month": "전체 월",
+  "complete month": {
+    "description": "",
+    "value": "1개월 전체"
+  },
   "complete months": {
+    "description": "",
     "value": "개월 전체"
   },
-  "complete quarter": "전체 분기",
+  "complete quarter": {
+    "description": "",
+    "value": "1분기 전체"
+  },
   "complete quarters": {
+    "description": "",
     "value": "분기 전체"
   },
-  "complete second": "전체 초",
+  "complete second": {
+    "description": "",
+    "value": "1초 전체"
+  },
   "complete seconds": {
+    "description": "",
     "value": "초 전체"
   },
-  "complete week": "전체 주",
+  "complete week": {
+    "description": "",
+    "value": "1주 전체"
+  },
   "complete weeks": {
+    "description": "",
     "value": "주 전체"
   },
-  "complete year": "전체 년",
+  "complete year": {
+    "description": "",
+    "value": "1년 전체"
+  },
   "complete years": {
+    "description": "",
     "value": "년 전체"
   },
-  "day": "일",
-  "days": {
+  "day": {
+    "description": "",
     "value": "일"
   },
-  "fiscal quarter": "회계 분기",
-  "fiscal quarters": {
+  "days": {
+    "description": "",
+    "value": "일"
+  },
+  "fiscal quarter": {
+    "description": "",
     "value": "회계 분기"
   },
-  "fiscal year": "회계 연도",
-  "fiscal years": {
+  "fiscal quarters": {
+    "description": "",
+    "value": "회계 분기"
+  },
+  "fiscal year": {
+    "description": "",
     "value": "회계 연도"
   },
-  "hour": "시간",
-  "hours": {
+  "fiscal years": {
+    "description": "",
+    "value": "회계 연도"
+  },
+  "hour": {
+    "description": "",
     "value": "시간"
   },
-  "minute": "분",
-  "minutes": {
+  "hours": {
+    "description": "",
+    "value": "시간"
+  },
+  "minute": {
+    "description": "",
     "value": "분"
   },
-  "month": "월",
+  "minutes": {
+    "description": "",
+    "value": "분"
+  },
+  "month": {
+    "description": "",
+    "value": "월"
+  },
   "months": {
+    "description": "",
     "value": "개월"
   },
-  "quarter": "분기",
-  "quarters": {
+  "quarter": {
+    "description": "",
     "value": "분기"
   },
-  "second": "초",
-  "seconds": {
+  "quarters": {
+    "description": "",
+    "value": "분기"
+  },
+  "second": {
+    "description": "",
     "value": "초"
   },
-  "week": "주",
-  "weeks": {
+  "seconds": {
+    "description": "",
+    "value": "초"
+  },
+  "week": {
+    "description": "",
     "value": "주"
   },
-  "year": "년",
+  "weeks": {
+    "description": "",
+    "value": "주"
+  },
+  "year": {
+    "description": "",
+    "value": "년"
+  },
   "years": {
+    "description": "",
     "value": "년"
   }
 }

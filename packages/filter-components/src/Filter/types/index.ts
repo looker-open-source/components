@@ -4,6 +4,7 @@
  */
 
 export * from './filter_state';
+export * from './filter_type_map';
 export * from './filter_ui_config';
 export * from './option';
 export * from './filter_props';

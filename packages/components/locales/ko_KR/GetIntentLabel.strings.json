@@ -1,6 +1,18 @@
 {
-  "Error": "오류",
-  "Inform": "알림",
-  "Success": "성공",
-  "Warning": "경고"
+  "Error": {
+    "description": "",
+    "value": "오류"
+  },
+  "Inform": {
+    "description": "",
+    "value": "알림"
+  },
+  "Success": {
+    "description": "",
+    "value": "성공"
+  },
+  "Warning": {
+    "description": "",
+    "value": "경고"
+  }
 }

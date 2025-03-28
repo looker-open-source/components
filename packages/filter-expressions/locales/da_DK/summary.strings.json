@@ -1,3 +1,6 @@
 {
-  "Value required": "Værdi kræves"
+  "Value required": {
+    "value": "Værdi kræves",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "체크박스 일부 선택됨"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "체크박스 일부 선택됨"
+  }
 }

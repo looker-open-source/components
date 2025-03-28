@@ -2,6 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
+import { Category } from '@looker/sdk';
 import { AdvancedFilter } from './AdvancedFilter';
 import type { AdvancedFilterProps } from './AdvancedFilter';
 import { renderWithTheme } from '@looker/components-test-utils';
@@ -62,6 +63,31 @@ describe('Advanced filters', () => {
       });
       const addButtonIcon = screen.queryByText('Add');
       expect(addButtonIcon).not.toBeInTheDocument();
+    });
+
+    it('renders the label instead of the value for numeric parameter filters', () => {
+      const enumerations = [
+        { value: '1', label: 'One' },
+        { value: '2', label: 'Two' },
+      ];
+      renderAdvancedFilter({
+        allowMultipleValues: true,
+        field: {
+          parameter: true,
+          category: Category.parameter,
+          type: 'number',
+          has_allowed_values: true,
+        },
+        expressionType: 'number',
+        ast: {
+          is: true,
+          type: '=',
+        },
+        enumerations,
+      });
+      const inputs = screen.getAllByRole('textbox');
+      expect(inputs[0]).toHaveValue('is');
+      expect(inputs[1]).toHaveValue('One');
     });
   });
 });

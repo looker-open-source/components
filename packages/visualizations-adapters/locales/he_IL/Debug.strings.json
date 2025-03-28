@@ -1,9 +1,30 @@
 {
-  "Config": "הגדר",
-  "Dimensions": "מידות",
-  "Error": "שגיאה",
-  "Measures": "מדדים",
-  "Result": "תוצאה",
-  "error": "שגיאה",
-  "ok": "אישור"
+  "Config": {
+    "value": "הגדר",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "מידות",
+    "description": ""
+  },
+  "Error": {
+    "value": "שגיאה",
+    "description": ""
+  },
+  "Measures": {
+    "value": "מדדים",
+    "description": ""
+  },
+  "Result": {
+    "value": "תוצאה",
+    "description": ""
+  },
+  "error": {
+    "value": "שגיאה",
+    "description": ""
+  },
+  "ok": {
+    "value": "אישור",
+    "description": ""
+  }
 }

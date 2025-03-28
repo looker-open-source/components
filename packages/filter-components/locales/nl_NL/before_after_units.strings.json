@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "dagen geleden"
+    "value": "dagen geleden",
+    "description": ""
   },
   "days from now": {
-    "value": "dagen vanaf nu"
+    "value": "dagen vanaf nu",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "fiscaal kwartaal vanaf nu"
+    "value": "fiscaal kwartaal vanaf nu",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "fiscale kwartalen geleden"
+    "value": "fiscale kwartalen geleden",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "fiscale jaren geleden"
+    "value": "fiscale jaren geleden",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "fiscale jaren vanaf nu"
+    "value": "fiscale jaren vanaf nu",
+    "description": ""
   },
   "hours ago": {
-    "value": "uur geleden"
+    "value": "uur geleden",
+    "description": ""
   },
   "hours from now": {
-    "value": "uur vanaf nu"
+    "value": "uur vanaf nu",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minuten geleden"
+    "value": "minuten geleden",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minuten vanaf nu"
+    "value": "minuten vanaf nu",
+    "description": ""
   },
   "months ago": {
-    "value": "maanden geleden"
+    "value": "maanden geleden",
+    "description": ""
   },
   "months from now": {
-    "value": "maanden vanaf nu"
+    "value": "maanden vanaf nu",
+    "description": ""
   },
   "now": {
-    "value": "nu"
+    "value": "nu",
+    "description": ""
   },
   "quarters ago": {
-    "value": "kwartalen geleden"
+    "value": "kwartalen geleden",
+    "description": ""
   },
   "quarters from now": {
-    "value": "kwartalen vanaf nu"
+    "value": "kwartalen vanaf nu",
+    "description": ""
   },
   "seconds ago": {
-    "value": "seconden geleden"
+    "value": "seconden geleden",
+    "description": ""
   },
   "seconds from now": {
-    "value": "seconden vanaf nu"
+    "value": "seconden vanaf nu",
+    "description": ""
   },
   "weeks ago": {
-    "value": "weken geleden"
+    "value": "weken geleden",
+    "description": ""
   },
   "weeks from now": {
-    "value": "weken vanaf nu"
+    "value": "weken vanaf nu",
+    "description": ""
   },
   "years ago": {
-    "value": "jaar geleden"
+    "value": "jaar geleden",
+    "description": ""
   },
   "years from now": {
-    "value": "jaar vanaf nu"
+    "value": "jaar vanaf nu",
+    "description": ""
   }
 }

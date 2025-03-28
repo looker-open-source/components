@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Zaškrtnout smíšené"
+  "Check Mark Mixed": {
+    "value": "Zaškrtnout smíšené",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Tilpasning"
+    "value": "Tilpasning",
+    "description": ""
   },
   "Presets": {
-    "value": "Forudindstillinger"
+    "value": "Forudindstillinger",
+    "description": ""
   }
 }

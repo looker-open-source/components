@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Šiuo metu datos tipo matai nepalaikomi",
-  "No chart found for type \"{{type}}\"": "Nerasta „{{type}}“ tipo diagrama"
+  "Measures of type 'date' are currently not supported": {
+    "value": "Šiuo metu datos tipo matai nepalaikomi",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Nerasta „{{type}}“ tipo diagrama",
+    "description": ""
+  }
 }

@@ -1,7 +1,22 @@
 {
-  "Apply": "ใช้",
-  "Cancel": "ยกเลิก",
-  "Select All": "เลือกทั้งหมด",
-  "Select None": "ไม่เลือกเลย",
-  "Select columns to display": "เลือกคอลัมน์ที่จะแสดง"
+  "Apply": {
+    "value": "ใช้",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "ยกเลิก",
+    "description": ""
+  },
+  "Select All": {
+    "value": "เลือกทั้งหมด",
+    "description": ""
+  },
+  "Select None": {
+    "value": "ไม่เลือกเลย",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "เลือกคอลัมน์ที่จะแสดง",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "No matching fields"
   },
   "Try Something Else": {
+    "description": "",
     "value": "Try another search term or start over and expand any explore to browse available fields."
   }
 }

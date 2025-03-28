@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Mål af typen 'dato' understøttes ikke i øjeblikket",
-  "No chart found for type \"{{type}}\"": "Der blev ikke fundet noget diagram for typen \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "value": "Mål af typen 'dato' understøttes ikke i øjeblikket",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Der blev ikke fundet noget diagram for typen \"{{type}}\"",
+    "description": ""
+  }
 }

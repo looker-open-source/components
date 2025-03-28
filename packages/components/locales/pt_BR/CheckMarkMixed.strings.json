@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Marca de seleção \"Misto\""
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "Marca de seleção \"Misto\""
+  }
 }

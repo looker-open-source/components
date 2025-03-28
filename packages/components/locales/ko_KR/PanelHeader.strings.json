@@ -1,3 +1,6 @@
 {
-  "CloseTitle": "{{title}} 닫기"
+  "CloseTitle": {
+    "description": "",
+    "value": "{{title}} 닫기"
+  }
 }

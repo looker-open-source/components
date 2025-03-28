@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "直近 14 日間"
+    "description": "",
+    "value": "最後 14 日間"
   },
   "Last 180 Days": {
-    "value": "直近 180 日間"
+    "description": "",
+    "value": "最後 180 日間"
   },
   "Last 28 Days": {
-    "value": "直近 28 日間"
+    "description": "",
+    "value": "最後 28 日間"
   },
   "Last 30 Days": {
-    "value": "直近 30 日間"
+    "description": "",
+    "value": "最後 30 日間"
   },
   "Last 365 Days": {
-    "value": "直近 365 日間"
+    "description": "",
+    "value": "最後 365 日間"
   },
   "Last 7 Days": {
-    "value": "直近 7 日間"
+    "description": "",
+    "value": "最後 7 日間"
   },
   "Last 90 Days": {
-    "value": "直近 90 日間"
+    "description": "",
+    "value": "最後 90 日間"
   },
   "Previous Month": {
+    "description": "",
     "value": "前月"
   },
   "Previous Quarter": {
+    "description": "",
     "value": "前四半期"
   },
   "Previous Week": {
+    "description": "",
     "value": "前週"
   },
   "Previous Year": {
+    "description": "",
     "value": "前年"
   },
   "This Month": {
+    "description": "",
     "value": "今月"
   },
   "This Quarter": {
+    "description": "",
     "value": "現在の四半期"
   },
   "This Week": {
+    "description": "",
     "value": "今週"
   },
   "This Year": {
+    "description": "",
     "value": "今年"
   },
   "Today": {
+    "description": "",
     "value": "今日"
   },
   "Year To Date": {
+    "description": "",
     "value": "年初来"
   },
   "Yesterday": {
+    "description": "",
     "value": "昨日"
   }
 }

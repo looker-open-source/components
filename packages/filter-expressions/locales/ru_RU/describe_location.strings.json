@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "от {{coords1}} до {{coords2}}"
+    "value": "от {{coords1}} до {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} от {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} от {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "находится где-либо"
+    "value": "находится где-либо",
+    "description": ""
   },
   "is not null": {
-    "value": "не является нулевым значением"
+    "value": "не является нулевым значением",
+    "description": ""
   },
   "is null": {
-    "value": "является нулевым значением"
+    "value": "является нулевым значением",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}°N",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}°S",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "{{lon}}°E",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°W"
+    "value": "{{lon}}°W",
+    "description": ""
   }
 }

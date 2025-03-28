@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "सुझाव लोड करने में त्रुटि हुई"
+  "Error loading suggestions": {
+    "value": "सुझाव लोड करने में त्रुटि हुई",
+    "description": ""
+  }
 }

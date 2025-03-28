@@ -18,21 +18,22 @@
   "scripts": {
     "prepublishOnly": "lk prepublishOnly"
   },
+  "dependencies": {
+    "@testing-library/react": "^12.1.5",
+    "@looker/components-providers": "1.5.34",
+    "jest-styled-components": "^7.1.1"
+  },
   "devDependencies": {
-    "@looker/babel-preset-styled-components": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-providers": "*",
-    "@looker/components-scripts": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/prettier-config": "*",
-    "@testing-library/react": "12.1.5",
-    "jest-styled-components": "7.1.1",
+    "@looker/babel-preset-styled-components": "0.0.2",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/prettier-config": "1.0.0",
     "prettier": "2.8.2",
-    "react": "17.0.2",
-    "styled-components": "5.3.1"
+    "react": "17.0.2"
   },
   "peerDependencies": {
-    "react": "16.14.0 - 18"
+    "react": ">=16.14.0"
   },
   "eslintConfig": {
     "root": true,

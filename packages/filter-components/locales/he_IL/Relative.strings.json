@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "לשעבר"
+    "value": "לשעבר",
+    "description": ""
   },
   "from now": {
-    "value": "מעתה"
+    "value": "מעתה",
+    "description": ""
   }
 }

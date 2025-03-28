@@ -80,6 +80,7 @@ export const MultiInputInternal = ({
 
   return (
     <InputChips
+      data-testid="filter-multi-input"
       ref={ref}
       width={width || multiInputWidth}
       className={className}

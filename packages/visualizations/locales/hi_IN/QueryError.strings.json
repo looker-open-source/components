@@ -1,3 +1,6 @@
 {
-  "Error": "त्रुटि"
+  "Error": {
+    "value": "त्रुटि",
+    "description": ""
+  }
 }

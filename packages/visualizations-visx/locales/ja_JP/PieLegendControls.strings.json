@@ -1,4 +1,10 @@
 {
-  "Next page": "次のページ",
-  "Previous page": "前のページ"
+  "Next page": {
+    "description": "",
+    "value": "次のページ"
+  },
+  "Previous page": {
+    "description": "",
+    "value": "前のページ"
+  }
 }

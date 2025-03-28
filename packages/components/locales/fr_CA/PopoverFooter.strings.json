@@ -1,3 +1,6 @@
 {
-  "Done": "Terminé"
+  "Done": {
+    "value": "Terminé",
+    "description": ""
+  }
 }

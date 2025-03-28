@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Caixa"
+    "description": "",
+    "value": "Box"
   },
   "Circle": {
+    "description": "",
     "value": "Círculo"
   },
   "Location": {
+    "description": "",
     "value": "Local"
   },
   "feet": {
+    "description": "",
     "value": "pés"
   },
   "is anywhere": {
+    "description": "",
     "value": "está em qualquer lugar"
   },
   "is not null": {
+    "description": "",
     "value": "não é nulo"
   },
   "is null": {
+    "description": "",
     "value": "é nulo"
   },
   "kilometers": {
+    "description": "",
     "value": "quilômetros"
   },
   "meters": {
+    "description": "",
     "value": "quadrados"
   },
   "miles": {
+    "description": "",
     "value": "milhas"
   }
 }

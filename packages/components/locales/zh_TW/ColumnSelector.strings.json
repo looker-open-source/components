@@ -1,7 +1,22 @@
 {
-  "Apply": "套用",
-  "Cancel": "取消",
-  "Select All": "全選",
-  "Select None": "不選取任何項目",
-  "Select columns to display": "選取要顯示的資料欄"
+  "Apply": {
+    "description": "",
+    "value": "套用"
+  },
+  "Cancel": {
+    "description": "",
+    "value": "取消"
+  },
+  "Select All": {
+    "description": "",
+    "value": "全選"
+  },
+  "Select None": {
+    "description": "",
+    "value": "不選取任何項目"
+  },
+  "Select columns to display": {
+    "description": "",
+    "value": "選取要顯示的資料欄"
+  }
 }

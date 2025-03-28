@@ -1,3 +1,6 @@
 {
-  "required": "נדרש"
+  "required": {
+    "value": "נדרש",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "Keine übereinstimmenden Felder"
   },
   "Try Something Else": {
+    "description": "",
     "value": "Versuchen Sie es mit einem anderen Suchbegriff oder beginnen Sie von vorn und maximieren Sie jeden Explore, um in verfügbaren Feldern zu suchen."
   }
 }

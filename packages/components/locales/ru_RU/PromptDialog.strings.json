@@ -1,4 +1,10 @@
 {
-  "Cancel": "Отмена",
-  "Save": "Сохранить"
+  "Cancel": {
+    "value": "Отмена",
+    "description": ""
+  },
+  "Save": {
+    "value": "Сохранить",
+    "description": ""
+  }
 }

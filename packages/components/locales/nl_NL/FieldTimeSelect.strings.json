@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "Gebruik de indeling UU:MM"
+  "Please use format HHMM": {
+    "value": "Gebruik de indeling UU:MM",
+    "description": ""
+  }
 }

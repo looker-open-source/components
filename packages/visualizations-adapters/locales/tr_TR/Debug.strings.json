@@ -1,9 +1,30 @@
 {
-  "Config": "Yapılandırma",
-  "Dimensions": "Boyutlar",
-  "Error": "Hata",
-  "Measures": "Ölçümler",
-  "Result": "Sonuç",
-  "error": "hata",
-  "ok": "tamam"
+  "Config": {
+    "value": "Yapılandırma",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Boyutlar",
+    "description": ""
+  },
+  "Error": {
+    "value": "Hata",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Ölçümler",
+    "description": ""
+  },
+  "Result": {
+    "value": "Sonuç",
+    "description": ""
+  },
+  "error": {
+    "value": "hata",
+    "description": ""
+  },
+  "ok": {
+    "value": "tamam",
+    "description": ""
+  }
 }

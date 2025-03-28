@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "tom"
+    "value": "tom",
+    "description": ""
   },
   "contains value": {
-    "value": "indeholder {{value}}"
+    "value": "indeholder {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "indeholder ikke {{value}}"
+    "value": "indeholder ikke {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "slutter ikke med {{value}}"
+    "value": "slutter ikke med {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "starter ikke med {{value}}"
+    "value": "starter ikke med {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "slutter med {{value}}"
+    "value": "slutter med {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "starter med {{value}}"
+    "value": "starter med {{value}}",
+    "description": ""
   }
 }

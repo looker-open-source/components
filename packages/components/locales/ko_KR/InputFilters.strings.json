@@ -1,4 +1,10 @@
 {
-  "Clear Filters": "필터 지우기",
-  "Filter List": "필터 목록"
+  "Clear Filters": {
+    "description": "",
+    "value": "필터 지우기"
+  },
+  "Filter List": {
+    "description": "",
+    "value": "필터 목록"
+  }
 }

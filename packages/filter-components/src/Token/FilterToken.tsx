@@ -46,6 +46,7 @@ export const FilterToken = forwardRef(
     { config, maxWidth, onClick, userAttributes, ...props }: FilterTokenProps,
     ref?: React.Ref<HTMLDivElement>
   ) => {
+    const customFilterTokenKey = props.expression.replace(/\s/g, '');
     const expressionType =
       props.expressionType ||
       getExpressionType({ type: props.type, field: props.field || undefined });
@@ -95,6 +96,7 @@ export const FilterToken = forwardRef(
     return (
       <Popover content={popoverContent} placement="bottom-start" ref={ref}>
         <Token
+          key={customFilterTokenKey}
           label={label}
           subdued={isSubdued}
           hasError={hasError}

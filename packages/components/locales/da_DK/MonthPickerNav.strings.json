@@ -1,5 +1,14 @@
 {
-  "close": "luk",
-  "next year": "næste år",
-  "previous year": "forrige år"
+  "close": {
+    "value": "luk",
+    "description": ""
+  },
+  "next year": {
+    "value": "næste år",
+    "description": ""
+  },
+  "previous year": {
+    "value": "forrige år",
+    "description": ""
+  }
 }

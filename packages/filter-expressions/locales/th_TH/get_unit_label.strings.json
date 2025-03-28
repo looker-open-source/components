@@ -1,82 +1,162 @@
 {
-  "complete day": "วันถ้วน",
+  "complete day": {
+    "value": "วันถ้วน",
+    "description": ""
+  },
   "complete days": {
-    "value": "วันถ้วน"
+    "value": "วันถ้วน",
+    "description": ""
   },
-  "complete fiscal quarter": "ไตรมาสงบประมาณถ้วน",
+  "complete fiscal quarter": {
+    "value": "ไตรมาสงบประมาณถ้วน",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "ไตรมาสงบประมาณถ้วน"
+    "value": "ไตรมาสงบประมาณถ้วน",
+    "description": ""
   },
-  "complete fiscal year": "ปีงบประมาณถ้วน",
+  "complete fiscal year": {
+    "value": "ปีงบประมาณถ้วน",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "ปีงบประมาณถ้วน"
+    "value": "ปีงบประมาณถ้วน",
+    "description": ""
   },
-  "complete hour": "ชั่วโมงถ้วน",
+  "complete hour": {
+    "value": "ชั่วโมงถ้วน",
+    "description": ""
+  },
   "complete hours": {
-    "value": "ชั่วโมงถ้วน"
+    "value": "ชั่วโมงถ้วน",
+    "description": ""
   },
-  "complete minute": "นาทีถ้วน",
+  "complete minute": {
+    "value": "นาทีถ้วน",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "นาทีถ้วน"
+    "value": "นาทีถ้วน",
+    "description": ""
   },
-  "complete month": "เดือนถ้วน",
+  "complete month": {
+    "value": "เดือนถ้วน",
+    "description": ""
+  },
   "complete months": {
-    "value": "เดือนถ้วน"
+    "value": "เดือนถ้วน",
+    "description": ""
   },
-  "complete quarter": "ไตรมาสถ้วน",
+  "complete quarter": {
+    "value": "ไตรมาสถ้วน",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "ไตรมาสถ้วน"
+    "value": "ไตรมาสถ้วน",
+    "description": ""
   },
-  "complete second": "วินาทีถ้วน",
+  "complete second": {
+    "value": "วินาทีถ้วน",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "วินาทีถ้วน"
+    "value": "วินาทีถ้วน",
+    "description": ""
   },
-  "complete week": "สัปดาห์ถ้วน",
+  "complete week": {
+    "value": "สัปดาห์ถ้วน",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "สัปดาห์ถ้วน"
+    "value": "สัปดาห์ถ้วน",
+    "description": ""
   },
-  "complete year": "ปีถ้วน",
+  "complete year": {
+    "value": "ปีถ้วน",
+    "description": ""
+  },
   "complete years": {
-    "value": "ปีถ้วน"
+    "value": "ปีถ้วน",
+    "description": ""
   },
-  "day": "วัน",
+  "day": {
+    "value": "วัน",
+    "description": ""
+  },
   "days": {
-    "value": "วัน"
+    "value": "วัน",
+    "description": ""
   },
-  "fiscal quarter": "ไตรมาสงบประมาณ",
+  "fiscal quarter": {
+    "value": "ไตรมาสงบประมาณ",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "ไตรมาสงบประมาณ"
+    "value": "ไตรมาสงบประมาณ",
+    "description": ""
   },
-  "fiscal year": "ปีงบประมาณ",
+  "fiscal year": {
+    "value": "ปีงบประมาณ",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "ปีงบประมาณ"
+    "value": "ปีงบประมาณ",
+    "description": ""
   },
-  "hour": "ชั่วโมง",
+  "hour": {
+    "value": "ชั่วโมง",
+    "description": ""
+  },
   "hours": {
-    "value": "ชั่วโมง"
+    "value": "ชั่วโมง",
+    "description": ""
   },
-  "minute": "นาที",
+  "minute": {
+    "value": "นาที",
+    "description": ""
+  },
   "minutes": {
-    "value": "นาที"
+    "value": "นาที",
+    "description": ""
   },
-  "month": "เดือน",
+  "month": {
+    "value": "เดือน",
+    "description": ""
+  },
   "months": {
-    "value": "เดือน"
+    "value": "เดือน",
+    "description": ""
   },
-  "quarter": "ไตรมาส",
+  "quarter": {
+    "value": "ไตรมาส",
+    "description": ""
+  },
   "quarters": {
-    "value": "ไตรมาส"
+    "value": "ไตรมาส",
+    "description": ""
   },
-  "second": "วินาที",
+  "second": {
+    "value": "วินาที",
+    "description": ""
+  },
   "seconds": {
-    "value": "วินาที"
+    "value": "วินาที",
+    "description": ""
   },
-  "week": "สัปดาห์",
+  "week": {
+    "value": "สัปดาห์",
+    "description": ""
+  },
   "weeks": {
-    "value": "สัปดาห์"
+    "value": "สัปดาห์",
+    "description": ""
   },
-  "year": "ปี",
+  "year": {
+    "value": "ปี",
+    "description": ""
+  },
   "years": {
-    "value": "ปี"
+    "value": "ปี",
+    "description": ""
   }
 }

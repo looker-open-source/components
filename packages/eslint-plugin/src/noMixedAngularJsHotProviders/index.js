@@ -24,6 +24,7 @@
 
  */
 const traverse = require('eslint-traverse');
+const os = require('os');
 
 // https://docs.angularjs.org/api/ng/type/angular.Module
 const angularModuleMethods = {
@@ -102,17 +103,34 @@ module.exports = {
         },
         Program(programNode) {
           ngProviderNodes = [];
-          traverse(context, programNode, ({ node }) => {
-            if (node.type !== 'Identifier') return;
-            const providerName = node.name;
-            if (!(providerName in angularModuleMethods)) return;
 
-            const parent = node.parent;
-            if (parent.type !== 'MemberExpression') return;
-            if (!isNgModuleExpression(parent.object)) return;
+          // https://github.com/discord/eslint-traverse/pull/3
+          //
+          // eslint-traverse incorrectly assumes node is not null which causes
+          // problems because [, test] will result in the empty destructure
+          // being null and it attempts to read properties from it.
+          try {
+            traverse(context, programNode, ({ node }) => {
+              if (!node) return;
+              if (node.type !== 'Identifier') return;
 
-            ngProviderNodes.push(node);
-          });
+              const providerName = node.name;
+              if (!(providerName in angularModuleMethods)) return;
+
+              const parent = node.parent;
+              if (!parent) return;
+              if (parent.type !== 'MemberExpression') return;
+              if (!isNgModuleExpression(parent.object)) return;
+
+              ngProviderNodes.push(node);
+            });
+          } catch (e) {
+            const stack = e.stack.split(os.EOL).map(s => s.trim());
+            const eslintTraverseBug = stack[1];
+            if (!eslintTraverseBug.includes('eslint-traverse/index.js:24:55')) {
+              throw e;
+            }
+          }
         },
       };
     },

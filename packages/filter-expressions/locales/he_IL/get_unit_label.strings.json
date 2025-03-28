@@ -1,82 +1,162 @@
 {
-  "complete day": "יום מלא",
+  "complete day": {
+    "value": "יום מלא",
+    "description": ""
+  },
   "complete days": {
-    "value": "ימים מלאים"
+    "value": "ימים מלאים",
+    "description": ""
   },
-  "complete fiscal quarter": "רבעון פיסקלי מלא",
+  "complete fiscal quarter": {
+    "value": "רבעון פיסקלי מלא",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "רבעונים פיסקליים מלאים"
+    "value": "רבעונים פיסקליים מלאים",
+    "description": ""
   },
-  "complete fiscal year": "שנה פיסלית מלאה",
+  "complete fiscal year": {
+    "value": "שנה פיסלית מלאה",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "שנים פיסקליות מלאות"
+    "value": "שנים פיסקליות מלאות",
+    "description": ""
   },
-  "complete hour": "שעה מלאה",
+  "complete hour": {
+    "value": "שעה מלאה",
+    "description": ""
+  },
   "complete hours": {
-    "value": "שעות מלאות"
+    "value": "שעות מלאות",
+    "description": ""
   },
-  "complete minute": "דקה מלאה",
+  "complete minute": {
+    "value": "דקה מלאה",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "דקות מלאות"
+    "value": "דקות מלאות",
+    "description": ""
   },
-  "complete month": "חודש מלא",
+  "complete month": {
+    "value": "חודש מלא",
+    "description": ""
+  },
   "complete months": {
-    "value": "חודשים מלאים"
+    "value": "חודשים מלאים",
+    "description": ""
   },
-  "complete quarter": "רבעון מלא",
+  "complete quarter": {
+    "value": "רבעון מלא",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "רבעונים מלאים"
+    "value": "רבעונים מלאים",
+    "description": ""
   },
-  "complete second": "שניה מלאה",
+  "complete second": {
+    "value": "שניה מלאה",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "שניות מלאות"
+    "value": "שניות מלאות",
+    "description": ""
   },
-  "complete week": "שבוע מלא",
+  "complete week": {
+    "value": "שבוע מלא",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "שבועות מלאים"
+    "value": "שבועות מלאים",
+    "description": ""
   },
-  "complete year": "שנה מלאה",
+  "complete year": {
+    "value": "שנה מלאה",
+    "description": ""
+  },
   "complete years": {
-    "value": "שנים מלאות"
+    "value": "שנים מלאות",
+    "description": ""
   },
-  "day": "יום",
+  "day": {
+    "value": "יום",
+    "description": ""
+  },
   "days": {
-    "value": "ימים"
+    "value": "ימים",
+    "description": ""
   },
-  "fiscal quarter": "רבעון פיסקלי",
+  "fiscal quarter": {
+    "value": "רבעון פיסקלי",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "רבעונים פיסקליים"
+    "value": "רבעונים פיסקליים",
+    "description": ""
   },
-  "fiscal year": "שנה פיסקלית",
+  "fiscal year": {
+    "value": "שנה פיסקלית",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "שנים פיסקליות"
+    "value": "שנים פיסקליות",
+    "description": ""
   },
-  "hour": "שעה",
+  "hour": {
+    "value": "שעה",
+    "description": ""
+  },
   "hours": {
-    "value": "שעות"
+    "value": "שעות",
+    "description": ""
   },
-  "minute": "דקה",
+  "minute": {
+    "value": "דקה",
+    "description": ""
+  },
   "minutes": {
-    "value": "דקות"
+    "value": "דקות",
+    "description": ""
   },
-  "month": "חודש",
+  "month": {
+    "value": "חודש",
+    "description": ""
+  },
   "months": {
-    "value": "חודשים"
+    "value": "חודשים",
+    "description": ""
   },
-  "quarter": "רבעון",
+  "quarter": {
+    "value": "רבעון",
+    "description": ""
+  },
   "quarters": {
-    "value": "רבעונים"
+    "value": "רבעונים",
+    "description": ""
   },
-  "second": "שנייה",
+  "second": {
+    "value": "שנייה",
+    "description": ""
+  },
   "seconds": {
-    "value": "שניות"
+    "value": "שניות",
+    "description": ""
   },
-  "week": "שבוע",
+  "week": {
+    "value": "שבוע",
+    "description": ""
+  },
   "weeks": {
-    "value": "שבועות"
+    "value": "שבועות",
+    "description": ""
   },
-  "year": "שנה",
+  "year": {
+    "value": "שנה",
+    "description": ""
+  },
   "years": {
-    "value": "שנים"
+    "value": "שנים",
+    "description": ""
   }
 }

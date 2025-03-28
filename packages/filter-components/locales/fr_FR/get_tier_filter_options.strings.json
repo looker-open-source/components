@@ -1,11 +1,14 @@
 {
   "is": {
+    "description": "",
     "value": "est"
   },
   "is any value": {
+    "description": "",
     "value": "possède une valeur indifférente"
   },
   "is not": {
+    "description": "",
     "value": "n'est pas"
   }
 }

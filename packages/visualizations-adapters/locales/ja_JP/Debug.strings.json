@@ -1,9 +1,30 @@
 {
-  "Config": "構成",
-  "Dimensions": "ディメンション",
-  "Error": "エラー",
-  "Measures": "measure",
-  "Result": "結果",
-  "error": "エラー",
-  "ok": "OK"
+  "Config": {
+    "description": "",
+    "value": "構成"
+  },
+  "Dimensions": {
+    "description": "",
+    "value": "ディメンション"
+  },
+  "Error": {
+    "description": "",
+    "value": "エラー"
+  },
+  "Measures": {
+    "description": "",
+    "value": "メジャー"
+  },
+  "Result": {
+    "description": "",
+    "value": "結果"
+  },
+  "error": {
+    "description": "",
+    "value": "エラー"
+  },
+  "ok": {
+    "description": "",
+    "value": "OK"
+  }
 }

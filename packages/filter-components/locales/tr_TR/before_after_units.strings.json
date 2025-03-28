@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "gün önce"
+    "value": "gün önce",
+    "description": ""
   },
   "days from now": {
-    "value": "gün sonra"
+    "value": "gün sonra",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "mali çeyrek sonra"
+    "value": "mali çeyrek sonra",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "mali çeyrek önce"
+    "value": "mali çeyrek önce",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "mali yıl önce"
+    "value": "mali yıl önce",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "mali yıl sonra"
+    "value": "mali yıl sonra",
+    "description": ""
   },
   "hours ago": {
-    "value": "saat önce"
+    "value": "saat önce",
+    "description": ""
   },
   "hours from now": {
-    "value": "saat sonra"
+    "value": "saat sonra",
+    "description": ""
   },
   "minutes ago": {
-    "value": "dakika önce"
+    "value": "dakika önce",
+    "description": ""
   },
   "minutes from now": {
-    "value": "dakika sonra"
+    "value": "dakika sonra",
+    "description": ""
   },
   "months ago": {
-    "value": "ay önce"
+    "value": "ay önce",
+    "description": ""
   },
   "months from now": {
-    "value": "ay sonra"
+    "value": "ay sonra",
+    "description": ""
   },
   "now": {
-    "value": "şimdi"
+    "value": "şimdi",
+    "description": ""
   },
   "quarters ago": {
-    "value": "çeyrek önce"
+    "value": "çeyrek önce",
+    "description": ""
   },
   "quarters from now": {
-    "value": "çeyrek sonra"
+    "value": "çeyrek sonra",
+    "description": ""
   },
   "seconds ago": {
-    "value": "saniye önce"
+    "value": "saniye önce",
+    "description": ""
   },
   "seconds from now": {
-    "value": "saniye sonra"
+    "value": "saniye sonra",
+    "description": ""
   },
   "weeks ago": {
-    "value": "hafta önce"
+    "value": "hafta önce",
+    "description": ""
   },
   "weeks from now": {
-    "value": "hafta sonra"
+    "value": "hafta sonra",
+    "description": ""
   },
   "years ago": {
-    "value": "yıl önce"
+    "value": "yıl önce",
+    "description": ""
   },
   "years from now": {
-    "value": "yıl sonra"
+    "value": "yıl sonra",
+    "description": ""
   }
 }

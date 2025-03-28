@@ -259,4 +259,20 @@ describe('Filter', () => {
       />
     );
   });
+
+  it('calls loadUserAttributes when expression includes user attributes', () => {
+    const loadUserAttributes = jest.fn();
+    renderWithTheme(
+      <Filter
+        loadUserAttributes={loadUserAttributes}
+        expression={"{{ _user_attributes['last_name'] }}"}
+        expressionType={'string'}
+        type={'field_filter'}
+        field={{}}
+        name="field"
+      />
+    );
+
+    expect(loadUserAttributes).toHaveBeenCalledTimes(1);
+  });
 });

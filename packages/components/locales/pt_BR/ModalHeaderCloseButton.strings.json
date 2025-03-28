@@ -1,3 +1,6 @@
 {
-  "Close": "Fechar"
+  "Close": {
+    "description": "",
+    "value": "Fechar"
+  }
 }

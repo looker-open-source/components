@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "{{intent}} öğesini kapat"
+  "DismissIntent": {
+    "value": "{{intent}} öğesini kapat",
+    "description": ""
+  }
 }

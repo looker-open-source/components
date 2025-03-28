@@ -1,4 +1,10 @@
 {
-  "Clear Filters": "フィルタをクリア",
-  "Filter List": "フィルタリスト"
+  "Clear Filters": {
+    "description": "",
+    "value": "フィルタをクリア"
+  },
+  "Filter List": {
+    "description": "",
+    "value": "フィルタリスト"
+  }
 }

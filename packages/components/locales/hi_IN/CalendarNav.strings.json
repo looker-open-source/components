@@ -1,4 +1,10 @@
 {
-  "next month": "अगले महीने",
-  "previous month": "पिछले महीने"
+  "next month": {
+    "value": "अगले महीने",
+    "description": ""
+  },
+  "previous month": {
+    "value": "पिछले महीने",
+    "description": ""
+  }
 }

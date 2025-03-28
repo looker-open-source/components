@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "є"
+    "value": "є",
+    "description": ""
   },
   "is any value": {
-    "value": "є будь-яким значенням"
+    "value": "є будь-яким значенням",
+    "description": ""
   },
   "is not": {
-    "value": "не є"
+    "value": "не є",
+    "description": ""
   }
 }

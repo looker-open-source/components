@@ -10,6 +10,7 @@ import styled from 'styled-components';
  * This import path is ill-advised but acceptable since this
  * is a test-only import and prevents a package-dependency loop
  */
+// eslint-disable-next-line
 import { renderWithTheme } from '../../components-test-utils/src';
 import { ThemeProvider } from './ThemeProvider';
 

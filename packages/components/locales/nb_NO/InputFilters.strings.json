@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Fjern filtre",
-  "Filter List": "Filterliste",
-  "bottom-start": "bunnstart"
+  "Clear Filters": {
+    "value": "Fjern filtre",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filterliste",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "bunnstart",
+    "description": ""
+  }
 }

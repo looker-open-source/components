@@ -38,12 +38,12 @@ import { useQueryData, useQueryMetadata } from '.';
  * A shared hook for querying vis config data from the SDK, merging with user overrides,
  * and running config transformations to set defaults and normalize response.
  *
- * @param id a numeric query id
+ * @param id query id
  * @param configOverrides user config overrides to merge with the sdk response
  * @returns final visConfig object and api state
  */
 
-export const useVisConfig = (id: number, configOverrides?: Partial<CAll>) => {
+export const useVisConfig = (id: string, configOverrides?: Partial<CAll>) => {
   /*
    * Check for stored values
    * -----------------------------------------------------------

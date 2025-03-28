@@ -36,7 +36,7 @@ import {
   DisabledChecked,
   MixedChecked,
   ReadOnly,
-} from './stories/index.stories';
+} from './fixtures';
 
 beforeEach(() => {
   jest.useFakeTimers();

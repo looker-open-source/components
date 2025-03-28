@@ -1,11 +1,14 @@
 {
   "is": {
+    "description": "",
     "value": "是"
   },
   "is any value": {
+    "description": "",
     "value": "是任意值"
   },
   "is not": {
+    "description": "",
     "value": "不是"
   }
 }

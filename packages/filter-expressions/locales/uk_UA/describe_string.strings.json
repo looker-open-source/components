@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "пусте"
+    "value": "пусте",
+    "description": ""
   },
   "contains value": {
-    "value": "містить {{value}}"
+    "value": "містить {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "не містить {{value}}"
+    "value": "не містить {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "не закінчується на {{value}}"
+    "value": "не закінчується на {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "не починається з {{value}}"
+    "value": "не починається з {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "закінчується на {{value}}"
+    "value": "закінчується на {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "починається з {{value}}"
+    "value": "починається з {{value}}",
+    "description": ""
   }
 }

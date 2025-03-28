@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Shift + Click to sort additional columns",
-  "Sort ascending": "Sort ascending",
-  "Sort descending": "Sort descending",
-  "Totals": "Totals"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "Shift + Click to sort additional columns"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "Sort ascending"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "Sort descending"
+  },
+  "Totals": {
+    "description": "",
+    "value": "Totals"
+  }
 }

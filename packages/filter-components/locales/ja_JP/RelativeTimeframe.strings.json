@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "期間の選択"
+  "Choose a Timeframe": {
+    "description": "",
+    "value": "期間の選択"
+  }
 }

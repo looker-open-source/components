@@ -1,3 +1,6 @@
 {
-  "Value required": "값은 필수 항목입니다."
+  "Value required": {
+    "description": "",
+    "value": "값은 필수 항목입니다."
+  }
 }

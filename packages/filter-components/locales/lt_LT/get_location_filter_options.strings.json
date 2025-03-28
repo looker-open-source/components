@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Langelis"
+    "value": "Langelis",
+    "description": ""
   },
   "Circle": {
-    "value": "Apskritimas"
+    "value": "Apskritimas",
+    "description": ""
   },
   "Location": {
-    "value": "Vieta"
+    "value": "Vieta",
+    "description": ""
   },
   "feet": {
-    "value": "pėdų"
+    "value": "pėdų",
+    "description": ""
   },
   "is anywhere": {
-    "value": "yra bet kur"
+    "value": "yra bet kur",
+    "description": ""
   },
   "is not null": {
-    "value": "nėra nulis"
+    "value": "nėra nulis",
+    "description": ""
   },
   "is null": {
-    "value": "yra nulis"
+    "value": "yra nulis",
+    "description": ""
   },
   "kilometers": {
-    "value": "km"
+    "value": "km",
+    "description": ""
   },
   "meters": {
-    "value": "m"
+    "value": "m",
+    "description": ""
   },
   "miles": {
-    "value": "mylių"
+    "value": "mylių",
+    "description": ""
   }
 }

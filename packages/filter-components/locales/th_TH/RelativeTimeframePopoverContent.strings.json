@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "กำหนดเอง"
+    "value": "กำหนดเอง",
+    "description": ""
   },
   "Presets": {
-    "value": "กำหนดล่วงหน้า"
+    "value": "กำหนดล่วงหน้า",
+    "description": ""
   }
 }

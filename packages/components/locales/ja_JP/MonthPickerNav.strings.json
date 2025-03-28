@@ -1,5 +1,14 @@
 {
-  "close": "閉じる",
-  "next year": "翌年",
-  "previous year": "前年"
+  "close": {
+    "description": "",
+    "value": "閉じる"
+  },
+  "next year": {
+    "description": "",
+    "value": "翌年"
+  },
+  "previous year": {
+    "description": "",
+    "value": "前年"
+  }
 }

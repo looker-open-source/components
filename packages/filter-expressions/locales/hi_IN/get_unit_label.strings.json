@@ -1,82 +1,162 @@
 {
-  "complete day": "पूरा दिन",
+  "complete day": {
+    "value": "पूरा दिन",
+    "description": ""
+  },
   "complete days": {
-    "value": "पूर्ण दिन"
+    "value": "पूर्ण दिन",
+    "description": ""
   },
-  "complete fiscal quarter": "पूरी वित्तीय तिमाही",
+  "complete fiscal quarter": {
+    "value": "पूरी वित्तीय तिमाही",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "पूर्ण वित्तीय तिमाहियां"
+    "value": "पूर्ण वित्तीय तिमाहियां",
+    "description": ""
   },
-  "complete fiscal year": "पूरा वित्तीय वर्ष",
+  "complete fiscal year": {
+    "value": "पूरा वित्तीय वर्ष",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "पूर्ण वित्तीय वर्ष"
+    "value": "पूर्ण वित्तीय वर्ष",
+    "description": ""
   },
-  "complete hour": "पूरा घंटा",
+  "complete hour": {
+    "value": "पूरा घंटा",
+    "description": ""
+  },
   "complete hours": {
-    "value": "पूर्ण घंटे"
+    "value": "पूर्ण घंटे",
+    "description": ""
   },
-  "complete minute": "पूरा मिनट",
+  "complete minute": {
+    "value": "पूरा मिनट",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "पूर्ण मिनट"
+    "value": "पूर्ण मिनट",
+    "description": ""
   },
-  "complete month": "पूरा महीना",
+  "complete month": {
+    "value": "पूरा महीना",
+    "description": ""
+  },
   "complete months": {
-    "value": "पूर्ण महीने"
+    "value": "पूर्ण महीने",
+    "description": ""
   },
-  "complete quarter": "पूरी तिमाही",
+  "complete quarter": {
+    "value": "पूरी तिमाही",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "पूर्ण तिमाहियां"
+    "value": "पूर्ण तिमाहियां",
+    "description": ""
   },
-  "complete second": "पूरा सेकंड",
+  "complete second": {
+    "value": "पूरा सेकंड",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "पूर्ण सेकंड"
+    "value": "पूर्ण सेकंड",
+    "description": ""
   },
-  "complete week": "पूरा सप्ताह",
+  "complete week": {
+    "value": "पूरा सप्ताह",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "पूर्ण सप्ताह"
+    "value": "पूर्ण सप्ताह",
+    "description": ""
   },
-  "complete year": "पूरा वर्ष",
+  "complete year": {
+    "value": "पूरा वर्ष",
+    "description": ""
+  },
   "complete years": {
-    "value": "पूर्ण वर्ष"
+    "value": "पूर्ण वर्ष",
+    "description": ""
   },
-  "day": "दिन",
+  "day": {
+    "value": "दिन",
+    "description": ""
+  },
   "days": {
-    "value": "दिन"
+    "value": "दिन",
+    "description": ""
   },
-  "fiscal quarter": "वित्तीय तिमाही",
+  "fiscal quarter": {
+    "value": "वित्तीय तिमाही",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "वित्तीय तिमाहियां"
+    "value": "वित्तीय तिमाहियां",
+    "description": ""
   },
-  "fiscal year": "वित्तीय वर्ष",
+  "fiscal year": {
+    "value": "वित्तीय वर्ष",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "वित्तीय वर्ष"
+    "value": "वित्तीय वर्ष",
+    "description": ""
   },
-  "hour": "घंटा",
+  "hour": {
+    "value": "घंटा",
+    "description": ""
+  },
   "hours": {
-    "value": "घंटे"
+    "value": "घंटे",
+    "description": ""
   },
-  "minute": "मिनट",
+  "minute": {
+    "value": "मिनट",
+    "description": ""
+  },
   "minutes": {
-    "value": "मिनट"
+    "value": "मिनट",
+    "description": ""
   },
-  "month": "महीना",
+  "month": {
+    "value": "महीना",
+    "description": ""
+  },
   "months": {
-    "value": "महीने"
+    "value": "महीने",
+    "description": ""
   },
-  "quarter": "तिमाही",
+  "quarter": {
+    "value": "तिमाही",
+    "description": ""
+  },
   "quarters": {
-    "value": "तिमाहियां"
+    "value": "तिमाहियां",
+    "description": ""
   },
-  "second": "सेकंड",
+  "second": {
+    "value": "सेकंड",
+    "description": ""
+  },
   "seconds": {
-    "value": "सेकंड"
+    "value": "सेकंड",
+    "description": ""
   },
-  "week": "सप्ताह",
+  "week": {
+    "value": "सप्ताह",
+    "description": ""
+  },
   "weeks": {
-    "value": "सप्ताह"
+    "value": "सप्ताह",
+    "description": ""
   },
-  "year": "वर्ष",
+  "year": {
+    "value": "वर्ष",
+    "description": ""
+  },
   "years": {
-    "value": "वर्ष"
+    "value": "वर्ष",
+    "description": ""
   }
 }

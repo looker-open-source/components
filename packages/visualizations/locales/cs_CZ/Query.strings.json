@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Komponentě dotazu nebyly předány žádné podřízené položky",
-  "Query component received both dashboard and query props": "Komponenta dotazu obdržela vlastnosti řídicího panelu i dotazu"
+  "No children passed to Query component": {
+    "value": "Komponentě dotazu nebyly předány žádné podřízené položky",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Komponenta dotazu obdržela vlastnosti řídicího panelu i dotazu",
+    "description": ""
+  }
 }

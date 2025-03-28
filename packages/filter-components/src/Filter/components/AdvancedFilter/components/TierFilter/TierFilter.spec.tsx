@@ -26,7 +26,7 @@
 import type { FilterModel, TierFilterType } from '@looker/filter-expressions';
 import { Category } from '@looker/sdk';
 import { renderWithTheme } from '@looker/components-test-utils';
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
 
 import { TierFilter } from './TierFilter';
@@ -63,15 +63,76 @@ describe('Tier filter test', () => {
     expect(inputs[1]).toHaveValue('');
   });
 
+  describe('options', () => {
+    const item = {
+      id: '1',
+      is: true,
+      type: 'match',
+      value: [],
+    } as FilterModel<TierFilterType>;
+
+    it('should have default options', () => {
+      renderWithTheme(<TierFilter {...defaultProps} item={item} />);
+      const inputs = screen.getAllByRole('textbox');
+      fireEvent.click(inputs[0]);
+      const options = screen.getAllByRole('option');
+      const optionLabels = options.map(option => option.textContent);
+      expect(optionLabels).toEqual([
+        'is any value',
+        'is',
+        'is not',
+        'matches a user attribute',
+      ]);
+
+      fireEvent.click(document);
+    });
+
+    it('should have matches advanced if enabled', () => {
+      renderWithTheme(
+        <TierFilter {...defaultProps} item={item} showMatchesAdvanced />
+      );
+      const inputs = screen.getAllByRole('textbox');
+      fireEvent.click(inputs[0]);
+      const options = screen.getAllByRole('option');
+      const optionLabels = options.map(option => option.textContent);
+      expect(optionLabels).toEqual([
+        'is any value',
+        'is',
+        'is not',
+        'matches a user attribute',
+        'matches (advanced)',
+      ]);
+
+      fireEvent.click(document);
+    });
+
+    it('yesno field type should not have "is not" option', () => {
+      renderWithTheme(
+        <TierFilter {...defaultProps} item={item} field={{ type: 'yesno' }} />
+      );
+      const inputs = screen.getAllByRole('textbox');
+      fireEvent.click(inputs[0]);
+      const options = screen.getAllByRole('option');
+      const optionLabels = options.map(option => option.textContent);
+      expect(optionLabels).toEqual([
+        'is any value',
+        'is',
+        'matches a user attribute',
+      ]);
+
+      fireEvent.click(document);
+    });
+  });
+
   describe('when the filter is a parameter', () => {
     describe('and there is no value selected', () => {
-      it('should not change the item value', () => {
-        const item = {
+      it('sets the value to the first enumeration value', () => {
+        const item: FilterModel<TierFilterType> = {
           id: '1',
           type: 'match',
           is: false,
           value: [],
-        } as FilterModel;
+        };
         renderWithTheme(
           <TierFilter
             {...defaultProps}
@@ -83,16 +144,35 @@ describe('Tier filter test', () => {
         expect(inputs[0]).toHaveValue('!match');
         expect(inputs[1]).toHaveValue('a');
       });
+
+      it('uses the fields default_filter_value as the default value if it exists', () => {
+        const item: FilterModel<TierFilterType> = {
+          id: '1',
+          type: 'match',
+          is: false,
+          value: [],
+        };
+        renderWithTheme(
+          <TierFilter
+            {...defaultProps}
+            item={item}
+            field={{ default_filter_value: '2', category: Category.parameter }}
+          />
+        );
+        const inputs = screen.getAllByRole('textbox');
+        expect(inputs[0]).toHaveValue('!match');
+        expect(inputs[1]).toHaveValue('b');
+      });
     });
 
     describe('and there is an existing value selected', () => {
       it('should not change the item value (default value does not have underscores)', () => {
-        const item = {
+        const item: FilterModel<TierFilterType> = {
           id: '1',
           type: 'match',
           is: false,
           value: ['2'],
-        } as FilterModel;
+        };
         renderWithTheme(
           <TierFilter
             {...defaultProps}
@@ -106,12 +186,12 @@ describe('Tier filter test', () => {
       });
 
       it('should not change the item value (default value has underscores)', () => {
-        const item = {
+        const item: FilterModel<TierFilterType> = {
           id: '1',
           type: 'match',
           is: true,
           value: ['with_underscore_04'],
-        } as FilterModel;
+        };
 
         renderWithTheme(
           <TierFilter
@@ -128,12 +208,12 @@ describe('Tier filter test', () => {
 
     describe('and there is an invalid value selected', () => {
       it('should change the item value', () => {
-        const item = {
+        const item: FilterModel<TierFilterType> = {
           id: '1',
           type: 'match',
           is: false,
           value: ['abc'],
-        } as FilterModel;
+        };
         renderWithTheme(
           <TierFilter
             {...defaultProps}
@@ -150,12 +230,12 @@ describe('Tier filter test', () => {
 
   describe('and advanced filter control', () => {
     it('should render with Add button', () => {
-      const item = {
+      const item: FilterModel<TierFilterType> = {
         id: '1',
         type: 'match',
         is: false,
         value: ['abc'],
-      } as FilterModel;
+      };
       renderWithTheme(
         <TierFilter
           {...defaultProps}

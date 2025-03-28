@@ -1,4 +1,10 @@
 {
-  "Next page": "Sonraki sayfa",
-  "Previous page": "Önceki sayfa"
+  "Next page": {
+    "value": "Sonraki sayfa",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "Önceki sayfa",
+    "description": ""
+  }
 }

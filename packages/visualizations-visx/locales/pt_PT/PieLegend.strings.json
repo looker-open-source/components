@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Página de legenda {{page}} de {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Página de legenda {{page}} de {{totalPages}}",
+    "description": ""
+  }
 }

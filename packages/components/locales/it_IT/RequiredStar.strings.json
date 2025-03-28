@@ -1,3 +1,6 @@
 {
-  "required": "obbligatorio"
+  "required": {
+    "description": "",
+    "value": "obbligatorio"
+  }
 }

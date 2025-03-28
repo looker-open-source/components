@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Очистить все"
+    "value": "Очистить все",
+    "description": ""
   },
   "Remove": {
-    "value": "Удалить"
+    "value": "Удалить",
+    "description": ""
   },
   "Toggle": {
-    "value": "Переключить"
+    "value": "Переключить",
+    "description": ""
   }
 }

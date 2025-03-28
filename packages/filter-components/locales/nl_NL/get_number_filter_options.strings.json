@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(exclusief)"
+    "value": "(exclusief)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[inclusief]"
+    "value": "[inclusief]",
+    "description": ""
   },
   "is": {
-    "value": "is"
+    "value": "is",
+    "description": ""
   },
   "is between": {
-    "value": "ligt tussen"
+    "value": "ligt tussen",
+    "description": ""
   },
   "is greater": {
-    "value": "is >"
+    "value": "is >",
+    "description": ""
   },
   "is greater equal": {
-    "value": "is >="
+    "value": "is >=",
+    "description": ""
   },
   "is less": {
-    "value": "is <"
+    "value": "is <",
+    "description": ""
   },
   "is less equal": {
-    "value": "is <="
+    "value": "is <=",
+    "description": ""
   },
   "is not": {
-    "value": "is niet"
+    "value": "is niet",
+    "description": ""
   },
   "is not between": {
-    "value": "ligt niet tussen"
+    "value": "ligt niet tussen",
+    "description": ""
   },
   "is not null": {
-    "value": "geldige datums"
+    "value": "geldige datums",
+    "description": ""
   },
   "is null": {
-    "value": "ongeldige datums"
+    "value": "ongeldige datums",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(links-exclusief)"
+    "value": "(links-exclusief)",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[rechts-exclusief]"
+    "value": "[rechts-exclusief]",
+    "description": ""
   }
 }

@@ -26,7 +26,7 @@ export const i18nInitOptions: InitOptions = {
   saveMissing: true,
 };
 
-export const i18nUpdate = ({ resources, locale }: Partial<I18nState>) => {
+export const addResources = ({ resources, locale }: Partial<I18nState>) => {
   if (resources) {
     Object.keys(resources).forEach((lng: string) => {
       const allNamespaces = resources[lng];
@@ -35,9 +35,17 @@ export const i18nUpdate = ({ resources, locale }: Partial<I18nState>) => {
       });
     });
   }
+};
+
+export const updateLanguage = ({ locale }: Partial<I18nState>) => {
   if (locale && locale !== i18next.language) {
     i18next.changeLanguage(locale);
   }
+};
+
+export const i18nUpdate = (i18nState: Partial<I18nState>) => {
+  addResources(i18nState);
+  updateLanguage(i18nState);
 };
 
 export async function i18nInit(options: I18nState) {

@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "ขณะนี้ไม่รองรับค่าวัดประเภท \"วันที่\"",
-  "No chart found for type \"{{type}}\"": "ไม่พบแผนภูมิสำหรับประเภท \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "value": "ขณะนี้ไม่รองรับค่าวัดประเภท \"วันที่\"",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "ไม่พบแผนภูมิสำหรับประเภท \"{{type}}\"",
+    "description": ""
+  }
 }

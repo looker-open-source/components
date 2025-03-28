@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "päivää sitten"
+    "value": "päivää sitten",
+    "description": ""
   },
   "days from now": {
-    "value": "päivää tästä hetkestä"
+    "value": "päivää tästä hetkestä",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "tilikauden vuosineljännes tästä hetkestä"
+    "value": "tilikauden vuosineljännes tästä hetkestä",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "tilikauden vuosineljännestä sitten"
+    "value": "tilikauden vuosineljännestä sitten",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "tilivuotta sitten"
+    "value": "tilivuotta sitten",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "tilivuotta tästä hetkestä"
+    "value": "tilivuotta tästä hetkestä",
+    "description": ""
   },
   "hours ago": {
-    "value": "tuntia sitten"
+    "value": "tuntia sitten",
+    "description": ""
   },
   "hours from now": {
-    "value": "tuntia tästä hetkestä"
+    "value": "tuntia tästä hetkestä",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minuuttia sitten"
+    "value": "minuuttia sitten",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minuuttia tästä hetkestä"
+    "value": "minuuttia tästä hetkestä",
+    "description": ""
   },
   "months ago": {
-    "value": "kuukautta sitten"
+    "value": "kuukautta sitten",
+    "description": ""
   },
   "months from now": {
-    "value": "kuukautta tästä hetkestä"
+    "value": "kuukautta tästä hetkestä",
+    "description": ""
   },
   "now": {
-    "value": "nyt"
+    "value": "nyt",
+    "description": ""
   },
   "quarters ago": {
-    "value": "vuosineljännestä sitten"
+    "value": "vuosineljännestä sitten",
+    "description": ""
   },
   "quarters from now": {
-    "value": "vuosineljännestä tästä hetkestä"
+    "value": "vuosineljännestä tästä hetkestä",
+    "description": ""
   },
   "seconds ago": {
-    "value": "sekuntia sitten"
+    "value": "sekuntia sitten",
+    "description": ""
   },
   "seconds from now": {
-    "value": "sekuntia tästä hetkestä"
+    "value": "sekuntia tästä hetkestä",
+    "description": ""
   },
   "weeks ago": {
-    "value": "viikkoa sitten"
+    "value": "viikkoa sitten",
+    "description": ""
   },
   "weeks from now": {
-    "value": "viikkoa tästä hetkestä"
+    "value": "viikkoa tästä hetkestä",
+    "description": ""
   },
   "years ago": {
-    "value": "vuotta sitten"
+    "value": "vuotta sitten",
+    "description": ""
   },
   "years from now": {
-    "value": "vuotta tästä hetkestä"
+    "value": "vuotta tästä hetkestä",
+    "description": ""
   }
 }

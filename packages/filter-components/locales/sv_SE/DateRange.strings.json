@@ -1,3 +1,6 @@
 {
-  "until (before)": "fram till (före)"
+  "until (before)": {
+    "value": "fram till (före)",
+    "description": ""
+  }
 }

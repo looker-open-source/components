@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "クエリ コンポーネントに渡された子はありません",
-  "Query component received both dashboard and query props": "クエリ コンポーネントが、ダッシュボードとクエリの両方のプロパティを受け取りました"
+  "No children passed to Query component": {
+    "description": "",
+    "value": "クエリ コンポーネントに渡された子はありません"
+  },
+  "Query component received both dashboard and query props": {
+    "description": "",
+    "value": "クエリ コンポーネントが、ダッシュボードとクエリの両方のプロパティを受け取りました"
+  }
 }

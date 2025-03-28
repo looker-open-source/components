@@ -1,11 +1,14 @@
 {
   "Invalid value": {
+    "description": "",
     "value": "Valeur incorrecte"
   },
   "No value is set for your user attribute": {
+    "description": "",
     "value": "Aucune valeur n'est définie pour l'attribut utilisateur"
   },
   "Selection required": {
+    "description": "",
     "value": "Veuillez sélectionner une option"
   }
 }

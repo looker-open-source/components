@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "é"
+    "value": "é",
+    "description": ""
   },
   "is any time": {
-    "value": "é em qualquer altura"
+    "value": "é em qualquer altura",
+    "description": ""
   },
   "is before": {
-    "value": "é antes de"
+    "value": "é antes de",
+    "description": ""
   },
   "is in range": {
-    "value": "está no intervalo"
+    "value": "está no intervalo",
+    "description": ""
   },
   "is in the last": {
-    "value": "é no último"
+    "value": "é no último",
+    "description": ""
   },
   "is in the month": {
-    "value": "é no mês"
+    "value": "é no mês",
+    "description": ""
   },
   "is in the year": {
-    "value": "é no ano"
+    "value": "é no ano",
+    "description": ""
   },
   "is next": {
-    "value": "é a seguir"
+    "value": "é a seguir",
+    "description": ""
   },
   "is not null": {
-    "value": "não é nulo"
+    "value": "não é nulo",
+    "description": ""
   },
   "is null": {
-    "value": "é nulo"
+    "value": "é nulo",
+    "description": ""
   },
   "is on or after": {
-    "value": "é a ou depois de"
+    "value": "é a ou depois de",
+    "description": ""
   },
   "is on the day": {
-    "value": "é no dia"
+    "value": "é no dia",
+    "description": ""
   },
   "is previous": {
-    "value": "é anterior"
+    "value": "é anterior",
+    "description": ""
   },
   "is this": {
-    "value": "é isto"
+    "value": "é isto",
+    "description": ""
   }
 }

@@ -1,7 +1,22 @@
 {
-  "Apply": "Käytä",
-  "Cancel": "Peruuta",
-  "Select All": "Valitse kaikki",
-  "Select None": "Älä valitse mitään",
-  "Select columns to display": "Valitse näytettävät sarakkeet"
+  "Apply": {
+    "value": "Käytä",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Peruuta",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Valitse kaikki",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Älä valitse mitään",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Valitse näytettävät sarakkeet",
+    "description": ""
+  }
 }

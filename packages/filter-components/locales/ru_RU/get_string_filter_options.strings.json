@@ -1,14 +1,50 @@
 {
-  "contains": "содержит",
-  "doesnt contain": "не содержит",
-  "doesnt end with": "не заканчивается на",
-  "doesnt start with": "не начинается с",
-  "ends with": "заканчивается на",
-  "is": "является",
-  "is blank": "не содержит данные",
-  "is not": "не является",
-  "is not blank": "содержит данные",
-  "is not null": "не является нулевым значением",
-  "is null": "является нулевым значением",
-  "starts with": "начинается с"
+  "contains": {
+    "value": "содержит",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "не содержит",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "не заканчивается на",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "не начинается с",
+    "description": ""
+  },
+  "ends with": {
+    "value": "заканчивается на",
+    "description": ""
+  },
+  "is": {
+    "value": "является",
+    "description": ""
+  },
+  "is blank": {
+    "value": "не содержит данные",
+    "description": ""
+  },
+  "is not": {
+    "value": "не является",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "содержит данные",
+    "description": ""
+  },
+  "is not null": {
+    "value": "не является нулевым значением",
+    "description": ""
+  },
+  "is null": {
+    "value": "является нулевым значением",
+    "description": ""
+  },
+  "starts with": {
+    "value": "начинается с",
+    "description": ""
+  }
 }

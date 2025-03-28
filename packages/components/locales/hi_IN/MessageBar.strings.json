@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "{{intent}} खारिज करें"
+  "DismissIntent": {
+    "value": "{{intent}} खारिज करें",
+    "description": ""
+  }
 }

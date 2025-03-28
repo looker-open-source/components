@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Punktgröße nach"
+  "Points sized by": {
+    "description": "",
+    "value": "Punktgröße nach"
+  }
 }

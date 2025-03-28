@@ -1,4 +1,10 @@
 {
-  "End date": "समाप्ति दिनांक",
-  "Start date": "शुरू होने का दिनांक"
+  "End date": {
+    "value": "समाप्ति दिनांक",
+    "description": ""
+  },
+  "Start date": {
+    "value": "शुरू होने का दिनांक",
+    "description": ""
+  }
 }

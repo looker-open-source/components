@@ -1,3 +1,6 @@
 {
-  "until (before)": "до (не включно)"
+  "until (before)": {
+    "value": "до (не включно)",
+    "description": ""
+  }
 }

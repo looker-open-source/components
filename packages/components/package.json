@@ -27,48 +27,47 @@
     "coverage": "lk coverage"
   },
   "dependencies": {
-    "@looker/components-providers": "^1.5.34",
-    "@looker/design-tokens": "^3.1.3",
+    "@looker/babel-preset-styled-components": "0.0.2",
+    "@looker/components-providers": "1.5.34",
+    "@looker/design-tokens": "3.1.3",
     "@looker/i18n": "1.0.0",
     "@popperjs/core": "^2.6.0",
-    "@styled-icons/material": "10.34.0",
-    "@styled-icons/material-outlined": "10.34.0",
-    "@styled-icons/material-rounded": "10.34.0",
+    "@styled-icons/material": "^10.34.0",
+    "@styled-icons/material-outlined": "^10.34.0",
+    "@styled-icons/material-rounded": "^10.34.0",
     "@styled-icons/styled-icon": "^10.6.3",
-    "d3-color": "3.1.0",
+    "d3-color": "^3.1.0",
     "d3-hsv": "^0.1.0",
-    "date-fns": "^2.10.0",
+    "date-fns": "^2.24.0",
     "date-fns-tz": "^1.0.12",
-    "i18next": "20.3.1",
+    "i18next": "^20.3.1",
     "prism-react-renderer": "^1.3.5",
-    "react-i18next": "11.8.15",
-    "uuid": "8.3.2"
+    "react-i18next": "^11.8.15",
+    "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "lodash": "^4.17.20",
-    "react": "16.14.0 - 18",
-    "react-dom": "16.14.0 - 18",
+    "lodash": "4.17.21",
+    "react": ">=16.14.0",
+    "react-dom": ">=16.14.0",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {
-    "@looker/babel-preset-styled-components": "*",
-    "@looker/babel-preset-typescript": "*",
-    "@looker/components-scripts": "*",
-    "@looker/components-test-utils": "*",
-    "@looker/eslint-config-oss": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
-    "@looker/storybook": "*",
-    "@looker/test-utils": "*",
-    "@storybook/addon-docs": "7.0.18",
-    "@storybook/react": "7.0.18",
+    "@looker/babel-preset-react": "0.0.4",
+    "@looker/babel-preset-typescript": "0.0.2",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/components-test-utils": "1.5.27",
+    "@looker/eslint-config-oss": "1.7.21",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
+    "@looker/test-utils": "1.0.1",
+    "@stryker-mutator/jest-runner": "8.2.6",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.5",
-    "@testing-library/react-hooks": "8.0.0",
+    "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "13.1.5",
     "csstype": "3.0.2",
     "jest-styled-components": "7.1.1",
-    "lodash": "^4.17.20",
+    "lodash": "4.17.21",
     "prettier": "2.8.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -95,9 +94,7 @@
       {
         "files": [
           "*.spec.tsx",
-          "*.spec.ts",
-          "*.stories.mdx",
-          "*.stories.tsx"
+          "*.spec.ts"
         ],
         "rules": {
           "@typescript-eslint/no-explicit-any": "off"
@@ -106,9 +103,7 @@
       {
         "files": [
           "*.spec.*",
-          "*.stories.*",
-          "**/__mocks__/**",
-          "**/stories/**"
+          "**/__mocks__/**"
         ],
         "rules": {
           "jest/consistent-test-it": "off"
@@ -121,8 +116,6 @@
         ],
         "excludedFiles": [
           "*.spec.*",
-          "*.stories.*",
-          "**/stories/**",
           "**/__mocks__/**"
         ],
         "rules": {
@@ -151,26 +144,5 @@
   },
   "stylelint": {
     "extends": "@looker/stylelint-config"
-  },
-  "looker-storybook": {
-    "stories": [
-      "./docs/index.stories.mdx",
-      "./docs",
-      "./src",
-      "@looker/components-providers/src",
-      "@looker/components-test-utils/src",
-      "@looker/design-tokens/src",
-      "@looker/eslint-config-oss/src",
-      "@looker/filter-components/src",
-      "@looker/filter-expressions/src",
-      "@looker/icons/src",
-      "@looker/stylelint-config/src",
-      "@looker/visualization-playground/src",
-      "@looker/visualizations/src",
-      "@looker/visualizations-adapters/src",
-      "@looker/visualizations-single-value/src",
-      "@looker/visualizations-table/src",
-      "@looker/visualizations-visx/src"
-    ]
   }
 }

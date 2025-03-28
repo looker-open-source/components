@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Últimos 14 dias"
+    "value": "Últimos 14 dias",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Últimos 180 dias"
+    "value": "Últimos 180 dias",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Últimos 28 dias"
+    "value": "Últimos 28 dias",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Últimos 30 dias"
+    "value": "Últimos 30 dias",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Últimos 365 dias"
+    "value": "Últimos 365 dias",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Últimos 7 dias"
+    "value": "Últimos 7 dias",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Últimos 90 dias"
+    "value": "Últimos 90 dias",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Mês anterior"
+    "value": "Mês anterior",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Trimestre anterior"
+    "value": "Trimestre anterior",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Semana anterior"
+    "value": "Semana anterior",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Ano anterior"
+    "value": "Ano anterior",
+    "description": ""
   },
   "This Month": {
-    "value": "Este mês"
+    "value": "Este mês",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Este trimestre"
+    "value": "Este trimestre",
+    "description": ""
   },
   "This Week": {
-    "value": "Esta semana"
+    "value": "Esta semana",
+    "description": ""
   },
   "This Year": {
-    "value": "Este ano"
+    "value": "Este ano",
+    "description": ""
   },
   "Today": {
-    "value": "Hoje"
+    "value": "Hoje",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Ano até à data"
+    "value": "Ano até à data",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Ontem"
+    "value": "Ontem",
+    "description": ""
   }
 }

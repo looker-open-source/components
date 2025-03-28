@@ -38,7 +38,6 @@ import { ButtonToggles } from '../components/ControlFilter/components/ButtonTogg
 import { ButtonGroup } from '../components/ControlFilter/components/ButtonGroup';
 import { CheckboxGroup } from '../components/ControlFilter/components/CheckboxGroup';
 import { DateInput } from '../components/AdvancedFilter/components/DateFilter/components/DateInput';
-import { DateRange } from '../components/AdvancedFilter/components/DateFilter/components/DateRange';
 import { DayRangeInput } from '../components/AdvancedFilter/components/DateFilter/components/DayRangeInput';
 import { RelativeTimeframes } from '../components/AdvancedFilter/components/DateFilter/components/RelativeTimeframes';
 import type { RelativeTimeframeModel } from '../components/AdvancedFilter/components/DateFilter/types/relative_timeframe_types';
@@ -168,7 +167,7 @@ const buttonGroupAdapter: FilterTokenAdapter<typeof ButtonGroup> = (
  * @param props
  */
 const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
-  item: FilterModel,
+  item,
   { isLoading, ...props }: AdapterProps
 ): React.ComponentProps<typeof CheckboxGroup> => {
   const adapterProps = buttonGroupAdapter(item, props);
@@ -183,7 +182,7 @@ const checkboxGroupAdapter: FilterTokenAdapter<typeof CheckboxGroup> = (
 };
 
 const getSingleValue = (
-  item: FilterModel,
+  { value }: FilterModel,
   stringOptions: Option[],
   onlyValuesFromOptions: boolean,
   fieldCategory?: string | null
@@ -195,15 +194,12 @@ const getSingleValue = (
    * but at least one (DropdownMenu) can use values that are not present in options
    * (typically because there are 1000+ suggestions)
    */
-  let singleValue: string;
-  if (onlyValuesFromOptions) {
-    // If the value does not appear in options, return an empty string
-    singleValue = String(
-      item.value?.length && optionsMap[item.value[0]] ? item.value[0] : ''
-    );
-  } else {
-    // If filter has a value, include it, regardless of whether it exists in options
-    singleValue = item.value?.length ? String(item.value[0]) : '';
+  let singleValue = '';
+  const valueIsNonEmptyArray = Array.isArray(value) && value.length > 0;
+  if (valueIsNonEmptyArray) {
+    if (optionsMap[value[0]] || !onlyValuesFromOptions) {
+      singleValue = String(value[0]);
+    }
   }
 
   if (
@@ -332,60 +328,21 @@ const dayRangeInputAdapter = (
   };
 };
 
-/**
- * Builds the props for the DateRange control
- */
-const dateRangeAdapter = (
-  item: FilterModel,
-  props: AdapterProps
-): React.ComponentProps<typeof DateRange> | undefined => {
-  if (item.start == null || item.end == null) {
-    return undefined;
-  }
-  // Date/Time Range input
-  const dateTimeRangeValue = {
-    ...item,
-    id: item.id || '',
-    start: item.start,
-    end: item.end,
-  } as FilterModel;
-
-  const { changeFilter } = props;
-
-  const dateTimeRangeChange = (id: string, item: Partial<FilterModel>) => {
-    const { from, to } = item;
-    const startDateModel = dateToFilterDateTimeModel(from);
-    // DateRange is inclusive, grammar is exclusive
-    const translatedTo = addDays(to, 1);
-    const endDateModel = dateToFilterDateTimeModel(translatedTo);
-
-    changeFilter(Number(id), {
-      ...(item as FilterModel),
-      start: startDateModel,
-      end: endDateModel,
-      type: 'range',
-    });
-  };
-
-  return {
-    onChange: dateTimeRangeChange,
-    item: dateTimeRangeValue,
-    showTime: true,
-  };
-};
-
 const sliderAdapter = (
   item: FilterModel,
   props: AdapterProps
 ): React.ComponentProps<typeof Slider> | undefined => {
-  if (item.value?.length !== 1) {
+  const { id, value } = item;
+  const valueIsArray = Array.isArray(value);
+
+  if (!valueIsArray || value.length !== 1) {
     return undefined;
   }
   const { changeFilter, config } = props;
   // Slider
-  const sliderValue: number = item.value[0];
+  const sliderValue = value[0] as number;
   const sliderChange = (value: SliderProps['value']) => {
-    changeFilter(Number(item.id), { ...item, type: '=', value: [value] });
+    changeFilter(Number(id), { ...item, type: '=', value: [value] });
   };
 
   return {
@@ -405,17 +362,18 @@ const rangeSliderAdapter = (
   const { changeFilter, config } = props;
   // Range Slider
   const rangeSliderValue: RangeSliderProps['value'] = {
-    min: item.low,
-    max: item.high,
+    min: Number(item.low),
+    max: Number(item.high),
   };
   const rangeSliderChange = (range: RangeSliderProps['value']) => {
-    changeFilter(Number(item.id), {
+    const newItem: FilterModel = {
       ...item,
       bounds: '[]',
       low: range.min,
       high: range.max,
       type: 'between',
-    });
+    };
+    changeFilter(Number(item.id), newItem);
   };
 
   return {
@@ -530,7 +488,6 @@ const filterTokenAdapterMap: Record<
   button_group: { Component: ButtonGroup, adapter: buttonGroupAdapter },
   button_toggles: { Component: ButtonToggles, adapter: buttonTogglesAdapter },
   checkboxes: { Component: CheckboxGroup, adapter: checkboxGroupAdapter },
-  date_time_range_input: { Component: DateRange, adapter: dateRangeAdapter },
   day_picker: { Component: DateInput, adapter: dateInputAdapter },
   day_range_picker: {
     Component: DayRangeInput,

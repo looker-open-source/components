@@ -73,6 +73,7 @@ export type DialogLayoutProps = FooterOptions &
      * NOTE: `true` if no footer is supplied and `headerClose` is not explicitly specified.
      */
     headerCloseButton?: boolean;
+    noPadding?: boolean;
   };
 
 const constructDialogHeader = (
@@ -102,6 +103,7 @@ export const DialogLayout = ({
   headerCloseButton = !footer && true,
   headerDetail,
   isLoading,
+  noPadding,
 }: DialogLayoutProps) => {
   const dialogFooter = footer ? (
     <DialogFooter secondary={footerSecondary}>{footer}</DialogFooter>
@@ -113,9 +115,11 @@ export const DialogLayout = ({
     !!footer
   );
 
+  const padding = noPadding ? { px: 'none', py: 'none' } : {};
+
   return (
     <ModalLayout footer={dialogFooter} header={dialogHeader}>
-      <DialogContent hasFooter={!!footer} hasHeader={!!header}>
+      <DialogContent {...padding} hasFooter={!!footer} hasHeader={!!header}>
         {isLoading ? <ModalLoading /> : children}
       </DialogContent>
     </ModalLayout>

@@ -4,20 +4,17 @@
  */
 
 import { Visualization } from '../Visualization';
-import { VIEWPORT_MAP } from '@looker/components';
 import type { StoryObj } from '@storybook/react';
 import WrappedText from './TableWrappedText';
 import TruncatedText from './TableTruncatedText';
 (TruncatedText as StoryObj).parameters = {
   viewport: {
     defaultViewport: 'mobile',
-    viewports: VIEWPORT_MAP,
   },
 };
 (WrappedText as StoryObj).parameters = {
   viewport: {
     defaultViewport: 'mobile',
-    viewports: VIEWPORT_MAP,
   },
 };
 

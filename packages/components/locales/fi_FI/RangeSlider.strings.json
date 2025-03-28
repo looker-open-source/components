@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Enintään {{name}}",
-  "Maximum Value": "Enimmäisarvo",
-  "Minimum Name": "Vähintään {{name}}",
-  "Minimum Value": "Vähimmäisarvo"
+  "Maximum Name": {
+    "value": "Enintään {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Enimmäisarvo",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Vähintään {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Vähimmäisarvo",
+    "description": ""
+  }
 }

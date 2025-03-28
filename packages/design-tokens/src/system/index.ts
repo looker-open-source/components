@@ -116,9 +116,9 @@ export type { DensityProp, DensityRamp } from './density';
 
 export { cursor } from './cursor';
 export type { CursorProps } from './cursor';
-export { Easings } from './easings';
-export { RadiusSizes, Radii } from './radii';
-export { Shadows } from './shadows';
+export type { Easings } from './easings';
+export type { RadiusSizes, Radii } from './radii';
+export type { Shadows } from './shadows';
 export * from './transitions';
 export * from './size';
 export * from './typography';

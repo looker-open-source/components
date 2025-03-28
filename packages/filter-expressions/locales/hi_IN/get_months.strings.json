@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "अप्रैल"
+    "value": "अप्रैल",
+    "description": ""
   },
   "August": {
-    "value": "अगस्त"
+    "value": "अगस्त",
+    "description": ""
   },
   "December": {
-    "value": "दिसंबर"
+    "value": "दिसंबर",
+    "description": ""
   },
   "February": {
-    "value": "फ़रवरी"
+    "value": "फ़रवरी",
+    "description": ""
   },
   "January": {
-    "value": "जनवरी"
+    "value": "जनवरी",
+    "description": ""
   },
   "July": {
-    "value": "जुलाई"
+    "value": "जुलाई",
+    "description": ""
   },
   "June": {
-    "value": "जून"
+    "value": "जून",
+    "description": ""
   },
   "March": {
-    "value": "मार्च"
+    "value": "मार्च",
+    "description": ""
   },
   "May": {
-    "value": "मई"
+    "value": "मई",
+    "description": ""
   },
   "November": {
-    "value": "नवंबर"
+    "value": "नवंबर",
+    "description": ""
   },
   "October": {
-    "value": "अक्टूबर"
+    "value": "अक्टूबर",
+    "description": ""
   },
   "September": {
-    "value": "सितंबर"
+    "value": "सितंबर",
+    "description": ""
   }
 }

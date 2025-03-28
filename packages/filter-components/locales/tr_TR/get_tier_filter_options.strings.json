@@ -1,11 +1,14 @@
 {
   "is": {
-    "value": "şudur:"
+    "value": "şudur:",
+    "description": ""
   },
   "is any value": {
-    "value": "herhangi bir değer"
+    "value": "herhangi bir değer",
+    "description": ""
   },
   "is not": {
-    "value": "şu değildir:"
+    "value": "şu değildir:",
+    "description": ""
   }
 }

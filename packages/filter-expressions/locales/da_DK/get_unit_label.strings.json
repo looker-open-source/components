@@ -1,82 +1,162 @@
 {
-  "complete day": "fuldført dag",
+  "complete day": {
+    "value": "fuldført dag",
+    "description": ""
+  },
   "complete days": {
-    "value": "hele dage"
+    "value": "hele dage",
+    "description": ""
   },
-  "complete fiscal quarter": "helt regnskabskvartal",
+  "complete fiscal quarter": {
+    "value": "helt regnskabskvartal",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "hele regnskabskvartaler"
+    "value": "hele regnskabskvartaler",
+    "description": ""
   },
-  "complete fiscal year": "helt regnskabsår",
+  "complete fiscal year": {
+    "value": "helt regnskabsår",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "hele regnskabsår"
+    "value": "hele regnskabsår",
+    "description": ""
   },
-  "complete hour": "hel time",
+  "complete hour": {
+    "value": "hel time",
+    "description": ""
+  },
   "complete hours": {
-    "value": "hele timer"
+    "value": "hele timer",
+    "description": ""
   },
-  "complete minute": "helt minut",
+  "complete minute": {
+    "value": "helt minut",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "hele minutter"
+    "value": "hele minutter",
+    "description": ""
   },
-  "complete month": "hel måned",
+  "complete month": {
+    "value": "hel måned",
+    "description": ""
+  },
   "complete months": {
-    "value": "hele måneder"
+    "value": "hele måneder",
+    "description": ""
   },
-  "complete quarter": "helt kvartal",
+  "complete quarter": {
+    "value": "helt kvartal",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "hele kvartaler"
+    "value": "hele kvartaler",
+    "description": ""
   },
-  "complete second": "helt sekund",
+  "complete second": {
+    "value": "helt sekund",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "hele sekunder"
+    "value": "hele sekunder",
+    "description": ""
   },
-  "complete week": "hel uge",
+  "complete week": {
+    "value": "hel uge",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "hele uger"
+    "value": "hele uger",
+    "description": ""
   },
-  "complete year": "helt år",
+  "complete year": {
+    "value": "helt år",
+    "description": ""
+  },
   "complete years": {
-    "value": "hele år"
+    "value": "hele år",
+    "description": ""
   },
-  "day": "dag",
+  "day": {
+    "value": "dag",
+    "description": ""
+  },
   "days": {
-    "value": "dage"
+    "value": "dage",
+    "description": ""
   },
-  "fiscal quarter": "regnskabskvartal",
+  "fiscal quarter": {
+    "value": "regnskabskvartal",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "regnskabskvartaler"
+    "value": "regnskabskvartaler",
+    "description": ""
   },
-  "fiscal year": "regnskabsår",
+  "fiscal year": {
+    "value": "regnskabsår",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "regnskabsår"
+    "value": "regnskabsår",
+    "description": ""
   },
-  "hour": "time",
+  "hour": {
+    "value": "time",
+    "description": ""
+  },
   "hours": {
-    "value": "timer"
+    "value": "timer",
+    "description": ""
   },
-  "minute": "minut",
+  "minute": {
+    "value": "minut",
+    "description": ""
+  },
   "minutes": {
-    "value": "minutter"
+    "value": "minutter",
+    "description": ""
   },
-  "month": "måned",
+  "month": {
+    "value": "måned",
+    "description": ""
+  },
   "months": {
-    "value": "måneder"
+    "value": "måneder",
+    "description": ""
   },
-  "quarter": "kvartal",
+  "quarter": {
+    "value": "kvartal",
+    "description": ""
+  },
   "quarters": {
-    "value": "kvartaler"
+    "value": "kvartaler",
+    "description": ""
   },
-  "second": "sekund",
+  "second": {
+    "value": "sekund",
+    "description": ""
+  },
   "seconds": {
-    "value": "sekunder"
+    "value": "sekunder",
+    "description": ""
   },
-  "week": "uge",
+  "week": {
+    "value": "uge",
+    "description": ""
+  },
   "weeks": {
-    "value": "uger"
+    "value": "uger",
+    "description": ""
   },
-  "year": "år",
+  "year": {
+    "value": "år",
+    "description": ""
+  },
   "years": {
-    "value": "år"
+    "value": "år",
+    "description": ""
   }
 }

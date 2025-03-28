@@ -1,6 +1,18 @@
 {
-  "false": "yanlış",
-  "null": "boş",
-  "true": "doğru",
-  "undefined": "tanımlanmamış"
+  "false": {
+    "value": "yanlış",
+    "description": ""
+  },
+  "null": {
+    "value": "boş",
+    "description": ""
+  },
+  "true": {
+    "value": "doğru",
+    "description": ""
+  },
+  "undefined": {
+    "value": "tanımlanmamış",
+    "description": ""
+  }
 }

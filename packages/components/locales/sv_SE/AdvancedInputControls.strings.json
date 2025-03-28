@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Rensa fält"
+  "Clear Field": {
+    "value": "Rensa fält",
+    "description": ""
+  }
 }

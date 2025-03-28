@@ -1,3 +1,6 @@
 {
-  "Select time": "Velg tid"
+  "Select time": {
+    "value": "Velg tid",
+    "description": ""
+  }
 }

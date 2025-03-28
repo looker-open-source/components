@@ -1,4 +1,10 @@
 {
-  "Loading": "載入中",
-  "No options": "沒有任何選項"
+  "Loading": {
+    "description": "",
+    "value": "載入中"
+  },
+  "No options": {
+    "description": "",
+    "value": "沒有任何選項"
+  }
 }

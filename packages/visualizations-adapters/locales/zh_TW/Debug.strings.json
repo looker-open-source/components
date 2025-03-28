@@ -1,9 +1,30 @@
 {
-  "Config": "設定",
-  "Dimensions": "維度",
-  "Error": "錯誤",
-  "Measures": "度量",
-  "Result": "結果",
-  "error": "錯誤",
-  "ok": "正常"
+  "Config": {
+    "description": "",
+    "value": "設定"
+  },
+  "Dimensions": {
+    "description": "",
+    "value": "維度"
+  },
+  "Error": {
+    "description": "",
+    "value": "錯誤"
+  },
+  "Measures": {
+    "description": "",
+    "value": "度量"
+  },
+  "Result": {
+    "description": "",
+    "value": "結果"
+  },
+  "error": {
+    "description": "",
+    "value": "錯誤"
+  },
+  "ok": {
+    "description": "",
+    "value": "正常"
+  }
 }

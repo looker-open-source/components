@@ -33,10 +33,10 @@ import { useQueryData } from './useQueryData';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  queryId?: number;
+  queryId?: string;
 };
 
-const TestComponent = ({ queryId = 1 }: TestComponentProps) => {
+const TestComponent = ({ queryId = '1' }: TestComponentProps) => {
   const response = useQueryData(queryId);
   dataContainerListener(response);
   return null;
@@ -67,7 +67,7 @@ describe('useQueryData', () => {
   it('does not dispatch request if data query id is out of range', async () => {
     render(
       <ContextWrapper>
-        <TestComponent queryId={-1} />
+        <TestComponent queryId={''} />
       </ContextWrapper>
     );
 
@@ -96,10 +96,10 @@ describe('useQueryData', () => {
           },
           dashboardIdMap: {},
           modelExplore: {},
-          slugIdMap: { '123': 123 },
+          slugIdMap: { '123': '123' },
         }}
       >
-        <TestComponent queryId={123} />
+        <TestComponent queryId={'123'} />
       </ContextWrapper>
     );
 

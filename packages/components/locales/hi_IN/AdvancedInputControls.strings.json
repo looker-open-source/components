@@ -1,3 +1,6 @@
 {
-  "Clear Field": "फ़ील्ड साफ़ करें"
+  "Clear Field": {
+    "value": "फ़ील्ड साफ़ करें",
+    "description": ""
+  }
 }

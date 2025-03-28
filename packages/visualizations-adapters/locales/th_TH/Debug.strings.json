@@ -1,9 +1,30 @@
 {
-  "Config": "กำหนดค่า",
-  "Dimensions": "มิติ",
-  "Error": "ข้อผิดพลาด",
-  "Measures": "ค่าวัด",
-  "Result": "ผลลัพธ์",
-  "error": "ข้อผิดพลาด",
-  "ok": "ตกลง"
+  "Config": {
+    "value": "กำหนดค่า",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "มิติ",
+    "description": ""
+  },
+  "Error": {
+    "value": "ข้อผิดพลาด",
+    "description": ""
+  },
+  "Measures": {
+    "value": "ค่าวัด",
+    "description": ""
+  },
+  "Result": {
+    "value": "ผลลัพธ์",
+    "description": ""
+  },
+  "error": {
+    "value": "ข้อผิดพลาด",
+    "description": ""
+  },
+  "ok": {
+    "value": "ตกลง",
+    "description": ""
+  }
 }

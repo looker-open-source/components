@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "चेक मार्क मिलाया गया"
+  "Check Mark Mixed": {
+    "value": "चेक मार्क मिलाया गया",
+    "description": ""
+  }
 }

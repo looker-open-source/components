@@ -1,4 +1,10 @@
 {
-  "Loading": "Yükleniyor",
-  "No options": "Seçenek yok"
+  "Loading": {
+    "value": "Yükleniyor",
+    "description": ""
+  },
+  "No options": {
+    "value": "Seçenek yok",
+    "description": ""
+  }
 }

@@ -1,6 +1,18 @@
 {
-  "Error": "Fel",
-  "Inform": "Information",
-  "Success": "Klart",
-  "Warning": "Varning"
+  "Error": {
+    "value": "Fel",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Information",
+    "description": ""
+  },
+  "Success": {
+    "value": "Klart",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Varning",
+    "description": ""
+  }
 }

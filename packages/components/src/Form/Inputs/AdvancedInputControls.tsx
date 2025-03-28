@@ -93,6 +93,7 @@ export const AdvancedInputControls = styled(
             tooltipDisabled={disabled}
             disabled={disabled}
             mr="u1"
+            data-test-id="advanced-input-clear"
           />
         )}
         {showClear && showCaret && <SearchControlDivider />}

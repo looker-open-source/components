@@ -1,7 +1,22 @@
 {
-  "First page of results": "Pirmas rezultatų puslapis",
-  "Last page of results": "Paskutinis rezultatų puslapis",
-  "Next page of results": "Kitas rezultatų puslapis",
-  "Previous page of results": "Ankstesnis rezultatų puslapis",
-  "of": "iš"
+  "First page of results": {
+    "value": "Pirmas rezultatų puslapis",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Paskutinis rezultatų puslapis",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Kitas rezultatų puslapis",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Ankstesnis rezultatų puslapis",
+    "description": ""
+  },
+  "of": {
+    "value": "iš",
+    "description": ""
+  }
 }

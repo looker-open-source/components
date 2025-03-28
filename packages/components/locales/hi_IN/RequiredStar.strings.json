@@ -1,3 +1,6 @@
 {
-  "required": "आवश्यक"
+  "required": {
+    "value": "आवश्यक",
+    "description": ""
+  }
 }

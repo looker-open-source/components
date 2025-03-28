@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "जोड़ें"
+    "value": "जोड़ें",
+    "description": ""
   },
   "Remove": {
-    "value": "निकालें"
+    "value": "निकालें",
+    "description": ""
   }
 }

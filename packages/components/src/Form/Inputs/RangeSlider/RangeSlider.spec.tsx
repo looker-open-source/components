@@ -31,7 +31,7 @@ import {
   withThemeProvider,
 } from '@looker/components-test-utils';
 import { RangeSlider } from './RangeSlider';
-import RerenderRepro from './stories/FilterRangeSlider';
+import { RerenderRepro } from './fixtures';
 
 const globalConsole = global.console;
 /* eslint-disable-next-line @typescript-eslint/unbound-method */

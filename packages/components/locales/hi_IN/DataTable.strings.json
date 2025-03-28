@@ -1,3 +1,6 @@
 {
-  "No Results": "कोई परिणाम नहीं"
+  "No Results": {
+    "value": "कोई परिणाम नहीं",
+    "description": ""
+  }
 }

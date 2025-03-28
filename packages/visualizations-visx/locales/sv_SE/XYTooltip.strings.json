@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Punktstorlekar efter"
+  "Points sized by": {
+    "value": "Punktstorlekar efter",
+    "description": ""
+  }
 }

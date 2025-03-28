@@ -24,6 +24,7 @@
 
  */
 
+import type { IError, IValidationError } from '@looker/sdk';
 import type {
   Action,
   AnyAction,
@@ -84,12 +85,7 @@ export type CreateFetchHooksOptions<DataType, FetchArgs> = {
  */
 export type CreateFetchHooksReturn<DataType, FetchArgs> = {
   setupStore: (store: CreateStoreReturn<FetchState<DataType>>) => void;
-  useSlice: (params?: FetchArgs) => readonly [
-    FetchStateItem<DataType>,
-    {
-      fetch: (params?: FetchArgs) => void;
-    }
-  ];
+  useSlice: () => readonly [FetchStateItem<DataType>, FetchActions<FetchArgs>];
 };
 
 /**
@@ -119,6 +115,15 @@ export type CreateStoreReturn<
 };
 
 /**
+ * This utility type makes overriding actions for composite implementations
+ * simpler than attempting to extract the tuple value to get the argument and
+ * return types.
+ */
+export type FetchActions<FetchArgs> = {
+  fetch: (params?: FetchArgs) => void;
+};
+
+/**
  * Read/GET requests can use any number of concurrent arguments across
  * components so all endpoint states are stored on a key that matches the
  * payload for the SDK.
@@ -132,8 +137,9 @@ export type FetchState<DataType> = {
  */
 export type FetchStateItem<DataType> = {
   abortController: AbortController;
+  completed: boolean;
   data: DataType;
-  error: string | null;
+  error: IError | IValidationError | null;
   loading: boolean;
   expired: boolean;
 };

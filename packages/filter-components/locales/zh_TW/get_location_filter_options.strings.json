@@ -1,32 +1,42 @@
 {
   "Box": {
+    "description": "",
     "value": "方塊"
   },
   "Circle": {
+    "description": "",
     "value": "圓形"
   },
   "Location": {
+    "description": "",
     "value": "位置"
   },
   "feet": {
+    "description": "",
     "value": "英尺"
   },
   "is anywhere": {
+    "description": "",
     "value": "為任何地方"
   },
   "is not null": {
+    "description": "",
     "value": "不是空值"
   },
   "is null": {
+    "description": "",
     "value": "為空值"
   },
   "kilometers": {
+    "description": "",
     "value": "公里"
   },
   "meters": {
+    "description": "",
     "value": "公尺"
   },
   "miles": {
+    "description": "",
     "value": "英里"
   }
 }

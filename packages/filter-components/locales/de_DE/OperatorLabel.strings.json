@@ -1,8 +1,10 @@
 {
   "AND": {
+    "description": "",
     "value": "UND"
   },
   "OR": {
+    "description": "",
     "value": "ODER"
   }
 }

@@ -1,14 +1,50 @@
 {
-  "contains": "포함",
-  "doesnt contain": "다음을 포함하지 않음:",
-  "doesnt end with": "다음으로 끝나지 않음:",
-  "doesnt start with": "다음으로 시작하지 않음:",
-  "ends with": "다음으로 끝남:",
-  "is": "다음과 일치:",
-  "is blank": "비어 있음",
-  "is not": "다음과 일치하지 않음:",
-  "is not blank": "비어 있지 않음",
-  "is not null": "null 아님",
-  "is null": "null",
-  "starts with": "다음으로 시작:"
+  "contains": {
+    "description": "",
+    "value": "포함"
+  },
+  "doesnt contain": {
+    "description": "",
+    "value": "다음을 포함하지 않음:"
+  },
+  "doesnt end with": {
+    "description": "",
+    "value": "다음으로 끝나지 않음:"
+  },
+  "doesnt start with": {
+    "description": "",
+    "value": "다음으로 시작하지 않음:"
+  },
+  "ends with": {
+    "description": "",
+    "value": "다음으로 끝남:"
+  },
+  "is": {
+    "description": "",
+    "value": "다음과 일치:"
+  },
+  "is blank": {
+    "description": "",
+    "value": "비어 있음"
+  },
+  "is not": {
+    "description": "",
+    "value": "다음과 일치하지 않음:"
+  },
+  "is not blank": {
+    "description": "",
+    "value": "비어 있지 않음"
+  },
+  "is not null": {
+    "description": "",
+    "value": "null 아님"
+  },
+  "is null": {
+    "description": "",
+    "value": "null"
+  },
+  "starts with": {
+    "description": "",
+    "value": "다음으로 시작:"
+  }
 }

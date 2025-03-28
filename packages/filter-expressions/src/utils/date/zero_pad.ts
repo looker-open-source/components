@@ -7,7 +7,7 @@ import padStart from 'lodash/padStart';
 /**
  * Left pads numeric values wth zero
  */
-export const zeroPad = (length: number) => (value: number) =>
+export const zeroPad = (length: number) => (value?: string | number) =>
   padStart(String(value), length, '0');
 
 export const zeroPad2 = zeroPad(2);

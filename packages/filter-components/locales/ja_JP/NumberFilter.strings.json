@@ -1,3 +1,6 @@
 {
-  "any value": "任意の値"
+  "any value": {
+    "description": "",
+    "value": "任意の値"
+  }
 }

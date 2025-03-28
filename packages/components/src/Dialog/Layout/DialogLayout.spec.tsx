@@ -7,11 +7,7 @@ import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { render, screen } from '@testing-library/react';
 import { ConstitutionShort } from '../../fixtures/Constitution';
-import {
-  Basic,
-  HeaderDetail,
-  HeaderCloseButton,
-} from './stories/index.stories';
+import { Basic, HeaderDetail, HeaderCloseButton } from './fixtures';
 import { DialogLayout } from './DialogLayout';
 
 describe('DialogLayout', () => {

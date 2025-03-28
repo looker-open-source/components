@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Välj en tidsram"
+  "Choose a Timeframe": {
+    "value": "Välj en tidsram",
+    "description": ""
+  }
 }

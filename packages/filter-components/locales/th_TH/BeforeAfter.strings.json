@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(สัมบูรณ์)"
+    "value": "(สัมบูรณ์)",
+    "description": ""
   },
   "relative": {
-    "value": "(สัมพัทธ์)"
+    "value": "(สัมพัทธ์)",
+    "description": ""
   }
 }

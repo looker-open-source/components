@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "{{pageCount}} görüntülenen öğenin tümü seçildi",
-  "AllTotalCountSelected": "{{totalCount}} öğenin tümü seçildi",
-  "Bulk Actions": "Toplu Eylemler",
-  "Clear Selection": "Seçimi Temizle",
-  "SelectAllCountResults": "{{totalCount}} sonucun tümünü seç",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}}/{{pageCount}} görüntülenen öğe seçildi"
+  "AllPageCountDisplayedSelected": {
+    "value": "{{pageCount}} görüntülenen öğenin tümü seçildi",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "{{totalCount}} öğenin tümü seçildi",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Toplu Eylemler",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Seçimi Temizle",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "{{totalCount}} sonucun tümünü seç",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}}/{{pageCount}} görüntülenen öğe seçildi",
+    "description": ""
+  }
 }

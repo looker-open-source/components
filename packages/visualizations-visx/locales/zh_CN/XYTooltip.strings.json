@@ -1,3 +1,6 @@
 {
-  "Points sized by": "点大小调整依据"
+  "Points sized by": {
+    "description": "",
+    "value": "点大小调整依据"
+  }
 }

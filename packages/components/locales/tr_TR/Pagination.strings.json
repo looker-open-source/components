@@ -1,7 +1,22 @@
 {
-  "First page of results": "İlk sonuçlar sayfası",
-  "Last page of results": "Son sonuçlar sayfası",
-  "Next page of results": "Sonraki sonuçlar sayfası",
-  "Previous page of results": "Önceki sonuçlar sayfası",
-  "of": "/"
+  "First page of results": {
+    "value": "İlk sonuçlar sayfası",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Son sonuçlar sayfası",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Sonraki sonuçlar sayfası",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Önceki sonuçlar sayfası",
+    "description": ""
+  },
+  "of": {
+    "value": "/",
+    "description": ""
+  }
 }

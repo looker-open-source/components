@@ -1,4 +1,10 @@
 {
-  "Cancel": "Peruuta",
-  "Confirm": "Vahvista"
+  "Cancel": {
+    "value": "Peruuta",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Vahvista",
+    "description": ""
+  }
 }

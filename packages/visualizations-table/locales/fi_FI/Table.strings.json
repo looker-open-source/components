@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Lajittele lisäsarakkeet painamalla vaihtonäppäintä samalla, kun napsautat",
-  "Sort ascending": "Lajittele nousevassa järjestyksessä",
-  "Sort descending": "Lajittele laskevassa järjestyksessä",
-  "Totals": "Summat"
+  "Shift + Click to sort additional columns": {
+    "value": "Lajittele lisäsarakkeet painamalla vaihtonäppäintä samalla, kun napsautat",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Lajittele nousevassa järjestyksessä",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Lajittele laskevassa järjestyksessä",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Summat",
+    "description": ""
+  }
 }

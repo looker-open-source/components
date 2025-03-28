@@ -1,8 +1,10 @@
 {
   "AND": {
+    "description": "",
     "value": "および"
   },
   "OR": {
+    "description": "",
     "value": "または"
   }
 }

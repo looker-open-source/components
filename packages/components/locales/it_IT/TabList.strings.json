@@ -1,3 +1,6 @@
 {
-  "Tabs": "Schede"
+  "Tabs": {
+    "description": "",
+    "value": "Schede"
+  }
 }

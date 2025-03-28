@@ -1,3 +1,6 @@
 {
-  "Avatar": "顯示圖片"
+  "Avatar": {
+    "description": "",
+    "value": "顯示圖片"
+  }
 }

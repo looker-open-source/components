@@ -1,3 +1,6 @@
 {
-  "Delete": "ลบ"
+  "Delete": {
+    "value": "ลบ",
+    "description": ""
+  }
 }

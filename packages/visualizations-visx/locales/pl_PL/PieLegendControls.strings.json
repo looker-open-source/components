@@ -1,4 +1,10 @@
 {
-  "Next page": "Następna strona",
-  "Previous page": "Poprzednia strona"
+  "Next page": {
+    "description": "",
+    "value": "Następna strona"
+  },
+  "Previous page": {
+    "description": "",
+    "value": "Poprzednia strona"
+  }
 }

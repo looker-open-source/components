@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "днів тому"
+    "value": "днів тому",
+    "description": ""
   },
   "days from now": {
-    "value": "днів відтепер"
+    "value": "днів відтепер",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "фінансовий квартал відтепер"
+    "value": "фінансовий квартал відтепер",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "фінансових кварталів тому"
+    "value": "фінансових кварталів тому",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "фінансових років тому"
+    "value": "фінансових років тому",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "фінансових років відтепер"
+    "value": "фінансових років відтепер",
+    "description": ""
   },
   "hours ago": {
-    "value": "годин тому"
+    "value": "годин тому",
+    "description": ""
   },
   "hours from now": {
-    "value": "годин відтепер"
+    "value": "годин відтепер",
+    "description": ""
   },
   "minutes ago": {
-    "value": "хвилин тому"
+    "value": "хвилин тому",
+    "description": ""
   },
   "minutes from now": {
-    "value": "хвилин відтепер"
+    "value": "хвилин відтепер",
+    "description": ""
   },
   "months ago": {
-    "value": "місяців тому"
+    "value": "місяців тому",
+    "description": ""
   },
   "months from now": {
-    "value": "місяців відтепер"
+    "value": "місяців відтепер",
+    "description": ""
   },
   "now": {
-    "value": "зараз"
+    "value": "зараз",
+    "description": ""
   },
   "quarters ago": {
-    "value": "кварталів тому"
+    "value": "кварталів тому",
+    "description": ""
   },
   "quarters from now": {
-    "value": "кварталів відтепер"
+    "value": "кварталів відтепер",
+    "description": ""
   },
   "seconds ago": {
-    "value": "секунд тому"
+    "value": "секунд тому",
+    "description": ""
   },
   "seconds from now": {
-    "value": "секунд відтепер"
+    "value": "секунд відтепер",
+    "description": ""
   },
   "weeks ago": {
-    "value": "тижнів тому"
+    "value": "тижнів тому",
+    "description": ""
   },
   "weeks from now": {
-    "value": "тижнів відтепер"
+    "value": "тижнів відтепер",
+    "description": ""
   },
   "years ago": {
-    "value": "років тому"
+    "value": "років тому",
+    "description": ""
   },
   "years from now": {
-    "value": "років відтепер"
+    "value": "років відтепер",
+    "description": ""
   }
 }

@@ -1,9 +1,30 @@
 {
-  "Config": "Config.",
-  "Dimensions": "Dimensions",
-  "Error": "Erreur",
-  "Measures": "Mesures",
-  "Result": "Résultat",
-  "error": "erreur",
-  "ok": "ok"
+  "Config": {
+    "value": "Config.",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Dimensions",
+    "description": ""
+  },
+  "Error": {
+    "value": "Erreur",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Mesures",
+    "description": ""
+  },
+  "Result": {
+    "value": "Résultat",
+    "description": ""
+  },
+  "error": {
+    "value": "erreur",
+    "description": ""
+  },
+  "ok": {
+    "value": "ok",
+    "description": ""
+  }
 }

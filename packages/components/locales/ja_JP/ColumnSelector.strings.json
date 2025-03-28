@@ -1,7 +1,22 @@
 {
-  "Apply": "適用",
-  "Cancel": "キャンセル",
-  "Select All": "すべて選択",
-  "Select None": "すべて選択解除",
-  "Select columns to display": "表示する列を選択してください"
+  "Apply": {
+    "description": "",
+    "value": "適用"
+  },
+  "Cancel": {
+    "description": "",
+    "value": "キャンセル"
+  },
+  "Select All": {
+    "description": "",
+    "value": "すべて選択"
+  },
+  "Select None": {
+    "description": "",
+    "value": "すべて選択解除"
+  },
+  "Select columns to display": {
+    "description": "",
+    "value": "表示する列を選択してください"
+  }
 }

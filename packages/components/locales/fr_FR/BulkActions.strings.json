@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Tous les éléments affichés sélectionnés ({{pageCount}})",
-  "AllTotalCountSelected": "Tous les éléments sélectionnés ({{totalCount}})",
-  "Bulk Actions": "Actions groupées",
-  "Clear Selection": "Annuler la sélection",
-  "SelectAllCountResults": "Sélectionner tous les résultats ({{totalCount}})",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} éléments sélectionnés sur {{pageCount}} éléments affichés"
+  "AllPageCountDisplayedSelected": {
+    "description": "",
+    "value": "Tous les éléments affichés sélectionnés ({{pageCount}})"
+  },
+  "AllTotalCountSelected": {
+    "description": "",
+    "value": "Tous les éléments sélectionnés ({{totalCount}})"
+  },
+  "Bulk Actions": {
+    "description": "",
+    "value": "Actions groupées"
+  },
+  "Clear Selection": {
+    "description": "",
+    "value": "Annuler la sélection"
+  },
+  "SelectAllCountResults": {
+    "description": "",
+    "value": "Sélectionner tous les résultats ({{totalCount}})"
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "description": "",
+    "value": "{{selectedItemCount}} éléments sélectionnés sur {{pageCount}} éléments affichés"
+  }
 }

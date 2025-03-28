@@ -52,7 +52,7 @@ export const useFiscalBeforeOrAfterUnits = (): Option[] => {
       { value: 'fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarters ago') },
       ...agoDateUnits,
       ...fromNowDateUnits,
-      { value: 'f_fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarter from now') },
-      { value: 'f_fiscal year'   , unit: 'fiscal year'   , label: t('fiscal years from now'  ) },
+      { value: 'f_fiscal quarter', unit: 'fiscal quarter', label: t('fiscal quarter from now'), fromnow: true },
+      { value: 'f_fiscal year'   , unit: 'fiscal year'   , label: t('fiscal years from now'  ), fromnow: true },
     ]
 };

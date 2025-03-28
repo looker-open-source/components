@@ -1,3 +1,6 @@
 {
-  "Profile Picture": "Profilio paveikslėlis"
+  "Profile Picture": {
+    "value": "Profilio paveikslėlis",
+    "description": ""
+  }
 }

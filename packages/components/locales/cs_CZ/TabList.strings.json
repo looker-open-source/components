@@ -1,3 +1,6 @@
 {
-  "Tabs": "Karty"
+  "Tabs": {
+    "value": "Karty",
+    "description": ""
+  }
 }

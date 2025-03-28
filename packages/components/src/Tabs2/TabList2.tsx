@@ -11,13 +11,10 @@ import { useArrowKeyNav, useTranslation } from '../utils';
 import { TabIndicator } from './TabIndicator';
 import type { TabList2Props } from './types';
 
-// add tabListCSS to the style of the component once TabList is deprecated
 export const tabListCSS = css<TabList2Props>`
   ${reset}
   ${padding}
   ${fontSize}
-  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */
   white-space: nowrap;

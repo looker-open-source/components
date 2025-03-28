@@ -1,3 +1,6 @@
 {
-  "required": "wymagane"
+  "required": {
+    "description": "",
+    "value": "wymagane"
+  }
 }

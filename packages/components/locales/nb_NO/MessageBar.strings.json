@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Forkast {{intent}}"
+  "DismissIntent": {
+    "value": "Forkast {{intent}}",
+    "description": ""
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Cancel": "İptal",
-  "Confirm": "Onayla"
+  "Cancel": {
+    "value": "İptal",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Onayla",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "ago": {
+    "description": "",
     "value": "전"
   },
   "from now": {
+    "description": "",
     "value": "후"
   }
 }

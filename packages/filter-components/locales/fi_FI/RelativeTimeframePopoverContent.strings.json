@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Mukautettu"
+    "value": "Mukautettu",
+    "description": ""
   },
   "Presets": {
-    "value": "Esiasetukset"
+    "value": "Esiasetukset",
+    "description": ""
   }
 }

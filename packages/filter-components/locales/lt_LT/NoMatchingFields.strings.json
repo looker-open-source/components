@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "Nėra atitinkančių laukų"
+    "value": "Nėra atitinkančių laukų",
+    "description": ""
   },
   "Try Something Else": {
-    "value": "Išbandykite kitą paieškos terminą arba pradėkite iš naujo ir išplėskite bet kurį naršymą, kad galėtumėte naršyti galimus laukus."
+    "value": "Išbandykite kitą paieškos terminą arba pradėkite iš naujo ir išplėskite bet kurį naršymą, kad galėtumėte naršyti galimus laukus.",
+    "description": ""
   }
 }

@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "Ei vastaavia kenttiä"
+    "value": "Ei vastaavia kenttiä",
+    "description": ""
   },
   "Try Something Else": {
-    "value": "Käytä toista hakusanaa tai aloita alusta ja laajenna kaikki tutkimukset selataksesi saatavilla olevia kenttiä."
+    "value": "Käytä toista hakusanaa tai aloita alusta ja laajenna kaikki tutkimukset selataksesi saatavilla olevia kenttiä.",
+    "description": ""
   }
 }

@@ -4,8 +4,7 @@
  */
 import type { FilterASTNode } from '../../types';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type NodeHandler = (node: FilterASTNode, parent?: FilterASTNode) => any;
+type NodeHandler = (node: FilterASTNode, parent?: FilterASTNode) => void;
 
 /**
  * Traverses the tree depth-first inorder (left, root, right) and assigns an id atribute to each node
@@ -14,13 +13,12 @@ export const inorderTraversal = (
   root: FilterASTNode,
   nodeHandler: NodeHandler
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const inorder = (node: any, parent: any) => {
+  const inorder = (node?: FilterASTNode, parent?: FilterASTNode) => {
     if (node) {
       inorder(node.left, node);
       nodeHandler(node, parent);
       inorder(node.right, node);
     }
   };
-  inorder(root, null);
+  inorder(root, undefined);
 };

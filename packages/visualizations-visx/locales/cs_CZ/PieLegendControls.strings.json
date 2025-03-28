@@ -1,4 +1,10 @@
 {
-  "Next page": "Další stránka",
-  "Previous page": "Předchozí stránka"
+  "Next page": {
+    "value": "Další stránka",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "Předchozí stránka",
+    "description": ""
+  }
 }

@@ -10,8 +10,7 @@ import type { FilterASTNode } from '../../types';
 export const updateNode = (
   root: FilterASTNode,
   nodeId: number,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  updateProps: any
+  updateProps: Partial<FilterASTNode>
 ): FilterASTNode => {
   if (root.id === nodeId) {
     return { ...root, ...updateProps };

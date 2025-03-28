@@ -1,82 +1,162 @@
 {
-  "complete day": "天整",
+  "complete day": {
+    "description": "",
+    "value": "完整一天"
+  },
   "complete days": {
+    "description": "",
     "value": "天整"
   },
-  "complete fiscal quarter": "個完整會計季度",
+  "complete fiscal quarter": {
+    "description": "",
+    "value": "完整會計季度"
+  },
   "complete fiscal quarters": {
+    "description": "",
     "value": "個完整會計季度"
   },
-  "complete fiscal year": "個完整會計年度",
+  "complete fiscal year": {
+    "description": "",
+    "value": "完整會計年度"
+  },
   "complete fiscal years": {
+    "description": "",
     "value": "個完整會計年度"
   },
-  "complete hour": "小時整",
+  "complete hour": {
+    "description": "",
+    "value": "完整小時"
+  },
   "complete hours": {
+    "description": "",
     "value": "小時整"
   },
-  "complete minute": "分鐘整",
+  "complete minute": {
+    "description": "",
+    "value": "完整分鐘"
+  },
   "complete minutes": {
+    "description": "",
     "value": "分鐘整"
   },
-  "complete month": "個月整",
+  "complete month": {
+    "description": "",
+    "value": "完整月份"
+  },
   "complete months": {
+    "description": "",
     "value": "個月整"
   },
-  "complete quarter": "季整",
+  "complete quarter": {
+    "description": "",
+    "value": "完整季度"
+  },
   "complete quarters": {
+    "description": "",
     "value": "季整"
   },
-  "complete second": "秒整",
+  "complete second": {
+    "description": "",
+    "value": "完整秒數"
+  },
   "complete seconds": {
+    "description": "",
     "value": "秒整"
   },
-  "complete week": "週整",
+  "complete week": {
+    "description": "",
+    "value": "完整一週"
+  },
   "complete weeks": {
+    "description": "",
     "value": "週整"
   },
-  "complete year": "年整",
+  "complete year": {
+    "description": "",
+    "value": "完整一年"
+  },
   "complete years": {
+    "description": "",
     "value": "年整"
   },
-  "day": "天",
-  "days": {
+  "day": {
+    "description": "",
     "value": "天"
   },
-  "fiscal quarter": "會計季度",
+  "days": {
+    "description": "",
+    "value": "天"
+  },
+  "fiscal quarter": {
+    "description": "",
+    "value": "會計季度"
+  },
   "fiscal quarters": {
+    "description": "",
     "value": "個會計季度"
   },
-  "fiscal year": "會計年度",
+  "fiscal year": {
+    "description": "",
+    "value": "會計年度"
+  },
   "fiscal years": {
+    "description": "",
     "value": "個會計年度"
   },
-  "hour": "小時",
-  "hours": {
+  "hour": {
+    "description": "",
     "value": "小時"
   },
-  "minute": "分鐘",
-  "minutes": {
+  "hours": {
+    "description": "",
+    "value": "小時"
+  },
+  "minute": {
+    "description": "",
     "value": "分鐘"
   },
-  "month": "月",
-  "months": {
+  "minutes": {
+    "description": "",
+    "value": "分鐘"
+  },
+  "month": {
+    "description": "",
     "value": "個月"
   },
-  "quarter": "季",
-  "quarters": {
+  "months": {
+    "description": "",
+    "value": "個月"
+  },
+  "quarter": {
+    "description": "",
     "value": "季"
   },
-  "second": "秒",
-  "seconds": {
+  "quarters": {
+    "description": "",
+    "value": "季"
+  },
+  "second": {
+    "description": "",
     "value": "秒"
   },
-  "week": "週",
-  "weeks": {
+  "seconds": {
+    "description": "",
+    "value": "秒"
+  },
+  "week": {
+    "description": "",
     "value": "週"
   },
-  "year": "年",
+  "weeks": {
+    "description": "",
+    "value": "週"
+  },
+  "year": {
+    "description": "",
+    "value": "年"
+  },
   "years": {
+    "description": "",
     "value": "年"
   }
 }

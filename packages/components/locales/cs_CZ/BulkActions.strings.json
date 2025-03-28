@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Byly vybrány všechny zobrazené položky (počet: {{pageCount}})",
-  "AllTotalCountSelected": "Byly vybrány všechny položky (počet: {{totalCount}})",
-  "Bulk Actions": "Hromadné akce",
-  "Clear Selection": "Vymazat výběr",
-  "SelectAllCountResults": "Vybrat všechny výsledky (počet: {{totalCount}})",
-  "SelectedCountOfTotalDisplayed": "Byly vybrány zobrazené položky ({{selectedItemCount}} z {{pageCount}})"
+  "AllPageCountDisplayedSelected": {
+    "value": "Byly vybrány všechny zobrazené položky (počet: {{pageCount}})",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Byly vybrány všechny položky (počet: {{totalCount}})",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Hromadné akce",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Vymazat výběr",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Vybrat všechny výsledky (počet: {{totalCount}})",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "Byly vybrány zobrazené položky ({{selectedItemCount}} z {{pageCount}})",
+    "description": ""
+  }
 }

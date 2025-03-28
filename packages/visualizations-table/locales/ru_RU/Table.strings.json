@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Чтобы отсортировать дополнительные столбцы, щелкайте по ним, удерживая нажатой клавишу SHIFT",
-  "Sort ascending": "Сортировка по возрастанию",
-  "Sort descending": "Сортировка по убыванию",
-  "Totals": "Сумма"
+  "Shift + Click to sort additional columns": {
+    "value": "Чтобы отсортировать дополнительные столбцы, щелкайте по ним, удерживая нажатой клавишу SHIFT",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Сортировка по возрастанию",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Сортировка по убыванию",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Сумма",
+    "description": ""
+  }
 }

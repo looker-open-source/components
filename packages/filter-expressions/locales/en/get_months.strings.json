@@ -1,38 +1,50 @@
 {
   "April": {
+    "description": "",
     "value": "April"
   },
   "August": {
+    "description": "",
     "value": "August"
   },
   "December": {
+    "description": "",
     "value": "December"
   },
   "February": {
+    "description": "",
     "value": "February"
   },
   "January": {
+    "description": "",
     "value": "January"
   },
   "July": {
+    "description": "",
     "value": "July"
   },
   "June": {
+    "description": "",
     "value": "June"
   },
   "March": {
+    "description": "",
     "value": "March"
   },
   "May": {
+    "description": "",
     "value": "May"
   },
   "November": {
+    "description": "",
     "value": "November"
   },
   "October": {
+    "description": "",
     "value": "October"
   },
   "September": {
+    "description": "",
     "value": "September"
   }
 }

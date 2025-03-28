@@ -9,7 +9,7 @@ import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
 import { FieldToggleSwitch } from './FieldToggleSwitch';
-import { RichDetailDescription } from './stories/index.stories';
+import { RichDetailDescription } from './fixtures';
 
 describe('FieldToggleSwitch', () => {
   it('contains the correct target when clicked in the onChange handler', () => {

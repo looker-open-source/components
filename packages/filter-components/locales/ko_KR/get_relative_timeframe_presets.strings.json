@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
+    "description": "",
     "value": "지난 14일"
   },
   "Last 180 Days": {
+    "description": "",
     "value": "지난 180일"
   },
   "Last 28 Days": {
+    "description": "",
     "value": "지난 28일"
   },
   "Last 30 Days": {
+    "description": "",
     "value": "지난 30일"
   },
   "Last 365 Days": {
+    "description": "",
     "value": "지난 365일"
   },
   "Last 7 Days": {
+    "description": "",
     "value": "지난 7일"
   },
   "Last 90 Days": {
+    "description": "",
     "value": "지난 90일"
   },
   "Previous Month": {
+    "description": "",
     "value": "지난달"
   },
   "Previous Quarter": {
+    "description": "",
     "value": "이전 분기"
   },
   "Previous Week": {
+    "description": "",
     "value": "지난주"
   },
   "Previous Year": {
+    "description": "",
     "value": "이전 연도"
   },
   "This Month": {
+    "description": "",
     "value": "이번 달"
   },
   "This Quarter": {
+    "description": "",
     "value": "이번 분기"
   },
   "This Week": {
+    "description": "",
     "value": "이번 주"
   },
   "This Year": {
+    "description": "",
     "value": "올해"
   },
   "Today": {
+    "description": "",
     "value": "오늘"
   },
   "Year To Date": {
+    "description": "",
     "value": "올해 시작부터 오늘까지"
   },
   "Yesterday": {
+    "description": "",
     "value": "어제"
   }
 }

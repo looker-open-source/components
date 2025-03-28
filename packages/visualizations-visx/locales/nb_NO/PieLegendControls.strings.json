@@ -1,4 +1,10 @@
 {
-  "Next page": "Neste side",
-  "Previous page": "Forrige side"
+  "Next page": {
+    "value": "Neste side",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "Forrige side",
+    "description": ""
+  }
 }

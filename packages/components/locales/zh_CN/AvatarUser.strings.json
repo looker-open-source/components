@@ -1,3 +1,6 @@
 {
-  "Avatar": "头像"
+  "Avatar": {
+    "description": "",
+    "value": "头像"
+  }
 }

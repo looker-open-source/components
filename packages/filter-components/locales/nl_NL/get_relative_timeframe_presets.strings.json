@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Laatste 14 dagen"
+    "value": "Laatste 14 dagen",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Laatste 180 dagen"
+    "value": "Laatste 180 dagen",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Laatste 28 dagen"
+    "value": "Laatste 28 dagen",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Laatste 30 dagen"
+    "value": "Laatste 30 dagen",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Laatste 365 dagen"
+    "value": "Laatste 365 dagen",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Laatste 7 dagen"
+    "value": "Laatste 7 dagen",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Laatste 90 dagen"
+    "value": "Laatste 90 dagen",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Vorige maand"
+    "value": "Vorige maand",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Vorig kwartaal"
+    "value": "Vorig kwartaal",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Vorige week"
+    "value": "Vorige week",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Vorig jaar"
+    "value": "Vorig jaar",
+    "description": ""
   },
   "This Month": {
-    "value": "Deze maand"
+    "value": "Deze maand",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Dit kwartaal"
+    "value": "Dit kwartaal",
+    "description": ""
   },
   "This Week": {
-    "value": "Deze week"
+    "value": "Deze week",
+    "description": ""
   },
   "This Year": {
-    "value": "Dit jaar"
+    "value": "Dit jaar",
+    "description": ""
   },
   "Today": {
-    "value": "Vandaag"
+    "value": "Vandaag",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Jaar tot heden"
+    "value": "Jaar tot heden",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Gisteren"
+    "value": "Gisteren",
+    "description": ""
   }
 }

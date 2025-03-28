@@ -1,29 +1,25 @@
-/**
- * Copyright (c) 2023 Google LLC
- * SPDX-License-Identifier: MIT
- */
+import dateLocale from 'date-fns/locale/da'
+    import {daDK as visualizationsadaptersLocale} from '@looker/visualizations-adapters'
+    import { mergeLocaleObjects } from '@looker/i18n'
 
-import dateLocale from 'date-fns/locale/da';
-import { daDK as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
-import { mergeLocaleObjects } from '@looker/i18n';
+    const resources = {
+  "PieLegend": {
+    "Legend page {{page}} of {{totalPages}}": "Forklaringsside {{page}} af {{totalPages}}"
+  },
+  "PieLegendControls": {
+    "Next page": "Næste side",
+    "Previous page": "Forrige side"
+  },
+  "XYTooltip": {
+    "Points sized by": "Størrelse af punkter efter"
+  }
+}
 
-const resources = {
-  PieLegend: {
-    'Legend page {{page}} of {{totalPages}}':
-      'Forklaringsside {{page}} af {{totalPages}}',
-  },
-  PieLegendControls: {
-    'Next page': 'Næste side',
-    'Previous page': 'Forrige side',
-  },
-  XYTooltip: {
-    'Points sized by': 'Størrelse af punkter efter',
-  },
-};
-
-export const daDK = mergeLocaleObjects(
-  [visualizationsadaptersLocale],
-  'da-DK',
-  resources,
-  dateLocale
-);
+    export const daDK = mergeLocaleObjects(
+      [
+        visualizationsadaptersLocale,
+      ],
+      'da-DK',
+      resources,
+      dateLocale,
+    )

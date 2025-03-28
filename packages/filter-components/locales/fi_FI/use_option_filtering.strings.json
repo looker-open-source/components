@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Ei arvoja"
+    "value": "Ei arvoja",
+    "description": ""
   },
   "No values match": {
-    "value": "Arvot eivät täsmää"
+    "value": "Arvot eivät täsmää",
+    "description": ""
   }
 }

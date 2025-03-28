@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Pridėti"
+    "value": "Pridėti",
+    "description": ""
   },
   "Remove": {
-    "value": "Pašalinti"
+    "value": "Pašalinti",
+    "description": ""
   }
 }

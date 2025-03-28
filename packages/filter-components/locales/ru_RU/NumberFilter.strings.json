@@ -1,3 +1,6 @@
 {
-  "any value": "любое значение"
+  "any value": {
+    "value": "любое значение",
+    "description": ""
+  }
 }

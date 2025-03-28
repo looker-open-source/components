@@ -1,3 +1,6 @@
 {
-  "Options": "オプション"
+  "Options": {
+    "description": "",
+    "value": "オプション"
+  }
 }

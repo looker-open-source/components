@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "er inden for området {{range}}"
+    "value": "er inden for området {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "er ikke inden for området {{range}}"
+    "value": "er ikke inden for området {{range}}",
+    "description": ""
   }
 }

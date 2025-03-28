@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Boks"
+    "value": "Boks",
+    "description": ""
   },
   "Circle": {
-    "value": "Cirkel"
+    "value": "Cirkel",
+    "description": ""
   },
   "Location": {
-    "value": "Placering"
+    "value": "Placering",
+    "description": ""
   },
   "feet": {
-    "value": "fod"
+    "value": "fod",
+    "description": ""
   },
   "is anywhere": {
-    "value": "er hvor som helst"
+    "value": "er hvor som helst",
+    "description": ""
   },
   "is not null": {
-    "value": "er ikke null"
+    "value": "er ikke null",
+    "description": ""
   },
   "is null": {
-    "value": "er null"
+    "value": "er null",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometer"
+    "value": "kilometer",
+    "description": ""
   },
   "meters": {
-    "value": "meter"
+    "value": "meter",
+    "description": ""
   },
   "miles": {
-    "value": "miles"
+    "value": "miles",
+    "description": ""
   }
 }

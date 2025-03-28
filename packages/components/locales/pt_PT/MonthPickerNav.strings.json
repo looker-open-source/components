@@ -1,5 +1,14 @@
 {
-  "close": "fechar",
-  "next year": "próximo ano",
-  "previous year": "ano anterior"
+  "close": {
+    "value": "fechar",
+    "description": ""
+  },
+  "next year": {
+    "value": "próximo ano",
+    "description": ""
+  },
+  "previous year": {
+    "value": "ano anterior",
+    "description": ""
+  }
 }

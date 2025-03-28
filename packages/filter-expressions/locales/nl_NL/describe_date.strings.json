@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " voltooid"
+    "value": " voltooid",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "geleden"
+    "value": "geleden",
+    "description": ""
   },
   "from now": {
-    "value": "vanaf nu"
+    "value": "vanaf nu",
+    "description": ""
   },
   "is any time": {
-    "value": "alles"
+    "value": "alles",
+    "description": ""
   },
   "is before": {
-    "value": "vóór datum"
+    "value": "vóór datum",
+    "description": ""
   },
   "is day": {
-    "value": "is {{day}}"
+    "value": "is {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "van {{dateTimeStart}} tot {{dateTimeEnd}}"
+    "value": "van {{dateTimeStart}} tot {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "is in {{month}} {{year}}"
+    "value": "is in {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "is in de afgelopen {{describeInterval}}"
+    "value": "is in de afgelopen {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "specifiek jaar {{year}}"
+    "value": "specifiek jaar {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "is {{interval}} geleden"
+    "value": "is {{interval}} geleden",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "is {{intervalStart}} {{intervalType}} voor {{intervalEnd}}"
+    "value": "is {{intervalStart}} {{intervalType}} voor {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "geldige datums"
+    "value": "geldige datums",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "is op/om {{dateTime}}"
+    "value": "is op/om {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "op of na datum"
+    "value": "op of na datum",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "is een {{unitLabel}} eerder"
+    "value": "is een {{unitLabel}} eerder",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "is {{type}} {{unitLabel}}"
+    "value": "is {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "volgende"
+    "value": "volgende",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} nu"
+    "value": "{{prefix}} nu",
+    "description": ""
   },
   "this": {
-    "value": "deze"
+    "value": "deze",
+    "description": ""
   },
-  "this startInterval to endInterval": "deze {{startInterval}} tot {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "deze {{startInterval}} tot {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

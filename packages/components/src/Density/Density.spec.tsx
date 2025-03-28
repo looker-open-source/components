@@ -6,7 +6,7 @@
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
-import { Basic, Positive1, Negative3 } from './stories/index.stories';
+import { Basic, Positive1, Negative3 } from './fixtures';
 
 describe('Density', () => {
   test('default', () => {

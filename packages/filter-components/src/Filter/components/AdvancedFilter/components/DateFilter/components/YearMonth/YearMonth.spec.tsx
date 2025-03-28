@@ -13,8 +13,16 @@ describe('YearMonth', () => {
   const mockProps = {
     item: {
       id: '1',
-      month: '1',
+      month: '5',
       year: '2017',
+    },
+    onChange: onChangeMock,
+  } as unknown as FilterParamProps;
+  const mockNumericProps = {
+    item: {
+      id: '1',
+      month: 5,
+      year: 2017,
     },
     onChange: onChangeMock,
   } as unknown as FilterParamProps;
@@ -25,7 +33,13 @@ describe('YearMonth', () => {
 
   it('should render the given year and month', () => {
     renderWithTheme(<YearMonth {...mockProps} />);
-    expect(screen.getByText('January')).toBeVisible();
+    expect(screen.getByText('May')).toBeVisible();
+    expect(screen.getByDisplayValue('2017')).toBeVisible();
+  });
+
+  it('should render the given year and month when passed as numbers', () => {
+    renderWithTheme(<YearMonth {...mockNumericProps} />);
+    expect(screen.getByText('May')).toBeVisible();
     expect(screen.getByDisplayValue('2017')).toBeVisible();
   });
 
@@ -38,7 +52,7 @@ describe('YearMonth', () => {
 
   it('should invoke the onChange handler when the month changes', async () => {
     renderWithTheme(<YearMonth {...mockProps} />);
-    const input = screen.getByDisplayValue('January');
+    const input = screen.getByDisplayValue('May');
     fireEvent.focus(input);
     fireEvent.mouseDown(input);
     const march = screen.getByText('March');

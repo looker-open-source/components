@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterInterval } from '@looker/filter-expressions';
 import type { ILookmlModelExploreField } from '@looker/sdk';
 import type { ChangeEvent } from 'react';
 import React from 'react';
@@ -15,16 +15,11 @@ import { showFiscalUnits } from '../../../../utils/show_fiscal_units';
 import { GroupSelect } from '../../../GroupSelect';
 import { GroupInput } from '../../../GroupInput';
 
-export interface IntervalItemProps {
-  value: number;
-  unit: string;
-}
-
 interface IntervalParamProps {
   placement?: 'middle' | 'right';
-  item: FilterModel;
+  item: FilterInterval;
   suffix?: string;
-  onChange: (item: IntervalItemProps) => void;
+  onChange: (item: FilterInterval) => void;
   field: ILookmlModelExploreField;
 }
 
@@ -44,12 +39,18 @@ export const Interval = ({
   const options = showFiscalUnits(field) ? fiscalIntervalUnits : dateUnits;
   return (
     <>
-      <GroupInput onChange={valueChange} value={value} placement="middle" />
+      <GroupInput
+        onChange={valueChange}
+        value={String(value)}
+        placement="middle"
+        data-testid="interval-value"
+      />
       <GroupSelect
         value={unit}
         options={options}
         onChange={unitChange}
         placement={placement}
+        data-testid="interval-unit"
       />
     </>
   );

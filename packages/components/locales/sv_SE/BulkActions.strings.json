@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Alla {{pageCount}} objekt som visas har valts",
-  "AllTotalCountSelected": "Alla {{totalCount}} objekt har valts",
-  "Bulk Actions": "Massåtgärder",
-  "Clear Selection": "Rensa markering",
-  "SelectAllCountResults": "Visa alla {{totalCount}} resultat",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} av {{pageCount}} visade objekt har valts"
+  "AllPageCountDisplayedSelected": {
+    "value": "Alla {{pageCount}} objekt som visas har valts",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Alla {{totalCount}} objekt har valts",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Massåtgärder",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Rensa markering",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Visa alla {{totalCount}} resultat",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}} av {{pageCount}} visade objekt har valts",
+    "description": ""
+  }
 }

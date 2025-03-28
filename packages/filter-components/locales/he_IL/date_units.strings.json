@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "יום"
+    "value": "יום",
+    "description": ""
   },
   "days": {
-    "value": "ימים"
+    "value": "ימים",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "רבעון פיסקלי"
+    "value": "רבעון פיסקלי",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "רבעונים פיסקליים"
+    "value": "רבעונים פיסקליים",
+    "description": ""
   },
   "fiscal year": {
-    "value": "שנה פיסקלית"
+    "value": "שנה פיסקלית",
+    "description": ""
   },
   "fiscal years": {
-    "value": "שנים פיסקליות"
+    "value": "שנים פיסקליות",
+    "description": ""
   },
   "hour": {
-    "value": "שעה"
+    "value": "שעה",
+    "description": ""
   },
   "hours": {
-    "value": "שעות"
+    "value": "שעות",
+    "description": ""
   },
   "minute": {
-    "value": "דקה"
+    "value": "דקה",
+    "description": ""
   },
   "minutes": {
-    "value": "דקות"
+    "value": "דקות",
+    "description": ""
   },
   "month": {
-    "value": "חודש"
+    "value": "חודש",
+    "description": ""
   },
   "months": {
-    "value": "חודשים"
+    "value": "חודשים",
+    "description": ""
   },
   "quarter": {
-    "value": "רבעון"
+    "value": "רבעון",
+    "description": ""
   },
   "quarters": {
-    "value": "רבעונים"
+    "value": "רבעונים",
+    "description": ""
   },
   "second": {
-    "value": "שנייה"
+    "value": "שנייה",
+    "description": ""
   },
   "seconds": {
-    "value": "שניות"
+    "value": "שניות",
+    "description": ""
   },
   "week": {
-    "value": "שבוע"
+    "value": "שבוע",
+    "description": ""
   },
   "weeks": {
-    "value": "שבועות"
+    "value": "שבועות",
+    "description": ""
   },
   "year": {
-    "value": "שנה"
+    "value": "שנה",
+    "description": ""
   },
   "years": {
-    "value": "שנים"
+    "value": "שנים",
+    "description": ""
   }
 }

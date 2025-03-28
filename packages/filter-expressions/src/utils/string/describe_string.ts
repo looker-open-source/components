@@ -25,7 +25,11 @@
  */
 import i18next from 'i18next';
 import defaultTo from 'lodash/defaultTo';
-import type { FilterItemToStringMapType, FilterModel } from '../../types';
+import type {
+  FilterItemToStringMapType,
+  FilterModel,
+  StringFilterType,
+} from '../../types';
 import { describeIsItem } from '../summary/describe_is_item';
 import { describeIsAnyValue } from '../summary/describe_is_any_value';
 import { describeNull } from '../summary/describe_null';
@@ -33,16 +37,16 @@ import { joinOr } from '../summary/join_or';
 import { describeUserAttribute } from '../user_attribute/describe_user_attribute';
 import { addQuotes } from './add_quotes';
 
-const describeMultiValue = (value: string[]) => {
-  return value && joinOr(value.map(addQuotes));
+const describeMultiValue = (value?: string[]): string => {
+  return value ? joinOr(value.map(addQuotes)) : '';
 };
-const match = ({ is, value }: FilterModel) => {
+const match = ({ is, value }: FilterModel<StringFilterType>) => {
   return value && value.length
     ? describeIsItem(is, describeMultiValue(value))
     : describeIsAnyValue();
 };
 
-const contains = ({ is, value }: FilterModel) => {
+const contains = ({ is, value }: FilterModel<StringFilterType>) => {
   const t = i18next.t.bind(i18next);
   const valueText = describeMultiValue(value);
   const containsText = t('contains value', {
@@ -56,7 +60,7 @@ const contains = ({ is, value }: FilterModel) => {
   return is ? containsText : doesntContainText;
 };
 
-const startsWith = ({ is, value }: FilterModel) => {
+const startsWith = ({ is, value }: FilterModel<StringFilterType>) => {
   const t = i18next.t.bind(i18next);
   const valueText = describeMultiValue(value);
   const startsWithText = t('starts with value', {
@@ -70,7 +74,7 @@ const startsWith = ({ is, value }: FilterModel) => {
   return is ? startsWithText : doesntStartWithText;
 };
 
-const endsWith = ({ is, value }: FilterModel) => {
+const endsWith = ({ is, value }: FilterModel<StringFilterType>) => {
   const t = i18next.t.bind(i18next);
   const valueText = describeMultiValue(value);
   const endsWithText = t('ends with value', {
@@ -84,12 +88,12 @@ const endsWith = ({ is, value }: FilterModel) => {
   return is ? endsWithText : doesntEndWithText;
 };
 
-const blank = ({ is }: FilterModel) => {
+const blank = ({ is }: FilterModel<StringFilterType>) => {
   const t = i18next.t.bind(i18next);
   return describeIsItem(is, t('blank', { ns: 'describe_string' }));
 };
 
-const filterToStringMap: FilterItemToStringMapType = {
+const filterToStringMap: FilterItemToStringMapType<StringFilterType> = {
   blank,
   null: describeNull,
   match,
@@ -104,4 +108,7 @@ const filterToStringMap: FilterItemToStringMapType = {
  * Maps a FilterItem to a function for converting it to a filter summary
  */
 export const describeString = (item: FilterModel): string =>
-  defaultTo(filterToStringMap[item.type], () => '')(item);
+  defaultTo(
+    filterToStringMap[item.type],
+    () => ''
+  )(item as FilterModel<StringFilterType>);

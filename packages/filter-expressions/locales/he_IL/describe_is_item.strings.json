@@ -1,8 +1,10 @@
 {
   "is not value": {
-    "value": "אינו {{value}}"
+    "value": "אינו {{value}}",
+    "description": ""
   },
   "is value": {
-    "value": "הוא {{value}}"
+    "value": "הוא {{value}}",
+    "description": ""
   }
 }

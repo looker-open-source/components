@@ -1,4 +1,10 @@
 {
-  "End date": "Pabaigos data",
-  "Start date": "Pradžios data"
+  "End date": {
+    "value": "Pabaigos data",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Pradžios data",
+    "description": ""
+  }
 }

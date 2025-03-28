@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "Brak pasujących pól"
   },
   "Try Something Else": {
+    "description": "",
     "value": "Spróbuj wyszukać inne hasło lub zacznij od nowa i rozwiń dowolny wgląd, aby przejrzeć dostępne pola."
   }
 }

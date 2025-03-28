@@ -1,4 +1,10 @@
 {
-  "Copied": "Copiado",
-  "Copy to Clipboard": "Copiar en el portapapeles"
+  "Copied": {
+    "description": "",
+    "value": "Se copió"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "Copiar en el portapapeles"
+  }
 }

@@ -1,82 +1,162 @@
 {
-  "complete day": "dia completo",
+  "complete day": {
+    "description": "",
+    "value": "dia completo"
+  },
   "complete days": {
+    "description": "",
     "value": "dias concluídos"
   },
-  "complete fiscal quarter": "trimestre fiscal completo",
+  "complete fiscal quarter": {
+    "description": "",
+    "value": "trimestre fiscal completo"
+  },
   "complete fiscal quarters": {
+    "description": "",
     "value": "trimestres fiscais completos"
   },
-  "complete fiscal year": "ano fiscal completo",
+  "complete fiscal year": {
+    "description": "",
+    "value": "ano fiscal completo"
+  },
   "complete fiscal years": {
+    "description": "",
     "value": "anos fiscais completos"
   },
-  "complete hour": "hora completa",
+  "complete hour": {
+    "description": "",
+    "value": "hora completa"
+  },
   "complete hours": {
+    "description": "",
     "value": "horas concluídas"
   },
-  "complete minute": "minuto completo",
+  "complete minute": {
+    "description": "",
+    "value": "minuto completo"
+  },
   "complete minutes": {
+    "description": "",
     "value": "minutos concluídos"
   },
-  "complete month": "mês completo",
+  "complete month": {
+    "description": "",
+    "value": "mês completo"
+  },
   "complete months": {
+    "description": "",
     "value": "meses concluídos"
   },
-  "complete quarter": "trimestre completo",
+  "complete quarter": {
+    "description": "",
+    "value": "trimestre completo"
+  },
   "complete quarters": {
+    "description": "",
     "value": "trimestres concluídos"
   },
-  "complete second": "segundo completo",
+  "complete second": {
+    "description": "",
+    "value": "segundo completo"
+  },
   "complete seconds": {
+    "description": "",
     "value": "segundos concluídos"
   },
-  "complete week": "semana completa",
+  "complete week": {
+    "description": "",
+    "value": "semana completa"
+  },
   "complete weeks": {
+    "description": "",
     "value": "semanas concluídas"
   },
-  "complete year": "ano completo",
+  "complete year": {
+    "description": "",
+    "value": "ano completo"
+  },
   "complete years": {
+    "description": "",
     "value": "anos concluídos"
   },
-  "day": "dia",
+  "day": {
+    "description": "",
+    "value": "dia"
+  },
   "days": {
+    "description": "",
     "value": "dias"
   },
-  "fiscal quarter": "trimestre fiscal",
+  "fiscal quarter": {
+    "description": "",
+    "value": "trimestre fiscal"
+  },
   "fiscal quarters": {
+    "description": "",
     "value": "trimestres fiscais"
   },
-  "fiscal year": "ano fiscal",
+  "fiscal year": {
+    "description": "",
+    "value": "ano fiscal"
+  },
   "fiscal years": {
+    "description": "",
     "value": "anos fiscais"
   },
-  "hour": "hora",
+  "hour": {
+    "description": "",
+    "value": "hora"
+  },
   "hours": {
+    "description": "",
     "value": "horas"
   },
-  "minute": "minuto",
+  "minute": {
+    "description": "",
+    "value": "minuto"
+  },
   "minutes": {
+    "description": "",
     "value": "minutos"
   },
-  "month": "mês",
+  "month": {
+    "description": "",
+    "value": "mês"
+  },
   "months": {
+    "description": "",
     "value": "meses"
   },
-  "quarter": "trimestre",
+  "quarter": {
+    "description": "",
+    "value": "trimestre"
+  },
   "quarters": {
+    "description": "",
     "value": "trimestres"
   },
-  "second": "segundo",
+  "second": {
+    "description": "",
+    "value": "segundo"
+  },
   "seconds": {
+    "description": "",
     "value": "segundos"
   },
-  "week": "semana",
+  "week": {
+    "description": "",
+    "value": "semana"
+  },
   "weeks": {
+    "description": "",
     "value": "semanas"
   },
-  "year": "ano",
+  "year": {
+    "description": "",
+    "value": "ano"
+  },
   "years": {
+    "description": "",
     "value": "anos"
   }
 }

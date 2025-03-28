@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Alles wissen"
+    "value": "Alles wissen",
+    "description": ""
   },
   "Remove": {
-    "value": "Verwijderen"
+    "value": "Verwijderen",
+    "description": ""
   },
   "Toggle": {
-    "value": "Aan/uitzetten"
+    "value": "Aan/uitzetten",
+    "description": ""
   }
 }

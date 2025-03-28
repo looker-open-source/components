@@ -61,6 +61,7 @@ export const DateFilter = ({
             ? undefined
             : 'left'
         }
+        data-testid="date-option"
       />
       <FilterComponent
         item={item}

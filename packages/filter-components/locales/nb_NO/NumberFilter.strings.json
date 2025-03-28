@@ -1,3 +1,6 @@
 {
-  "any value": "enhver verdi"
+  "any value": {
+    "value": "enhver verdi",
+    "description": ""
+  }
 }

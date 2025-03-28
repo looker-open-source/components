@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "加载建议时出错"
+  "Error loading suggestions": {
+    "description": "",
+    "value": "加载建议时出错"
+  }
 }

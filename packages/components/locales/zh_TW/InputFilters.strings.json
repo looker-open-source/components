@@ -1,4 +1,10 @@
 {
-  "Clear Filters": "清除篩選器",
-  "Filter List": "篩選器清單"
+  "Clear Filters": {
+    "description": "",
+    "value": "清除篩選器"
+  },
+  "Filter List": {
+    "description": "",
+    "value": "篩選器清單"
+  }
 }

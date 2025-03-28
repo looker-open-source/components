@@ -1,82 +1,162 @@
 {
-  "complete day": "complete day",
+  "complete day": {
+    "description": "",
+    "value": "complete day"
+  },
   "complete days": {
+    "description": "",
     "value": "complete days"
   },
-  "complete fiscal quarter": "complete fiscal quarter",
+  "complete fiscal quarter": {
+    "description": "",
+    "value": "complete fiscal quarter"
+  },
   "complete fiscal quarters": {
+    "description": "",
     "value": "complete fiscal quarters"
   },
-  "complete fiscal year": "complete fiscal year",
+  "complete fiscal year": {
+    "description": "",
+    "value": "complete fiscal year"
+  },
   "complete fiscal years": {
+    "description": "",
     "value": "complete fiscal years"
   },
-  "complete hour": "complete hour",
+  "complete hour": {
+    "description": "",
+    "value": "complete hour"
+  },
   "complete hours": {
+    "description": "",
     "value": "complete hours"
   },
-  "complete minute": "complete minute",
+  "complete minute": {
+    "description": "",
+    "value": "complete minute"
+  },
   "complete minutes": {
+    "description": "",
     "value": "complete minutes"
   },
-  "complete month": "complete month",
+  "complete month": {
+    "description": "",
+    "value": "complete month"
+  },
   "complete months": {
+    "description": "",
     "value": "complete months"
   },
-  "complete quarter": "complete quarter",
+  "complete quarter": {
+    "description": "",
+    "value": "complete quarter"
+  },
   "complete quarters": {
+    "description": "",
     "value": "complete quarters"
   },
-  "complete second": "complete second",
+  "complete second": {
+    "description": "",
+    "value": "complete second"
+  },
   "complete seconds": {
+    "description": "",
     "value": "complete seconds"
   },
-  "complete week": "complete week",
+  "complete week": {
+    "description": "",
+    "value": "complete week"
+  },
   "complete weeks": {
+    "description": "",
     "value": "complete weeks"
   },
-  "complete year": "complete year",
+  "complete year": {
+    "description": "",
+    "value": "complete year"
+  },
   "complete years": {
+    "description": "",
     "value": "complete years"
   },
-  "day": "day",
+  "day": {
+    "description": "",
+    "value": "day"
+  },
   "days": {
+    "description": "",
     "value": "days"
   },
-  "fiscal quarter": "fiscal quarter",
+  "fiscal quarter": {
+    "description": "",
+    "value": "fiscal quarter"
+  },
   "fiscal quarters": {
+    "description": "",
     "value": "fiscal quarters"
   },
-  "fiscal year": "fiscal year",
+  "fiscal year": {
+    "description": "",
+    "value": "fiscal year"
+  },
   "fiscal years": {
+    "description": "",
     "value": "fiscal years"
   },
-  "hour": "hour",
+  "hour": {
+    "description": "",
+    "value": "hour"
+  },
   "hours": {
+    "description": "",
     "value": "hours"
   },
-  "minute": "minute",
+  "minute": {
+    "description": "",
+    "value": "minute"
+  },
   "minutes": {
+    "description": "",
     "value": "minutes"
   },
-  "month": "month",
+  "month": {
+    "description": "",
+    "value": "month"
+  },
   "months": {
+    "description": "",
     "value": "months"
   },
-  "quarter": "quarter",
+  "quarter": {
+    "description": "",
+    "value": "quarter"
+  },
   "quarters": {
+    "description": "",
     "value": "quarters"
   },
-  "second": "second",
+  "second": {
+    "description": "",
+    "value": "second"
+  },
   "seconds": {
+    "description": "",
     "value": "seconds"
   },
-  "week": "week",
+  "week": {
+    "description": "",
+    "value": "week"
+  },
   "weeks": {
+    "description": "",
     "value": "weeks"
   },
-  "year": "year",
+  "year": {
+    "description": "",
+    "value": "year"
+  },
   "years": {
+    "description": "",
     "value": "years"
   }
 }

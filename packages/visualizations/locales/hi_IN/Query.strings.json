@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "क्वेरी घटक में कोई चिल्ड्रन पास नहीं हुआ",
-  "Query component received both dashboard and query props": "क्वेरी कंपोनेंट को डैशबोर्ड और क्वेरी प्रॉप्स दोनों प्राप्त हुए"
+  "No children passed to Query component": {
+    "value": "क्वेरी घटक में कोई चिल्ड्रन पास नहीं हुआ",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "क्वेरी कंपोनेंट को डैशबोर्ड और क्वेरी प्रॉप्स दोनों प्राप्त हुए",
+    "description": ""
+  }
 }

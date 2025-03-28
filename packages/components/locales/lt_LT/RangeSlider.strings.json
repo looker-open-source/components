@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Daugiausiai {{name}}",
-  "Maximum Value": "Didžiausia vertė",
-  "Minimum Name": "Mažiausiai {{name}}",
-  "Minimum Value": "Mažiausia vertė"
+  "Maximum Name": {
+    "value": "Daugiausiai {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Didžiausia vertė",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Mažiausiai {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Mažiausia vertė",
+    "description": ""
+  }
 }

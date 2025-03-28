@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "Ryd alt"
+    "value": "Ryd alt",
+    "description": ""
   },
   "Remove": {
-    "value": "Fjern"
+    "value": "Fjern",
+    "description": ""
   },
   "Toggle": {
-    "value": "Slå til/fra"
+    "value": "Slå til/fra",
+    "description": ""
   }
 }

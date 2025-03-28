@@ -1,5 +1,14 @@
 {
-  "close": "lukk",
-  "next year": "neste år",
-  "previous year": "i fjor"
+  "close": {
+    "value": "lukk",
+    "description": ""
+  },
+  "next year": {
+    "value": "neste år",
+    "description": ""
+  },
+  "previous year": {
+    "value": "i fjor",
+    "description": ""
+  }
 }

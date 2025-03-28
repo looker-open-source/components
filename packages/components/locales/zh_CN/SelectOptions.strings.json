@@ -1,4 +1,10 @@
 {
-  "Loading": "正在加载",
-  "No options": "无选项"
+  "Loading": {
+    "description": "",
+    "value": "正在加载"
+  },
+  "No options": {
+    "description": "",
+    "value": "无选项"
+  }
 }

@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(не включая значения)"
+    "value": "(не включая значения)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[включая значения]"
+    "value": "[включая значения]",
+    "description": ""
   },
   "is": {
-    "value": "является"
+    "value": "является",
+    "description": ""
   },
   "is between": {
-    "value": "между"
+    "value": "между",
+    "description": ""
   },
   "is greater": {
-    "value": ">"
+    "value": ">",
+    "description": ""
   },
   "is greater equal": {
-    "value": ">="
+    "value": ">=",
+    "description": ""
   },
   "is less": {
-    "value": "<"
+    "value": "<",
+    "description": ""
   },
   "is less equal": {
-    "value": "<="
+    "value": "<=",
+    "description": ""
   },
   "is not": {
-    "value": "не является"
+    "value": "не является",
+    "description": ""
   },
   "is not between": {
-    "value": "не между"
+    "value": "не между",
+    "description": ""
   },
   "is not null": {
-    "value": "не является нулевым значением"
+    "value": "не является нулевым значением",
+    "description": ""
   },
   "is null": {
-    "value": "является нулевым значением"
+    "value": "является нулевым значением",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(не включая значение слева]"
+    "value": "(не включая значение слева]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[не включая значение справа)"
+    "value": "[не включая значение справа)",
+    "description": ""
   }
 }

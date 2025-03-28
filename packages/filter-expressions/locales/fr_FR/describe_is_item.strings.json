@@ -1,8 +1,10 @@
 {
   "is not value": {
+    "description": "",
     "value": "n'est pas {{value}}"
   },
   "is value": {
+    "description": "",
     "value": "est {{value}}"
   }
 }

@@ -25,7 +25,7 @@
  */
 
 import type { LegacySpaceRamp, SpaceRamp, UnitRamp } from './types';
-export {
+export type {
   LegacySpaceRamp,
   SpaceRamp,
   SpacingSizes,
@@ -87,26 +87,25 @@ const legacySpacing: LegacySpaceRamp = {
 };
 
 export const units: UnitRamp = {
-  none: '0rem',
-  u05: '0.125rem',
-  u1: '0.25rem',
-  u2: '0.5rem',
-  u3: '0.75rem',
-  u4: '1rem',
-  u5: '1.25rem',
-  u6: '1.5rem',
-  u7: '1.75rem',
-  u8: '2rem',
-  u9: '2.25rem',
-  u10: '2.5rem',
-  u11: '2.75rem',
-  u12: '3rem',
-  u13: '3.25rem',
-  u14: '3.5rem',
-  u15: '3.75rem',
-  u16: '4em',
+  none: '0rem', // 0px
+  u05: '0.125rem', // 2px
+  u1: '0.25rem', // 4px
+  u2: '0.5rem', // 8px
+  u3: '0.75rem', // 12px
+  u4: '1rem', // 16px
+  u5: '1.25rem', // 20px
+  u6: '1.5rem', // 24px
+  u7: '1.75rem', // 28px
+  u8: '2rem', // 32px
+  u9: '2.25rem', // 36px
+  u10: '2.5rem', // 40px
+  u11: '2.75rem', // 44px
+  u12: '3rem', // 48px
+  u13: '3.25rem', // 52px
+  u14: '3.5rem', // 56px
+  u15: '3.75rem', // 60px
+  u16: '4em', // 64px
 };
-
 export const space: SpaceRamp = {
   ...legacySpacing,
   ...units,

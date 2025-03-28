@@ -1,14 +1,50 @@
 {
-  "contains": "şunu içeriyor:",
-  "doesnt contain": "şunu içermiyor:",
-  "doesnt end with": "şununla bitmiyor:",
-  "doesnt start with": "şununla başlamıyor:",
-  "ends with": "şununla bitiyor:",
-  "is": "şudur:",
-  "is blank": "boş",
-  "is not": "şu değildir:",
-  "is not blank": "boş değil",
-  "is not null": "değer içeriyor",
-  "is null": "değer içermiyor",
-  "starts with": "şununla başlıyor:"
+  "contains": {
+    "value": "şunu içeriyor:",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "şunu içermiyor:",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "şununla bitmiyor:",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "şununla başlamıyor:",
+    "description": ""
+  },
+  "ends with": {
+    "value": "şununla bitiyor:",
+    "description": ""
+  },
+  "is": {
+    "value": "şudur:",
+    "description": ""
+  },
+  "is blank": {
+    "value": "boş",
+    "description": ""
+  },
+  "is not": {
+    "value": "şu değildir:",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "boş değil",
+    "description": ""
+  },
+  "is not null": {
+    "value": "değer içeriyor",
+    "description": ""
+  },
+  "is null": {
+    "value": "değer içermiyor",
+    "description": ""
+  },
+  "starts with": {
+    "value": "şununla başlıyor:",
+    "description": ""
+  }
 }

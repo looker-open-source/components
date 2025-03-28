@@ -1,3 +1,6 @@
 {
-  "Done": "Fullført"
+  "Done": {
+    "value": "Fullført",
+    "description": ""
+  }
 }

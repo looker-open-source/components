@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "Žádná odpovídající pole"
+    "value": "Žádná odpovídající pole",
+    "description": ""
   },
   "Try Something Else": {
-    "value": "Zkuste hledat jiný termín nebo začněte znovu a rozšiřte případný průzkum na procházení dostupných polí."
+    "value": "Zkuste hledat jiný termín nebo začněte znovu a rozšiřte případný průzkum na procházení dostupných polí.",
+    "description": ""
   }
 }

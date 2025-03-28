@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "All {{pageCount}} displayed items selected",
-  "AllTotalCountSelected": "All {{totalCount}} items selected",
-  "Bulk Actions": "Bulk Actions",
-  "Clear Selection": "Clear Selection",
-  "SelectAllCountResults": "Select all {{totalCount}} results",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} of {{pageCount}} displayed items selected"
+  "AllPageCountDisplayedSelected": {
+    "description": "",
+    "value": "All {{pageCount}} displayed items selected"
+  },
+  "AllTotalCountSelected": {
+    "description": "",
+    "value": "All {{totalCount}} items selected"
+  },
+  "Bulk Actions": {
+    "description": "",
+    "value": "Bulk Actions"
+  },
+  "Clear Selection": {
+    "description": "",
+    "value": "Clear Selection"
+  },
+  "SelectAllCountResults": {
+    "description": "",
+    "value": "Select all {{totalCount}} results"
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "description": "",
+    "value": "{{selectedItemCount}} of {{pageCount}} displayed items selected"
+  }
 }

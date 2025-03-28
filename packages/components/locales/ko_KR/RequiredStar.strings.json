@@ -1,3 +1,6 @@
 {
-  "required": "필수"
+  "required": {
+    "description": "",
+    "value": "필수"
+  }
 }

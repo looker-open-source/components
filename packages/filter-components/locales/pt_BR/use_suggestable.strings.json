@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Erro ao carregar sugestões"
+  "Error loading suggestions": {
+    "description": "",
+    "value": "Erro ao carregar sugestões"
+  }
 }

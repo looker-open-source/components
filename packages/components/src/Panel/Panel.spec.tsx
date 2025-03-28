@@ -29,8 +29,7 @@ import { act, fireEvent, screen } from '@testing-library/react';
 import 'jest-styled-components';
 import React, { useState } from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
-import Nested from './stories/Nested';
-import AnimationCallbacks from './stories/AnimationCallbacks';
+import { AnimationCallbacks, Nested } from './fixtures';
 import { Panel, Panels, usePanel } from './';
 
 const globalConsole = global.console;

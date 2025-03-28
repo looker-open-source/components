@@ -1,9 +1,30 @@
 {
-  "Config": "Konfigūracija",
-  "Dimensions": "Matmenys",
-  "Error": "Klaida",
-  "Measures": "Priemonės",
-  "Result": "Rezultatas",
-  "error": "klaida",
-  "ok": "gerai"
+  "Config": {
+    "value": "Konfigūracija",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Matmenys",
+    "description": ""
+  },
+  "Error": {
+    "value": "Klaida",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Priemonės",
+    "description": ""
+  },
+  "Result": {
+    "value": "Rezultatas",
+    "description": ""
+  },
+  "error": {
+    "value": "klaida",
+    "description": ""
+  },
+  "ok": {
+    "value": "gerai",
+    "description": ""
+  }
 }

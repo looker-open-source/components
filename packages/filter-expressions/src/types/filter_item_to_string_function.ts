@@ -6,8 +6,8 @@ import type { ILookmlModelExploreField } from '@looker/sdk';
 import type { FilterModel } from './filter_model';
 import type { FilterExpressionType } from './filter_type';
 
-export type FilterItemToStringFunction = (
-  item: FilterModel,
+export type FilterItemToStringFunction<T extends string = string> = (
+  item: FilterModel<T>,
   filterType?: FilterExpressionType,
   field?: ILookmlModelExploreField | null
 ) => string;

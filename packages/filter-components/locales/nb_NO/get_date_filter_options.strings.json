@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "er"
+    "value": "er",
+    "description": ""
   },
   "is any time": {
-    "value": "er når som helst"
+    "value": "er når som helst",
+    "description": ""
   },
   "is before": {
-    "value": "er før"
+    "value": "er før",
+    "description": ""
   },
   "is in range": {
-    "value": "er i området"
+    "value": "er i området",
+    "description": ""
   },
   "is in the last": {
-    "value": "er i den forrige"
+    "value": "er i den forrige",
+    "description": ""
   },
   "is in the month": {
-    "value": "er i måneden"
+    "value": "er i måneden",
+    "description": ""
   },
   "is in the year": {
-    "value": "er i året"
+    "value": "er i året",
+    "description": ""
   },
   "is next": {
-    "value": "er neste"
+    "value": "er neste",
+    "description": ""
   },
   "is not null": {
-    "value": "er ikke null"
+    "value": "er ikke null",
+    "description": ""
   },
   "is null": {
-    "value": "er null"
+    "value": "er null",
+    "description": ""
   },
   "is on or after": {
-    "value": "er på eller etter"
+    "value": "er på eller etter",
+    "description": ""
   },
   "is on the day": {
-    "value": "er på dagen"
+    "value": "er på dagen",
+    "description": ""
   },
   "is previous": {
-    "value": "er forrige"
+    "value": "er forrige",
+    "description": ""
   },
   "is this": {
-    "value": "er denne"
+    "value": "er denne",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "any value": "bet kokia vertė"
+  "any value": {
+    "value": "bet kokia vertė",
+    "description": ""
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Copied": "Kopierat",
-  "Copy to Clipboard": "Kopiera till urklipp"
+  "Copied": {
+    "value": "Kopierat",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Kopiera till urklipp",
+    "description": ""
+  }
 }

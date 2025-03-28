@@ -1,3 +1,6 @@
 {
-  "required": "必填"
+  "required": {
+    "description": "",
+    "value": "必填"
+  }
 }

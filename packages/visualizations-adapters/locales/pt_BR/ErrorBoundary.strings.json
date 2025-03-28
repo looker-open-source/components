@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Algo deu errado"
+  "Something went wrong": {
+    "description": "",
+    "value": "Algo deu errado"
+  }
 }

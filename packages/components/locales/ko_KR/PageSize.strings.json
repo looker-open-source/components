@@ -1,4 +1,10 @@
 {
-  "Display": "표시",
-  "of": "/"
+  "Display": {
+    "description": "",
+    "value": "표시"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

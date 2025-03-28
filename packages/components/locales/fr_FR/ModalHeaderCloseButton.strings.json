@@ -1,3 +1,6 @@
 {
-  "Close": "Fermer"
+  "Close": {
+    "description": "",
+    "value": "Fermer"
+  }
 }

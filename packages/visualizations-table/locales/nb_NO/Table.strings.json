@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Skift + klikk for å sortere flere kolonner",
-  "Sort ascending": "Sorter stigende",
-  "Sort descending": "Sorter synkende",
-  "Totals": "Summer"
+  "Shift + Click to sort additional columns": {
+    "value": "Skift + klikk for å sortere flere kolonner",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Sorter stigende",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Sorter synkende",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Summer",
+    "description": ""
+  }
 }

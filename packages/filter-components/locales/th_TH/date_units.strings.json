@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "วัน"
+    "value": "วัน",
+    "description": ""
   },
   "days": {
-    "value": "วัน"
+    "value": "วัน",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "ไตรมาสงบประมาณ"
+    "value": "ไตรมาสงบประมาณ",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "ไตรมาสงบประมาณ"
+    "value": "ไตรมาสงบประมาณ",
+    "description": ""
   },
   "fiscal year": {
-    "value": "ปีงบประมาณ"
+    "value": "ปีงบประมาณ",
+    "description": ""
   },
   "fiscal years": {
-    "value": "ปีงบประมาณ"
+    "value": "ปีงบประมาณ",
+    "description": ""
   },
   "hour": {
-    "value": "ชั่วโมง"
+    "value": "ชั่วโมง",
+    "description": ""
   },
   "hours": {
-    "value": "ชั่วโมง"
+    "value": "ชั่วโมง",
+    "description": ""
   },
   "minute": {
-    "value": "นาที"
+    "value": "นาที",
+    "description": ""
   },
   "minutes": {
-    "value": "นาที"
+    "value": "นาที",
+    "description": ""
   },
   "month": {
-    "value": "เดือน"
+    "value": "เดือน",
+    "description": ""
   },
   "months": {
-    "value": "เดือน"
+    "value": "เดือน",
+    "description": ""
   },
   "quarter": {
-    "value": "ไตรมาส"
+    "value": "ไตรมาส",
+    "description": ""
   },
   "quarters": {
-    "value": "ไตรมาส"
+    "value": "ไตรมาส",
+    "description": ""
   },
   "second": {
-    "value": "วินาที"
+    "value": "วินาที",
+    "description": ""
   },
   "seconds": {
-    "value": "วินาที"
+    "value": "วินาที",
+    "description": ""
   },
   "week": {
-    "value": "สัปดาห์"
+    "value": "สัปดาห์",
+    "description": ""
   },
   "weeks": {
-    "value": "สัปดาห์"
+    "value": "สัปดาห์",
+    "description": ""
   },
   "year": {
-    "value": "ปี"
+    "value": "ปี",
+    "description": ""
   },
   "years": {
-    "value": "ปี"
+    "value": "ปี",
+    "description": ""
   }
 }

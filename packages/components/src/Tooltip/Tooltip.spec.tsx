@@ -76,6 +76,7 @@ describe('Tooltip', () => {
         <Button>Test</Button>
       </Tooltip>
     );
+
     const button = screen.getByRole('button');
     // Verifies that trigger element is provided immediately to PopperJS
     // (without isOpen prop, trigger element is not immediately available
@@ -154,6 +155,7 @@ describe('Tooltip', () => {
     expect(tooltip).toHaveStyleRule('text-align: right');
     fireEvent.mouseOut(trigger);
     runTimers();
+    expect(tooltip).not.toBeInTheDocument();
   });
 
   test('Render props version works', () => {
@@ -220,6 +222,7 @@ describe('Tooltip', () => {
     expect(mockHandlers.onBlur).toHaveBeenCalled();
 
     fireEvent.click(document);
+    expect(screen.queryByText('Some tooltip')).not.toBeInTheDocument();
   });
 
   test('with nested autoFocus input', () => {
@@ -248,6 +251,10 @@ describe('Tooltip', () => {
     expect(screen.getByRole('tooltip')).toBeVisible();
 
     fireEvent.blur(screen.getByRole('textbox'));
+
+    expect(
+      screen.queryByText('See what happens when you scroll')
+    ).not.toBeInTheDocument();
   });
 
   test('disabled', () => {
@@ -279,6 +286,7 @@ describe('Tooltip', () => {
 
     fireEvent.mouseOut(button);
     runTimers();
+    expect(screen.queryByText('Hello world')).not.toBeInTheDocument();
   });
 
   test('can open returns false', () => {

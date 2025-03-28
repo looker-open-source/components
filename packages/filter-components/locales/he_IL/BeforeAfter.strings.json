@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(מוחלט)"
+    "value": "(מוחלט)",
+    "description": ""
   },
   "relative": {
-    "value": "(יחסי)"
+    "value": "(יחסי)",
+    "description": ""
   }
 }

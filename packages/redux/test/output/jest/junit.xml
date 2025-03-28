@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="39" failures="0" errors="0" time="7.408">
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="4.912" tests="4">
+    <testcase classname=" should handle plain function reducers" name=" should handle plain function reducers" time="0.003">
+    </testcase>
+    <testcase classname=" should handle reducer object maps" name=" should handle reducer object maps" time="0.001">
+    </testcase>
+    <testcase classname=" should handle recursive reducer object maps" name=" should handle recursive reducer object maps" time="0.001">
+    </testcase>
+    <testcase classname=" should handle reducers that are both functions and nested objects" name=" should handle reducers that are both functions and nested objects" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.504" tests="3">
+    <testcase classname=" calls useStore" name=" calls useStore" time="0.015">
+    </testcase>
+    <testcase classname=" calls addSaga" name=" calls addSaga" time="0.002">
+    </testcase>
+    <testcase classname=" does not call addSaga if no saga is provided" name=" does not call addSaga if no saga is provided" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="createStore" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.53" tests="9">
+    <testcase classname="createStore extended APIs exist" name="createStore extended APIs exist" time="0.004">
+    </testcase>
+    <testcase classname="createStore addReducer" name="createStore addReducer" time="0.002">
+    </testcase>
+    <testcase classname="createStore addSaga" name="createStore addSaga" time="0.003">
+    </testcase>
+    <testcase classname="createStore removeReducer" name="createStore removeReducer" time="0.001">
+    </testcase>
+    <testcase classname="createStore removeSaga" name="createStore removeSaga" time="0.001">
+    </testcase>
+    <testcase classname="createStore isLookerRedux" name="createStore isLookerRedux" time="0.001">
+    </testcase>
+    <testcase classname="createStore default state" name="createStore default state" time="0.001">
+    </testcase>
+    <testcase classname="createStore specifying reducers does not remove the default" name="createStore specifying reducers does not remove the default" time="0">
+    </testcase>
+    <testcase classname="createStore preloadedState creates reducers for each key" name="createStore preloadedState creates reducers for each key" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.537" tests="3">
+    <testcase classname=" calls useStore" name=" calls useStore" time="0.014">
+    </testcase>
+    <testcase classname=" calls addSaga" name=" calls addSaga" time="0.003">
+    </testcase>
+    <testcase classname=" does not call addSaga if no saga is provided" name=" does not call addSaga if no saga is provided" time="0.001">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.711" tests="3">
+    <testcase classname=" calls useStore" name=" calls useStore" time="0.015">
+    </testcase>
+    <testcase classname=" calls addReducer" name=" calls addReducer" time="0.002">
+    </testcase>
+    <testcase classname=" calls addReducer in useEffect" name=" calls addReducer in useEffect" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.732" tests="3">
+    <testcase classname=" errors with default redux error if no store is provided" name=" errors with default redux error if no store is provided" time="0.014">
+    </testcase>
+    <testcase classname=" errors if an incompatible store is not provided" name=" errors if an incompatible store is not provided" time="0.003">
+    </testcase>
+    <testcase classname=" returns a compatible store" name=" returns a compatible store" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.747" tests="1">
+    <testcase classname=" api" name=" api" time="0.004">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.818" tests="2">
+    <testcase classname=" default store" name=" default store" time="0.021">
+    </testcase>
+    <testcase classname=" existing store" name=" existing store" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="createFetchHooks" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.9" tests="8">
+    <testcase classname="createFetchHooks initialState" name="createFetchHooks initialState" time="0.034">
+    </testcase>
+    <testcase classname="createFetchHooks fetch" name="createFetchHooks fetch" time="0.023">
+    </testcase>
+    <testcase classname="createFetchHooks error: 401" name="createFetchHooks error: 401" time="0.019">
+    </testcase>
+    <testcase classname="createFetchHooks error: 499" name="createFetchHooks error: 499" time="0.006">
+    </testcase>
+    <testcase classname="createFetchHooks error: *" name="createFetchHooks error: *" time="0.006">
+    </testcase>
+    <testcase classname="createFetchHooks completed, initial state" name="createFetchHooks completed, initial state" time="0.004">
+    </testcase>
+    <testcase classname="createFetchHooks completed, initial fetch should set completed to true" name="createFetchHooks completed, initial fetch should set completed to true" time="0.007">
+    </testcase>
+    <testcase classname="createFetchHooks completed, subsequent fetch should reset completed to false then follow normal lifecycle" name="createFetchHooks completed, subsequent fetch should reset completed to false then follow normal lifecycle" time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="createSliceHooks" errors="0" failures="0" skipped="0" timestamp="2024-10-10T19:14:29" time="5.896" tests="3">
+    <testcase classname="createSliceHooks reducers and sagas" name="createSliceHooks reducers and sagas" time="0.054">
+    </testcase>
+    <testcase classname="createSliceHooks cleans up state after the last component is unmounted" name="createSliceHooks cleans up state after the last component is unmounted" time="0.011">
+    </testcase>
+    <testcase classname="createSliceHooks setupSlice" name="createSliceHooks setupSlice" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>

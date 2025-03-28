@@ -1,3 +1,6 @@
 {
-  "CloseTitle": "Uždaryti {{title}}"
+  "CloseTitle": {
+    "value": "Uždaryti {{title}}",
+    "description": ""
+  }
 }

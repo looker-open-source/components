@@ -1,6 +1,18 @@
 {
-  "Error": "Chyba",
-  "Inform": "Informovat",
-  "Success": "Úspěch",
-  "Warning": "Varování"
+  "Error": {
+    "value": "Chyba",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Informovat",
+    "description": ""
+  },
+  "Success": {
+    "value": "Úspěch",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Varování",
+    "description": ""
+  }
 }

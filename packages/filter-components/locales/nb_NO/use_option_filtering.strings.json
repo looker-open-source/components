@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Ingen verdier"
+    "value": "Ingen verdier",
+    "description": ""
   },
   "No values match": {
-    "value": "Ingen verdier matcher"
+    "value": "Ingen verdier matcher",
+    "description": ""
   }
 }

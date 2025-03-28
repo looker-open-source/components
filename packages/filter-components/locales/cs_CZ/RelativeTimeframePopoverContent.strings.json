@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Vlastní"
+    "value": "Vlastní",
+    "description": ""
   },
   "Presets": {
-    "value": "Přednastavené hodnoty"
+    "value": "Přednastavené hodnoty",
+    "description": ""
   }
 }

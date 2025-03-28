@@ -1,4 +1,10 @@
 {
-  "Display": "Visa",
-  "of": "av"
+  "Display": {
+    "value": "Visa",
+    "description": ""
+  },
+  "of": {
+    "value": "av",
+    "description": ""
+  }
 }

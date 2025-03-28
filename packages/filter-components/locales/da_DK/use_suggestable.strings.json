@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Fejl under indlæsning af forslag"
+  "Error loading suggestions": {
+    "value": "Fejl under indlæsning af forslag",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Delete": "Sil"
+  "Delete": {
+    "value": "Sil",
+    "description": ""
+  }
 }

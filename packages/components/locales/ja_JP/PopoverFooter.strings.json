@@ -1,3 +1,6 @@
 {
-  "Done": "完了"
+  "Done": {
+    "description": "",
+    "value": "完了"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Vybrat časový rámec"
+  "Choose a Timeframe": {
+    "value": "Vybrat časový rámec",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Value required": "値は必須です"
+  "Value required": {
+    "description": "",
+    "value": "値は必須です"
+  }
 }

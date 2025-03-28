@@ -50,11 +50,14 @@ export const NumberFilter = ({
   const { t } = useTranslation('NumberFilter');
   const placeholder =
     validationText ||
-    (!item?.value?.length || item.value.length === 0 ? t('any value') : '');
+    (!Array.isArray(item.value) || item.value.length === 0
+      ? t('any value')
+      : '');
 
   return (
     <ItemLayout item={item} {...rest}>
       <GroupSelect
+        data-testid="number-filter-select"
         value={selectValue}
         options={options}
         onChange={typeChange}

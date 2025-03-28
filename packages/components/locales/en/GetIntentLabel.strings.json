@@ -1,6 +1,18 @@
 {
-  "Error": "Error",
-  "Inform": "Inform",
-  "Success": "Success",
-  "Warning": "Warning"
+  "Error": {
+    "description": "",
+    "value": "Error"
+  },
+  "Inform": {
+    "description": "",
+    "value": "Inform"
+  },
+  "Success": {
+    "description": "",
+    "value": "Success"
+  },
+  "Warning": {
+    "description": "",
+    "value": "Warning"
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Delete": "Slet"
+  "Delete": {
+    "value": "Slet",
+    "description": ""
+  }
 }

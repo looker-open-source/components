@@ -1,72 +1,98 @@
 {
   " complete": {
+    "description": "",
     "value": " complete"
   },
   "absolute prefix dateTime": {
+    "description": "",
     "value": "{{prefix}} {{dateTime}}"
   },
   "ago": {
+    "description": "",
     "value": "ago"
   },
   "from now": {
+    "description": "",
     "value": "from now"
   },
   "is any time": {
+    "description": "",
     "value": "is any time"
   },
   "is before": {
+    "description": "",
     "value": "is before"
   },
   "is day": {
+    "description": "",
     "value": "is {{day}}"
   },
   "is from dateTimeStart until dateTimeEnd": {
+    "description": "",
     "value": "is from {{dateTimeStart}} until {{dateTimeEnd}}"
   },
   "is in month year": {
+    "description": "",
     "value": "is in {{month}} {{year}}"
   },
   "is in the last": {
+    "description": "",
     "value": "is in the last {{describeInterval}}"
   },
   "is in the year year": {
+    "description": "",
     "value": "is in the year {{year}}"
   },
   "is interval ago": {
+    "description": "",
     "value": "is {{interval}} ago"
   },
   "is intervalStart intervalType for intervalEnd": {
+    "description": "",
     "value": "is {{intervalStart}} {{intervalType}} for {{intervalEnd}}"
   },
   "is not null": {
+    "description": "",
     "value": "is not null"
   },
   "is on dateTime": {
+    "description": "",
     "value": "is on {{dateTime}}"
   },
   "is on or after": {
+    "description": "",
     "value": "is on or after"
   },
   "is previous unitLabel": {
+    "description": "",
     "value": "is previous {{unitLabel}}"
   },
   "is type unitLabel": {
+    "description": "",
     "value": "is {{type}} {{unitLabel}}"
   },
   "next": {
+    "description": "",
     "value": "next"
   },
   "prefix interval timePassed": {
+    "description": "",
     "value": "{{prefix}} {{interval}} {{timePassed}}"
   },
   "prefix now": {
+    "description": "",
     "value": "{{prefix}} now"
   },
   "this": {
+    "description": "",
     "value": "this"
   },
-  "this startInterval to endInterval": "this {{startInterval}} to {{endInterval}}",
+  "this startInterval to endInterval": {
+    "description": "",
+    "value": "this {{startInterval}} to {{endInterval}}"
+  },
   "value complete unitLabel": {
+    "description": "",
     "value": "{{value}}{{complete}} {{unitLabel}}"
   }
 }

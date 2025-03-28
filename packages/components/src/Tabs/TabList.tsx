@@ -18,9 +18,6 @@ export interface TabListProps extends PaddingProps, FontSizeProps {
   distribute?: boolean;
 }
 
-/**
- * @deprecated Use `Tabs2` & `Tab2` instead
- */
 export const TabList = styled(
   forwardRef(
     (
@@ -57,5 +54,6 @@ export const TabList = styled(
 ).attrs(({ fontSize = 'small' }) => ({
   fontSize,
 }))`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.ui2};
   ${tabListCSS}
 `;

@@ -1,23 +1,30 @@
 {
   "blank": {
+    "description": "",
     "value": "비어 있음"
   },
   "contains value": {
+    "description": "",
     "value": "{{value}} 포함"
   },
   "does not contain value": {
+    "description": "",
     "value": "{{value}} 포함하지 않음"
   },
   "does not end with value": {
+    "description": "",
     "value": "{{value}}(으)로 끝나지 않음"
   },
   "does not start with value": {
+    "description": "",
     "value": "{{value}}(으)로 시작되지 않음"
   },
   "ends with value": {
+    "description": "",
     "value": "{{value}}(으)로 끝남"
   },
   "starts with value": {
+    "description": "",
     "value": "{{value}}(으)로 시작"
   }
 }

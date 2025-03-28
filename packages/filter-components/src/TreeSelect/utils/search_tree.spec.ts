@@ -25,7 +25,7 @@
  */
 import { renderWithTheme } from '@looker/test-utils';
 import type React from 'react';
-import { mockTreeData } from '../stories/examples';
+import { mockTreeData } from '../fixtures';
 import type { TreeModel } from '../types';
 import { containsString, searchTree, hasAnyVisibleEntry } from './search_tree';
 

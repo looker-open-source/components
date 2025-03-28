@@ -36,7 +36,7 @@ const ModalHeaderLayout = ({
 }: ModalHeaderProps) => {
   return (
     <Space as="header" between aria-labelledby={id} {...props}>
-      <Heading
+      <StyledHeading
         as="h3"
         fontSize={fontSize}
         fontWeight={fontWeight}
@@ -45,11 +45,18 @@ const ModalHeaderLayout = ({
         truncate
       >
         {children}
-      </Heading>
+      </StyledHeading>
       {detail && <Detail>{detail}</Detail>}
     </Space>
   );
 };
+
+const StyledHeading = styled(Heading)`
+  display: grid;
+  grid-gap: ${({ theme }) => theme.space.xsmall};
+  grid-template-columns: auto auto auto;
+  align-items: center;
+`;
 
 const Detail = styled.div`
   margin-bottom: -${({ theme }) => theme.space.u2};

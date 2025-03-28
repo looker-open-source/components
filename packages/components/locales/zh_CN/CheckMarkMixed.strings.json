@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "对勾标记混合"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "对勾标记混合"
+  }
 }

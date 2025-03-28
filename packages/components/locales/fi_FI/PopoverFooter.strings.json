@@ -1,3 +1,6 @@
 {
-  "Done": "Valmis"
+  "Done": {
+    "value": "Valmis",
+    "description": ""
+  }
 }

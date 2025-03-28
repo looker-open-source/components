@@ -1,4 +1,10 @@
 {
-  "next month": "следующий месяц",
-  "previous month": "прошлый месяц"
+  "next month": {
+    "value": "следующий месяц",
+    "description": ""
+  },
+  "previous month": {
+    "value": "прошлый месяц",
+    "description": ""
+  }
 }

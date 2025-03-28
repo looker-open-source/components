@@ -1,3 +1,6 @@
 {
-  "Options": "विकल्प"
+  "Options": {
+    "value": "विकल्प",
+    "description": ""
+  }
 }

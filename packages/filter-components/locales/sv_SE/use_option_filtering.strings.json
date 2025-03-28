@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Inga värden"
+    "value": "Inga värden",
+    "description": ""
   },
   "No values match": {
-    "value": "Inga värden matchar"
+    "value": "Inga värden matchar",
+    "description": ""
   }
 }

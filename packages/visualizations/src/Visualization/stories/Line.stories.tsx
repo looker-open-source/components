@@ -145,7 +145,7 @@ export const DefaultYAxisSingleMeasure: Story<LineProps> = () => {
   const config = buildChartConfig({
     config: {
       ...mockSdkConfigResponse,
-      y_axes: undefined,
+      y_axis: undefined,
       type: 'line',
     },
     data,

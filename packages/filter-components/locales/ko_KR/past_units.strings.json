@@ -1,32 +1,42 @@
 {
   "complete days": {
+    "description": "",
     "value": "일 전체"
   },
   "complete fiscal quarters": {
+    "description": "",
     "value": "회계 분기 전체"
   },
   "complete fiscal years": {
+    "description": "",
     "value": "회계 연도 전체"
   },
   "complete hours": {
+    "description": "",
     "value": "시간 전체"
   },
   "complete minutes": {
+    "description": "",
     "value": "분 전체"
   },
   "complete months": {
+    "description": "",
     "value": "개월 전체"
   },
   "complete quarters": {
+    "description": "",
     "value": "분기 전체"
   },
   "complete seconds": {
+    "description": "",
     "value": "초 전체"
   },
   "complete weeks": {
+    "description": "",
     "value": "주 전체"
   },
   "complete years": {
+    "description": "",
     "value": "년 전체"
   }
 }

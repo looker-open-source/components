@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "अंतिम 14 दिन"
+    "value": "अंतिम 14 दिन",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "अंतिम 180 दिन"
+    "value": "अंतिम 180 दिन",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "अंतिम 28 दिन"
+    "value": "अंतिम 28 दिन",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "अंतिम 30 दिन"
+    "value": "अंतिम 30 दिन",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "अंतिम 365 दिन"
+    "value": "अंतिम 365 दिन",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "अंतिम 7 दिन"
+    "value": "अंतिम 7 दिन",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "अंतिम 90 दिन"
+    "value": "अंतिम 90 दिन",
+    "description": ""
   },
   "Previous Month": {
-    "value": "पिछले महीने"
+    "value": "पिछले महीने",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "पिछली तिमाही"
+    "value": "पिछली तिमाही",
+    "description": ""
   },
   "Previous Week": {
-    "value": "पिछले सप्ताह"
+    "value": "पिछले सप्ताह",
+    "description": ""
   },
   "Previous Year": {
-    "value": "पिछला वर्ष"
+    "value": "पिछला वर्ष",
+    "description": ""
   },
   "This Month": {
-    "value": "इस महीने"
+    "value": "इस महीने",
+    "description": ""
   },
   "This Quarter": {
-    "value": "इस तिमाही"
+    "value": "इस तिमाही",
+    "description": ""
   },
   "This Week": {
-    "value": "इस सप्ताह"
+    "value": "इस सप्ताह",
+    "description": ""
   },
   "This Year": {
-    "value": "इस साल"
+    "value": "इस साल",
+    "description": ""
   },
   "Today": {
-    "value": "आज"
+    "value": "आज",
+    "description": ""
   },
   "Year To Date": {
-    "value": "आज से पिछले एक साल का"
+    "value": "आज से पिछले एक साल का",
+    "description": ""
   },
   "Yesterday": {
-    "value": "कल का"
+    "value": "कल का",
+    "description": ""
   }
 }

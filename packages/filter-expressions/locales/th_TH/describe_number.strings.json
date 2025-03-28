@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "อยู่ในช่วง {{range}}"
+    "value": "อยู่ในช่วง {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "ไม่อยู่ในช่วง {{range}}"
+    "value": "ไม่อยู่ในช่วง {{range}}",
+    "description": ""
   }
 }

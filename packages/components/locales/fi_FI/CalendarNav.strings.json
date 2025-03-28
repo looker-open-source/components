@@ -1,4 +1,10 @@
 {
-  "next month": "seuraava kuukausi",
-  "previous month": "edellinen kuukausi"
+  "next month": {
+    "value": "seuraava kuukausi",
+    "description": ""
+  },
+  "previous month": {
+    "value": "edellinen kuukausi",
+    "description": ""
+  }
 }

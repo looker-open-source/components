@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "표시된 항목 {{pageCount}}개 모두 선택됨",
-  "AllTotalCountSelected": "항목 {{totalCount}}개 모두 선택됨",
-  "Bulk Actions": "일괄 작업",
-  "Clear Selection": "항목 선택 해제",
-  "SelectAllCountResults": "검색결과 {{totalCount}}개 모두 선택",
-  "SelectedCountOfTotalDisplayed": "표시된 항목 {{pageCount}}개 중 {{selectedItemCount}}개 선택됨"
+  "AllPageCountDisplayedSelected": {
+    "description": "",
+    "value": "표시된 항목 {{pageCount}}개 모두 선택됨"
+  },
+  "AllTotalCountSelected": {
+    "description": "",
+    "value": "항목 {{totalCount}}개 모두 선택됨"
+  },
+  "Bulk Actions": {
+    "description": "",
+    "value": "일괄 작업"
+  },
+  "Clear Selection": {
+    "description": "",
+    "value": "항목 선택 해제"
+  },
+  "SelectAllCountResults": {
+    "description": "",
+    "value": "검색결과 {{totalCount}}개 모두 선택"
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "description": "",
+    "value": "표시된 항목 {{pageCount}}개 중 {{selectedItemCount}}개 선택됨"
+  }
 }

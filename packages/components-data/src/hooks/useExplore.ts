@@ -25,7 +25,11 @@
  */
 
 import { useEffect } from 'react';
-import type { IError, ILookmlModelExplore } from '@looker/sdk';
+import type {
+  IError,
+  ILookmlModelExplore,
+  IRequestLookmlModelExplore,
+} from '@looker/sdk';
 import type { SDKResponse } from '@looker/sdk-rtl';
 import isEmpty from 'lodash/isEmpty';
 import isEqual from 'lodash/isEqual';
@@ -37,11 +41,11 @@ import { useSDK, useQueryMetadata, DataState } from '.';
  * A shared hook for fetching the Field Groups associated with query ID.
  * Used for rendering filter options.
  *
- * @param id a numeric query id
+ * @param id query id
  * @returns field groups and api state
  */
 
-export const useExplore = (id: number) => {
+export const useExplore = (id: string) => {
   const sdk = useSDK();
   const { setModelExplore, getModelExplore } = DataState.useContainer();
 
@@ -60,8 +64,13 @@ export const useExplore = (id: number) => {
    */
 
   const fetcher = async () => {
-    if (id > 0 && model && view && isEmpty(explore)) {
-      return await sdk.lookml_model_explore(model, view);
+    if (id && model && view && isEmpty(explore)) {
+      const request: IRequestLookmlModelExplore = {
+        add_drills_metadata: false,
+        explore_name: view,
+        lookml_model_name: model,
+      };
+      return await sdk.lookml_model_explore(request);
     }
 
     return undefined;

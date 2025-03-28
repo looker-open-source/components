@@ -1,3 +1,6 @@
 {
-  "until (before)": "直到（不包括）"
+  "until (before)": {
+    "description": "",
+    "value": "直到（不包括）"
+  }
 }

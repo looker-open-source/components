@@ -1,3 +1,6 @@
 {
-  "Value required": "Arvo tarvitaan"
+  "Value required": {
+    "value": "Arvo tarvitaan",
+    "description": ""
+  }
 }

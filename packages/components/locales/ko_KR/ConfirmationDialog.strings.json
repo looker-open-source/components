@@ -1,4 +1,10 @@
 {
-  "Cancel": "취소",
-  "Confirm": "확인"
+  "Cancel": {
+    "description": "",
+    "value": "취소"
+  },
+  "Confirm": {
+    "description": "",
+    "value": "확인"
+  }
 }

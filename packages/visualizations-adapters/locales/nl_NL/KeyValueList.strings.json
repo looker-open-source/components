@@ -1,6 +1,18 @@
 {
-  "false": "onwaar",
-  "null": "ongeldig",
-  "true": "waar",
-  "undefined": "ongedefinieerd"
+  "false": {
+    "value": "onwaar",
+    "description": ""
+  },
+  "null": {
+    "value": "ongeldig",
+    "description": ""
+  },
+  "true": {
+    "value": "waar",
+    "description": ""
+  },
+  "undefined": {
+    "value": "ongedefinieerd",
+    "description": ""
+  }
 }

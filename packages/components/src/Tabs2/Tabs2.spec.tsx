@@ -30,16 +30,34 @@ import { renderWithTheme } from '@looker/components-test-utils';
 import React, { useState } from 'react';
 import { act, fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { StateChanges } from './stories/index.stories';
-import { Tab2, Tabs2 } from './';
+import { FieldText } from '..';
+import { Link } from '../Link';
+import { Tab2, Tabs2 } from '.';
+
+function StateChanges() {
+  const [value, setValue] = useState('');
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value);
+  };
+  return (
+    <Tabs2>
+      <Tab2 label="Tab 1">Go to Tab 2 and try entering text in the field</Tab2>
+      <Tab2 label="Tab 2">
+        <FieldText value={value} onChange={handleChange} />
+      </Tab2>
+    </Tabs2>
+  );
+}
 
 beforeEach(() => {
   jest.useFakeTimers();
 });
+
 afterEach(() => {
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
 });
+
 const runTimers = () =>
   act(() => {
     jest.runOnlyPendingTimers();
@@ -123,6 +141,19 @@ describe('Tabs2', () => {
     const textfield = screen.getByRole('textbox');
     userEvent.type(textfield, 'test');
     expect(textfield).toBeInTheDocument();
+  });
+
+  test('renders secondary content when provided', () => {
+    renderWithTheme(
+      <Basic
+        secondaryContent={<Link href={'https://example.com/hello'}>Hello</Link>}
+      />
+    );
+    expect(screen.getAllByRole('tab')).toHaveLength(4);
+    expect(screen.getByRole('link', { name: 'Hello' })).toHaveProperty(
+      'href',
+      'https://example.com/hello'
+    );
   });
 
   test('Distributed', () => {

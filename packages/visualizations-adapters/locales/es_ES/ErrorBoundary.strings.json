@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Hubo un problema."
+  "Something went wrong": {
+    "description": "",
+    "value": "Se produjo un error"
+  }
 }

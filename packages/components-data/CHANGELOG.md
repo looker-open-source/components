@@ -1,3 +1,9 @@
+## 1.0.4 (2025-03-27)
+
+### Bug Fixes
+
+- Fix issue causing query IDs to be parsed as `NaN`.
+
 ## 1.0.3 (2023-01-26)
 
 Version bump only.

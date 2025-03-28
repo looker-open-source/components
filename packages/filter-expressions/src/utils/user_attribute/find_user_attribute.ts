@@ -5,7 +5,7 @@
 import type { UserAttributeWithValue } from '../../types';
 
 export const findUserAttribute = (
-  attribute: string,
+  attribute?: string,
   userAttributes?: UserAttributeWithValue[]
 ) =>
   userAttributes &&

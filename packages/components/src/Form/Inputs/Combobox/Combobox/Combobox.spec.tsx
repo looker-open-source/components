@@ -39,7 +39,27 @@ import {
   ComboboxMultiList,
   ComboboxMultiOption,
 } from '..';
-import ShouldRenderListInline from './stories/ShouldRenderListInline';
+
+function ShouldRenderListInline(props: React.ComponentProps<typeof Combobox>) {
+  const { width = 300, ...restProps } = props;
+  return (
+    <Combobox width={width} {...restProps} shouldRenderListInline>
+      <ComboboxInput />
+      <ComboboxList>
+        <ComboboxOption value="Apples" />
+        <ComboboxOption value="Oranges" />
+        <ComboboxOption value="Grapes" />
+        <ComboboxOption value="Bananas" />
+        <ComboboxOption value="Pineapples" />
+        <ComboboxOption
+          value=""
+          label="Create New Option"
+          highlightText={false}
+        />
+      </ComboboxList>
+    </Combobox>
+  );
+}
 
 afterEach(cleanup);
 

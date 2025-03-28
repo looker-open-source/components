@@ -43,7 +43,7 @@ const TestComponent = ({ newQuery }: TestComponentProps) => {
   const response = useCreateQuery(newQuery);
   const { getById } = DataState.useContainer();
 
-  const mockMetadata = getById(response?.queryId || 0, 'metadata');
+  const mockMetadata = getById(response?.queryId || '', 'metadata');
 
   dataContainerListener(response);
   dataStateListener(mockMetadata);
@@ -100,7 +100,7 @@ describe('useCreateQuery', () => {
       expect(dataContainerListener).toHaveBeenLastCalledWith({
         isOK: true,
         isPending: false,
-        queryId: 126,
+        queryId: '126',
       })
     );
 

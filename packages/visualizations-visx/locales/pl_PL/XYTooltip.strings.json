@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Rozmiar punktów określony według"
+  "Points sized by": {
+    "description": "",
+    "value": "Rozmiar punktów określony według"
+  }
 }

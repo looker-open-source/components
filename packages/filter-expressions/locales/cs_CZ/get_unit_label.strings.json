@@ -1,82 +1,162 @@
 {
-  "complete day": "celý den",
+  "complete day": {
+    "value": "celý den",
+    "description": ""
+  },
   "complete days": {
-    "value": "celé dny"
+    "value": "celé dny",
+    "description": ""
   },
-  "complete fiscal quarter": "celé fiskální čtvrtletí",
+  "complete fiscal quarter": {
+    "value": "celé fiskální čtvrtletí",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "celá fiskální čtvrtletí"
+    "value": "celá fiskální čtvrtletí",
+    "description": ""
   },
-  "complete fiscal year": "celý fiskální rok",
+  "complete fiscal year": {
+    "value": "celý fiskální rok",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "celé fiskální roky"
+    "value": "celé fiskální roky",
+    "description": ""
   },
-  "complete hour": "celá hodina",
+  "complete hour": {
+    "value": "celá hodina",
+    "description": ""
+  },
   "complete hours": {
-    "value": "celé hodiny"
+    "value": "celé hodiny",
+    "description": ""
   },
-  "complete minute": "celá minuta",
+  "complete minute": {
+    "value": "celá minuta",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "celé minuty"
+    "value": "celé minuty",
+    "description": ""
   },
-  "complete month": "celý měsíc",
+  "complete month": {
+    "value": "celý měsíc",
+    "description": ""
+  },
   "complete months": {
-    "value": "celé měsíce"
+    "value": "celé měsíce",
+    "description": ""
   },
-  "complete quarter": "celé čtvrtletí",
+  "complete quarter": {
+    "value": "celé čtvrtletí",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "celá čtvrtletí"
+    "value": "celá čtvrtletí",
+    "description": ""
   },
-  "complete second": "celá sekunda",
+  "complete second": {
+    "value": "celá sekunda",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "celé sekundy"
+    "value": "celé sekundy",
+    "description": ""
   },
-  "complete week": "celý týden",
+  "complete week": {
+    "value": "celý týden",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "celé týdny"
+    "value": "celé týdny",
+    "description": ""
   },
-  "complete year": "celý rok",
+  "complete year": {
+    "value": "celý rok",
+    "description": ""
+  },
   "complete years": {
-    "value": "celé roky"
+    "value": "celé roky",
+    "description": ""
   },
-  "day": "den",
+  "day": {
+    "value": "den",
+    "description": ""
+  },
   "days": {
-    "value": "dny/ů"
+    "value": "dny/ů",
+    "description": ""
   },
-  "fiscal quarter": "fiskální čtvrtletí",
+  "fiscal quarter": {
+    "value": "fiskální čtvrtletí",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "fiskální čtvrtletí"
+    "value": "fiskální čtvrtletí",
+    "description": ""
   },
-  "fiscal year": "fiskální rok",
+  "fiscal year": {
+    "value": "fiskální rok",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "fiskální roky"
+    "value": "fiskální roky",
+    "description": ""
   },
-  "hour": "hodina",
+  "hour": {
+    "value": "hodina",
+    "description": ""
+  },
   "hours": {
-    "value": "hodin(y)"
+    "value": "hodin(y)",
+    "description": ""
   },
-  "minute": "minuta",
+  "minute": {
+    "value": "minuta",
+    "description": ""
+  },
   "minutes": {
-    "value": "minut(y)"
+    "value": "minut(y)",
+    "description": ""
   },
-  "month": "měsíc",
+  "month": {
+    "value": "měsíc",
+    "description": ""
+  },
   "months": {
-    "value": "měsíce/ů"
+    "value": "měsíce/ů",
+    "description": ""
   },
-  "quarter": "čtvrtletí",
+  "quarter": {
+    "value": "čtvrtletí",
+    "description": ""
+  },
   "quarters": {
-    "value": "čtvrtletí"
+    "value": "čtvrtletí",
+    "description": ""
   },
-  "second": "sekunda",
+  "second": {
+    "value": "sekunda",
+    "description": ""
+  },
   "seconds": {
-    "value": "sekund(y)"
+    "value": "sekund(y)",
+    "description": ""
   },
-  "week": "týden",
+  "week": {
+    "value": "týden",
+    "description": ""
+  },
   "weeks": {
-    "value": "týdny/ů"
+    "value": "týdny/ů",
+    "description": ""
   },
-  "year": "rok",
+  "year": {
+    "value": "rok",
+    "description": ""
+  },
   "years": {
-    "value": "roky/ů"
+    "value": "roky/ů",
+    "description": ""
   }
 }

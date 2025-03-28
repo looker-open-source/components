@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "天"
   },
   "days": {
+    "description": "",
     "value": "天"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "财季"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "财季"
   },
   "fiscal year": {
+    "description": "",
     "value": "财年"
   },
   "fiscal years": {
+    "description": "",
     "value": "财年"
   },
   "hour": {
+    "description": "",
     "value": "小时"
   },
   "hours": {
+    "description": "",
     "value": "小时"
   },
   "minute": {
+    "description": "",
     "value": "分钟"
   },
   "minutes": {
+    "description": "",
     "value": "分钟"
   },
   "month": {
+    "description": "",
     "value": "月"
   },
   "months": {
+    "description": "",
     "value": "月"
   },
   "quarter": {
+    "description": "",
     "value": "季度"
   },
   "quarters": {
+    "description": "",
     "value": "季度"
   },
   "second": {
+    "description": "",
     "value": "秒"
   },
   "seconds": {
+    "description": "",
     "value": "秒"
   },
   "week": {
+    "description": "",
     "value": "周"
   },
   "weeks": {
+    "description": "",
     "value": "周"
   },
   "year": {
+    "description": "",
     "value": "年"
   },
   "years": {
+    "description": "",
     "value": "年"
   }
 }

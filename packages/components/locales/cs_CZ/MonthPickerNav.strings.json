@@ -1,5 +1,14 @@
 {
-  "close": "zavřít",
-  "next year": "další rok",
-  "previous year": "předchozí rok"
+  "close": {
+    "value": "zavřít",
+    "description": ""
+  },
+  "next year": {
+    "value": "další rok",
+    "description": ""
+  },
+  "previous year": {
+    "value": "předchozí rok",
+    "description": ""
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Copied": "Elemento copiato",
-  "Copy to Clipboard": "Copia negli appunti"
+  "Copied": {
+    "description": "",
+    "value": "Elemento copiato"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "Copia negli appunti"
+  }
 }

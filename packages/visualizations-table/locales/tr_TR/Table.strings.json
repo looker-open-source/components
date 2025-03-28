@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Ek sütunları sıralamak için Shift + Click tuşlarına basın",
-  "Sort ascending": "Artan düzenle sırala",
-  "Sort descending": "Azalan düzende sırala",
-  "Totals": "Toplamlar"
+  "Shift + Click to sort additional columns": {
+    "value": "Ek sütunları sıralamak için Shift + Click tuşlarına basın",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Artan düzenle sırala",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Azalan düzende sırala",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Toplamlar",
+    "description": ""
+  }
 }

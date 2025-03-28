@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "לא הועברו רכיבים \"ילדים\" של רכיב השאילתה",
-  "Query component received both dashboard and query props": "רכיב השאילתה קיבל את אביזרי השאילתה והדשבורד"
+  "No children passed to Query component": {
+    "value": "לא הועברו רכיבים \"ילדים\" של רכיב השאילתה",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "רכיב השאילתה קיבל את אביזרי השאילתה והדשבורד",
+    "description": ""
+  }
 }

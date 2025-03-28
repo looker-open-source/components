@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Tinkinta"
+    "value": "Tinkinta",
+    "description": ""
   },
   "Presets": {
-    "value": "Išankstiniai nustatymai"
+    "value": "Išankstiniai nustatymai",
+    "description": ""
   }
 }

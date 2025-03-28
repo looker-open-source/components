@@ -1,3 +1,6 @@
 {
-  "No Results": "Rezultatų nėra"
+  "No Results": {
+    "value": "Rezultatų nėra",
+    "description": ""
+  }
 }

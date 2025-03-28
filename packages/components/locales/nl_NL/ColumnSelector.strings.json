@@ -1,7 +1,22 @@
 {
-  "Apply": "Toepassen",
-  "Cancel": "Annuleren",
-  "Select All": "Alles selecteren",
-  "Select None": "Niets selecteren",
-  "Select columns to display": "Weer te geven kolommen selecteren"
+  "Apply": {
+    "value": "Toepassen",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Annuleren",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Alles selecteren",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Niets selecteren",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Weer te geven kolommen selecteren",
+    "description": ""
+  }
 }

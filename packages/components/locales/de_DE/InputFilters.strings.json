@@ -1,4 +1,10 @@
 {
-  "Clear Filters": "Filter löschen",
-  "Filter List": "Liste filtern"
+  "Clear Filters": {
+    "description": "",
+    "value": "Filter löschen"
+  },
+  "Filter List": {
+    "description": "",
+    "value": "Liste filtern"
+  }
 }

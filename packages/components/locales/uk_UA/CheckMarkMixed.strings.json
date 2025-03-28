@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Позначки змішані"
+  "Check Mark Mixed": {
+    "value": "Позначки змішані",
+    "description": ""
+  }
 }

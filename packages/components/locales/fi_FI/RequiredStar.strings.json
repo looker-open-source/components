@@ -1,3 +1,6 @@
 {
-  "required": "tarvitaan"
+  "required": {
+    "value": "tarvitaan",
+    "description": ""
+  }
 }

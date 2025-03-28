@@ -1,5 +1,14 @@
 {
-  "close": "kapat",
-  "next year": "sonraki yıl",
-  "previous year": "önceki yıl"
+  "close": {
+    "value": "kapat",
+    "description": ""
+  },
+  "next year": {
+    "value": "sonraki yıl",
+    "description": ""
+  },
+  "previous year": {
+    "value": "önceki yıl",
+    "description": ""
+  }
 }

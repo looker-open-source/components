@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "dagar sedan"
+    "value": "dagar sedan",
+    "description": ""
   },
   "days from now": {
-    "value": "dagar kvar"
+    "value": "dagar kvar",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "räkenskapskvartal från nu"
+    "value": "räkenskapskvartal från nu",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "räkenskapskvartal sedan"
+    "value": "räkenskapskvartal sedan",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "räkenskapsår sedan"
+    "value": "räkenskapsår sedan",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "räkenskapsår kvar"
+    "value": "räkenskapsår kvar",
+    "description": ""
   },
   "hours ago": {
-    "value": "timmar sedan"
+    "value": "timmar sedan",
+    "description": ""
   },
   "hours from now": {
-    "value": "timmar kvar"
+    "value": "timmar kvar",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minuter sedan"
+    "value": "minuter sedan",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minuter kvar"
+    "value": "minuter kvar",
+    "description": ""
   },
   "months ago": {
-    "value": "månader sedan"
+    "value": "månader sedan",
+    "description": ""
   },
   "months from now": {
-    "value": "månader kvar"
+    "value": "månader kvar",
+    "description": ""
   },
   "now": {
-    "value": "nu"
+    "value": "nu",
+    "description": ""
   },
   "quarters ago": {
-    "value": "kvartal sedan"
+    "value": "kvartal sedan",
+    "description": ""
   },
   "quarters from now": {
-    "value": "kvartal kvar"
+    "value": "kvartal kvar",
+    "description": ""
   },
   "seconds ago": {
-    "value": "sekunder sedan"
+    "value": "sekunder sedan",
+    "description": ""
   },
   "seconds from now": {
-    "value": "sekunder kvar"
+    "value": "sekunder kvar",
+    "description": ""
   },
   "weeks ago": {
-    "value": "veckor sedan"
+    "value": "veckor sedan",
+    "description": ""
   },
   "weeks from now": {
-    "value": "veckor kvar"
+    "value": "veckor kvar",
+    "description": ""
   },
   "years ago": {
-    "value": "år sedan"
+    "value": "år sedan",
+    "description": ""
   },
   "years from now": {
-    "value": "år kvar"
+    "value": "år kvar",
+    "description": ""
   }
 }

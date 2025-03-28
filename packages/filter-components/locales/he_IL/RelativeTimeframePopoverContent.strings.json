@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "מותאם אישית"
+    "value": "מותאם אישית",
+    "description": ""
   },
   "Presets": {
-    "value": "קבועים מראש"
+    "value": "קבועים מראש",
+    "description": ""
   }
 }

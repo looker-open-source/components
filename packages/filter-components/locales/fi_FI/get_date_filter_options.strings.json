@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "on"
+    "value": "on",
+    "description": ""
   },
   "is any time": {
-    "value": "on milloin tahansa"
+    "value": "on milloin tahansa",
+    "description": ""
   },
   "is before": {
-    "value": "on ennen ajankohtaa"
+    "value": "on ennen ajankohtaa",
+    "description": ""
   },
   "is in range": {
-    "value": "on alueella"
+    "value": "on alueella",
+    "description": ""
   },
   "is in the last": {
-    "value": "on viimeisten"
+    "value": "on viimeisten",
+    "description": ""
   },
   "is in the month": {
-    "value": "on kuussa"
+    "value": "on kuussa",
+    "description": ""
   },
   "is in the year": {
-    "value": "on vuonna"
+    "value": "on vuonna",
+    "description": ""
   },
   "is next": {
-    "value": "on seuraava"
+    "value": "on seuraava",
+    "description": ""
   },
   "is not null": {
-    "value": "ei ole nolla"
+    "value": "ei ole nolla",
+    "description": ""
   },
   "is null": {
-    "value": "on nolla"
+    "value": "on nolla",
+    "description": ""
   },
   "is on or after": {
-    "value": "on ajankohtana tai jälkeen ajankohdan"
+    "value": "on ajankohtana tai jälkeen ajankohdan",
+    "description": ""
   },
   "is on the day": {
-    "value": "on päivänä"
+    "value": "on päivänä",
+    "description": ""
   },
   "is previous": {
-    "value": "on aiempi"
+    "value": "on aiempi",
+    "description": ""
   },
   "is this": {
-    "value": "on tämä"
+    "value": "on tämä",
+    "description": ""
   }
 }

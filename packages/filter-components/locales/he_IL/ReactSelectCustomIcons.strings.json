@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "נקה הכול"
+    "value": "נקה הכול",
+    "description": ""
   },
   "Remove": {
-    "value": "הסר"
+    "value": "הסר",
+    "description": ""
   },
   "Toggle": {
-    "value": "שנה מצב"
+    "value": "שנה מצב",
+    "description": ""
   }
 }

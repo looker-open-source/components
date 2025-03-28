@@ -1,3 +1,6 @@
 {
-  "Points sized by": "Velikost bodů podle"
+  "Points sized by": {
+    "value": "Velikost bodů podle",
+    "description": ""
+  }
 }

@@ -3,7 +3,6 @@
 /**/locales
 /dist
 /lib
-/storybook-static
 /test/output/jest
 /src/AnalyticsApp/AnalyticsApp.tsx
 /src/Beaker/Beaker.tsx

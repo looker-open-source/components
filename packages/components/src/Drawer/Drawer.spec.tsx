@@ -35,7 +35,7 @@ import {
 } from '@testing-library/react';
 import { DialogContext } from '../Dialog/DialogContext';
 import { Drawer } from './Drawer';
-import { UseDrawer } from './stories/index.stories';
+import { UseDrawer } from './fixtures';
 
 const SimpleContent = () => {
   const { closeModal } = useContext(DialogContext);

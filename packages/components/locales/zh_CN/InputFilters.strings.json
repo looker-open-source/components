@@ -1,4 +1,10 @@
 {
-  "Clear Filters": "清除过滤条件",
-  "Filter List": "过滤条件列表"
+  "Clear Filters": {
+    "description": "",
+    "value": "清除过滤条件"
+  },
+  "Filter List": {
+    "description": "",
+    "value": "过滤条件列表"
+  }
 }

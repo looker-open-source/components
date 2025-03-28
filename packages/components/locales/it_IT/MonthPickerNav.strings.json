@@ -1,5 +1,14 @@
 {
-  "close": "chiudi",
-  "next year": "anno successivo",
-  "previous year": "anno precedente"
+  "close": {
+    "description": "",
+    "value": "chiudi"
+  },
+  "next year": {
+    "description": "",
+    "value": "anno successivo"
+  },
+  "previous year": {
+    "description": "",
+    "value": "anno precedente"
+  }
 }

@@ -1,4 +1,10 @@
 {
-  "Next page": "העמוד הבא",
-  "Previous page": "העמוד הקודם"
+  "Next page": {
+    "value": "העמוד הבא",
+    "description": ""
+  },
+  "Previous page": {
+    "value": "העמוד הקודם",
+    "description": ""
+  }
 }

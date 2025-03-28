@@ -39,6 +39,7 @@ export const LocationFilter = ({
               ? undefined
               : 'left'
           }
+          data-testid="location-option"
         />
       </Box>
       <FilterComponent

@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Adicionar"
+    "value": "Adicionar",
+    "description": ""
   },
   "Remove": {
-    "value": "Remover"
+    "value": "Remover",
+    "description": ""
   }
 }

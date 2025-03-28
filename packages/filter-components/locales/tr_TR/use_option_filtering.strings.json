@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "Değer yok"
+    "value": "Değer yok",
+    "description": ""
   },
   "No values match": {
-    "value": "Eşleşen değer yok"
+    "value": "Eşleşen değer yok",
+    "description": ""
   }
 }

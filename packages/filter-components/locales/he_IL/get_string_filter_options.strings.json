@@ -1,14 +1,50 @@
 {
-  "contains": "מכיל",
-  "doesnt contain": "לא מכיל",
-  "doesnt end with": "לא מסתיים ב-",
-  "doesnt start with": "לא מתחיל ב-",
-  "ends with": "מסתיים ב-",
-  "is": "הוא",
-  "is blank": "ריק",
-  "is not": "אינו",
-  "is not blank": "אינו ריק",
-  "is not null": "אינו Null",
-  "is null": "Null",
-  "starts with": "מתחיל ב-"
+  "contains": {
+    "value": "מכיל",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "לא מכיל",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "לא מסתיים ב-",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "לא מתחיל ב-",
+    "description": ""
+  },
+  "ends with": {
+    "value": "מסתיים ב-",
+    "description": ""
+  },
+  "is": {
+    "value": "הוא",
+    "description": ""
+  },
+  "is blank": {
+    "value": "ריק",
+    "description": ""
+  },
+  "is not": {
+    "value": "אינו",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "אינו ריק",
+    "description": ""
+  },
+  "is not null": {
+    "value": "אינו Null",
+    "description": ""
+  },
+  "is null": {
+    "value": "Null",
+    "description": ""
+  },
+  "starts with": {
+    "value": "מתחיל ב-",
+    "description": ""
+  }
 }

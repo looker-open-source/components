@@ -6,9 +6,26 @@
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
-import Basic from './stories/Basic';
-import FooterClose from './stories/FooterClose';
-import FooterWithChildren from './stories/FooterWithChildren';
+import { ButtonTransparent } from '../../../Button/ButtonTransparent';
+import { PopoverFooter } from '.';
+
+function Basic() {
+  return <PopoverFooter />;
+}
+
+function FooterClose() {
+  return <PopoverFooter closeButton="Close" />;
+}
+
+function FooterWithChildren() {
+  return (
+    <PopoverFooter>
+      <ButtonTransparent color="neutral" size="small">
+        Cancel
+      </ButtonTransparent>
+    </PopoverFooter>
+  );
+}
 
 describe('PopoverFooter', () => {
   test('basic ', () => {

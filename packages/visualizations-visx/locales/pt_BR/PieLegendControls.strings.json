@@ -1,4 +1,10 @@
 {
-  "Next page": "Próxima página",
-  "Previous page": "Página anterior"
+  "Next page": {
+    "description": "",
+    "value": "Próxima página"
+  },
+  "Previous page": {
+    "description": "",
+    "value": "Página anterior"
+  }
 }

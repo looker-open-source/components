@@ -6,6 +6,7 @@
 import type { ReactNode } from 'react';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import type { IconType } from '../../../Icon';
 import { DialogContext } from '../../../Dialog/DialogContext';
 import { VisuallyHidden } from '../../../VisuallyHidden';
 import type { ModalHeaderProps } from '../../../Modal';
@@ -34,6 +35,7 @@ export type PopoverHeaderProps = DetailOptions & {
    * @default false
    */
   hidden?: boolean;
+  iconBefore?: IconType;
 };
 
 const PopoverHeaderLayout = ({
@@ -41,6 +43,7 @@ const PopoverHeaderLayout = ({
   hideClose = false,
   detail,
   hidden = false,
+  iconBefore,
   ...props
 }: PopoverHeaderProps) => {
   const { id } = useContext(DialogContext);
@@ -59,6 +62,7 @@ const PopoverHeaderLayout = ({
       py="small"
       {...props}
     >
+      {iconBefore}
       {children}
     </ModalHeader>
   );

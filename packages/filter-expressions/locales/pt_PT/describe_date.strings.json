@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " concluído"
+    "value": " concluído",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "há"
+    "value": "há",
+    "description": ""
   },
   "from now": {
-    "value": "daqui a"
+    "value": "daqui a",
+    "description": ""
   },
   "is any time": {
-    "value": "é em qualquer altura"
+    "value": "é em qualquer altura",
+    "description": ""
   },
   "is before": {
-    "value": "é antes de"
+    "value": "é antes de",
+    "description": ""
   },
   "is day": {
-    "value": "é {{day}}"
+    "value": "é {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "é de {{dateTimeStart}} até {{dateTimeEnd}}"
+    "value": "é de {{dateTimeStart}} até {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "é em {{month}} {{year}}"
+    "value": "é em {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "é no último {{describeInterval}}"
+    "value": "é no último {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "é no ano {{year}}"
+    "value": "é no ano {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "é há {{interval}}"
+    "value": "é há {{interval}}",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "é {{intervalStart}} {{intervalType}} até {{intervalEnd}}"
+    "value": "é {{intervalStart}} {{intervalType}} até {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "não é nulo"
+    "value": "não é nulo",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "é a {{dateTime}}"
+    "value": "é a {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "é a ou depois de"
+    "value": "é a ou depois de",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "é {{unitLabel}} anterior"
+    "value": "é {{unitLabel}} anterior",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "é {{type}} {{unitLabel}}"
+    "value": "é {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "seguinte"
+    "value": "seguinte",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} agora"
+    "value": "{{prefix}} agora",
+    "description": ""
   },
   "this": {
-    "value": "este"
+    "value": "este",
+    "description": ""
   },
-  "this startInterval to endInterval": "este {{startInterval}} até {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "este {{startInterval}} até {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

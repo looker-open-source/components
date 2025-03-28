@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Valintamerkki sekoitettu"
+  "Check Mark Mixed": {
+    "value": "Valintamerkki sekoitettu",
+    "description": ""
+  }
 }

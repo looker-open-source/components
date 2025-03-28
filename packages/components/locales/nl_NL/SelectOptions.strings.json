@@ -1,4 +1,10 @@
 {
-  "Loading": "Laden",
-  "No options": "Geen opties"
+  "Loading": {
+    "value": "Laden",
+    "description": ""
+  },
+  "No options": {
+    "value": "Geen opties",
+    "description": ""
+  }
 }

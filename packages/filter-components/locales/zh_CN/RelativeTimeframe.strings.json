@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "选择一个时间范围"
+  "Choose a Timeframe": {
+    "description": "",
+    "value": "选择一个时间范围"
+  }
 }

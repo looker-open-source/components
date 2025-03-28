@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Tyypin 'date' mittoja ei tällä hetkellä tueta",
-  "No chart found for type \"{{type}}\"": "Kaaviota ei löytynyt tyypille \"{{type}}\""
+  "Measures of type 'date' are currently not supported": {
+    "value": "Tyypin 'date' mittoja ei tällä hetkellä tueta",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Kaaviota ei löytynyt tyypille \"{{type}}\"",
+    "description": ""
+  }
 }

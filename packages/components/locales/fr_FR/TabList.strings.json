@@ -1,3 +1,6 @@
 {
-  "Tabs": "Onglets"
+  "Tabs": {
+    "description": "",
+    "value": "Onglets"
+  }
 }

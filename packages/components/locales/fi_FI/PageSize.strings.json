@@ -1,4 +1,10 @@
 {
-  "Display": "Näytä",
-  "of": "/"
+  "Display": {
+    "value": "Näytä",
+    "description": ""
+  },
+  "of": {
+    "value": "/",
+    "description": ""
+  }
 }

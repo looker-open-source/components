@@ -1,3 +1,6 @@
 {
-  "any value": "jakákoliv hodnota"
+  "any value": {
+    "value": "jakákoliv hodnota",
+    "description": ""
+  }
 }

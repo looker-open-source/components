@@ -1,4 +1,10 @@
 {
-  "Loading": "Caricamento in corso…",
-  "No options": "Nessuna opzione"
+  "Loading": {
+    "description": "",
+    "value": "Caricamento in corso…"
+  },
+  "No options": {
+    "description": "",
+    "value": "Nessuna opzione"
+  }
 }

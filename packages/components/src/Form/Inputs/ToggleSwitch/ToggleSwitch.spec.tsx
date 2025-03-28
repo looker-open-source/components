@@ -29,7 +29,7 @@ import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { act, fireEvent, screen } from '@testing-library/react';
 import { RIPPLE_RATIO } from '../../../Ripple';
-import { Basic, Checked, Disabled } from './stories/index.stories';
+import { Basic, Checked, Disabled } from './fixtures';
 
 beforeEach(() => {
   jest.useFakeTimers();

@@ -1,4 +1,10 @@
 {
-  "Copied": "Copié",
-  "Copy to Clipboard": "Copier dans le presse-papiers"
+  "Copied": {
+    "value": "Copié",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Copier dans le presse-papiers",
+    "description": ""
+  }
 }

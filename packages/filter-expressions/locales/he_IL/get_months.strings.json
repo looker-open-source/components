@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "אפריל"
+    "value": "אפריל",
+    "description": ""
   },
   "August": {
-    "value": "אוגוסט"
+    "value": "אוגוסט",
+    "description": ""
   },
   "December": {
-    "value": "דצמבר"
+    "value": "דצמבר",
+    "description": ""
   },
   "February": {
-    "value": "פברואר"
+    "value": "פברואר",
+    "description": ""
   },
   "January": {
-    "value": "ינואר"
+    "value": "ינואר",
+    "description": ""
   },
   "July": {
-    "value": "יולי"
+    "value": "יולי",
+    "description": ""
   },
   "June": {
-    "value": "יוני"
+    "value": "יוני",
+    "description": ""
   },
   "March": {
-    "value": "מרץ"
+    "value": "מרץ",
+    "description": ""
   },
   "May": {
-    "value": "מאי"
+    "value": "מאי",
+    "description": ""
   },
   "November": {
-    "value": "נובמבר"
+    "value": "נובמבר",
+    "description": ""
   },
   "October": {
-    "value": "אוקטובר"
+    "value": "אוקטובר",
+    "description": ""
   },
   "September": {
-    "value": "ספטמבר"
+    "value": "ספטמבר",
+    "description": ""
   }
 }

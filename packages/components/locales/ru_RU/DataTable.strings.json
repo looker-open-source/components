@@ -1,3 +1,6 @@
 {
-  "No Results": "Нет результатов"
+  "No Results": {
+    "value": "Нет результатов",
+    "description": ""
+  }
 }

@@ -1,82 +1,162 @@
 {
-  "complete day": "полн. дн.",
+  "complete day": {
+    "value": "полн. дн.",
+    "description": ""
+  },
   "complete days": {
-    "value": "полн. дн."
+    "value": "полн. дн.",
+    "description": ""
   },
-  "complete fiscal quarter": "полн. финанс. кварт.",
+  "complete fiscal quarter": {
+    "value": "полн. финанс. кварт.",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "полн. финанс. кварт."
+    "value": "полн. финанс. кварт.",
+    "description": ""
   },
-  "complete fiscal year": "полн. финанс. год",
+  "complete fiscal year": {
+    "value": "полн. финанс. год",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "полн. финанс. год(а)/лет"
+    "value": "полн. финанс. год(а)/лет",
+    "description": ""
   },
-  "complete hour": "полн. ч",
+  "complete hour": {
+    "value": "полн. ч",
+    "description": ""
+  },
   "complete hours": {
-    "value": "полн. ч"
+    "value": "полн. ч",
+    "description": ""
   },
-  "complete minute": "полн. мин",
+  "complete minute": {
+    "value": "полн. мин",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "полн. мин"
+    "value": "полн. мин",
+    "description": ""
   },
-  "complete month": "полн. мес.",
+  "complete month": {
+    "value": "полн. мес.",
+    "description": ""
+  },
   "complete months": {
-    "value": "полн. мес."
+    "value": "полн. мес.",
+    "description": ""
   },
-  "complete quarter": "полн. кварт.",
+  "complete quarter": {
+    "value": "полн. кварт.",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "полн. кварт."
+    "value": "полн. кварт.",
+    "description": ""
   },
-  "complete second": "полн. сек",
+  "complete second": {
+    "value": "полн. сек",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "полн. сек"
+    "value": "полн. сек",
+    "description": ""
   },
-  "complete week": "полн. нед.",
+  "complete week": {
+    "value": "полн. нед.",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "полн. нед."
+    "value": "полн. нед.",
+    "description": ""
   },
-  "complete year": "полн. год",
+  "complete year": {
+    "value": "полн. год",
+    "description": ""
+  },
   "complete years": {
-    "value": "полн. год(а)/лет"
+    "value": "полн. год(а)/лет",
+    "description": ""
   },
-  "day": "день",
+  "day": {
+    "value": "день",
+    "description": ""
+  },
   "days": {
-    "value": "д"
+    "value": "д",
+    "description": ""
   },
-  "fiscal quarter": "финансовый квартал",
+  "fiscal quarter": {
+    "value": "финансовый квартал",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "финанс. кварт."
+    "value": "финанс. кварт.",
+    "description": ""
   },
-  "fiscal year": "финансовый год",
+  "fiscal year": {
+    "value": "финансовый год",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "финанс. год(а)/лет"
+    "value": "финанс. год(а)/лет",
+    "description": ""
   },
-  "hour": "час",
+  "hour": {
+    "value": "час",
+    "description": ""
+  },
   "hours": {
-    "value": "ч"
+    "value": "ч",
+    "description": ""
   },
-  "minute": "минута",
+  "minute": {
+    "value": "минута",
+    "description": ""
+  },
   "minutes": {
-    "value": "мин"
+    "value": "мин",
+    "description": ""
   },
-  "month": "мес.",
+  "month": {
+    "value": "мес.",
+    "description": ""
+  },
   "months": {
-    "value": "мес."
+    "value": "мес.",
+    "description": ""
   },
-  "quarter": "квартал",
+  "quarter": {
+    "value": "квартал",
+    "description": ""
+  },
   "quarters": {
-    "value": "кварт."
+    "value": "кварт.",
+    "description": ""
   },
-  "second": "секунда",
+  "second": {
+    "value": "секунда",
+    "description": ""
+  },
   "seconds": {
-    "value": "сек."
+    "value": "сек.",
+    "description": ""
   },
-  "week": "неделя",
+  "week": {
+    "value": "неделя",
+    "description": ""
+  },
   "weeks": {
-    "value": "нед."
+    "value": "нед.",
+    "description": ""
   },
-  "year": "год",
+  "year": {
+    "value": "год",
+    "description": ""
+  },
   "years": {
-    "value": "год(а)/лет"
+    "value": "год(а)/лет",
+    "description": ""
   }
 }

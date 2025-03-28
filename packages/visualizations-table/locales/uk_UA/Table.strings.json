@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Натисніть, утримуючи Shift, щоб сортувати додаткові стовпці",
-  "Sort ascending": "Сортувати за зростанням",
-  "Sort descending": "Сортувати за спаданням",
-  "Totals": "Підсумки"
+  "Shift + Click to sort additional columns": {
+    "value": "Натисніть, утримуючи Shift, щоб сортувати додаткові стовпці",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Сортувати за зростанням",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Сортувати за спаданням",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Підсумки",
+    "description": ""
+  }
 }

@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(mutlak)"
+    "value": "(mutlak)",
+    "description": ""
   },
   "relative": {
-    "value": "(göreli)"
+    "value": "(göreli)",
+    "description": ""
   }
 }

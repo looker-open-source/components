@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "形式「HH:MM」を使用してください"
+  "Please use format HHMM": {
+    "description": "",
+    "value": "形式「HH:MM」を使用してください"
+  }
 }

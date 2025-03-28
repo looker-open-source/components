@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "Neplatná hodnota"
+    "value": "Neplatná hodnota",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "Pro váš atribut uživatele není nastavena žádná hodnota"
+    "value": "Pro váš atribut uživatele není nastavena žádná hodnota",
+    "description": ""
   },
   "Selection required": {
-    "value": "Je požadován výběr"
+    "value": "Je požadován výběr",
+    "description": ""
   }
 }

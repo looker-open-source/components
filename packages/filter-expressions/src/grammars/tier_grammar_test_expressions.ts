@@ -19,7 +19,7 @@ const parameterField = {
   ],
 };
 
-export const tierGrammarTestItems: GrammarTestItem = [
+export const tierGrammarTestItems: GrammarTestItem[] = [
   {
     expression: '20 to 29',
     describe: 'is 20 to 29',

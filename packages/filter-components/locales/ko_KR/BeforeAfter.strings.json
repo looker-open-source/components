@@ -1,8 +1,10 @@
 {
   "absolute": {
+    "description": "",
     "value": "(절댓값)"
   },
   "relative": {
+    "description": "",
     "value": "(상댓값)"
   }
 }

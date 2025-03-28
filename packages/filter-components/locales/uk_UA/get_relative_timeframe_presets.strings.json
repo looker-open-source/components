@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "За останні 14 днів"
+    "value": "За останні 14 днів",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "За останні 180 днів"
+    "value": "За останні 180 днів",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "За останні 28 днів"
+    "value": "За останні 28 днів",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "За останні 30 днів"
+    "value": "За останні 30 днів",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "За останні 365 днів"
+    "value": "За останні 365 днів",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "За останні 7 днів"
+    "value": "За останні 7 днів",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "За останні 90 днів"
+    "value": "За останні 90 днів",
+    "description": ""
   },
   "Previous Month": {
-    "value": "За минулий місяць"
+    "value": "За минулий місяць",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "За минулий квартал"
+    "value": "За минулий квартал",
+    "description": ""
   },
   "Previous Week": {
-    "value": "За минулий тиждень"
+    "value": "За минулий тиждень",
+    "description": ""
   },
   "Previous Year": {
-    "value": "За минулий рік"
+    "value": "За минулий рік",
+    "description": ""
   },
   "This Month": {
-    "value": "За цей місяць"
+    "value": "За цей місяць",
+    "description": ""
   },
   "This Quarter": {
-    "value": "За цей квартал"
+    "value": "За цей квартал",
+    "description": ""
   },
   "This Week": {
-    "value": "За цей тиждень"
+    "value": "За цей тиждень",
+    "description": ""
   },
   "This Year": {
-    "value": "За цей рік"
+    "value": "За цей рік",
+    "description": ""
   },
   "Today": {
-    "value": "Сьогодні"
+    "value": "Сьогодні",
+    "description": ""
   },
   "Year To Date": {
-    "value": "З початку року до поточної дати"
+    "value": "З початку року до поточної дати",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Вчора"
+    "value": "Вчора",
+    "description": ""
   }
 }

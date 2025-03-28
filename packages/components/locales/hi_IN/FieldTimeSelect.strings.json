@@ -1,3 +1,6 @@
 {
-  "Please use format HHMM": "कृपया HH:MM फ़ॉर्मेट का इस्तेमाल करें"
+  "Please use format HHMM": {
+    "value": "कृपया HH:MM फ़ॉर्मेट का इस्तेमाल करें",
+    "description": ""
+  }
 }

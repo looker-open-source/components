@@ -1,3 +1,6 @@
 {
-  "required": "požadováno"
+  "required": {
+    "value": "požadováno",
+    "description": ""
+  }
 }

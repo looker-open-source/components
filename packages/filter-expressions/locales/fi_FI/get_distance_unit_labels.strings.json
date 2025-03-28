@@ -1,14 +1,18 @@
 {
   "feet": {
-    "value": "jalkaa"
+    "value": "jalkaa",
+    "description": ""
   },
   "kilometers": {
-    "value": "kilometriä"
+    "value": "kilometriä",
+    "description": ""
   },
   "meters": {
-    "value": "metriä"
+    "value": "metriä",
+    "description": ""
   },
   "miles": {
-    "value": "mailia"
+    "value": "mailia",
+    "description": ""
   }
 }

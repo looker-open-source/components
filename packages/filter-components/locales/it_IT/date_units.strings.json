@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "giorno"
   },
   "days": {
+    "description": "",
     "value": "giorni"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "trimestre fiscale"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "trimestri fiscali"
   },
   "fiscal year": {
+    "description": "",
     "value": "anno fiscale"
   },
   "fiscal years": {
+    "description": "",
     "value": "anni fiscali"
   },
   "hour": {
+    "description": "",
     "value": "ora"
   },
   "hours": {
+    "description": "",
     "value": "ore"
   },
   "minute": {
+    "description": "",
     "value": "minuto"
   },
   "minutes": {
+    "description": "",
     "value": "minuti"
   },
   "month": {
+    "description": "",
     "value": "mese"
   },
   "months": {
+    "description": "",
     "value": "mesi"
   },
   "quarter": {
+    "description": "",
     "value": "trimestre"
   },
   "quarters": {
+    "description": "",
     "value": "trimestri"
   },
   "second": {
+    "description": "",
     "value": "secondo"
   },
   "seconds": {
+    "description": "",
     "value": "secondi"
   },
   "week": {
+    "description": "",
     "value": "settimana"
   },
   "weeks": {
+    "description": "",
     "value": "settimane"
   },
   "year": {
+    "description": "",
     "value": "anno"
   },
   "years": {
+    "description": "",
     "value": "anni"
   }
 }

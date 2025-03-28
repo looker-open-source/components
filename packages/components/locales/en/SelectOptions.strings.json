@@ -1,4 +1,10 @@
 {
-  "Loading": "Loading",
-  "No options": "No options"
+  "Loading": {
+    "description": "",
+    "value": "Loading"
+  },
+  "No options": {
+    "description": "",
+    "value": "No options"
+  }
 }

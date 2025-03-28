@@ -1,5 +1,14 @@
 {
-  "close": "stäng",
-  "next year": "nästa år",
-  "previous year": "föregående år"
+  "close": {
+    "value": "stäng",
+    "description": ""
+  },
+  "next year": {
+    "value": "nästa år",
+    "description": ""
+  },
+  "previous year": {
+    "value": "föregående år",
+    "description": ""
+  }
 }

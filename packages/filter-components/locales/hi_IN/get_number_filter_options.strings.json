@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(असमावेशी)"
+    "value": "(असमावेशी)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[समावेशी]"
+    "value": "[समावेशी]",
+    "description": ""
   },
   "is": {
-    "value": "है"
+    "value": "है",
+    "description": ""
   },
   "is between": {
-    "value": "के बीच है"
+    "value": "के बीच है",
+    "description": ""
   },
   "is greater": {
-    "value": "> है"
+    "value": "> है",
+    "description": ""
   },
   "is greater equal": {
-    "value": ">= है"
+    "value": ">= है",
+    "description": ""
   },
   "is less": {
-    "value": "< है"
+    "value": "< है",
+    "description": ""
   },
   "is less equal": {
-    "value": "<= है"
+    "value": "<= है",
+    "description": ""
   },
   "is not": {
-    "value": "नहीं है"
+    "value": "नहीं है",
+    "description": ""
   },
   "is not between": {
-    "value": "के बीच नहीं है"
+    "value": "के बीच नहीं है",
+    "description": ""
   },
   "is not null": {
-    "value": "नल नहीं है"
+    "value": "नल नहीं है",
+    "description": ""
   },
   "is null": {
-    "value": "नल है"
+    "value": "नल है",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(बायां-असमावेशी]"
+    "value": "(बायां-असमावेशी]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[दायां-असमावेशी)"
+    "value": "[दायां-असमावेशी)",
+    "description": ""
   }
 }

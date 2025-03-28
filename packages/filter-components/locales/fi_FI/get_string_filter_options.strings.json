@@ -1,14 +1,50 @@
 {
-  "contains": "sisältää kohteen",
-  "doesnt contain": "ei sisällä kohdetta",
-  "doesnt end with": "ei lopu kohteella",
-  "doesnt start with": "ei ala kohteella",
-  "ends with": "loppuu kohteella",
-  "is": "on",
-  "is blank": "on tyhjä",
-  "is not": "ei ole",
-  "is not blank": "ei ole tyhjä",
-  "is not null": "ei ole nolla",
-  "is null": "on nolla",
-  "starts with": "alkaa kohteella"
+  "contains": {
+    "value": "sisältää kohteen",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "ei sisällä kohdetta",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "ei lopu kohteella",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "ei ala kohteella",
+    "description": ""
+  },
+  "ends with": {
+    "value": "loppuu kohteella",
+    "description": ""
+  },
+  "is": {
+    "value": "on",
+    "description": ""
+  },
+  "is blank": {
+    "value": "on tyhjä",
+    "description": ""
+  },
+  "is not": {
+    "value": "ei ole",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "ei ole tyhjä",
+    "description": ""
+  },
+  "is not null": {
+    "value": "ei ole nolla",
+    "description": ""
+  },
+  "is null": {
+    "value": "on nolla",
+    "description": ""
+  },
+  "starts with": {
+    "value": "alkaa kohteella",
+    "description": ""
+  }
 }

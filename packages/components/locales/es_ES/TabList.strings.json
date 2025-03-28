@@ -1,3 +1,6 @@
 {
-  "Tabs": "Pestañas"
+  "Tabs": {
+    "description": "",
+    "value": "Pestañas"
+  }
 }

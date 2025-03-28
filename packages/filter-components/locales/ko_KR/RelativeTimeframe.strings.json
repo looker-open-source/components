@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "시간 선택"
+  "Choose a Timeframe": {
+    "description": "",
+    "value": "시간 선택"
+  }
 }

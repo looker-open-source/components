@@ -1,6 +1,18 @@
 {
-  "false": "False",
-  "null": "空值",
-  "true": "True",
-  "undefined": "未定义"
+  "false": {
+    "description": "",
+    "value": "false"
+  },
+  "null": {
+    "description": "",
+    "value": "null"
+  },
+  "true": {
+    "description": "",
+    "value": "true"
+  },
+  "undefined": {
+    "description": "",
+    "value": "未定义"
+  }
 }

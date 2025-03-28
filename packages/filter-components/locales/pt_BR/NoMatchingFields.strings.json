@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "Nenhum campo correspondente"
   },
   "Try Something Else": {
+    "description": "",
     "value": "Tente usar outro termo de pesquisa ou recomece e abra qualquer Explore para procurar campos disponíveis."
   }
 }

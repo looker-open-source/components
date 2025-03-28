@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(без меж)"
+    "value": "(без меж)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[з межами]"
+    "value": "[з межами]",
+    "description": ""
   },
   "is": {
-    "value": "є"
+    "value": "є",
+    "description": ""
   },
   "is between": {
-    "value": "у діапазоні"
+    "value": "у діапазоні",
+    "description": ""
   },
   "is greater": {
-    "value": ">"
+    "value": ">",
+    "description": ""
   },
   "is greater equal": {
-    "value": ">="
+    "value": ">=",
+    "description": ""
   },
   "is less": {
-    "value": "<"
+    "value": "<",
+    "description": ""
   },
   "is less equal": {
-    "value": "<="
+    "value": "<=",
+    "description": ""
   },
   "is not": {
-    "value": "не є"
+    "value": "не є",
+    "description": ""
   },
   "is not between": {
-    "value": "поза діапазоном"
+    "value": "поза діапазоном",
+    "description": ""
   },
   "is not null": {
-    "value": "не має значення NULL"
+    "value": "не має значення NULL",
+    "description": ""
   },
   "is null": {
-    "value": "має значення NULL"
+    "value": "має значення NULL",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(з лівою межею]"
+    "value": "(з лівою межею]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[з правою межею)"
+    "value": "[з правою межею)",
+    "description": ""
   }
 }

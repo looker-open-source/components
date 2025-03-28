@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Consulter le mélange de marque"
+  "Check Mark Mixed": {
+    "value": "Consulter le mélange de marque",
+    "description": ""
+  }
 }

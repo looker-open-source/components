@@ -1,3 +1,6 @@
 {
-  "Options": "Opções"
+  "Options": {
+    "description": "",
+    "value": "Opções"
+  }
 }

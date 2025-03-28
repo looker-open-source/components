@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "ที่แล้ว"
+    "value": "ที่แล้ว",
+    "description": ""
   },
   "from now": {
-    "value": "นับจากนี้"
+    "value": "นับจากนี้",
+    "description": ""
   }
 }

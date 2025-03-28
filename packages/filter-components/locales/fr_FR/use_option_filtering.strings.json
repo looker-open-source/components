@@ -1,8 +1,10 @@
 {
   "No values": {
+    "description": "",
     "value": "Aucune valeur"
   },
   "No values match": {
+    "description": "",
     "value": "Aucune valeur ne correspond"
   }
 }

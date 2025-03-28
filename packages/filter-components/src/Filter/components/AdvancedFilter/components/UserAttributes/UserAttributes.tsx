@@ -32,6 +32,7 @@ export const UserAttributes = ({
 
   return (
     <GroupSelect
+      data-testid="filter-user-attributes"
       value={attributeName}
       placeholder={t('placeholder')}
       options={createOptions(userAttributes)}

@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "vide"
+    "value": "vide",
+    "description": ""
   },
   "contains value": {
-    "value": "contient {{value}}"
+    "value": "contient {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "ne contient pas {{value}}"
+    "value": "ne contient pas {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "ne se termine pas par {{value}}"
+    "value": "ne se termine pas par {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "ne commence pas par {{value}}"
+    "value": "ne commence pas par {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "se termine par {{value}}"
+    "value": "se termine par {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "commence par {{value}}"
+    "value": "commence par {{value}}",
+    "description": ""
   }
 }

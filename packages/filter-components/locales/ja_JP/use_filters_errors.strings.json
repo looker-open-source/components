@@ -1,11 +1,14 @@
 {
   "Invalid value": {
+    "description": "",
     "value": "無効な値です"
   },
   "No value is set for your user attribute": {
+    "description": "",
     "value": "ユーザー属性に値が設定されていません"
   },
   "Selection required": {
+    "description": "",
     "value": "選択は必須です"
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Der gik noget galt"
+  "Something went wrong": {
+    "value": "Der gik noget galt",
+    "description": ""
+  }
 }

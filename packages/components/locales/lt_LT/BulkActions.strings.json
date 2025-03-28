@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Pasirinkti visi rodomi elementai: {{pageCount}}",
-  "AllTotalCountSelected": "Pasirinkti visi elementai: {{totalCount}}",
-  "Bulk Actions": "Masiniai veiksmai",
-  "Clear Selection": "Išvalyti, kas pažymėta",
-  "SelectAllCountResults": "Pasirinkti visus rezultatus: {{totalCount}}",
-  "SelectedCountOfTotalDisplayed": "Pasirinkta rodomų elementų: {{selectedItemCount}} iš {{pageCount}}"
+  "AllPageCountDisplayedSelected": {
+    "value": "Pasirinkti visi rodomi elementai: {{pageCount}}",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Pasirinkti visi elementai: {{totalCount}}",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Masiniai veiksmai",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Išvalyti, kas pažymėta",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Pasirinkti visus rezultatus: {{totalCount}}",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "Pasirinkta rodomų elementų: {{selectedItemCount}} iš {{pageCount}}",
+    "description": ""
+  }
 }

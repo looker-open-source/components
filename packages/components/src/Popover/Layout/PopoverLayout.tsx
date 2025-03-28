@@ -6,6 +6,7 @@
 import React from 'react';
 import type { ModalLayoutProps } from '../../Modal/ModalLayout';
 import { ModalLoading } from '../../Modal/ModalLayout';
+import type { IconType } from '../../Icon';
 import { PopoverContent } from './PopoverContent';
 import type { PopoverFooterProps } from './PopoverFooter';
 import { PopoverFooter } from './PopoverFooter';
@@ -18,6 +19,7 @@ export type PopoverLayoutProps = ModalLayoutProps &
      * @default false
      */
     hideHeader?: boolean;
+    headerIconBefore?: IconType;
   };
 
 export const PopoverLayout = ({
@@ -26,6 +28,7 @@ export const PopoverLayout = ({
   footer = true,
   header,
   hideHeader = false,
+  headerIconBefore,
   isLoading,
 }: PopoverLayoutProps) => {
   const internalFooter = typeof footer === 'boolean' ? null : footer;
@@ -33,7 +36,11 @@ export const PopoverLayout = ({
   return (
     <>
       {header && (
-        <PopoverHeader hidden={hideHeader} hideClose={!!footer}>
+        <PopoverHeader
+          iconBefore={headerIconBefore}
+          hidden={hideHeader}
+          hideClose={!!footer}
+        >
           {header}
         </PopoverHeader>
       )}

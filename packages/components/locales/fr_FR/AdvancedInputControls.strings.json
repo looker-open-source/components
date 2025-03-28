@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Effacer le contenu du champ"
+  "Clear Field": {
+    "description": "",
+    "value": "Effacer le contenu du champ"
+  }
 }

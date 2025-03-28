@@ -1,3 +1,6 @@
 {
-  "until (before)": "から次（指定日より前）まで"
+  "until (before)": {
+    "description": "",
+    "value": "から次（指定日より前）まで"
+  }
 }

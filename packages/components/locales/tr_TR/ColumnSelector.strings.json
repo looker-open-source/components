@@ -1,7 +1,22 @@
 {
-  "Apply": "Uygula",
-  "Cancel": "İptal",
-  "Select All": "Tümünü Seç",
-  "Select None": "Hiçbirini Seçme",
-  "Select columns to display": "Görüntülenecek sütunları seç"
+  "Apply": {
+    "value": "Uygula",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "İptal",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Tümünü Seç",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Hiçbirini Seçme",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Görüntülenecek sütunları seç",
+    "description": ""
+  }
 }

@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "14 วันที่ผ่านมา"
+    "value": "14 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "180 วันที่ผ่านมา"
+    "value": "180 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "28 วันที่ผ่านมา"
+    "value": "28 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "30 วันที่ผ่านมา"
+    "value": "30 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "365 วันที่ผ่านมา"
+    "value": "365 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "7 วันที่ผ่านมา"
+    "value": "7 วันที่ผ่านมา",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "90 วันที่ผ่านมา"
+    "value": "90 วันที่ผ่านมา",
+    "description": ""
   },
   "Previous Month": {
-    "value": "เดือนที่แล้ว"
+    "value": "เดือนที่แล้ว",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "ไตรมาสที่แล้ว"
+    "value": "ไตรมาสที่แล้ว",
+    "description": ""
   },
   "Previous Week": {
-    "value": "สัปดาห์ที่แล้ว"
+    "value": "สัปดาห์ที่แล้ว",
+    "description": ""
   },
   "Previous Year": {
-    "value": "ปีที่แล้ว"
+    "value": "ปีที่แล้ว",
+    "description": ""
   },
   "This Month": {
-    "value": "เดือนนี้"
+    "value": "เดือนนี้",
+    "description": ""
   },
   "This Quarter": {
-    "value": "ไตรมาสนี้"
+    "value": "ไตรมาสนี้",
+    "description": ""
   },
   "This Week": {
-    "value": "สัปดาห์นี้"
+    "value": "สัปดาห์นี้",
+    "description": ""
   },
   "This Year": {
-    "value": "ปีนี้"
+    "value": "ปีนี้",
+    "description": ""
   },
   "Today": {
-    "value": "วันนี้"
+    "value": "วันนี้",
+    "description": ""
   },
   "Year To Date": {
-    "value": "ตั้งแต่ต้นปี"
+    "value": "ตั้งแต่ต้นปี",
+    "description": ""
   },
   "Yesterday": {
-    "value": "เมื่อวาน"
+    "value": "เมื่อวาน",
+    "description": ""
   }
 }

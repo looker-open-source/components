@@ -1,3 +1,6 @@
 {
-  "Value required": "मान आवश्यक"
+  "Value required": {
+    "value": "मान आवश्यक",
+    "description": ""
+  }
 }

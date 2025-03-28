@@ -1,6 +1,18 @@
 {
-  "false": "faux",
-  "null": "nul",
-  "true": "vrai",
-  "undefined": "undefined"
+  "false": {
+    "value": "faux",
+    "description": ""
+  },
+  "null": {
+    "value": "nul",
+    "description": ""
+  },
+  "true": {
+    "value": "vrai",
+    "description": ""
+  },
+  "undefined": {
+    "value": "undefined",
+    "description": ""
+  }
 }

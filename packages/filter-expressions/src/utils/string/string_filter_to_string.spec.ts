@@ -32,7 +32,7 @@ describe('String filter to string', () => {
       is: true,
       id: '1',
       type: 'match',
-      value: null,
+      value: undefined,
     };
     const result = stringFilterToString(item);
     expect(result).toBe('');

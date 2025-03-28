@@ -1,9 +1,30 @@
 {
-  "Config": "कॉन्फ़िग",
-  "Dimensions": "आयाम",
-  "Error": "त्रुटि",
-  "Measures": "माप",
-  "Result": "परिणाम",
-  "error": "त्रुटि",
-  "ok": "ठीक है"
+  "Config": {
+    "value": "कॉन्फ़िग",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "आयाम",
+    "description": ""
+  },
+  "Error": {
+    "value": "त्रुटि",
+    "description": ""
+  },
+  "Measures": {
+    "value": "माप",
+    "description": ""
+  },
+  "Result": {
+    "value": "परिणाम",
+    "description": ""
+  },
+  "error": {
+    "value": "त्रुटि",
+    "description": ""
+  },
+  "ok": {
+    "value": "ठीक है",
+    "description": ""
+  }
 }

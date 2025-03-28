@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Ignorar {{intent}}"
+  "DismissIntent": {
+    "value": "Ignorar {{intent}}",
+    "description": ""
+  }
 }

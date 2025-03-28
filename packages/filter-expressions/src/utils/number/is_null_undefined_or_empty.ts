@@ -3,6 +3,5 @@
  * SPDX-License-Identifier: MIT
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const isNullUndefinedOrEmpty = (value: any) =>
+export const isNullUndefinedOrEmpty = (value?: number | string | null) =>
   value === null || value === undefined || value === '';

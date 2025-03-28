@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "Tag"
   },
   "days": {
+    "description": "",
     "value": "Tage"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "Geschäftsquartal"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "Geschäftsquartale"
   },
   "fiscal year": {
+    "description": "",
     "value": "Geschäftsjahr"
   },
   "fiscal years": {
+    "description": "",
     "value": "Geschäftsjahre"
   },
   "hour": {
+    "description": "",
     "value": "Stunde"
   },
   "hours": {
+    "description": "",
     "value": "Stunden"
   },
   "minute": {
+    "description": "",
     "value": "Minute"
   },
   "minutes": {
+    "description": "",
     "value": "Minuten"
   },
   "month": {
+    "description": "",
     "value": "Monat"
   },
   "months": {
+    "description": "",
     "value": "Monate"
   },
   "quarter": {
+    "description": "",
     "value": "Quartal"
   },
   "quarters": {
+    "description": "",
     "value": "Quartale"
   },
   "second": {
+    "description": "",
     "value": "Sekunde"
   },
   "seconds": {
+    "description": "",
     "value": "Sekunden"
   },
   "week": {
+    "description": "",
     "value": "Woche"
   },
   "weeks": {
+    "description": "",
     "value": "Wochen"
   },
   "year": {
+    "description": "",
     "value": "Jahr"
   },
   "years": {
+    "description": "",
     "value": "Jahre"
   }
 }

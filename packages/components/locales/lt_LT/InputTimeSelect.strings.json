@@ -1,3 +1,6 @@
 {
-  "Select time": "Pasirinkti laiką"
+  "Select time": {
+    "value": "Pasirinkti laiką",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "No Results": "无结果"
+  "No Results": {
+    "description": "",
+    "value": "无结果"
+  }
 }

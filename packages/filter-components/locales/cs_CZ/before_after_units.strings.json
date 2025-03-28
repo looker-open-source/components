@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "dny/ů zpátky"
+    "value": "dny/ů zpátky",
+    "description": ""
   },
   "days from now": {
-    "value": "dny/ů od teď"
+    "value": "dny/ů od teď",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "fiskální čtvrtletí od teď"
+    "value": "fiskální čtvrtletí od teď",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "fiskální čtvrtletí zpátky"
+    "value": "fiskální čtvrtletí zpátky",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "fiskální roky zpátky"
+    "value": "fiskální roky zpátky",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "fiskální roky od teď"
+    "value": "fiskální roky od teď",
+    "description": ""
   },
   "hours ago": {
-    "value": "hodin(y) zpátky"
+    "value": "hodin(y) zpátky",
+    "description": ""
   },
   "hours from now": {
-    "value": "hodin(y) od teď"
+    "value": "hodin(y) od teď",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minut(y) zpátky"
+    "value": "minut(y) zpátky",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minut(y) od teď"
+    "value": "minut(y) od teď",
+    "description": ""
   },
   "months ago": {
-    "value": "měsíce/ů zpátky"
+    "value": "měsíce/ů zpátky",
+    "description": ""
   },
   "months from now": {
-    "value": "měsíce/ů od teď"
+    "value": "měsíce/ů od teď",
+    "description": ""
   },
   "now": {
-    "value": "nyní"
+    "value": "nyní",
+    "description": ""
   },
   "quarters ago": {
-    "value": "čtvrtletí zpátky"
+    "value": "čtvrtletí zpátky",
+    "description": ""
   },
   "quarters from now": {
-    "value": "čtvrtletí od teď"
+    "value": "čtvrtletí od teď",
+    "description": ""
   },
   "seconds ago": {
-    "value": "sekund(y) zpátky"
+    "value": "sekund(y) zpátky",
+    "description": ""
   },
   "seconds from now": {
-    "value": "sekund(y) od teď"
+    "value": "sekund(y) od teď",
+    "description": ""
   },
   "weeks ago": {
-    "value": "týdny/ů zpátky"
+    "value": "týdny/ů zpátky",
+    "description": ""
   },
   "weeks from now": {
-    "value": "týdny/ů od teď"
+    "value": "týdny/ů od teď",
+    "description": ""
   },
   "years ago": {
-    "value": "roky/ů zpátky"
+    "value": "roky/ů zpátky",
+    "description": ""
   },
   "years from now": {
-    "value": "roky/ů od teď"
+    "value": "roky/ů od teď",
+    "description": ""
   }
 }

@@ -1,8 +1,10 @@
 {
   "Add": {
+    "description": "",
     "value": "追加"
   },
   "Remove": {
+    "description": "",
     "value": "削除"
   }
 }

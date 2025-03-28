@@ -1,8 +1,10 @@
 {
   "AND": {
-    "value": "및"
+    "description": "",
+    "value": "AND"
   },
   "OR": {
-    "value": "또는"
+    "description": "",
+    "value": "OR"
   }
 }

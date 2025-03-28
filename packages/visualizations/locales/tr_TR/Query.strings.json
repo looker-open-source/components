@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Sorgu bileşenine alt öğe geçmedi",
-  "Query component received both dashboard and query props": "Sorgu bileşeni hem pano hem sorgu özelliklerini aldı"
+  "No children passed to Query component": {
+    "value": "Sorgu bileşenine alt öğe geçmedi",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Sorgu bileşeni hem pano hem sorgu özelliklerini aldı",
+    "description": ""
+  }
 }

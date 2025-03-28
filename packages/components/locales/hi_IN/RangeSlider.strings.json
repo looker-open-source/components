@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "अधिकतम {{name}}",
-  "Maximum Value": "अधिकतम मान",
-  "Minimum Name": "न्यूनतम {{name}}",
-  "Minimum Value": "न्यूनतम मान"
+  "Maximum Name": {
+    "value": "अधिकतम {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "अधिकतम मान",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "न्यूनतम {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "न्यूनतम मान",
+    "description": ""
+  }
 }

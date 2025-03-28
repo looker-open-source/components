@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "เมษายน"
+    "value": "เมษายน",
+    "description": ""
   },
   "August": {
-    "value": "สิงหาคม"
+    "value": "สิงหาคม",
+    "description": ""
   },
   "December": {
-    "value": "ธันวาคม"
+    "value": "ธันวาคม",
+    "description": ""
   },
   "February": {
-    "value": "กุมภาพันธ์"
+    "value": "กุมภาพันธ์",
+    "description": ""
   },
   "January": {
-    "value": "มกราคม"
+    "value": "มกราคม",
+    "description": ""
   },
   "July": {
-    "value": "กรกฎาคม"
+    "value": "กรกฎาคม",
+    "description": ""
   },
   "June": {
-    "value": "มิถุนายน"
+    "value": "มิถุนายน",
+    "description": ""
   },
   "March": {
-    "value": "มีนาคม"
+    "value": "มีนาคม",
+    "description": ""
   },
   "May": {
-    "value": "พ.ค."
+    "value": "พ.ค.",
+    "description": ""
   },
   "November": {
-    "value": "พฤศจิกายน"
+    "value": "พฤศจิกายน",
+    "description": ""
   },
   "October": {
-    "value": "ตุลาคม"
+    "value": "ตุลาคม",
+    "description": ""
   },
   "September": {
-    "value": "กันยายน"
+    "value": "กันยายน",
+    "description": ""
   }
 }

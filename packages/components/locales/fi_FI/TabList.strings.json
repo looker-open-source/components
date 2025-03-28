@@ -1,3 +1,6 @@
 {
-  "Tabs": "Välilehdet"
+  "Tabs": {
+    "value": "Välilehdet",
+    "description": ""
+  }
 }

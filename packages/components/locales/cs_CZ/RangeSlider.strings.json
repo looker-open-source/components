@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Maximální hodnota {{name}}",
-  "Maximum Value": "Maximální hodnota",
-  "Minimum Name": "Minimální hodnota {{name}}",
-  "Minimum Value": "Minimální hodnota"
+  "Maximum Name": {
+    "value": "Maximální hodnota {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Maximální hodnota",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Minimální hodnota {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Minimální hodnota",
+    "description": ""
+  }
 }

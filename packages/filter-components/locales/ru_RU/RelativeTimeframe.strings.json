@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Выберите период времени"
+  "Choose a Timeframe": {
+    "value": "Выберите период времени",
+    "description": ""
+  }
 }

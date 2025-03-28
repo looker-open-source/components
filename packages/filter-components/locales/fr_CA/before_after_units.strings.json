@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "jours auparavant"
+    "value": "jours auparavant",
+    "description": ""
   },
   "days from now": {
-    "value": "journées à partir de maintenant"
+    "value": "journées à partir de maintenant",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "trimestre fiscal à partir de maintenant"
+    "value": "trimestre fiscal à partir de maintenant",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "trimestres fiscaux auparavant"
+    "value": "trimestres fiscaux auparavant",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "années fiscales auparavant"
+    "value": "années fiscales auparavant",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "années fiscales à partir de maintenant"
+    "value": "années fiscales à partir de maintenant",
+    "description": ""
   },
   "hours ago": {
-    "value": "heures auparavant"
+    "value": "heures auparavant",
+    "description": ""
   },
   "hours from now": {
-    "value": "heures à partir de maintenant"
+    "value": "heures à partir de maintenant",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minutes auparavant"
+    "value": "minutes auparavant",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minutes à partir de maintenant"
+    "value": "minutes à partir de maintenant",
+    "description": ""
   },
   "months ago": {
-    "value": "mois auparavant"
+    "value": "mois auparavant",
+    "description": ""
   },
   "months from now": {
-    "value": "mois à partir de maintenant"
+    "value": "mois à partir de maintenant",
+    "description": ""
   },
   "now": {
-    "value": "présentement"
+    "value": "présentement",
+    "description": ""
   },
   "quarters ago": {
-    "value": "trimestres auparavant"
+    "value": "trimestres auparavant",
+    "description": ""
   },
   "quarters from now": {
-    "value": "trimestres à partir de maintenant"
+    "value": "trimestres à partir de maintenant",
+    "description": ""
   },
   "seconds ago": {
-    "value": "secondes auparavant"
+    "value": "secondes auparavant",
+    "description": ""
   },
   "seconds from now": {
-    "value": "secondes à partir de maintenant"
+    "value": "secondes à partir de maintenant",
+    "description": ""
   },
   "weeks ago": {
-    "value": "semaines auparavant"
+    "value": "semaines auparavant",
+    "description": ""
   },
   "weeks from now": {
-    "value": "semaines à partir de maintenant"
+    "value": "semaines à partir de maintenant",
+    "description": ""
   },
   "years ago": {
-    "value": "années auparavant"
+    "value": "années auparavant",
+    "description": ""
   },
   "years from now": {
-    "value": "années à partir de maintenant"
+    "value": "années à partir de maintenant",
+    "description": ""
   }
 }

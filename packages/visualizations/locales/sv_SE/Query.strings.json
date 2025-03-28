@@ -1,4 +1,10 @@
 {
-  "No children passed to Query component": "Inga underordnade godkändes av sökfrågekomponenten",
-  "Query component received both dashboard and query props": "Sökfrågekomponenten tog emot både instrumentpanel och frågeförslag"
+  "No children passed to Query component": {
+    "value": "Inga underordnade godkändes av sökfrågekomponenten",
+    "description": ""
+  },
+  "Query component received both dashboard and query props": {
+    "value": "Sökfrågekomponenten tog emot både instrumentpanel och frågeförslag",
+    "description": ""
+  }
 }

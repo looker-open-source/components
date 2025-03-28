@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "Alle {{pageCount}} weergegeven items geselecteerd",
-  "AllTotalCountSelected": "Alle {{totalCount}} items geselecteerd",
-  "Bulk Actions": "Bulkacties",
-  "Clear Selection": "Selectie wissen",
-  "SelectAllCountResults": "Selecteer alle {{totalCount}} resultaten",
-  "SelectedCountOfTotalDisplayed": "{{selectedItemCount}} van de {{pageCount}} weergegeven items geselecteerd"
+  "AllPageCountDisplayedSelected": {
+    "value": "Alle {{pageCount}} weergegeven items geselecteerd",
+    "description": ""
+  },
+  "AllTotalCountSelected": {
+    "value": "Alle {{totalCount}} items geselecteerd",
+    "description": ""
+  },
+  "Bulk Actions": {
+    "value": "Bulkacties",
+    "description": ""
+  },
+  "Clear Selection": {
+    "value": "Selectie wissen",
+    "description": ""
+  },
+  "SelectAllCountResults": {
+    "value": "Selecteer alle {{totalCount}} resultaten",
+    "description": ""
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "value": "{{selectedItemCount}} van de {{pageCount}} weergegeven items geselecteerd",
+    "description": ""
+  }
 }

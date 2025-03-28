@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "没有匹配的字段"
   },
   "Try Something Else": {
+    "description": "",
     "value": "请尝试使用其他搜索字词，或重新开始并展开任意探索以浏览可用字段。"
   }
 }

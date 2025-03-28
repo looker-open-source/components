@@ -1,4 +1,10 @@
 {
-  "Cancel": "Atšaukti",
-  "Confirm": "Patvirtinti"
+  "Cancel": {
+    "value": "Atšaukti",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "Patvirtinti",
+    "description": ""
+  }
 }

@@ -1,6 +1,18 @@
 {
-  "false": "epätosi",
-  "null": "nolla",
-  "true": "tosi",
-  "undefined": "määrittämätön"
+  "false": {
+    "value": "epätosi",
+    "description": ""
+  },
+  "null": {
+    "value": "nolla",
+    "description": ""
+  },
+  "true": {
+    "value": "tosi",
+    "description": ""
+  },
+  "undefined": {
+    "value": "määrittämätön",
+    "description": ""
+  }
 }

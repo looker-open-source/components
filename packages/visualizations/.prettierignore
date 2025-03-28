@@ -1,6 +1,6 @@
 /**/*.md
 /**/*.mdx
-/locales
+/**/locales
 /dist
 /lib
 /storybook-static

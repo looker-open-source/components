@@ -1,4 +1,10 @@
 {
-  "Display": "प्रदर्शित करें",
-  "of": "में से"
+  "Display": {
+    "value": "प्रदर्शित करें",
+    "description": ""
+  },
+  "of": {
+    "value": "में से",
+    "description": ""
+  }
 }

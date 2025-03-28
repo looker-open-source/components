@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Míry typu „datum“ nejsou aktuálně podporovány",
-  "No chart found for type \"{{type}}\"": "Pro typ „{{type}}“ nebyl nalezen žádný graf"
+  "Measures of type 'date' are currently not supported": {
+    "value": "Míry typu „datum“ nejsou aktuálně podporovány",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "Pro typ „{{type}}“ nebyl nalezen žádný graf",
+    "description": ""
+  }
 }

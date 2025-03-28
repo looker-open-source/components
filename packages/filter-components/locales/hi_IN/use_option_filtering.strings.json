@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "कोई मान नहीं"
+    "value": "कोई मान नहीं",
+    "description": ""
   },
   "No values match": {
-    "value": "कोई मान इससे नहीं मिलता है"
+    "value": "कोई मान इससे नहीं मिलता है",
+    "description": ""
   }
 }

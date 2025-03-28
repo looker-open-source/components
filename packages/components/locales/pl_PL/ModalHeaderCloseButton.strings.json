@@ -1,3 +1,6 @@
 {
-  "Close": "Zamknij"
+  "Close": {
+    "description": "",
+    "value": "Zamknij"
+  }
 }

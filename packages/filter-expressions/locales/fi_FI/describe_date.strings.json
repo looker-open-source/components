@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " valmis"
+    "value": " valmis",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "sitten"
+    "value": "sitten",
+    "description": ""
   },
   "from now": {
-    "value": "tästä hetkestä"
+    "value": "tästä hetkestä",
+    "description": ""
   },
   "is any time": {
-    "value": "on milloin tahansa"
+    "value": "on milloin tahansa",
+    "description": ""
   },
   "is before": {
-    "value": "on ennen ajankohtaa"
+    "value": "on ennen ajankohtaa",
+    "description": ""
   },
   "is day": {
-    "value": "on {{day}}"
+    "value": "on {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "on ajankohdasta {{dateTimeStart}} ajankohtaan {{dateTimeEnd}}"
+    "value": "on ajankohdasta {{dateTimeStart}} ajankohtaan {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "on ajankohdassa {{month}} {{year}}"
+    "value": "on ajankohdassa {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "on viimeisten {{describeInterval}} joukossa"
+    "value": "on viimeisten {{describeInterval}} joukossa",
+    "description": ""
   },
   "is in the year year": {
-    "value": "on vuonna {{year}}"
+    "value": "on vuonna {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "on {{interval}} sitten"
+    "value": "on {{interval}} sitten",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "on {{intervalStart}} {{intervalType}} kohteelle {{intervalEnd}}"
+    "value": "on {{intervalStart}} {{intervalType}} kohteelle {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "ei ole nolla"
+    "value": "ei ole nolla",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "on ajankohtana {{dateTime}}"
+    "value": "on ajankohtana {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "on ajankohtana tai jälkeen ajankohdan"
+    "value": "on ajankohtana tai jälkeen ajankohdan",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "on aiempi {{unitLabel}}"
+    "value": "on aiempi {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "on {{type}} {{unitLabel}}"
+    "value": "on {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "seuraava"
+    "value": "seuraava",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} nyt"
+    "value": "{{prefix}} nyt",
+    "description": ""
   },
   "this": {
-    "value": "tämä"
+    "value": "tämä",
+    "description": ""
   },
-  "this startInterval to endInterval": "tämä {{startInterval}}–{{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "tämä {{startInterval}}–{{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

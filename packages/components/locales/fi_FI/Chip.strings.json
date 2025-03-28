@@ -1,3 +1,6 @@
 {
-  "Delete": "Poista"
+  "Delete": {
+    "value": "Poista",
+    "description": ""
+  }
 }

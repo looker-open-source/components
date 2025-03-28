@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Segno di spunta Misto"
+  "Check Mark Mixed": {
+    "description": "",
+    "value": "Segno di spunta Misto"
+  }
 }

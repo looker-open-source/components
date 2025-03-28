@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " praėję"
+    "value": " praėję",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "prieš"
+    "value": "prieš",
+    "description": ""
   },
   "from now": {
-    "value": "nuo dabar"
+    "value": "nuo dabar",
+    "description": ""
   },
   "is any time": {
-    "value": "yra bet kuriuo metu"
+    "value": "yra bet kuriuo metu",
+    "description": ""
   },
   "is before": {
-    "value": "yra prieš"
+    "value": "yra prieš",
+    "description": ""
   },
   "is day": {
-    "value": "yra {{day}}"
+    "value": "yra {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "yra nuo {{dateTimeStart}} iki {{dateTimeEnd}}"
+    "value": "yra nuo {{dateTimeStart}} iki {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "yra {{year}} {{month}}"
+    "value": "yra {{year}} {{month}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "yra praeityje: {{describeInterval}}"
+    "value": "yra praeityje: {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "yra {{year}} m."
+    "value": "yra {{year}} m.",
+    "description": ""
   },
   "is interval ago": {
-    "value": "yra prieš {{interval}}"
+    "value": "yra prieš {{interval}}",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "yra {{intervalStart}} {{intervalType}}, {{intervalEnd}}"
+    "value": "yra {{intervalStart}} {{intervalType}}, {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "nėra nulis"
+    "value": "nėra nulis",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "yra {{dateTime}}"
+    "value": "yra {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "yra tada ar po"
+    "value": "yra tada ar po",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "yra ankstesnis (-ė) {{unitLabel}}"
+    "value": "yra ankstesnis (-ė) {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "yra {{type}} {{unitLabel}}"
+    "value": "yra {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "toliau"
+    "value": "toliau",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} dabar"
+    "value": "{{prefix}} dabar",
+    "description": ""
   },
   "this": {
-    "value": "šis"
+    "value": "šis",
+    "description": ""
   },
-  "this startInterval to endInterval": "šis {{startInterval}} iki {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "šis {{startInterval}} iki {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

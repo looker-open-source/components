@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "{{name}} สูงสุด",
-  "Maximum Value": "ค่าสูงสุด",
-  "Minimum Name": "{{name}} ต่ำสุด",
-  "Minimum Value": "ค่าต่ำสุด"
+  "Maximum Name": {
+    "value": "{{name}} สูงสุด",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "ค่าสูงสุด",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "{{name}} ต่ำสุด",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "ค่าต่ำสุด",
+    "description": ""
+  }
 }

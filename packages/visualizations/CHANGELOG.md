@@ -1,3 +1,9 @@
+## 1.1.5 (2025-03-27)
+
+### Bug Fixes
+
+- Bump `@looker/components-data`.
+
 ## 1.1.4 (2023-01-26)
 
 ### Bug Fixes

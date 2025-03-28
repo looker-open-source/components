@@ -1,44 +1,58 @@
 {
   "exclusive": {
+    "description": "",
     "value": "(esclusivo)"
   },
   "inclusive": {
+    "description": "",
     "value": "[inclusivo]"
   },
   "is": {
+    "description": "",
     "value": "è"
   },
   "is between": {
+    "description": "",
     "value": "è compreso tra"
   },
   "is greater": {
+    "description": "",
     "value": "è >"
   },
   "is greater equal": {
+    "description": "",
     "value": "è >="
   },
   "is less": {
+    "description": "",
     "value": "è <"
   },
   "is less equal": {
+    "description": "",
     "value": "è <="
   },
   "is not": {
+    "description": "",
     "value": "non è"
   },
   "is not between": {
+    "description": "",
     "value": "non è compreso tra"
   },
   "is not null": {
+    "description": "",
     "value": "non è null"
   },
   "is null": {
+    "description": "",
     "value": "è null"
   },
   "left exclusive": {
+    "description": "",
     "value": "(esclusivo a sinistra]"
   },
   "right exclusive": {
+    "description": "",
     "value": "[esclusivo a destra)"
   }
 }

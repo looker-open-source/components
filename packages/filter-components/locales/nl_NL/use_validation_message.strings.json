@@ -1,3 +1,6 @@
 {
-  "Value required": "Waarde is vereist"
+  "Value required": {
+    "value": "Waarde is vereist",
+    "description": ""
+  }
 }

@@ -51,6 +51,7 @@ export const ThisNextLast = ({ item, onChange, field }: ThisNextLastProps) => {
       options={options}
       onChange={unitChange}
       placement="right"
+      data-testid="this-next-last"
     />
   );
 };

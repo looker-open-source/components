@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Odrzuć intencję {{intent}}"
+  "DismissIntent": {
+    "description": "",
+    "value": "Odrzuć intencję {{intent}}"
+  }
 }

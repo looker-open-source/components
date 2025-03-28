@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Zeitraum auswählen"
+  "Choose a Timeframe": {
+    "description": "",
+    "value": "Zeitraum auswählen"
+  }
 }

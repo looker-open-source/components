@@ -1,8 +1,26 @@
 {
-  "AllPageCountDisplayedSelected": "已選取顯示的全部 {{pageCount}} 個項目",
-  "AllTotalCountSelected": "已選取全部 {{totalCount}} 個項目",
-  "Bulk Actions": "批次動作",
-  "Clear Selection": "清除選取的項目",
-  "SelectAllCountResults": "選取全部 {{totalCount}} 筆結果",
-  "SelectedCountOfTotalDisplayed": "已選取顯示的 {{selectedItemCount}} 個項目 (共 {{pageCount}} 個)"
+  "AllPageCountDisplayedSelected": {
+    "description": "",
+    "value": "已選取顯示的全部 {{pageCount}} 個項目"
+  },
+  "AllTotalCountSelected": {
+    "description": "",
+    "value": "已選取全部 {{totalCount}} 個項目"
+  },
+  "Bulk Actions": {
+    "description": "",
+    "value": "批次動作"
+  },
+  "Clear Selection": {
+    "description": "",
+    "value": "清除選取的項目"
+  },
+  "SelectAllCountResults": {
+    "description": "",
+    "value": "選取全部 {{totalCount}} 筆結果"
+  },
+  "SelectedCountOfTotalDisplayed": {
+    "description": "",
+    "value": "已選取顯示的 {{selectedItemCount}} 個項目 (共 {{pageCount}} 個)"
+  }
 }

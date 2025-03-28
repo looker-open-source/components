@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Ошибка загрузки предложений"
+  "Error loading suggestions": {
+    "value": "Ошибка загрузки предложений",
+    "description": ""
+  }
 }

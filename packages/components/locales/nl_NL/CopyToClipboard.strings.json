@@ -1,4 +1,10 @@
 {
-  "Copied": "Gekopieerd",
-  "Copy to Clipboard": "Kopiëren naar Klembord"
+  "Copied": {
+    "value": "Gekopieerd",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Kopiëren naar Klembord",
+    "description": ""
+  }
 }

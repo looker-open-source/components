@@ -1,72 +1,98 @@
 {
   " complete": {
-    "value": " terminé"
+    "value": " terminé",
+    "description": ""
   },
   "absolute prefix dateTime": {
-    "value": "{{prefix}} {{dateTime}}"
+    "value": "{{prefix}} {{dateTime}}",
+    "description": ""
   },
   "ago": {
-    "value": "auparavant"
+    "value": "auparavant",
+    "description": ""
   },
   "from now": {
-    "value": "à partir de maintenant"
+    "value": "à partir de maintenant",
+    "description": ""
   },
   "is any time": {
-    "value": "est à tout moment"
+    "value": "est à tout moment",
+    "description": ""
   },
   "is before": {
-    "value": "est situé avant"
+    "value": "est situé avant",
+    "description": ""
   },
   "is day": {
-    "value": "est {{day}}"
+    "value": "est {{day}}",
+    "description": ""
   },
   "is from dateTimeStart until dateTimeEnd": {
-    "value": "est de {{dateTimeStart}} à {{dateTimeEnd}}"
+    "value": "est de {{dateTimeStart}} à {{dateTimeEnd}}",
+    "description": ""
   },
   "is in month year": {
-    "value": "est en {{month}} {{year}}"
+    "value": "est en {{month}} {{year}}",
+    "description": ""
   },
   "is in the last": {
-    "value": "est dans le dernier {{describeInterval}}"
+    "value": "est dans le dernier {{describeInterval}}",
+    "description": ""
   },
   "is in the year year": {
-    "value": "est dans l’année {{year}}"
+    "value": "est dans l’année {{year}}",
+    "description": ""
   },
   "is interval ago": {
-    "value": "est il y a {{interval}}"
+    "value": "est il y a {{interval}}",
+    "description": ""
   },
   "is intervalStart intervalType for intervalEnd": {
-    "value": "est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}"
+    "value": "est {{intervalStart}} {{intervalType}} pour {{intervalEnd}}",
+    "description": ""
   },
   "is not null": {
-    "value": "n’est pas nul"
+    "value": "n’est pas nul",
+    "description": ""
   },
   "is on dateTime": {
-    "value": "est le {{dateTime}}"
+    "value": "est le {{dateTime}}",
+    "description": ""
   },
   "is on or after": {
-    "value": "est situé le jour même ou après"
+    "value": "est situé le jour même ou après",
+    "description": ""
   },
   "is previous unitLabel": {
-    "value": "est avant {{unitLabel}}"
+    "value": "est avant {{unitLabel}}",
+    "description": ""
   },
   "is type unitLabel": {
-    "value": "est {{type}} {{unitLabel}}"
+    "value": "est {{type}} {{unitLabel}}",
+    "description": ""
   },
   "next": {
-    "value": "suivant"
+    "value": "suivant",
+    "description": ""
   },
   "prefix interval timePassed": {
-    "value": "{{prefix}} {{interval}} {{timePassed}}"
+    "value": "{{prefix}} {{interval}} {{timePassed}}",
+    "description": ""
   },
   "prefix now": {
-    "value": "{{prefix}} présentement"
+    "value": "{{prefix}} présentement",
+    "description": ""
   },
   "this": {
-    "value": "ce"
+    "value": "ce",
+    "description": ""
   },
-  "this startInterval to endInterval": "ce {{startInterval}} à {{endInterval}}",
+  "this startInterval to endInterval": {
+    "value": "ce {{startInterval}} à {{endInterval}}",
+    "description": ""
+  },
   "value complete unitLabel": {
-    "value": "{{value}}{{complete}} {{unitLabel}}"
+    "value": "{{value}}{{complete}} {{unitLabel}}",
+    "description": ""
   }
 }

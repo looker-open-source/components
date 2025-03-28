@@ -3,10 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 import { Flex } from '@looker/components';
-import type {
-  CircleFilterItem,
-  ExactLocationFilterItem,
-} from '@looker/filter-expressions';
+import type { FilterModel } from '@looker/filter-expressions';
 import pick from 'lodash/pick';
 import type { ChangeEvent } from 'react';
 import React from 'react';
@@ -17,7 +14,7 @@ import { useUnitOptions } from '../../../../utils';
 
 interface LocationCircleProps {
   onChange: (id: string, value: any) => void;
-  item: CircleFilterItem;
+  item: FilterModel;
 }
 
 export const LocationCircle = ({ item, onChange }: LocationCircleProps) => {
@@ -42,23 +39,17 @@ export const LocationCircle = ({ item, onChange }: LocationCircleProps) => {
         type="number"
         onChange={distanceChange}
         minWidth="4.5em"
+        data-testid="location-circle-distance"
       />
       <GroupSelect
         placement="middle"
         value={item.unit || 'miles'}
         options={unitOptions}
         onChange={unitChange}
+        data-testid="location-circle-unit"
       />
       <LocationExact
-        item={
-          pick(item, [
-            'id',
-            'is',
-            'lat',
-            'lon',
-            'type',
-          ]) as ExactLocationFilterItem
-        }
+        item={pick(item, ['id', 'is', 'lat', 'lon', 'type'])}
         onChange={onChange}
         latString="FROM LATITUDE"
       />

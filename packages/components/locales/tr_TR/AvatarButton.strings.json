@@ -1,3 +1,6 @@
 {
-  "Profile Picture": "Profil Resmi"
+  "Profile Picture": {
+    "value": "Profil Resmi",
+    "description": ""
+  }
 }

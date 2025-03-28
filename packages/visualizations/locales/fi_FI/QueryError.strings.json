@@ -1,3 +1,6 @@
 {
-  "Error": "Virhe"
+  "Error": {
+    "value": "Virhe",
+    "description": ""
+  }
 }

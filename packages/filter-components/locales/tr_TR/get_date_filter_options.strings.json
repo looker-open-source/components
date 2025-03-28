@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "şudur:"
+    "value": "şudur:",
+    "description": ""
   },
   "is any time": {
-    "value": "herhangi bir zaman"
+    "value": "herhangi bir zaman",
+    "description": ""
   },
   "is before": {
-    "value": "şu tarihten önce:"
+    "value": "şu tarihten önce:",
+    "description": ""
   },
   "is in range": {
-    "value": "şu aralıkta:"
+    "value": "şu aralıkta:",
+    "description": ""
   },
   "is in the last": {
-    "value": "geçmiş şu sürede:"
+    "value": "geçmiş şu sürede:",
+    "description": ""
   },
   "is in the month": {
-    "value": "şu ayda:"
+    "value": "şu ayda:",
+    "description": ""
   },
   "is in the year": {
-    "value": "şu yılda:"
+    "value": "şu yılda:",
+    "description": ""
   },
   "is next": {
-    "value": "sonraki"
+    "value": "sonraki",
+    "description": ""
   },
   "is not null": {
-    "value": "değer içeriyor"
+    "value": "değer içeriyor",
+    "description": ""
   },
   "is null": {
-    "value": "değer içermiyor"
+    "value": "değer içermiyor",
+    "description": ""
   },
   "is on or after": {
-    "value": "şu tarihte veya şu tarihten sonra:"
+    "value": "şu tarihte veya şu tarihten sonra:",
+    "description": ""
   },
   "is on the day": {
-    "value": "şu günde:"
+    "value": "şu günde:",
+    "description": ""
   },
   "is previous": {
-    "value": "önceki"
+    "value": "önceki",
+    "description": ""
   },
   "is this": {
-    "value": "bu"
+    "value": "bu",
+    "description": ""
   }
 }

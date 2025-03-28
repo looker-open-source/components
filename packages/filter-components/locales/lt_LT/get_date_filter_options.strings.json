@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "yra"
+    "value": "yra",
+    "description": ""
   },
   "is any time": {
-    "value": "yra bet kuriuo metu"
+    "value": "yra bet kuriuo metu",
+    "description": ""
   },
   "is before": {
-    "value": "yra prieš"
+    "value": "yra prieš",
+    "description": ""
   },
   "is in range": {
-    "value": "yra diapazone"
+    "value": "yra diapazone",
+    "description": ""
   },
   "is in the last": {
-    "value": "yra paskutinį"
+    "value": "yra paskutinį",
+    "description": ""
   },
   "is in the month": {
-    "value": "yra mėnesį"
+    "value": "yra mėnesį",
+    "description": ""
   },
   "is in the year": {
-    "value": "yra metais"
+    "value": "yra metais",
+    "description": ""
   },
   "is next": {
-    "value": "yra kitą"
+    "value": "yra kitą",
+    "description": ""
   },
   "is not null": {
-    "value": "nėra nulis"
+    "value": "nėra nulis",
+    "description": ""
   },
   "is null": {
-    "value": "yra nulis"
+    "value": "yra nulis",
+    "description": ""
   },
   "is on or after": {
-    "value": "yra tada ar po"
+    "value": "yra tada ar po",
+    "description": ""
   },
   "is on the day": {
-    "value": "yra dieną"
+    "value": "yra dieną",
+    "description": ""
   },
   "is previous": {
-    "value": "yra ankstesnę (-ę) "
+    "value": "yra ankstesnę (-ę) ",
+    "description": ""
   },
   "is this": {
-    "value": "yra šį (šią)"
+    "value": "yra šį (šią)",
+    "description": ""
   }
 }

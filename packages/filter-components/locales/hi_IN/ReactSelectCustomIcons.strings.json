@@ -1,11 +1,14 @@
 {
   "Clear all": {
-    "value": "सभी साफ करें"
+    "value": "सभी साफ करें",
+    "description": ""
   },
   "Remove": {
-    "value": "निकालें"
+    "value": "निकालें",
+    "description": ""
   },
   "Toggle": {
-    "value": "टॉगल करें"
+    "value": "टॉगल करें",
+    "description": ""
   }
 }

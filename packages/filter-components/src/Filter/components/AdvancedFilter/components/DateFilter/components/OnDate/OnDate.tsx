@@ -28,6 +28,11 @@ export const OnDate = ({ item, onChange }: OnDateParamProps) => {
     : new Date(Date.now());
 
   return (
-    <DateInput date={actualDate} onChange={dateChange} placement="right" />
+    <DateInput
+      date={actualDate}
+      onChange={dateChange}
+      placement="right"
+      data-testid="ondate-date"
+    />
   );
 };

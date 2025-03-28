@@ -26,7 +26,7 @@
 import type { GrammarTestItem } from './grammar_test_utils';
 
 // prettier-ignore
-export const dateExpressionTestItems: GrammarTestItem = [
+export const dateExpressionTestItems: GrammarTestItem[] = [
   { expression: '3 days', output: '3 day', describe: 'is in the last 3 days' },
   { expression: '3 days ago', output: '3 days ago', describe: 'is 3 days ago', type: 'pastAgo' },
   { expression: '7 year ago', output: '7 year ago', describe: 'is 7 years ago', type: 'pastAgo' },
@@ -42,6 +42,8 @@ export const dateExpressionTestItems: GrammarTestItem = [
   { expression: '2018-05-18', output: '2018/05/18', describe: 'is on 2018/05/18' },
   { expression: '', output: '', describe: 'is any time' },
   { expression: '2018', output: '2018', describe: 'is in the year 2018'},
+  { expression: '2000 days', output: '2000 day', describe: 'is in the last 2000 days'},
+  { expression: '50000 minutes', output: '50000 minute', describe: 'is in the last 50000 minutes'},
   { expression: '2018/01', output: '2018-01', describe: 'is in January 2018' },
   { expression: 'monday', output: 'monday', describe: 'is monday' },
   { expression: 'before 2 months from now', output: 'before 2 month from now', describe: 'is before 2 months from now' },

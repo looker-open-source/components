@@ -1,8 +1,10 @@
 {
   "is in range range": {
+    "description": "",
     "value": "is in range {{range}}"
   },
   "is not in range range": {
+    "description": "",
     "value": "is not in range {{range}}"
   }
 }

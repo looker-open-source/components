@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
-    "value": "Eşleşen alan yok"
+    "value": "Eşleşen alan yok",
+    "description": ""
   },
   "Try Something Else": {
-    "value": "Başka bir arama terimi deneyin veya baştan başlayın ve mevcut alanlara göz atmak için incelemeyi genişletin."
+    "value": "Başka bir arama terimi deneyin veya baştan başlayın ve mevcut alanlara göz atmak için incelemeyi genişletin.",
+    "description": ""
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Loading": "로드 중",
-  "No options": "옵션 없음"
+  "Loading": {
+    "description": "",
+    "value": "로드 중"
+  },
+  "No options": {
+    "description": "",
+    "value": "옵션 없음"
+  }
 }

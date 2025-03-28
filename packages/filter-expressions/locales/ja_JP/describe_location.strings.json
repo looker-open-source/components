@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
+    "description": "",
     "value": "{{coords1}}～{{coords2}}"
   },
   "distance unit from lat, lon": {
+    "description": "",
     "value": "{{distance}} {{unit}}（起点: {{lat}}、{{lon}}）"
   },
   "is anywhere": {
+    "description": "",
     "value": "任意の場所"
   },
   "is not null": {
+    "description": "",
     "value": "null ではない"
   },
   "is null": {
+    "description": "",
     "value": "null である"
   },
   "lat degrees north": {
-    "value": "北緯 {{lat}}°"
+    "description": "",
+    "value": "{{lat}}°N"
   },
   "lat degrees south": {
-    "value": "南緯 {{lat}}°"
+    "description": "",
+    "value": "{{lat}}°S"
   },
   "lon degrees east": {
-    "value": "東経 {{lon}}°"
+    "description": "",
+    "value": "{{lon}}°E"
   },
   "lon degrees west": {
-    "value": "西経 {{lon}}°"
+    "description": "",
+    "value": "{{lon}}°W"
   }
 }

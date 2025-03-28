@@ -1,14 +1,50 @@
 {
-  "contains": "obsahuje",
-  "doesnt contain": "neobsahuje",
-  "doesnt end with": "nemá na konci",
-  "doesnt start with": "nemá na začátku",
-  "ends with": "má na konci",
-  "is": "je",
-  "is blank": "je prázdné",
-  "is not": "není",
-  "is not blank": "není prázdné",
-  "is not null": "není prázdné",
-  "is null": "je prázdné",
-  "starts with": "má na začátku"
+  "contains": {
+    "value": "obsahuje",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "neobsahuje",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "nemá na konci",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "nemá na začátku",
+    "description": ""
+  },
+  "ends with": {
+    "value": "má na konci",
+    "description": ""
+  },
+  "is": {
+    "value": "je",
+    "description": ""
+  },
+  "is blank": {
+    "value": "je prázdné",
+    "description": ""
+  },
+  "is not": {
+    "value": "není",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "není prázdné",
+    "description": ""
+  },
+  "is not null": {
+    "value": "není prázdné",
+    "description": ""
+  },
+  "is null": {
+    "value": "je prázdné",
+    "description": ""
+  },
+  "starts with": {
+    "value": "má na začátku",
+    "description": ""
+  }
 }

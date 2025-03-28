@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Teckenförklaringssida {{page}} av {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Teckenförklaringssida {{page}} av {{totalPages}}",
+    "description": ""
+  }
 }

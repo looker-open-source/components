@@ -1,3 +1,6 @@
 {
-  "any value": "herhangi bir değer"
+  "any value": {
+    "value": "herhangi bir değer",
+    "description": ""
+  }
 }

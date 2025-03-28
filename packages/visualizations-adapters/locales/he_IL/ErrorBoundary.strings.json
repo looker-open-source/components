@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "משהו השתבש"
+  "Something went wrong": {
+    "value": "משהו השתבש",
+    "description": ""
+  }
 }

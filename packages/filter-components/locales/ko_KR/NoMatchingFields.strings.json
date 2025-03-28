@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "일치하는 필드 없음"
   },
   "Try Something Else": {
+    "description": "",
     "value": "다른 검색어를 입력하거나 새로 시작한 다음 Explore를 펼쳐 사용 가능한 필드를 찾아보세요."
   }
 }

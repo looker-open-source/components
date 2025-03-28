@@ -1,4 +1,10 @@
 {
-  "Cancel": "ยกเลิก",
-  "Confirm": "ยืนยัน"
+  "Cancel": {
+    "value": "ยกเลิก",
+    "description": ""
+  },
+  "Confirm": {
+    "value": "ยืนยัน",
+    "description": ""
+  }
 }

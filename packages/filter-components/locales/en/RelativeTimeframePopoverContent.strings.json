@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "Custom"
   },
   "Presets": {
+    "description": "",
     "value": "Presets"
   }
 }

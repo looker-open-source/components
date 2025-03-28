@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "שגיאה בהעלאת ההצעות"
+  "Error loading suggestions": {
+    "value": "שגיאה בהעלאת ההצעות",
+    "description": ""
+  }
 }

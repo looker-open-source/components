@@ -1,4 +1,10 @@
 {
-  "Cancel": "キャンセル",
-  "Confirm": "確認"
+  "Cancel": {
+    "description": "",
+    "value": "キャンセル"
+  },
+  "Confirm": {
+    "description": "",
+    "value": "確認"
+  }
 }

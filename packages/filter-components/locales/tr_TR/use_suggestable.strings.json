@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Öneriler yüklenirken hata"
+  "Error loading suggestions": {
+    "value": "Öneriler yüklenirken hata",
+    "description": ""
+  }
 }

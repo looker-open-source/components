@@ -6,8 +6,26 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import { renderWithTheme } from '@looker/components-test-utils';
-import Basic from './stories/Basic';
-import CustomReplace from './stories/CustomReplace';
+import { ReplaceText } from '../ReplaceText';
+
+function Basic({
+  match = 'che',
+  ...props
+}: React.ComponentProps<typeof ReplaceText>) {
+  return (
+    <ReplaceText match={match} {...props}>
+      Cheddar cheese
+    </ReplaceText>
+  );
+}
+
+function CustomReplace() {
+  return (
+    <ReplaceText match="che" replace={props => <em {...props} />}>
+      Cheddar cheese
+    </ReplaceText>
+  );
+}
 
 describe('ReplaceText', () => {
   test('globally replaces a case-insensitive string with higlighted text', () => {

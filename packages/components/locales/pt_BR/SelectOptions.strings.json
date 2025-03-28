@@ -1,4 +1,10 @@
 {
-  "Loading": "Carregando",
-  "No options": "Nenhuma opção"
+  "Loading": {
+    "description": "",
+    "value": "Carregando"
+  },
+  "No options": {
+    "description": "",
+    "value": "Nenhuma opção"
+  }
 }

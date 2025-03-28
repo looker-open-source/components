@@ -1,3 +1,6 @@
 {
-  "Open calendar": "캘린더 열기"
+  "Open calendar": {
+    "description": "",
+    "value": "캘린더 열기"
+  }
 }

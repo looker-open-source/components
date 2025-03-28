@@ -1,32 +1,42 @@
 {
   "complete days": {
+    "description": "",
     "value": "giorni completi"
   },
   "complete fiscal quarters": {
+    "description": "",
     "value": "trimestri fiscali completi"
   },
   "complete fiscal years": {
+    "description": "",
     "value": "anni fiscali completi"
   },
   "complete hours": {
+    "description": "",
     "value": "ore complete"
   },
   "complete minutes": {
+    "description": "",
     "value": "minuti completi"
   },
   "complete months": {
+    "description": "",
     "value": "mesi completi"
   },
   "complete quarters": {
+    "description": "",
     "value": "trimestri completi"
   },
   "complete seconds": {
+    "description": "",
     "value": "secondi completi"
   },
   "complete weeks": {
+    "description": "",
     "value": "settimane complete"
   },
   "complete years": {
+    "description": "",
     "value": "anni completi"
   }
 }

@@ -1,7 +1,22 @@
 {
-  "Apply": "Застосувати",
-  "Cancel": "Скасувати",
-  "Select All": "Вибрати всі",
-  "Select None": "Не вибирати нічого",
-  "Select columns to display": "Вибрати стовпці для відображення"
+  "Apply": {
+    "value": "Застосувати",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Скасувати",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Вибрати всі",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Не вибирати нічого",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Вибрати стовпці для відображення",
+    "description": ""
+  }
 }

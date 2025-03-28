@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "dienas prieš"
+    "value": "dienas prieš",
+    "description": ""
   },
   "days from now": {
-    "value": "dienas nuo dabar"
+    "value": "dienas nuo dabar",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "finansinis ketvirtis nuo dabar"
+    "value": "finansinis ketvirtis nuo dabar",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "finansinius ketvirčius prieš"
+    "value": "finansinius ketvirčius prieš",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "finansinius metus prieš"
+    "value": "finansinius metus prieš",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "finansinius metus nuo dabar"
+    "value": "finansinius metus nuo dabar",
+    "description": ""
   },
   "hours ago": {
-    "value": "valandas prieš"
+    "value": "valandas prieš",
+    "description": ""
   },
   "hours from now": {
-    "value": "valandas nuo dabar"
+    "value": "valandas nuo dabar",
+    "description": ""
   },
   "minutes ago": {
-    "value": "minutes prieš"
+    "value": "minutes prieš",
+    "description": ""
   },
   "minutes from now": {
-    "value": "minutes nuo dabar"
+    "value": "minutes nuo dabar",
+    "description": ""
   },
   "months ago": {
-    "value": "mėnesius prieš"
+    "value": "mėnesius prieš",
+    "description": ""
   },
   "months from now": {
-    "value": "mėnesius nuo dabar"
+    "value": "mėnesius nuo dabar",
+    "description": ""
   },
   "now": {
-    "value": "dabar"
+    "value": "dabar",
+    "description": ""
   },
   "quarters ago": {
-    "value": "ketvirčius prieš"
+    "value": "ketvirčius prieš",
+    "description": ""
   },
   "quarters from now": {
-    "value": "ketvirčius nuo dabar"
+    "value": "ketvirčius nuo dabar",
+    "description": ""
   },
   "seconds ago": {
-    "value": "sekundes prieš"
+    "value": "sekundes prieš",
+    "description": ""
   },
   "seconds from now": {
-    "value": "sekundes nuo dabar"
+    "value": "sekundes nuo dabar",
+    "description": ""
   },
   "weeks ago": {
-    "value": "savaites prieš"
+    "value": "savaites prieš",
+    "description": ""
   },
   "weeks from now": {
-    "value": "savaites nuo dabar"
+    "value": "savaites nuo dabar",
+    "description": ""
   },
   "years ago": {
-    "value": "metus prieš"
+    "value": "metus prieš",
+    "description": ""
   },
   "years from now": {
-    "value": "metus nuo dabar"
+    "value": "metus nuo dabar",
+    "description": ""
   }
 }

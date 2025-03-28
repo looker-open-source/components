@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Ekle"
+    "value": "Ekle",
+    "description": ""
   },
   "Remove": {
-    "value": "Kaldır"
+    "value": "Kaldır",
+    "description": ""
   }
 }

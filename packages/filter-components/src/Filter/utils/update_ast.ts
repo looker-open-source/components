@@ -9,12 +9,11 @@ import {
   getMatchesAdvancedNode,
   hasMatchesAdvancedNode,
 } from '@looker/filter-expressions';
-import { checkAndLoadUserAttributes } from './check_and_load_user_attributes';
 import type { FilterProps } from '../types';
 
 export type UpdateAstProps = Pick<
   FilterProps,
-  'expression' | 'userAttributes' | 'loadUserAttributes'
+  'expression' | 'userAttributes'
 > & {
   expressionType: FilterExpressionType;
 };
@@ -26,7 +25,6 @@ export const updateASTFromProps = ({
   expressionType,
   expression,
   userAttributes,
-  loadUserAttributes,
 }: UpdateAstProps) => {
   const { subTypes } = typeToGrammar(expressionType);
   let ast;
@@ -35,7 +33,6 @@ export const updateASTFromProps = ({
     if (hasMatchesAdvancedNode(subTypes)(ast)) {
       ast = getMatchesAdvancedNode(expression, ast);
     }
-    checkAndLoadUserAttributes(loadUserAttributes, userAttributes, ast);
   } catch (error) {
     ast = undefined;
   }

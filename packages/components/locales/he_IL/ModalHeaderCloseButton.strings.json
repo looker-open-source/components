@@ -1,3 +1,6 @@
 {
-  "Close": "סגור"
+  "Close": {
+    "value": "סגור",
+    "description": ""
+  }
 }

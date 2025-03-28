@@ -1,8 +1,10 @@
 {
   "is not value": {
-    "value": "nėra {{value}}"
+    "value": "nėra {{value}}",
+    "description": ""
   },
   "is value": {
-    "value": "yra {{value}}"
+    "value": "yra {{value}}",
+    "description": ""
   }
 }

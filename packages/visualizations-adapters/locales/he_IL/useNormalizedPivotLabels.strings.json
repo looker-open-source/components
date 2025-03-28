@@ -1,3 +1,6 @@
 {
-  "Row Total": "סכום שורה"
+  "Row Total": {
+    "value": "סכום שורה",
+    "description": ""
+  }
 }

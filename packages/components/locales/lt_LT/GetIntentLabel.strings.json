@@ -1,6 +1,18 @@
 {
-  "Error": "Klaida",
-  "Inform": "Informuoti",
-  "Success": "Pavyko",
-  "Warning": "Įspėjimas"
+  "Error": {
+    "value": "Klaida",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Informuoti",
+    "description": ""
+  },
+  "Success": {
+    "value": "Pavyko",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Įspėjimas",
+    "description": ""
+  }
 }

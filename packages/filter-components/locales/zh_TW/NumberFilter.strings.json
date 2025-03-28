@@ -1,3 +1,6 @@
 {
-  "any value": "任何值"
+  "any value": {
+    "description": "",
+    "value": "任何值"
+  }
 }

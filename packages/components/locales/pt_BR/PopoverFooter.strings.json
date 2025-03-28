@@ -1,3 +1,6 @@
 {
-  "Done": "Concluído"
+  "Done": {
+    "description": "",
+    "value": "Concluído"
+  }
 }

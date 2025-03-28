@@ -1,3 +1,6 @@
 {
-  "required": "обов’язково"
+  "required": {
+    "value": "обов’язково",
+    "description": ""
+  }
 }

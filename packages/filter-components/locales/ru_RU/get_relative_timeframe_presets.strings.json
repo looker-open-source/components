@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "За последние 14 дней"
+    "value": "За последние 14 дней",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "За последние 180 дней"
+    "value": "За последние 180 дней",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "За последние 28 дней"
+    "value": "За последние 28 дней",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "За последние 30 дней"
+    "value": "За последние 30 дней",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "За последние 365 дней"
+    "value": "За последние 365 дней",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "За последние 7 дней"
+    "value": "За последние 7 дней",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "За последние 90 дней"
+    "value": "За последние 90 дней",
+    "description": ""
   },
   "Previous Month": {
-    "value": "За прошлый месяц"
+    "value": "За прошлый месяц",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "За прошлый квартал"
+    "value": "За прошлый квартал",
+    "description": ""
   },
   "Previous Week": {
-    "value": "За прошлую неделю"
+    "value": "За прошлую неделю",
+    "description": ""
   },
   "Previous Year": {
-    "value": "За прошлый год"
+    "value": "За прошлый год",
+    "description": ""
   },
   "This Month": {
-    "value": "За этот месяц"
+    "value": "За этот месяц",
+    "description": ""
   },
   "This Quarter": {
-    "value": "За этот квартал"
+    "value": "За этот квартал",
+    "description": ""
   },
   "This Week": {
-    "value": "За эту неделю"
+    "value": "За эту неделю",
+    "description": ""
   },
   "This Year": {
-    "value": "За этот год"
+    "value": "За этот год",
+    "description": ""
   },
   "Today": {
-    "value": "Сегодня"
+    "value": "Сегодня",
+    "description": ""
   },
   "Year To Date": {
-    "value": "С начала года до текущей даты"
+    "value": "С начала года до текущей даты",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Вчера"
+    "value": "Вчера",
+    "description": ""
   }
 }

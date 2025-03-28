@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "у діапазоні {{range}}"
+    "value": "у діапазоні {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "поза діапазоном {{range}}"
+    "value": "поза діапазоном {{range}}",
+    "description": ""
   }
 }

@@ -11,37 +11,21 @@
     "test": "jest"
   },
   "dependencies": {
-    "@looker/eslint-config-oss": "*",
-    "@manypkg/get-packages": "1.1.3",
-    "eslint-plugin-disable": "2.0.3",
-    "eslint-plugin-jsx-a11y": "6.7.1",
-    "eslint-traverse": "1.0.0",
-    "jsonc-eslint-parser": "2.1.0",
-    "read-pkg-up": "7.0.1"
+    "@manypkg/get-packages": "^1.1.3",
+    "eslint-plugin-disable": "^2.0.3",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-workspaces": "^0.10.1",
+    "eslint-traverse": "^1.0.0",
+    "jsonc-eslint-parser": "^2.1.0",
+    "read-pkg-up": "^7.0.1"
   },
   "devDependencies": {
-    "@looker/components-scripts": "*",
-    "@looker/jest-config": "*",
-    "@looker/prettier-config": "*",
+    "@looker/components-scripts": "3.0.0",
+    "@looker/jest-config": "0.0.1",
+    "@looker/prettier-config": "1.0.0",
     "prettier": "2.8.2"
   },
   "peerDependencies": {
     "eslint": "^8.24.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@looker/eslint-config-oss"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "*.js"
-        ],
-        "rules": {
-          "@typescript-eslint/no-var-requires": "off"
-        }
-      }
-    ]
   }
 }

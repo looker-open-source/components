@@ -1,8 +1,10 @@
 {
   "ago": {
-    "value": "geleden"
+    "value": "geleden",
+    "description": ""
   },
   "from now": {
-    "value": "vanaf nu"
+    "value": "vanaf nu",
+    "description": ""
   }
 }

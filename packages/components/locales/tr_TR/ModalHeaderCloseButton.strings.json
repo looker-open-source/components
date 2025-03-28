@@ -1,3 +1,6 @@
 {
-  "Close": "Kapat"
+  "Close": {
+    "value": "Kapat",
+    "description": ""
+  }
 }

@@ -1,9 +1,30 @@
 {
-  "Config": "Konfigurovat",
-  "Dimensions": "Dimenze",
-  "Error": "Chyba",
-  "Measures": "Míry",
-  "Result": "Výsledek",
-  "error": "chyba",
-  "ok": "ok"
+  "Config": {
+    "value": "Konfigurovat",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Dimenze",
+    "description": ""
+  },
+  "Error": {
+    "value": "Chyba",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Míry",
+    "description": ""
+  },
+  "Result": {
+    "value": "Výsledek",
+    "description": ""
+  },
+  "error": {
+    "value": "chyba",
+    "description": ""
+  },
+  "ok": {
+    "value": "ok",
+    "description": ""
+  }
 }

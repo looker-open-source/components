@@ -1,6 +1,18 @@
 {
-  "Error": "Fout",
-  "Inform": "Informeren",
-  "Success": "Geslaagd",
-  "Warning": "Waarschuwing"
+  "Error": {
+    "value": "Fout",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Informeren",
+    "description": ""
+  },
+  "Success": {
+    "value": "Geslaagd",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Waarschuwing",
+    "description": ""
+  }
 }

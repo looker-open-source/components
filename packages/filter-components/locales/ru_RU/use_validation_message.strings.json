@@ -1,3 +1,6 @@
 {
-  "Value required": "Необходимо ввести значение"
+  "Value required": {
+    "value": "Необходимо ввести значение",
+    "description": ""
+  }
 }

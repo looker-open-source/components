@@ -24,7 +24,7 @@
 
  */
 
-import type { ReactChild, Ref } from 'react';
+import type { ReactChild, ReactElement, Ref } from 'react';
 import React, { Children, forwardRef, isValidElement, useMemo } from 'react';
 import type {
   CompatibleHTMLProps,
@@ -92,7 +92,10 @@ export type ListProps = HeightProps &
   };
 
 const getListItemHeight = (child: ReactChild, height: number) => {
-  if (isValidElement(child) && child.props.description) {
+  if (
+    isValidElement(child) &&
+    (child as ReactElement<{ description: unknown }>).props.description
+  ) {
     return height + 16;
   }
   return height;

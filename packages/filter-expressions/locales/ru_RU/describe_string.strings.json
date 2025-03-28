@@ -1,23 +1,30 @@
 {
   "blank": {
-    "value": "не содержит данные"
+    "value": "не содержит данные",
+    "description": ""
   },
   "contains value": {
-    "value": "содержит {{value}}"
+    "value": "содержит {{value}}",
+    "description": ""
   },
   "does not contain value": {
-    "value": "не содержит {{value}}"
+    "value": "не содержит {{value}}",
+    "description": ""
   },
   "does not end with value": {
-    "value": "не заканчивается на {{value}}"
+    "value": "не заканчивается на {{value}}",
+    "description": ""
   },
   "does not start with value": {
-    "value": "не начинается с {{value}}"
+    "value": "не начинается с {{value}}",
+    "description": ""
   },
   "ends with value": {
-    "value": "заканчивается на {{value}}"
+    "value": "заканчивается на {{value}}",
+    "description": ""
   },
   "starts with value": {
-    "value": "начинается с {{value}}"
+    "value": "начинается с {{value}}",
+    "description": ""
   }
 }

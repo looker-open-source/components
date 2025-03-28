@@ -1,3 +1,6 @@
 {
-  "Tabs": "Registerkarten"
+  "Tabs": {
+    "description": "",
+    "value": "Tabs"
+  }
 }

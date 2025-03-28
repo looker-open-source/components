@@ -1,3 +1,6 @@
 {
-  "Row Total": "Сумма строки"
+  "Row Total": {
+    "value": "Сумма строки",
+    "description": ""
+  }
 }

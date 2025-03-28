@@ -1,4 +1,10 @@
 {
-  "next month": "nächster Monat",
-  "previous month": "vorheriger Monat"
+  "next month": {
+    "description": "",
+    "value": "nächster Monat"
+  },
+  "previous month": {
+    "description": "",
+    "value": "vorheriger Monat"
+  }
 }

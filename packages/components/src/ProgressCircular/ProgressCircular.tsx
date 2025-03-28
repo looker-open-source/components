@@ -64,8 +64,8 @@ export const ProgressCircular = ({
       role="progressbar"
       aria-label={label || undefined}
       aria-valuemin={0}
-      aria-valuemax={1}
-      aria-valuenow={progress || undefined}
+      aria-valuemax={100}
+      aria-valuenow={progress ? Math.round(progress * 100) : undefined}
       {...props}
     >
       {renderTrough === true ? (
@@ -78,7 +78,7 @@ export const ProgressCircular = ({
       {progress !== undefined ? (
         <DeterminateProgress
           size={size}
-          progress={progress}
+          progress={Math.min(progress, 1)}
           color={colorValues.primary}
         />
       ) : (

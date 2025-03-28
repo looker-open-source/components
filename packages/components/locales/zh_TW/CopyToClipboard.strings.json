@@ -1,4 +1,10 @@
 {
-  "Copied": "已複製",
-  "Copy to Clipboard": "複製到剪貼簿"
+  "Copied": {
+    "description": "",
+    "value": "已複製"
+  },
+  "Copy to Clipboard": {
+    "description": "",
+    "value": "複製到剪貼簿"
+  }
 }

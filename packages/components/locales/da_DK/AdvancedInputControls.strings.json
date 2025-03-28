@@ -1,3 +1,6 @@
 {
-  "Clear Field": "Ryd felt"
+  "Clear Field": {
+    "value": "Ryd felt",
+    "description": ""
+  }
 }

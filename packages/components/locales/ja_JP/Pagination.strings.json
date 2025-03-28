@@ -1,7 +1,22 @@
 {
-  "First page of results": "検索結果の最初のページ",
-  "Last page of results": "検索結果の最後のページ",
-  "Next page of results": "検索結果の次のページ",
-  "Previous page of results": "検索結果の前のページ",
-  "of": "/"
+  "First page of results": {
+    "description": "",
+    "value": "検索結果の最初のページ"
+  },
+  "Last page of results": {
+    "description": "",
+    "value": "検索結果の最後のページ"
+  },
+  "Next page of results": {
+    "description": "",
+    "value": "検索結果の次のページ"
+  },
+  "Previous page of results": {
+    "description": "",
+    "value": "検索結果の前のページ"
+  },
+  "of": {
+    "description": "",
+    "value": "/"
+  }
 }

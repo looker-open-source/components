@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Posledních 14 dnů"
+    "value": "Posledních 14 dnů",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Posledních 180 dnů"
+    "value": "Posledních 180 dnů",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Posledních 28 dnů"
+    "value": "Posledních 28 dnů",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Posledních 30 dnů"
+    "value": "Posledních 30 dnů",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Posledních 365 dnů"
+    "value": "Posledních 365 dnů",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Posledních 7 dnů"
+    "value": "Posledních 7 dnů",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Posledních 90 dnů"
+    "value": "Posledních 90 dnů",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Minulý měsíc"
+    "value": "Minulý měsíc",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Minulé čtvrtletí"
+    "value": "Minulé čtvrtletí",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Minulý týden"
+    "value": "Minulý týden",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Minulý rok"
+    "value": "Minulý rok",
+    "description": ""
   },
   "This Month": {
-    "value": "Tento měsíc"
+    "value": "Tento měsíc",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Toto čtvrtletí"
+    "value": "Toto čtvrtletí",
+    "description": ""
   },
   "This Week": {
-    "value": "Tento týden"
+    "value": "Tento týden",
+    "description": ""
   },
   "This Year": {
-    "value": "Tento rok"
+    "value": "Tento rok",
+    "description": ""
   },
   "Today": {
-    "value": "Dnes"
+    "value": "Dnes",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Od počátku roku"
+    "value": "Od počátku roku",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Včera"
+    "value": "Včera",
+    "description": ""
   }
 }

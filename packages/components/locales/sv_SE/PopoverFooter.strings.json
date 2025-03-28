@@ -1,3 +1,6 @@
 {
-  "Done": "Klar"
+  "Done": {
+    "value": "Klar",
+    "description": ""
+  }
 }

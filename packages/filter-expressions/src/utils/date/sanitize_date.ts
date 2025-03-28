@@ -29,7 +29,7 @@ import {
   dateToFilterDateTimeModel,
 } from './date_conversions';
 
-export const sanitizeDate = (item: FilterModel) => {
+export const sanitizeDate = (item: FilterModel): FilterModel => {
   const dateItem: FilterDateTimeModel = dateToFilterDateTimeModel(
     new Date(Date.now())
   );
@@ -50,6 +50,7 @@ export const sanitizeDate = (item: FilterModel) => {
     intervalType,
   } = item;
   const interval = { unit: 'month', value: 3 };
+  const interval2 = { unit: 'month', value: 4 };
 
   switch (type) {
     case 'past':
@@ -99,7 +100,7 @@ export const sanitizeDate = (item: FilterModel) => {
         is,
         type,
         startInterval: startInterval || interval,
-        endInterval: endInterval || interval,
+        endInterval: endInterval || interval2,
         intervalType: intervalType || 'ago',
       };
     case 'null':

@@ -1,8 +1,10 @@
 {
   "No values": {
+    "description": "",
     "value": "値なし"
   },
   "No values match": {
+    "description": "",
     "value": "一致する値はありません"
   }
 }

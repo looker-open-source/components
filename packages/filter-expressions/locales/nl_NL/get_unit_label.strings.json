@@ -1,82 +1,162 @@
 {
-  "complete day": "hele dag",
+  "complete day": {
+    "value": "hele dag",
+    "description": ""
+  },
   "complete days": {
-    "value": "hele dagen"
+    "value": "hele dagen",
+    "description": ""
   },
-  "complete fiscal quarter": "hele fiscale kwartaal",
+  "complete fiscal quarter": {
+    "value": "hele fiscale kwartaal",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "hele fiscale kwartalen"
+    "value": "hele fiscale kwartalen",
+    "description": ""
   },
-  "complete fiscal year": "hele fiscale jaar",
+  "complete fiscal year": {
+    "value": "hele fiscale jaar",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "hele fiscale jaren"
+    "value": "hele fiscale jaren",
+    "description": ""
   },
-  "complete hour": "hele uur",
+  "complete hour": {
+    "value": "hele uur",
+    "description": ""
+  },
   "complete hours": {
-    "value": "hele uren"
+    "value": "hele uren",
+    "description": ""
   },
-  "complete minute": "hele minuut",
+  "complete minute": {
+    "value": "hele minuut",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "hele minuten"
+    "value": "hele minuten",
+    "description": ""
   },
-  "complete month": "hele maand",
+  "complete month": {
+    "value": "hele maand",
+    "description": ""
+  },
   "complete months": {
-    "value": "hele maanden"
+    "value": "hele maanden",
+    "description": ""
   },
-  "complete quarter": "hele kwartaal",
+  "complete quarter": {
+    "value": "hele kwartaal",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "hele kwartalen"
+    "value": "hele kwartalen",
+    "description": ""
   },
-  "complete second": "hele seconde",
+  "complete second": {
+    "value": "hele seconde",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "hele seconden"
+    "value": "hele seconden",
+    "description": ""
   },
-  "complete week": "hele week",
+  "complete week": {
+    "value": "hele week",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "hele weken"
+    "value": "hele weken",
+    "description": ""
   },
-  "complete year": "hele jaar",
+  "complete year": {
+    "value": "hele jaar",
+    "description": ""
+  },
   "complete years": {
-    "value": "hele jaren"
+    "value": "hele jaren",
+    "description": ""
   },
-  "day": "dag",
+  "day": {
+    "value": "dag",
+    "description": ""
+  },
   "days": {
-    "value": "dagen"
+    "value": "dagen",
+    "description": ""
   },
-  "fiscal quarter": "fiscaal kwartaal",
+  "fiscal quarter": {
+    "value": "fiscaal kwartaal",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "fiscale kwartalen"
+    "value": "fiscale kwartalen",
+    "description": ""
   },
-  "fiscal year": "fiscaal jaar",
+  "fiscal year": {
+    "value": "fiscaal jaar",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "fiscale jaren"
+    "value": "fiscale jaren",
+    "description": ""
   },
-  "hour": "uur",
+  "hour": {
+    "value": "uur",
+    "description": ""
+  },
   "hours": {
-    "value": "uren"
+    "value": "uren",
+    "description": ""
   },
-  "minute": "minuut",
+  "minute": {
+    "value": "minuut",
+    "description": ""
+  },
   "minutes": {
-    "value": "minuten"
+    "value": "minuten",
+    "description": ""
   },
-  "month": "maand",
+  "month": {
+    "value": "maand",
+    "description": ""
+  },
   "months": {
-    "value": "maanden"
+    "value": "maanden",
+    "description": ""
   },
-  "quarter": "kwartaal",
+  "quarter": {
+    "value": "kwartaal",
+    "description": ""
+  },
   "quarters": {
-    "value": "kwartalen"
+    "value": "kwartalen",
+    "description": ""
   },
-  "second": "seconde",
+  "second": {
+    "value": "seconde",
+    "description": ""
+  },
   "seconds": {
-    "value": "seconden"
+    "value": "seconden",
+    "description": ""
   },
-  "week": "week",
+  "week": {
+    "value": "week",
+    "description": ""
+  },
   "weeks": {
-    "value": "weken"
+    "value": "weken",
+    "description": ""
   },
-  "year": "jaar",
+  "year": {
+    "value": "jaar",
+    "description": ""
+  },
   "years": {
-    "value": "jaren"
+    "value": "jaren",
+    "description": ""
   }
 }

@@ -16,8 +16,8 @@
     "prepublishOnly": "lk prepublishOnly"
   },
   "dependencies": {
-    "prettier": "2.8.2",
-    "stylelint": "13.13.1",
+    "prettier": "^2.8.2",
+    "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-config-styled-components": "^0.1.1",
@@ -25,8 +25,8 @@
     "stylelint-prettier": "^1.2.0"
   },
   "devDependencies": {
-    "@looker/components-scripts": "*",
-    "@looker/prettier-config": "*"
+    "@looker/components-scripts": "3.0.0",
+    "@looker/prettier-config": "1.0.0"
   },
   "gitHead": "62febc162e3e45124f403e2c84fc741f68fe6714"
 }

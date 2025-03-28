@@ -1,3 +1,6 @@
 {
-  "Delete": "Видалити"
+  "Delete": {
+    "value": "Видалити",
+    "description": ""
+  }
 }

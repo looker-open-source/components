@@ -1,3 +1,6 @@
 {
-  "until (before)": "şu tarihe kadar (şu tarihten önce):"
+  "until (before)": {
+    "value": "şu tarihe kadar (şu tarihten önce):",
+    "description": ""
+  }
 }

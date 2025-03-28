@@ -1,14 +1,50 @@
 {
-  "contains": "ประกอบด้วย",
-  "doesnt contain": "ไม่ได้ประกอบด้วย",
-  "doesnt end with": "ไม่ได้สิ้นสุดด้วย",
-  "doesnt start with": "ไม่ได้เริ่มต้นด้วย",
-  "ends with": "สิ้นสุดด้วย",
-  "is": "เป็น",
-  "is blank": "เว้นว่าง",
-  "is not": "ไม่",
-  "is not blank": "ไม่เว้นว่าง",
-  "is not null": "ไม่เป็นค่าว่าง",
-  "is null": "เป็นค่าว่าง",
-  "starts with": "เริ่มต้นด้วย"
+  "contains": {
+    "value": "ประกอบด้วย",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "ไม่ได้ประกอบด้วย",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "ไม่ได้สิ้นสุดด้วย",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "ไม่ได้เริ่มต้นด้วย",
+    "description": ""
+  },
+  "ends with": {
+    "value": "สิ้นสุดด้วย",
+    "description": ""
+  },
+  "is": {
+    "value": "เป็น",
+    "description": ""
+  },
+  "is blank": {
+    "value": "เว้นว่าง",
+    "description": ""
+  },
+  "is not": {
+    "value": "ไม่",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "ไม่เว้นว่าง",
+    "description": ""
+  },
+  "is not null": {
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
+  },
+  "is null": {
+    "value": "เป็นค่าว่าง",
+    "description": ""
+  },
+  "starts with": {
+    "value": "เริ่มต้นด้วย",
+    "description": ""
+  }
 }

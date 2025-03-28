@@ -1,7 +1,22 @@
 {
-  "Apply": "적용",
-  "Cancel": "취소",
-  "Select All": "모두 선택",
-  "Select None": "모두 선택 해제",
-  "Select columns to display": "표시할 열 선택"
+  "Apply": {
+    "description": "",
+    "value": "적용"
+  },
+  "Cancel": {
+    "description": "",
+    "value": "취소"
+  },
+  "Select All": {
+    "description": "",
+    "value": "모두 선택"
+  },
+  "Select None": {
+    "description": "",
+    "value": "모두 선택 해제"
+  },
+  "Select columns to display": {
+    "description": "",
+    "value": "표시할 열 선택"
+  }
 }

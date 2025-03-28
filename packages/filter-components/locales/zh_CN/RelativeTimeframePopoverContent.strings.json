@@ -1,8 +1,10 @@
 {
   "Custom": {
+    "description": "",
     "value": "自定义"
   },
   "Presets": {
+    "description": "",
     "value": "预设"
   }
 }

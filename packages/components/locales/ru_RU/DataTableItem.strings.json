@@ -1,3 +1,6 @@
 {
-  "Options": "Параметры"
+  "Options": {
+    "value": "Параметры",
+    "description": ""
+  }
 }

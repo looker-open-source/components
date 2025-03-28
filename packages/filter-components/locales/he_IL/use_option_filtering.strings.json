@@ -1,8 +1,10 @@
 {
   "No values": {
-    "value": "אין ערכים"
+    "value": "אין ערכים",
+    "description": ""
   },
   "No values match": {
-    "value": "לא נמצאו ערכים תואמים"
+    "value": "לא נמצאו ערכים תואמים",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Error": "Chyba"
+  "Error": {
+    "value": "Chyba",
+    "description": ""
+  }
 }

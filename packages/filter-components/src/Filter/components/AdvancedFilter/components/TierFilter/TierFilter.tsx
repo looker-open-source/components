@@ -27,22 +27,23 @@
 import {
   convertOptionToType,
   convertTypeToOption,
-} from '@looker/filter-expressions'
-import type { ElementType } from 'react'
-import React from 'react'
-import type { FilterParamProps } from '../../../../types/filter_param_props'
-import { GroupSelect } from '../GroupSelect'
-import { tierFilterTypeToFilter } from './utils/tier_filter_type_to_filter'
+} from '@looker/filter-expressions';
+import type { TierFilterType } from '@looker/filter-expressions';
+import type { ElementType } from 'react';
+import React from 'react';
+import type { FilterParamProps } from '../../../../types/filter_param_props';
+import { GroupSelect } from '../GroupSelect';
+import { tierFilterTypeToFilter } from './utils/tier_filter_type_to_filter';
 import {
   useParamFilterOptions,
   useTierFilterOptions,
   useFilterOptions,
-} from '../../utils'
-import { ItemLayout } from '../ItemLayout'
-import { createEnumeration } from '../../../../utils'
+} from '../../utils';
+import { ItemLayout } from '../ItemLayout';
+import { createEnumeration } from '../../../../utils';
 
-export const TierFilter  = ({
-  item,
+export const TierFilter = ({
+  item: passedInItem,
   filterType,
   enumerations,
   field,
@@ -51,41 +52,51 @@ export const TierFilter  = ({
   showMatchesAdvanced,
   validationMessage,
   ...rest
-} : FilterParamProps) => {
+}: FilterParamProps<TierFilterType>) => {
+  const item = { ...passedInItem };
   const typeChange = (value: string) =>
-    onChange(item.id, convertOptionToType(String(value)))
-  const selectValue = convertTypeToOption(item)
+    onChange(item.id, convertOptionToType(String(value)));
+  const selectValue = convertTypeToOption(item);
 
-  const isParamFilter = field ? field.category === 'parameter' : false
-  const unescapeEnumerationValues = field?.has_allowed_values && isParamFilter
+  const isParamFilter = field ? field.category === 'parameter' : false;
+  const unescapeEnumerationValues = field?.has_allowed_values && isParamFilter;
   const unescapedEnumerations = enumerations?.map(
     createEnumeration(unescapeEnumerationValues)
-  )
+  );
   const FilterComponent: ElementType = tierFilterTypeToFilter(
     item.type,
     isParamFilter,
     rest.allowMultipleOptions
-  )
-  const isValueSet = item.value && item.value.length > 0
-  const isValueInEnumeration = unescapedEnumerations?.some((e) =>
-    item.value?.includes(e.value)
-  )
+  );
+  item.value = item.value?.map?.(String) ?? [];
+  const isValueSet = item.value && item.value.length > 0;
+  const isValueInEnumeration = unescapedEnumerations?.some(e =>
+    item.value?.includes?.(e.value)
+  );
 
   if (
     isParamFilter &&
     unescapedEnumerations?.length &&
-    isValueSet &&
-    !isValueInEnumeration
+    ((isValueSet && !isValueInEnumeration) || !isValueSet)
   ) {
-    item.value = [String(unescapedEnumerations[0].value)]
+    if (
+      field?.default_filter_value &&
+      unescapedEnumerations.find(
+        enumeration => enumeration.value === field?.default_filter_value
+      )
+    ) {
+      item.value = [field?.default_filter_value];
+    } else {
+      item.value = [String(unescapedEnumerations[0].value)];
+    }
   }
 
-  const paramFilterOptions = useParamFilterOptions()
-  const tierFilterOptions = useTierFilterOptions()
+  const paramFilterOptions = useParamFilterOptions(field?.type === 'number');
+  const tierFilterOptions = useTierFilterOptions(field?.type === 'yesno');
   const options = useFilterOptions(
     isParamFilter ? paramFilterOptions : tierFilterOptions,
     isParamFilter ? false : showMatchesAdvanced
-  )
+  );
 
   return (
     <ItemLayout item={item} {...rest}>
@@ -95,6 +106,7 @@ export const TierFilter  = ({
         onChange={typeChange}
         validationType={validationMessage?.type}
         placement={item.type === 'anyvalue' ? undefined : 'left'}
+        data-testid="tier-option"
       />
       <FilterComponent
         item={item}
@@ -108,5 +120,5 @@ export const TierFilter  = ({
         placement="right"
       />
     </ItemLayout>
-  )
-}
+  );
+};

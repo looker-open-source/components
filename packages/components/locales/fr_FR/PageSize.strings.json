@@ -1,4 +1,10 @@
 {
-  "Display": "Afficher",
-  "of": "sur"
+  "Display": {
+    "description": "",
+    "value": "Afficher"
+  },
+  "of": {
+    "description": "",
+    "value": "sur"
+  }
 }

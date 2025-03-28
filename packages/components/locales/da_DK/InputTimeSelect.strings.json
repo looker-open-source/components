@@ -1,3 +1,6 @@
 {
-  "Select time": "Vælg tidspunkt"
+  "Select time": {
+    "value": "Vælg tidspunkt",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "any value": "n’importe quelle valeur"
+  "any value": {
+    "value": "n’importe quelle valeur",
+    "description": ""
+  }
 }

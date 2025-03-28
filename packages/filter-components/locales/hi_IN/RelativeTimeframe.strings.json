@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "एक टाइमफ़्रेम चुनें"
+  "Choose a Timeframe": {
+    "value": "एक टाइमफ़्रेम चुनें",
+    "description": ""
+  }
 }

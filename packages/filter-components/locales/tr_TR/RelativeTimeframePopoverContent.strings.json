@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Özel"
+    "value": "Özel",
+    "description": ""
   },
   "Presets": {
-    "value": "Önayarlar"
+    "value": "Önayarlar",
+    "description": ""
   }
 }

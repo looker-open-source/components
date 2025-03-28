@@ -1,3 +1,6 @@
 {
-  "DismissIntent": "Отклонить {{intent}}"
+  "DismissIntent": {
+    "value": "Отклонить {{intent}}",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Error": "Klaida"
+  "Error": {
+    "value": "Klaida",
+    "description": ""
+  }
 }

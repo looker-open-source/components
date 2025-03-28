@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Došlo k chybě"
+  "Something went wrong": {
+    "value": "Došlo k chybě",
+    "description": ""
+  }
 }

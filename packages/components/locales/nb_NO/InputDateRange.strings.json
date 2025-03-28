@@ -1,4 +1,10 @@
 {
-  "End date": "Sluttdato",
-  "Start date": "Startdato"
+  "End date": {
+    "value": "Sluttdato",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Startdato",
+    "description": ""
+  }
 }

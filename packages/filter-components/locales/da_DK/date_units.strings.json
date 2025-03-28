@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "dag"
+    "value": "dag",
+    "description": ""
   },
   "days": {
-    "value": "dage"
+    "value": "dage",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "regnskabskvartal"
+    "value": "regnskabskvartal",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "regnskabskvartaler"
+    "value": "regnskabskvartaler",
+    "description": ""
   },
   "fiscal year": {
-    "value": "regnskabsår"
+    "value": "regnskabsår",
+    "description": ""
   },
   "fiscal years": {
-    "value": "regnskabsår"
+    "value": "regnskabsår",
+    "description": ""
   },
   "hour": {
-    "value": "time"
+    "value": "time",
+    "description": ""
   },
   "hours": {
-    "value": "timer"
+    "value": "timer",
+    "description": ""
   },
   "minute": {
-    "value": "minut"
+    "value": "minut",
+    "description": ""
   },
   "minutes": {
-    "value": "minutter"
+    "value": "minutter",
+    "description": ""
   },
   "month": {
-    "value": "måned"
+    "value": "måned",
+    "description": ""
   },
   "months": {
-    "value": "måneder"
+    "value": "måneder",
+    "description": ""
   },
   "quarter": {
-    "value": "kvartal"
+    "value": "kvartal",
+    "description": ""
   },
   "quarters": {
-    "value": "kvartaler"
+    "value": "kvartaler",
+    "description": ""
   },
   "second": {
-    "value": "sekund"
+    "value": "sekund",
+    "description": ""
   },
   "seconds": {
-    "value": "sekunder"
+    "value": "sekunder",
+    "description": ""
   },
   "week": {
-    "value": "uge"
+    "value": "uge",
+    "description": ""
   },
   "weeks": {
-    "value": "uger"
+    "value": "uger",
+    "description": ""
   },
   "year": {
-    "value": "år"
+    "value": "år",
+    "description": ""
   },
   "years": {
-    "value": "år"
+    "value": "år",
+    "description": ""
   }
 }

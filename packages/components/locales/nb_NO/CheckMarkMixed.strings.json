@@ -1,3 +1,6 @@
 {
-  "Check Mark Mixed": "Blandet merke"
+  "Check Mark Mixed": {
+    "value": "Blandet merke",
+    "description": ""
+  }
 }

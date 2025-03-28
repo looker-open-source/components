@@ -1,3 +1,6 @@
 {
-  "No Results": "אין תוצאות"
+  "No Results": {
+    "value": "אין תוצאות",
+    "description": ""
+  }
 }

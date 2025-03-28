@@ -1,4 +1,10 @@
 {
-  "Loading": "Chargement",
-  "No options": "Aucune option"
+  "Loading": {
+    "value": "Chargement",
+    "description": ""
+  },
+  "No options": {
+    "value": "Aucune option",
+    "description": ""
+  }
 }

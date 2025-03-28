@@ -23,36 +23,36 @@
  SOFTWARE.
 
  */
-import type { FilterExpressionType, UserAttributeWithValue } from '../../types'
-import { TYPE_USER_ATTRIBUTE } from '../../types'
-import { i18nInit } from '../i18n'
-import { grammarsMap } from '../type_to_grammar'
-import { summary } from './summary'
+import type { FilterExpressionType, UserAttributeWithValue } from '../../types';
+import { TYPE_USER_ATTRIBUTE } from '../../types';
+import { i18nInit } from '../i18n';
+import { grammarsMap } from '../type_to_grammar';
+import { summary } from './summary';
 
 describe('Summary', () => {
-  Object.keys(grammarsMap).forEach((type) => {
-    const expression = '&,,,$%testContext.#,,,$,testContext.'
+  Object.keys(grammarsMap).forEach(type => {
+    const expression = '&,,,$%testContext.#,,,$,testContext.';
     it(`for invalid input ${expression} should return the invalid input`, () => {
       expect(
         summary({ type: type as FilterExpressionType, expression })
-      ).toEqual(expression)
-    })
-  })
+      ).toEqual(expression);
+    });
+  });
 
   it('for matches advanced is equal to expression', () => {
-    const expression = 'before last week'
-    expect(summary({ type: 'date', expression })).toEqual(expression)
-  })
-})
+    const expression = 'before last week';
+    expect(summary({ type: 'date', expression })).toEqual(expression);
+  });
+});
 
 describe('Summary for empty string', () => {
-  i18nInit().catch((e) => {
-    throw new Error(e)
-  })
-  it.each(Object.keys(grammarsMap))('%s', (type) => {
-    expect(summary({ type: type as FilterExpressionType })).toMatchSnapshot()
-  })
-})
+  i18nInit().catch(e => {
+    throw new Error(e);
+  });
+  it.each(Object.keys(grammarsMap))('%s', type => {
+    expect(summary({ type: type as FilterExpressionType })).toMatchSnapshot();
+  });
+});
 
 describe('Summary for user attribute', () => {
   const getUserAttribute = (overrideProps?: Partial<UserAttributeWithValue>) =>
@@ -62,21 +62,21 @@ describe('Summary for user attribute', () => {
       type: TYPE_USER_ATTRIBUTE,
       value: 'some-value',
       ...overrideProps,
-    } as any as UserAttributeWithValue) // eslint-disable-line @typescript-eslint/no-explicit-any
+    } as UserAttributeWithValue);
 
   it('with value', () => {
-    const userAttributeWithValue = getUserAttribute()
+    const userAttributeWithValue = getUserAttribute();
     expect(
       summary({
         type: 'string',
         expression: "{{ _user_attributes['xyz'] }}",
         userAttributes: [userAttributeWithValue],
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('with value and required', () => {
-    const userAttributeWithValue = getUserAttribute()
+    const userAttributeWithValue = getUserAttribute();
     expect(
       summary({
         type: 'string',
@@ -84,22 +84,22 @@ describe('Summary for user attribute', () => {
         userAttributes: [userAttributeWithValue],
         required: true,
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('without value', () => {
-    const userAttributeWithoutValue = getUserAttribute({ value: null })
+    const userAttributeWithoutValue = getUserAttribute({ value: null });
     expect(
       summary({
         type: 'string',
         expression: "{{ _user_attributes['xyz'] }}",
         userAttributes: [userAttributeWithoutValue],
       })
-    ).toMatchSnapshot()
-  })
+    ).toMatchSnapshot();
+  });
 
   it('without value and required', () => {
-    const userAttributeWithoutValue = getUserAttribute({ value: null })
+    const userAttributeWithoutValue = getUserAttribute({ value: null });
     expect(
       summary({
         type: 'string',
@@ -107,6 +107,6 @@ describe('Summary for user attribute', () => {
         userAttributes: [userAttributeWithoutValue],
         required: true,
       })
-    ).toMatchSnapshot()
-  })
-})
+    ).toMatchSnapshot();
+  });
+});

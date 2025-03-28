@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Presione Mayús+clic para ordenar columnas adicionales.",
-  "Sort ascending": "Orden ascendente",
-  "Sort descending": "Orden descendente",
-  "Totals": "Totales"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "Mayúsculas + clic para ordenar columnas adicionales"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "Orden ascendente"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "Orden descendente"
+  },
+  "Totals": {
+    "description": "",
+    "value": "Totales"
+  }
 }

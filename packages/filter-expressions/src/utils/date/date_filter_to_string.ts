@@ -27,6 +27,7 @@ import type {
   FilterASTNode,
   FilterDateTimeModel,
   FilterExpressionType,
+  FilterInterval,
   FilterModel,
 } from '../../types';
 import { userAttributeToString } from '../user_attribute/user_attribute_to_string';
@@ -68,7 +69,7 @@ const beforeAfter = (item: FilterModel, showTime: boolean) => {
   const fromNowAgoText = fromnow ? 'from now' : 'ago';
   return unit === 'now'
     ? `${type} 0 minutes ${fromNowAgoText}`
-    : `${type} ${intervalToString(item)} ${fromNowAgoText}`;
+    : `${type} ${intervalToString(item as FilterInterval)} ${fromNowAgoText}`;
 };
 
 const dateRange = ({ start, end }: FilterModel, showTime: boolean) =>
@@ -77,7 +78,12 @@ const dateRange = ({ start, end }: FilterModel, showTime: boolean) =>
 const thisRange = ({ startInterval, endInterval }: FilterModel) =>
   `this ${startInterval} to ${endInterval}`;
 
-const intervalToString = ({ value, unit }: FilterModel) => `${value} ${unit}`;
+const intervalToString = (interval: FilterModel['startInterval']) => {
+  if (!interval) return '';
+  if (typeof interval === 'string') return interval;
+  const { value, unit } = interval;
+  return `${value} ${unit}`;
+};
 
 const typeAndUnitToString = ({ type, unit }: FilterModel) => `${type} ${unit}`;
 
@@ -97,11 +103,12 @@ const relative = ({ startInterval, intervalType, endInterval }: FilterModel) =>
   )}`;
 
 const pastToString = (item: FilterModel) =>
-  `${intervalToString(item)}${
-    item.complete ? ' ago for ' + intervalToString(item) : ''
+  `${intervalToString(item as FilterInterval)}${
+    item.complete ? ' ago for ' + intervalToString(item as FilterInterval) : ''
   }`;
 
-const pastAgoToString = (item: FilterModel) => `${intervalToString(item)} ago`;
+const pastAgoToString = (item: FilterModel) =>
+  `${intervalToString(item as FilterInterval)} ago`;
 
 const notNullToString = () => `not null`;
 

@@ -1,6 +1,18 @@
 {
-  "Error": "ข้อผิดพลาด",
-  "Inform": "แจ้ง",
-  "Success": "สำเร็จ",
-  "Warning": "การเตือน"
+  "Error": {
+    "value": "ข้อผิดพลาด",
+    "description": ""
+  },
+  "Inform": {
+    "value": "แจ้ง",
+    "description": ""
+  },
+  "Success": {
+    "value": "สำเร็จ",
+    "description": ""
+  },
+  "Warning": {
+    "value": "การเตือน",
+    "description": ""
+  }
 }

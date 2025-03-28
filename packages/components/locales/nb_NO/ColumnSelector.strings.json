@@ -1,7 +1,22 @@
 {
-  "Apply": "Bruk",
-  "Cancel": "Avbryt",
-  "Select All": "Velg alle",
-  "Select None": "Velg ingen",
-  "Select columns to display": "Velg kolonner som skal vises"
+  "Apply": {
+    "value": "Bruk",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Avbryt",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Velg alle",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Velg ingen",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Velg kolonner som skal vises",
+    "description": ""
+  }
 }

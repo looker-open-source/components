@@ -2,8 +2,8 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { UserAttributeWithValue, FilterExpressionType } from '../../types'
-import { parseFilterExpression } from '../parse_filter_expression'
+import type { UserAttributeWithValue, FilterExpressionType } from '../../types';
+import { parseFilterExpression } from '../parse_filter_expression';
 
 /**
  * Returns the user attribute matching the filter "type" and "expression".
@@ -26,6 +26,6 @@ export const getUserAttributeMatchingTypeAndExpression = (
   expression = '',
   userAttributes?: UserAttributeWithValue[]
 ): UserAttributeWithValue | null => {
-  const ast = parseFilterExpression(type, expression, userAttributes)
-  return userAttributes?.find((ua) => ua.name === ast.attributeName) || null
-}
+  const ast = parseFilterExpression(type, expression, userAttributes);
+  return userAttributes?.find(ua => ua.name === ast.attributeName) || null;
+};

@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "הוסף"
+    "value": "הוסף",
+    "description": ""
   },
   "Remove": {
-    "value": "הסר"
+    "value": "הסר",
+    "description": ""
   }
 }

@@ -1,6 +1,18 @@
 {
-  "Error": "त्रुटि",
-  "Inform": "जानकारी दें",
-  "Success": "सफल",
-  "Warning": "चेतावनी"
+  "Error": {
+    "value": "त्रुटि",
+    "description": ""
+  },
+  "Inform": {
+    "value": "जानकारी दें",
+    "description": ""
+  },
+  "Success": {
+    "value": "सफल",
+    "description": ""
+  },
+  "Warning": {
+    "value": "चेतावनी",
+    "description": ""
+  }
 }

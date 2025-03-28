@@ -1,7 +1,22 @@
 {
-  "Apply": "应用",
-  "Cancel": "取消",
-  "Select All": "全选",
-  "Select None": "全部不选",
-  "Select columns to display": "选择要显示的列"
+  "Apply": {
+    "description": "",
+    "value": "应用"
+  },
+  "Cancel": {
+    "description": "",
+    "value": "取消"
+  },
+  "Select All": {
+    "description": "",
+    "value": "全选"
+  },
+  "Select None": {
+    "description": "",
+    "value": "全部不选"
+  },
+  "Select columns to display": {
+    "description": "",
+    "value": "选择要显示的列"
+  }
 }

@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "Не больше {{name}}",
-  "Maximum Value": "Максимальное значение",
-  "Minimum Name": "Не меньше {{name}}",
-  "Minimum Value": "Минимальное значение"
+  "Maximum Name": {
+    "value": "Не больше {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "Максимальное значение",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "Не меньше {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "Минимальное значение",
+    "description": ""
+  }
 }

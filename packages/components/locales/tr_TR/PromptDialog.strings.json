@@ -1,4 +1,10 @@
 {
-  "Cancel": "İptal",
-  "Save": "Kaydet"
+  "Cancel": {
+    "value": "İptal",
+    "description": ""
+  },
+  "Save": {
+    "value": "Kaydet",
+    "description": ""
+  }
 }

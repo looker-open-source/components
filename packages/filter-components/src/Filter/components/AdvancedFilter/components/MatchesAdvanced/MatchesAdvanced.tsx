@@ -40,6 +40,7 @@ export const MatchesAdvanced = ({
 
   return (
     <GroupInput
+      data-testid="filter-matches-advanced"
       type="text"
       minWidth="120px"
       value={

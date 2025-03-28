@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "Pole"
+    "description": "",
+    "value": "Box"
   },
   "Circle": {
+    "description": "",
     "value": "Okrąg"
   },
   "Location": {
+    "description": "",
     "value": "Lokalizacja"
   },
   "feet": {
+    "description": "",
     "value": "ft"
   },
   "is anywhere": {
+    "description": "",
     "value": "jest w dowolnym miejscu"
   },
   "is not null": {
+    "description": "",
     "value": "nie ma wartości null"
   },
   "is null": {
+    "description": "",
     "value": "ma wartość null"
   },
   "kilometers": {
+    "description": "",
     "value": "km"
   },
   "meters": {
+    "description": "",
     "value": "m"
   },
   "miles": {
+    "description": "",
     "value": "mi"
   }
 }

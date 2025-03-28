@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "กล่อง"
+    "value": "กล่อง",
+    "description": ""
   },
   "Circle": {
-    "value": "วงกลม"
+    "value": "วงกลม",
+    "description": ""
   },
   "Location": {
-    "value": "ตำแหน่งที่ตั้ง"
+    "value": "ตำแหน่งที่ตั้ง",
+    "description": ""
   },
   "feet": {
-    "value": "ฟุต"
+    "value": "ฟุต",
+    "description": ""
   },
   "is anywhere": {
-    "value": "ที่ใดก็ได้"
+    "value": "ที่ใดก็ได้",
+    "description": ""
   },
   "is not null": {
-    "value": "ไม่เป็นค่าว่าง"
+    "value": "ไม่เป็นค่าว่าง",
+    "description": ""
   },
   "is null": {
-    "value": "เป็นค่าว่าง"
+    "value": "เป็นค่าว่าง",
+    "description": ""
   },
   "kilometers": {
-    "value": "กิโลเมตร"
+    "value": "กิโลเมตร",
+    "description": ""
   },
   "meters": {
-    "value": "เมตร"
+    "value": "เมตร",
+    "description": ""
   },
   "miles": {
-    "value": "ไมล์"
+    "value": "ไมล์",
+    "description": ""
   }
 }

@@ -1,4 +1,10 @@
 {
-  "Loading": "Wczytuję",
-  "No options": "Brak opcji"
+  "Loading": {
+    "description": "",
+    "value": "Wczytuję"
+  },
+  "No options": {
+    "description": "",
+    "value": "Brak opcji"
+  }
 }

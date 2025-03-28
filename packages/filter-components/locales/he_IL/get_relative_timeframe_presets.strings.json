@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "14 הימים האחרונים"
+    "value": "14 הימים האחרונים",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "180 הימים האחרונים"
+    "value": "180 הימים האחרונים",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "28 הימים האחרונים"
+    "value": "28 הימים האחרונים",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "30 הימים האחרונים"
+    "value": "30 הימים האחרונים",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "365 הימים האחרונים"
+    "value": "365 הימים האחרונים",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "7 הימים האחרונים"
+    "value": "7 הימים האחרונים",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "90 הימים האחרונים"
+    "value": "90 הימים האחרונים",
+    "description": ""
   },
   "Previous Month": {
-    "value": "בחודש שעבר"
+    "value": "בחודש שעבר",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "ברבעון שעבר"
+    "value": "ברבעון שעבר",
+    "description": ""
   },
   "Previous Week": {
-    "value": "בשבוע שעבר"
+    "value": "בשבוע שעבר",
+    "description": ""
   },
   "Previous Year": {
-    "value": "בשנה שעברה"
+    "value": "בשנה שעברה",
+    "description": ""
   },
   "This Month": {
-    "value": "החודש הנוכחי"
+    "value": "החודש הנוכחי",
+    "description": ""
   },
   "This Quarter": {
-    "value": "הרבעון הנוכחי"
+    "value": "הרבעון הנוכחי",
+    "description": ""
   },
   "This Week": {
-    "value": "השבוע הנוכחי"
+    "value": "השבוע הנוכחי",
+    "description": ""
   },
   "This Year": {
-    "value": "השנה הנוכחית"
+    "value": "השנה הנוכחית",
+    "description": ""
   },
   "Today": {
-    "value": "היום"
+    "value": "היום",
+    "description": ""
   },
   "Year To Date": {
-    "value": "שנה מהיום"
+    "value": "שנה מהיום",
+    "description": ""
   },
   "Yesterday": {
-    "value": "אתמול"
+    "value": "אתמול",
+    "description": ""
   }
 }

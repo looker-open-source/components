@@ -1,3 +1,6 @@
 {
-  "Something went wrong": "Bir sorun oluştu"
+  "Something went wrong": {
+    "value": "Bir sorun oluştu",
+    "description": ""
+  }
 }

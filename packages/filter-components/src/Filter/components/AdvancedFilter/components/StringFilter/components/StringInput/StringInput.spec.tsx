@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterModel, StringFilterType } from '@looker/filter-expressions';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { fireEvent, screen } from '@testing-library/react';
 import React from 'react';
@@ -13,7 +13,7 @@ describe('StringInput tests', () => {
   const getMockedComponent = ({ ...props }) => (
     <StringInput
       onChange={jest.fn()}
-      item={{ id: '1', value: [] } as unknown as FilterModel}
+      item={{ id: '1', value: [] } as unknown as FilterModel<StringFilterType>}
       suggestions={['Foo']}
       {...props}
     />

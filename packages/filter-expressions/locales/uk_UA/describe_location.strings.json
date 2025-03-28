@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} до {{coords2}}"
+    "value": "{{coords1}} до {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} з {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} з {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "будь-де"
+    "value": "будь-де",
+    "description": ""
   },
   "is not null": {
-    "value": "не має значення NULL"
+    "value": "не має значення NULL",
+    "description": ""
   },
   "is null": {
-    "value": "має значення NULL"
+    "value": "має значення NULL",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}°N",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}°S",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "{{lon}}°E",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°W"
+    "value": "{{lon}}°W",
+    "description": ""
   }
 }

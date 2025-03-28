@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "14 derniers jours"
+    "value": "14 derniers jours",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "180 derniers jours"
+    "value": "180 derniers jours",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "28 derniers jours"
+    "value": "28 derniers jours",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "30 derniers jours"
+    "value": "30 derniers jours",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "365 derniers jours"
+    "value": "365 derniers jours",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "7 derniers jours"
+    "value": "7 derniers jours",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "90 derniers jours"
+    "value": "90 derniers jours",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Mois précédent"
+    "value": "Mois précédent",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Trimestre précédent"
+    "value": "Trimestre précédent",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Semaine précédente"
+    "value": "Semaine précédente",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Année précédente"
+    "value": "Année précédente",
+    "description": ""
   },
   "This Month": {
-    "value": "Ce mois-ci"
+    "value": "Ce mois-ci",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Ce trimestre"
+    "value": "Ce trimestre",
+    "description": ""
   },
   "This Week": {
-    "value": "Cette semaine"
+    "value": "Cette semaine",
+    "description": ""
   },
   "This Year": {
-    "value": "Cette année"
+    "value": "Cette année",
+    "description": ""
   },
   "Today": {
-    "value": "Aujourd’hui"
+    "value": "Aujourd’hui",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Depuis le début de l’année"
+    "value": "Depuis le début de l’année",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Hier"
+    "value": "Hier",
+    "description": ""
   }
 }

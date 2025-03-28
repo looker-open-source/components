@@ -1,3 +1,6 @@
 {
-  "Legend page {{page}} of {{totalPages}}": "Legendos psl. {{page}} iš {{totalPages}}"
+  "Legend page {{page}} of {{totalPages}}": {
+    "value": "Legendos psl. {{page}} iš {{totalPages}}",
+    "description": ""
+  }
 }

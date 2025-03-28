@@ -1,3 +1,6 @@
 {
-  "Row Total": "Rivin summa"
+  "Row Total": {
+    "value": "Rivin summa",
+    "description": ""
+  }
 }

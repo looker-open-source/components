@@ -1,4 +1,10 @@
 {
-  "End date": "Päättymispäivämäärä",
-  "Start date": "Aloituspäivämäärä"
+  "End date": {
+    "value": "Päättymispäivämäärä",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Aloituspäivämäärä",
+    "description": ""
+  }
 }

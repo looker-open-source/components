@@ -1,7 +1,22 @@
 {
-  "First page of results": "Перша сторінка результатів",
-  "Last page of results": "Остання сторінка результатів",
-  "Next page of results": "Наступна сторінка результатів",
-  "Previous page of results": "Попередня сторінка результатів",
-  "of": "із"
+  "First page of results": {
+    "value": "Перша сторінка результатів",
+    "description": ""
+  },
+  "Last page of results": {
+    "value": "Остання сторінка результатів",
+    "description": ""
+  },
+  "Next page of results": {
+    "value": "Наступна сторінка результатів",
+    "description": ""
+  },
+  "Previous page of results": {
+    "value": "Попередня сторінка результатів",
+    "description": ""
+  },
+  "of": {
+    "value": "із",
+    "description": ""
+  }
 }

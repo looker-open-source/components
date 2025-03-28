@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "повних днів"
+    "value": "повних днів",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "повних фінансових кварталів"
+    "value": "повних фінансових кварталів",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "повних фінансових років"
+    "value": "повних фінансових років",
+    "description": ""
   },
   "complete hours": {
-    "value": "повних годин"
+    "value": "повних годин",
+    "description": ""
   },
   "complete minutes": {
-    "value": "повних хвилин"
+    "value": "повних хвилин",
+    "description": ""
   },
   "complete months": {
-    "value": "повних місяців"
+    "value": "повних місяців",
+    "description": ""
   },
   "complete quarters": {
-    "value": "повних кварталів"
+    "value": "повних кварталів",
+    "description": ""
   },
   "complete seconds": {
-    "value": "повних секунд"
+    "value": "повних секунд",
+    "description": ""
   },
   "complete weeks": {
-    "value": "повних тижнів"
+    "value": "повних тижнів",
+    "description": ""
   },
   "complete years": {
-    "value": "повних років"
+    "value": "повних років",
+    "description": ""
   }
 }

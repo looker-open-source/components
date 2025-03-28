@@ -1,32 +1,42 @@
 {
   "Box": {
-    "value": "תא"
+    "value": "תא",
+    "description": ""
   },
   "Circle": {
-    "value": "מעגל"
+    "value": "מעגל",
+    "description": ""
   },
   "Location": {
-    "value": "מקום"
+    "value": "מקום",
+    "description": ""
   },
   "feet": {
-    "value": "רגל (מידת אורך)"
+    "value": "רגל (מידת אורך)",
+    "description": ""
   },
   "is anywhere": {
-    "value": "בכל מקום"
+    "value": "בכל מקום",
+    "description": ""
   },
   "is not null": {
-    "value": "אינו Null"
+    "value": "אינו Null",
+    "description": ""
   },
   "is null": {
-    "value": "Null"
+    "value": "Null",
+    "description": ""
   },
   "kilometers": {
-    "value": "קילומטרים"
+    "value": "קילומטרים",
+    "description": ""
   },
   "meters": {
-    "value": "מטרים"
+    "value": "מטרים",
+    "description": ""
   },
   "miles": {
-    "value": "מייל (מידת מרחק)"
+    "value": "מייל (מידת מרחק)",
+    "description": ""
   }
 }

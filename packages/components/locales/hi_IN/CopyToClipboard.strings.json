@@ -1,4 +1,10 @@
 {
-  "Copied": "कॉपी किया गया",
-  "Copy to Clipboard": "क्लिपबोर्ड पर कॉपी करें"
+  "Copied": {
+    "value": "कॉपी किया गया",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "क्लिपबोर्ड पर कॉपी करें",
+    "description": ""
+  }
 }

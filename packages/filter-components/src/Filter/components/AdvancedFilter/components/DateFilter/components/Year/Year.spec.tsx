@@ -29,4 +29,20 @@ describe('Year', () => {
     fireEvent.change(input, { target: { value: '2019' } });
     expect(onChangeMock).toHaveBeenCalledWith('1', { year: '2019' });
   });
+
+  // b/318966515 avoid updating query before user is done typing the year
+  it('should not invoke the onChange handler when year is incomplete', () => {
+    renderWithTheme(<Year {...mockProps} />);
+    const input = screen.getByDisplayValue('2018');
+    fireEvent.change(input, { target: { value: '202' } });
+    expect(onChangeMock).not.toHaveBeenCalledWith();
+  });
+
+  it('should invalidate the input on blur when year is incomplete', () => {
+    renderWithTheme(<Year {...mockProps} />);
+    const input = screen.getByDisplayValue('2018');
+    fireEvent.change(input, { target: { value: '202' } });
+    fireEvent.blur(input);
+    expect(input).not.toBeValid();
+  });
 });

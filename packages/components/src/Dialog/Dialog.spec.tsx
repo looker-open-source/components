@@ -42,7 +42,7 @@ import {
   ControlledLegacy,
   ControlledNoChildren,
   CloseIconButton,
-} from './stories/index.stories';
+} from './fixtures';
 
 describe('Dialog', () => {
   test('Verify initial state', () => {

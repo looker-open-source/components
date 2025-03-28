@@ -1,3 +1,6 @@
 {
-  "Tabs": "Вкладки"
+  "Tabs": {
+    "value": "Вкладки",
+    "description": ""
+  }
 }

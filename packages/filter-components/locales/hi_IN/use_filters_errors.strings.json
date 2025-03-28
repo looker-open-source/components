@@ -1,11 +1,14 @@
 {
   "Invalid value": {
-    "value": "अमान्य मान"
+    "value": "अमान्य मान",
+    "description": ""
   },
   "No value is set for your user attribute": {
-    "value": "आपकी उपयोगकर्ता विशेषता के लिए कोई मान सेट नहीं है"
+    "value": "आपकी उपयोगकर्ता विशेषता के लिए कोई मान सेट नहीं है",
+    "description": ""
   },
   "Selection required": {
-    "value": "चयन आवश्यक है"
+    "value": "चयन आवश्यक है",
+    "description": ""
   }
 }

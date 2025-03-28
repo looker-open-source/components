@@ -1,9 +1,30 @@
 {
-  "Config": "Määritys",
-  "Dimensions": "Ulottuvuudet",
-  "Error": "Virhe",
-  "Measures": "Mitat",
-  "Result": "Tulos",
-  "error": "virhe",
-  "ok": "OK"
+  "Config": {
+    "value": "Määritys",
+    "description": ""
+  },
+  "Dimensions": {
+    "value": "Ulottuvuudet",
+    "description": ""
+  },
+  "Error": {
+    "value": "Virhe",
+    "description": ""
+  },
+  "Measures": {
+    "value": "Mitat",
+    "description": ""
+  },
+  "Result": {
+    "value": "Tulos",
+    "description": ""
+  },
+  "error": {
+    "value": "virhe",
+    "description": ""
+  },
+  "ok": {
+    "value": "OK",
+    "description": ""
+  }
 }

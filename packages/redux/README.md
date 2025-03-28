@@ -66,6 +66,22 @@ export const { useSlice } = createFetchHooks({
 });
 ```
 
+#### Fetch actions and state
+
+The state returned by fetch hooks are the following:
+
+- `completed` - whether or not the request has been made and has completed. This will be false if no requests have completed but will be `true` therafter.
+- `data` - the data returned from the request, if any.
+- `error` - if an error occurs during the request, it will be available here.
+- `expired` - whether or not the request has expired.
+- `loading` - whether or not a request is currently in progress.
+
+If you want to check whether or not a request was successful, you'd check `state.completed && !state.error`.
+
+The actions returned by fetch hooks are the following:
+
+- `fetch` - invokes the fetch function and starts off the Redux lifecycle.
+
 ### createSliceHooks(options)
 
 > Returns hooks that are automatically bound to your typed state, slices and sagas.

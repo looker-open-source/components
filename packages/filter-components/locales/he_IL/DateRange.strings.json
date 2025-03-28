@@ -1,3 +1,6 @@
 {
-  "until (before)": "עד (לפני)"
+  "until (before)": {
+    "value": "עד (לפני)",
+    "description": ""
+  }
 }

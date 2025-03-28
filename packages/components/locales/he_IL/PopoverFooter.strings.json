@@ -1,3 +1,6 @@
 {
-  "Done": "סיום"
+  "Done": {
+    "value": "סיום",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Done": "Atlikta"
+  "Done": {
+    "value": "Atlikta",
+    "description": ""
+  }
 }

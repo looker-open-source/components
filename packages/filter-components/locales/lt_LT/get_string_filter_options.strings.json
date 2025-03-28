@@ -1,14 +1,50 @@
 {
-  "contains": "yra",
-  "doesnt contain": "nėra",
-  "doesnt end with": "nesibaigia",
-  "doesnt start with": "neprasideda",
-  "ends with": "baigiasi",
-  "is": "yra",
-  "is blank": "yra tuščia",
-  "is not": "nėra",
-  "is not blank": "nėra tuščia",
-  "is not null": "nėra nulis",
-  "is null": "yra nulis",
-  "starts with": "prasideda"
+  "contains": {
+    "value": "yra",
+    "description": ""
+  },
+  "doesnt contain": {
+    "value": "nėra",
+    "description": ""
+  },
+  "doesnt end with": {
+    "value": "nesibaigia",
+    "description": ""
+  },
+  "doesnt start with": {
+    "value": "neprasideda",
+    "description": ""
+  },
+  "ends with": {
+    "value": "baigiasi",
+    "description": ""
+  },
+  "is": {
+    "value": "yra",
+    "description": ""
+  },
+  "is blank": {
+    "value": "yra tuščia",
+    "description": ""
+  },
+  "is not": {
+    "value": "nėra",
+    "description": ""
+  },
+  "is not blank": {
+    "value": "nėra tuščia",
+    "description": ""
+  },
+  "is not null": {
+    "value": "nėra nulis",
+    "description": ""
+  },
+  "is null": {
+    "value": "yra nulis",
+    "description": ""
+  },
+  "starts with": {
+    "value": "prasideda",
+    "description": ""
+  }
 }

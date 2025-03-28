@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "נמצא בטווח {{range}}"
+    "value": "נמצא בטווח {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "לא נמצא בטווח {{range}}"
+    "value": "לא נמצא בטווח {{range}}",
+    "description": ""
   }
 }

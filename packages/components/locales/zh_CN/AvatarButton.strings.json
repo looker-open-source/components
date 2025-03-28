@@ -1,3 +1,6 @@
 {
-  "Profile Picture": "个人资料照片"
+  "Profile Picture": {
+    "description": "",
+    "value": "个人资料照片"
+  }
 }

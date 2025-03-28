@@ -24,23 +24,23 @@
 
  */
 
-import some from 'lodash/some'
-import type { ValidationMessageProps } from '@looker/components'
-import type { UserAttributeWithValue } from '@looker/filter-expressions'
+import some from 'lodash/some';
+import type { ValidationMessageProps } from '@looker/components';
+import type { UserAttributeWithValue } from '@looker/filter-expressions';
 import {
   getExpressionType,
   getUserAttributeMatchingTypeAndExpression,
-} from '@looker/filter-expressions'
-import { useTranslation } from '../utils'
-import type { FilterProps } from '../Filter/types/filter_props'
-import { ERROR_TYPE } from '../constants'
+} from '@looker/filter-expressions';
+import { useTranslation } from '../utils';
+import type { FilterProps } from '../Filter/types/filter_props';
+import { ERROR_TYPE } from '../constants';
 
 /**
  * Options for computing and returning filters related errors.
  */
 export interface FiltersErrorsOptions {
-  userAttributes?: UserAttributeWithValue[]
-  useLongMessageForm?: boolean
+  userAttributes?: UserAttributeWithValue[];
+  useLongMessageForm?: boolean;
 }
 
 /*
@@ -57,37 +57,37 @@ export const useFiltersErrors = (
     useLongMessageForm: false,
   }
 ) => {
-  const { t } = useTranslation('use_filters_errors')
-  let result: ValidationMessageProps = {}
+  const { t } = useTranslation('use_filters_errors');
+  let result: ValidationMessageProps = {};
 
-  some(filters, (filter) => {
+  some(filters, filter => {
     // Required filter error state (required filter is on and there is no filter value)
     if (filter.isRequired && !filter.expression) {
       result = {
         type: ERROR_TYPE,
         message: t('Selection required'),
-      }
+      };
       // Error found, stop the loop
-      return true
+      return true;
     }
     if (
       hasAtLeastOneMissingUserAttributeValue(filter, options?.userAttributes)
     ) {
       const message = options?.useLongMessageForm
         ? t('No value is set for your user attribute')
-        : t('Invalid value')
+        : t('Invalid value');
       result = {
         type: ERROR_TYPE,
         message,
-      }
+      };
       // Error found, stop the loop
-      return true
+      return true;
     }
     // No error found, keep looping
-    return false
-  })
-  return result
-}
+    return false;
+  });
+  return result;
+};
 
 const hasAtLeastOneMissingUserAttributeValue = (
   filter: FilterProps,
@@ -97,11 +97,11 @@ const hasAtLeastOneMissingUserAttributeValue = (
   // if there is any found with no value, return an error
   const expressionType =
     filter.expressionType ||
-    getExpressionType({ type: filter.type, field: filter.field || undefined })
+    getExpressionType({ type: filter.type, field: filter.field || undefined });
   const attribute = getUserAttributeMatchingTypeAndExpression(
     expressionType,
     filter.expression,
     userAttributes
-  )
-  return !!attribute && !attribute.value
-}
+  );
+  return !!attribute && !attribute.value;
+};

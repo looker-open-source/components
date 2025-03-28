@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "है"
+    "value": "है",
+    "description": ""
   },
   "is any time": {
-    "value": "किसी भी समय है"
+    "value": "किसी भी समय है",
+    "description": ""
   },
   "is before": {
-    "value": "से पहले है"
+    "value": "से पहले है",
+    "description": ""
   },
   "is in range": {
-    "value": "रेंज में है"
+    "value": "रेंज में है",
+    "description": ""
   },
   "is in the last": {
-    "value": "अंत में है"
+    "value": "अंत में है",
+    "description": ""
   },
   "is in the month": {
-    "value": "महीने में है"
+    "value": "महीने में है",
+    "description": ""
   },
   "is in the year": {
-    "value": "वर्ष में है"
+    "value": "वर्ष में है",
+    "description": ""
   },
   "is next": {
-    "value": "अगला है"
+    "value": "अगला है",
+    "description": ""
   },
   "is not null": {
-    "value": "नल नहीं है"
+    "value": "नल नहीं है",
+    "description": ""
   },
   "is null": {
-    "value": "नल है"
+    "value": "नल है",
+    "description": ""
   },
   "is on or after": {
-    "value": "पर या बाद में है"
+    "value": "पर या बाद में है",
+    "description": ""
   },
   "is on the day": {
-    "value": "के दिन है"
+    "value": "के दिन है",
+    "description": ""
   },
   "is previous": {
-    "value": "पिछला है"
+    "value": "पिछला है",
+    "description": ""
   },
   "is this": {
-    "value": "यह है"
+    "value": "यह है",
+    "description": ""
   }
 }

@@ -41,6 +41,7 @@ export * from './Panel';
 export * from './Popover';
 export * from './Portal';
 export * from './ProgressCircular';
+export * from './ProgressDuet';
 export * from './ReplaceText';
 export * from './Spinner';
 export * from './Status';
@@ -53,20 +54,11 @@ export * from './Tree';
 export * from './Truncate';
 export * from './UnorderedList';
 export * from './VisuallyHidden';
-
 export * from './locales';
 export * from './utils';
-export * from './utils-storybook';
-/**
- * Needed for some helpers in Storybook
- */
-export * from './fixtures';
-
 export {
   ComponentsProvider,
   ExtendComponentsThemeProvider,
 } from '@looker/components-providers';
-
 export { i18nUpdate } from '@looker/i18n';
-
-export { theme, Theme } from '@looker/design-tokens';
+export { theme, type Theme } from '@looker/design-tokens';

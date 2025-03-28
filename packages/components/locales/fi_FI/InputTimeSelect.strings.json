@@ -1,3 +1,6 @@
 {
-  "Select time": "Valitse aika"
+  "Select time": {
+    "value": "Valitse aika",
+    "description": ""
+  }
 }

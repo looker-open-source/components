@@ -1,3 +1,6 @@
 {
-  "Value required": "Wert erforderlich"
+  "Value required": {
+    "description": "",
+    "value": "Wert erforderlich"
+  }
 }

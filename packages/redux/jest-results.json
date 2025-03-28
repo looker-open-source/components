@@ -1,0 +1,743 @@
+{
+  "numFailedTestSuites": 0,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 10,
+  "numPassedTests": 39,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 0,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 10,
+  "numTotalTests": 39,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1728587667862,
+  "success": false,
+  "testResults": [
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 4,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674137,
+        "runtime": 4912,
+        "slow": false,
+        "start": 1728587669225
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/deepCombineReducers/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "should handle plain function reducers",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should handle plain function reducers"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "should handle reducer object maps",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should handle reducer object maps"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "should handle recursive reducer object maps",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should handle recursive reducer object maps"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "should handle reducers that are both functions and nested objects",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "should handle reducers that are both functions and nested objects"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 3,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674717,
+        "runtime": 5504,
+        "slow": true,
+        "start": 1728587669213
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/useSaga/index.spec.ts",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 15,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls useStore",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls useStore"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls addSaga",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls addSaga"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "does not call addSaga if no saga is provided",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "does not call addSaga if no saga is provided"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 9,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674734,
+        "runtime": 5530,
+        "slow": true,
+        "start": 1728587669204
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/createStore/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore extended APIs exist",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "extended APIs exist"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore addReducer",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "addReducer"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore addSaga",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "addSaga"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore removeReducer",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "removeReducer"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore removeSaga",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "removeSaga"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore isLookerRedux",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "isLookerRedux"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore default state",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "default state"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 0,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore specifying reducers does not remove the default",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "specifying reducers does not remove the default"
+        },
+        {
+          "ancestorTitles": ["createStore"],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createStore preloadedState creates reducers for each key",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "preloadedState creates reducers for each key"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 3,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674758,
+        "runtime": 5537,
+        "slow": true,
+        "start": 1728587669221
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/useSagas/index.spec.ts",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 14,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls useStore",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls useStore"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls addSaga",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls addSaga"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 1,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "does not call addSaga if no saga is provided",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "does not call addSaga if no saga is provided"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 3,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674924,
+        "runtime": 5711,
+        "slow": true,
+        "start": 1728587669213
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/useSlice/index.spec.ts",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 15,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls useStore",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls useStore"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls addReducer",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls addReducer"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "calls addReducer in useEffect",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "calls addReducer in useEffect"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 3,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674941,
+        "runtime": 5732,
+        "slow": true,
+        "start": 1728587669209
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/useStore/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 14,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "errors with default redux error if no store is provided",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "errors with default redux error if no store is provided"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "errors if an incompatible store is not provided",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "errors if an incompatible store is not provided"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "returns a compatible store",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "returns a compatible store"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 1,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587674968,
+        "runtime": 5747,
+        "slow": true,
+        "start": 1728587669221
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/index.spec.ts",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "api",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "api"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 2,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587675043,
+        "runtime": 5818,
+        "slow": true,
+        "start": 1728587669225
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/Store/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": [],
+          "duration": 21,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "default store",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "default store"
+        },
+        {
+          "ancestorTitles": [],
+          "duration": 3,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "existing store",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "existing store"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 8,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587675101,
+        "runtime": 5900,
+        "slow": true,
+        "start": 1728587669201
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/createFetchHooks/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 34,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks initialState",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "initialState"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 23,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks fetch",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "fetch"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 19,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks error: 401",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "error: 401"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks error: 499",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "error: 499"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 6,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks error: *",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "error: *"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 4,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks completed, initial state",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "completed, initial state"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 7,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks completed, initial fetch should set completed to true",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "completed, initial fetch should set completed to true"
+        },
+        {
+          "ancestorTitles": ["createFetchHooks"],
+          "duration": 9,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createFetchHooks completed, subsequent fetch should reset completed to false then follow normal lifecycle",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "completed, subsequent fetch should reset completed to false then follow normal lifecycle"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 3,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1728587675105,
+        "runtime": 5896,
+        "slow": true,
+        "start": 1728587669209
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "/usr/local/google/home/treshugart/dev/helltool/packages/redux/src/createSliceHooks/index.spec.tsx",
+      "testResults": [
+        {
+          "ancestorTitles": ["createSliceHooks"],
+          "duration": 54,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createSliceHooks reducers and sagas",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "reducers and sagas"
+        },
+        {
+          "ancestorTitles": ["createSliceHooks"],
+          "duration": 11,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createSliceHooks cleans up state after the last component is unmounted",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "cleans up state after the last component is unmounted"
+        },
+        {
+          "ancestorTitles": ["createSliceHooks"],
+          "duration": 2,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "createSliceHooks setupSlice",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "setupSlice"
+        }
+      ],
+      "failureMessage": null
+    }
+  ],
+  "wasInterrupted": false
+}

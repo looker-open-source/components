@@ -29,52 +29,58 @@ import {
   parseFilterExpression,
   summary,
   treeToList,
-} from '../utils'
+} from '../utils';
 // import { i18nInit } from '../i18n'
-import { dateExpressionTestItems } from './date_grammar_test_expressions'
-import type { GrammarTestItem } from './grammar_test_utils'
-import { dateFilterToString } from '../utils/date/date_filter_to_string'
+import { dateExpressionTestItems } from './date_grammar_test_expressions';
+import type { GrammarTestItem } from './grammar_test_utils';
+import { dateFilterToString } from '../utils/date/date_filter_to_string';
 
 const testDateItem = (testItem: GrammarTestItem) => {
   test(`${testItem.expression}`, () => {
-    const { expression, type, describe, output, filterType = 'date' } = testItem
+    const {
+      expression,
+      type,
+      describe,
+      output,
+      filterType = 'date',
+    } = testItem;
 
     // test ast
-    const ast = parseFilterExpression(filterType, expression)
-    expect(ast).toMatchSnapshot()
+    const ast = parseFilterExpression(filterType, expression);
+    expect(ast).toMatchSnapshot();
 
     // test descriptions
-    const description = summary({ type: filterType, expression })
-    expect(description).toBe(describe)
+    const description = summary({ type: filterType, expression });
+    expect(description).toBe(describe);
 
     // test item type
-    const list = treeToList(ast)
-    const item = list[0]
+    const list = treeToList(ast);
+    const item = list[0];
     if (type) {
-      expect(item.type).toEqual(type)
+      expect(item.type).toEqual(type);
     }
 
     // test serialized output
     // some filter types can't be represented by DateFilter,
     // we expect this to be parsed as `type` above,
     // but be converted to `matchesAdvanced`
-    const dateComponentType = convertTypeToMatchesAdvancedOption(item)
+    const dateComponentType = convertTypeToMatchesAdvancedOption(item);
     const dateOutput =
       dateComponentType === 'matchesAdvanced'
         ? expression
-        : dateFilterToString(ast, filterType)
-    expect(dateOutput).toBe(output)
-  })
-}
+        : dateFilterToString(ast, filterType);
+    expect(dateOutput).toBe(output);
+  });
+};
 
 describe('Date grammar can parse', () => {
   beforeEach(() =>
-    i18nInit().catch((e) => {
-      throw new Error(e)
+    i18nInit().catch(e => {
+      throw new Error(e);
     })
-  )
-  dateExpressionTestItems.forEach(testDateItem)
-})
+  );
+  dateExpressionTestItems.forEach(testDateItem);
+});
 
 const basicDates = [
   'this day',
@@ -97,16 +103,16 @@ const basicDates = [
   '3 days from now',
   '3 days from now for 2 weeks',
   '',
-]
+];
 
 const testExpression = (expression: string) => {
-  expect(parseFilterExpression('date', expression)).toMatchSnapshot()
+  expect(parseFilterExpression('date', expression)).toMatchSnapshot();
   // TODO expect(summary('date', expression)).not.toBe('')
-}
+};
 
 describe('Date grammar can parse basic date', () => {
-  it.each(basicDates)('%s', testExpression)
-})
+  it.each(basicDates)('%s', testExpression);
+});
 
 const absoluteDates = [
   '2018/05/29',
@@ -120,27 +126,27 @@ const absoluteDates = [
   '2018',
   'FY2018',
   'FY2018-Q1',
-]
+];
 
 describe('Date grammar can parse absolute date', () => {
-  it.each(absoluteDates)('%s', testExpression)
-})
+  it.each(absoluteDates)('%s', testExpression);
+});
 
-const seconds = ['1 second', '60 seconds', '60 seconds ago for 1 second']
+const seconds = ['1 second', '60 seconds', '60 seconds ago for 1 second'];
 describe('Date grammar can parse seconds', () => {
-  it.each(seconds)('%s', testExpression)
-})
+  it.each(seconds)('%s', testExpression);
+});
 
-const minutes = ['1 minute', '60 minutes', '60 minutes ago for 1 minute']
+const minutes = ['1 minute', '60 minutes', '60 minutes ago for 1 minute'];
 describe('Date grammar can parse minutes', () => {
-  it.each(minutes)('%s', testExpression)
-})
+  it.each(minutes)('%s', testExpression);
+});
 
-const hours = ['1 hour', '24 hours', '24 hours ago for 1 hour']
+const hours = ['1 hour', '24 hours', '24 hours ago for 1 hour'];
 
 describe('Date grammar can parse hours', () => {
-  it.each(hours)('%s', testExpression)
-})
+  it.each(hours)('%s', testExpression);
+});
 const days = [
   'today',
   '2 days',
@@ -149,10 +155,10 @@ const days = [
   'today for 7 days',
   'last 3 days',
   '7 days from now',
-]
+];
 describe('Date grammar can parse days', () => {
-  it.each(days)('%s', testExpression)
-})
+  it.each(days)('%s', testExpression);
+});
 
 const weeks = [
   '1 week',
@@ -164,10 +170,10 @@ const weeks = [
   '2 weeks ago for 2 weeks',
   'last week',
   '1 week ago',
-]
+];
 describe('Date grammar can parse weeks', () => {
-  it.each(weeks)('%s', testExpression)
-})
+  it.each(weeks)('%s', testExpression);
+});
 
 const months = [
   '1 month',
@@ -182,11 +188,11 @@ const months = [
   'next month',
   '2 months from now',
   '6 months from now for 3 months',
-]
+];
 
 describe('Date grammar can parse months', () => {
-  it.each(months)('%s', testExpression)
-})
+  it.each(months)('%s', testExpression);
+});
 
 const quarters = [
   '1 quarter',
@@ -198,11 +204,11 @@ const quarters = [
   'next quarter',
   '2018-07-01 for 1 quarter',
   '2018-Q4',
-]
+];
 
 describe('Date grammar can parse quarters', () => {
-  it.each(quarters)('%s', testExpression)
-})
+  it.each(quarters)('%s', testExpression);
+});
 
 const years = [
   '1 year',
@@ -213,19 +219,19 @@ const years = [
   'last year',
   '2 years ago',
   'before 2 years ago',
-]
+];
 
 describe('Date grammar can parse years', () => {
-  it.each(years)('%s', testExpression)
-})
+  it.each(years)('%s', testExpression);
+});
 
 describe('Date grammar with multiple clauses', () => {
   it('parse correctly', () =>
-    expect(testExpression('1 year ago, 1 month ago')).toMatchSnapshot())
-})
+    expect(testExpression('1 year ago, 1 month ago')).toMatchSnapshot());
+});
 
-const invalidDates = ['-1', 'not a valid date']
+const invalidDates = ['-1', 'not a valid date'];
 
 describe('Date grammar invalid dates show as matches advanced type', () => {
-  it.each(invalidDates)('%s', testExpression)
-})
+  it.each(invalidDates)('%s', testExpression);
+});

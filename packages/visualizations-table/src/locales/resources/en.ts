@@ -1,24 +1,23 @@
-/**
- * Copyright (c) 2023 Google LLC
- * SPDX-License-Identifier: MIT
- */
 
-import { en as componentsLocale } from '@looker/components';
-import { en as visualizationsadaptersLocale } from '@looker/visualizations-adapters';
-import { mergeLocaleObjects } from '@looker/i18n';
+    import {en as componentsLocale} from '@looker/components'
+import {en as visualizationsadaptersLocale} from '@looker/visualizations-adapters'
+    import { mergeLocaleObjects } from '@looker/i18n'
 
-const resources = {
-  Table: {
-    'Shift + Click to sort additional columns':
-      'Shift + Click to sort additional columns',
-    'Sort ascending': 'Sort ascending',
-    'Sort descending': 'Sort descending',
-    Totals: 'Totals',
-  },
-};
+    const resources = {
+  "Table": {
+    "Shift + Click to sort additional columns": "Shift + Click to sort additional columns",
+    "Sort ascending": "Sort ascending",
+    "Sort descending": "Sort descending",
+    "Totals": "Totals"
+  }
+}
 
-export const en = mergeLocaleObjects(
-  [componentsLocale, visualizationsadaptersLocale],
-  'en',
-  resources
-);
+    export const en = mergeLocaleObjects(
+      [
+        componentsLocale,
+visualizationsadaptersLocale,
+      ],
+      'en',
+      resources,
+      
+    )

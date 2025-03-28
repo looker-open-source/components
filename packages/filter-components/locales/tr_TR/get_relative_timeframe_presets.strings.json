@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Son 14 Gün"
+    "value": "Son 14 Gün",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Son 180 Gün"
+    "value": "Son 180 Gün",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Son 28 Gün"
+    "value": "Son 28 Gün",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Son 30 Gün"
+    "value": "Son 30 Gün",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Son 365 Gün"
+    "value": "Son 365 Gün",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Son 7 Gün"
+    "value": "Son 7 Gün",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Son 90 Gün"
+    "value": "Son 90 Gün",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Önceki Ay"
+    "value": "Önceki Ay",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Önceki Çeyrek"
+    "value": "Önceki Çeyrek",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Önceki Hafta"
+    "value": "Önceki Hafta",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Önceki Yıl"
+    "value": "Önceki Yıl",
+    "description": ""
   },
   "This Month": {
-    "value": "Bu Ay"
+    "value": "Bu Ay",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Bu Çeyrek"
+    "value": "Bu Çeyrek",
+    "description": ""
   },
   "This Week": {
-    "value": "Bu Hafta"
+    "value": "Bu Hafta",
+    "description": ""
   },
   "This Year": {
-    "value": "Bu Yıl"
+    "value": "Bu Yıl",
+    "description": ""
   },
   "Today": {
-    "value": "Bugün"
+    "value": "Bugün",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Yılbaşından Bugüne"
+    "value": "Yılbaşından Bugüne",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Dün"
+    "value": "Dün",
+    "description": ""
   }
 }

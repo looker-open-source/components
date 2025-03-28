@@ -1,3 +1,6 @@
 {
-  "Options": "Alternativer"
+  "Options": {
+    "value": "Alternativer",
+    "description": ""
+  }
 }

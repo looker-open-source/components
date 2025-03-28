@@ -1,44 +1,58 @@
 {
   "is": {
-    "value": "är"
+    "value": "är",
+    "description": ""
   },
   "is any time": {
-    "value": "är när som helst"
+    "value": "är när som helst",
+    "description": ""
   },
   "is before": {
-    "value": "är före"
+    "value": "är före",
+    "description": ""
   },
   "is in range": {
-    "value": "är i intervallet"
+    "value": "är i intervallet",
+    "description": ""
   },
   "is in the last": {
-    "value": "är under det sista"
+    "value": "är under det sista",
+    "description": ""
   },
   "is in the month": {
-    "value": "är under månaden"
+    "value": "är under månaden",
+    "description": ""
   },
   "is in the year": {
-    "value": "är under året"
+    "value": "är under året",
+    "description": ""
   },
   "is next": {
-    "value": "är nästa"
+    "value": "är nästa",
+    "description": ""
   },
   "is not null": {
-    "value": "är inte null"
+    "value": "är inte null",
+    "description": ""
   },
   "is null": {
-    "value": "är null"
+    "value": "är null",
+    "description": ""
   },
   "is on or after": {
-    "value": "är på eller efter"
+    "value": "är på eller efter",
+    "description": ""
   },
   "is on the day": {
-    "value": "är på dagen"
+    "value": "är på dagen",
+    "description": ""
   },
   "is previous": {
-    "value": "är föregående"
+    "value": "är föregående",
+    "description": ""
   },
   "is this": {
-    "value": "är detta"
+    "value": "är detta",
+    "description": ""
   }
 }

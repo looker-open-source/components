@@ -1,32 +1,42 @@
 {
   "complete days": {
+    "description": "",
     "value": "天整"
   },
   "complete fiscal quarters": {
+    "description": "",
     "value": "个完整财季"
   },
   "complete fiscal years": {
+    "description": "",
     "value": "个完整财年"
   },
   "complete hours": {
+    "description": "",
     "value": "小时整"
   },
   "complete minutes": {
+    "description": "",
     "value": "分钟整"
   },
   "complete months": {
+    "description": "",
     "value": "个月整"
   },
   "complete quarters": {
+    "description": "",
     "value": "个季度整"
   },
   "complete seconds": {
+    "description": "",
     "value": "秒整"
   },
   "complete weeks": {
+    "description": "",
     "value": "周整"
   },
   "complete years": {
+    "description": "",
     "value": "年整"
   }
 }

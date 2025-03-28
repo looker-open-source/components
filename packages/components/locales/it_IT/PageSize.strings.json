@@ -1,4 +1,10 @@
 {
-  "Display": "Visualizza",
-  "of": "di"
+  "Display": {
+    "description": "",
+    "value": "Visualizza"
+  },
+  "of": {
+    "description": "",
+    "value": "di"
+  }
 }

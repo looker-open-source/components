@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Umschalttaste + Klicken zum Sortieren zusätzlicher Spalten",
-  "Sort ascending": "Aufsteigend sortieren",
-  "Sort descending": "Absteigend sortieren",
-  "Totals": "Gesamtsummen"
+  "Shift + Click to sort additional columns": {
+    "description": "",
+    "value": "Umschalttaste + Klicken zum Sortieren zusätzlicher Spalten"
+  },
+  "Sort ascending": {
+    "description": "",
+    "value": "Aufsteigend sortieren"
+  },
+  "Sort descending": {
+    "description": "",
+    "value": "Absteigend sortieren"
+  },
+  "Totals": {
+    "description": "",
+    "value": "Gesamtsummen"
+  }
 }

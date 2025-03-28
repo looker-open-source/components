@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Pastarosios 14 dienų"
+    "value": "Pastarosios 14 dienų",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Pastarosios 180 dienų"
+    "value": "Pastarosios 180 dienų",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Pastarosios 28 dienos"
+    "value": "Pastarosios 28 dienos",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Pastarosios 30 dienų"
+    "value": "Pastarosios 30 dienų",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Pastarosios 365 dienos"
+    "value": "Pastarosios 365 dienos",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Pastarosios 7 dienos"
+    "value": "Pastarosios 7 dienos",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Pastarosios 90 dienų"
+    "value": "Pastarosios 90 dienų",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Ankstesnis mėnuo"
+    "value": "Ankstesnis mėnuo",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Ankstesnis ketvirtis"
+    "value": "Ankstesnis ketvirtis",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Ankstesnė savaitė"
+    "value": "Ankstesnė savaitė",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Ankstesni metai"
+    "value": "Ankstesni metai",
+    "description": ""
   },
   "This Month": {
-    "value": "Šis mėnuo"
+    "value": "Šis mėnuo",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Šis ketvirtis"
+    "value": "Šis ketvirtis",
+    "description": ""
   },
   "This Week": {
-    "value": "Ši savaitė"
+    "value": "Ši savaitė",
+    "description": ""
   },
   "This Year": {
-    "value": "Šie metai"
+    "value": "Šie metai",
+    "description": ""
   },
   "Today": {
-    "value": "Šiandien"
+    "value": "Šiandien",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Nuo metų pradžios"
+    "value": "Nuo metų pradžios",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Vakar"
+    "value": "Vakar",
+    "description": ""
   }
 }

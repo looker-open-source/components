@@ -1,4 +1,10 @@
 {
-  "next month": "החודש הבא",
-  "previous month": "החודש שעבר"
+  "next month": {
+    "value": "החודש הבא",
+    "description": ""
+  },
+  "previous month": {
+    "value": "החודש שעבר",
+    "description": ""
+  }
 }

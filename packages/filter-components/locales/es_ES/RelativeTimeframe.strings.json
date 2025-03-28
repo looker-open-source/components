@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Elija el intervalo temporal"
+  "Choose a Timeframe": {
+    "description": "",
+    "value": "Elegir un período"
+  }
 }

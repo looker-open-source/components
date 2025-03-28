@@ -81,6 +81,7 @@ export const Between = ({
   return (
     <Space gap="none" width="auto">
       <GroupSelect
+        data-testid="filter-between-option"
         placement="middle"
         value={item.bounds}
         options={betweenOptions}

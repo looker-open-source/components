@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Filters wissen",
-  "Filter List": "Filterlijst",
-  "bottom-start": "onder-start"
+  "Clear Filters": {
+    "value": "Filters wissen",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filterlijst",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "onder-start",
+    "description": ""
+  }
 }

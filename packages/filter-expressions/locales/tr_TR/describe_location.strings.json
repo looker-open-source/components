@@ -1,29 +1,38 @@
 {
   "coords1 to coords2": {
-    "value": "{{coords1}} - {{coords2}}"
+    "value": "{{coords1}} - {{coords2}}",
+    "description": ""
   },
   "distance unit from lat, lon": {
-    "value": "{{distance}} {{unit}} şuradan: {{lat}}, {{lon}}"
+    "value": "{{distance}} {{unit}} şuradan: {{lat}}, {{lon}}",
+    "description": ""
   },
   "is anywhere": {
-    "value": "her yerde"
+    "value": "her yerde",
+    "description": ""
   },
   "is not null": {
-    "value": "değer içeriyor"
+    "value": "değer içeriyor",
+    "description": ""
   },
   "is null": {
-    "value": "değer içermiyor"
+    "value": "değer içermiyor",
+    "description": ""
   },
   "lat degrees north": {
-    "value": "{{lat}}°N"
+    "value": "{{lat}}°N",
+    "description": ""
   },
   "lat degrees south": {
-    "value": "{{lat}}°S"
+    "value": "{{lat}}°S",
+    "description": ""
   },
   "lon degrees east": {
-    "value": "{{lon}}°E"
+    "value": "{{lon}}°E",
+    "description": ""
   },
   "lon degrees west": {
-    "value": "{{lon}}°W"
+    "value": "{{lon}}°W",
+    "description": ""
   }
 }

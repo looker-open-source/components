@@ -81,6 +81,11 @@ export interface IconButtonProps
    */
   label: TooltipProps['content'];
   /**
+   * If invertTooltip is true, the tooltip background will be black by default instead of white. Tooltips
+   * with longer text content should set this to false to improve readability.
+   */
+  invertTooltip?: boolean;
+  /**
    *  Sets the size of the button
    * @default xsmall
    */

@@ -1,32 +1,42 @@
 {
   "complete days": {
-    "value": "ימים מלאים"
+    "value": "ימים מלאים",
+    "description": ""
   },
   "complete fiscal quarters": {
-    "value": "רבעונים פיסקליים מלאים"
+    "value": "רבעונים פיסקליים מלאים",
+    "description": ""
   },
   "complete fiscal years": {
-    "value": "שנים פיסקליות מלאות"
+    "value": "שנים פיסקליות מלאות",
+    "description": ""
   },
   "complete hours": {
-    "value": "שעות מלאות"
+    "value": "שעות מלאות",
+    "description": ""
   },
   "complete minutes": {
-    "value": "דקות מלאות"
+    "value": "דקות מלאות",
+    "description": ""
   },
   "complete months": {
-    "value": "חודשים מלאים"
+    "value": "חודשים מלאים",
+    "description": ""
   },
   "complete quarters": {
-    "value": "רבעונים מלאים"
+    "value": "רבעונים מלאים",
+    "description": ""
   },
   "complete seconds": {
-    "value": "שניות מלאות"
+    "value": "שניות מלאות",
+    "description": ""
   },
   "complete weeks": {
-    "value": "שבועות מלאים"
+    "value": "שבועות מלאים",
+    "description": ""
   },
   "complete years": {
-    "value": "שנים מלאות"
+    "value": "שנים מלאות",
+    "description": ""
   }
 }

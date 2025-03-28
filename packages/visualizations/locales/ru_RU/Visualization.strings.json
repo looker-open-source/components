@@ -1,4 +1,10 @@
 {
-  "Measures of type 'date' are currently not supported": "Поля measure типа date в настоящее время не доступны",
-  "No chart found for type \"{{type}}\"": "График для типа «{{type}}» не обнаружен"
+  "Measures of type 'date' are currently not supported": {
+    "value": "Поля measure типа date в настоящее время не доступны",
+    "description": ""
+  },
+  "No chart found for type \"{{type}}\"": {
+    "value": "График для типа «{{type}}» не обнаружен",
+    "description": ""
+  }
 }

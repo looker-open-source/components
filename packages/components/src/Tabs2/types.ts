@@ -107,4 +107,8 @@ export type Tabs2Props<IDType extends string = string> = (
    * Spread the Tab between all the space available
    */
   distributed?: boolean;
+  /**
+   * Content to render to the right of the tabs
+   */
+  secondaryContent?: ReactElement;
 };

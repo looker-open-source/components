@@ -1,3 +1,6 @@
 {
-  "Value required": "Valor obrigatório"
+  "Value required": {
+    "description": "",
+    "value": "Valor obrigatório"
+  }
 }

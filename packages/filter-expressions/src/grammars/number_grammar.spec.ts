@@ -23,44 +23,44 @@
  SOFTWARE.
 
  */
-import type { FilterModel } from '../types'
+import type { FilterModel } from '../types';
 import {
   convertTypeToOption,
   parseFilterExpression,
   treeToList,
-} from '../utils'
-import type { GrammarTestItem } from './grammar_test_utils'
-import { numberExpressionTestItems } from './number_grammar_test_expressions'
+} from '../utils';
+import type { GrammarTestItem } from './grammar_test_utils';
+import { numberExpressionTestItems } from './number_grammar_test_expressions';
 const testNumericItem = (testItem: GrammarTestItem) => {
   test(testItem.expression, () => {
-    const { expression, type } = testItem
-    const ast = parseFilterExpression('number', expression)
-    expect(ast).toMatchSnapshot()
-    const list = treeToList(ast)
-    const item = list[0]
-    let itemType = item.type
+    const { expression, type } = testItem;
+    const ast = parseFilterExpression('number', expression);
+    expect(ast).toMatchSnapshot();
+    const list = treeToList(ast);
+    const item = list[0];
+    let itemType = item.type;
     if (type !== 'matchesAdvanced') {
-      itemType = convertTypeToOption(item)
+      itemType = convertTypeToOption(item);
     }
-    expect(itemType).toEqual(type)
-  })
-}
+    expect(itemType).toEqual(type);
+  });
+};
 
 describe('Number grammar can parse', () => {
-  numberExpressionTestItems.forEach(testNumericItem)
-})
+  numberExpressionTestItems.forEach(testNumericItem);
+});
 
 // these tests should fail
-const fail = ['(,)', 'AND', 'OR', '[inf,10]']
+const fail = ['(,)', 'AND', 'OR', '[inf,10]'];
 
 describe("Number grammar can't parse", () => {
-  it.each(fail)('%s', (expression) => {
-    const ast = parseFilterExpression('number', expression)
-    expect(ast).toMatchSnapshot()
-    expect(ast.type).toBe('matchesAdvanced')
-    expect(ast.expression).toEqual(expression)
-  })
-})
+  it.each(fail)('%s', expression => {
+    const ast = parseFilterExpression('number', expression);
+    expect(ast).toMatchSnapshot();
+    expect(ast.type).toBe('matchesAdvanced');
+    expect(ast.expression).toEqual(expression);
+  });
+});
 
 const numeric = [
   ['1', '=', '1'],
@@ -110,30 +110,32 @@ const numeric = [
   ['>= -42', '>=', '-42'],
   ['>=-242', '>=', '-242'],
   ['>=    0', '>=', '0'],
-]
+];
 
 const testNumeric = (
   expression: string,
   type: string,
   textInput: string | undefined
 ) => {
-  const ast = parseFilterExpression('number', expression)
-  expect(ast).toMatchSnapshot()
-  const list = treeToList(ast)
-  const item = list[0]
-  let itemType = item.type
+  const ast = parseFilterExpression('number', expression);
+  expect(ast).toMatchSnapshot();
+  const list = treeToList(ast);
+  const item = list[0];
+  let itemType = item.type;
   if (type !== 'matchesAdvanced') {
-    itemType = convertTypeToOption(item)
+    itemType = convertTypeToOption(item);
   }
-  expect(itemType).toEqual(type)
+  expect(itemType).toEqual(type);
   if (type !== 'matchesAdvanced' && type !== 'between') {
-    expect(textInput).toBe(item.value ? item.value.join(',') : item.value)
+    expect(textInput).toBe(
+      item.value ? (item.value as string[]).join(',') : item.value
+    );
   }
-}
+};
 
 describe('Additional number tests', () => {
-  it.each(numeric)('%s', testNumeric)
-})
+  it.each(numeric)('%s', testNumeric);
+});
 
 const nullValues = [
   ['NULL', 'null'],
@@ -142,23 +144,23 @@ const nullValues = [
   ['not null', '!null'],
   ['nUll', 'null'],
   ['Not Null', '!null'],
-]
+];
 
 const testNull = (expression: string, type: string) => {
   try {
-    const ast = parseFilterExpression('number', expression)
-    expect(ast).toMatchSnapshot()
-    const itemType = convertTypeToOption(ast as FilterModel)
-    expect(itemType).toEqual(type)
-    expect(ast.value).toBeUndefined()
+    const ast = parseFilterExpression('number', expression);
+    expect(ast).toMatchSnapshot();
+    const itemType = convertTypeToOption(ast as FilterModel);
+    expect(itemType).toEqual(type);
+    expect(ast.value).toBeUndefined();
   } catch (error) {
-    expect(error).toBeNull()
+    expect(error).toBeNull();
   }
-}
+};
 
 describe('nullValues number tests', () => {
-  it.each(nullValues)('%s', testNull)
-})
+  it.each(nullValues)('%s', testNull);
+});
 
 const between: GrammarTestItem[] = [
   { expression: '1 to 5', type: 'between', low: '1', high: '5', bounds: '[]' },
@@ -287,22 +289,22 @@ const between: GrammarTestItem[] = [
     high: '0.11111',
     bounds: '()',
   },
-]
+];
 
 describe('between tests', () => {
   between.forEach((testItem: GrammarTestItem) => {
     it(testItem.expression, () => {
-      const { expression, type, low, high, bounds } = testItem
-      const ast = parseFilterExpression('number', expression)
-      expect(ast).toMatchSnapshot()
-      const itemType = convertTypeToOption(ast as FilterModel)
-      expect(type).toEqual(itemType)
-      expect(String(ast.low)).toEqual(low)
-      expect(String(ast.high)).toEqual(high)
-      expect(ast.bounds).toEqual(bounds)
-    })
-  })
-})
+      const { expression, type, low, high, bounds } = testItem;
+      const ast = parseFilterExpression('number', expression);
+      expect(ast).toMatchSnapshot();
+      const itemType = convertTypeToOption(ast as FilterModel);
+      expect(type).toEqual(itemType);
+      expect(String(ast.low)).toEqual(low);
+      expect(String(ast.high)).toEqual(high);
+      expect(ast.bounds).toEqual(bounds);
+    });
+  });
+});
 
 // prettier-ignore
 const nowSupported = [
@@ -319,8 +321,8 @@ const nowSupported = [
 ]
 
 describe('nowSupported expressions', () => {
-  it.each(nowSupported)('%s', testNumeric)
-})
+  it.each(nowSupported)('%s', testNumeric);
+});
 
 // prettier-ignore
 const unsupported = [	
@@ -342,5 +344,5 @@ const unsupported = [
 ]
 
 describe('unsuppored expressions', () => {
-  it.each(unsupported)('%s', testNumeric)
-})
+  it.each(unsupported)('%s', testNumeric);
+});

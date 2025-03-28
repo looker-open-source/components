@@ -4,26 +4,22 @@
  */
 import { getMonths } from '@looker/filter-expressions';
 import padStart from 'lodash/padStart';
-import type { ChangeEvent } from 'react';
 import React from 'react';
 import { useTranslation } from '../../../../../../../utils';
 import type { FilterParamProps } from '../../../../../../types/filter_param_props';
 import { createOptions } from '../../../../../../utils/option_utils';
 import { GroupSelect } from '../../../GroupSelect';
-import { GroupInput } from '../../../GroupInput';
+import { Year } from '../Year';
 
-export const YearMonth = ({
-  item: { id, month, year },
-  onChange,
-}: FilterParamProps) => {
+export const YearMonth = ({ item, onChange }: FilterParamProps) => {
+  const { id, month } = item;
   const { t } = useTranslation('get_months');
   const months = getMonths(t);
-  const monthNumber = Number.parseInt(month, 10) - 1;
-  const monthString = months[monthNumber];
+  if (!month) return null;
 
-  const yearChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(id, { year: e.target.value });
-  };
+  const monthNumber =
+    typeof month === 'string' ? Number.parseInt(month, 10) - 1 : month - 1;
+  const monthString = months[monthNumber];
 
   const monthChange = (value: string) => {
     const monthValue = padStart(
@@ -43,8 +39,9 @@ export const YearMonth = ({
         options={createOptions(months)}
         onChange={monthChange}
         placement="middle"
+        data-testid="yearmonth-option"
       />
-      <GroupInput onChange={yearChange} value={year} placement="right" />
+      <Year item={item} onChange={onChange} />
     </>
   );
 };

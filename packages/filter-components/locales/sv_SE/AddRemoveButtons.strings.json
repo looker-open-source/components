@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "Lägg till"
+    "value": "Lägg till",
+    "description": ""
   },
   "Remove": {
-    "value": "Ta bort"
+    "value": "Ta bort",
+    "description": ""
   }
 }

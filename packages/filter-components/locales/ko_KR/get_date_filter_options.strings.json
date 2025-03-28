@@ -1,44 +1,58 @@
 {
   "is": {
+    "description": "",
     "value": "다음과 일치:"
   },
   "is any time": {
+    "description": "",
     "value": "시간 무관"
   },
   "is before": {
+    "description": "",
     "value": "다음 날짜 이전:"
   },
   "is in range": {
+    "description": "",
     "value": "다음 범위 내에 있음:"
   },
   "is in the last": {
+    "description": "",
     "value": "지난"
   },
   "is in the month": {
+    "description": "",
     "value": "해당 월"
   },
   "is in the year": {
+    "description": "",
     "value": "연도:"
   },
   "is next": {
+    "description": "",
     "value": "다음"
   },
   "is not null": {
+    "description": "",
     "value": "null 아님"
   },
   "is null": {
+    "description": "",
     "value": "null"
   },
   "is on or after": {
+    "description": "",
     "value": "다음 날짜 또는 그 이후:"
   },
   "is on the day": {
+    "description": "",
     "value": "날짜:"
   },
   "is previous": {
+    "description": "",
     "value": "이전"
   },
   "is this": {
+    "description": "",
     "value": "이번"
   }
 }

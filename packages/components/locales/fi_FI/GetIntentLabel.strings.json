@@ -1,6 +1,18 @@
 {
-  "Error": "Virhe",
-  "Inform": "Tiedota",
-  "Success": "Onnistui",
-  "Warning": "Varoitus"
+  "Error": {
+    "value": "Virhe",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Tiedota",
+    "description": ""
+  },
+  "Success": {
+    "value": "Onnistui",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Varoitus",
+    "description": ""
+  }
 }

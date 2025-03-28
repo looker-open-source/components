@@ -1,8 +1,10 @@
 {
   "No values": {
+    "description": "",
     "value": "Brak wartości"
   },
   "No values match": {
+    "description": "",
     "value": "Brak pasujących wartości"
   }
 }

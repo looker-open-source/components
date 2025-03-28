@@ -6,6 +6,7 @@
 import i18next from 'i18next';
 import { useTranslation as useTranslationOrig } from 'react-i18next';
 import type { Namespace, UseTranslationOptions } from 'react-i18next';
+import { addResources } from './i18nInit';
 import { i18nInitComponents } from './i18nInitComponents';
 import type { I18nStateWithDates } from './types';
 
@@ -26,8 +27,12 @@ export const useTranslationBase = <N extends Namespace>(
   options?: UseTranslationOptions
 ) => {
   const isEn = !i18next.language || i18next.language === 'en';
-  if (isEn && enResourcesMissing(en)) {
-    i18nInitComponents(en);
+  if (enResourcesMissing(en)) {
+    if (isEn) {
+      i18nInitComponents(en);
+    } else {
+      addResources(en);
+    }
   }
   return useTranslationOrig(ns, options);
 };

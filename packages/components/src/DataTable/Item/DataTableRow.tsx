@@ -101,6 +101,7 @@ const DataTableRowLayout = forwardRef(
         className={className}
         onKeyDown={onKeyDown}
         onClick={handleOnClick}
+        data-testid="content-item"
       >
         {hasCheckbox ? (
           <ColumnType onClick={suppressClickPropagation}>

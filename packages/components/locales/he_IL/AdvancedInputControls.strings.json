@@ -1,3 +1,6 @@
 {
-  "Clear Field": "נקה שדה"
+  "Clear Field": {
+    "value": "נקה שדה",
+    "description": ""
+  }
 }

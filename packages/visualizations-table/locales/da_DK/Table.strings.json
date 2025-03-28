@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Skift + klik for at sortere yderligere kolonner",
-  "Sort ascending": "Sortér stigende",
-  "Sort descending": "Sortér faldende",
-  "Totals": "Totaler"
+  "Shift + Click to sort additional columns": {
+    "value": "Skift + klik for at sortere yderligere kolonner",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Sortér stigende",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Sortér faldende",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Totaler",
+    "description": ""
+  }
 }

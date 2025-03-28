@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Feil under lasting av forslag"
+  "Error loading suggestions": {
+    "value": "Feil under lasting av forslag",
+    "description": ""
+  }
 }

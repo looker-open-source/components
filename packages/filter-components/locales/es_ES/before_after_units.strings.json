@@ -1,65 +1,86 @@
 {
   "days ago": {
+    "description": "",
     "value": "días atrás"
   },
   "days from now": {
+    "description": "",
     "value": "días a partir de ahora"
   },
   "fiscal quarter from now": {
+    "description": "",
     "value": "trimestre fiscal a partir de ahora"
   },
   "fiscal quarters ago": {
+    "description": "",
     "value": "trimestres fiscales atrás"
   },
   "fiscal years ago": {
+    "description": "",
     "value": "años fiscales atrás"
   },
   "fiscal years from now": {
+    "description": "",
     "value": "años fiscales a partir de ahora"
   },
   "hours ago": {
+    "description": "",
     "value": "horas atrás"
   },
   "hours from now": {
+    "description": "",
     "value": "horas a partir de ahora"
   },
   "minutes ago": {
+    "description": "",
     "value": "minutos atrás"
   },
   "minutes from now": {
+    "description": "",
     "value": "minutos a partir de ahora"
   },
   "months ago": {
+    "description": "",
     "value": "meses atrás"
   },
   "months from now": {
+    "description": "",
     "value": "meses a partir de ahora"
   },
   "now": {
+    "description": "",
     "value": "ahora"
   },
   "quarters ago": {
+    "description": "",
     "value": "trimestres atrás"
   },
   "quarters from now": {
+    "description": "",
     "value": "trimestres a partir de ahora"
   },
   "seconds ago": {
+    "description": "",
     "value": "segundos atrás"
   },
   "seconds from now": {
+    "description": "",
     "value": "segundos a partir de ahora"
   },
   "weeks ago": {
+    "description": "",
     "value": "semanas atrás"
   },
   "weeks from now": {
+    "description": "",
     "value": "semanas a partir de ahora"
   },
   "years ago": {
+    "description": "",
     "value": "años atrás"
   },
   "years from now": {
+    "description": "",
     "value": "años a partir de ahora"
   }
 }

@@ -1,11 +1,14 @@
 {
   "is": {
+    "description": "",
     "value": "次に一致"
   },
   "is any value": {
+    "description": "",
     "value": "任意の値"
   },
   "is not": {
+    "description": "",
     "value": "等しくない"
   }
 }

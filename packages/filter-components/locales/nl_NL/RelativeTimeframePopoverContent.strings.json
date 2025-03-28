@@ -1,8 +1,10 @@
 {
   "Custom": {
-    "value": "Aangepast"
+    "value": "Aangepast",
+    "description": ""
   },
   "Presets": {
-    "value": "Sjablonen"
+    "value": "Sjablonen",
+    "description": ""
   }
 }

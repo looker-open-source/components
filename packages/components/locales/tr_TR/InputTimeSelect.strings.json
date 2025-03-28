@@ -1,3 +1,6 @@
 {
-  "Select time": "Zaman seç"
+  "Select time": {
+    "value": "Zaman seç",
+    "description": ""
+  }
 }

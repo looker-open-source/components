@@ -1,8 +1,10 @@
 {
   "absolute": {
-    "value": "(visiškai)"
+    "value": "(visiškai)",
+    "description": ""
   },
   "relative": {
-    "value": "(santykinai)"
+    "value": "(santykinai)",
+    "description": ""
   }
 }

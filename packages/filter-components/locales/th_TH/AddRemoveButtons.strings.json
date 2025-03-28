@@ -1,8 +1,10 @@
 {
   "Add": {
-    "value": "เพิ่ม"
+    "value": "เพิ่ม",
+    "description": ""
   },
   "Remove": {
-    "value": "นำออก"
+    "value": "นำออก",
+    "description": ""
   }
 }

@@ -1,3 +1,6 @@
 {
-  "Close": "Закрити"
+  "Close": {
+    "value": "Закрити",
+    "description": ""
+  }
 }

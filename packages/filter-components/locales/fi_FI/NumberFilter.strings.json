@@ -1,3 +1,6 @@
 {
-  "any value": "mikä tahansa arvo"
+  "any value": {
+    "value": "mikä tahansa arvo",
+    "description": ""
+  }
 }

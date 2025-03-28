@@ -1,8 +1,10 @@
 {
   "No Matching Fields": {
+    "description": "",
     "value": "沒有任何相符的欄位"
   },
   "Try Something Else": {
+    "description": "",
     "value": "請改用其他搜尋字詞，或是重新開始並展開任一探索，以便瀏覽可用欄位。"
   }
 }

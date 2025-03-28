@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
+import { model_fieldname_suggestions } from '@looker/sdk';
 import type { IAPIMethods } from '@looker/sdk-rtl';
 import { fireEvent, screen } from '@testing-library/react';
 import { FilterCollection } from './FilterCollection';
@@ -14,9 +15,6 @@ jest.mock('@looker/sdk', () => ({
   ...jest.requireActual('@looker/sdk'),
   model_fieldname_suggestions: jest.fn((sdk: { get: () => any }) => sdk.get()),
 }));
-
-// eslint-disable-next-line import/first
-import { model_fieldname_suggestions } from '@looker/sdk';
 
 describe('FilterCollection', () => {
   it('shares state for linked filters', async () => {
@@ -86,7 +84,8 @@ describe('FilterCollection', () => {
         model_name: 'testmodel',
         term: '',
         view_name: 'products',
-      }
+      },
+      { signal: expect.any(AbortSignal) }
     );
   });
 });

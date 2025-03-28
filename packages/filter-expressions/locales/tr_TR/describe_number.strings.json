@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "şu aralıkta: {{range}}"
+    "value": "şu aralıkta: {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "şu aralıkta değil: {{range}}"
+    "value": "şu aralıkta değil: {{range}}",
+    "description": ""
   }
 }

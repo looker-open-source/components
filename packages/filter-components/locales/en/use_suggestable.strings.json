@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "Error loading suggestions"
+  "Error loading suggestions": {
+    "description": "",
+    "value": "Error loading suggestions"
+  }
 }

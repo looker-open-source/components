@@ -7,7 +7,7 @@ import 'jest-styled-components';
 import React from 'react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { screen } from '@testing-library/react';
-import { Basic, Detail, HideClose } from './stories/index.stories';
+import { Basic, Detail, HideClose } from './fixtures';
 import { DialogHeader } from './DialogHeader';
 
 describe('DialogHeader', () => {

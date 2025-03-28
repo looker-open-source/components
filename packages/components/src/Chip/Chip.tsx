@@ -166,7 +166,10 @@ export const Chip = styled(
   &:hover,
   &:active,
   &:focus,
-  &[aria-selected='true'] {
+  // temporary fix for b/396048653 (chrome crashes in explore).
+  // rename aria-selected to data-aria-selected. This will be
+  // reverted once the chrome fix has been rolled out.
+  &[data-aria-selected='true'] {
     background: ${({ theme }) => theme.colors.keyAccent};
   }
 

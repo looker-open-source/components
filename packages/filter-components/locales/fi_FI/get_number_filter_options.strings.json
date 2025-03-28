@@ -1,44 +1,58 @@
 {
   "exclusive": {
-    "value": "(poissulkeva)"
+    "value": "(poissulkeva)",
+    "description": ""
   },
   "inclusive": {
-    "value": "[sisältävä]"
+    "value": "[sisältävä]",
+    "description": ""
   },
   "is": {
-    "value": "on"
+    "value": "on",
+    "description": ""
   },
   "is between": {
-    "value": "on välillä"
+    "value": "on välillä",
+    "description": ""
   },
   "is greater": {
-    "value": "on >"
+    "value": "on >",
+    "description": ""
   },
   "is greater equal": {
-    "value": "on >="
+    "value": "on >=",
+    "description": ""
   },
   "is less": {
-    "value": "on <"
+    "value": "on <",
+    "description": ""
   },
   "is less equal": {
-    "value": "on <="
+    "value": "on <=",
+    "description": ""
   },
   "is not": {
-    "value": "ei ole"
+    "value": "ei ole",
+    "description": ""
   },
   "is not between": {
-    "value": "ei ole välillä"
+    "value": "ei ole välillä",
+    "description": ""
   },
   "is not null": {
-    "value": "ei ole nolla"
+    "value": "ei ole nolla",
+    "description": ""
   },
   "is null": {
-    "value": "on nolla"
+    "value": "on nolla",
+    "description": ""
   },
   "left exclusive": {
-    "value": "(vasen-poissulkeva]"
+    "value": "(vasen-poissulkeva]",
+    "description": ""
   },
   "right exclusive": {
-    "value": "[oikea-poissulkeva)"
+    "value": "[oikea-poissulkeva)",
+    "description": ""
   }
 }

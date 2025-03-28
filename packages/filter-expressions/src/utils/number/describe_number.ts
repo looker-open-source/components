@@ -12,16 +12,18 @@ import { joinOr } from '../summary/join_or';
 import { describeUserAttribute } from '../user_attribute/describe_user_attribute';
 
 const describeEquals = ({ is, value }: FilterModel) => {
-  return value && value.length
-    ? describeIsItem(is, joinOr(value))
-    : describeIsAnyValue();
+  if (!Array.isArray(value) || value.length === 0) return describeIsAnyValue();
+  return describeIsItem(is, joinOr(value as string[]));
 };
 
 const describeSingleValue = ({ is, type, value }: FilterModel): string =>
-  describeIsItem(is, `${type} ${value && value.length ? value[0] : ''}`);
+  describeIsItem(
+    is,
+    `${type} ${Array.isArray(value) && value.length ? value[0] : ''}`
+  );
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const describeBetween = ({ bounds, low, high, is }: any) => {
+const describeBetween = ({ bounds, low, high, is }: FilterModel) => {
   if (bounds) {
     const t = i18next.t.bind(i18next);
     const range = `${bounds[0]}${low}, ${high}${bounds[1]}`;

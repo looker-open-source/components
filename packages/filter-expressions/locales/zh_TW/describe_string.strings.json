@@ -1,23 +1,30 @@
 {
   "blank": {
+    "description": "",
     "value": "空白"
   },
   "contains value": {
+    "description": "",
     "value": "包含「{{value}}」"
   },
   "does not contain value": {
+    "description": "",
     "value": "不含「{{value}}」"
   },
   "does not end with value": {
+    "description": "",
     "value": "結尾不是「{{value}}」"
   },
   "does not start with value": {
+    "description": "",
     "value": "開頭不是「{{value}}」"
   },
   "ends with value": {
+    "description": "",
     "value": "結尾為「{{value}}」"
   },
   "starts with value": {
+    "description": "",
     "value": "開頭為「{{value}}」"
   }
 }

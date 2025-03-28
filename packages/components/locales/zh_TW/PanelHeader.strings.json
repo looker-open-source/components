@@ -1,3 +1,6 @@
 {
-  "CloseTitle": "關閉「{{title}}」"
+  "CloseTitle": {
+    "description": "",
+    "value": "關閉「{{title}}」"
+  }
 }

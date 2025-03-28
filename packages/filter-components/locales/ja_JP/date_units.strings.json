@@ -1,62 +1,82 @@
 {
   "day": {
+    "description": "",
     "value": "日"
   },
   "days": {
+    "description": "",
     "value": "日"
   },
   "fiscal quarter": {
+    "description": "",
     "value": "会計四半期"
   },
   "fiscal quarters": {
+    "description": "",
     "value": "会計四半期"
   },
   "fiscal year": {
+    "description": "",
     "value": "会計年度"
   },
   "fiscal years": {
+    "description": "",
     "value": "会計年度"
   },
   "hour": {
+    "description": "",
     "value": "時間"
   },
   "hours": {
+    "description": "",
     "value": "時間"
   },
   "minute": {
+    "description": "",
     "value": "分"
   },
   "minutes": {
+    "description": "",
     "value": "分"
   },
   "month": {
+    "description": "",
     "value": "月"
   },
   "months": {
+    "description": "",
     "value": "月"
   },
   "quarter": {
+    "description": "",
     "value": "四半期"
   },
   "quarters": {
+    "description": "",
     "value": "四半期"
   },
   "second": {
+    "description": "",
     "value": "秒"
   },
   "seconds": {
+    "description": "",
     "value": "秒"
   },
   "week": {
+    "description": "",
     "value": "週"
   },
   "weeks": {
+    "description": "",
     "value": "週"
   },
   "year": {
+    "description": "",
     "value": "年"
   },
   "years": {
+    "description": "",
     "value": "年"
   }
 }

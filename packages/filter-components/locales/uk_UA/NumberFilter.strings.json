@@ -1,3 +1,6 @@
 {
-  "any value": "будь-яке значення"
+  "any value": {
+    "value": "будь-яке значення",
+    "description": ""
+  }
 }

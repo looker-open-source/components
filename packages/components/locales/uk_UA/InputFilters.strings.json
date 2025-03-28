@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Очистити фільтри",
-  "Filter List": "Список фільтрів",
-  "bottom-start": "низ-початок"
+  "Clear Filters": {
+    "value": "Очистити фільтри",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Список фільтрів",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "низ-початок",
+    "description": ""
+  }
 }

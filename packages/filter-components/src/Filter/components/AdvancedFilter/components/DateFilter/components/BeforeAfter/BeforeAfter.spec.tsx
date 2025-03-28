@@ -29,7 +29,7 @@ import {
   getAllComboboxOptionText,
   renderWithTheme,
 } from '@looker/components-test-utils';
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, screen, cleanup } from '@testing-library/react';
 import React from 'react';
 import { Filter } from '../../../../../../Filter';
 import {
@@ -82,6 +82,66 @@ describe('BeforeAfter Date filter test', () => {
       ]
     `);
     closeCombobox();
+  });
+
+  it('sets a default date value when the range value changes', async () => {
+    jest.useFakeTimers({ legacyFakeTimers: false });
+    jest.setSystemTime(new Date(2024, 4, 31));
+    const onChange = jest.fn();
+    renderWithTheme(
+      <Filter
+        expression={'before 3 day ago'}
+        name="test"
+        onChange={onChange}
+        field={testField}
+        expressionType="date"
+        config={testFilterUIConfig}
+        allowMultipleValues={true}
+      />
+    );
+
+    let inputs = screen.getAllByRole('textbox');
+
+    inputs = screen.getAllByRole('textbox');
+    fireEvent.click(inputs[1]);
+    fireEvent.click(screen.getByText('(absolute)'));
+
+    expect(await screen.findByText('2024/05/31')).toBeVisible();
+    expect(onChange).toHaveBeenCalledWith({
+      expression: 'before 2024/05/31',
+    });
+
+    jest.useRealTimers();
+    cleanup();
+  });
+
+  it('does not override an existing date value when the range value changes', async () => {
+    const onChange = jest.fn();
+    renderWithTheme(
+      <Filter
+        expression={'before 2024/05/05'}
+        name="test"
+        onChange={onChange}
+        field={testField}
+        expressionType="date"
+        config={testFilterUIConfig}
+        allowMultipleValues={true}
+      />
+    );
+
+    let inputs = screen.getAllByRole('textbox');
+
+    fireEvent.click(inputs[1]);
+    fireEvent.click(screen.getByText('(relative)'));
+
+    inputs = screen.getAllByRole('textbox');
+
+    fireEvent.click(inputs[1]);
+    fireEvent.click(screen.getByText('(absolute)'));
+
+    expect(await screen.findByText('2024/05/05')).toBeVisible();
+    expect(onChange).toHaveBeenCalledWith({ expression: 'before 2024/05/05' });
+    cleanup();
   });
 
   it('should render a BeforeAfter component with FiscalUnit options', () => {

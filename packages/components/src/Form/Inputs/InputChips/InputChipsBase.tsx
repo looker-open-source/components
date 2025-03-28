@@ -340,9 +340,12 @@ export const InputChipsBaseInternal = forwardRef(
       const isSelected = selectedValues.includes(value);
       const chipLabel = formatChip ? formatChip(value) : value;
 
+      // temporary fix for b/396048653 (chrome crashes in explore).
+      // rename aria-selected to data-aria-selected. This will be
+      // reverted once the chrome fix has been rolled out.
       return (
         <Chip
-          aria-selected={isSelected}
+          data-aria-selected={isSelected}
           disabled={disabled}
           iconLabel={chipIconLabel}
           key={value}

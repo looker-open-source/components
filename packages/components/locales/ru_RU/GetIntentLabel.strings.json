@@ -1,6 +1,18 @@
 {
-  "Error": "Ошибка",
-  "Inform": "Информировать",
-  "Success": "Успешно",
-  "Warning": "Предупреждение"
+  "Error": {
+    "value": "Ошибка",
+    "description": ""
+  },
+  "Inform": {
+    "value": "Информировать",
+    "description": ""
+  },
+  "Success": {
+    "value": "Успешно",
+    "description": ""
+  },
+  "Warning": {
+    "value": "Предупреждение",
+    "description": ""
+  }
 }

@@ -1,3 +1,6 @@
 {
-  "Error": "Erro"
+  "Error": {
+    "description": "",
+    "value": "Erro"
+  }
 }

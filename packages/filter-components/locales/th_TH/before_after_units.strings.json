@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "วันที่แล้ว"
+    "value": "วันที่แล้ว",
+    "description": ""
   },
   "days from now": {
-    "value": "วันนับจากนี้"
+    "value": "วันนับจากนี้",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "ไตรมาสงบประมาณนับจากนี้"
+    "value": "ไตรมาสงบประมาณนับจากนี้",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "ไตรมาสงบประมาณที่แล้ว"
+    "value": "ไตรมาสงบประมาณที่แล้ว",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "ปีงบประมาณที่แล้ว"
+    "value": "ปีงบประมาณที่แล้ว",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "ปีงบประมาณนับจากนี้"
+    "value": "ปีงบประมาณนับจากนี้",
+    "description": ""
   },
   "hours ago": {
-    "value": "ชั่วโมงที่แล้ว"
+    "value": "ชั่วโมงที่แล้ว",
+    "description": ""
   },
   "hours from now": {
-    "value": "ชั่วโมงนับจากนี้"
+    "value": "ชั่วโมงนับจากนี้",
+    "description": ""
   },
   "minutes ago": {
-    "value": "นาทีที่แล้ว"
+    "value": "นาทีที่แล้ว",
+    "description": ""
   },
   "minutes from now": {
-    "value": "นาทีนับจากนี้"
+    "value": "นาทีนับจากนี้",
+    "description": ""
   },
   "months ago": {
-    "value": "เดือนที่แล้ว"
+    "value": "เดือนที่แล้ว",
+    "description": ""
   },
   "months from now": {
-    "value": "เดือนนับจากนี้"
+    "value": "เดือนนับจากนี้",
+    "description": ""
   },
   "now": {
-    "value": "ขณะนี้"
+    "value": "ขณะนี้",
+    "description": ""
   },
   "quarters ago": {
-    "value": "ไตรมาสที่แล้ว"
+    "value": "ไตรมาสที่แล้ว",
+    "description": ""
   },
   "quarters from now": {
-    "value": "ไตรมาสนับจากนี้"
+    "value": "ไตรมาสนับจากนี้",
+    "description": ""
   },
   "seconds ago": {
-    "value": "วินาทีที่แล้ว"
+    "value": "วินาทีที่แล้ว",
+    "description": ""
   },
   "seconds from now": {
-    "value": "วินาทีนับจากนี้"
+    "value": "วินาทีนับจากนี้",
+    "description": ""
   },
   "weeks ago": {
-    "value": "สัปดาห์ที่แล้ว"
+    "value": "สัปดาห์ที่แล้ว",
+    "description": ""
   },
   "weeks from now": {
-    "value": "สัปดาห์นับจากนี้"
+    "value": "สัปดาห์นับจากนี้",
+    "description": ""
   },
   "years ago": {
-    "value": "ปีที่แล้ว"
+    "value": "ปีที่แล้ว",
+    "description": ""
   },
   "years from now": {
-    "value": "ปีนับจากนี้"
+    "value": "ปีนับจากนี้",
+    "description": ""
   }
 }

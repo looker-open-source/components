@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Shift + Click เพื่อจัดเรียงคอลัมน์เพิ่มเติม",
-  "Sort ascending": "จัดเรียงจากน้อยไปมาก",
-  "Sort descending": "จัดเรียงจากมากไปน้อย",
-  "Totals": "ยอดรวม"
+  "Shift + Click to sort additional columns": {
+    "value": "Shift + Click เพื่อจัดเรียงคอลัมน์เพิ่มเติม",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "จัดเรียงจากน้อยไปมาก",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "จัดเรียงจากมากไปน้อย",
+    "description": ""
+  },
+  "Totals": {
+    "value": "ยอดรวม",
+    "description": ""
+  }
 }

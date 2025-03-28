@@ -1,7 +1,22 @@
 {
-  "Apply": "Použít",
-  "Cancel": "Zrušit",
-  "Select All": "Vybrat vše",
-  "Select None": "Nevybrat žádné",
-  "Select columns to display": "Vybrat zobrazované sloupce"
+  "Apply": {
+    "value": "Použít",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Zrušit",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Vybrat vše",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Nevybrat žádné",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Vybrat zobrazované sloupce",
+    "description": ""
+  }
 }

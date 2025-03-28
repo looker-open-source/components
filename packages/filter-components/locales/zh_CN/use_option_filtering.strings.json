@@ -1,8 +1,10 @@
 {
   "No values": {
+    "description": "",
     "value": "无值"
   },
   "No values match": {
+    "description": "",
     "value": "没有匹配的值"
   }
 }

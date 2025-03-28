@@ -9,5 +9,5 @@ This package provides shared application state within react context for use in f
 
 You'll also need to satisfy peer dependencies.
 
-- **NPM:** `npm install react react-dom `
-- **YARN:** `yarn add react react-dom`
+- **NPM:** `npm install react`
+- **YARN:** `yarn add react`

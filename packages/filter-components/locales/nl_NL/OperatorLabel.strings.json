@@ -1,8 +1,10 @@
 {
   "AND": {
-    "value": "EN"
+    "value": "EN",
+    "description": ""
   },
   "OR": {
-    "value": "OF"
+    "value": "OF",
+    "description": ""
   }
 }

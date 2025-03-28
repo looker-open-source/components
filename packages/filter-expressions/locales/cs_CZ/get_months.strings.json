@@ -1,38 +1,50 @@
 {
   "April": {
-    "value": "Duben"
+    "value": "Duben",
+    "description": ""
   },
   "August": {
-    "value": "Srpen"
+    "value": "Srpen",
+    "description": ""
   },
   "December": {
-    "value": "Prosinec"
+    "value": "Prosinec",
+    "description": ""
   },
   "February": {
-    "value": "Únor"
+    "value": "Únor",
+    "description": ""
   },
   "January": {
-    "value": "Leden"
+    "value": "Leden",
+    "description": ""
   },
   "July": {
-    "value": "Červenec"
+    "value": "Červenec",
+    "description": ""
   },
   "June": {
-    "value": "Červen"
+    "value": "Červen",
+    "description": ""
   },
   "March": {
-    "value": "Březen"
+    "value": "Březen",
+    "description": ""
   },
   "May": {
-    "value": "Květen"
+    "value": "Květen",
+    "description": ""
   },
   "November": {
-    "value": "Listopad"
+    "value": "Listopad",
+    "description": ""
   },
   "October": {
-    "value": "Říjen"
+    "value": "Říjen",
+    "description": ""
   },
   "September": {
-    "value": "Září"
+    "value": "Září",
+    "description": ""
   }
 }

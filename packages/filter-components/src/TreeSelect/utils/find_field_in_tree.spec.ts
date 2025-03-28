@@ -2,7 +2,7 @@
  * Copyright (c) 2023 Google LLC
  * SPDX-License-Identifier: MIT
  */
-import { exploreData, mockTreeData } from '../stories/examples';
+import { exploreData, mockTreeData } from '../fixtures';
 import { createExploresTree } from './create_explores_tree';
 import { findFieldInTree } from './find_field_in_tree';
 

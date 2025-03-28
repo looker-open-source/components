@@ -1,6 +1,18 @@
 {
-  "Shift + Click to sort additional columns": "Skift + klicka för att sortera ytterligare kolumner",
-  "Sort ascending": "Sortera stigande",
-  "Sort descending": "Sortera fallande",
-  "Totals": "Totalsummor"
+  "Shift + Click to sort additional columns": {
+    "value": "Skift + klicka för att sortera ytterligare kolumner",
+    "description": ""
+  },
+  "Sort ascending": {
+    "value": "Sortera stigande",
+    "description": ""
+  },
+  "Sort descending": {
+    "value": "Sortera fallande",
+    "description": ""
+  },
+  "Totals": {
+    "value": "Totalsummor",
+    "description": ""
+  }
 }

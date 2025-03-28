@@ -1,8 +1,10 @@
 {
   "is not value": {
-    "value": "не имеет значения {{value}}"
+    "value": "не имеет значения {{value}}",
+    "description": ""
   },
   "is value": {
-    "value": "имеет значение {{value}}"
+    "value": "имеет значение {{value}}",
+    "description": ""
   }
 }

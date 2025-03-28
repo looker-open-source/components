@@ -1,7 +1,22 @@
 {
-  "Apply": "Anwenden",
-  "Cancel": "Abbrechen",
-  "Select All": "Alle auswählen",
-  "Select None": "Nichts auswählen",
-  "Select columns to display": "Anzuzeigende Spalten auswählen"
+  "Apply": {
+    "description": "",
+    "value": "Anwenden"
+  },
+  "Cancel": {
+    "description": "",
+    "value": "Abbrechen"
+  },
+  "Select All": {
+    "description": "",
+    "value": "Alle auswählen"
+  },
+  "Select None": {
+    "description": "",
+    "value": "Nichts auswählen"
+  },
+  "Select columns to display": {
+    "description": "",
+    "value": "Anzuzeigende Spalten auswählen"
+  }
 }

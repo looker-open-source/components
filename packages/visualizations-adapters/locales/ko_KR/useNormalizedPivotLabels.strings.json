@@ -1,3 +1,6 @@
 {
-  "Row Total": "행 총계"
+  "Row Total": {
+    "description": "",
+    "value": "행 총계"
+  }
 }

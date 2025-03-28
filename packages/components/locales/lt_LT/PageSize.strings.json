@@ -1,4 +1,10 @@
 {
-  "Display": "Rodyti",
-  "of": "iš"
+  "Display": {
+    "value": "Rodyti",
+    "description": ""
+  },
+  "of": {
+    "value": "iš",
+    "description": ""
+  }
 }

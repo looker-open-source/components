@@ -1,56 +1,74 @@
 {
   "Last 14 Days": {
-    "value": "Viimeiset 14 päivää"
+    "value": "Viimeiset 14 päivää",
+    "description": ""
   },
   "Last 180 Days": {
-    "value": "Viimeiset 180 päivää"
+    "value": "Viimeiset 180 päivää",
+    "description": ""
   },
   "Last 28 Days": {
-    "value": "Viimeiset 28 päivää"
+    "value": "Viimeiset 28 päivää",
+    "description": ""
   },
   "Last 30 Days": {
-    "value": "Viimeiset 30 päivää"
+    "value": "Viimeiset 30 päivää",
+    "description": ""
   },
   "Last 365 Days": {
-    "value": "Viimeiset 365 päivää"
+    "value": "Viimeiset 365 päivää",
+    "description": ""
   },
   "Last 7 Days": {
-    "value": "Viimeiset 7 päivää"
+    "value": "Viimeiset 7 päivää",
+    "description": ""
   },
   "Last 90 Days": {
-    "value": "Viimeiset 90 päivää"
+    "value": "Viimeiset 90 päivää",
+    "description": ""
   },
   "Previous Month": {
-    "value": "Edellinen kuukausi"
+    "value": "Edellinen kuukausi",
+    "description": ""
   },
   "Previous Quarter": {
-    "value": "Edellinen vuosineljännes"
+    "value": "Edellinen vuosineljännes",
+    "description": ""
   },
   "Previous Week": {
-    "value": "Edellinen viikko"
+    "value": "Edellinen viikko",
+    "description": ""
   },
   "Previous Year": {
-    "value": "Edellinen vuosi"
+    "value": "Edellinen vuosi",
+    "description": ""
   },
   "This Month": {
-    "value": "Tämä kuukausi"
+    "value": "Tämä kuukausi",
+    "description": ""
   },
   "This Quarter": {
-    "value": "Tämä vuosineljännes"
+    "value": "Tämä vuosineljännes",
+    "description": ""
   },
   "This Week": {
-    "value": "Tämä viikko"
+    "value": "Tämä viikko",
+    "description": ""
   },
   "This Year": {
-    "value": "Tämä vuosi"
+    "value": "Tämä vuosi",
+    "description": ""
   },
   "Today": {
-    "value": "Tänään"
+    "value": "Tänään",
+    "description": ""
   },
   "Year To Date": {
-    "value": "Vuosi tähän päivään"
+    "value": "Vuosi tähän päivään",
+    "description": ""
   },
   "Yesterday": {
-    "value": "Eilen"
+    "value": "Eilen",
+    "description": ""
   }
 }

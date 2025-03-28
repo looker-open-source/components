@@ -1,3 +1,6 @@
 {
-  "Row Total": "Rækketotal"
+  "Row Total": {
+    "value": "Rækketotal",
+    "description": ""
+  }
 }

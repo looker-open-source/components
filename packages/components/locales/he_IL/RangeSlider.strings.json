@@ -1,6 +1,18 @@
 {
-  "Maximum Name": "לכל היותר {{name}}",
-  "Maximum Value": "ערך מקסימום",
-  "Minimum Name": "לכל הפחות {{name}}",
-  "Minimum Value": "ערך מינימום"
+  "Maximum Name": {
+    "value": "לכל היותר {{name}}",
+    "description": ""
+  },
+  "Maximum Value": {
+    "value": "ערך מקסימום",
+    "description": ""
+  },
+  "Minimum Name": {
+    "value": "לכל הפחות {{name}}",
+    "description": ""
+  },
+  "Minimum Value": {
+    "value": "ערך מינימום",
+    "description": ""
+  }
 }

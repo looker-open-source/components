@@ -1,8 +1,10 @@
 {
   "is in range range": {
-    "value": "on alueella {{range}}"
+    "value": "on alueella {{range}}",
+    "description": ""
   },
   "is not in range range": {
-    "value": "ei ole alueella {{range}}"
+    "value": "ei ole alueella {{range}}",
+    "description": ""
   }
 }

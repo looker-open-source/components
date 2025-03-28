@@ -1,5 +1,14 @@
 {
-  "Clear Filters": "Rensa filter",
-  "Filter List": "Filterlista",
-  "bottom-start": "bottom-start"
+  "Clear Filters": {
+    "value": "Rensa filter",
+    "description": ""
+  },
+  "Filter List": {
+    "value": "Filterlista",
+    "description": ""
+  },
+  "bottom-start": {
+    "value": "bottom-start",
+    "description": ""
+  }
 }

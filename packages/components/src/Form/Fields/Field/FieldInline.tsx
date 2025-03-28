@@ -56,7 +56,7 @@ const FieldInlineLayout = ({
   const describedbyId = `describedby-${id}`;
 
   const inputWithAriaDescribed = isValidElement(children)
-    ? React.cloneElement(children, {
+    ? React.cloneElement(children as React.ReactHTMLElement<HTMLElement>, {
         'aria-describedby': describedbyId,
       })
     : children;
@@ -82,11 +82,6 @@ const FieldDetail = styled(Span)`
   font-size: ${({ theme }) => theme.fontSizes.xsmall};
   grid-column: 3;
   grid-row: 1;
-  /* stylelint-disable */
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 2;
-  -ms-grid-row: 1;
-  /* stylelint-enable */
   padding-left: ${({ theme }) => theme.space.u2};
 `;
 
@@ -102,23 +97,12 @@ const InputArea = styled.div`
   grid-column: 1;
   grid-row: 1;
   padding-right: ${({ theme }) => theme.space.u1};
-  /* stylelint-disable */
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
-  -ms-grid-row: 1;
-  /* stylelint-enable */
 `;
 
 const MessageArea = styled.div`
   grid-column: 2;
   grid-column-end: span 2;
   grid-row: 2;
-  /* stylelint-disable */
-  -ms-grid-column: 2;
-  -ms-grid-column-end: span 2;
-  -ms-grid-column-span: 2;
-  -ms-grid-row: 2;
-  /* stylelint-enable */
 `;
 
 export const FieldInline = styled(FieldInlineLayout)`
@@ -127,10 +111,6 @@ export const FieldInline = styled(FieldInlineLayout)`
   grid-template-columns: auto auto auto auto;
   justify-content: start;
   line-height: ${({ theme }) => theme.lineHeights.small};
-  /* stylelint-disable */
-  display: -ms-grid;
-  -ms-grid-columns: auto auto auto auto;
-  /* stylelint-enable */
 
   ${Label} {
     align-items: center;
@@ -142,10 +122,5 @@ export const FieldInline = styled(FieldInlineLayout)`
     grid-row: 1;
     overflow: hidden;
     width: 100%;
-    /* stylelint-disable */
-    -ms-grid-column: 2;
-    -ms-grid-column-span: 1;
-    -ms-grid-row: 1;
-    /* stylelint-enable */
   }
 `;

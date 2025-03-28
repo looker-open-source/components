@@ -1,3 +1,6 @@
 {
-  "any value": "ค่าใดก็ได้"
+  "any value": {
+    "value": "ค่าใดก็ได้",
+    "description": ""
+  }
 }

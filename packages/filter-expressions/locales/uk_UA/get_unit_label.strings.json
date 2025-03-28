@@ -1,82 +1,162 @@
 {
-  "complete day": "повний день",
+  "complete day": {
+    "value": "повний день",
+    "description": ""
+  },
   "complete days": {
-    "value": "повних днів"
+    "value": "повних днів",
+    "description": ""
   },
-  "complete fiscal quarter": "повний фінансовий квартал",
+  "complete fiscal quarter": {
+    "value": "повний фінансовий квартал",
+    "description": ""
+  },
   "complete fiscal quarters": {
-    "value": "повних фінансових кварталів"
+    "value": "повних фінансових кварталів",
+    "description": ""
   },
-  "complete fiscal year": "повний фінансовий рік",
+  "complete fiscal year": {
+    "value": "повний фінансовий рік",
+    "description": ""
+  },
   "complete fiscal years": {
-    "value": "повних фінансових років"
+    "value": "повних фінансових років",
+    "description": ""
   },
-  "complete hour": "повну годину",
+  "complete hour": {
+    "value": "повну годину",
+    "description": ""
+  },
   "complete hours": {
-    "value": "повних годин"
+    "value": "повних годин",
+    "description": ""
   },
-  "complete minute": "повну хвилину",
+  "complete minute": {
+    "value": "повну хвилину",
+    "description": ""
+  },
   "complete minutes": {
-    "value": "повних хвилин"
+    "value": "повних хвилин",
+    "description": ""
   },
-  "complete month": "повний місяць",
+  "complete month": {
+    "value": "повний місяць",
+    "description": ""
+  },
   "complete months": {
-    "value": "повних місяців"
+    "value": "повних місяців",
+    "description": ""
   },
-  "complete quarter": "повний квартал",
+  "complete quarter": {
+    "value": "повний квартал",
+    "description": ""
+  },
   "complete quarters": {
-    "value": "повних кварталів"
+    "value": "повних кварталів",
+    "description": ""
   },
-  "complete second": "повну секунду",
+  "complete second": {
+    "value": "повну секунду",
+    "description": ""
+  },
   "complete seconds": {
-    "value": "повних секунд"
+    "value": "повних секунд",
+    "description": ""
   },
-  "complete week": "повний тиждень",
+  "complete week": {
+    "value": "повний тиждень",
+    "description": ""
+  },
   "complete weeks": {
-    "value": "повних тижнів"
+    "value": "повних тижнів",
+    "description": ""
   },
-  "complete year": "повний рік",
+  "complete year": {
+    "value": "повний рік",
+    "description": ""
+  },
   "complete years": {
-    "value": "повних років"
+    "value": "повних років",
+    "description": ""
   },
-  "day": "день",
+  "day": {
+    "value": "день",
+    "description": ""
+  },
   "days": {
-    "value": "дн"
+    "value": "дн",
+    "description": ""
   },
-  "fiscal quarter": "фінансовий квартал",
+  "fiscal quarter": {
+    "value": "фінансовий квартал",
+    "description": ""
+  },
   "fiscal quarters": {
-    "value": "фінансових кварталів"
+    "value": "фінансових кварталів",
+    "description": ""
   },
-  "fiscal year": "фінансовий рік",
+  "fiscal year": {
+    "value": "фінансовий рік",
+    "description": ""
+  },
   "fiscal years": {
-    "value": "фінансових років"
+    "value": "фінансових років",
+    "description": ""
   },
-  "hour": "година",
+  "hour": {
+    "value": "година",
+    "description": ""
+  },
   "hours": {
-    "value": "год"
+    "value": "год",
+    "description": ""
   },
-  "minute": "хвилина",
+  "minute": {
+    "value": "хвилина",
+    "description": ""
+  },
   "minutes": {
-    "value": "хв"
+    "value": "хв",
+    "description": ""
   },
-  "month": "місяць",
+  "month": {
+    "value": "місяць",
+    "description": ""
+  },
   "months": {
-    "value": "міс."
+    "value": "міс.",
+    "description": ""
   },
-  "quarter": "квартал",
+  "quarter": {
+    "value": "квартал",
+    "description": ""
+  },
   "quarters": {
-    "value": "кварт."
+    "value": "кварт.",
+    "description": ""
   },
-  "second": "секунда",
+  "second": {
+    "value": "секунда",
+    "description": ""
+  },
   "seconds": {
-    "value": "сек"
+    "value": "сек",
+    "description": ""
   },
-  "week": "тиждень",
+  "week": {
+    "value": "тиждень",
+    "description": ""
+  },
   "weeks": {
-    "value": "тижн"
+    "value": "тижн",
+    "description": ""
   },
-  "year": "рік",
+  "year": {
+    "value": "рік",
+    "description": ""
+  },
   "years": {
-    "value": "р."
+    "value": "р.",
+    "description": ""
   }
 }

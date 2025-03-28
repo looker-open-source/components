@@ -3,14 +3,19 @@
  * SPDX-License-Identifier: MIT
  */
 import { Box2 } from '@looker/components';
-import type { FilterModel } from '@looker/filter-expressions';
+import type { FilterModel, FilterInterval } from '@looker/filter-expressions';
 import type { ILookmlModelExploreField } from '@looker/sdk';
 import React from 'react';
 import { useTranslation } from '../../../../../../../utils';
 import { GroupSelect } from '../../../GroupSelect';
 import { MidInputLabel } from '../../../MidInputLabel';
-import type { IntervalItemProps } from '../Interval';
 import { Interval } from '../Interval';
+
+const isInterval = (
+  interval?: FilterInterval | string
+): interval is FilterInterval => {
+  return interval !== undefined && typeof interval !== 'string';
+};
 
 interface RelativeParamProps {
   item: FilterModel;
@@ -18,12 +23,9 @@ interface RelativeParamProps {
   onChange: (id: string, item: Partial<FilterModel>) => void;
 }
 
-export const Relative = ({
-  item: { id, intervalType, startInterval, endInterval },
-  onChange,
-  field,
-}: RelativeParamProps) => {
+export const Relative = ({ item, onChange, field }: RelativeParamProps) => {
   const { t } = useTranslation('Relative');
+  const { id, intervalType, startInterval, endInterval } = item;
   const options = [
     { value: 'ago', label: t('ago') },
     { value: 'from now', label: t('from now') },
@@ -33,13 +35,15 @@ export const Relative = ({
     onChange(id, { intervalType: value });
   };
 
-  const startChange = (interval: IntervalItemProps) => {
+  const startChange = (interval: FilterInterval) => {
     onChange(id, { startInterval: interval });
   };
 
-  const endChange = (interval: IntervalItemProps) => {
+  const endChange = (interval: FilterInterval) => {
     onChange(id, { endInterval: interval });
   };
+
+  if (!isInterval(startInterval) || !isInterval(endInterval)) return null;
 
   return (
     <Box2 display="flex" bg="field">
@@ -54,6 +58,7 @@ export const Relative = ({
         options={options}
         onChange={intervalTypeChange}
         placement="middle"
+        data-testid="relative-option"
       />
       <MidInputLabel>FOR</MidInputLabel>
       <Interval item={endInterval} onChange={endChange} field={field} />

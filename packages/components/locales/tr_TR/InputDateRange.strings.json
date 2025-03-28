@@ -1,4 +1,10 @@
 {
-  "End date": "Bitiş tarihi",
-  "Start date": "Başlangıç tarihi"
+  "End date": {
+    "value": "Bitiş tarihi",
+    "description": ""
+  },
+  "Start date": {
+    "value": "Başlangıç tarihi",
+    "description": ""
+  }
 }

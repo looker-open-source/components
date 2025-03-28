@@ -1,5 +1,14 @@
 {
-  "close": "sulje",
-  "next year": "seuraava vuosi",
-  "previous year": "edellinen vuosi"
+  "close": {
+    "value": "sulje",
+    "description": ""
+  },
+  "next year": {
+    "value": "seuraava vuosi",
+    "description": ""
+  },
+  "previous year": {
+    "value": "edellinen vuosi",
+    "description": ""
+  }
 }

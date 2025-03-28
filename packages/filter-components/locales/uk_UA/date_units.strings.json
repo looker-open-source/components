@@ -1,62 +1,82 @@
 {
   "day": {
-    "value": "день"
+    "value": "день",
+    "description": ""
   },
   "days": {
-    "value": "дн"
+    "value": "дн",
+    "description": ""
   },
   "fiscal quarter": {
-    "value": "фінансовий квартал"
+    "value": "фінансовий квартал",
+    "description": ""
   },
   "fiscal quarters": {
-    "value": "фінансових кварталів"
+    "value": "фінансових кварталів",
+    "description": ""
   },
   "fiscal year": {
-    "value": "фінансовий рік"
+    "value": "фінансовий рік",
+    "description": ""
   },
   "fiscal years": {
-    "value": "фінансових років"
+    "value": "фінансових років",
+    "description": ""
   },
   "hour": {
-    "value": "година"
+    "value": "година",
+    "description": ""
   },
   "hours": {
-    "value": "год"
+    "value": "год",
+    "description": ""
   },
   "minute": {
-    "value": "хвилина"
+    "value": "хвилина",
+    "description": ""
   },
   "minutes": {
-    "value": "хв"
+    "value": "хв",
+    "description": ""
   },
   "month": {
-    "value": "місяць"
+    "value": "місяць",
+    "description": ""
   },
   "months": {
-    "value": "міс."
+    "value": "міс.",
+    "description": ""
   },
   "quarter": {
-    "value": "квартал"
+    "value": "квартал",
+    "description": ""
   },
   "quarters": {
-    "value": "кварт."
+    "value": "кварт.",
+    "description": ""
   },
   "second": {
-    "value": "секунда"
+    "value": "секунда",
+    "description": ""
   },
   "seconds": {
-    "value": "сек"
+    "value": "сек",
+    "description": ""
   },
   "week": {
-    "value": "тиждень"
+    "value": "тиждень",
+    "description": ""
   },
   "weeks": {
-    "value": "тижн"
+    "value": "тижн",
+    "description": ""
   },
   "year": {
-    "value": "рік"
+    "value": "рік",
+    "description": ""
   },
   "years": {
-    "value": "р."
+    "value": "р.",
+    "description": ""
   }
 }

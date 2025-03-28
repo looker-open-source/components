@@ -36,10 +36,10 @@ import { useExplore } from './useExplore';
 const dataContainerListener = jest.fn();
 
 type TestComponentProps = {
-  id?: number;
+  id?: string;
 };
 
-const TestComponent = ({ id = 1 }: TestComponentProps) => {
+const TestComponent = ({ id = '1' }: TestComponentProps) => {
   const response = useExplore(id);
   dataContainerListener(response);
   return null;
@@ -83,7 +83,7 @@ describe('useExplore', () => {
           slugIdMap: {},
         }}
       >
-        <TestComponent id={456} />
+        <TestComponent id={'456'} />
       </ContextWrapper>
     );
 

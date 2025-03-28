@@ -1,65 +1,86 @@
 {
   "days ago": {
-    "value": "दिन पहले"
+    "value": "दिन पहले",
+    "description": ""
   },
   "days from now": {
-    "value": "दिन बाद"
+    "value": "दिन बाद",
+    "description": ""
   },
   "fiscal quarter from now": {
-    "value": "अब से शुरू होने वाली वित्तीय तिमाही"
+    "value": "अब से शुरू होने वाली वित्तीय तिमाही",
+    "description": ""
   },
   "fiscal quarters ago": {
-    "value": "वित्तीय तिमाहियां पहले"
+    "value": "वित्तीय तिमाहियां पहले",
+    "description": ""
   },
   "fiscal years ago": {
-    "value": "वित्तीय वर्ष पहले"
+    "value": "वित्तीय वर्ष पहले",
+    "description": ""
   },
   "fiscal years from now": {
-    "value": "वित्तीय वर्षों बाद"
+    "value": "वित्तीय वर्षों बाद",
+    "description": ""
   },
   "hours ago": {
-    "value": "घंटे पहले"
+    "value": "घंटे पहले",
+    "description": ""
   },
   "hours from now": {
-    "value": "घंटे बाद"
+    "value": "घंटे बाद",
+    "description": ""
   },
   "minutes ago": {
-    "value": "मिनट पहले"
+    "value": "मिनट पहले",
+    "description": ""
   },
   "minutes from now": {
-    "value": "मिनट बाद"
+    "value": "मिनट बाद",
+    "description": ""
   },
   "months ago": {
-    "value": "महीने पहले"
+    "value": "महीने पहले",
+    "description": ""
   },
   "months from now": {
-    "value": "महीने बाद"
+    "value": "महीने बाद",
+    "description": ""
   },
   "now": {
-    "value": "अभी"
+    "value": "अभी",
+    "description": ""
   },
   "quarters ago": {
-    "value": "तिमाहियां पहले"
+    "value": "तिमाहियां पहले",
+    "description": ""
   },
   "quarters from now": {
-    "value": "तिमाहियों बाद"
+    "value": "तिमाहियों बाद",
+    "description": ""
   },
   "seconds ago": {
-    "value": "सेकंड पहले"
+    "value": "सेकंड पहले",
+    "description": ""
   },
   "seconds from now": {
-    "value": "सेकंड बाद"
+    "value": "सेकंड बाद",
+    "description": ""
   },
   "weeks ago": {
-    "value": "सप्ताह पहले"
+    "value": "सप्ताह पहले",
+    "description": ""
   },
   "weeks from now": {
-    "value": "सप्ताहों बाद"
+    "value": "सप्ताहों बाद",
+    "description": ""
   },
   "years ago": {
-    "value": "वर्ष पहले"
+    "value": "वर्ष पहले",
+    "description": ""
   },
   "years from now": {
-    "value": "वर्षों बाद"
+    "value": "वर्षों बाद",
+    "description": ""
   }
 }

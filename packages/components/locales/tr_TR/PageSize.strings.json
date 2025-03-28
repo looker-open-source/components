@@ -1,4 +1,10 @@
 {
-  "Display": "Görüntüle",
-  "of": "/"
+  "Display": {
+    "value": "Görüntüle",
+    "description": ""
+  },
+  "of": {
+    "value": "/",
+    "description": ""
+  }
 }

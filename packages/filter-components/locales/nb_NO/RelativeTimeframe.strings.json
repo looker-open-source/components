@@ -1,3 +1,6 @@
 {
-  "Choose a Timeframe": "Velg en tidsrom"
+  "Choose a Timeframe": {
+    "value": "Velg en tidsrom",
+    "description": ""
+  }
 }

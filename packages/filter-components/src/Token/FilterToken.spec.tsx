@@ -4,12 +4,51 @@
  */
 
 import React from 'react';
-import { composeStories } from '@storybook/react';
 import { fireEvent, screen } from '@testing-library/react';
 import { renderWithTheme } from '@looker/components-test-utils';
 import { i18nInit } from '../utils';
-import * as stories from './FilterToken.stories';
-const { Basic, Expression, Error, Inline } = composeStories(stories);
+import { FilterToken } from '.';
+
+const Basic = () => (
+  <FilterToken
+    name="string"
+    type="string"
+    expressionType="date"
+    expression=""
+    allowMultipleValues
+  />
+);
+
+const Expression = () => (
+  <FilterToken
+    name="string"
+    type="string"
+    expressionType="string"
+    expression="foo,bar"
+    allowMultipleValues
+  />
+);
+
+const Error = () => (
+  <FilterToken
+    name="string"
+    type="string"
+    expressionType="date"
+    expression=""
+    allowMultipleValues
+    isRequired
+  />
+);
+
+const Inline = () => (
+  <FilterToken
+    name="string"
+    type="string"
+    expressionType="date"
+    expression=""
+    config={{ display: 'inline' }}
+  />
+);
 
 describe('FilterToken', () => {
   i18nInit();

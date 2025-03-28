@@ -1,7 +1,22 @@
 {
-  "Apply": "Aplicar",
-  "Cancel": "Cancelar",
-  "Select All": "Selecionar tudo",
-  "Select None": "Selecionar nenhuma",
-  "Select columns to display": "Selecionar colunas para apresentar"
+  "Apply": {
+    "value": "Aplicar",
+    "description": ""
+  },
+  "Cancel": {
+    "value": "Cancelar",
+    "description": ""
+  },
+  "Select All": {
+    "value": "Selecionar tudo",
+    "description": ""
+  },
+  "Select None": {
+    "value": "Selecionar nenhuma",
+    "description": ""
+  },
+  "Select columns to display": {
+    "value": "Selecionar colunas para apresentar",
+    "description": ""
+  }
 }

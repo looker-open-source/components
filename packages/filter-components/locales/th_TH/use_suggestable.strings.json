@@ -1,3 +1,6 @@
 {
-  "Error loading suggestions": "เกิดข้อผิดพลาดในการโหลดคำแนะนำ"
+  "Error loading suggestions": {
+    "value": "เกิดข้อผิดพลาดในการโหลดคำแนะนำ",
+    "description": ""
+  }
 }

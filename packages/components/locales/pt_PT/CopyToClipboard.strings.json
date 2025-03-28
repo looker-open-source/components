@@ -1,4 +1,10 @@
 {
-  "Copied": "Copiado",
-  "Copy to Clipboard": "Copiar para a área de transferência"
+  "Copied": {
+    "value": "Copiado",
+    "description": ""
+  },
+  "Copy to Clipboard": {
+    "value": "Copiar para a área de transferência",
+    "description": ""
+  }
 }
