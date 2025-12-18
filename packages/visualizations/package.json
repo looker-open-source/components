@@ -55,7 +55,7 @@
     "prettier": "2.8.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "storybook": "7.6.20"
+    "storybook": "7.6.21"
   },
   "peerDependencies": {
     "react": ">=16.14.0",
