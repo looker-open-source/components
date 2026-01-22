@@ -46,7 +46,7 @@
     "uuid": "^8.3.2"
   },
   "peerDependencies": {
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "react": ">=16.14.0",
     "react-dom": ">=16.14.0",
     "styled-components": "^5.3.1"
@@ -67,7 +67,7 @@
     "@testing-library/user-event": "13.1.5",
     "csstype": "3.0.2",
     "jest-styled-components": "7.1.1",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "prettier": "2.8.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
