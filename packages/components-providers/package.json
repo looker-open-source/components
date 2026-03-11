@@ -40,13 +40,13 @@
     "@looker/prettier-config": "1.0.0",
     "@stryker-mutator/jest-runner": "8.2.6",
     "@testing-library/react": "12.1.5",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "prettier": "2.8.2",
     "react": "17.0.2",
     "styled-components": "5.3.1"
   },
   "peerDependencies": {
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "react": ">=16.14.0",
     "styled-components": "^5.3.1"
   },
